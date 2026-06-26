@@ -4,7 +4,7 @@ title: "TableFrame API Guide"
 
 # TableFrame API Guide
 
- This guide provides an in-depth exploration of the Tabsdata TableFrame API, extending the concepts introduced in [Working with Tables](table-frame#working-with-tables). The TableFrame is the core data structure in Tabsdata for representing and manipulating tabular data within Tabsdata functions.
+ This guide provides an in-depth exploration of the Tabsdata TableFrame API, extending the concepts introduced in [Working with Tables](table_frame#working-with-tables). The TableFrame is the core data structure in Tabsdata for representing and manipulating tabular data within Tabsdata functions.
 
    
 ## Overview
@@ -263,8 +263,8 @@ tf.filter(td.col("category") != "archived")
 
  ```python
 # AND conditions (two syntaxes)
-tf.filter((td.col("age") > 18) & (td.col("age") &lt; 65))
-tf.filter((td.col("age") > 18).and_(td.col("age") &lt; 65))
+tf.filter((td.col("age") > 18) & (td.col("age") < 65))
+tf.filter((td.col("age") > 18).and_(td.col("age") < 65))
 
 # OR conditions
 tf.filter((td.col("status") == "active") | (td.col("status") == "pending"))
@@ -1023,6 +1023,6 @@ result = (
    
 ## See Also
 
- - [Working with Tables](table-frame#working-with-tables) - Basic table operations and CLI commands
-- [User-defined Functions (UDFs)](user-defined-functions#user-defined-functions) - Custom UDF implementation
+ - [Working with Tables](table_frame#working-with-tables) - Basic table operations and CLI commands
+- [User-defined Functions (UDFs)](user_defined_functions#user-defined-functions) - Custom UDF implementation
 - [TableFrame API Reference](https://docs.tabsdata.com/latest/api_ref/tableframe_api/index.html) - Complete API documentation

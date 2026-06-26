@@ -41,9 +41,9 @@ title: "Server Configuration"
  | Variable | Description |
 | --- | --- |
 | TD_PATH_INSTANCE | Full path to the Tabsdata instance directory |
-| TD_PATH_REPOSITORY | Full path to the repository directory (default: $\{TD_PATH_INSTANCE\}/repository) |
-| TD_PATH_CONFIG | Full path to the configuration directory (default: $\{TD_PATH_INSTANCE\}/workspace/config) |
-| TD_PATH_WORK | Full path to the working directory (default: $\{TD_PATH_INSTANCE\}/workspace/work) |
+| TD_PATH_REPOSITORY | Full path to the repository directory (default: $&#123;TD_PATH_INSTANCE&#125;/repository) |
+| TD_PATH_CONFIG | Full path to the configuration directory (default: $&#123;TD_PATH_INSTANCE&#125;/workspace/config) |
+| TD_PATH_WORK | Full path to the working directory (default: $&#123;TD_PATH_INSTANCE&#125;/workspace/work) |
 | TD_URI_INSTANCE | Same as TD_PATH_INSTANCE but URI-friendly (no scheme) |
 | TD_URI_REPOSITORY | Same as TD_PATH_REPOSITORY but URI-friendly (no scheme) |
 | TD_URI_CONFIG | Same as TD_PATH_CONFIG but URI-friendly (no scheme) |
@@ -412,7 +412,7 @@ profiles:
 Always use environment variables for sensitive data like API keys, passwords, and tokens:
 ai_providers:
   openai:
-    api_key: $\{OPENAI_API_KEY\}
+    api_key: $&#123;OPENAI_API_KEY&#125;
 2. **Backup Before Modifications**
 Always backup configuration files before making changes:
 $ cp config.yaml config.yaml.backup
@@ -490,12 +490,12 @@ Solution: Either restructure your triggers to avoid collection reentry, or switc
 
  See Transaction Mode for more details on transaction strategies.
 
- For additional help, see [Troubleshooting](../troubleshooting#troubleshooting) or [Contact Us](../contact-support#contact-support).
+ For additional help, see [Troubleshooting](10_troubleshooting/#troubleshooting) or [Contact Us](09_contact_support/#contact-support).
 
     
 ## Related Topics
 
- - [Setting up Tabsdata over HTTPS](../security#security) - Security configuration and best practices
-- [Secrets Management](../secrets-management#secrets-management) - Managing secrets with HashiCorp Vault
-- [Tabsdata AI Agent (Tabby)](../ai-agent#ai-agent) - Detailed AI agent setup and usage
-- [Getting Started](../getting-started#getting-started) - Initial server setup
+ - [Setting up Tabsdata over HTTPS](security/#security) - Security configuration and best practices
+- [Secrets Management](secrets_management/#secrets-management) - Managing secrets with HashiCorp Vault
+- [Tabsdata AI Agent (Tabby)](ai_agent/#ai-agent) - Detailed AI agent setup and usage
+- [Getting Started](02_getting_started/#getting-started) - Initial server setup

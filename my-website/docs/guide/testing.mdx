@@ -8,7 +8,7 @@ title: "Testing"
 
  Here is an example of how to do that.
 
- Let’s take the function logic of the transformer code from the Getting Started section [here](../getting-started#getting-started-transformer). You can test the function logic using the following code:
+ Let’s take the function logic of the transformer code from the Getting Started section [here](02_getting_started/#getting-started-transformer). You can test the function logic using the following code:
 
  ```python
 import polars as pl
@@ -34,7 +34,7 @@ def tfr(persons: td.TableFrame):
 # Local test (optional)
 if __name__ == "__main__":
 
-    tf = pl.read_csv("&lt;<path_to_persons.csv>>")
+    tf = pl.read_csv("<<path_to_persons.csv>>")
 
     s, f, g = tfr(tf)
 
@@ -46,7 +46,7 @@ if __name__ == "__main__":
  Note:
 
  - This method is only applicable to test the function logic, and not the input and output to the function.
-- Remember to update the path to your input file (`&lt;<path_to_persons.csv>>`) as needed.
+- Remember to update the path to your input file (`<<path_to_persons.csv>>`) as needed.
 
  Here Polars `read_csv` is used to read the csv file and store the resultant dataframe in a variable called `tf`. This `tf` dataframe is passed to the `tfr` function as input, and the resultant output tables from the function are stored as s,f and g variables. Subsequently a sample is printed from these. You can check the output as per your requirement to confirm if the function is generating the output as needed.
 

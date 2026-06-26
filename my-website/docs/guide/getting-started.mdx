@@ -2,6 +2,9 @@
 title: "Getting Started"
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Getting Started
 
  This chapter provides a tutorial to walk you through essential Tabsdata operations.
@@ -14,12 +17,12 @@ title: "Getting Started"
 
  The tutorial shows you how to define, register, and trigger the functions. It also demonstrates how the downstream dependencies are automatically managed by Tabsdata.
 
- If you encounter any trouble with the tutorial, you might find help in [Troubleshooting](../troubleshooting#troubleshooting), and reach out to us on [Slack](https://join.slack.com/t/tabsdata-community/shared_invite/zt-322toyigx-ZGFioMV2Gbza4bJDAR7wSQ).
+ If you encounter any trouble with the tutorial, you might find help in [Troubleshooting](10_troubleshooting/#troubleshooting), and reach out to us on [Slack](https://join.slack.com/t/tabsdata-community/shared_invite/zt-322toyigx-ZGFioMV2Gbza4bJDAR7wSQ).
 
   
 ## A Note on Tabsdata UI
 
- Once you have started the Tabsdata server using CLI, you can use the Tabsdata UI to work with the platform. The following section on **Getting Started** covers in detail the basic capabilities of the UI including e.g. executing functions or checking table data. You can also see a walkthrough of the UI [here](../user-interface#ui).
+ Once you have started the Tabsdata server using CLI, you can use the Tabsdata UI to work with the platform. The following section on **Getting Started** covers in detail the basic capabilities of the UI including e.g. executing functions or checking table data. You can also see a walkthrough of the UI [here](user_interface/#ui).
 
  ![../../_images/table_details.png](/img/table_details.png)
 
@@ -36,18 +39,30 @@ title: "Getting Started"
 
  [Optional and Recommended] Setup virtual environment
 
-  ```bash
+ <Tabs>
+
+<TabItem value="conda" label="Conda">
+
+```bash
 $ conda create --name tabsdata_env python=3.12
 $ conda activate tabsdata_env
 ```
 
- ```bash
+</TabItem>
+
+<TabItem value="python" label="Python">
+
+```bash
 $ python3.12 -m venv .venv
 $ source .venv/bin/activate    # On Linux/Mac
 $ .\.venv\Scripts\activate     # On Windows
 ```
 
-  To install Tabsdata, run the following command in your command line interface (CLI):
+</TabItem>
+
+</Tabs>
+
+ To install Tabsdata, run the following command in your command line interface (CLI):
 
  ```bash
 $ pip install tabsdata
@@ -113,7 +128,7 @@ $ cd examples/example-000
    
 ## Step 4. Log in and Create a Collection
 
- Collections are logical containers for Tabsdata [tables](../tables/table-frame#working-with-tables) and [functions](../04-working-with-functions#working-with-functions). You use collections to enable different business domains to have their own organizational space.
+ Collections are logical containers for Tabsdata [tables](06_working_with_tables/table_frame#working-with-tables) and [functions](04_working_with_functions/#working-with-functions). You use collections to enable different business domains to have their own organizational space.
 
   
 ### Using CLI
@@ -211,7 +226,7 @@ def pub(persons: td.TableFrame):
 
  This publisher, named `pub`, reads the “persons.csv” file in the input folder and writes it to the Tabsdata server as a table called `persons`.
 
- You can configure publishers to read data from many external systems. For details, [Publishers](../publishers#working-with-publishers).
+ You can configure publishers to read data from many external systems. For details, [Publishers](04_01_working_with_publishers/#working-with-publishers).
 
    
 ### 2. Register the publisher
@@ -336,9 +351,9 @@ def tfr(persons: td.TableFrame):
 - Filters data by nationality
 - Writes country-specific data to the appropriate table
 
- Since no trigger is explicitly defined, the transformer is triggered by a commit to the specified input table: `persons`. You can use a `trigger_by` command to define different trigger tables or to prevent automated triggering. For more information, see [Working with Triggers](../triggers#working-with-triggers).
+ Since no trigger is explicitly defined, the transformer is triggered by a commit to the specified input table: `persons`. You can use a `trigger_by` command to define different trigger tables or to prevent automated triggering. For more information, see [Working with Triggers](05_working_with_triggers/#working-with-triggers).
 
- You can configure transformers to perform a range of operations. For details, see [Transformers](../transformers#working-with-transformers).
+ You can configure transformers to perform a range of operations. For details, see [Transformers](04_02_working_with_transformers/#working-with-transformers).
 
    
 ### 2. Register the transformer with a Tabsdata collection
@@ -372,7 +387,7 @@ $ td fn trigger --coll tutorial --name tfr
 
  You can also use UI to trigger the transformer in the same way as shown for publisher here.
 
-  If you face any issues, make sure to check out the [Troubleshooting guide](../troubleshooting#troubleshooting).
+  If you face any issues, make sure to check out the [Troubleshooting guide](10_troubleshooting/#troubleshooting).
 
     
 ### 4. View the output tables
@@ -443,7 +458,7 @@ def sub(spanish: td.TableFrame, french: td.TableFrame) -> (td.TableFrame, td.Tab
 
  Since no trigger is explicitly defined, the subscriber is triggered by a commit to any of the specified input tables: spanish or french. You can use a trigger_by command to define different trigger tables or to prevent automated triggering.
 
- You can configure subscribers to export data to many external systems. For details, see [Working with Triggers](../triggers#working-with-triggers).
+ You can configure subscribers to export data to many external systems. For details, see [Working with Triggers](05_working_with_triggers/#working-with-triggers).
 
    
 ### 2. Register the subscriber
@@ -472,7 +487,7 @@ $ td fn trigger --coll tutorial --name sub
 
  ![../../_images/sub_trx.png](/img/sub_trx.png)
 
- If you face any issues, make sure to check out the [Troubleshooting guide](../troubleshooting#troubleshooting).
+ If you face any issues, make sure to check out the [Troubleshooting guide](10_troubleshooting/#troubleshooting).
 
    
 #### Using UI
@@ -484,22 +499,34 @@ $ td fn trigger --coll tutorial --name sub
 
  You can verify that the spanish.json1 and french.ndjson output files have been created by listing files in the output directory:
 
-  ```bash
+ <Tabs groupId="os">
+
+<TabItem value="for-linux-or-macos" label="For Linux or macOS">
+
+```bash
 $ ls output
 ```
 
- ```bash
+</TabItem>
+
+<TabItem value="for-windows-cmd" label="For Windows (CMD)">
+
+```bash
 $ dir output
 ```
 
-  You can use your favorite editor to view the contents of the files.
+</TabItem>
+
+</Tabs>
+
+ You can use your favorite editor to view the contents of the files.
 
     
 ## Step 8. Initiate Automated Triggers
 
  So far, you have used manual triggers to execute the functions in this tutorial.
 
- As mentioned earlier, transformer and subscriber functions have default automated triggers: when a trigger is not explicitly defined, the input tables for the function act as trigger tables. Publishers do not include a default trigger like transformers and subscribers, but you can define them when needed. For more information, see [Working with Triggers](../triggers#working-with-triggers).
+ As mentioned earlier, transformer and subscriber functions have default automated triggers: when a trigger is not explicitly defined, the input tables for the function act as trigger tables. Publishers do not include a default trigger like transformers and subscribers, but you can define them when needed. For more information, see [Working with Triggers](05_working_with_triggers/#working-with-triggers).
 
  Since the tutorial transformer does not have a specified trigger, it is triggered by a commit to its input table, persons. Similarly, since the tutorial subscriber does not have a specified trigger, it is triggered by a commit to either of its input tables: french or spanish.
 
@@ -512,15 +539,27 @@ $ dir output
 
  You can do this manually or by running the following command:
 
-  ```bash
+ <Tabs groupId="os">
+
+<TabItem value="for-linux-or-macos" label="For Linux or macOS">
+
+```bash
 $ rm output/*
 ```
 
- ```bash
+</TabItem>
+
+<TabItem value="for-windows-cmd" label="For Windows (CMD)">
+
+```bash
 $ del output\*
 ```
 
-    
+</TabItem>
+
+</Tabs>
+
+   
 ### 2. Execute the publisher
 
   
@@ -549,20 +588,32 @@ $ td fn trigger --coll tutorial --name pub
 
  You can verify that the spanish.json1 and french.ndjson files have been written to the output folder with the following command:
 
-  ```bash
+ <Tabs groupId="os">
+
+<TabItem value="for-linux-or-macos" label="For Linux or macOS">
+
+```bash
 $ ls output
 ```
 
- ```bash
+</TabItem>
+
+<TabItem value="for-windows-cmd" label="For Windows (CMD)">
+
+```bash
 $ dir output
 ```
 
-  And you can once again check the contents of those files with your favorite editor.
+</TabItem>
+
+</Tabs>
+
+ And you can once again check the contents of those files with your favorite editor.
 
     
 ## Step 9. Check the lineage graph
 
- You can check the lienage graph in the Tabsdata browser UI. You can see more details on [User Interface](../user-interface#ui).
+ You can check the lienage graph in the Tabsdata browser UI. You can see more details on [User Interface](user_interface/#ui).
 
  ![../../_images/lineage_graph.png](/img/lineage_graph.png)
 
@@ -583,8 +634,8 @@ $ dir output
 
  Here are some suggestions for your next steps:
 
- - For a broader understanding of Tabsdata, see [Key Concepts](../key-concepts#key-concepts).
-- Learn more about defining [publishers](../publishers#working-with-publishers), [transformers](../transformers#working-with-transformers), and [subscribers](../subscribers#working-with-subscribers).
-- Dive deeper into the processing that you can do with transformers [here](../tables/table-frame#working-with-tables).
-- Want to access an external system that does not have built-in support? You can build your own [connector plugins](../plugins#working-with-connector-plugins).
-- If you run into problems, check out our [Troubleshooting](../troubleshooting#troubleshooting) chapter.
+ - For a broader understanding of Tabsdata, see [Key Concepts](03_key_concepts/#key-concepts).
+- Learn more about defining [publishers](04_01_working_with_publishers/#working-with-publishers), [transformers](04_02_working_with_transformers/#working-with-transformers), and [subscribers](04_03_working_with_subscribers/#working-with-subscribers).
+- Dive deeper into the processing that you can do with transformers [here](06_working_with_tables/table_frame#working-with-tables).
+- Want to access an external system that does not have built-in support? You can build your own [connector plugins](07_working_with_connector_plugins/#working-with-connector-plugins).
+- If you run into problems, check out our [Troubleshooting](10_troubleshooting/#troubleshooting) chapter.

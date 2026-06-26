@@ -2,6 +2,9 @@
 title: "Setting up Tabsdata over HTTPS"
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Setting up Tabsdata over HTTPS
 
  The command snippets in this document assume:
@@ -17,7 +20,7 @@ update the command snippets accordingly.
 ## Tabsdata Server Root Directory
 
  Each Tabsdata server instance has its own root directory structure which is located at
-`~/.tabsdata/instances/&lt;INSTANCE_NAME&gt;/`.
+`~/.tabsdata/instances/<INSTANCE_NAME>/`.
 
  The root directory for the `tabsdata` instance is `~/.tabsdata/instances/tabsdata/`.
 
@@ -44,7 +47,11 @@ you can use `localhost`.
 
  For a development environment you can create a self-signed certificate using the following command:
 
-  ```bash
+ <Tabs groupId="os">
+
+<TabItem value="for-linux-or-macos" label="For Linux or macOS">
+
+```bash
 cd
 export NAME=localhost;
 export SUBJ="/CN=${NAME}";
@@ -65,7 +72,11 @@ echo "Certificate created, private key PEM: `pwd`/key.pem & certificate PEM: `pw
 echo
 ```
 
- ```batch
+</TabItem>
+
+<TabItem value="for-windows-cmd" label="For Windows (CMD)">
+
+```batch
 cd %USERPROFILE%
 set NAME=localhost
 set SUBJ=/CN=%NAME%
@@ -97,7 +108,11 @@ echo.
 del %CONFIG_FILE%
 ```
 
-  To check the certificate use the following command:
+</TabItem>
+
+</Tabs>
+
+ To check the certificate use the following command:
 
  ```bash
 openssl x509 -in cert.pem --text
@@ -111,15 +126,27 @@ openssl x509 -in cert.pem --text
  For example, for the `tabsdata` instance, standing in the directory where you have the key and
 certificate PEM files, run the following command:
 
-  ```bash
+ <Tabs groupId="os">
+
+<TabItem value="for-linux-or-macos" label="For Linux or macOS">
+
+```bash
 cp key.pem cert.pem ~/.tabsdata/instances/tabsdata/workspace/config/ssl/
 ```
 
- ```bash
+</TabItem>
+
+<TabItem value="for-windows-cmd" label="For Windows (CMD)">
+
+```bash
 copy *.pem %USERPROFILE%\.tabsdata\instances\tabsdata\workspace\config\ssl\
 ```
 
-    
+</TabItem>
+
+</Tabs>
+
+   
 ## Configure Tabsdata Server to Use the IP Address Associated to the Hostname in the Certificate
 
  If the certificate has been created for a hostname that is not associated to the `127.0.0.1` IP address,
