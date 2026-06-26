@@ -1,0 +1,33 @@
+1. Install and configure necessary dependencies (liabio). Instructions below are for Ubuntu 24.04.2.  You will need diferent procedures for earlier versions of other Linux distributions.
+
+ ```bash
+$ sudo apt-get install libaio1t64 -y
+$ sudo apt-get install libaio-dev -y
+$ sudo ln -sf /lib/x86_64-linux-gnu/libaio.so.1t64 /lib/x86_64-linux-gnu/libaio.so.1
+```
+
+ 1. Download [instantclient-basic-linuxx64.zip](https://download.oracle.com/otn_software/linux/instantclient/instantclient-basic-linuxx64.zip) from the Oracle website.
+2. Extract the downloaded .zip file. Navigate to its directory in a terminal window.
+
+ ```bash
+$ cd ~/Downloads/instantclient_23_3
+```
+
+ 1. Run the following terminal commands:
+
+ ```bash
+$ mkdir lib
+$ cd lib
+$ ln -s ../libclntsh.so libclntsh.so
+```
+
+ 1. Set Environment Variables for Tabsdata (adjust the folder Downloads if you switched to a different one)
+
+ ```bash
+$ export PATH="${PATH}:/Users/$USER/Downloads/instantclient_23_3"
+$ export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/Users/$USER/Downloads/instantclient_23_3"
+$ export TNS_ADMIN=/Users/$USER/Downloads/instantclient_23_3
+$ export ORACLE_HOME=/Users/$USER/Downloads/instantclient_23_3
+```
+
+ Note: You will need to edit your shell profile scripts to make these changes permanent.

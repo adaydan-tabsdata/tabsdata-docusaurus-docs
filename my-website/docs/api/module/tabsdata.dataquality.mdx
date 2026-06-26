@@ -1,0 +1,775 @@
+---
+title: "tabsdata.dataquality"
+---
+
+import { ApiEntry, ResponseField } from '@site/src/components/ApiField';
+
+# tabsdata.dataquality
+
+ <ApiEntry id="tabsdata.dataquality.AllOk" signature="AllOk(none_is_ok: bool = False, nan_is_ok: bool = False, *, tags: str | list[str] | None = None)" kind="class" bases="BoolCriteria" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L170">
+
+A boolean criteria that selects records where all boolean classifiers
+pass (True).
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.AnyFailed" signature="AnyFailed(none_is_ok: bool = False, nan_is_ok: bool = False, *, tags: str | list[str] | None = None)" kind="class" bases="BoolCriteria" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L197">
+
+A boolean criteria that selects records where at least one boolean
+classifier fails (False).
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.BoolClassifier" signature="BoolClassifier(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', on_wrong_value: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)" kind="class" bases="Classifier, ABC" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L554">
+
+Abstract base class for classifiers that produce a boolean result
+(True or False).
+
+<ApiEntry id="tabsdata.dataquality.BoolClassifier.supported_dtypes" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L560">
+
+Returns the set of data types supported by boolean classifiers.
+
+</ApiEntry>
+
+</ApiEntry>
+
+ <ApiEntry id="id0" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L560">
+
+Returns the set of data types supported by boolean classifiers.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.BoolCriteria" signature="BoolCriteria(none_is_ok: bool, nan_is_ok: bool, *, tags: str | list[str] | None = None)" kind="class" bases="Criteria, ABC" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L57">
+
+A boolean criteria to select records based on classifier results.
+
+<ResponseField id="tabsdata.dataquality.BoolCriteria.nan_is_ok" name="nan_is_ok" type="bool">
+
+Returns if NaN values should be considered OK.
+
+</ResponseField>
+
+<ResponseField id="tabsdata.dataquality.BoolCriteria.none_is_ok" name="none_is_ok" type="bool">
+
+Returns if None values should be considered OK.
+
+</ResponseField>
+
+<ResponseField id="tabsdata.dataquality.BoolCriteria.tags" name="tags" type="list[str] | None">
+
+Returns the list of tags associated with this criteria.
+
+</ResponseField>
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.Categorizer" signature="Categorizer(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', on_wrong_value: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)" kind="class" bases="Classifier, ABC" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L618">
+
+A base class for categorizers.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.Categorizer.supported_dtypes" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L431">
+
+Returns the set of data types supported by this classifier.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.CategoryCriteria" signature="CategoryCriteria(column_name: str, bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow'] | Annotated[list[Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow']], Strict])" kind="class" bases="Criteria, ABC" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L121">
+
+A category criteria to select records based on classifier results.
+
+<ResponseField id="tabsdata.dataquality.CategoryCriteria.bins" name="bins" type="AbstractSet[Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow']]">
+
+Returns a set of bins.
+
+</ResponseField>
+
+<ResponseField id="tabsdata.dataquality.CategoryCriteria.column_name" name="column_name" type="str">
+
+Returns the column name to check for values.
+
+</ResponseField>
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.Classifier" signature="Classifier(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', on_wrong_value: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)" kind="class" bases="ABC" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L422">
+
+Abstract base class for all data quality classifiers.
+
+A classifier is applied to one or more columns to produce a classification
+result, which is stored in a new column. It supports tags to allow data quality
+operations to selectively act on specific classifiers.
+
+<ResponseField id="tabsdata.dataquality.Classifier.column_names" name="column_names" type="list[tuple[str, str | None]] | None">
+
+Returns the list of columns the classifier applies to, including optional
+destination column names.
+
+</ResponseField>
+
+<ResponseField id="tabsdata.dataquality.Classifier.on_missing_column" name="on_missing_column" type="Literal['ignore', 'fail']">
+
+Returns what do if the column is missing.
+
+</ResponseField>
+
+<ResponseField id="tabsdata.dataquality.Classifier.on_wrong_type" name="on_wrong_type" type="Literal['ignore', 'fail']">
+
+Returns what do if the column type is incompatible with the classifier.
+
+</ResponseField>
+
+<ResponseField id="tabsdata.dataquality.Classifier.on_wrong_value" name="on_wrong_value" type="Literal['ignore', 'fail']">
+
+Returns what do if the column type is incompatible with the classifier.
+
+</ResponseField>
+
+<ApiEntry id="tabsdata.dataquality.Classifier.supported_dtypes" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L431">
+
+Returns the set of data types supported by this classifier.
+
+</ApiEntry>
+
+<ResponseField id="tabsdata.dataquality.Classifier.tags" name="tags" type="list[str] | None">
+
+Returns the list of tags associated with the classifier.
+
+</ResponseField>
+
+</ApiEntry>
+
+ <ApiEntry id="id2" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L431">
+
+Returns the set of data types supported by this classifier.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.Criteria" signature="Criteria" kind="class" bases="ABC" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L43">
+
+Defines the conditions for selecting records based on classifier results.
+
+A Criteria object specifies which rows of a table should be considered for a
+data quality operation. This can be based on the outcomes of boolean classifiers
+or the binning results of categorical classifiers.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.DataQuality" signature="DataQuality(table: str, classifiers: Classifier | list[Classifier], operators: Operator | list[Operator])" kind="class" bases="OnTablesAction" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_dataquality.py#L30">
+
+Represents a data quality action to be performed on a table.
+
+This class encapsulates a set of data quality rules, defined by classifiers
+and operators, that are applied to a specified table. It serves as a container
+for a complete data quality workflow.
+
+<ResponseField id="tabsdata.dataquality.DataQuality.classifiers" name="classifiers" type="list[Classifier]">
+
+Returns the list of classifiers used in this data quality action.
+
+</ResponseField>
+
+<ResponseField id="tabsdata.dataquality.DataQuality.operators" name="operators" type="list[Operator]">
+
+Returns the list of operators that will be executed based on the
+classifier results.
+
+</ResponseField>
+
+<ResponseField id="tabsdata.dataquality.DataQuality.table" name="table" type="str">
+
+Returns the name of the table targeted by this data quality action.
+
+</ResponseField>
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.DoesNotMatch" signature="DoesNotMatch(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, pattern: str, tags: str | list[str] | None = None)" kind="class" bases="MatchClassifier" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1510">
+
+A boolean classifier that checks if a value does *not* match a regex pattern.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.DoesNotMatch.supported_dtypes" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1446">
+
+Returns the set of data types supported by Matches classifier.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.Enrich" signature="Enrich(to_table: str | None = None, *, tags: str | list[str] | None = None)" kind="class" bases="TagOperator" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L385">
+
+An operator that adds the data quality classifier columns to the original
+table frame. It does not remove any row from the original table.
+
+<ResponseField id="tabsdata.dataquality.Enrich.to_table" name="to_table" type="str | None">
+
+Returns the destination table with the enriched data quality classifier
+columns. If None, the original table is used.
+
+</ResponseField>
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.ExponentialScale" signature="ExponentialScale(min_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], max_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], base: Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])] | None = None, bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=1), Le(le=100)])] = 100, use_bin_zero: bool = False)" kind="class" bases="NonIdentityScale" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L376">
+
+An exponential scale.
+
+<ResponseField id="tabsdata.dataquality.ExponentialScale.base" name="base" type="Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])]">
+
+Returns the base of the exponential scale.
+
+</ResponseField>
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.Fail" signature="Fail(criteria: Criteria, threshold: Threshold)" kind="class" bases="CriteriaOperator" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L462">
+
+An operator that fails the current transaction if a data quality threshold
+is met.
+
+<ResponseField id="tabsdata.dataquality.Fail.threshold" name="threshold" type="Threshold">
+
+Returns the threshold for this Fail operation.
+
+</ResponseField>
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.Filter" signature="Filter(criteria: Criteria, to_table: str | None = None, include_quality_columns: Literal['none', 'criteria', 'all'] = 'none')" kind="class" bases="CriteriaOperator" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L502">
+
+An operator that filters rows from a table based on data quality criteria.
+
+The filtered rows are removed from the table being processed. They can
+either be discarded or redirected to another table.
+
+<ResponseField id="tabsdata.dataquality.Filter.include_quality_columns" name="include_quality_columns" type="Literal['none', 'criteria', 'all']">
+
+Returns the data quality columns to included in the table with
+filtered out data.
+
+</ResponseField>
+
+<ResponseField id="tabsdata.dataquality.Filter.to_table" name="to_table" type="str | None">
+
+Returns the destination table for filtered rows, or None if they are
+discarded.
+
+</ResponseField>
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.HasLength" signature="HasLength(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, min_len: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0)])] = 0, max_len: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0)])] = 9223372036854775807, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)" kind="class" bases="BoolClassifier" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1518">
+
+A boolean classifier that checks if the length of a value is within a given range.
+
+<ResponseField id="tabsdata.dataquality.HasLength.max" name="max" type="int">
+
+Returns the maximum allowed length.
+
+</ResponseField>
+
+<ResponseField id="tabsdata.dataquality.HasLength.min" name="min" type="int">
+
+Returns the minimum allowed length.
+
+</ResponseField>
+
+<ApiEntry id="tabsdata.dataquality.HasLength.supported_dtypes" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1525">
+
+Returns the set of data types supported by HasLength classifier.
+
+</ApiEntry>
+
+</ApiEntry>
+
+ <ApiEntry id="id3" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1525">
+
+Returns the set of data types supported by HasLength classifier.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.IdentityScale" signature="IdentityScale(min_val: Annotated[int, Strict(strict=True)], max_val: Annotated[int, Strict(strict=True)], use_bin_zero: bool = False)" kind="class" bases="Scale" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L167">
+
+An identity scale where each integer value corresponds to a bin.
+
+<ResponseField id="tabsdata.dataquality.IdentityScale.bins" name="bins">
+
+Returns the number of bins in the scale.
+
+</ResponseField>
+
+<ResponseField id="tabsdata.dataquality.IdentityScale.scale_range" name="scale_range" type="tuple[Annotated[int, Strict(strict=True)], Annotated[int, Strict(strict=True)]]">
+
+Returns the (min, max) range of the scale.
+
+</ResponseField>
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.InBins" signature="InBins(column_name: str, bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow'] | Annotated[list[Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow']], Strict])" kind="class" bases="CategoryCriteria" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L224">
+
+A category criteria that selects records where the value in the specified
+columns falls into one of the given bins.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.IsBetween" signature="IsBetween(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, min_val: int | float | bool | str | date | time | datetime | timedelta | bytes | Decimal | None = None, max_val: int | float | bool | str | date | time | datetime | timedelta | bytes | Decimal | None = None, closed_on: Literal['none', 'lower', 'upper', 'both'] = 'both', on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', on_wrong_value: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)" kind="class" bases="BetweenClassifier" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1349">
+
+A boolean classifier that checks if a value is *inside* a specified range.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.IsBetween.supported_dtypes" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1261">
+
+Returns the set of data types supported by IsBetween classifier.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.IsFalse" signature="IsFalse(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)" kind="class" bases="BoolClassifier" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L741">
+
+A boolean classifier that checks if a value is False.
+
+<ApiEntry id="tabsdata.dataquality.IsFalse.supported_dtypes" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L748">
+
+Returns the set of data types supported by IsFalse classifier.
+
+</ApiEntry>
+
+</ApiEntry>
+
+ <ApiEntry id="id4" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L748">
+
+Returns the set of data types supported by IsFalse classifier.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.IsIn" signature="IsIn(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_value: Literal['ignore', 'fail'] = 'ignore', *, values: Collection, tags: str | list[str] | None = None)" kind="class" bases="InClassifier" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1423">
+
+A boolean classifier that checks if a value is in a specified set of values.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.IsIn.supported_dtypes" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1371">
+
+Returns the set of data types supported by IsIn classifier.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.IsNan" signature="IsNan(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)" kind="class" bases="BoolClassifier" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L854">
+
+A boolean classifier that checks if a value is NaN (Not a Number).
+
+<ApiEntry id="tabsdata.dataquality.IsNan.supported_dtypes" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L861">
+
+Returns the set of data types supported by IsNan classifier.
+
+</ApiEntry>
+
+</ApiEntry>
+
+ <ApiEntry id="id5" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L861">
+
+Returns the set of data types supported by IsNan classifier.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.IsNegative" signature="IsNegative(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)" kind="class" bases="BoolClassifier" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1175">
+
+A boolean classifier that checks if a numeric value is negative.
+
+<ApiEntry id="tabsdata.dataquality.IsNegative.supported_dtypes" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1182">
+
+Returns the set of data types supported by IsNegative classifier.
+
+</ApiEntry>
+
+</ApiEntry>
+
+ <ApiEntry id="id6" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1182">
+
+Returns the set of data types supported by IsNegative classifier.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.IsNegativeOrZero" signature="IsNegativeOrZero(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)" kind="class" bases="BoolClassifier" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1215">
+
+A boolean classifier that checks if a numeric value is negative or zero.
+
+<ApiEntry id="tabsdata.dataquality.IsNegativeOrZero.supported_dtypes" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1222">
+
+Returns the set of data types supported by IsNegativeOrZero classifier.
+
+</ApiEntry>
+
+</ApiEntry>
+
+ <ApiEntry id="id7" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1222">
+
+Returns the set of data types supported by IsNegativeOrZero classifier.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.IsNotBetween" signature="IsNotBetween(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, min_val: int | float | bool | str | date | time | datetime | timedelta | bytes | Decimal | None = None, max_val: int | float | bool | str | date | time | datetime | timedelta | bytes | Decimal | None = None, closed_on: Literal['none', 'lower', 'upper', 'both'] = 'both', on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', on_wrong_value: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)" kind="class" bases="BetweenClassifier" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1357">
+
+A boolean classifier that checks if a value is *outside* a specified range.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.IsNotBetween.supported_dtypes" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1261">
+
+Returns the set of data types supported by IsBetween classifier.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.IsNotIn" signature="IsNotIn(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_value: Literal['ignore', 'fail'] = 'ignore', *, values: Collection, tags: str | list[str] | None = None)" kind="class" bases="InClassifier" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1432">
+
+A boolean classifier that checks if a value is *not* in a specified set of values.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.IsNotIn.supported_dtypes" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1371">
+
+Returns the set of data types supported by IsIn classifier.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.IsNotNan" signature="IsNotNan(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)" kind="class" bases="BoolClassifier" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L894">
+
+A boolean classifier that checks if a value is *not* NaN.
+
+<ApiEntry id="tabsdata.dataquality.IsNotNan.supported_dtypes" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L901">
+
+Returns the set of data types supported by IsNotNan classifier.
+
+</ApiEntry>
+
+</ApiEntry>
+
+ <ApiEntry id="id8" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L901">
+
+Returns the set of data types supported by IsNotNan classifier.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.IsNotNull" signature="IsNotNull(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)" kind="class" bases="BoolClassifier" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L817">
+
+A boolean classifier that checks if a value is *not* NULL.
+
+<ApiEntry id="tabsdata.dataquality.IsNotNull.supported_dtypes" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L824">
+
+Returns the set of data types supported by IsNotNull classifier.
+
+</ApiEntry>
+
+</ApiEntry>
+
+ <ApiEntry id="id9" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L824">
+
+Returns the set of data types supported by IsNotNull classifier.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.IsNotNullNorNan" signature="IsNotNullNorNan(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)" kind="class" bases="BoolClassifier" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L974">
+
+A boolean classifier that checks if a value is neither NULL nor NaN.
+
+<ApiEntry id="tabsdata.dataquality.IsNotNullNorNan.supported_dtypes" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L981">
+
+Returns the set of data types supported by IsNotNullNorNan classifier.
+
+</ApiEntry>
+
+</ApiEntry>
+
+ <ApiEntry id="id10" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L981">
+
+Returns the set of data types supported by IsNotNullNorNan classifier.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.IsNotZero" signature="IsNotZero(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)" kind="class" bases="BoolClassifier" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1055">
+
+A boolean classifier that checks if a numeric value is not zero.
+
+<ApiEntry id="tabsdata.dataquality.IsNotZero.supported_dtypes" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1062">
+
+Returns the set of data types supported by IsNotZero classifier.
+
+</ApiEntry>
+
+</ApiEntry>
+
+ <ApiEntry id="id11" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1062">
+
+Returns the set of data types supported by IsNotZero classifier.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.IsNull" signature="IsNull(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)" kind="class" bases="BoolClassifier" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L780">
+
+A boolean classifier that checks if a value is NULL.
+
+<ApiEntry id="tabsdata.dataquality.IsNull.supported_dtypes" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L787">
+
+Returns the set of data types supported by IsNull classifier.
+
+</ApiEntry>
+
+</ApiEntry>
+
+ <ApiEntry id="id12" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L787">
+
+Returns the set of data types supported by IsNull classifier.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.IsNullOrNan" signature="IsNullOrNan(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)" kind="class" bases="BoolClassifier" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L934">
+
+A boolean classifier that checks if a value is either NULL or NaN.
+
+<ApiEntry id="tabsdata.dataquality.IsNullOrNan.supported_dtypes" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L941">
+
+Returns the set of data types supported by IsNullOrNan classifier.
+
+</ApiEntry>
+
+</ApiEntry>
+
+ <ApiEntry id="id13" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L941">
+
+Returns the set of data types supported by IsNullOrNan classifier.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.IsPositive" signature="IsPositive(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)" kind="class" bases="BoolClassifier" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1095">
+
+A boolean classifier that checks if a numeric value is positive.
+
+<ApiEntry id="tabsdata.dataquality.IsPositive.supported_dtypes" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1102">
+
+Returns the set of data types supported by IsPositive classifier.
+
+</ApiEntry>
+
+</ApiEntry>
+
+ <ApiEntry id="id14" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1102">
+
+Returns the set of data types supported by IsPositive classifier.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.IsPositiveOrZero" signature="IsPositiveOrZero(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)" kind="class" bases="BoolClassifier" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1135">
+
+A boolean classifier that checks if a numeric value is positive or zero.
+
+<ApiEntry id="tabsdata.dataquality.IsPositiveOrZero.supported_dtypes" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1142">
+
+Returns the set of data types supported by IsPositiveOrZero classifier.
+
+</ApiEntry>
+
+</ApiEntry>
+
+ <ApiEntry id="id15" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1142">
+
+Returns the set of data types supported by IsPositiveOrZero classifier.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.IsTrue" signature="IsTrue(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)" kind="class" bases="BoolClassifier" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L701">
+
+A boolean classifier that checks if a value is True.
+
+<ApiEntry id="tabsdata.dataquality.IsTrue.supported_dtypes" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L708">
+
+Returns the set of data types supported by IsTrue classifier.
+
+</ApiEntry>
+
+</ApiEntry>
+
+ <ApiEntry id="id16" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L708">
+
+Returns the set of data types supported by IsTrue classifier.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.IsZero" signature="IsZero(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)" kind="class" bases="BoolClassifier" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1015">
+
+A boolean classifier that checks if a numeric value is zero.
+
+<ApiEntry id="tabsdata.dataquality.IsZero.supported_dtypes" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1022">
+
+Returns the set of data types supported by IsZero classifier.
+
+</ApiEntry>
+
+</ApiEntry>
+
+ <ApiEntry id="id17" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1022">
+
+Returns the set of data types supported by IsZero classifier.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.LinearScale" signature="LinearScale(min_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], max_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=1), Le(le=100)])] = 100, use_bin_zero: bool = False)" kind="class" bases="NonIdentityScale" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L255">
+
+A linear scale.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.LogarithmicScale" signature="LogarithmicScale(min_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], max_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], base: Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])] | None = None, bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=1), Le(le=100)])] = 100, use_bin_zero: bool = False)" kind="class" bases="NonIdentityScale" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L329">
+
+A logarithmic scale.
+
+<ResponseField id="tabsdata.dataquality.LogarithmicScale.base" name="base" type="Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])]">
+
+Returns the base of the logarithmic scale.
+
+</ResponseField>
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.Matches" signature="Matches(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, pattern: str, tags: str | list[str] | None = None)" kind="class" bases="MatchClassifier" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1501">
+
+A boolean classifier that checks if a value matches a regex pattern.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.Matches.supported_dtypes" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1446">
+
+Returns the set of data types supported by Matches classifier.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.MonomialScale" signature="MonomialScale(min_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], max_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], power: Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])], bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=1), Le(le=100)])] = 100, use_bin_zero: bool = False)" kind="class" bases="NonIdentityScale" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L282">
+
+A monomial (power-law) scale.
+
+<ResponseField id="tabsdata.dataquality.MonomialScale.power" name="power" type="Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])]">
+
+Returns the power of the monomial scale.
+
+</ResponseField>
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.NotInBins" signature="NotInBins(column_name: str, bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow'] | Annotated[list[Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow']], Strict])" kind="class" bases="CategoryCriteria" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L252">
+
+A category criteria that selects records where the value in the specified
+columns does not fall into any of the given bins.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.Operator" signature="Operator" kind="class" bases="ABC" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L30">
+
+Abstract base class for all data quality operators.
+
+This class provides a common structure for operators, including support for tags,
+which allow for selective application of classifiers.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.PercentThreshold" signature="PercentThreshold(percent: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])])" kind="class" bases="Threshold" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L318">
+
+A threshold based on a percentage of total rows.
+
+<ResponseField id="tabsdata.dataquality.PercentThreshold.percent" name="percent" type="float">
+
+Returns the percentage for the threshold.
+
+</ResponseField>
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.RowCountThreshold" signature="RowCountThreshold(row_count: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0)])])" kind="class" bases="Threshold" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L289">
+
+A threshold based on a specific number of rows.
+
+<ResponseField id="tabsdata.dataquality.RowCountThreshold.row_count" name="row_count" type="int">
+
+Returns the row count for the threshold.
+
+</ResponseField>
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.Scale" signature="Scale(scale_range: tuple[Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)]], bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=1), Le(le=100)])], use_bin_zero: bool)" kind="class" bases="ABC" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L59">
+
+Abstract base class for scales used in categorization.
+
+A scale defines how numerical data is divided into bins.
+
+<ResponseField id="tabsdata.dataquality.Scale.use_bin_zero" name="use_bin_zero" type="bool">
+
+Returns whether the minimum value is in bin zero or in bin one.
+
+</ResponseField>
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.ScaleCategorizer" signature="ScaleCategorizer(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', on_wrong_scale_value: Literal['ignore', 'fail'] = 'ignore', *, scale: Scale, tags: str | list[str] | None = None)" kind="class" bases="Categorizer" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L626">
+
+A classifier that bucketizes data into bins based on a given scale.
+
+<ResponseField id="tabsdata.dataquality.ScaleCategorizer.scale" name="scale" type="Scale">
+
+Returns the scale used for categorization.
+
+</ResponseField>
+
+<ApiEntry id="tabsdata.dataquality.ScaleCategorizer.supported_dtypes" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L633">
+
+Returns the set of data types supported by categorizers.
+
+</ApiEntry>
+
+</ApiEntry>
+
+ <ApiEntry id="id18" signature="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L633">
+
+Returns the set of data types supported by categorizers.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.Select" signature="Select(criteria: Criteria, to_table: str, include_quality_columns: Literal['none', 'criteria', 'all'] = 'none')" kind="class" bases="CriteriaOperator" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L572">
+
+An operator that selects rows based on data quality criteria and writes
+them to another table.
+
+This operation does not modify the original table.
+
+<ResponseField id="tabsdata.dataquality.Select.include_quality_columns" name="include_quality_columns" type="Literal['none', 'criteria', 'all']">
+
+Returns the data quality columns to included in the table with
+selected data.
+
+</ResponseField>
+
+<ResponseField id="tabsdata.dataquality.Select.to_table" name="to_table" type="str">
+
+Returns the destination table for the selected rows.
+
+</ResponseField>
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.Summary" signature="Summary(table: str | None = None, *, tags: str | list[str] | None = None)" kind="class" bases="TagOperator" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L640">
+
+An operator that generates a data quality summary report for a table.
+
+<ResponseField id="tabsdata.dataquality.Summary.table" name="table" type="str | None">
+
+Returns the name of the data quality summary table.
+
+</ResponseField>
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.dataquality.Threshold" signature="Threshold" kind="class" bases="ABC" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L280">
+
+Abstract base class for thresholds used in the Fail operator.
+
+</ApiEntry>

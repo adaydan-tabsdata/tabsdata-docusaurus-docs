@@ -1,0 +1,222 @@
+---
+title: "Working with Tables#"
+---
+
+# Working with Tables
+
+ A table is the basic unit of operation inside Tabsdata. A Tabsdata table is data organized in rows and columns, similar to a database table. Each column has a name and all the values in the column have the same data type. A Tabsdata table only exsists inside the Tabsdata server.
+
+ Tables are created in Tabsdata by publishers importing external source data as tables inside the Tabsdata server or by transformers processing some tables in the server to create new ones.
+
+ You can use any Tabsdata table, including previous versions of tables, as input to create or modify other tables in Tabsdata. You can also export Tabsdata tables to external systems as |extensions_list_sub| files.
+
+  
+## Table Operations
+
+ Detailed table operations supported by Tabsdata are covered in our API Reference document [here](https://docs.tabsdata.com/latest/api_ref/tableframe.html).
+
+ Some of the key table operations are demonstrated below using the following persons Tabsdata table:
+
+ To work with the table, you define a transformer as follows,
+
+ ```python
+import tabsdata as td
+
+@td.transformer(
+    input_tables=["persons"],
+    output_tables=["persons_modified"],
+)
+def transf(tf: td.TableFrame):
+    tf_modified = &lt;function_logic&gt;
+    return tf_modified
+```
+
+ where &lt;function_logic&gt; can be substituted with various table operations that are demonstrated in the following sections.
+
+  
+### Projection
+
+ Projection operations derive projected views from underlying tables.
+
+  
+#### Column selection
+
+ Here is an example code to select specific columns from a table.
+
+ ```python
+tf.select("first_name", "last_name")
+```
+
+ or
+
+ ```python
+tf.select(["first_name", "last_name"])
+```
+
+ Output:
+
+ &lt;&lt;&lt;Table&gt;&gt;&gt;
+
+   
+#### Dropping a column
+
+ Here is an example code to drop specific columns from a table, where tf is the Tabsdata tableframe variable storing the underlying table. &lt;hyperlink to sample data&gt;
+
+ ```python
+tf.drop("last_name")
+```
+
+ Output:
+
+ &lt;&lt;&lt;Table&gt;&gt;&gt;
+
+   
+#### Columns concatenation:
+
+ Here is an example code to concatenate 2 columns from a table and call the output column “full_name”, where tf is the Tabsdata tableframe variable storing the underlying table. &lt;hyperlink to sample data&gt;
+
+ ```python
+tf.select((td.col("first_name") + " " + td.col("last_name")).alias("full_name"))
+```
+
+ &lt;&lt;Output:&gt;&gt;
+
+   
+#### Columns string expressions:
+
+ Here is an example code to convert the last_name column to upper case, where tf is the Tabsdata tableframe variable storing the underlying table. &lt;hyperlink to sample data&gt;
+
+ ```python
+tf.select(td.col("last_name").str.to_uppercase())
+```
+
+ &lt;&lt;Output&gt;&gt;
+
+   
+#### Columns type casting and datetime expressions:
+
+ Here is an example code to convert the values in the birthdate column to polars Date format, select the year from the converted value, and call the resultant column birth_year, where tf is the Tabsdata tableframe variable storing the underlying table. &lt;hyperlink to sample data&gt;
+
+ ```python
+tf.select(td.col("birthdate").cast(polars.Date).dt.year().alias("birth_year"))
+```
+
+   
+#### Columns numeric expressions:
+
+ Here is an example code to select the “height” column from the table, multiply the values to hundred, and name the result column “height_in_cm”, where tf is the Tabsdata tableframe variable storing the underlying table. &lt;hyperlink to sample data&gt;
+
+ ```python
+tf.select((td.col("height") * 100).alias("height_in_cm"))
+```
+
+    
+### Filter
+
+  
+#### Single condition on column value:
+
+ Here is an example code to filter the values of the last_name column by the first letter as “A”, where tf is the Tabsdata tableframe variable storing the underlying table. &lt;hyperlink to sample data&gt;
+
+ ```python
+tf.filter(td.col("last_name").str.starts_with("A"))
+```
+
+   
+#### Multiple conditions on column values:
+
+ Here is an example code to filter by multiple conditions on height and last_name column, where tf is the Tabsdata tableframe variable storing the underlying table. &lt;hyperlink to sample data&gt;
+
+ ```python
+tf.filter((td.col("height") > 1.80).and_(td.col("last_name").str.starts_with("A")))
+```
+
+ OR
+
+ ```python
+tf.filter((td.col("height") > 1.80) & td.col("last_name").str.starts_with("A"))
+```
+
+    
+### Aggregation
+
+ Here is an example code to group by the birth year and count the number of people born each year. It first converts the “birthdate” column to a Date type, extracts the year, and names it “birth_year”. Then, it groups the data by “birth_year” and counts the occurrences of “first_name”, storing the result in the “people_born” column.
+
+ ```python
+tf.group_by(td.col("birthdate").cast(polars.Date).dt.year().alias("birth_year")).agg(td.col("first_name").count().alias("people_born")
+```
+
+   
+### Join
+
+ Here is an example code that uses aggregates, joins and select, to calculate the average birth year for each nationality and filter individuals born after their nationality’s average birth year.
+
+ First, it groups the dataset by “nationality” and computes the mean birth year, storing the result in the “birth_year_mean” column.
+
+ Then, it joins this aggregated data back to the original dataset on “nationality” and filters records where an individual’s birth year is greater than their nationality’s average.
+
+ Finally, the code selects only the “last_name,” “birth_year_mean,” and “birthdate” columns to display the relevant information.
+
+ Note that the following example is structured differently from the previous examples, because we need to derive the “birth_y_mean” table from “persons” table, to demonstrate the joins operation.
+
+ ```python
+import tabsdata as td
+
+@td.transformer(
+    source = ["persons"],
+    tables = ["persons_modified"],
+)
+
+def transf (tf: td.TableFrame):
+    birth_y_mean = tf.group_by("nationality").agg(td.col("birthdate").cast(pl.Date).dt.year().mean().alias("birth_year_mean"))
+
+    res = tf.join(birth_y_mean, on="nationality").filter(td.col("birthdate").cast(pl.Date).dt.year() > td.col("birth_year_mean"))
+
+    tf_modified = res.select(pl.col("last_name"), pl.col("birth_year_mean"), pl.col("birthdate"))
+
+    return tf_modified
+```
+
+ For the complete list you can see the Tabsdata API Reference documentation here. &lt;hyperlink&gt;
+
+    
+## Table Commits
+
+ A table commit is generated by a successful execution of a publisher or transformer. When a function reads a table, it reads its latest commit by default.
+
+ A commit creation is based on the successful execution of the function and not on changes in the data of the table.
+
+ The Tabsdata server retains previous commits and metadata of all tables for auditing and traceability. Once created, the data of a table commit is immutable.
+
+  
+### Working with Table Commits
+
+ Tabsdata uses the HEAD command to refer to the latest commit of a table.
+
+ Here is an example of the HEAD commands in use.
+
+ ```python
+import tabsdata as td
+
+@td.transformer(
+    source = [
+        "minors_g@HEAD^",
+        "adults_g@HEAD-5",
+    ],
+    tables = ["minors_g_oldcommit", "adults_g_oldcommit"],
+)
+
+def transfs (tf1: td.TableFrame, tf2: td.TableFrame):
+    t1 = tf1.drop_nulls()
+    t2 = tf2.drop_nulls()
+    return t1, t2
+```
+
+ In the above example, you define a transformer that takes two tables: 1 table commit behind of minors_g and 5 table commits behind of adults_g, drops nulls from them, and returns the tables as “minors_g_oldcommit” and “adults_g_oldcommit”.
+
+ Following commands can be used in the input of transformers and subscribers to refer to the previous commits:
+
+ - **HEAD-10**: Refers to the table commit 10 versions before the current one.
+- **HEAD^^^**: Refers to the table commit 3 versions before the current one.
+- **HEAD-3..7**: Refers to the list of table commits between 3 and 7 versions before the current one. (3 and 7 are included)
+- **HEAD, HEAD^^^, HEAD-7..9**: Refers to the list of table commits containing the current commit, the 3rd commit before the current version, and between 7 and 9 versions before the current one.

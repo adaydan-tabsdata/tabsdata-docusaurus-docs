@@ -1,0 +1,85 @@
+---
+title: "Core features and functionality#"
+---
+
+# Core features and functionality
+
+  
+## Search and Discover
+
+ To see all the datasets associated with a datastore use the following function.
+
+ ```bash
+td dataset list --datastore $DATASTORE_NAME
+```
+
+ &lt;&lt;DOUBT: Include the full and exhaustive functionality of search and discover&gt;&gt;
+
+   
+## Create Publisher
+
+ One of the core tenets in Pub-Sub for tables, a Publisher enables data producers to publish their data to Tabsdata system.
+
+ The data can be published from file systems (Local, AWS S3, Azure) and SQL Databases, and can be of .log, .parquet, .csv, and .json kind.
+
+ Here is example of importing a csv file from Local in a Publisher in Tabsdata.
+
+ ```python
+    @td.dataset(
+    input=td.LocalFileInput(("path/to/file/data"), format="csv"),
+    output=td.TableOutput("output"),
+)
+```
+
+ Publishers are covered in detail here.
+
+   
+## Modifiers
+
+ Modifiers are covered in detail in a separate section.
+
+   
+## Subscribers
+
+ The second core tenet in Pub-Sub for tables, a Subscriber enables data cunsumers to read data from Tabsdata system.
+
+ The output of a Subscriber can be a materilized tabular view within Tabsdata and can also be exported to file systems (Local, AWS S3, Azure) and SQL Databases.
+
+ Here is example of exporting a Table to SQL Database.
+
+ ```python
+@td.dataset(
+        input=td.LocalFileInput(os.path.join(ABSOLUTE_LOCATION, "data.csv")),
+        output=td.MySQLOutput(
+            "mysql://localhost:3306/testing",
+            ["output_sql_list", "second_output_sql_list"],
+            credentials=td.UserPasswordCredentials("@dmIn", "p@ssw0rd#"),
+        ),
+    )
+```
+
+ Subscribers are also covered in detail in a separate section here.
+
+   
+## Create Manual Triggers
+
+ As covered in [Triggers](../key-concepts/core#trigger) there are two kinds of triggers: Manual and Dependency.
+
+ &lt;&lt;DOUBT: Will need to revisit the write up based on the functions and decorators&gt;&gt;
+
+ Manual triggers are completely user defined.
+
+ ```python
+td.dataset has a trigger on "xyz"
+```
+
+ Dependency triggers are based on change in data, wherein any change in data triggers all the downstream datasets to update.
+
+ ```python
+td.dataset has a trigger on "xyz"
+```
+
+   
+## Lineage
+
+ &lt;&lt;DOUBT: Need to know the code.&gt;&gt;

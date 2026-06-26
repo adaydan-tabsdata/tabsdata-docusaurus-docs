@@ -1,0 +1,91 @@
+---
+title: "tabsdata.tableframe.functions.col"
+---
+
+import { ApiEntry, ParamField, ResponseField } from '@site/src/components/ApiField';
+
+# tabsdata.tableframe.functions.col
+
+ <ApiEntry id="tabsdata.tableframe.functions.col.Col" signature="Col" kind="class" bases="object">
+
+This class is used to create TableFrame column expressions.
+
+An instance of this class is available as col. It can be called like a function
+(e.g., td.col(“name”)).
+For more information, refer to the __call__ method documentation.
+
+This helper class provides an alternative way to create column expressions using
+attribute lookup.
+For instance, col.name is equivalent to col(“name”).  Refer to
+`__getattr__()` method.
+
+Example:
+&gt;&gt;&gt; import tabsdata as td
+&gt;&gt;&gt;
+&gt;&gt;&gt; tf: td.TableFrame …
+&gt;&gt;&gt;
+&gt;&gt;&gt; tf = tf.with_columns(full_name=(td.col(“last_name”) + “, “ +     &gt;&gt;&gt;     td.col(“first_name”))
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.tableframe.functions.col.Column" signature="Column(name: str | None = None, dtype: Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 = String)" kind="class" bases="object">
+
+Represents a single column definition in a `TableFrame`.
+
+A Column defines both the **name** and the **data type** of a column,
+along with other relevant metadata in the future. This abstraction provides
+a consistent way to declare and validate schema definitions for TableFrame
+objects.
+
+<ParamField path="name" type="str">
+  The name of the column. Must be a valid string identifier for the
+TableFrame schema, or None if no name is provided.
+Defaults to None.
+</ParamField>
+
+<ParamField path="dtype" type="td_typing.DataType">
+  The expected data type for the column. This determines how values
+in the column will be interpreted, validated, and serialized.
+</ParamField>
+
+<ParamField path="name" type="str">
+  The name of the column, or None if no name was provided.
+</ParamField>
+
+<ParamField path="dtype" type="td_typing.DataType">
+  The declared data type of the column.
+</ParamField>
+
+Examples
+
+Create a column with a name and type:
+
+```text
+>>> import tabsdata as td
+>>> Column("customer_id", td.Int64)
+<Column name='customer_id' dtype=Int64>
+```
+
+Use columns to define a TableFrame schema:
+
+```text
+>>> import tabsdata as td
+>>> schema = [
+...     Column("customer_id", td.Int64),
+...     Column("signup_date", td.Datetime),
+... ]
+>>> for column in schema:
+...     print(column.name, column.dtype)
+customer_id Int64
+signup_date Datetime
+```
+
+<ResponseField id="tabsdata.tableframe.functions.col.Column.dtype" name="dtype" type="Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64">
+
+</ResponseField>
+
+<ResponseField id="tabsdata.tableframe.functions.col.Column.name" name="name" type="str | None">
+
+</ResponseField>
+
+</ApiEntry>

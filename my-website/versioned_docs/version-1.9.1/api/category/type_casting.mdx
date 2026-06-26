@@ -1,0 +1,216 @@
+---
+title: "Type Casting"
+---
+
+import { ApiEntry, ParamField } from '@site/src/components/ApiField';
+
+# Type Casting
+
+ <ApiEntry id="tabsdata.tableframe.expr.expr.Expr.cast" signature="cast(dtype: Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | type[Any], *, strict: bool = True, wrap_numerical: bool = False)" kind="method">
+
+Cast a value to d different type.
+
+<ParamField path="dtype">
+  The data type to cast to.
+</ParamField>
+
+<ParamField path="strict">
+  If false, invalid casts produce null’s;
+if true, an excetion is raised.
+</ParamField>
+
+<ParamField path="wrap_numerical">
+  If true, overflowing numbers ara handled;
+if false, an excetion is raised.
+</ParamField>
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>> import polars as pl
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").cast(td.Float64)).alias("cast")
+>>>
+┌──────┬──────┐
+│ val  ┆ cast │
+│ ---  ┆ ---  │
+│ i64  ┆ f64  │
+╞══════╪══════╡
+│ 1    ┆ 1.0  │
+│ 15   ┆ 15.0 │
+│ 18   ┆ 18.0 │
+│ 60   ┆ 60.0 │
+│ 60   ┆ 60.0 │
+│ 75   ┆ 75.0 │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_date" signature="to_date(fmt: str | None = None, *, strict: bool = True)" kind="method">
+
+Convert the string to a date.
+
+<ParamField path="fmt">
+  The date format string (default %Y-%m-%d).
+See formats.
+</ParamField>
+
+<ParamField path="strict">
+  Whether to parse the date strictly.
+</ParamField>
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.to_date().alias("to_date"))
+>>>
+┌────────────┬────────────┐
+│ a          ┆ to_date    │
+│ ---        ┆ ---        │
+│ str        ┆ date       │
+╞════════════╪════════════╡
+│ 2024-12-13 ┆ 2024-12-13 │
+│ 2024-12-15 ┆ 2024-12-15 │
+│ null       ┆ null       │
+└────────────┴────────────┘
+```
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_datetime" signature="to_datetime(format: str | None = None, *, time_unit: Literal['ns', 'us', 'ms'] | None = None, time_zone: str | None = None, strict: bool = True, ambiguous: Literal['earliest', 'latest', 'raise', 'null'] | Expr = 'raise')" kind="method">
+
+Convert the string to a datetime.
+
+<ParamField path="format">
+  The datetime format string (default %Y-%m-%d %H:%M:%S).
+See formats.
+</ParamField>
+
+<ParamField path="time_unit">
+  \{None, ‘us’, ‘ns’, ‘ms’\}
+If None (default), it inferred from the format string
+</ParamField>
+
+<ParamField path="time_zone">
+  Time zone for the resulting value.
+</ParamField>
+
+<ParamField path="strict">
+  If the conversion fails an error will be raised.
+</ParamField>
+
+<ParamField path="ambiguous">
+  Policy to apply on ambiguos Datetimes:
+‘raise’: saises an error
+‘earliest’: use the earliest datetime
+‘latest’: use the latest datetime
+‘null’: set to null
+</ParamField>
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.to_datetime().alias("to_datetime"))
+>>>
+┌─────────────────────┬─────────────────────┐
+│ a                   ┆ to_datetime         │
+│ ---                 ┆ ---                 │
+│ str                 ┆ datetime[μs]        │
+╞═════════════════════╪═════════════════════╡
+│ 2024-12-13 08:45:34 ┆ 2024-12-13 08:45:34 │
+│ 2024-12-15 18:33:00 ┆ 2024-12-15 18:33:00 │
+│ null                ┆ null                │
+└─────────────────────┴─────────────────────┘
+```
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_integer" signature="to_integer(*, base: int | td_typing.IntoExprColumn = 10, strict: bool = True)" kind="method">
+
+Covert a string to integer.
+
+<ParamField path="base">
+  The base of the integer.
+</ParamField>
+
+<ParamField path="strict">
+  If true, raise an error if the string is not a valid integer.
+</ParamField>
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a")
+      .str.to_integer(strict=False).alias("to_integer"))
+>>>
+┌──────┬────────────┐
+│ a    ┆ to_integer │
+│ ---  ┆ ---        │
+│ str  ┆ i64        │
+╞══════╪════════════╡
+│ 1    ┆ 1          │
+│ 2.2  ┆ null       │
+│ a    ┆ null       │
+│ null ┆ null       │
+└──────┴────────────┘
+```
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_time" signature="to_time(fmt: str | None = None, *, strict: bool = True, cache: bool = True)" kind="method">
+
+Convert the string to a time.
+
+<ParamField path="fmt">
+  The time format string (default %H:%M:%S).
+See formats.
+</ParamField>
+
+<ParamField path="strict">
+  Whether to parse the date strictly.
+</ParamField>
+
+<ParamField path="cache">
+  Whether to cache the date.
+</ParamField>
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.to_time().alias("to_time"))
+>>>
+┌─────────────────────┬─────────────────────┐
+│ a                   ┆ to_datetime         │
+│ ---                 ┆ ---                 │
+│ str                 ┆ datetime[μs]        │
+╞═════════════════════╪═════════════════════╡
+│ 2024-12-13 08:45:34 ┆ 2024-12-13 08:45:34 │
+│ 2024-12-15 18:33:00 ┆ 2024-12-15 18:33:00 │
+│ null                ┆ null                │
+└─────────────────────┴─────────────────────┘
+```
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.to_string" signature="to_string(fmt: str | None = None)" kind="method">
+
+</ApiEntry>

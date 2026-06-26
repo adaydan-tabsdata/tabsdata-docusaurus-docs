@@ -1,0 +1,42 @@
+---
+title: "Publishers#"
+---
+
+# Publishers
+
+ A publisher is a Tabsdata [function](../04-working-with-functions#working-with-functions) that reads data from an external source, such as file system or database, and writes the data to one or more tables in the Tabsdata server.
+
+ Here is an example publisher named `read_sales`. It reads three sales csv files, checks if their last modified date is after 1st Jan 2021, and writes them to the Tabsdata tables of the same name. This publisher executes automatically as soon as a [new commit](../tables/table-frame#working-with-table-commits) occurs on the `new_customer` table:
+
+ ```python
+import tabsdata as td
+
+@td.publisher(
+    source=td.LocalFileSource(
+        [
+            "/users/username/opt/sales-staging/us/us-sales.csv",
+            "/users/username/opt/sales-staging/eu/eu-sales.csv",
+            "/users/username/opt/sales-staging/emea/emea-sales.csv",
+        ],
+        initial_last_modified="2021-01-01",
+    ),
+    tables=["us-sales", "eu-sales", "emea-sales"],
+    trigger_by="new_customer",
+)
+def read_sales(tf1: td.TableFrame, tf2: td.TableFrame, tf3: td.TableFrame):
+    return tf1, tf2, tf3
+```
+
+ When you define a publisher, you specify the name of the publisher, the data to read, and the names of the Tabsdata tables to write to. If you want the publisher to execute automatically, you need to specify the Tabsdata tables that will trigger the publisher when a commit occurs for one of those tables in the `trigger_by` parameter.
+
+ To create and run a Tabsdata publisher, complete the following tasks:
+
+ - **Define a publisher** - Define a publisher to configure the parameters that govern the reading of data into the Tabsdata server. The syntax for defining a publisher differs depending on the system that the publisher reads from. For details, see [Reading from File Storage](reading-from-file-storage#reading-from-file-storage) and [Reading from Database](reading-from-database#reading-from-database).
+- **Register the publisher** - Register the publisher with a Tabsdata collection. A publisher can only write output tables to the collection that it is registered with. For information about registering functions, see [here](../04-working-with-functions#register-a-function).
+- **Execute the publisher** - Execute the publisher by initiating a trigger. Once executed, the publisher takes the input data, processes it as defined in the function logic, and writes the output tables in the Tabsdata server. By default, publishers do not have any triggers. For more information about executing a function, see [here](../04-working-with-functions#execute-a-function).
+
+ For more information on external sources to publish from, explore the following:
+
+  - [Reading from File Storage](reading-from-file-storage)
+- [Reading from Database](reading-from-database)
+- [Reading from SaaS](reading-from-saas)

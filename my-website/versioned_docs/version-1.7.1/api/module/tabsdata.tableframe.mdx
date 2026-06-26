@@ -1,0 +1,66 @@
+---
+title: "tabsdata.tableframe"
+---
+
+import { ApiEntry } from '@site/src/components/ApiField';
+
+# tabsdata.tableframe
+
+ <ApiEntry id="tabsdata.tableframe.SysCol" signature="SysCol(*values)" kind="class" bases="StrEnum">
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.tableframe.empty" signature="empty">
+
+Creates an empty (no column - no row) TableFrame.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.tableframe.from_dict" signature="from_dict(data: Mapping[str, Sequence[object] | Mapping[str, Sequence[object]]] | None = None)">
+
+Creates tableframe from a dictionary, or None.
+None produces as an empty (no column - no row) tableframe.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.tableframe.from_pandas" signature="from_pandas(data: pd.DataFrame | None = None)">
+
+Creates tableframe from a pandas dataframe, or None.
+None produces as an empty (no column - no row) tableframe.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.tableframe.from_polars" signature="from_polars(data: LazyFrame | DataFrame | None = None)">
+
+Creates tableframe from a polars dataframe or lazyframe, or None.
+None produces as an empty (no column - no row) tableframe.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.tableframe.to_dict" signature="to_dict(data: TableFrame)">
+
+Creates dictionary from a tableframe, or None.
+None produces and empty (no key) dictionary.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.tableframe.to_pandas" signature="to_pandas(data: td_frame.TableFrame)">
+
+Creates pandas dataframe from a tableframe, or None.
+None produces and empty (no column - no row) pandas dataframe.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.tableframe.to_polars_df" signature="to_polars_df(data: TableFrame)">
+
+Creates polars dataframe from a tableframe, or None.
+None produces and empty (no column - no row) polars dataframe.
+
+</ApiEntry>
+
+ <ApiEntry id="tabsdata.tableframe.to_polars_lf" signature="to_polars_lf(data: TableFrame)">
+
+Creates polars lazyframe from a tableframe, or None.
+None produces and empty (no column - no row) polars lazyframe.
+
+</ApiEntry>

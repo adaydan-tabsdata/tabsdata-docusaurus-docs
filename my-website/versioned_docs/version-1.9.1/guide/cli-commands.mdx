@@ -1,0 +1,328 @@
+---
+title: "CLI Reference"
+---
+
+# CLI Reference
+
+ The document below, covers the major commands and sub-commands to work with Tabsdata Command Line Interface (CLI). For more options, please use `-h`/`--help` option in the CLI to obtain the full list and description of commands and their options.
+
+ Tabsdata provides 2 CLI tools:
+
+ - `tdserver` - Tabsdata Server CLI
+- `td` - Tabsdata Client CLI
+
+  
+## Tabsdata Server CLI tdserver
+
+ The `tdserver` CLI is used to manage the Tabsdata server.
+
+ It provides the following commands:
+
+ - `start` - Start the Tabsdata server.
+- `stop` - Stop the Tabsdata server.
+- `status` - Get the status of the Tabsdata server.
+- `logs` - Get the logs of the Tabsdata server.
+
+ **Note**: You can use `tdserver status --metrics` to access the report on disk utilization.
+
+   
+## Tabsdata Client CLI td
+
+ The `td` CLI is used to interact with a Tabsdata server.
+
+ The `td` CLI works with options and in interactive mode if the options are not provided.
+
+  
+### Interactive Mode
+
+ By default, the `td` CLI enters interactive mode if there is a required option that is missing.
+
+ To disable interactive mode, use the `--no-prompt` option immediately after the `td` command.
+
+   
+### Login to Server
+
+ ```python
+
+td login --server localhost:2457 --username &lt;USER&gt; --role &lt;ROLE&gt; --password &lt;PASSWORD&gt;
+```
+
+ **Default:**
+
+ ```python
+td login --server localhost:2457 --username admin --role sys_admin --password tabsdata
+```
+
+ The port number is optional, if not provided, the default port number `2457` is used.
+
+ User, role and password immediately after installation are `admin`, `sys_admin` and `tabsdata` respectively.
+
+ The user session token is stored in the `~/.tabsdata.connection.json` directory.
+
+ After a successful login, the user remains logged in until the `td logout` command is executed or
+
+ until the session expires (2 hours after login)
+
+   
+### Logout from Server
+
+ ```python
+
+td logout
+```
+
+ Terminates the current session if any.
+
+   
+### User Sub-Commands
+
+  
+#### Create a User
+
+ ```python
+
+td user create &lt;NAME&gt; --password &lt;PASSWORD&gt; --full-name &lt;FULL_NAME&gt; --email &lt;EMAIL&gt;
+```
+
+ Password must be at least 8 characters long.
+
+   
+#### Show User Info
+
+ ```python
+
+td user info &lt;NAME&gt;
+```
+
+   
+#### List Users
+
+ ```python
+
+td user list
+```
+
+   
+#### Update User
+
+ ```python
+
+td user update &lt;NAME&gt; -full-name &lt;NEW_FULL_NAME&gt; --email &lt;NEW_EMAIL&gt;
+```
+
+ Password must be at least 8 characters long.
+
+   
+#### Delete User
+
+ ```python
+
+td user delete &lt;NAME&gt; -confirm delete
+```
+
+    
+### Collection Management Commands
+
+  
+#### Collection Sub-Commands
+
+ ```python
+
+td collection create --name &lt;NAME&gt; --description &lt;DESCRIPTION&gt;
+```
+
+ Password must be at least 8 characters long.
+
+   
+#### Show Collection Info
+
+ ```python
+
+td collection info --name &lt;NAME&gt;
+```
+
+   
+#### List Collections
+
+ ```python
+
+td collection list
+```
+
+   
+#### Update Collection
+
+ ```python
+
+td collection update --name &lt;NAME&gt; --new-name &lt;NEW_NAME&gt; --description &lt;NEW_DESCRIPTION&gt;
+```
+
+    
+### Functions Sub-Commands
+
+  
+#### Register a Function
+
+ ```python
+
+td fn register --coll examples --path &lt;PYTHON_FILE&gt;::&lt;PYTHON_FUNCTION&gt;
+
+--description &lt;DESCRIPTION&gt; --local-pkg &lt;LOCAL_PACKAGE_PATH&gt;
+
+--requirements &lt;REQUIREMENTS_TXT_PATH&gt;
+```
+
+ Use the `--local-pkg` option to specify the path to local packages not available in PyPi.
+
+ Use the `--requirements` option to specify the path to a `requirements.txt` file switching
+
+ off automatic requirements detection.
+
+   
+#### Update a Function
+
+ ```python
+
+td fn update --coll examples --name &lt;FUNCTION&gt; 
+
+               --path &lt;PYTHON_FILE&gt;::&lt;PYTHON_FUNCTION&gt;
+
+               --description &lt;DESCRIPTION&gt; --local-pkg &lt;LOCAL_PACKAGE_PATH&gt;
+
+               --requirements &lt;REQUIREMENTS_TXT_PATH&gt;
+```
+
+ Use the `--local-pkg` option to specify the path to local packages not available in PyPi.
+
+ Use the `--requirements` option to specify the path to a `requirements.txt` file switching
+
+ off automatic requirements detection.
+
+   
+#### Show Function Info (current)
+
+ ```python
+
+td fn info --coll &lt;COLLECTION&gt; --name &lt;FUNCTION&gt; 
+```
+
+   
+#### Show Function Info History
+
+ ```python
+
+td fn info --coll &lt;COLLECTION&gt; --name &lt;FUNCTION&gt; --history
+```
+
+   
+#### List Functions
+
+ ```python
+
+td fn list --coll &lt;COLLECTION&gt; 
+```
+
+    
+### Execution Management Sub-Commands
+
+  
+#### Trigger a Function
+
+ ```python
+
+td fn trigger --coll &lt;COLLECTION&gt; --name &lt;FUNCTION&gt;
+```
+
+   
+#### Listing Transactions
+
+ ```python
+
+td exe list-trx
+```
+
+   
+#### Listing Execution Plans
+
+ ```python
+
+td exe list-plan
+```
+
+   
+#### Listing Workers
+
+ ```python
+
+td exe list-worker --&lt;BY&gt; &lt;ID&gt;
+```
+
+ Where option `&lt;BY&gt;` can be (only one can be used in a single command):
+
+ - `--data-ver`  must be the data version ID the worker generated.
+- `--plan`  must be the execution plan ID that runs the worker.
+- `--fn`  must be the function ID of the worker.
+- `--trx`  must be the transaction that runs the worker.
+
+   
+#### Cancel a Transaction
+
+ ```python
+
+td exe cancel --trx &lt;TRX_ID&gt;
+```
+
+ It cancels a running or failed transaction. All workers of the transaction will be discarded,
+
+ regardless of their status and any data generated by them will be discarded as well.
+
+ All transactions that are dependent on data of the canceled transaction will be canceled as well.
+
+   
+#### Recover a Transaction
+
+ ```python
+
+td exe recover --trx &lt;TRX_ID&gt;
+```
+
+ It recovers a failed transaction. All workers in failed or hold state will be retried.
+
+ All transactions that are dependent and where on hold will be retried as well.
+
+   
+#### Viewing the logs of a Worker
+
+ ```python
+
+td exe logs --worker &lt;WORKER_ID&gt;
+```
+
+ Use the `td exe list-trx`, `td exe list-plan`, and `td exe list-worker` to find the  desired worker ID.
+
+    
+### View Table Data
+
+  
+#### View A Table Schema
+
+ ```python
+
+td table schema --coll &lt;COLLECTION&gt; --name &lt;TABLE&gt;
+```
+
+   
+#### View A Table Sample
+
+ ```python
+
+td table sample --coll &lt;COLLECTION&gt; --name &lt;TABLE&gt;
+```
+
+   
+#### Download A Table Data
+
+ ```python
+
+td table download --coll &lt;COLLECTION&gt; --name &lt;TABLE&gt; --file &lt;FILE&gt;
+```

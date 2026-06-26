@@ -1,5 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './styles.module.css';
+
+interface ApiEntryProps {
+  id?: string;
+  kind?: 'class' | 'function' | 'method' | 'property' | 'attribute';
+  name?: string;
+  signature: string;
+  bases?: string;
+  source?: string;
+  children?: React.ReactNode;
+}
+
+export function ApiEntry({ id, kind = 'function', signature, bases, source, children }: ApiEntryProps) {
+  const [open, setOpen] = useState(false);
+  const keyword = kind === 'class' ? 'class ' : kind === 'property' ? 'property ' : '';
+
+  return (
+    <div id={id} className={styles.entry}>
+      <button
+        className={`${styles.entryHeader} ${open ? styles.entryOpen : ''}`}
+        onClick={() => setOpen(o => !o)}
+        aria-expanded={open}
+      >
+        <span className={styles.entryArrow}>{open ? '▾' : '▸'}</span>
+        <code className={styles.entrySignature}>
+          {keyword && <span className={styles.entryKeyword}>{keyword}</span>}
+          {signature}
+        </code>
+      </button>
+      {open && (
+        <div className={styles.entryBody}>
+          {(source || bases) && (
+            <div className={styles.entryMeta}>
+              {bases && <span className={styles.bases}>Bases: <code>{bases}</code></span>}
+              {source && (
+                <a className={styles.sourceLink} href={source} target="_blank" rel="noopener noreferrer">
+                  View source ↗
+                </a>
+              )}
+            </div>
+          )}
+          <div className={styles.entryContent}>{children}</div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 interface ParamFieldProps {
   path?: string;

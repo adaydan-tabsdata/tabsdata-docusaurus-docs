@@ -1,0 +1,46 @@
+---
+title: "tabsdata.tableframe.functions.lit"
+---
+
+import { ApiEntry, ParamField } from '@site/src/components/ApiField';
+
+# tabsdata.tableframe.functions.lit
+
+ <ApiEntry id="tabsdata.tableframe.functions.lit.lit" signature="lit(value: Any, dtype: Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None = None, *, allow_object: bool = False)">
+
+Expression for the given literal value.
+
+<ParamField path="value">
+  The literal value.
+</ParamField>
+
+<ParamField path="dtype">
+  The data type of the literal value.
+</ParamField>
+
+<ParamField path="allow_object">
+  Whether to allow object data type.
+</ParamField>
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.lit("Hi").alias("lit"), td.col("age").alias("Age"))
+>>>
+┌──────┬──────┐
+│ lit  ┆ Age  │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ Hi   ┆ 1    │
+│ Hi   ┆ 15   │
+│ Hi   ┆ 18   │
+│ Hi   ┆ null │
+└──────┴──────┘
+```
+
+</ApiEntry>
