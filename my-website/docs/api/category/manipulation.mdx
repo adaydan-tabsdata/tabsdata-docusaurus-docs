@@ -1,43 +1,23 @@
 ---
 title: "Manipulation"
-sidebarTitle: "Manipulation"
-description: "Manipulation API reference."
 ---
+
 import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
+# Manipulation
 
-<a id="tabsdata.TableFrame.cast"></a>
-<details>
-<summary>cast</summary>
+ <details>
+<summary>
 
+**`cast(dtypes: Mapping[td_typing.ColumnNameOrSelector | td_typing.DataType, td_typing.DataType] | td_typing.DataType, *, strict: bool = True)`**
 
-```python
-def cast(
-    dtypes: Mapping [ td_typing.ColumnNameOrSelector | td_typing.DataType , td_typing.DataType ] | td_typing.DataType,
-    *,
-    strict: bool = True,
-) -> TableFrame
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L958)
+</summary>
 
 Cast columns to a new data type.
 
-**Categories:** manipulation
+Example:
 
-**Parameters:**
-
-<ParamField path="dtypes" type="Mapping [ td_typing.ColumnNameOrSelector | td_typing.DataType , td_typing.DataType ] | td_typing.DataType" required>
-  Mapping of the column name(s) to the new data type(s).
-</ParamField>
-
-<ParamField path="strict" type="bool" default="True">
-  IfTrue, raises an error if the cast cannot be performed.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -77,35 +57,28 @@ Cast columns to a new data type.
 └──────┴───────┘
 ```
 
+<ParamField path="dtypes">
+  Mapping of the column name(s) to the new data type(s).
+</ParamField>
+
+<ParamField path="strict">
+  If True, raises an error if the cast cannot be performed.
+</ParamField>
 
 </details>
 
-<a id="tabsdata.TableFrame.drop_nans"></a>
-<details>
-<summary>drop_nans</summary>
+ <details>
+<summary>
 
+**`drop_nans(subset: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector] | None = None)`**
 
-```python
-def drop_nans(
-    subset: td_typing.ColumnNameOrSelector | Collection [ td_typing.ColumnNameOrSelector ] | None = None,
-) -> TableFrame
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L1929)
+</summary>
 
 Drop rows with NaN values.
 
-**Categories:** manipulation
+Example:
 
-**Parameters:**
-
-<ParamField path="subset" type="td_typing.ColumnNameOrSelector | Collection [ td_typing.ColumnNameOrSelector ] | None" default="None">
-  Columns to look forNan values. If None, all columns are considered.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -147,35 +120,20 @@ Drop rows with NaN values.
 >>>
 ```
 
-
 </details>
 
-<a id="tabsdata.TableFrame.drop_nulls"></a>
-<details>
-<summary>drop_nulls</summary>
+ <details>
+<summary>
 
+**`drop_nulls(subset: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector] | None = None)`**
 
-```python
-def drop_nulls(
-    subset: td_typing.ColumnNameOrSelector | Collection [ td_typing.ColumnNameOrSelector ] | None = None,
-) -> TableFrame
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L2002)
+</summary>
 
 Drop rows with null values.
 
-**Categories:** manipulation
+Example:
 
-**Parameters:**
-
-<ParamField path="subset" type="td_typing.ColumnNameOrSelector | Collection [ td_typing.ColumnNameOrSelector ] | None" default="None">
-  Columns to evaluate for null values. If None, all columns are considered.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -218,35 +176,20 @@ Drop rows with null values.
 └─────┴─────┴──────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.TableFrame.fill_nan"></a>
-<details>
-<summary>fill_nan</summary>
+ <details>
+<summary>
 
+**`fill_nan(value: int | float | Expr | None)`**
 
-```python
-def fill_nan(
-    value: int | float | Expr | None,
-) -> TableFrame
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L1793)
+</summary>
 
 Replace all NaN values in the TableFrame with the given value.
 
-**Categories:** manipulation
+Example:
 
-**Parameters:**
-
-<ParamField path="value" type="int | float | Expr | None" required>
-  The value to replaceNaN with.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -280,35 +223,20 @@ Replace all NaN values in the TableFrame with the given value.
 └──────┴──────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.TableFrame.fill_null"></a>
-<details>
-<summary>fill_null</summary>
+ <details>
+<summary>
 
+**`fill_null(value: Any | Expr | None = None)`**
 
-```python
-def fill_null(
-    value: Any | Expr | None = None,
-) -> TableFrame
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L1730)
+</summary>
 
 Replace all null values in the TableFrame with the given value.
 
-**Categories:** manipulation
+Example:
 
-**Parameters:**
-
-<ParamField path="value" type="Any | Expr | None" default="None">
-  The value to replacenull with.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -342,35 +270,20 @@ Replace all null values in the TableFrame with the given value.
 └──────┴──────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.alias"></a>
-<details>
-<summary>alias</summary>
+ <details>
+<summary>
 
+**`alias(name: str)`**
 
-```python
-def alias(
-    name: str,
-) -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L234)
+</summary>
 
 Set the name for a column or expression.
 
-**Categories:** manipulation
+Example:
 
-**Parameters:**
-
-<ParamField path="name" type="str" required>
-  Column or expression new name. The name must be a word ([A-Za-z_][A-Za-z0-9_]*) of up to 100 characters.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -392,35 +305,20 @@ Set the name for a column or expression.
 └──────┴──────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.fill_nan"></a>
-<details>
-<summary>fill_nan</summary>
+ <details>
+<summary>
 
+**`fill_nan(value: int | float | Expr | None)`**
 
-```python
-def fill_nan(
-    value: int | float | Expr | None,
-) -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L876)
+</summary>
 
 Replace NaN values with the given value.
 
-**Categories:** manipulation
+Example:
 
-**Parameters:**
-
-<ParamField path="value" type="int | float | Expr | None" required>
-  The value to replaceNaN values with.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -441,45 +339,20 @@ Replace NaN values with the given value.
 └──────┴──────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.fill_null"></a>
-<details>
-<summary>fill_null</summary>
+ <details>
+<summary>
 
+**`fill_null(value: Any | Expr | None = None, strategy: Literal['forward', 'backward', 'min', 'max', 'mean', 'zero', 'one'] | None = None, limit: int | None = None)`**
 
-```python
-def fill_null(
-    value: Any | Expr | None = None,
-    strategy: Literal [ 'forward' , 'backward' , 'min' , 'max' , 'mean' , 'zero' , 'one' ] | None = None,
-    limit: int | None = None,
-) -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L910)
+</summary>
 
 Replace null values with the given value.
 
-**Categories:** manipulation
+Example:
 
-**Parameters:**
-
-<ParamField path="value" type="Any | Expr | None" default="None">
-  The value to replacenull values with.
-</ParamField>
-
-<ParamField path="strategy" type="Literal [ 'forward' , 'backward' , 'min' , 'max' , 'mean' , 'zero' , 'one' ] | None" default="None">
-  The strategy to use for fillingnull values.
-</ParamField>
-
-<ParamField path="limit" type="int | None" default="None">
-  The maximum number ofnull values to replace.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -502,5 +375,16 @@ Replace null values with the given value.
 └──────┴───────────┘
 ```
 
+<ParamField path="value">
+  The value to replace null values with.
+</ParamField>
+
+<ParamField path="strategy">
+  The strategy to use for filling null values.
+</ParamField>
+
+<ParamField path="limit">
+  The maximum number of null values to replace.
+</ParamField>
 
 </details>

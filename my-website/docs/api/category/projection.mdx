@@ -1,42 +1,23 @@
 ---
 title: "Projection"
-sidebarTitle: "Projection"
-description: "Projection API reference."
 ---
+
 import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
+# Projection
 
-<a id="tabsdata.TableFrame.drop"></a>
-<details>
-<summary>drop</summary>
+ <details>
+<summary>
 
+**`drop(*columns: td_typing.ColumnNameOrSelector | Iterable[td_typing.ColumnNameOrSelector], strict: bool = True)`**
 
-```python
-def drop(
-    * columns: td_typing.ColumnNameOrSelector | Iterable [ td_typing.ColumnNameOrSelector ],
-    strict: bool = True,
-) -> TableFrame
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L1596)
+</summary>
 
 Discard columns from the TableFrame.
 
-**Categories:** projection
+Example:
 
-**Parameters:**
-
-<ParamField path="columns" required>
-  Columns to drop.
-</ParamField>
-
-<ParamField path="strict" type="bool" default="True">
-  If True, raises an error if a column does not exist.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -70,31 +51,33 @@ Discard columns from the TableFrame.
 └──────┘
 ```
 
+<ParamField path="columns">
+  Columns to drop.
+</ParamField>
+
+<ParamField path="strict">
+  If True, raises an error if a column does not exist.
+</ParamField>
 
 </details>
 
-<a id="tabsdata.TableFrame.item"></a>
-<details>
-<summary>item</summary>
+ <details>
+<summary>
 
+**`item`**
 
-```python
-def item() -> Any
-```
+</summary>
 
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L2670)
-
-Returns a scalar value if the TableFrame contains exactly one user column and one row.
+Returns a scalar value if the TableFrame contains exactly one user column and
+one row.
 
 Raises an exception if there is more than one user column or more than one row.
 
 Returns None if the TableFrame is empty.
 
-**Categories:** projection
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -112,35 +95,20 @@ Returns None if the TableFrame is empty.
 A
 ```
 
-
 </details>
 
-<a id="tabsdata.TableFrame.rename"></a>
-<details>
-<summary>rename</summary>
+ <details>
+<summary>
 
+**`rename(mapping: dict[str, str])`**
 
-```python
-def rename(
-    mapping: dict [ str , str ],
-) -> TableFrame
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L1521)
+</summary>
 
 Rename columns from the TableFrame.
 
-**Categories:** projection
+Examples:
 
-**Parameters:**
-
-<ParamField path="mapping" type="dict [ str , str ]" required>
-  A dictionary mapping column names to their new names. The operation will fail if any specified column name does not exist.
-</ParamField>
-
-#### Examples
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -174,40 +142,20 @@ Rename columns from the TableFrame.
 └───────┴────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.TableFrame.select"></a>
-<details>
-<summary>select</summary>
+ <details>
+<summary>
 
+**`select(*exprs: td_typing.IntoExpr | Iterable[td_typing.IntoExpr], **named_exprs: td_typing.IntoExpr)`**
 
-```python
-def select(
-    * exprs: td_typing.IntoExpr | Iterable [ td_typing.IntoExpr ],
-    ** named_exprs: td_typing.IntoExpr,
-) -> TableFrame
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L2146)
+</summary>
 
 Select column(s) from the TableFrame.
 
-**Categories:** projection
+Example:
 
-**Parameters:**
-
-<ParamField path="exprs" required>
-  Columns or expressions to select.
-</ParamField>
-
-<ParamField path="named_exprs" required>
-  Named expressions to select.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -243,46 +191,65 @@ Select column(s) from the TableFrame.
 └─────┴─────┘
 ```
 
+<ParamField path="exprs">
+  Columns or expressions to select.
+</ParamField>
+
+<ParamField path="named_exprs">
+  Named expressions to select.
+</ParamField>
 
 </details>
 
-<a id="tabsdata.TableFrame.udf"></a>
-<details>
-<summary>udf</summary>
+ <details>
+<summary>
 
+**`udf(on: td_typing.IntoExpr | list[td_typing.IntoExpr], function: td_udf.UDF)`**
 
-```python
-def udf(
-    on: td_typing.IntoExpr | list [ td_typing.IntoExpr ],
-    function: td_udf.UDF,
-) -> TableFrame
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L1312)
+</summary>
 
 Apply a user-defined function (UDF) to the columns resolved by expr.
 
-The selected columns are supplied to function, which can implement either on_batch or on_element. An on_batch implementation receives a list of Polars series representing the selected columns and must return a list of Polars series with matching length. An on_element implementation receives a list of Python scalars for each row and returns a list of scalars; the framework wraps this in an efficient batch executor, so data still flows in batches even when authoring row-wise logic. In both cases the returned series become new columns appended to the original TableFrame.
+The selected columns are supplied to function, which can implement either
+on_batch or on_element. An on_batch implementation receives a list of
+Polars series representing the selected columns and must return a list of
+Polars series with matching length. An on_element implementation receives
+a list of Python scalars for each row and returns a list of scalars; the
+framework wraps this in an efficient batch executor, so data still flows in
+batches even when authoring row-wise logic. In both cases the returned series
+become new columns appended to the original TableFrame.
 
-By default, both methods receive their inputs as a list. Override the signature property in your UDF class to return “unpacked” to have each column passed as a separate argument instead.
+By default, both methods receive their inputs as a list. Override the
+signature property in your UDF class to return “unpacked” to have each column
+passed as a separate argument instead.
 
-Using UDFs:
+ Creating UDFs:1. Subclass [tabsdata.tableframe.udf.function.UDF](bymod-tabsdata.tableframe.udf.function#tabsdata.tableframe.udf.function.UDF).
+2. Implement `__init__` to call `super().__init__(output_columns)` where
+`output_columns` is a tuple or list of tuples `(name, data type)`
+specifying the UDF default output schema (column names and data types).
+Each tuple must contain a column name (string) and a data type
+(DataType).
+3. Override exactly one of on_batch or on_element, to implement the UDF
+function logic.
+4. Return a list of TabsData Series (for on_batch) or TabsData supported
+scalars (for on_element) with the same length as specified in the
+output schema.
+5. If overriding the on_batch method, the return type must be a list of
+TabsData Series. If overriding the on_element method, the return type
+must be a list of supported TabsData scalar values. For both cases, the
+number of elements in the returned lists must match the number of
+elements in the output_columns list provided to the UDF constructor.
 
-**Categories:** projection
+  Using UDFs:
 
-**Parameters:**
+ 1. Instantiate a function created as above.
+2. Pass it to TableFrame method udf().
+3. Optionally use `UDF.output_columns()` to override output column names
+or data types after instantiation.
 
-<ParamField path="on" type="td_typing.IntoExpr | list [ td_typing.IntoExpr ]" required>
-  Expression selecting the input column(s) of the UDF.
-</ParamField>
+ Examples
 
-<ParamField path="function" type="td_udf.UDF" required>
-  Instance of`tabsdata.tableframe.udf.function.UDF` defining on_batch or on_element to produce the output series.
-</ParamField>
-
-#### Examples
-
-```python
+```text
 >>> import tabsdata as td
 >>> import tabsdata.tableframe as tdf
 >>>
@@ -317,7 +284,7 @@ Using UDFs:
 └─────┴─────┴───────┘
 ```
 
-```python
+```text
 >>> class RatioUDF(tdf.UDF):
 ...     def __init__(self):
 ...         super().__init__(("ratio", tdf.Float64))
@@ -350,7 +317,9 @@ Using UDFs:
 └───────────┴──────────────┴──────┘
 ```
 
-```python
+Using signature property to receive individual arguments:
+
+```text
 >>> class RatioUnpackedUDF(tdf.UDF):
 ...     def __init__(self):
 ...         super().__init__(("ratio", tdf.Float64))
@@ -377,42 +346,34 @@ Using UDFs:
 └───────────┴──────────────┴──────┘
 ```
 
+<ParamField path="on">
+  Expression selecting the input column(s) of the UDF.
+</ParamField>
+
+<ParamField path="function">
+  Instance of tabsdata.tableframe.udf.function.UDF
+defining on_batch or on_element to produce the output series.
+</ParamField>
 
 </details>
 
-<a id="tabsdata.TableFrame.unnest"></a>
-<details>
-<summary>unnest</summary>
+ <details>
+<summary>
 
+**`unnest(columns: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector], *more_columns: td_typing.ColumnNameOrSelector)`**
 
-```python
-def unnest(
-    columns: td_typing.ColumnNameOrSelector | Collection [ td_typing.ColumnNameOrSelector ],
-    * more_columns: td_typing.ColumnNameOrSelector,
-) -> TableFrame
-```
+</summary>
 
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L1659)
+Expand one or more struct columns so that each field within the struct becomes
+a separate column in the TableFrame.
 
-Expand one or more struct columns so that each field within the struct becomes a separate column in the TableFrame.
+The resulting TableFrame will place these new columns in the same position
+as the original struct column, effectively replacing it. This makes it easier
+to work directly with the inner fields as standard columns.
 
-The resulting TableFrame will place these new columns in the same position as the original struct column, effectively replacing it. This makes it easier to work directly with the inner fields as standard columns.
+Example:
 
-**Categories:** projection
-
-**Parameters:**
-
-<ParamField path="columns" type="td_typing.ColumnNameOrSelector | Collection [ td_typing.ColumnNameOrSelector ]" required>
-  Name of the struct column(s) to expand.
-</ParamField>
-
-<ParamField path="more_columns" required>
-  Additional struct columns to expand, provided as positional arguments.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf = td.TableFrame({
@@ -447,40 +408,29 @@ The resulting TableFrame will place these new columns in the same position as th
 └─────┴───────┴──────┴───────────┘
 ```
 
+<ParamField path="columns">
+  Name of the struct column(s) to expand.
+</ParamField>
+
+<ParamField path="more_columns">
+  Additional struct columns to expand, provided as positional
+arguments.
+</ParamField>
 
 </details>
 
-<a id="tabsdata.TableFrame.with_columns"></a>
-<details>
-<summary>with_columns</summary>
+ <details>
+<summary>
 
+**`with_columns(*exprs: td_typing.IntoExpr | Iterable[td_typing.IntoExpr], **named_exprs: td_typing.IntoExpr)`**
 
-```python
-def with_columns(
-    * exprs: td_typing.IntoExpr | Iterable [ td_typing.IntoExpr ],
-    ** named_exprs: td_typing.IntoExpr,
-) -> TableFrame
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L1250)
+</summary>
 
 Add columns to the TableFrame.
 
-**Categories:** projection
+Example:
 
-**Parameters:**
-
-<ParamField path="exprs" required>
-  Columns or expressions to add.
-</ParamField>
-
-<ParamField path="named_exprs" required>
-  Named expressions to add.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -514,27 +464,28 @@ Add columns to the TableFrame.
 └──────┴──────┴──────┘
 ```
 
+<ParamField path="exprs">
+  Columns or expressions to add.
+</ParamField>
+
+<ParamField path="named_exprs">
+  Named expressions to add.
+</ParamField>
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.all"></a>
-<details>
-<summary>all</summary>
+ <details>
+<summary>
 
+**`all`**
 
-```python
-def all() -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L68)
+</summary>
 
 Select all columns in a TableFrame.
 
-**Categories:** projection
+Example
 
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>>
 >>> tf = td_tf.TableFrame({
@@ -543,45 +494,56 @@ Select all columns in a TableFrame.
 ... })
 ```
 
-```python
+Original:
+┌─────┬──────┐
+│ Id  ┆ Name │
+│ — ┆ —  │
+│ i64 ┆ str  │
+╞═════╪══════╡
+│ 1   ┆ “a”  │
+│ 2   ┆ “b”  │
+│ 3   ┆ “c”  │
+│ 4   ┆ “d”  │
+│ 5   ┆ “e”  │
+│ 6   ┆ “f”  │
+│ 7   ┆ “g”  │
+│ 8   ┆ “h”  │
+└─────┴──────┘
+
+```text
 >>> tf.select(td_tf.selectors.all())
 ```
 
+Selected:
+┌─────┬──────┐
+│ Id  ┆ Name │
+│ — ┆ —  │
+│ i64 ┆ str  │
+╞═════╪══════╡
+│ 1   ┆ “a”  │
+│ 2   ┆ “b”  │
+│ 3   ┆ “c”  │
+│ 4   ┆ “d”  │
+│ 5   ┆ “e”  │
+│ 6   ┆ “f”  │
+│ 7   ┆ “g”  │
+│ 8   ┆ “h”  │
+└─────┴──────┘
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.alpha"></a>
-<details>
-<summary>alpha</summary>
+ <details>
+<summary>
 
+**`alpha(ascii_only: bool = False, *, ignore_spaces: bool = False)`**
 
-```python
-def alpha(
-    ascii_only: bool = False,
-    *,
-    ignore_spaces: bool = False,
-) -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L598)
+</summary>
 
 Select all columns with names made up of only alphabetic characters.
 
-**Categories:** projection
+Example
 
-**Parameters:**
-
-<ParamField path="ascii_only" type="bool" default="False">
-  Only consider alphabetic the ASCII letters.
-</ParamField>
-
-<ParamField path="ignore_spaces" type="bool" default="False">
-  Consider only non-white characters in column names.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>>
 >>> tf = td_tf.TableFrame({
@@ -591,45 +553,64 @@ Select all columns with names made up of only alphabetic characters.
 ... })
 ```
 
-```python
+Original:
+┌─────────┬───────┬───────┐
+│ Name    ┆ Score ┆ Id1   │
+│ —     ┆ —   ┆ —   │
+│ str     ┆ i64   ┆ i64   │
+╞═════════╪═══════╪═══════╡
+│ “Alice” ┆  87   ┆  101  │
+│ “Bob”   ┆  92   ┆  102  │
+│ “Caro”  ┆  78   ┆  103  │
+│ “Dan”   ┆  95   ┆  104  │
+│ “Eve”   ┆  88   ┆  105  │
+│ “Fay”   ┆  91   ┆  106  │
+│ “Gus”   ┆  76   ┆  107  │
+│ “Hana”  ┆  84   ┆  108  │
+└─────────┴───────┴───────┘
+
+```text
 >>> tf.select(td_tf.selectors.alpha())
 ```
 
+Selected:
+┌─────────┬───────┐
+│ Name    ┆ Score │
+│ —     ┆ —   │
+│ str     ┆ i64   │
+╞═════════╪═══════╡
+│ “Alice” ┆  87   │
+│ “Bob”   ┆  92   │
+│ “Caro”  ┆  78   │
+│ “Dan”   ┆  95   │
+│ “Eve”   ┆  88   │
+│ “Fay”   ┆  91   │
+│ “Gus”   ┆  76   │
+│ “Hana”  ┆  84   │
+└─────────┴───────┘
 
-</details>
-
-<a id="tabsdata.tableframe.selectors.alphanumeric"></a>
-<details>
-<summary>alphanumeric</summary>
-
-
-```python
-def alphanumeric(
-    ascii_only: bool = False,
-    *,
-    ignore_spaces: bool = False,
-) -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L658)
-
-Select all columns whose names contain only letters and digits.
-
-**Categories:** projection
-
-**Parameters:**
-
-<ParamField path="ascii_only" type="bool" default="False">
+<ParamField path="ascii_only">
   Only consider alphabetic the ASCII letters.
 </ParamField>
 
-<ParamField path="ignore_spaces" type="bool" default="False">
+<ParamField path="ignore_spaces">
   Consider only non-white characters in column names.
 </ParamField>
 
-#### Example
+</details>
 
-```python
+ <details>
+<summary>
+
+**`alphanumeric(ascii_only: bool = False, *, ignore_spaces: bool = False)`**
+
+</summary>
+
+Select all columns whose names contain only letters and digits.
+
+Example
+
+```text
 >>> import tabsdata.tableframe as td_tf
 >>>
 >>> tf = td_tf.TableFrame({
@@ -640,31 +621,64 @@ Select all columns whose names contain only letters and digits.
 ... })
 ```
 
-```python
+Original:
+┌────────┬───────┬───────┬───────┐
+│ User01 ┆ Col_2 ┆ Data3 ┆ Label │
+│ —    ┆ —   ┆ —   ┆ —   │
+│ i64    ┆ i64   ┆ i64   ┆ str   │
+╞════════╪═══════╪═══════╪═══════╡
+│  101   ┆   8   ┆  10   ┆ “a”   │
+│  102   ┆   7   ┆  20   ┆ “b”   │
+│  103   ┆   6   ┆  30   ┆ “c”   │
+│  104   ┆   5   ┆  40   ┆ “d”   │
+│  105   ┆   4   ┆  50   ┆ “e”   │
+│  106   ┆   3   ┆  60   ┆ “f”   │
+│  107   ┆   2   ┆  70   ┆ “g”   │
+│  108   ┆   1   ┆  80   ┆ “h”   │
+└────────┴───────┴───────┴───────┘
+
+```text
 >>> tf.select(td_tf.selectors.alphanumeric())
 ```
 
+Selected:
+┌────────┬───────┬───────┐
+│ User01 ┆ Data3 ┆ Label │
+│ —    ┆ —   ┆ —   │
+│ i64    ┆ i64   ┆ str   │
+╞════════╪═══════╪═══════╡
+│  101   ┆  10   ┆ “a”   │
+│  102   ┆  20   ┆ “b”   │
+│  103   ┆  30   ┆ “c”   │
+│  104   ┆  40   ┆ “d”   │
+│  105   ┆  50   ┆ “e”   │
+│  106   ┆  60   ┆ “f”   │
+│  107   ┆  70   ┆ “g”   │
+│  108   ┆  80   ┆ “h”   │
+└────────┴───────┴───────┘
+
+<ParamField path="ascii_only">
+  Only consider alphabetic the ASCII letters.
+</ParamField>
+
+<ParamField path="ignore_spaces">
+  Consider only non-white characters in column names.
+</ParamField>
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.binary"></a>
-<details>
-<summary>binary</summary>
+ <details>
+<summary>
 
+**`binary`**
 
-```python
-def binary() -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1227)
+</summary>
 
 Select all columns of binary (bytes) data type.
 
-**Categories:** projection
+Example
 
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>>
 >>> tf = td_tf.TableFrame({
@@ -673,31 +687,56 @@ Select all columns of binary (bytes) data type.
 ... })
 ```
 
-```python
+Original:
+┌────────┬───────┐
+│ File   ┆ Label │
+│ —    ┆ —   │
+│ binary ┆ str   │
+╞════════╪═══════╡
+│ b”A1”  ┆ “A”   │
+│ b”B2”  ┆ “B”   │
+│ b”C3”  ┆ “C”   │
+│ b”D4”  ┆ “D”   │
+│ b”E5”  ┆ “E”   │
+│ b”F6”  ┆ “F”   │
+│ b”G7”  ┆ “G”   │
+│ b”H8”  ┆ “H”   │
+└────────┴───────┘
+
+```text
 >>> tf.select(td_tf.selectors.binary())
 ```
 
+Selected:
+┌────────┐
+│ File   │
+│ —    │
+│ binary │
+╞════════╡
+│ b”A1”  │
+│ b”B2”  │
+│ b”C3”  │
+│ b”D4”  │
+│ b”E5”  │
+│ b”F6”  │
+│ b”G7”  │
+│ b”H8”  │
+└────────┘
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.boolean"></a>
-<details>
-<summary>boolean</summary>
+ <details>
+<summary>
 
+**`boolean`**
 
-```python
-def boolean() -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1279)
+</summary>
 
 Select all columns of boolean data type.
 
-**Categories:** projection
+Example
 
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>>
 >>> tf = td_tf.TableFrame({
@@ -706,33 +745,56 @@ Select all columns of boolean data type.
 ... })
 ```
 
-```python
+Original:
+┌─────────┬───────┐
+│ IsValid ┆ Score │
+│ —     ┆ —   │
+│ bool    ┆ i64   │
+╞═════════╪═══════╡
+│ true    ┆  95   │
+│ false   ┆  88   │
+│ true    ┆  92   │
+│ true    ┆  76   │
+│ false   ┆  84   │
+│ false   ┆  79   │
+│ true    ┆  91   │
+│ false   ┆  87   │
+└─────────┴───────┘
+
+```text
 >>> tf.select(td_tf.selectors.boolean())
 ```
 
+Selected:
+┌─────────┐
+│ IsValid │
+│ —     │
+│ bool    │
+╞═════════╡
+│ true    │
+│ false   │
+│ true    │
+│ true    │
+│ false   │
+│ false   │
+│ true    │
+│ false   │
+└─────────┘
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.by_dtype"></a>
-<details>
-<summary>by_dtype</summary>
+ <details>
+<summary>
 
+**`by_dtype(*dtypes: td_typing.DataType | PythonDataType | Iterable[td_typing.DataType] | Iterable[PythonDataType])`**
 
-```python
-def by_dtype(
-    * dtypes: td_typing.DataType | PythonDataType | Iterable [ td_typing.DataType ] | Iterable [ PythonDataType ],
-) -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L788)
+</summary>
 
 Select all columns of the specified data type.
 
-**Categories:** projection
+Example
 
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>>
 >>> tf = td_tf.TableFrame({
@@ -743,55 +805,56 @@ Select all columns of the specified data type.
 ... })
 ```
 
-```python
+Original:
+┌──────┬──────┬──────────┬───────┐
+│ Id   ┆ Name ┆ IsActive ┆ Score │
+│ —  ┆ —  ┆ —      ┆ —   │
+│ i64  ┆ str  ┆ bool     ┆ f64   │
+╞══════╪══════╪══════════╪═══════╡
+│  1   ┆ “A”  ┆ true     ┆ 91.0  │
+│  2   ┆ “B”  ┆ true     ┆ 85.5  │
+│  3   ┆ “C”  ┆ false    ┆ 78.0  │
+│  4   ┆ “D”  ┆ true     ┆ 88.5  │
+│  5   ┆ “E”  ┆ false    ┆ 90.0  │
+│  6   ┆ “F”  ┆ true     ┆ 76.0  │
+│  7   ┆ “G”  ┆ true     ┆ 82.5  │
+│  8   ┆ “H”  ┆ false    ┆ 89.0  │
+└──────┴──────┴──────────┴───────┘
+
+```text
 >>> tf.select(td_tf.selectors.by_dtype(td_tf.Float64))
 ```
 
+Selected:
+┌───────┐
+│ Score │
+│ —   │
+│ f64   │
+╞═══════╡
+│ 91.0  │
+│ 85.5  │
+│ 78.0  │
+│ 88.5  │
+│ 90.0  │
+│ 76.0  │
+│ 82.5  │
+│ 89.0  │
+└───────┘
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.by_index"></a>
-<details>
-<summary>by_index</summary>
+ <details>
+<summary>
 
+**`by_index(*indices: int | range | Sequence[int | range])`**
 
-```python
-def by_index(
-    * indices: int | range | Sequence [ int | range ],
-) -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L229)
+</summary>
 
 Select columns by their position in the TableFrame.
 
-**Categories:** projection
+Example
 
-**Parameters:**
-
-<ParamField path="indices" required>
-  One or more integer positions or ranges. Negative indexes are
-</ParamField>
-
-<ParamField path="supported" required>
-  **supported** (*indicating last column*)
-</ParamField>
-
-<ParamField path="-1" required>
-  **-1** (*ranging from*)
-</ParamField>
-
-<ParamField path="columns}" required>
-  **columns}** (*-\{number of*)
-</ParamField>
-
-<ParamField path="fail." required>
-  **fail.** (*absolute value**)**than the number**of**columns will*)
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>>
 >>> tf = td_tf.TableFrame({
@@ -802,44 +865,76 @@ Select columns by their position in the TableFrame.
 ... })
 ```
 
-```python
+Original:
+┌──────┬──────┬──────────┬───────┐
+│ Id   ┆ Name ┆ IsActive ┆ Score │
+│ —  ┆ —  ┆ —      ┆ —   │
+│ i64  ┆ str  ┆ bool     ┆ f64   │
+╞══════╪══════╪══════════╪═══════╡
+│  1   ┆ “A”  ┆ true     ┆ 90.0  │
+│  2   ┆ “B”  ┆ false    ┆ 85.5  │
+│  3   ┆ “C”  ┆ true     ┆ 88.0  │
+│  4   ┆ “D”  ┆ true     ┆ 91.0  │
+│  5   ┆ “E”  ┆ false    ┆ 86.0  │
+│  6   ┆ “F”  ┆ true     ┆ 87.5  │
+│  7   ┆ “G”  ┆ false    ┆ 84.0  │
+│  8   ┆ “H”  ┆ true     ┆ 89.5  │
+└──────┴──────┴──────────┴───────┘
+
+```text
 >>> tf.select(td_tf.selectors.by_index(1, 3))
 ```
 
+Selected:
+┌──────┬───────┐
+│ Name ┆ Score │
+│ —  ┆ —   │
+│ str  ┆ f64   │
+╞══════╪═══════╡
+│ “A”  ┆ 90.0  │
+│ “B”  ┆ 85.5  │
+│ “C”  ┆ 88.0  │
+│ “D”  ┆ 91.0  │
+│ “E”  ┆ 86.0  │
+│ “F”  ┆ 87.5  │
+│ “G”  ┆ 84.0  │
+│ “H”  ┆ 89.5  │
+└──────┴───────┘
+
+<ParamField path="indices">
+  One or more integer positions or ranges. Negative indexes are
+</ParamField>
+
+<ParamField path="supported" type="indicating last column">
+  
+</ParamField>
+
+<ParamField path="-1" type="ranging from">
+  (ranging from)
+</ParamField>
+
+<ParamField path="columns&#125;" type="-&#123;number of">
+  
+</ParamField>
+
+<ParamField path="fail." type="absolute value">
+  
+</ParamField>
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.by_name"></a>
-<details>
-<summary>by_name</summary>
+ <details>
+<summary>
 
+**`by_name(*names: str | Collection[str], require_all: bool = True)`**
 
-```python
-def by_name(
-    * names: str | Collection [ str ],
-    require_all: bool = True,
-) -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L311)
+</summary>
 
 Select all columns whose names match any given names.
 
-**Categories:** projection
+Example
 
-**Parameters:**
-
-<ParamField path="names" required>
-  One or more column names to include.
-</ParamField>
-
-<ParamField path="require_all" type="bool" default="True">
-  If True, raises an error if any name is missing.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>>
 >>> tf = td_tf.TableFrame({
@@ -850,31 +945,64 @@ Select all columns whose names match any given names.
 ... })
 ```
 
-```python
+Original:
+┌──────┬────────┬─────────┬───────┐
+│ Id   ┆ Name   ┆ Country ┆ Score │
+│ —  ┆ —    ┆ —     ┆ —   │
+│ i64  ┆ str    ┆ str     ┆ f64   │
+╞══════╪════════╪═════════╪═══════╡
+│ 10   ┆ “Anna” ┆ “US”    ┆ 91.0  │
+│ 11   ┆ “Ben”  ┆ “UK”    ┆ 84.5  │
+│ 12   ┆ “Cara” ┆ “FR”    ┆ 88.0  │
+│ 13   ┆ “Dean” ┆ “DE”    ┆ 90.5  │
+│ 14   ┆ “Ella” ┆ “IT”    ┆ 86.0  │
+│ 15   ┆ “Finn” ┆ “ES”    ┆ 87.0  │
+│ 16   ┆ “Gina” ┆ “NL”    ┆ 82.5  │
+│ 17   ┆ “Hugo” ┆ “SE”    ┆ 89.5  │
+└──────┴────────┴─────────┴───────┘
+
+```text
 >>> tf.select(td_tf.selectors.by_name("Name", "Score"))
 ```
 
+Selected:
+┌────────┬───────┐
+│ Name   ┆ Score │
+│ —    ┆ —   │
+│ str    ┆ f64   │
+╞════════╪═══════╡
+│ “Anna” ┆ 91.0  │
+│ “Ben”  ┆ 84.5  │
+│ “Cara” ┆ 88.0  │
+│ “Dean” ┆ 90.5  │
+│ “Ella” ┆ 86.0  │
+│ “Finn” ┆ 87.0  │
+│ “Gina” ┆ 82.5  │
+│ “Hugo” ┆ 89.5  │
+└────────┴───────┘
+
+<ParamField path="names">
+  One or more column names to include.
+</ParamField>
+
+<ParamField path="require_all">
+  If True, raises an error if any name is missing.
+</ParamField>
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.categorical"></a>
-<details>
-<summary>categorical</summary>
+ <details>
+<summary>
 
+**`categorical`**
 
-```python
-def categorical() -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1331)
+</summary>
 
 Select all columns with categorical data type.
 
-**Categories:** projection
+Example
 
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>>
 >>> tf = td_tf.TableFrame({
@@ -886,39 +1014,56 @@ Select all columns with categorical data type.
 ... ])
 ```
 
-```python
+Original:
+┌──────┬──────────┬───────┐
+│ Id   ┆ Category ┆ Score │
+│ —  ┆ —      ┆ —   │
+│ i64  ┆ cat      ┆ f64   │
+╞══════╪══════════╪═══════╡
+│ 1    ┆ “A”      ┆ 88.0  │
+│ 2    ┆ “B”      ┆ 92.5  │
+│ 3    ┆ “A”      ┆ 79.0  │
+│ 4    ┆ “C”      ┆ 85.0  │
+│ 5    ┆ “B”      ┆ 91.0  │
+│ 6    ┆ “A”      ┆ 87.5  │
+│ 7    ┆ “C”      ┆ 90.0  │
+│ 8    ┆ “B”      ┆ 86.5  │
+└──────┴──────────┴───────┘
+
+```text
 >>> tf.select(td_tf.selectors.categorical())
 ```
 
+Selected:
+┌──────────┐
+│ Category │
+│ —      │
+│ cat      │
+╞══════════╡
+│ “A”      │
+│ “B”      │
+│ “A”      │
+│ “C”      │
+│ “B”      │
+│ “A”      │
+│ “C”      │
+│ “B”      │
+└──────────┘
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.contains"></a>
-<details>
-<summary>contains</summary>
+ <details>
+<summary>
 
+**`contains(*substring: str)`**
 
-```python
-def contains(
-    * substring: str,
-) -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L372)
+</summary>
 
 Select all columns whose names contain one or more of the given substrings.
 
-**Categories:** projection
+Example
 
-**Parameters:**
-
-<ParamField path="substring" required>
-  One or more substrings to search for in column names.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>>
 >>> tf = td_tf.TableFrame({
@@ -929,33 +1074,54 @@ Select all columns whose names contain one or more of the given substrings.
 ... })
 ```
 
-```python
+Original:
+┌────────┬──────────┬─────┬───────┐
+│ UserId ┆ UserName ┆ Age ┆ Email │
+├────────┼──────────┼─────┼───────┤
+│ 1      ┆ “A”      ┆ 22  ┆ “a@x” │
+│ 2      ┆ “B”      ┆ 34  ┆ “b@x” │
+│ 3      ┆ “C”      ┆ 28  ┆ “c@x” │
+│ 4      ┆ “D”      ┆ 45  ┆ “d@x” │
+│ 5      ┆ “E”      ┆ 30  ┆ “e@x” │
+│ 6      ┆ “F”      ┆ 33  ┆ “f@x” │
+│ 7      ┆ “G”      ┆ 26  ┆ “g@x” │
+│ 8      ┆ “H”      ┆ 29  ┆ “h@x” │
+└────────┴──────────┴─────┴───────┘
+
+```text
 >>> tf.select(td_tf.selectors.contains("Name", "Id"))
 ```
 
+Selected:
+┌────────┬──────────┐
+│ UserId ┆ UserName │
+├────────┼──────────┤
+│ 1      ┆ “A”      │
+│ 2      ┆ “B”      │
+│ 3      ┆ “C”      │
+│ 4      ┆ “D”      │
+│ 5      ┆ “E”      │
+│ 6      ┆ “F”      │
+│ 7      ┆ “G”      │
+│ 8      ┆ “H”      │
+└────────┴──────────┘
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.date"></a>
-<details>
-<summary>date</summary>
+ <details>
+<summary>
 
+**`date`**
 
-```python
-def date() -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1386)
+</summary>
 
 Select all columns of date data type.
 
 This selector matches columns that store calendar dates without time information.
 
-**Categories:** projection
+Example
 
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>> from datetime import datetime, timezone, timedelta
 >>>
@@ -984,44 +1150,52 @@ This selector matches columns that store calendar dates without time information
 ... })
 ```
 
-```python
+Original:
+┌──────┬────────────┬───────┐
+│ User ┆ JoinDate   ┆ Score │
+├──────┼────────────┼───────┤
+│ “A”  ┆ 2023-01-01 ┆ 90    │
+│ “B”  ┆ 2023-01-02 ┆ 85    │
+│ “C”  ┆ 2023-01-03 ┆ 92    │
+│ “D”  ┆ 2023-01-04 ┆ 88    │
+│ “E”  ┆ 2023-01-05 ┆ 87    │
+│ “F”  ┆ 2023-01-06 ┆ 91    │
+│ “G”  ┆ 2023-01-07 ┆ 89    │
+│ “H”  ┆ 2023-01-08 ┆ 86    │
+└──────┴────────────┴───────┘
+
+```text
 >>> tf.select(td_tf.selectors.date())
 ```
 
+Selected:
+┌────────────┐
+│ JoinDate   │
+├────────────┤
+│ 2023-01-01 │
+│ 2023-01-02 │
+│ 2023-01-03 │
+│ 2023-01-04 │
+│ 2023-01-05 │
+│ 2023-01-06 │
+│ 2023-01-07 │
+│ 2023-01-08 │
+└────────────┘
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.datetime"></a>
-<details>
-<summary>datetime</summary>
+ <details>
+<summary>
 
+**`datetime(time_unit: Literal['ns', 'us', 'ms'] | Collection[Literal['ns', 'us', 'ms']] | None = None, time_zone: str | timezone | Collection[str | timezone | None] | None = ('*', None))`**
 
-```python
-def datetime(
-    time_unit: Literal [ 'ns' , 'us' , 'ms' ] | Collection [ Literal [ 'ns' , 'us' , 'ms' ] ] | None = None,
-    time_zone: str | timezone | Collection [ str | timezone | None ] | None = ('*', None),
-) -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1456)
+</summary>
 
 Select all columns of datetime data type.
 
-**Categories:** projection
+Example
 
-**Parameters:**
-
-<ParamField path="time_unit" type="Literal [ 'ns' , 'us' , 'ms' ] | Collection [ Literal [ 'ns' , 'us' , 'ms' ] ] | None" default="None">
-  One or more of the supported time precision units: “ms”, “us”, or “ns”. If omitted, selects datetime columns with any time unit.
-</ParamField>
-
-<ParamField path="time_zone" type="str | timezone | Collection [ str | timezone | None ] | None" default="('*', None)">
-  Specifies which time zone(s) to match: Pass one or more valid time zone strings (as defined by the `zoneinfo` module). To list all available zones, use `import zoneinfo; zoneinfo.available_timezones()`. Use `None` to select datetime columns with no time zone. Use `"*"` to match any column with any time zone.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>> from datetime import datetime, timedelta, timezone
 >>>
@@ -1050,31 +1224,85 @@ Select all columns of datetime data type.
 ... })
 ```
 
-```python
+Original:
+┌───────────────────────────┬───────┬───────────────────────────┐
+│ TimestampUTC              ┆ Event ┆ TimestampLocal            │
+│ —                       ┆ —   ┆ —                       │
+│ datetime[μs, UTC]         ┆ str   ┆ datetime[μs, +01:00]      │
+╞═══════════════════════════╪═══════╪═══════════════════════════╡
+│ 2024-01-01 09:00:00+00:00 ┆ “A”   ┆ 2024-01-01 10:00:00+01:00 │
+│ 2024-01-02 10:00:00+00:00 ┆ “B”   ┆ 2024-01-02 11:00:00+01:00 │
+│ 2024-01-03 11:00:00+00:00 ┆ “C”   ┆ 2024-01-03 12:00:00+01:00 │
+│ 2024-01-04 12:00:00+00:00 ┆ “D”   ┆ 2024-01-04 13:00:00+01:00 │
+│ 2024-01-05 13:00:00+00:00 ┆ “E”   ┆ 2024-01-05 14:00:00+01:00 │
+│ 2024-01-06 14:00:00+00:00 ┆ “F”   ┆ 2024-01-06 15:00:00+01:00 │
+│ 2024-01-07 15:00:00+00:00 ┆ “G”   ┆ 2024-01-07 16:00:00+01:00 │
+│ 2024-01-08 16:00:00+00:00 ┆ “H”   ┆ 2024-01-08 17:00:00+01:00 │
+└───────────────────────────┴───────┴───────────────────────────┘
+
+```text
 >>> tf.select(td_tf.selectors.datetime(time_zone="UTC"))
 ```
 
+Selected:
+┌───────────────────────────┐
+│ TimestampUTC              │
+│ —                       │
+│ datetime[μs, UTC]         │
+╞═══════════════════════════╡
+│ 2024-01-01 09:00:00+00:00 │
+│ 2024-01-02 10:00:00+00:00 │
+│ 2024-01-03 11:00:00+00:00 │
+│ 2024-01-04 12:00:00+00:00 │
+│ 2024-01-05 13:00:00+00:00 │
+│ 2024-01-06 14:00:00+00:00 │
+│ 2024-01-07 15:00:00+00:00 │
+│ 2024-01-08 16:00:00+00:00 │
+└───────────────────────────┘
+
+<ParamField path="time_unit">
+  One or more of the supported time precision units:
+“ms”, “us”, or “ns”.
+If omitted, selects datetime columns with any time unit.
+</ParamField>
+
+<ParamField path="time_zone">
+  Specifies which time zone(s) to match:
+
+Pass one or more valid time zone strings (as defined by the
+zoneinfo module).
+To list all available zones, use
+import zoneinfo; zoneinfo.available_timezones().
+Use None to select datetime columns with no time zone.
+Use "*" to match any column with any time zone.
+</ParamField>
+
+<ParamField path="">
+  
+</ParamField>
+
+<ParamField path="">
+  
+</ParamField>
+
+<ParamField path="">
+  
+</ParamField>
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.decimal"></a>
-<details>
-<summary>decimal</summary>
+ <details>
+<summary>
 
+**`decimal`**
 
-```python
-def decimal() -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1550)
+</summary>
 
 Select all columns of decimal data type.
 
-**Categories:** projection
+Example
 
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>> from decimal import Decimal
 >>>
@@ -1088,39 +1316,56 @@ Select all columns of decimal data type.
 ... })
 ```
 
-```python
+Original:
+┌────────┬──────┐
+│ Price  ┆ Item │
+│ —    ┆ —  │
+│ dec    ┆ str  │
+╞════════╪══════╡
+│ 10.99  ┆ “A”  │
+│ 15.49  ┆ “B”  │
+│ 8.75   ┆ “C”  │
+│ 12.00  ┆ “D”  │
+│ 9.99   ┆ “E”  │
+│ 20.00  ┆ “F”  │
+│ 7.30   ┆ “G”  │
+│ 11.45  ┆ “H”  │
+└────────┴──────┘
+
+```text
 >>> tf.select(td_tf.selectors.decimal())
 ```
 
+Selected:
+┌────────┐
+│ Price  │
+│ —    │
+│ dec    │
+╞════════╡
+│ 10.99  │
+│ 15.49  │
+│ 8.75   │
+│ 12.00  │
+│ 9.99   │
+│ 20.00  │
+│ 7.30   │
+│ 11.45  │
+└────────┘
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.digit"></a>
-<details>
-<summary>digit</summary>
+ <details>
+<summary>
 
+**`digit(ascii_only: bool = False)`**
 
-```python
-def digit(
-    ascii_only: bool = False,
-) -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L723)
+</summary>
 
 Select all columns whose names consist only of digit characters.
 
-**Categories:** projection
+Example
 
-**Parameters:**
-
-<ParamField path="ascii_only" type="bool" default="False">
-  Restrict matching to ASCII digits (“0”–“9”) only, instead of all Unicode digits (`\d`).
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>>
 >>> tf = td_tf.TableFrame({
@@ -1131,39 +1376,56 @@ Select all columns whose names consist only of digit characters.
 ... })
 ```
 
-```python
+Original:
+┌──────┬──────┬────┬──────────┐
+│ 2023 ┆ Temp ┆ 01 ┆ Humidity │
+│ —  ┆ —  ┆ – ┆ —      │
+│ i64  ┆ f64  ┆ i64┆ i64      │
+╞══════╪══════╪════╪══════════╡
+│ 100  ┆ 20.5 ┆ 1  ┆ 60       │
+│ 200  ┆ 21.0 ┆ 2  ┆ 65       │
+│ 300  ┆ 22.0 ┆ 3  ┆ 55       │
+│ 400  ┆ 20.0 ┆ 4  ┆ 70       │
+│ 500  ┆ 19.5 ┆ 5  ┆ 75       │
+│ 600  ┆ 18.0 ┆ 6  ┆ 80       │
+│ 700  ┆ 21.5 ┆ 7  ┆ 68       │
+│ 800  ┆ 22.5 ┆ 8  ┆ 66       │
+└──────┴──────┴────┴──────────┘
+
+```text
 >>> tf.select(td_tf.selectors.digit())
 ```
 
+Selected:
+┌──────┬─────┐
+│ 2023 ┆ 01  │
+│ —  ┆ –  │
+│ i64  ┆ i64 │
+╞══════╪═════╡
+│ 100  ┆ 1   │
+│ 200  ┆ 2   │
+│ 300  ┆ 3   │
+│ 400  ┆ 4   │
+│ 500  ┆ 5   │
+│ 600  ┆ 6   │
+│ 700  ┆ 7   │
+│ 800  ┆ 8   │
+└──────┴─────┘
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.duration"></a>
-<details>
-<summary>duration</summary>
+ <details>
+<summary>
 
+**`duration(time_unit: Literal['ns', 'us', 'ms'] | Collection[Literal['ns', 'us', 'ms']] | None = None)`**
 
-```python
-def duration(
-    time_unit: Literal [ 'ns' , 'us' , 'ms' ] | Collection [ Literal [ 'ns' , 'us' , 'ms' ] ] | None = None,
-) -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1607)
+</summary>
 
 Select all columns of duration data type.
 
-**Categories:** projection
+Example
 
-**Parameters:**
-
-<ParamField path="time_unit" type="Literal [ 'ns' , 'us' , 'ms' ] | Collection [ Literal [ 'ns' , 'us' , 'ms' ] ] | None" default="None">
-  One or more of the supported time precision units: “ms”, “us”, or “ns”. If omitted, selects datetime columns with any time unit.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>> from datetime import timedelta
 >>>
@@ -1182,39 +1444,56 @@ Select all columns of duration data type.
 ... })
 ```
 
-```python
+Original:
+┌───────────┬───────┐
+│ Elapsed   ┆ Label │
+│ —       ┆ —   │
+│ duration  ┆ str   │
+╞═══════════╪═══════╡
+│ 5s        ┆ “A”   │
+│ 10s       ┆ “B”   │
+│ 15s       ┆ “C”   │
+│ 20s       ┆ “D”   │
+│ 25s       ┆ “E”   │
+│ 30s       ┆ “F”   │
+│ 35s       ┆ “G”   │
+│ 40s       ┆ “H”   │
+└───────────┴───────┘
+
+```text
 >>> tf.select(td_tf.selectors.duration())
 ```
 
+Selected:
+┌──────────┐
+│ Elapsed  │
+│ —      │
+│ duration │
+╞══════════╡
+│ 5s       │
+│ 10s      │
+│ 15s      │
+│ 20s      │
+│ 25s      │
+│ 30s      │
+│ 35s      │
+│ 40s      │
+└──────────┘
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.ends_with"></a>
-<details>
-<summary>ends_with</summary>
+ <details>
+<summary>
 
+**`ends_with(*suffix: str)`**
 
-```python
-def ends_with(
-    * suffix: str,
-) -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L482)
+</summary>
 
 Select all columns whose names end with any of the given suffixes.
 
-**Categories:** projection
+Example
 
-**Parameters:**
-
-<ParamField path="suffix" required>
-  One or more string suffixes to match at the end of column names.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>>
 >>> tf = td_tf.TableFrame({
@@ -1225,44 +1504,56 @@ Select all columns whose names end with any of the given suffixes.
 ... })
 ```
 
-```python
+Original:
+┌──────┬────────┬───────────┬───────┐
+│ Id   ┆ UserId ┆ SessionId ┆ Value │
+│ —  ┆ —    ┆ —       ┆ —   │
+│ i64  ┆ i64    ┆ i64       ┆ f64   │
+╞══════╪════════╪═══════════╪═══════╡
+│ 1    ┆ 100    ┆ 201       ┆ 10.5  │
+│ 2    ┆ 101    ┆ 202       ┆ 20.0  │
+│ 3    ┆ 102    ┆ 203       ┆ 15.5  │
+│ 4    ┆ 103    ┆ 204       ┆ 12.0  │
+│ 5    ┆ 104    ┆ 205       ┆ 18.5  │
+│ 6    ┆ 105    ┆ 206       ┆ 17.0  │
+│ 7    ┆ 106    ┆ 207       ┆ 16.0  │
+│ 8    ┆ 107    ┆ 208       ┆ 19.5  │
+└──────┴────────┴───────────┴───────┘
+
+```text
 >>> tf.select(td_tf.selectors.ends_with("Id"))
 ```
 
+Selected:
+┌──────┬────────┬───────────┐
+│ Id   ┆ UserId ┆ SessionId │
+│ —  ┆ —    ┆ —       │
+│ i64  ┆ i64    ┆ i64       │
+╞══════╪════════╪═══════════╡
+│ 1    ┆ 100    ┆ 201       │
+│ 2    ┆ 101    ┆ 202       │
+│ 3    ┆ 102    ┆ 203       │
+│ 4    ┆ 103    ┆ 204       │
+│ 5    ┆ 104    ┆ 205       │
+│ 6    ┆ 105    ┆ 206       │
+│ 7    ┆ 106    ┆ 207       │
+│ 8    ┆ 107    ┆ 208       │
+└──────┴────────┴───────────┘
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.exclude"></a>
-<details>
-<summary>exclude</summary>
+ <details>
+<summary>
 
+**`exclude(columns: str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr | Collection[str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr], *more_columns: str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr)`**
 
-```python
-def exclude(
-    columns: str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr | Collection [ str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr ],
-    * more_columns: str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr,
-) -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1856)
+</summary>
 
 Exclude specific columns from selection by name, data type, expression, or selector.
 
-**Categories:** projection
+Example
 
-**Parameters:**
-
-<ParamField path="columns" type="str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr | Collection [ str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr ]" required>
-  A single column identifier or a collection of them. This can include: - Column names as strings - Data types - Selector functions - Supported expressions
-</ParamField>
-
-<ParamField path="*more_columns" required>
-  Additional column identifiers passed as positional arguments.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>>
 >>> tf = td_tf.TableFrame({
@@ -1273,31 +1564,68 @@ Exclude specific columns from selection by name, data type, expression, or selec
 ... })
 ```
 
-```python
+Original:
+┌────┬──────┬───────┬──────────┐
+│ Id ┆ Name ┆ Score ┆ IsActive │
+│ —┆ —  ┆ —   ┆ —      │
+│ i64┆ str  ┆ f64   ┆ bool     │
+╞════╪══════╪═══════╪══════════╡
+│ 1  ┆ “A”  ┆ 90.0  ┆ true     │
+│ 2  ┆ “B”  ┆ 85.5  ┆ false    │
+│ 3  ┆ “C”  ┆ 88.0  ┆ true     │
+│ 4  ┆ “D”  ┆ 91.0  ┆ true     │
+│ 5  ┆ “E”  ┆ 86.0  ┆ false    │
+│ 6  ┆ “F”  ┆ 87.5  ┆ true     │
+│ 7  ┆ “G”  ┆ 84.0  ┆ false    │
+│ 8  ┆ “H”  ┆ 89.5  ┆ true     │
+└────┴──────┴───────┴──────────┘
+
+```text
 >>> tf.select(td_tf.selectors.exclude("Score", td_tf.selectors.boolean()))
 ```
 
+Selected:
+┌─────┬──────┐
+│ Id  ┆ Name │
+│ — ┆ —  │
+│ i64 ┆ str  │
+╞═════╪══════╡
+│ 1   ┆ “A”  │
+│ 2   ┆ “B”  │
+│ 3   ┆ “C”  │
+│ 4   ┆ “D”  │
+│ 5   ┆ “E”  │
+│ 6   ┆ “F”  │
+│ 7   ┆ “G”  │
+│ 8   ┆ “H”  │
+└───═─┴──────┘
+
+<ParamField path="columns">
+  A single column identifier or a collection of them. This can include:
+- Column names as strings
+- Data types
+- Selector functions
+- Supported expressions
+</ParamField>
+
+<ParamField path="*more_columns">
+  Additional column identifiers passed as positional arguments.
+</ParamField>
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.first"></a>
-<details>
-<summary>first</summary>
+ <details>
+<summary>
 
+**`first`**
 
-```python
-def first() -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L120)
+</summary>
 
 Select the first column in the TableFrame.
 
-**Categories:** projection
+Example
 
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>>
 >>> tf = td_tf.TableFrame({
@@ -1307,31 +1635,56 @@ Select the first column in the TableFrame.
 ... })
 ```
 
-```python
+Original:
+┌─────┬──────┬───────┐
+│ Id  ┆ Name ┆ Score │
+│ — ┆ —  ┆ —   │
+│ i64 ┆ str  ┆ f64   │
+╞═════╪══════╪═══════╡
+│ 101 ┆ “A”  ┆ 90.5  │
+│ 102 ┆ “B”  ┆ 84.0  │
+│ 103 ┆ “C”  ┆ 87.0  │
+│ 104 ┆ “D”  ┆ 91.5  │
+│ 105 ┆ “E”  ┆ 86.5  │
+│ 106 ┆ “F”  ┆ 88.0  │
+│ 107 ┆ “G”  ┆ 85.5  │
+│ 108 ┆ “H”  ┆ 89.0  │
+└─────┴──────┴───────┘
+
+```text
 >>> tf.select(td_tf.selectors.first())
 ```
 
+Selected:
+┌─────┐
+│ Id  │
+│ — │
+│ i64 │
+╞═════╡
+│ 101 │
+│ 102 │
+│ 103 │
+│ 104 │
+│ 105 │
+│ 106 │
+│ 107 │
+│ 108 │
+└─────┘
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.float"></a>
-<details>
-<summary>float</summary>
+ <details>
+<summary>
 
+**`float`**
 
-```python
-def float() -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1019)
+</summary>
 
 Select all columns of float data types.
 
-**Categories:** projection
+Example
 
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>>
 >>> tf = td_tf.TableFrame({
@@ -1341,31 +1694,56 @@ Select all columns of float data types.
 ... })
 ```
 
-```python
+Original:
+┌────┬───────┬──────┐
+│ Id ┆ Score ┆ Name │
+│ —┆ —   ┆ —  │
+│ i64┆ f64   ┆ str  │
+╞════╪═══════╪══════╡
+│ 1  ┆ 91.5  ┆ “A”  │
+│ 2  ┆ 85.0  ┆ “B”  │
+│ 3  ┆ 88.5  ┆ “C”  │
+│ 4  ┆ 90.0  ┆ “D”  │
+│ 5  ┆ 87.5  ┆ “E”  │
+│ 6  ┆ 89.0  ┆ “F”  │
+│ 7  ┆ 84.0  ┆ “G”  │
+│ 8  ┆ 86.5  ┆ “H”  │
+└────┴───────┴──────┘
+
+```text
 >>> tf.select(td_tf.selectors.float())
 ```
 
+Selected:
+┌───────┐
+│ Score │
+│ —   │
+│ f64   │
+╞═══════╡
+│ 91.5  │
+│ 85.0  │
+│ 88.5  │
+│ 90.0  │
+│ 87.5  │
+│ 89.0  │
+│ 84.0  │
+│ 86.5  │
+└───────┘
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.integer"></a>
-<details>
-<summary>integer</summary>
+ <details>
+<summary>
 
+**`integer`**
 
-```python
-def integer() -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L854)
+</summary>
 
 Select all columns with integer data types.
 
-**Categories:** projection
+Example
 
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>>
 >>> tf = td_tf.TableFrame({
@@ -1376,33 +1754,59 @@ Select all columns with integer data types.
 ... })
 ```
 
-```python
+Original:
+┌────┬───────┬───────┬──────┐
+│ Id ┆ Score ┆ Level ┆ Name │
+│ —┆ —   ┆ —   ┆ —  │
+│ i64┆ f64   ┆ i64   ┆ str  │
+╞════╪═══════╪═══════╪══════╡
+│ 1  ┆ 91.0  ┆ 3     ┆ “A”  │
+│ 2  ┆ 85.5  ┆ 2     ┆ “B”  │
+│ 3  ┆ 88.0  ┆ 1     ┆ “C”  │
+│ 4  ┆ 90.0  ┆ 3     ┆ “D”  │
+│ 5  ┆ 87.0  ┆ 2     ┆ “E”  │
+│ 6  ┆ 89.5  ┆ 1     ┆ “F”  │
+│ 7  ┆ 84.0  ┆ 3     ┆ “G”  │
+│ 8  ┆ 86.0  ┆ 2     ┆ “H”  │
+└────┴───────┴───────┴──────┘
+
+```text
 >>> tf.select(td_tf.selectors.integer())
 ```
 
+Selected:
+┌────┬───────┐
+│ Id ┆ Level │
+│ —┆ —   │
+│ i64┆ i64   │
+╞════╪═══════╡
+│ 1  ┆ 3     │
+│ 2  ┆ 2     │
+│ 3  ┆ 1     │
+│ 4  ┆ 3     │
+│ 5  ┆ 2     │
+│ 6  ┆ 1     │
+│ 7  ┆ 3     │
+│ 8  ┆ 2     │
+└────┴───────┘
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.last"></a>
-<details>
-<summary>last</summary>
+ <details>
+<summary>
 
+**`last`**
 
-```python
-def last() -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L173)
+</summary>
 
 Select the last column in the TableFrame.
 
-Useful when working with dynamically generated schemas where the column order is not fixed.
+Useful when working with dynamically generated schemas where the column
+order is not fixed.
 
-**Categories:** projection
+Example
 
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>>
 >>> tf = td_tf.TableFrame({
@@ -1412,39 +1816,56 @@ Useful when working with dynamically generated schemas where the column order is
 ... })
 ```
 
-```python
+Original:
+┌────┬──────┬───────┐
+│ Id ┆ Name ┆ Score │
+│ —┆ —  ┆ —   │
+│ i64┆ str  ┆ f64   │
+╞════╪══════╪═══════╡
+│ 1  ┆ “A”  ┆ 95.0  │
+│ 2  ┆ “B”  ┆ 88.5  │
+│ 3  ┆ “C”  ┆ 92.0  │
+│ 4  ┆ “D”  ┆ 76.0  │
+│ 5  ┆ “E”  ┆ 84.5  │
+│ 6  ┆ “F”  ┆ 79.0  │
+│ 7  ┆ “G”  ┆ 91.0  │
+│ 8  ┆ “H”  ┆ 87.5  │
+└────┴──────┴───────┘
+
+```text
 >>> tf.select(td_tf.selectors.last())
 ```
 
+Selected:
+┌───────┐
+│ Score │
+│ —   │
+│ f64   │
+╞═══════╡
+│ 95.0  │
+│ 88.5  │
+│ 92.0  │
+│ 76.0  │
+│ 84.5  │
+│ 79.0  │
+│ 91.0  │
+│ 87.5  │
+└───────┘
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.matches"></a>
-<details>
-<summary>matches</summary>
+ <details>
+<summary>
 
+**`matches(pattern: str)`**
 
-```python
-def matches(
-    pattern: str,
-) -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L539)
+</summary>
 
 Select all columns whose names match a regular expression pattern.
 
-**Categories:** projection
+Example
 
-**Parameters:**
-
-<ParamField path="pattern" type="str" required>
-  A regular expression pattern to match against column names.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>>
 >>> tf = td_tf.TableFrame({
@@ -1455,33 +1876,58 @@ Select all columns whose names match a regular expression pattern.
 ... })
 ```
 
-```python
+Original:
+┌──────┬──────┬──────────┬──────┐
+│ ColA ┆ ColB ┆ Data2024 ┆ Meta │
+│ —  ┆ —  ┆ —      ┆ —  │
+│ i64  ┆ i64  ┆ i64      ┆ str  │
+╞══════╪══════╪══════════╪══════╡
+│ 1    ┆ 8    ┆ 10       ┆ “a”  │
+│ 2    ┆ 7    ┆ 20       ┆ “b”  │
+│ 3    ┆ 6    ┆ 30       ┆ “c”  │
+│ 4    ┆ 5    ┆ 40       ┆ “d”  │
+│ 5    ┆ 4    ┆ 50       ┆ “e”  │
+│ 6    ┆ 3    ┆ 60       ┆ “f”  │
+│ 7    ┆ 2    ┆ 70       ┆ “g”  │
+│ 8    ┆ 1    ┆ 80       ┆ “h”  │
+└──────┴──────┴──────────┴──────┘
+
+```text
 >>> tf.select(td_tf.selectors.matches(r"^Col"))
 ```
 
+Selected:
+┌──────┬──────┐
+│ ColA ┆ ColB │
+│ —  ┆ —  │
+│ i64  ┆ i64  │
+╞══════╪══════╡
+│ 1    ┆ 8    │
+│ 2    ┆ 7    │
+│ 3    ┆ 6    │
+│ 4    ┆ 5    │
+│ 5    ┆ 4    │
+│ 6    ┆ 3    │
+│ 7    ┆ 2    │
+│ 8    ┆ 1    │
+└──────┴──────┘
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.numeric"></a>
-<details>
-<summary>numeric</summary>
+ <details>
+<summary>
 
+**`numeric`**
 
-```python
-def numeric() -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1072)
+</summary>
 
 Select all columns of numeric data types.
 
 This includes integer and float columns of any size or signedness.
 
-**Categories:** projection
+Example
 
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>>
 >>> tf = td_tf.TableFrame({
@@ -1492,31 +1938,56 @@ This includes integer and float columns of any size or signedness.
 ... })
 ```
 
-```python
+Original:
+┌────┬────────┬────────┬──────────┐
+│ Id ┆ Score  ┆ Name   ┆ IsActive │
+│ —┆ —    ┆ —    ┆ —      │
+│ i64┆ f64    ┆ str    ┆ bool     │
+╞════╪════════╪════════╪══════════╡
+│ 1  ┆ 91.5   ┆ “Alice”┆ true     │
+│ 2  ┆ 85.0   ┆ “Bob”  ┆ false    │
+│ 3  ┆ 78.25  ┆ “Cara” ┆ true     │
+│ 4  ┆ 88.75  ┆ “Dan”  ┆ true     │
+│ 5  ┆ 90.0   ┆ “Eve”  ┆ false    │
+│ 6  ┆ 76.5   ┆ “Finn” ┆ true     │
+│ 7  ┆ 82.25  ┆ “Gus”  ┆ true     │
+│ 8  ┆ 89.0   ┆ “Hana” ┆ false    │
+└────┴────────┴────────┴──────────┘
+
+```text
 >>> tf.select(td_tf.selectors.numeric())
 ```
 
+Selected:
+┌────┬────────┐
+│ Id ┆ Score  │
+│ —┆ —    │
+│ i64┆ f64    │
+╞════╪════════╡
+│ 1  ┆ 91.5   │
+│ 2  ┆ 85.0   │
+│ 3  ┆ 78.25  │
+│ 4  ┆ 88.75  │
+│ 5  ┆ 90.0   │
+│ 6  ┆ 76.5   │
+│ 7  ┆ 82.25  │
+│ 8  ┆ 89.0   │
+└────┴────────┘
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.object"></a>
-<details>
-<summary>object</summary>
+ <details>
+<summary>
 
+**`object`**
 
-```python
-def object() -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1679)
+</summary>
 
 Select all columns of object data type.
 
-**Categories:** projection
+Example
 
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>> from datetime import date
 >>>
@@ -1530,31 +2001,56 @@ Select all columns of object data type.
 ... })
 ```
 
-```python
+Original:
+┌────────────┬────────────┐
+│ Custom     ┆ Date       │
+│ —        ┆ —        │
+│ object     ┆ date       │
+╞════════════╪════════════╡
+│ &#123;“a”: 1&#125;   ┆ 2024-01-01 │
+│ &#123;“b”: 2&#125;   ┆ 2024-01-02 │
+│ &#123;“c”: 3&#125;   ┆ 2024-01-03 │
+│ &#123;“d”: 4&#125;   ┆ 2024-01-04 │
+│ &#123;“e”: 5&#125;   ┆ 2024-01-05 │
+│ &#123;“f”: 6&#125;   ┆ 2024-01-06 │
+│ &#123;“g”: 7&#125;   ┆ 2024-01-07 │
+│ &#123;“h”: 8&#125;   ┆ 2024-01-08 │
+└────────────┴────────────┘
+
+```text
 >>> tf.select(td_tf.selectors.object())
 ```
 
+Selected:
+┌────────────┐
+│ Custom     │
+│ —        │
+│ object     │
+╞════════════╡
+│ &#123;“a”: 1&#125;   │
+│ &#123;“b”: 2&#125;   │
+│ &#123;“c”: 3&#125;   │
+│ &#123;“d”: 4&#125;   │
+│ &#123;“e”: 5&#125;   │
+│ &#123;“f”: 6&#125;   │
+│ &#123;“g”: 7&#125;   │
+│ &#123;“h”: 8&#125;   │
+└────────────┘
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.signed_integer"></a>
-<details>
-<summary>signed_integer</summary>
+ <details>
+<summary>
 
+**`signed_integer`**
 
-```python
-def signed_integer() -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L908)
+</summary>
 
 Select all columns of signed integer data types.
 
-**Categories:** projection
+Example
 
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>>
 >>> tf = td_tf.TableFrame({
@@ -1565,39 +2061,56 @@ Select all columns of signed integer data types.
 ... })
 ```
 
-```python
+Original:
+┌────────┬────────┬────────┬──────┐
+│ UserId ┆ Rating ┆ Change ┆ Tag  │
+│ —    ┆ —    ┆ —    ┆ —  │
+│ i64    ┆ u8     ┆ i64    ┆ str  │
+╞════════╪════════╪════════╪══════╡
+│ 10     ┆ 5      ┆ -1     ┆ “x”  │
+│ 11     ┆ 3      ┆ 0      ┆ “y”  │
+│ 12     ┆ 4      ┆ 1      ┆ “x”  │
+│ 13     ┆ 2      ┆ -2     ┆ “y”  │
+│ 14     ┆ 5      ┆ 2      ┆ “z”  │
+│ 15     ┆ 1      ┆ 0      ┆ “x”  │
+│ 16     ┆ 3      ┆ -1     ┆ “z”  │
+│ 17     ┆ 4      ┆ 1      ┆ “y”  │
+└────────┴────────┴────────┴──────┘
+
+```text
 >>> tf.select(td_tf.selectors.signed_integer())
 ```
 
+Selected:
+┌────────┬────────┐
+│ UserId ┆ Change │
+│ —    ┆ —    │
+│ i64    ┆ i64    │
+╞════════╪════════╡
+│ 10     ┆ -1     │
+│ 11     ┆ 0      │
+│ 12     ┆ 1      │
+│ 13     ┆ -2     │
+│ 14     ┆ 2      │
+│ 15     ┆ 0      │
+│ 16     ┆ -1     │
+│ 17     ┆ 1      │
+└────────┴────────┘
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.starts_with"></a>
-<details>
-<summary>starts_with</summary>
+ <details>
+<summary>
 
+**`starts_with(*prefix: str)`**
 
-```python
-def starts_with(
-    * prefix: str,
-) -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L425)
+</summary>
 
 Select all columns whose names start with any of the given prefixes.
 
-**Categories:** projection
+Example
 
-**Parameters:**
-
-<ParamField path="prefix" required>
-  One or more string prefixes to match at the beginning of column names.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>>
 >>> tf = td_tf.TableFrame({
@@ -1608,40 +2121,56 @@ Select all columns whose names start with any of the given prefixes.
 ... })
 ```
 
-```python
+Original:
+┌──────────┬──────────┬────┬──────┐
+│ PreName  ┆ PreScore ┆ Id ┆ Note │
+│ —      ┆ —      ┆ —┆ —  │
+│ str      ┆ i64      ┆ i64┆ str  │
+╞══════════╪══════════╪════╪══════╡
+│ “Alice”  ┆ 90       ┆ 1  ┆ “A”  │
+│ “Bob”    ┆ 85       ┆ 2  ┆ “B”  │
+│ “Caro”   ┆ 78       ┆ 3  ┆ “C”  │
+│ “Dan”    ┆ 92       ┆ 4  ┆ “D”  │
+│ “Eve”    ┆ 88       ┆ 5  ┆ “E”  │
+│ “Fay”    ┆ 91       ┆ 6  ┆ “F”  │
+│ “Gus”    ┆ 84       ┆ 7  ┆ “G”  │
+│ “Hana”   ┆ 89       ┆ 8  ┆ “H”  │
+└──────────┴──────────┴────┴──────┘
+
+```text
 >>> tf.select(td_tf.selectors.starts_with("Pre"))
 ```
 
+Selected:
+┌──────────┬──────────┐
+│ PreName  ┆ PreScore │
+│ —      ┆ —      │
+│ str      ┆ i64      │
+╞══════════╪══════════╡
+│ “Alice”  ┆ 90       │
+│ “Bob”    ┆ 85       │
+│ “Caro”   ┆ 78       │
+│ “Dan”    ┆ 92       │
+│ “Eve”    ┆ 88       │
+│ “Fay”    ┆ 91       │
+│ “Gus”    ┆ 84       │
+│ “Hana”   ┆ 89       │
+└──────────┴──────────┘
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.string"></a>
-<details>
-<summary>string</summary>
+ <details>
+<summary>
 
+**`string(*, include_categorical: bool = False)`**
 
-```python
-def string(
-    *,
-    include_categorical: bool = False,
-) -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1736)
+</summary>
 
 Select all columns of string or categorical data type.
 
-**Categories:** projection
+Example
 
-**Parameters:**
-
-<ParamField path="include_categorical" type="bool" default="False">
-  If True, also include categorical columns in the selection.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>>
 >>> tf = td_tf.TableFrame({
@@ -1651,33 +2180,58 @@ Select all columns of string or categorical data type.
 ... })
 ```
 
-```python
+Original:
+┌────────┬─────────┬───────┐
+│ Name   ┆ Country ┆ Score │
+│ —    ┆ —     ┆ —   │
+│ str    ┆ str     ┆ f64   │
+╞════════╪═════════╪═══════╡
+│ “Anna” ┆ “US”    ┆ 90.5  │
+│ “Ben”  ┆ “UK”    ┆ 82.0  │
+│ “Cara” ┆ “FR”    ┆ 88.5  │
+│ “Dean” ┆ “DE”    ┆ 91.0  │
+│ “Ella” ┆ “IT”    ┆ 85.5  │
+│ “Finn” ┆ “ES”    ┆ 89.0  │
+│ “Gina” ┆ “NL”    ┆ 87.5  │
+│ “Hugo” ┆ “SE”    ┆ 90.0  │
+└────────┴─────────┴───────┘
+
+```text
 >>> tf.select(td_tf.selectors.string())
 ```
 
+Selected:
+┌────────┬─────────┐
+│ Name   ┆ Country │
+│ —    ┆ —     │
+│ str    ┆ str     │
+╞════════╪═════════╡
+│ “Anna” ┆ “US”    │
+│ “Ben”  ┆ “UK”    │
+│ “Cara” ┆ “FR”    │
+│ “Dean” ┆ “DE”    │
+│ “Ella” ┆ “IT”    │
+│ “Finn” ┆ “ES”    │
+│ “Gina” ┆ “NL”    │
+│ “Hugo” ┆ “SE”    │
+└────────┴─────────┘
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.temporal"></a>
-<details>
-<summary>temporal</summary>
+ <details>
+<summary>
 
+**`temporal`**
 
-```python
-def temporal() -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1128)
+</summary>
 
 Select all columns of temporal data types.
 
 This includes datetime, date, time, and timedelta.
 
-**Categories:** projection
+Example
 
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>> from datetime import datetime, date, time, timedelta, timezone
 >>>
@@ -1726,31 +2280,56 @@ This includes datetime, date, time, and timedelta.
 ... })
 ```
 
-```python
+Original:
+┌───────────────────────────┬─────────────┬──────────┬───────────┬─────────┐
+│ CreatedAt                 ┆ SessionDate ┆ Duration ┆ EventTime ┆ User    │
+│ —                       ┆ —         ┆ —      ┆ —       ┆ —     │
+│ datetime[μs, UTC]         ┆ date        ┆ duration ┆ time      ┆ str     │
+╞═══════════════════════════╪═════════════╪══════════╪═══════════╪═════════╡
+│ 2024-01-01 09:00:00+00:00 ┆ 2024-01-01  ┆ 0:00:00  ┆ 09:00:00  ┆ “Alice” │
+│ 2024-01-02 10:00:00+00:00 ┆ 2024-01-02  ┆ 0:05:00  ┆ 10:00:00  ┆ “Bob”   │
+│ 2024-01-03 11:00:00+00:00 ┆ 2024-01-03  ┆ 0:10:00  ┆ 11:00:00  ┆ “Cara”  │
+│ 2024-01-04 12:00:00+00:00 ┆ 2024-01-04  ┆ 0:15:00  ┆ 12:00:00  ┆ “Dan”   │
+│ 2024-01-05 13:00:00+00:00 ┆ 2024-01-05  ┆ 0:20:00  ┆ 13:00:00  ┆ “Eve”   │
+│ 2024-01-06 14:00:00+00:00 ┆ 2024-01-06  ┆ 0:25:00  ┆ 14:00:00  ┆ “Finn”  │
+│ 2024-01-07 15:00:00+00:00 ┆ 2024-01-07  ┆ 0:30:00  ┆ 15:00:00  ┆ “Gus”   │
+│ 2024-01-08 16:00:00+00:00 ┆ 2024-01-08  ┆ 0:35:00  ┆ 16:00:00  ┆ “Hana”  │
+└───────────────────────────┴─────────────┴──────────┴───────────┴─────────┘
+
+```text
 >>> tf.select(td_tf.selectors.temporal())
 ```
 
+Selected:
+┌───────────────────────────┬─────────────┬──────────┬───────────┐
+│ CreatedAt                 ┆ SessionDate ┆ Duration ┆ EventTime │
+│ —                       ┆ —         ┆ —      ┆ —       │
+│ datetime[μs, UTC]         ┆ date        ┆ duration ┆ time      │
+╞═══════════════════════════╪═════════════╪══════════╪═══════════╡
+│ 2024-01-01 09:00:00+00:00 ┆ 2024-01-01  ┆ 0:00:00  ┆ 09:00:00  │
+│ 2024-01-02 10:00:00+00:00 ┆ 2024-01-02  ┆ 0:05:00  ┆ 10:00:00  │
+│ 2024-01-03 11:00:00+00:00 ┆ 2024-01-03  ┆ 0:10:00  ┆ 11:00:00  │
+│ 2024-01-04 12:00:00+00:00 ┆ 2024-01-04  ┆ 0:15:00  ┆ 12:00:00  │
+│ 2024-01-05 13:00:00+00:00 ┆ 2024-01-05  ┆ 0:20:00  ┆ 13:00:00  │
+│ 2024-01-06 14:00:00+00:00 ┆ 2024-01-06  ┆ 0:25:00  ┆ 14:00:00  │
+│ 2024-01-07 15:00:00+00:00 ┆ 2024-01-07  ┆ 0:30:00  ┆ 15:00:00  │
+│ 2024-01-08 16:00:00+00:00 ┆ 2024-01-08  ┆ 0:35:00  ┆ 16:00:00  │
+└───────────────────────────┴─────────────┴──────────┴───────────┘
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.time"></a>
-<details>
-<summary>time</summary>
+ <details>
+<summary>
 
+**`time`**
 
-```python
-def time() -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1795)
+</summary>
 
 Select columns of Python time values.
 
-**Categories:** projection
+Example
 
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>> from datetime import time
 >>>
@@ -1763,33 +2342,58 @@ Select columns of Python time values.
 ... })
 ```
 
-```python
+Original:
+┌────────────┬───────┐
+│ EventTime  ┆ Label │
+│ —        ┆ —   │
+│ time       ┆ str   │
+╞════════════╪═══════╡
+│ 08:00:00   ┆ “A”   │
+│ 09:30:00   ┆ “B”   │
+│ 10:15:00   ┆ “C”   │
+│ 11:45:00   ┆ “D”   │
+│ 13:00:00   ┆ “E”   │
+│ 14:20:00   ┆ “F”   │
+│ 15:10:00   ┆ “G”   │
+│ 16:55:00   ┆ “H”   │
+└────────────┴───────┘
+
+```text
 >>> tf.select(td_tf.selectors.time())
 ```
 
+Selected:
+┌───────────┐
+│ EventTime │
+│ —       │
+│ time      │
+╞═══════════╡
+│ 08:00:00  │
+│ 09:30:00  │
+│ 10:15:00  │
+│ 11:45:00  │
+│ 13:00:00  │
+│ 14:20:00  │
+│ 15:10:00  │
+│ 16:55:00  │
+└───────────┘
 
 </details>
 
-<a id="tabsdata.tableframe.selectors.unsigned_integer"></a>
-<details>
-<summary>unsigned_integer</summary>
+ <details>
+<summary>
 
+**`unsigned_integer`**
 
-```python
-def unsigned_integer() -> SelectorProxy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L962)
+</summary>
 
 Select all columns of unsigned integer data types.
 
 Unsigned integers include types such as UInt8, UInt16, UInt32, and UInt64.
 
-**Categories:** projection
+Example
 
-#### Example
-
-```python
+```text
 >>> import tabsdata.tableframe as td_tf
 >>>
 >>> tf = td_tf.TableFrame({
@@ -1800,9 +2404,40 @@ Unsigned integers include types such as UInt8, UInt16, UInt32, and UInt64.
 ... })
 ```
 
-```python
+Original:
+┌────────┬───────┬────────┬────────┐
+│ UserId ┆ Score ┆ Flags  ┆ Change │
+│ —    ┆ —   ┆ —    ┆ —    │
+│ u64    ┆ u16   ┆ u8     ┆ i64    │
+╞════════╪═══════╪════════╪════════╡
+│ 10     ┆ 100   ┆ 1      ┆ -1     │
+│ 11     ┆ 98    ┆ 0      ┆ 2      │
+│ 12     ┆ 95    ┆ 1      ┆ -3     │
+│ 13     ┆ 87    ┆ 0      ┆ 1      │
+│ 14     ┆ 90    ┆ 1      ┆ 0      │
+│ 15     ┆ 93    ┆ 0      ┆ -2     │
+│ 16     ┆ 88    ┆ 1      ┆ 3      │
+│ 17     ┆ 96    ┆ 0      ┆ -1     │
+└────────┴───────┴────────┴────────┘
+
+```text
 >>> tf.select(td_tf.selectors.unsigned_integer())
 ```
 
+Selected:
+┌────────┬───────┬────────┐
+│ UserId ┆ Score ┆ Flags  │
+│ —    ┆ —   ┆ —    │
+│ u64    ┆ u16   ┆ u8     │
+╞════════╪═══════╪════════╡
+│ 10     ┆ 100   ┆ 1      │
+│ 11     ┆ 98    ┆ 0      │
+│ 12     ┆ 95    ┆ 1      │
+│ 13     ┆ 87    ┆ 0      │
+│ 14     ┆ 90    ┆ 1      │
+│ 15     ┆ 93    ┆ 0      │
+│ 16     ┆ 88    ┆ 1      │
+│ 17     ┆ 96    ┆ 0      │
+└────────┴───────┴────────┘
 
 </details>

@@ -2,217 +2,423 @@
 title: "tabsdata.exceptions"
 ---
 
-import { ApiEntry, ResponseField } from '@site/src/components/ApiField';
-
 # tabsdata.exceptions
 
- <ApiEntry id="tabsdata.exceptions.CdcError" signature="CdcError(error_code: ErrorCode, *args)" kind="class" bases="TabsDataException" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2724">
+ <details>
+<summary>
+
+**`CdcError(error_code: ErrorCode, *args)`**
+
+</summary>
+
+Bases: TabsDataException
 
 Exception raised for generic CDC errors.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.exceptions.ConnectionConfigurationError" signature="ConnectionConfigurationError(error_code: ErrorCode, *args)" kind="class" bases="TabsDataException" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2585">
+ <details>
+<summary>
+
+**`ConnectionConfigurationError(error_code: ErrorCode, *args)`**
+
+</summary>
+
+Bases: TabsDataException
 
 Exception raised when the creation or modification of a Connection object fails.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.exceptions.ConstructorError" signature="ConstructorError(error_code: ErrorCode, *args)" kind="class" bases="TabsDataException" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2756">
+ <details>
+<summary>
+
+**`ConstructorError(error_code: ErrorCode, *args)`**
+
+</summary>
+
+Bases: TabsDataException
 
 Exception raised when public API classes don’t support using their
 constructor.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.exceptions.CredentialsConfigurationError" signature="CredentialsConfigurationError(error_code: ErrorCode, *args)" kind="class" bases="TabsDataException" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2593">
+ <details>
+<summary>
+
+**`CredentialsConfigurationError(error_code: ErrorCode, *args)`**
+
+</summary>
+
+Bases: TabsDataException
 
 Exception raised when the creation or modification of a Credentials object fails.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.exceptions.DataQualityConfigurationError" signature="DataQualityConfigurationError(error_code: ErrorCode, *args)" kind="class" bases="TabsDataException" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2601">
+ <details>
+<summary>
+
+**`DataQualityConfigurationError(error_code: ErrorCode, *args)`**
+
+</summary>
+
+Bases: TabsDataException
 
 Exception raised when the creation or modification of a DataQuality object or one of
 its auxiliary objects fails.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.exceptions.DataQualityProcessingError" signature="DataQualityProcessingError(error_code: ErrorCode, *args)" kind="class" bases="TabsDataException" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2610">
+ <details>
+<summary>
+
+**`DataQualityProcessingError(error_code: ErrorCode, *args)`**
+
+</summary>
+
+Bases: TabsDataException
 
 Exception raised when processing the DataQuality specifications during a
 function registration or execution.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.exceptions.Db2CdcError" signature="Db2CdcError(error_code: ErrorCode, *args)" kind="class" bases="CdcError" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2732">
+ <details>
+<summary>
+
+**`Db2CdcError(error_code: ErrorCode, *args)`**
+
+</summary>
+
+Bases: CdcError
 
 Exception raised for DB2 CDC errors.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.exceptions.DecoratorConfigurationError" signature="DecoratorConfigurationError(error_code: ErrorCode, *args)" kind="class" bases="TabsDataException" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2619">
+ <details>
+<summary>
+
+**`DecoratorConfigurationError(error_code: ErrorCode, *args)`**
+
+</summary>
+
+Bases: TabsDataException
 
 Exception raised when the creation or modification of a decorator object fails.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.exceptions.DestinationConfigurationError" signature="DestinationConfigurationError(error_code: ErrorCode, *args)" kind="class" bases="TabsDataException" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2627">
+ <details>
+<summary>
+
+**`DestinationConfigurationError(error_code: ErrorCode, *args)`**
+
+</summary>
+
+Bases: TabsDataException
 
 Exception raised when the creation or modification of a destination object fails.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.exceptions.ErrorCode" signature="ErrorCode(*values)" kind="class" bases="Enum" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L24">
+ <details>
+<summary>
 
-<ApiEntry id="tabsdata.exceptions.ErrorCode.code" signature="code" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2540">
+**`ErrorCode(*values)`**
 
-</ApiEntry>
+</summary>
 
-<ApiEntry id="tabsdata.exceptions.ErrorCode.message" signature="message" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2549">
+Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
-</ApiEntry>
+<details>
+<summary>
 
-</ApiEntry>
+**`code`**
 
- <ApiEntry id="tabsdata.exceptions.FormatConfigurationError" signature="FormatConfigurationError(error_code: ErrorCode, *args)" kind="class" bases="TabsDataException" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2635">
+</summary>
+
+</details>
+
+<details>
+<summary>
+
+**`message`**
+
+</summary>
+
+</details>
+
+</details>
+
+ <details>
+<summary>
+
+**`FormatConfigurationError(error_code: ErrorCode, *args)`**
+
+</summary>
+
+Bases: TabsDataException
 
 Exception raised when the creation or modification of a Format object fails.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.exceptions.FunctionConfigurationError" signature="FunctionConfigurationError(error_code: ErrorCode, *args)" kind="class" bases="TabsDataException" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2643">
+ <details>
+<summary>
+
+**`FunctionConfigurationError(error_code: ErrorCode, *args)`**
+
+</summary>
+
+Bases: TabsDataException
 
 Exception raised when a function is not properly configured to be registered.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.exceptions.MySQLCdcError" signature="MySQLCdcError(error_code: ErrorCode, *args)" kind="class" bases="CdcError" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2740">
+ <details>
+<summary>
+
+**`MySQLCdcError(error_code: ErrorCode, *args)`**
+
+</summary>
+
+Bases: CdcError
 
 Exception raised for MySQL CDC errors.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.exceptions.ParameterError" signature="ParameterError(name, type, value, msg)" kind="class" bases="NamedTuple" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2787">
+ <details>
+<summary>
 
-<ResponseField id="tabsdata.exceptions.ParameterError.msg" name="msg" type="str">
+**`ParameterError(name, type, value, msg)`**
+
+</summary>
+
+Bases: [NamedTuple](https://docs.python.org/3/library/typing.html#typing.NamedTuple)
+
+<details>
+<summary>`msg`</summary>
 
 Alias for field number 3
 
-</ResponseField>
+</details>
 
-<ResponseField id="tabsdata.exceptions.ParameterError.name" name="name" type="str">
+<details>
+<summary>`name`</summary>
 
 Alias for field number 0
 
-</ResponseField>
+</details>
 
-<ResponseField id="tabsdata.exceptions.ParameterError.type" name="type" type="str">
+<details>
+<summary>`type`</summary>
 
 Alias for field number 1
 
-</ResponseField>
+</details>
 
-<ResponseField id="tabsdata.exceptions.ParameterError.value" name="value" type="str">
+<details>
+<summary>`value`</summary>
 
 Alias for field number 2
 
-</ResponseField>
+</details>
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.exceptions.ParameterValidationError" signature="ParameterValidationError(function: LambdaType | MethodType, error_code: ErrorCode, pyd_validation_error: ValidationError)" kind="class" bases="TabsDataException" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2794">
+ <details>
+<summary>
+
+**`ParameterValidationError(function: LambdaType | MethodType, error_code: ErrorCode, pyd_validation_error: ValidationError)`**
+
+</summary>
+
+Bases: TabsDataException
 
 Exception raised when public API parameter validation fails.
 
-<ResponseField id="tabsdata.exceptions.ParameterValidationError.cls" name="cls" type="str | None">
+<details>
+<summary>`cls`</summary>
 
-</ResponseField>
+</details>
 
-<ResponseField id="tabsdata.exceptions.ParameterValidationError.errors" name="errors" type="Collection[ParameterError]">
+<details>
+<summary>`errors`</summary>
 
-</ResponseField>
+</details>
 
-<ResponseField id="tabsdata.exceptions.ParameterValidationError.fn" name="fn" type="str | None">
+<details>
+<summary>`fn`</summary>
 
-</ResponseField>
+</details>
 
-<ResponseField id="tabsdata.exceptions.ParameterValidationError.mod" name="mod" type="str">
+<details>
+<summary>`mod`</summary>
 
-</ResponseField>
+</details>
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.exceptions.ParameterValueError" signature="ParameterValueError(error_code: ErrorCode, fn_name: str, param_names: str | list[str], msg: str)" kind="class" bases="TabsDataException" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2765">
+ <details>
+<summary>
 
-</ApiEntry>
+**`ParameterValueError(error_code: ErrorCode, fn_name: str, param_names: str | list[str], msg: str)`**
 
- <ApiEntry id="tabsdata.exceptions.PostgresCdcError" signature="PostgresCdcError(error_code: ErrorCode, *args)" kind="class" bases="CdcError" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2748">
+</summary>
+
+Bases: TabsDataException
+
+</details>
+
+ <details>
+<summary>
+
+**`PostgresCdcError(error_code: ErrorCode, *args)`**
+
+</summary>
+
+Bases: CdcError
 
 Exception raised for PostgreSQL CDC errors.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.exceptions.RegistrationError" signature="RegistrationError(error_code: ErrorCode, *args)" kind="class" bases="TabsDataException" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2651">
+ <details>
+<summary>
+
+**`RegistrationError(error_code: ErrorCode, *args)`**
+
+</summary>
+
+Bases: TabsDataException
 
 Exception raised when registration of a function in the server fails.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.exceptions.SDKError" signature="SDKError(error_code: ErrorCode, *args)" kind="class" bases="TabsDataException" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2659">
+ <details>
+<summary>
 
-</ApiEntry>
+**`SDKError(error_code: ErrorCode, *args)`**
 
- <ApiEntry id="tabsdata.exceptions.SecretConfigurationError" signature="SecretConfigurationError(error_code: ErrorCode, *args)" kind="class" bases="TabsDataException" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2666">
+</summary>
+
+Bases: TabsDataException
+
+</details>
+
+ <details>
+<summary>
+
+**`SecretConfigurationError(error_code: ErrorCode, *args)`**
+
+</summary>
+
+Bases: TabsDataException
 
 Exception raised when the creation or modification of a Secret object fails.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.exceptions.SourceConfigurationError" signature="SourceConfigurationError(error_code: ErrorCode, *args)" kind="class" bases="TabsDataException" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2674">
+ <details>
+<summary>
+
+**`SourceConfigurationError(error_code: ErrorCode, *args)`**
+
+</summary>
+
+Bases: TabsDataException
 
 Exception raised when the creation or modification of a source object fails.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.exceptions.StageTriggerConfigurationError" signature="StageTriggerConfigurationError(error_code: ErrorCode, *args)" kind="class" bases="TabsDataException" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2707">
+ <details>
+<summary>
+
+**`StageTriggerConfigurationError(error_code: ErrorCode, *args)`**
+
+</summary>
+
+Bases: TabsDataException
 
 Exception raised when the creation or modification of a StageTrigger object or one
 of its auxiliary objects fails.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.exceptions.StageTriggerExecutionError" signature="StageTriggerExecutionError(error_code: ErrorCode, *args)" kind="class" bases="TabsDataException" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2716">
+ <details>
+<summary>
+
+**`StageTriggerExecutionError(error_code: ErrorCode, *args)`**
+
+</summary>
+
+Bases: TabsDataException
 
 Exception raised when a StageTrigger execution fails during runtime.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.exceptions.TableFrameError" signature="TableFrameError(error_code: ErrorCode, *args)" kind="class" bases="TabsDataException" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2682">
+ <details>
+<summary>
+
+**`TableFrameError(error_code: ErrorCode, *args)`**
+
+</summary>
+
+Bases: TabsDataException
 
 Exception raised when handling a TableFrame.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.exceptions.TableURIConfigurationError" signature="TableURIConfigurationError(error_code: ErrorCode, *args)" kind="class" bases="TabsDataException" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2698">
+ <details>
+<summary>
+
+**`TableURIConfigurationError(error_code: ErrorCode, *args)`**
+
+</summary>
+
+Bases: TabsDataException
 
 Exception raised when the creation or modification of a URI object or one of
 its auxiliary objects fails.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.exceptions.TabsDataException" signature="TabsDataException(error_code: ErrorCode, *args)" kind="class" bases="Exception" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2558">
+ <details>
+<summary>
+
+**`TabsDataException(error_code: ErrorCode, *args)`**
+
+</summary>
+
+Bases: [Exception](https://docs.python.org/3/library/exceptions.html#Exception)
 
 Base exception for all exceptions in the Tabs Data SDK.
 
-<ResponseField id="tabsdata.exceptions.TabsDataException.error_code" name="error_code" type="ErrorCode">
+<details>
+<summary>`error_code`</summary>
 
-</ResponseField>
+</details>
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.exceptions.TabsdataServerError" signature="TabsdataServerError(error_code: ErrorCode, *args)" kind="class" bases="TabsDataException" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2690">
+ <details>
+<summary>
+
+**`TabsdataServerError(error_code: ErrorCode, *args)`**
+
+</summary>
+
+Bases: TabsDataException
 
 Exception raised when the server returns an error.
 
-</ApiEntry>
+</details>

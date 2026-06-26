@@ -1,57 +1,37 @@
 ---
 title: "Numeric"
-sidebarTitle: "Numeric"
-description: "Numeric API reference."
 ---
+
 import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
+# Numeric
 
-<a id="tabsdata.tableframe.expr.expr.Expr.abs"></a>
-<details>
-<summary>abs</summary>
+ <details>
+<summary>
 
+**`abs`**
 
-```python
-def abs() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L187)
+</summary>
 
 Return the abso lute value of the expression.
 
-**Categories:** numeric
-
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.add"></a>
-<details>
-<summary>add</summary>
+ <details>
+<summary>
 
+**`add(other: Any)`**
 
-```python
-def add(
-    other: Any,
-) -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L196)
+</summary>
 
 Equivalent to the + operator.
 
-For numeric types adds the given input. For string types concatenates the given input.
+For numeric types adds the given input. For string types concatenates the
+given input.
 
-**Categories:** numeric
+Example:
 
-**Parameters:**
-
-<ParamField path="other" type="Any" required>
-  The value to add or concatenate.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -73,27 +53,20 @@ For numeric types adds the given input. For string types concatenates the given 
 └──────┴──────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.arccos"></a>
-<details>
-<summary>arccos</summary>
+ <details>
+<summary>
 
+**`arccos`**
 
-```python
-def arccos() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L306)
+</summary>
 
 Calculate the inverse cosine of the element value.
 
-**Categories:** numeric
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -115,27 +88,20 @@ Calculate the inverse cosine of the element value.
 └──────┴──────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.arccosh"></a>
-<details>
-<summary>arccosh</summary>
+ <details>
+<summary>
 
+**`arccosh`**
 
-```python
-def arccosh() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L337)
+</summary>
 
 Calculate the inverse hyperbolic cosine of the element value.
 
-**Categories:** numeric
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -157,27 +123,20 @@ Calculate the inverse hyperbolic cosine of the element value.
 └──────┴──────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.arcsin"></a>
-<details>
-<summary>arcsin</summary>
+ <details>
+<summary>
 
+**`arcsin`**
 
-```python
-def arcsin() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L368)
+</summary>
 
 Calculate the inverse sine of the element value.
 
-**Categories:** numeric
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -199,27 +158,20 @@ Calculate the inverse sine of the element value.
 └──────┴──────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.arcsinh"></a>
-<details>
-<summary>arcsinh</summary>
+ <details>
+<summary>
 
+**`arcsinh`**
 
-```python
-def arcsinh() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L399)
+</summary>
 
 Calculate the inverse hyperbolic sine of the element value.
 
-**Categories:** numeric
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -241,27 +193,20 @@ Calculate the inverse hyperbolic sine of the element value.
 └──────┴──────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.arctan"></a>
-<details>
-<summary>arctan</summary>
+ <details>
+<summary>
 
+**`arctan`**
 
-```python
-def arctan() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L430)
+</summary>
 
 Calculate the inverse tangent of the element value.
 
-**Categories:** numeric
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -283,27 +228,20 @@ Calculate the inverse tangent of the element value.
 └──────┴──────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.arctanh"></a>
-<details>
-<summary>arctanh</summary>
+ <details>
+<summary>
 
+**`arctanh`**
 
-```python
-def arctanh() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L461)
+</summary>
 
 Calculate the inverse hyperbolic tangent of the element value.
 
-**Categories:** numeric
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -325,27 +263,20 @@ Calculate the inverse hyperbolic tangent of the element value.
 └──────┴──────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.cbrt"></a>
-<details>
-<summary>cbrt</summary>
+ <details>
+<summary>
 
+**`cbrt`**
 
-```python
-def cbrt() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L540)
+</summary>
 
 Calculate the cub root of the element value.
 
-**Categories:** numeric
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -367,27 +298,20 @@ Calculate the cub root of the element value.
 └──────┴──────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.ceil"></a>
-<details>
-<summary>ceil</summary>
+ <details>
+<summary>
 
+**`ceil`**
 
-```python
-def ceil() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L571)
+</summary>
 
 Round up the expression to the next integer value.
 
-**Categories:** numeric
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -404,40 +328,23 @@ Round up the expression to the next integer value.
 └──────┴─────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.clip"></a>
-<details>
-<summary>clip</summary>
+ <details>
+<summary>
 
+**`clip(lower_bound: int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None = None, upper_bound: int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None = None)`**
 
-```python
-def clip(
-    lower_bound: int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None = None,
-    upper_bound: int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None = None,
-) -> Expr
-```
+</summary>
 
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L597)
+For element values outside the lower and upper bounds, lower values are
+replaced with the lower bound
+and upper values with the upper bound. Values within the lower and upper
+bounds are unaffected.
 
-For element values outside the lower and upper bounds, lower values are replaced with the lower bound and upper values with the upper bound. Values within the lower and upper bounds are unaffected.
+Example:
 
-**Categories:** numeric
-
-**Parameters:**
-
-<ParamField path="lower_bound" type="int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None" default="None">
-  The lower bound value. If None, the lower bound is not set.
-</ParamField>
-
-<ParamField path="upper_bound" type="int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None" default="None">
-  The upper bound value. If None, the upper bound is
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -457,27 +364,28 @@ For element values outside the lower and upper bounds, lower values are replaced
 └──────┴─────────┘
 ```
 
+<ParamField path="lower_bound">
+  The lower bound value. If None, the lower bound is not set.
+</ParamField>
+
+<ParamField path="upper_bound">
+  The upper bound value. If None, the upper bound is
+</ParamField>
 
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.cos"></a>
-<details>
-<summary>cos</summary>
+ <details>
+<summary>
 
+**`cos`**
 
-```python
-def cos() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L653)
+</summary>
 
 Calculate the cosine of the element value.
 
-**Categories:** numeric
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -499,27 +407,20 @@ Calculate the cosine of the element value.
 └──────┴───────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.cosh"></a>
-<details>
-<summary>cosh</summary>
+ <details>
+<summary>
 
+**`cosh`**
 
-```python
-def cosh() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L684)
+</summary>
 
 Calculate the hyperbolic cosine of the element value.
 
-**Categories:** numeric
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -541,27 +442,20 @@ Calculate the hyperbolic cosine of the element value.
 └──────┴────────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.cot"></a>
-<details>
-<summary>cot</summary>
+ <details>
+<summary>
 
+**`cot`**
 
-```python
-def cot() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L715)
+</summary>
 
 Calculate the cotangent of the element value.
 
-**Categories:** numeric
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -583,27 +477,20 @@ Calculate the cotangent of the element value.
 └──────┴───────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.degrees"></a>
-<details>
-<summary>degrees</summary>
+ <details>
+<summary>
 
+**`degrees`**
 
-```python
-def degrees() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L746)
+</summary>
 
 Convert a radian value to degrees
 
-**Categories:** numeric
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -625,37 +512,23 @@ Convert a radian value to degrees
 └──────┴────────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.diff"></a>
-<details>
-<summary>diff</summary>
+ <details>
+<summary>
 
+**`diff(n: int = 1)`**
 
-```python
-def diff(
-    n: int = 1,
-) -> Expr
-```
+</summary>
 
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1990)
-
-Compute the difference between an element value and the element value of the specified relative row.
+Compute the difference between an element value and the element value
+of the specified relative row.
 
 It supports numberic and datetime types.
 
-**Categories:** numeric
+Examples:
 
-**Parameters:**
-
-<ParamField path="n" type="int" default="1">
-  The relative row to compute the difference with. Defaults to 1 (previous). Use a negative number to get a next row.
-</ParamField>
-
-#### Examples
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -681,27 +554,20 @@ It supports numberic and datetime types.
 └──────┴──────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.exp"></a>
-<details>
-<summary>exp</summary>
+ <details>
+<summary>
 
+**`exp`**
 
-```python
-def exp() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L847)
+</summary>
 
 Calculate the exponential of the element value.
 
-**Categories:** numeric
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -721,27 +587,20 @@ Calculate the exponential of the element value.
 └──────┴─────────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.floor"></a>
-<details>
-<summary>floor</summary>
+ <details>
+<summary>
 
+**`floor`**
 
-```python
-def floor() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1042)
+</summary>
 
 Round down the expression to the previous integer value.
 
-**Categories:** numeric
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -758,50 +617,20 @@ Round down the expression to the previous integer value.
 └──────┴─────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.hash"></a>
-<details>
-<summary>hash</summary>
+ <details>
+<summary>
 
+**`hash(seed: int = 0, seed_1: int | None = None, seed_2: int | None = None, seed_3: int | None = None)`**
 
-```python
-def hash(
-    seed: int = 0,
-    seed_1: int | None = None,
-    seed_2: int | None = None,
-    seed_3: int | None = None,
-) -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1156)
+</summary>
 
 Compute the hash of an element value.
 
-**Categories:** numeric
+Example:
 
-**Parameters:**
-
-<ParamField path="seed" type="int" default="0">
-  The seed for the hash function.
-</ParamField>
-
-<ParamField path="seed_1" type="int | None" default="None">
-  The first seed for the hash function.
-</ParamField>
-
-<ParamField path="seed_2" type="int | None" default="None">
-  The second seed for the hash function.
-</ParamField>
-
-<ParamField path="seed_3" type="int | None" default="None">
-  The third seed for the hash function.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -818,35 +647,36 @@ Compute the hash of an element value.
 └──────┴─────────────────────┘
 ```
 
+<ParamField path="seed">
+  The seed for the hash function.
+</ParamField>
+
+<ParamField path="seed_1">
+  The first seed for the hash function.
+</ParamField>
+
+<ParamField path="seed_2">
+  The second seed for the hash function.
+</ParamField>
+
+<ParamField path="seed_3">
+  The third seed for the hash function.
+</ParamField>
 
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.log"></a>
-<details>
-<summary>log</summary>
+ <details>
+<summary>
 
+**`log(base: float = 2.718281828459045)`**
 
-```python
-def log(
-    base: float = 2.718281828459045,
-) -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1532)
+</summary>
 
 Calculate the logarithm to the given base.
 
-**Categories:** numeric
+Example:
 
-**Parameters:**
-
-<ParamField path="base" type="float" default="2.718281828459045">
-  logarithm base, defaults toe.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -868,27 +698,20 @@ Calculate the logarithm to the given base.
 └──────┴──────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.log10"></a>
-<details>
-<summary>log10</summary>
+ <details>
+<summary>
 
+**`log10`**
 
-```python
-def log10() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1597)
+</summary>
 
 Calculate the logarithm base 10.
 
-**Categories:** numeric
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -910,27 +733,20 @@ Calculate the logarithm base 10.
 └──────┴──────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.log1p"></a>
-<details>
-<summary>log1p</summary>
+ <details>
+<summary>
 
+**`log1p`**
 
-```python
-def log1p() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1566)
+</summary>
 
 Calculate the natural logarithm plus one.
 
-**Categories:** numeric
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -952,35 +768,20 @@ Calculate the natural logarithm plus one.
 └──────┴──────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.mod"></a>
-<details>
-<summary>mod</summary>
+ <details>
+<summary>
 
+**`mod(other: Any)`**
 
-```python
-def mod(
-    other: Any,
-) -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1658)
+</summary>
 
 Modulus operator.
 
-**Categories:** numeric
+Example:
 
-**Parameters:**
-
-<ParamField path="other" type="Any" required>
-  The value to divide by.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -999,35 +800,20 @@ Modulus operator.
 └──────┴──────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.mul"></a>
-<details>
-<summary>mul</summary>
+ <details>
+<summary>
 
+**`mul(other: Any)`**
 
-```python
-def mul(
-    other: Any,
-) -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1690)
+</summary>
 
 Multiplication operator.
 
-**Categories:** numeric
+Example:
 
-**Parameters:**
-
-<ParamField path="other" type="Any" required>
-  The value to multiply by.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -1047,27 +833,20 @@ Multiplication operator.
 └──────┴──────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.neg"></a>
-<details>
-<summary>neg</summary>
+ <details>
+<summary>
 
+**`neg`**
 
-```python
-def neg() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1793)
+</summary>
 
 Unary minus operator.
 
-**Categories:** numeric
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -1089,35 +868,20 @@ Unary minus operator.
 └──────┴──────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.pow"></a>
-<details>
-<summary>pow</summary>
+ <details>
+<summary>
 
+**`pow(exponent: Expr | Series | str | int | float)`**
 
-```python
-def pow(
-    exponent: Expr | Series | str | int | float,
-) -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1885)
+</summary>
 
 Exponentiation operator.
 
-**Categories:** numeric
+Example:
 
-**Parameters:**
-
-<ParamField path="exponent" type="Expr | Series | str | int | float" required>
-  exponent value.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -1137,27 +901,20 @@ Exponentiation operator.
 └──────┴──────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.radians"></a>
-<details>
-<summary>radians</summary>
+ <details>
+<summary>
 
+**`radians`**
 
-```python
-def radians() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1918)
+</summary>
 
 Convert a degree value to radians
 
-**Categories:** numeric
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -1177,36 +934,21 @@ Convert a degree value to radians
 └─────────┴──────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.reinterpret"></a>
-<details>
-<summary>reinterpret</summary>
+ <details>
+<summary>
 
+**`reinterpret(*, signed: bool = True)`**
 
-```python
-def reinterpret(
-    *,
-    signed: bool = True,
-) -> Expr
-```
+</summary>
 
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2034)
+Reinterpret the 64bit element values (i64 or u64) as a signed/unsigned integers.
+Only valid for 64bit integers, for other types use cast.
 
-Reinterpret the 64bit element values (i64 or u64) as a signed/unsigned integers. Only valid for 64bit integers, for other types use cast.
+Example:
 
-**Categories:** numeric
-
-**Parameters:**
-
-<ParamField path="signed" type="bool" default="True">
-  true to convert to i64, false to convert to u64. This named argument must be specified.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -1229,35 +971,20 @@ Reinterpret the 64bit element values (i64 or u64) as a signed/unsigned integers.
 └──────┴─────────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.round"></a>
-<details>
-<summary>round</summary>
+ <details>
+<summary>
 
+**`round(decimals: int = 0)`**
 
-```python
-def round(
-    decimals: int = 0,
-) -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2071)
+</summary>
 
 Round floating point element values.
 
-**Categories:** numeric
+Example:
 
-**Parameters:**
-
-<ParamField path="decimals" type="int" default="0">
-  number of decimal places to round to.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -1279,35 +1006,20 @@ Round floating point element values.
 └──────┴───────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.round_sig_figs"></a>
-<details>
-<summary>round_sig_figs</summary>
+ <details>
+<summary>
 
+**`round_sig_figs(digits: int)`**
 
-```python
-def round_sig_figs(
-    digits: int,
-) -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2105)
+</summary>
 
 Round floating point element values to the specified significant figures.
 
-**Categories:** numeric
+Example:
 
-**Parameters:**
-
-<ParamField path="digits" type="int" required>
-  number of digits to round up.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -1333,25 +1045,20 @@ Round floating point element values to the specified significant figures.
 └────────┴────────────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.shrink_dtype"></a>
-<details>
-<summary>shrink_dtype</summary>
+ <details>
+<summary>
 
+**`shrink_dtype`**
 
-```python
-def shrink_dtype() -> Expr
-```
+</summary>
 
 Cast down a column to the smallest type that can hold the element values.
 
-**Categories:** numeric
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -1370,27 +1077,20 @@ Cast down a column to the smallest type that can hold the element values.
 └───────┴──────────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.sign"></a>
-<details>
-<summary>sign</summary>
+ <details>
+<summary>
 
+**`sign`**
 
-```python
-def sign() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2182)
+</summary>
 
 Calculate the sign of element values.
 
-**Categories:** numeric
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -1415,27 +1115,20 @@ Calculate the sign of element values.
 └────────┴──────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.sin"></a>
-<details>
-<summary>sin</summary>
+ <details>
+<summary>
 
+**`sin`**
 
-```python
-def sin() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2216)
+</summary>
 
 Calculate the sine of the element value.
 
-**Categories:** numeric
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -1454,27 +1147,20 @@ Calculate the sine of the element value.
 └─────┴───────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.sinh"></a>
-<details>
-<summary>sinh</summary>
+ <details>
+<summary>
 
+**`sinh`**
 
-```python
-def sinh() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2245)
+</summary>
 
 Calculate the hyperbolic sine of the element value.
 
-**Categories:** numeric
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -1493,27 +1179,20 @@ Calculate the hyperbolic sine of the element value.
 └─────┴───────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.sqrt"></a>
-<details>
-<summary>sqrt</summary>
+ <details>
+<summary>
 
+**`sqrt`**
 
-```python
-def sqrt() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2407)
+</summary>
 
 Calculate the square root of the element value.
 
-**Categories:** numeric
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -1534,35 +1213,20 @@ Calculate the square root of the element value.
 └──────┴──────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.sub"></a>
-<details>
-<summary>sub</summary>
+ <details>
+<summary>
 
+**`sub(other: Any)`**
 
-```python
-def sub(
-    other: Any,
-) -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2437)
+</summary>
 
 Equivalent to the - operator.
 
-**Categories:** numeric
+Example:
 
-**Parameters:**
-
-<ParamField path="other" type="Any" required>
-  value to subtract.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -1584,27 +1248,20 @@ Equivalent to the - operator.
 └──────┴──────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.tan"></a>
-<details>
-<summary>tan</summary>
+ <details>
+<summary>
 
+**`tan`**
 
-```python
-def tan() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2761)
+</summary>
 
 Calculate the tangent of the element value.
 
-**Categories:** numeric
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -1623,27 +1280,20 @@ Calculate the tangent of the element value.
 └─────┴───────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.tanh"></a>
-<details>
-<summary>tanh</summary>
+ <details>
+<summary>
 
+**`tanh`**
 
-```python
-def tanh() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2789)
+</summary>
 
 Calculate the hyperbolic tangent of the element value.
 
-**Categories:** numeric
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -1662,35 +1312,20 @@ Calculate the hyperbolic tangent of the element value.
 └─────┴──────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.truediv"></a>
-<details>
-<summary>truediv</summary>
+ <details>
+<summary>
 
+**`truediv(other: Any)`**
 
-```python
-def truediv(
-    other: Any,
-) -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2817)
+</summary>
 
 Equivalent to the float / operator.
 
-**Categories:** numeric
+Example:
 
-**Parameters:**
-
-<ParamField path="other" type="Any" required>
-  value to divide by.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -1714,6 +1349,5 @@ Equivalent to the float / operator.
 │ 2142.0 ┆ 714.0      │
 └────────┴────────────┘
 ```
-
 
 </details>

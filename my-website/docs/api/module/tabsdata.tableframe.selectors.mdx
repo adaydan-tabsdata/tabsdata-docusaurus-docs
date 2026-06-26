@@ -2,19 +2,38 @@
 title: "tabsdata.tableframe.selectors"
 ---
 
-import { ApiEntry, ParamField } from '@site/src/components/ApiField';
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # tabsdata.tableframe.selectors
 
- <ApiEntry id="tabsdata.tableframe.selectors.DeferredSelectorProxy" signature="DeferredSelectorProxy(indices: list[int], invert: bool = False)" kind="class" bases="SelectorProxy" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L32">
+ <details>
+<summary>
 
-</ApiEntry>
+**`DeferredSelectorProxy(indices: list[int], invert: bool = False)`**
 
- <ApiEntry id="tabsdata.tableframe.selectors.SelectorProxy" signature="SelectorProxy(expr: Expr | Expr)" kind="class" bases="Expr" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L26">
+</summary>
 
-</ApiEntry>
+Bases: SelectorProxy
 
- <ApiEntry id="tabsdata.tableframe.selectors.all" signature="all" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L68">
+</details>
+
+ <details>
+<summary>
+
+**`SelectorProxy(expr: Expr | Expr)`**
+
+</summary>
+
+Bases: [Expr](bymod-tabsdata.tableframe.expr.expr#tabsdata.tableframe.expr.expr.Expr)
+
+</details>
+
+ <details>
+<summary>
+
+**`all`**
+
+</summary>
 
 Select all columns in a TableFrame.
 
@@ -65,19 +84,16 @@ Selected:
 │ 8   ┆ “h”  │
 └─────┴──────┘
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.selectors.alpha" signature="alpha(ascii_only: bool = False, *, ignore_spaces: bool = False)" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L598">
+ <details>
+<summary>
+
+**`alpha(ascii_only: bool = False, *, ignore_spaces: bool = False)`**
+
+</summary>
 
 Select all columns with names made up of only alphabetic characters.
-
-<ParamField path="ascii_only">
-  Only consider alphabetic the ASCII letters.
-</ParamField>
-
-<ParamField path="ignore_spaces">
-  Consider only non-white characters in column names.
-</ParamField>
 
 Example
 
@@ -127,12 +143,6 @@ Selected:
 │ “Hana”  ┆  84   │
 └─────────┴───────┘
 
-</ApiEntry>
-
- <ApiEntry id="tabsdata.tableframe.selectors.alphanumeric" signature="alphanumeric(ascii_only: bool = False, *, ignore_spaces: bool = False)" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L658">
-
-Select all columns whose names contain only letters and digits.
-
 <ParamField path="ascii_only">
   Only consider alphabetic the ASCII letters.
 </ParamField>
@@ -140,6 +150,17 @@ Select all columns whose names contain only letters and digits.
 <ParamField path="ignore_spaces">
   Consider only non-white characters in column names.
 </ParamField>
+
+</details>
+
+ <details>
+<summary>
+
+**`alphanumeric(ascii_only: bool = False, *, ignore_spaces: bool = False)`**
+
+</summary>
+
+Select all columns whose names contain only letters and digits.
 
 Example
 
@@ -190,9 +211,22 @@ Selected:
 │  108   ┆  80   ┆ “h”   │
 └────────┴───────┴───────┘
 
-</ApiEntry>
+<ParamField path="ascii_only">
+  Only consider alphabetic the ASCII letters.
+</ParamField>
 
- <ApiEntry id="tabsdata.tableframe.selectors.binary" signature="binary" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1227">
+<ParamField path="ignore_spaces">
+  Consider only non-white characters in column names.
+</ParamField>
+
+</details>
+
+ <details>
+<summary>
+
+**`binary`**
+
+</summary>
 
 Select all columns of binary (bytes) data type.
 
@@ -243,9 +277,14 @@ Selected:
 │ b”H8”  │
 └────────┘
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.selectors.boolean" signature="boolean" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1279">
+ <details>
+<summary>
+
+**`boolean`**
+
+</summary>
 
 Select all columns of boolean data type.
 
@@ -296,9 +335,14 @@ Selected:
 │ false   │
 └─────────┘
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.selectors.by_dtype" signature="by_dtype(*dtypes: td_typing.DataType | PythonDataType | Iterable[td_typing.DataType] | Iterable[PythonDataType])" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L788">
+ <details>
+<summary>
+
+**`by_dtype(*dtypes: td_typing.DataType | PythonDataType | Iterable[td_typing.DataType] | Iterable[PythonDataType])`**
+
+</summary>
 
 Select all columns of the specified data type.
 
@@ -351,31 +395,16 @@ Selected:
 │ 89.0  │
 └───────┘
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.selectors.by_index" signature="by_index(*indices: int | range | Sequence[int | range])" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L229">
+ <details>
+<summary>
+
+**`by_index(*indices: int | range | Sequence[int | range])`**
+
+</summary>
 
 Select columns by their position in the TableFrame.
-
-<ParamField path="indices">
-  One or more integer positions or ranges. Negative indexes are
-</ParamField>
-
-<ParamField path="supported" type="indicating last column">
-  
-</ParamField>
-
-<ParamField path="-1" type="ranging from">
-  (ranging from)
-</ParamField>
-
-<ParamField path="columns}" type="-{number of">
-  (-\{number of)
-</ParamField>
-
-<ParamField path="fail." type="absolute value">
-  
-</ParamField>
 
 Example
 
@@ -426,19 +455,36 @@ Selected:
 │ “H”  ┆ 89.5  │
 └──────┴───────┘
 
-</ApiEntry>
+<ParamField path="indices">
+  One or more integer positions or ranges. Negative indexes are
+</ParamField>
 
- <ApiEntry id="tabsdata.tableframe.selectors.by_name" signature="by_name(*names: str | Collection[str], require_all: bool = True)" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L311">
+<ParamField path="supported" type="indicating last column">
+  
+</ParamField>
+
+<ParamField path="-1" type="ranging from">
+  (ranging from)
+</ParamField>
+
+<ParamField path="columns&#125;" type="-&#123;number of">
+  
+</ParamField>
+
+<ParamField path="fail." type="absolute value">
+  
+</ParamField>
+
+</details>
+
+ <details>
+<summary>
+
+**`by_name(*names: str | Collection[str], require_all: bool = True)`**
+
+</summary>
 
 Select all columns whose names match any given names.
-
-<ParamField path="names">
-  One or more column names to include.
-</ParamField>
-
-<ParamField path="require_all">
-  If True, raises an error if any name is missing.
-</ParamField>
 
 Example
 
@@ -489,9 +535,22 @@ Selected:
 │ “Hugo” ┆ 89.5  │
 └────────┴───────┘
 
-</ApiEntry>
+<ParamField path="names">
+  One or more column names to include.
+</ParamField>
 
- <ApiEntry id="tabsdata.tableframe.selectors.categorical" signature="categorical" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1331">
+<ParamField path="require_all">
+  If True, raises an error if any name is missing.
+</ParamField>
+
+</details>
+
+ <details>
+<summary>
+
+**`categorical`**
+
+</summary>
 
 Select all columns with categorical data type.
 
@@ -545,9 +604,14 @@ Selected:
 │ “B”      │
 └──────────┘
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.selectors.contains" signature="contains(*substring: str)" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L372">
+ <details>
+<summary>
+
+**`contains(*substring: str)`**
+
+</summary>
 
 Select all columns whose names contain one or more of the given substrings.
 
@@ -596,9 +660,14 @@ Selected:
 │ 8      ┆ “H”      │
 └────────┴──────────┘
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.selectors.date" signature="date" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1386">
+ <details>
+<summary>
+
+**`date`**
+
+</summary>
 
 Select all columns of date data type.
 
@@ -667,40 +736,16 @@ Selected:
 │ 2023-01-08 │
 └────────────┘
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.selectors.datetime" signature="datetime(time_unit: Literal['ns', 'us', 'ms'] | Collection[Literal['ns', 'us', 'ms']] | None = None, time_zone: str | timezone | Collection[str | timezone | None] | None = ('*', None))" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1456">
+ <details>
+<summary>
+
+**`datetime(time_unit: Literal['ns', 'us', 'ms'] | Collection[Literal['ns', 'us', 'ms']] | None = None, time_zone: str | timezone | Collection[str | timezone | None] | None = ('*', None))`**
+
+</summary>
 
 Select all columns of datetime data type.
-
-<ParamField path="time_unit">
-  One or more of the supported time precision units:
-“ms”, “us”, or “ns”.
-If omitted, selects datetime columns with any time unit.
-</ParamField>
-
-<ParamField path="time_zone">
-  Specifies which time zone(s) to match:
-
-Pass one or more valid time zone strings (as defined by the
-zoneinfo module).
-To list all available zones, use
-import zoneinfo; zoneinfo.available_timezones().
-Use None to select datetime columns with no time zone.
-Use "*" to match any column with any time zone.
-</ParamField>
-
-<ParamField path="">
-  
-</ParamField>
-
-<ParamField path="">
-  
-</ParamField>
-
-<ParamField path="">
-  
-</ParamField>
 
 Example
 
@@ -769,9 +814,43 @@ Selected:
 │ 2024-01-08 16:00:00+00:00 │
 └───────────────────────────┘
 
-</ApiEntry>
+<ParamField path="time_unit">
+  One or more of the supported time precision units:
+“ms”, “us”, or “ns”.
+If omitted, selects datetime columns with any time unit.
+</ParamField>
 
- <ApiEntry id="tabsdata.tableframe.selectors.decimal" signature="decimal" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1550">
+<ParamField path="time_zone">
+  Specifies which time zone(s) to match:
+
+Pass one or more valid time zone strings (as defined by the
+zoneinfo module).
+To list all available zones, use
+import zoneinfo; zoneinfo.available_timezones().
+Use None to select datetime columns with no time zone.
+Use "*" to match any column with any time zone.
+</ParamField>
+
+<ParamField path="">
+  
+</ParamField>
+
+<ParamField path="">
+  
+</ParamField>
+
+<ParamField path="">
+  
+</ParamField>
+
+</details>
+
+ <details>
+<summary>
+
+**`decimal`**
+
+</summary>
 
 Select all columns of decimal data type.
 
@@ -827,9 +906,14 @@ Selected:
 │ 11.45  │
 └────────┘
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.selectors.digit" signature="digit(ascii_only: bool = False)" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L723">
+ <details>
+<summary>
+
+**`digit(ascii_only: bool = False)`**
+
+</summary>
 
 Select all columns whose names consist only of digit characters.
 
@@ -882,9 +966,14 @@ Selected:
 │ 800  ┆ 8   │
 └──────┴─────┘
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.selectors.duration" signature="duration(time_unit: Literal['ns', 'us', 'ms'] | Collection[Literal['ns', 'us', 'ms']] | None = None)" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1607">
+ <details>
+<summary>
+
+**`duration(time_unit: Literal['ns', 'us', 'ms'] | Collection[Literal['ns', 'us', 'ms']] | None = None)`**
+
+</summary>
 
 Select all columns of duration data type.
 
@@ -945,9 +1034,14 @@ Selected:
 │ 40s      │
 └──────────┘
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.selectors.ends_with" signature="ends_with(*suffix: str)" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L482">
+ <details>
+<summary>
+
+**`ends_with(*suffix: str)`**
+
+</summary>
 
 Select all columns whose names end with any of the given suffixes.
 
@@ -1000,23 +1094,16 @@ Selected:
 │ 8    ┆ 107    ┆ 208       │
 └──────┴────────┴───────────┘
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.selectors.exclude" signature="exclude(columns: str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr | Collection[str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr], *more_columns: str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr)" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1856">
+ <details>
+<summary>
+
+**`exclude(columns: str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr | Collection[str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr], *more_columns: str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr)`**
+
+</summary>
 
 Exclude specific columns from selection by name, data type, expression, or selector.
-
-<ParamField path="columns">
-  A single column identifier or a collection of them. This can include:
-- Column names as strings
-- Data types
-- Selector functions
-- Supported expressions
-</ParamField>
-
-<ParamField path="*more_columns">
-  Additional column identifiers passed as positional arguments.
-</ParamField>
 
 Example
 
@@ -1067,9 +1154,26 @@ Selected:
 │ 8   ┆ “H”  │
 └───═─┴──────┘
 
-</ApiEntry>
+<ParamField path="columns">
+  A single column identifier or a collection of them. This can include:
+- Column names as strings
+- Data types
+- Selector functions
+- Supported expressions
+</ParamField>
 
- <ApiEntry id="tabsdata.tableframe.selectors.first" signature="first" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L120">
+<ParamField path="*more_columns">
+  Additional column identifiers passed as positional arguments.
+</ParamField>
+
+</details>
+
+ <details>
+<summary>
+
+**`first`**
+
+</summary>
 
 Select the first column in the TableFrame.
 
@@ -1121,9 +1225,14 @@ Selected:
 │ 108 │
 └─────┘
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.selectors.float" signature="float" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1019">
+ <details>
+<summary>
+
+**`float`**
+
+</summary>
 
 Select all columns of float data types.
 
@@ -1175,9 +1284,14 @@ Selected:
 │ 86.5  │
 └───────┘
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.selectors.integer" signature="integer" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L854">
+ <details>
+<summary>
+
+**`integer`**
+
+</summary>
 
 Select all columns with integer data types.
 
@@ -1230,9 +1344,14 @@ Selected:
 │ 8  ┆ 2     │
 └────┴───────┘
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.selectors.last" signature="last" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L173">
+ <details>
+<summary>
+
+**`last`**
+
+</summary>
 
 Select the last column in the TableFrame.
 
@@ -1287,9 +1406,14 @@ Selected:
 │ 87.5  │
 └───────┘
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.selectors.matches" signature="matches(pattern: str)" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L539">
+ <details>
+<summary>
+
+**`matches(pattern: str)`**
+
+</summary>
 
 Select all columns whose names match a regular expression pattern.
 
@@ -1342,9 +1466,14 @@ Selected:
 │ 8    ┆ 1    │
 └──────┴──────┘
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.selectors.numeric" signature="numeric" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1072">
+ <details>
+<summary>
+
+**`numeric`**
+
+</summary>
 
 Select all columns of numeric data types.
 
@@ -1399,9 +1528,14 @@ Selected:
 │ 8  ┆ 89.0   │
 └────┴────────┘
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.selectors.object" signature="object" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1679">
+ <details>
+<summary>
+
+**`object`**
+
+</summary>
 
 Select all columns of object data type.
 
@@ -1427,14 +1561,14 @@ Original:
 │ —        ┆ —        │
 │ object     ┆ date       │
 ╞════════════╪════════════╡
-│ \{“a”: 1\}   ┆ 2024-01-01 │
-│ \{“b”: 2\}   ┆ 2024-01-02 │
-│ \{“c”: 3\}   ┆ 2024-01-03 │
-│ \{“d”: 4\}   ┆ 2024-01-04 │
-│ \{“e”: 5\}   ┆ 2024-01-05 │
-│ \{“f”: 6\}   ┆ 2024-01-06 │
-│ \{“g”: 7\}   ┆ 2024-01-07 │
-│ \{“h”: 8\}   ┆ 2024-01-08 │
+│ &#123;“a”: 1&#125;   ┆ 2024-01-01 │
+│ &#123;“b”: 2&#125;   ┆ 2024-01-02 │
+│ &#123;“c”: 3&#125;   ┆ 2024-01-03 │
+│ &#123;“d”: 4&#125;   ┆ 2024-01-04 │
+│ &#123;“e”: 5&#125;   ┆ 2024-01-05 │
+│ &#123;“f”: 6&#125;   ┆ 2024-01-06 │
+│ &#123;“g”: 7&#125;   ┆ 2024-01-07 │
+│ &#123;“h”: 8&#125;   ┆ 2024-01-08 │
 └────────────┴────────────┘
 
 ```text
@@ -1447,19 +1581,24 @@ Selected:
 │ —        │
 │ object     │
 ╞════════════╡
-│ \{“a”: 1\}   │
-│ \{“b”: 2\}   │
-│ \{“c”: 3\}   │
-│ \{“d”: 4\}   │
-│ \{“e”: 5\}   │
-│ \{“f”: 6\}   │
-│ \{“g”: 7\}   │
-│ \{“h”: 8\}   │
+│ &#123;“a”: 1&#125;   │
+│ &#123;“b”: 2&#125;   │
+│ &#123;“c”: 3&#125;   │
+│ &#123;“d”: 4&#125;   │
+│ &#123;“e”: 5&#125;   │
+│ &#123;“f”: 6&#125;   │
+│ &#123;“g”: 7&#125;   │
+│ &#123;“h”: 8&#125;   │
 └────────────┘
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.selectors.signed_integer" signature="signed_integer" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L908">
+ <details>
+<summary>
+
+**`signed_integer`**
+
+</summary>
 
 Select all columns of signed integer data types.
 
@@ -1512,9 +1651,14 @@ Selected:
 │ 17     ┆ 1      │
 └────────┴────────┘
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.selectors.starts_with" signature="starts_with(*prefix: str)" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L425">
+ <details>
+<summary>
+
+**`starts_with(*prefix: str)`**
+
+</summary>
 
 Select all columns whose names start with any of the given prefixes.
 
@@ -1567,9 +1711,14 @@ Selected:
 │ “Hana”   ┆ 89       │
 └──────────┴──────────┘
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.selectors.string" signature="string(*, include_categorical: bool = False)" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1736">
+ <details>
+<summary>
+
+**`string(*, include_categorical: bool = False)`**
+
+</summary>
 
 Select all columns of string or categorical data type.
 
@@ -1621,9 +1770,14 @@ Selected:
 │ “Hugo” ┆ “SE”    │
 └────────┴─────────┘
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.selectors.temporal" signature="temporal" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1128">
+ <details>
+<summary>
+
+**`temporal`**
+
+</summary>
 
 Select all columns of temporal data types.
 
@@ -1716,9 +1870,14 @@ Selected:
 │ 2024-01-08 16:00:00+00:00 ┆ 2024-01-08  ┆ 0:35:00  ┆ 16:00:00  │
 └───────────────────────────┴─────────────┴──────────┴───────────┘
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.selectors.time" signature="time" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L1795">
+ <details>
+<summary>
+
+**`time`**
+
+</summary>
 
 Select columns of Python time values.
 
@@ -1773,9 +1932,14 @@ Selected:
 │ 16:55:00  │
 └───────────┘
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.selectors.unsigned_integer" signature="unsigned_integer" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/selectors.py#L962">
+ <details>
+<summary>
+
+**`unsigned_integer`**
+
+</summary>
 
 Select all columns of unsigned integer data types.
 
@@ -1830,4 +1994,4 @@ Selected:
 │ 17     ┆ 96    ┆ 0      │
 └────────┴───────┴────────┘
 
-</ApiEntry>
+</details>

@@ -1,48 +1,44 @@
 ---
 title: "Data Quality Action"
-sidebarTitle: "Data Quality Action"
-description: "Bases: OnTablesAction"
 ---
-import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
+# Data Quality Action
 
-<a id="tabsdata.dataquality.DataQuality"></a>
-<details>
-<summary>DataQuality</summary>
+ <details>
+<summary>
 
+**`DataQuality(table: str, classifiers: Classifier | list[Classifier], operators: Operator | list[Operator])`**
 
-```python
-class DataQuality(
-    table: str,
-    classifiers: Classifier | list [ Classifier ],
-    operators: Operator | list [ Operator ],
-)
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_dataquality.py#L30)
+</summary>
 
 Bases: `OnTablesAction`
 
 Represents a data quality action to be performed on a table.
 
-This class encapsulates a set of data quality rules, defined by classifiers and operators, that are applied to a specified table. It serves as a container for a complete data quality workflow.
+This class encapsulates a set of data quality rules, defined by classifiers
+and operators, that are applied to a specified table. It serves as a container
+for a complete data quality workflow.
 
-**Categories:** dq-action
+<details>
+<summary>`classifiers`</summary>
 
-<a id="tabsdata.dataquality.DataQuality.classifiers"></a>
-<ResponseField name="classifiers" type="list[Classifier]">
 Returns the list of classifiers used in this data quality action.
-</ResponseField>
 
-<a id="tabsdata.dataquality.DataQuality.operators"></a>
-<ResponseField name="operators" type="list[Operator]">
-Returns the list of operators that will be executed based on the classifier results.
-</ResponseField>
+</details>
 
-<a id="tabsdata.dataquality.DataQuality.table"></a>
-<ResponseField name="table" type="str">
+<details>
+<summary>`operators`</summary>
+
+Returns the list of operators that will be executed based on the
+classifier results.
+
+</details>
+
+<details>
+<summary>`table`</summary>
+
 Returns the name of the table targeted by this data quality action.
-</ResponseField>
 
+</details>
 
 </details>

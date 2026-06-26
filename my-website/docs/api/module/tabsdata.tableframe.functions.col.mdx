@@ -2,11 +2,18 @@
 title: "tabsdata.tableframe.functions.col"
 ---
 
-import { ApiEntry, ParamField, ResponseField } from '@site/src/components/ApiField';
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # tabsdata.tableframe.functions.col
 
- <ApiEntry id="tabsdata.tableframe.functions.col.Col" signature="Col" kind="class" bases="object" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/col.py#L56">
+ <details>
+<summary>
+
+**`Col`**
+
+</summary>
+
+Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
 This class is used to create TableFrame column expressions.
 
@@ -26,9 +33,16 @@ Example:
 &gt;&gt;&gt;
 &gt;&gt;&gt; tf = tf.with_columns(full_name=(td.col(“last_name”) + “, “ +     &gt;&gt;&gt;     td.col(“first_name”))
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.functions.col.Column" signature="Column(name: str | None = None, dtype: Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 = String)" kind="class" bases="object" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/col.py#L131">
+ <details>
+<summary>
+
+**`Column(name: str | None = None, dtype: Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 = String)`**
+
+</summary>
+
+Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
 Represents a single column definition in a `TableFrame`.
 
@@ -36,25 +50,6 @@ A Column defines both the **name** and the **data type** of a column,
 along with other relevant metadata in the future. This abstraction provides
 a consistent way to declare and validate schema definitions for TableFrame
 objects.
-
-<ParamField path="name" type="str">
-  The name of the column. Must be a valid string identifier for the
-TableFrame schema, or None if no name is provided.
-Defaults to None.
-</ParamField>
-
-<ParamField path="dtype" type="td_typing.DataType">
-  The expected data type for the column. This determines how values
-in the column will be interpreted, validated, and serialized.
-</ParamField>
-
-<ParamField path="name" type="str">
-  The name of the column, or None if no name was provided.
-</ParamField>
-
-<ParamField path="dtype" type="td_typing.DataType">
-  The declared data type of the column.
-</ParamField>
 
 Examples
 
@@ -80,12 +75,33 @@ customer_id Int64
 signup_date Datetime
 ```
 
-<ResponseField id="tabsdata.tableframe.functions.col.Column.dtype" name="dtype" type="Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64">
+<details>
+<summary>`dtype`</summary>
 
-</ResponseField>
+</details>
 
-<ResponseField id="tabsdata.tableframe.functions.col.Column.name" name="name" type="str | None">
+<details>
+<summary>`name`</summary>
 
-</ResponseField>
+</details>
 
-</ApiEntry>
+<ParamField path="name" type="str">
+  The name of the column. Must be a valid string identifier for the
+TableFrame schema, or None if no name is provided.
+Defaults to None.
+</ParamField>
+
+<ParamField path="dtype" type="td_typing.DataType">
+  The expected data type for the column. This determines how values
+in the column will be interpreted, validated, and serialized.
+</ParamField>
+
+<ParamField path="name" type="str">
+  The name of the column, or None if no name was provided.
+</ParamField>
+
+<ParamField path="dtype" type="td_typing.DataType">
+  The declared data type of the column.
+</ParamField>
+
+</details>

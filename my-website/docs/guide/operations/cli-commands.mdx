@@ -1,152 +1,169 @@
 ---
 title: "CLI Reference"
-sidebarTitle: "CLI Reference"
 ---
 
-The document below, covers the major commands and sub-commands to work with Tabsdata Command Line Interface (CLI). For more options, please use `-h`/`--help` option in the CLI to obtain the full list and description of commands and their options.
+# CLI Reference
 
-Tabsdata provides 2 CLI tools:
+ The document below, covers the major commands and sub-commands to work with Tabsdata Command Line Interface (CLI). For more options, please use `-h`/`--help` option in the CLI to obtain the full list and description of commands and their options.
 
-- `tdserver` - Tabsdata Server CLI
+ Tabsdata provides 2 CLI tools:
+
+ - `tdserver` - Tabsdata Server CLI
 - `td` - Tabsdata Client CLI
 
+  
 ## Tabsdata Server CLI tdserver
 
-The `tdserver` CLI is used to manage the Tabsdata server.
+ The `tdserver` CLI is used to manage the Tabsdata server.
 
-It provides the following commands:
+ It provides the following commands:
 
-- `start` - Start the Tabsdata server.
+ - `start` - Start the Tabsdata server.
 - `stop` - Stop the Tabsdata server.
 - `status` - Get the status of the Tabsdata server.
 - `logs` - Get the logs of the Tabsdata server.
 
-:::note
-You can use `tdserver status --metrics` to access the report on disk utilization.
-:::
+ **Note**: You can use `tdserver status --metrics` to access the report on disk utilization.
 
+   
 ## Tabsdata Client CLI td
 
-The `td` CLI is used to interact with a Tabsdata server.
+ The `td` CLI is used to interact with a Tabsdata server.
 
-The `td` CLI works with options and in interactive mode if the options are not provided.
+ The `td` CLI works with options and in interactive mode if the options are not provided.
 
+  
 ### Interactive Mode
 
-By default, the `td` CLI enters interactive mode if there is a required option that is missing.
+ By default, the `td` CLI enters interactive mode if there is a required option that is missing.
 
-To disable interactive mode, use the `--no-prompt` option immediately after the `td` command.
+ To disable interactive mode, use the `--no-prompt` option immediately after the `td` command.
 
+   
 ### Login to Server
 
-```python
+ ```python
 
 td login --server localhost:2457 --username <USER> --role <ROLE> --password <PASSWORD>
 ```
 
-**Default:**
+ **Default:**
 
-```python
+ ```python
 td login --server localhost:2457 --username admin --role sys_admin --password tabsdata
 ```
 
-The port number is optional, if not provided, the default port number `2457` is used.
+ The port number is optional, if not provided, the default port number `2457` is used.
 
-User, role and password immediately after installation are `admin`, `sys_admin` and `tabsdata` respectively.
+ User, role and password immediately after installation are `admin`, `sys_admin` and `tabsdata` respectively.
 
-The user session token is stored in the `~/.tabsdata.connection.json` directory.
+ The user session token is stored in the `~/.tabsdata.connection.json` directory.
 
-After a successful login, the user remains logged in until the `td logout` command is executed or
+ After a successful login, the user remains logged in until the `td logout` command is executed or
 
-until the session expires (2 hours after login)
+ until the session expires (2 hours after login)
 
+   
 ### Logout from Server
 
-```python
+ ```python
 
 td logout
 ```
 
-Terminates the current session if any.
+ Terminates the current session if any.
 
+   
 ### User Sub-Commands
 
+  
 #### Create a User
 
-```python
+ ```python
 
 td user create <NAME> --password <PASSWORD> --full-name <FULL_NAME> --email <EMAIL>
 ```
 
-Password must be at least 8 characters long.
+ Password must be at least 8 characters long.
 
+   
 #### Show User Info
 
-```python
+ ```python
 
 td user info <NAME>
 ```
 
+   
 #### List Users
 
-```python
+ ```python
 
 td user list
 ```
 
+   
 #### Update User
 
-```python
+ ```python
 
 td user update <NAME> -full-name <NEW_FULL_NAME> --email <NEW_EMAIL>
 ```
 
-Password must be at least 8 characters long.
+ Password must be at least 8 characters long.
 
+   
 #### Delete User
 
-```python
+ ```python
 
 td user delete <NAME> -confirm delete
 ```
 
+    
 ### Collection Management Commands
 
+  
 #### Collection Sub-Commands
 
-```python
+ ```python
 
 td collection create --name <NAME> --description <DESCRIPTION>
 ```
 
-Password must be at least 8 characters long.
+ Password must be at least 8 characters long.
 
+   
 #### Show Collection Info
 
-```python
+ ```python
 
 td collection info --name <NAME>
 ```
 
+   
 #### List Collections
 
-```python
+ ```python
 
 td collection list
 ```
 
+   
 #### Update Collection
 
-```python
+ ```python
 
 td collection update --name <NAME> --new-name <NEW_NAME> --description <NEW_DESCRIPTION>
 ```
 
+    
 ### Functions Sub-Commands
 
+  
 #### Register a Function
 
-```python
+ ```python
 
 td fn register --coll examples --path <PYTHON_FILE>::<PYTHON_FUNCTION>
 
@@ -155,15 +172,16 @@ td fn register --coll examples --path <PYTHON_FILE>::<PYTHON_FUNCTION>
 --requirements <REQUIREMENTS_TXT_PATH>
 ```
 
-Use the `--local-pkg` option to specify the path to local packages not available in PyPi.
+ Use the `--local-pkg` option to specify the path to local packages not available in PyPi.
 
-Use the `--requirements` option to specify the path to a `requirements.txt` file switching
+ Use the `--requirements` option to specify the path to a `requirements.txt` file switching
 
-off automatic requirements detection.
+ off automatic requirements detection.
 
+   
 #### Update a Function
 
-```python
+ ```python
 
 td fn update --coll examples --name <FUNCTION> 
 
@@ -174,122 +192,137 @@ td fn update --coll examples --name <FUNCTION>
                --requirements <REQUIREMENTS_TXT_PATH>
 ```
 
-Use the `--local-pkg` option to specify the path to local packages not available in PyPi.
+ Use the `--local-pkg` option to specify the path to local packages not available in PyPi.
 
-Use the `--requirements` option to specify the path to a `requirements.txt` file switching
+ Use the `--requirements` option to specify the path to a `requirements.txt` file switching
 
-off automatic requirements detection.
+ off automatic requirements detection.
 
+   
 #### Show Function Info (current)
 
-```python
+ ```python
 
 td fn info --coll <COLLECTION> --name <FUNCTION> 
 ```
 
+   
 #### Show Function Info History
 
-```python
+ ```python
 
 td fn info --coll <COLLECTION> --name <FUNCTION> --history
 ```
 
+   
 #### List Functions
 
-```python
+ ```python
 
 td fn list --coll <COLLECTION> 
 ```
 
+    
 ### Execution Management Sub-Commands
 
+  
 #### Trigger a Function
 
-```python
+ ```python
 
 td fn trigger --coll <COLLECTION> --name <FUNCTION>
 ```
 
+   
 #### Listing Transactions
 
-```python
+ ```python
 
 td exe list-trx
 ```
 
+   
 #### Listing Execution Plans
 
-```python
+ ```python
 
 td exe list-plan
 ```
 
+   
 #### Listing Workers
 
-```python
+ ```python
 
 td exe list-worker --<BY> <ID>
 ```
 
-Where option `<BY>` can be (only one can be used in a single command):
+ Where option `<BY>` can be (only one can be used in a single command):
 
-- `--data-ver` must be the data version ID the worker generated.
-- `--plan` must be the execution plan ID that runs the worker.
-- `--fn` must be the function ID of the worker.
-- `--trx` must be the transaction that runs the worker.
+ - `--data-ver`  must be the data version ID the worker generated.
+- `--plan`  must be the execution plan ID that runs the worker.
+- `--fn`  must be the function ID of the worker.
+- `--trx`  must be the transaction that runs the worker.
 
+   
 #### Cancel a Transaction
 
-```python
+ ```python
 
 td exe cancel --trx <TRX_ID>
 ```
 
-It cancels a running or failed transaction. All workers of the transaction will be discarded,
+ It cancels a running or failed transaction. All workers of the transaction will be discarded,
 
-regardless of their status and any data generated by them will be discarded as well.
+ regardless of their status and any data generated by them will be discarded as well.
 
-All transactions that are dependent on data of the canceled transaction will be canceled as well.
+ All transactions that are dependent on data of the canceled transaction will be canceled as well.
 
+   
 #### Recover a Transaction
 
-```python
+ ```python
 
 td exe recover --trx <TRX_ID>
 ```
 
-It recovers a failed transaction. All workers in failed or hold state will be retried.
+ It recovers a failed transaction. All workers in failed or hold state will be retried.
 
-All transactions that are dependent and where on hold will be retried as well.
+ All transactions that are dependent and where on hold will be retried as well.
 
+   
 #### Viewing the logs of a Worker
 
-```python
+ ```python
 
 td exe logs --worker <WORKER_ID>
 ```
 
-Use the `td exe list-trx`, `td exe list-plan`, and `td exe list-worker` to find the desired worker ID.
+ Use the `td exe list-trx`, `td exe list-plan`, and `td exe list-worker` to find the  desired worker ID.
 
+    
 ### View Table Data
 
+  
 #### View A Table Schema
 
-```python
+ ```python
 
 td table schema --coll <COLLECTION> --name <TABLE>
 ```
 
+   
 #### View A Table Sample
 
-```python
+ ```python
 
 td table sample --coll <COLLECTION> --name <TABLE>
 ```
 
+   
 #### Download A Table Data
 
-```python
+ ```python
 
 td table download --coll <COLLECTION> --name <TABLE> --file <FILE>
 ```

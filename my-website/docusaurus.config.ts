@@ -2,6 +2,9 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+const isGitHubPages = process.env.GITHUB_PAGES === 'true';
+const baseUrl = isGitHubPages ? '/tabsdata-docusaurus-docs/' : '/';
+
 const config: Config = {
   title: 'Tabsdata',
   tagline: 'Documentation',
@@ -12,7 +15,7 @@ const config: Config = {
   },
 
   url: 'https://adaydan-tabsdata.github.io',
-  baseUrl: '/tabsdata-docusaurus-docs/',
+  baseUrl,
   organizationName: 'adaydan-tabsdata',
   projectName: 'tabsdata-docusaurus-docs',
 
@@ -52,7 +55,7 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'Tabsdata',
+      title: '',
       logo: {
         alt: 'Tabsdata Logo',
         src: 'img/logo-light.svg',
@@ -76,6 +79,10 @@ const config: Config = {
           sidebarId: 'apiSidebar',
           position: 'left',
           label: 'API Reference',
+        },
+        {
+          type: 'custom-os-toggle',
+          position: 'right',
         },
         {
           type: 'docsVersionDropdown',

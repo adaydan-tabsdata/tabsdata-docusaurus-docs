@@ -2,65 +2,110 @@
 title: "tabsdata.tableframe"
 ---
 
-import { ApiEntry } from '@site/src/components/ApiField';
-
 # tabsdata.tableframe
 
- <ApiEntry id="tabsdata.tableframe.SysCol" signature="SysCol(*values)" kind="class" bases="StrEnum" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/_constants.py#L189">
+ <details>
+<summary>
 
-</ApiEntry>
+**`SysCol(*values)`**
 
- <ApiEntry id="tabsdata.tableframe.empty" signature="empty" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/builders.py#L20">
+</summary>
+
+Bases: [StrEnum](https://docs.python.org/3/library/enum.html#enum.StrEnum)
+
+</details>
+
+ <details>
+<summary>
+
+**`empty`**
+
+</summary>
 
 Creates an empty (no column - no row) TableFrame.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.from_dict" signature="from_dict(data: Mapping[str, Sequence[object] | Mapping[str, Sequence[object]]] | None = None)" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/builders.py#L54">
+ <details>
+<summary>
+
+**`from_dict(data: Mapping[str, Sequence[object] | Mapping[str, Sequence[object]]] | None = None)`**
+
+</summary>
 
 Creates tableframe from a dictionary, or None.
 None produces as an empty (no column - no row) tableframe.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.from_pandas" signature="from_pandas(data: pd.DataFrame | None = None)" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/builders.py#L43">
+ <details>
+<summary>
+
+**`from_pandas(data: pd.DataFrame | None = None)`**
+
+</summary>
 
 Creates tableframe from a pandas dataframe, or None.
 None produces as an empty (no column - no row) tableframe.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.from_polars" signature="from_polars(data: LazyFrame | DataFrame | None = None)" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/builders.py#L32">
+ <details>
+<summary>
+
+**`from_polars(data: LazyFrame | DataFrame | None = None)`**
+
+</summary>
 
 Creates tableframe from a polars dataframe or lazyframe, or None.
 None produces as an empty (no column - no row) tableframe.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.to_dict" signature="to_dict(data: TableFrame)" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/builders.py#L98">
+ <details>
+<summary>
+
+**`to_dict(data: TableFrame)`**
+
+</summary>
 
 Creates dictionary from a tableframe, or None.
 None produces and empty (no key) dictionary.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.to_pandas" signature="to_pandas(data: td_frame.TableFrame)" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/builders.py#L87">
+ <details>
+<summary>
+
+**`to_pandas(data: td_frame.TableFrame)`**
+
+</summary>
 
 Creates pandas dataframe from a tableframe, or None.
 None produces and empty (no column - no row) pandas dataframe.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.to_polars_df" signature="to_polars_df(data: TableFrame)" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/builders.py#L76">
+ <details>
+<summary>
+
+**`to_polars_df(data: TableFrame)`**
+
+</summary>
 
 Creates polars dataframe from a tableframe, or None.
 None produces and empty (no column - no row) polars dataframe.
 
-</ApiEntry>
+</details>
 
- <ApiEntry id="tabsdata.tableframe.to_polars_lf" signature="to_polars_lf(data: TableFrame)" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/builders.py#L65">
+ <details>
+<summary>
+
+**`to_polars_lf(data: TableFrame)`**
+
+</summary>
 
 Creates polars lazyframe from a tableframe, or None.
 None produces and empty (no column - no row) polars lazyframe.
 
-</ApiEntry>
+</details>

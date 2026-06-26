@@ -1,288 +1,207 @@
 ---
 title: "Operations"
-sidebarTitle: "Operations"
-description: "Operations API reference."
 ---
-import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
+# Operations
 
-<a id="tabsdata.dataquality.AllOk"></a>
-<details>
-<summary>AllOk</summary>
+ <details>
+<summary>
 
+**`AllOk(none_is_ok: bool = False, nan_is_ok: bool = False, *, tags: str | list[str] | None = None)`**
 
-```python
-class AllOk(
-    none_is_ok: bool = False,
-    nan_is_ok: bool = False,
-    *,
-    tags: str | list [ str ] | None = None,
-)
-```
+</summary>
 
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L170)
+Bases: [BoolCriteria](bymod-tabsdata.dataquality#tabsdata.dataquality.BoolCriteria)
 
-Bases: [`BoolCriteria`](/versions/1.9.1/api/module/tabsdata-dataquality#tabsdata.dataquality.BoolCriteria)
-
-A boolean criteria that selects records where all boolean classifiers pass (True).
-
-**Categories:** dq-operator
-
+A boolean criteria that selects records where all boolean classifiers
+pass (True).
 
 </details>
 
-<a id="tabsdata.dataquality.AnyFailed"></a>
-<details>
-<summary>AnyFailed</summary>
+ <details>
+<summary>
 
+**`AnyFailed(none_is_ok: bool = False, nan_is_ok: bool = False, *, tags: str | list[str] | None = None)`**
 
-```python
-class AnyFailed(
-    none_is_ok: bool = False,
-    nan_is_ok: bool = False,
-    *,
-    tags: str | list [ str ] | None = None,
-)
-```
+</summary>
 
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L197)
+Bases: [BoolCriteria](bymod-tabsdata.dataquality#tabsdata.dataquality.BoolCriteria)
 
-Bases: [`BoolCriteria`](/versions/1.9.1/api/module/tabsdata-dataquality#tabsdata.dataquality.BoolCriteria)
-
-A boolean criteria that selects records where at least one boolean classifier fails (False).
-
-**Categories:** dq-operator
-
+A boolean criteria that selects records where at least one boolean
+classifier fails (False).
 
 </details>
 
-<a id="tabsdata.dataquality.Enrich"></a>
-<details>
-<summary>Enrich</summary>
+ <details>
+<summary>
 
+**`Enrich(to_table: str | None = None, *, tags: str | list[str] | None = None)`**
 
-```python
-class Enrich(
-    to_table: str | None = None,
-    *,
-    tags: str | list [ str ] | None = None,
-)
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L385)
+</summary>
 
 Bases: `TagOperator`
 
-An operator that adds the data quality classifier columns to the original table frame. It does not remove any row from the original table.
+An operator that adds the data quality classifier columns to the original
+table frame. It does not remove any row from the original table.
 
-**Categories:** dq-operator
+<details>
+<summary>`to_table`</summary>
 
-<a id="tabsdata.dataquality.Enrich.to_table"></a>
-<ResponseField name="to_table" type="str | None">
-Returns the destination table with the enriched data quality classifier columns. If None, the original table is used.
-</ResponseField>
-
+Returns the destination table with the enriched data quality classifier
+columns. If None, the original table is used.
 
 </details>
 
-<a id="tabsdata.dataquality.Fail"></a>
-<details>
-<summary>Fail</summary>
+</details>
 
+ <details>
+<summary>
 
-```python
-class Fail(
-    criteria: Criteria,
-    threshold: Threshold,
-)
-```
+**`Fail(criteria: Criteria, threshold: Threshold)`**
 
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L462)
+</summary>
 
 Bases: `CriteriaOperator`
 
-An operator that fails the current transaction if a data quality threshold is met.
+An operator that fails the current transaction if a data quality threshold
+is met.
 
-**Categories:** dq-operator
+<details>
+<summary>`threshold`</summary>
 
-<a id="tabsdata.dataquality.Fail.threshold"></a>
-<ResponseField name="threshold" type="Threshold">
 Returns the threshold for this Fail operation.
-</ResponseField>
-
 
 </details>
 
-<a id="tabsdata.dataquality.Filter"></a>
-<details>
-<summary>Filter</summary>
+</details>
 
+ <details>
+<summary>
 
-```python
-class Filter(
-    criteria: Criteria,
-    to_table: str | None = None,
-    include_quality_columns: Literal [ 'none' , 'criteria' , 'all' ] = 'none',
-)
-```
+**`Filter(criteria: Criteria, to_table: str | None = None, include_quality_columns: Literal['none', 'criteria', 'all'] = 'none')`**
 
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L502)
+</summary>
 
 Bases: `CriteriaOperator`
 
 An operator that filters rows from a table based on data quality criteria.
 
-The filtered rows are removed from the table being processed. They can either be discarded or redirected to another table.
+The filtered rows are removed from the table being processed. They can
+either be discarded or redirected to another table.
 
-**Categories:** dq-operator
+<details>
+<summary>`include_quality_columns`</summary>
 
-<a id="tabsdata.dataquality.Filter.include_quality_columns"></a>
-<ResponseField name="include_quality_columns" type="Literal['none', 'criteria', 'all']">
-Returns the data quality columns to included in the table with filtered out data.
-</ResponseField>
-
-<a id="tabsdata.dataquality.Filter.to_table"></a>
-<ResponseField name="to_table" type="str | None">
-Returns the destination table for filtered rows, or None if they are discarded.
-</ResponseField>
-
+Returns the data quality columns to included in the table with
+filtered out data.
 
 </details>
 
-<a id="tabsdata.dataquality.InBins"></a>
 <details>
-<summary>InBins</summary>
+<summary>`to_table`</summary>
 
-
-```python
-class InBins(
-    column_name: str,
-    bins: Annotated [ int , Strict ( strict = True ) , FieldInfo ( annotation = NoneType , required = True , metadata = [ Ge ( ge = 0 ) , Le ( le = 100 ) ] ) ] | Literal [ 'none' , 'nan' , 'underflow' , 'overflow' ] | Annotated [ list [ Annotated [ int , Strict ( strict = True ) , FieldInfo ( annotation = NoneType , required = True , metadata = [ Ge ( ge = 0 ) , Le ( le = 100 ) ] ) ] | Literal [ 'none' , 'nan' , 'underflow' , 'overflow' ] ] , Strict ],
-)
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L224)
-
-Bases: [`CategoryCriteria`](/versions/1.9.1/api/module/tabsdata-dataquality#tabsdata.dataquality.CategoryCriteria)
-
-A category criteria that selects records where the value in the specified columns falls into one of the given bins.
-
-**Categories:** dq-operator
-
+Returns the destination table for filtered rows, or None if they are
+discarded.
 
 </details>
 
-<a id="tabsdata.dataquality.NotInBins"></a>
-<details>
-<summary>NotInBins</summary>
+</details>
 
+ <details>
+<summary>
 
-```python
-class NotInBins(
-    column_name: str,
-    bins: Annotated [ int , Strict ( strict = True ) , FieldInfo ( annotation = NoneType , required = True , metadata = [ Ge ( ge = 0 ) , Le ( le = 100 ) ] ) ] | Literal [ 'none' , 'nan' , 'underflow' , 'overflow' ] | Annotated [ list [ Annotated [ int , Strict ( strict = True ) , FieldInfo ( annotation = NoneType , required = True , metadata = [ Ge ( ge = 0 ) , Le ( le = 100 ) ] ) ] | Literal [ 'none' , 'nan' , 'underflow' , 'overflow' ] ] , Strict ],
-)
-```
+**`InBins(column_name: str, bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow'] | Annotated[list[Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow']], Strict])`**
 
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L252)
+</summary>
 
-Bases: [`CategoryCriteria`](/versions/1.9.1/api/module/tabsdata-dataquality#tabsdata.dataquality.CategoryCriteria)
+Bases: [CategoryCriteria](bymod-tabsdata.dataquality#tabsdata.dataquality.CategoryCriteria)
 
-A category criteria that selects records where the value in the specified columns does not fall into any of the given bins.
-
-**Categories:** dq-operator
-
+A category criteria that selects records where the value in the specified
+columns falls into one of the given bins.
 
 </details>
 
-<a id="tabsdata.dataquality.PercentThreshold"></a>
-<details>
-<summary>PercentThreshold</summary>
+ <details>
+<summary>
 
+**`NotInBins(column_name: str, bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow'] | Annotated[list[Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow']], Strict])`**
 
-```python
-class PercentThreshold(
-    percent: Annotated [ int , Strict ( strict = True ) , FieldInfo ( annotation = NoneType , required = True , metadata = [ Ge ( ge = 0 ) , Le ( le = 100 ) ] ) ] | Annotated [ float , Strict ( strict = True ) , FieldInfo ( annotation = NoneType , required = True , metadata = [ Ge ( ge = 0 ) , Le ( le = 100 ) ] ) ],
-)
-```
+</summary>
 
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L318)
+Bases: [CategoryCriteria](bymod-tabsdata.dataquality#tabsdata.dataquality.CategoryCriteria)
 
-Bases: [`Threshold`](/versions/1.9.1/api/module/tabsdata-dataquality#tabsdata.dataquality.Threshold)
+A category criteria that selects records where the value in the specified
+columns does not fall into any of the given bins.
+
+</details>
+
+ <details>
+<summary>
+
+**`PercentThreshold(percent: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])])`**
+
+</summary>
+
+Bases: [Threshold](bymod-tabsdata.dataquality#tabsdata.dataquality.Threshold)
 
 A threshold based on a percentage of total rows.
 
-**Categories:** dq-operator
+<details>
+<summary>`percent`</summary>
 
-<a id="tabsdata.dataquality.PercentThreshold.percent"></a>
-<ResponseField name="percent" type="float">
 Returns the percentage for the threshold.
-</ResponseField>
-
 
 </details>
 
-<a id="tabsdata.dataquality.Select"></a>
-<details>
-<summary>Select</summary>
+</details>
 
+ <details>
+<summary>
 
-```python
-class Select(
-    criteria: Criteria,
-    to_table: str,
-    include_quality_columns: Literal [ 'none' , 'criteria' , 'all' ] = 'none',
-)
-```
+**`Select(criteria: Criteria, to_table: str, include_quality_columns: Literal['none', 'criteria', 'all'] = 'none')`**
 
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L572)
+</summary>
 
 Bases: `CriteriaOperator`
 
-An operator that selects rows based on data quality criteria and writes them to another table.
+An operator that selects rows based on data quality criteria and writes
+them to another table.
 
 This operation does not modify the original table.
 
-**Categories:** dq-operator
+<details>
+<summary>`include_quality_columns`</summary>
 
-<a id="tabsdata.dataquality.Select.include_quality_columns"></a>
-<ResponseField name="include_quality_columns" type="Literal['none', 'criteria', 'all']">
-Returns the data quality columns to included in the table with selected data.
-</ResponseField>
-
-<a id="tabsdata.dataquality.Select.to_table"></a>
-<ResponseField name="to_table" type="str">
-Returns the destination table for the selected rows.
-</ResponseField>
-
+Returns the data quality columns to included in the table with
+selected data.
 
 </details>
 
-<a id="tabsdata.dataquality.Summary"></a>
 <details>
-<summary>Summary</summary>
+<summary>`to_table`</summary>
 
+Returns the destination table for the selected rows.
 
-```python
-class Summary(
-    table: str | None = None,
-    *,
-    tags: str | list [ str ] | None = None,
-)
-```
+</details>
 
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L640)
+</details>
+
+ <details>
+<summary>
+
+**`Summary(table: str | None = None, *, tags: str | list[str] | None = None)`**
+
+</summary>
 
 Bases: `TagOperator`
 
 An operator that generates a data quality summary report for a table.
 
-**Categories:** dq-operator
+<details>
+<summary>`table`</summary>
 
-<a id="tabsdata.dataquality.Summary.table"></a>
-<ResponseField name="table" type="str | None">
 Returns the name of the data quality summary table.
-</ResponseField>
 
+</details>
 
 </details>

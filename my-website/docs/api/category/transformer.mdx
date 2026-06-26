@@ -1,57 +1,50 @@
 ---
 title: "Transformer"
-sidebarTitle: "Transformer"
-description: "Transformer API reference."
 ---
+
 import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
+# Transformer
 
-<a id="tabsdata.transformer"></a>
-<details>
-<summary>transformer</summary>
+ <details>
+<summary>
 
+**`transformer(input_tables: TableInput | str | List[str], output_tables: TableOutput | str | List[str], name: str = None, trigger_by: TransformerTriggerBySpec = '*', on_output_tables: OnTablesSpec = None)`**
 
-```python
-def transformer(
-    input_tables: TableInput | str | List [ str ],
-    output_tables: TableOutput | str | List [ str ],
-    name: str = None,
-    trigger_by: TransformerTriggerBySpec = '*',
-    on_output_tables: OnTablesSpec = None,
-) -> callable
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_decorators.py#L52)
+</summary>
 
 Decorator to define a function to transform data present in Tabsdata.
 
-**Categories:** transformer
-
-**Parameters:**
-
-<ParamField path="input_tables" type="TableInput | str | List [ str ]" required>
-  Where to obtain the data that will be provided as an input to the function.
+<ParamField path="input_tables" type="TableInput">
+  Where to obtain the data that
+will be provided as an input to the function.
 </ParamField>
 
-<ParamField path="output_tables" type="TableOutput | str | List [ str ]" required>
-  Where to store the output of the function.
+<ParamField path="output_tables" type="TableOutput">
+  Where to store the
+output of the function.
 </ParamField>
 
-<ParamField path="name" type="str" default="None">
-  The name with which the function will be registered. If not provided, the current function name will be used.
+<ParamField path="name" type="str">
+  The name with which the function will be registered.
+If not provided, the current function name will be used.
 </ParamField>
 
-<ParamField path="trigger_by" type="TransformerTriggerBySpec" default="'*'">
-  The trigger that will cause the function to execute. It can be a table in the system, a list of tables, None (in which case it must be triggered manually), or a CronTrigger. Defaults to all dependencies.
+<ParamField path="trigger_by" type="TransformerTriggerBySpec">
+  The trigger that will cause
+the function to execute. It can be a table in the system, a list of
+tables, None (in which case it must be triggered manually),
+or a CronTrigger. Defaults to all dependencies.
 </ParamField>
 
-<ParamField path="on_output_tables" type="OnTablesSpec" default="None">
-  Actions to perform on output tables after executing the function. Can be a single action or a list of them. Defaults to None.
+<ParamField path="on_output_tables" type="OnTablesSpec">
+  Actions to perform on output tables after executing the function.
+Can be a single action or a list of them.
+Defaults to None.
 </ParamField>
 
 **Returns:** The function converted to a Tabsdata Function.
 
 **Return type:** callable
-
 
 </details>

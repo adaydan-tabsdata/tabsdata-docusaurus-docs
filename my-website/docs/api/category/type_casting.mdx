@@ -2,27 +2,18 @@
 title: "Type Casting"
 ---
 
-import { ApiEntry, ParamField } from '@site/src/components/ApiField';
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # Type Casting
 
- <ApiEntry id="tabsdata.tableframe.expr.expr.Expr.cast" signature="cast(dtype: Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | type[Any], *, strict: bool = True, wrap_numerical: bool = False)" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L492">
+ <details>
+<summary>
+
+**`cast(dtype: Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | type[Any], *, strict: bool = True, wrap_numerical: bool = False)`**
+
+</summary>
 
 Cast a value to d different type.
-
-<ParamField path="dtype">
-  The data type to cast to.
-</ParamField>
-
-<ParamField path="strict">
-  If false, invalid casts produce null’s;
-if true, an excetion is raised.
-</ParamField>
-
-<ParamField path="wrap_numerical">
-  If true, overflowing numbers ara handled;
-if false, an excetion is raised.
-</ParamField>
 
 Example:
 
@@ -49,20 +40,30 @@ Example:
 └──────┴──────┘
 ```
 
-</ApiEntry>
-
- <ApiEntry id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_date" signature="to_date(fmt: str | None = None, *, strict: bool = True)" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L39">
-
-Convert the string to a date.
-
-<ParamField path="fmt">
-  The date format string (default %Y-%m-%d).
-See formats.
+<ParamField path="dtype">
+  The data type to cast to.
 </ParamField>
 
 <ParamField path="strict">
-  Whether to parse the date strictly.
+  If false, invalid casts produce null’s;
+if true, an excetion is raised.
 </ParamField>
+
+<ParamField path="wrap_numerical">
+  If true, overflowing numbers ara handled;
+if false, an excetion is raised.
+</ParamField>
+
+</details>
+
+ <details>
+<summary>
+
+**`to_date(fmt: str | None = None, *, strict: bool = True)`**
+
+</summary>
+
+Convert the string to a date.
 
 Example:
 
@@ -84,37 +85,25 @@ Example:
 └────────────┴────────────┘
 ```
 
-</ApiEntry>
-
- <ApiEntry id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_datetime" signature="to_datetime(format: str | None = None, *, time_unit: Literal['ns', 'us', 'ms'] | None = None, time_zone: str | None = None, strict: bool = True, ambiguous: Literal['earliest', 'latest', 'raise', 'null'] | Expr = 'raise')" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L78">
-
-Convert the string to a datetime.
-
-<ParamField path="format">
-  The datetime format string (default %Y-%m-%d %H:%M:%S).
+<ParamField path="fmt">
+  The date format string (default %Y-%m-%d).
 See formats.
 </ParamField>
 
-<ParamField path="time_unit">
-  \{None, ‘us’, ‘ns’, ‘ms’\}
-If None (default), it inferred from the format string
-</ParamField>
-
-<ParamField path="time_zone">
-  Time zone for the resulting value.
-</ParamField>
-
 <ParamField path="strict">
-  If the conversion fails an error will be raised.
+  Whether to parse the date strictly.
 </ParamField>
 
-<ParamField path="ambiguous">
-  Policy to apply on ambiguos Datetimes:
-‘raise’: saises an error
-‘earliest’: use the earliest datetime
-‘latest’: use the latest datetime
-‘null’: set to null
-</ParamField>
+</details>
+
+ <details>
+<summary>
+
+**`to_datetime(format: str | None = None, *, time_unit: Literal['ns', 'us', 'ms'] | None = None, time_zone: str | None = None, strict: bool = True, ambiguous: Literal['earliest', 'latest', 'raise', 'null'] | Expr = 'raise')`**
+
+</summary>
+
+Convert the string to a datetime.
 
 ```text
 >>> import tabsdata as td
@@ -134,19 +123,42 @@ If None (default), it inferred from the format string
 └─────────────────────┴─────────────────────┘
 ```
 
-</ApiEntry>
+<ParamField path="format">
+  The datetime format string (default %Y-%m-%d %H:%M:%S).
+See formats.
+</ParamField>
 
- <ApiEntry id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_integer" signature="to_integer(*, base: int | td_typing.IntoExprColumn = 10, strict: bool = True)" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L1050">
+<ParamField path="time_unit">
+  &#123;None, ‘us’, ‘ns’, ‘ms’&#125;
+If None (default), it inferred from the format string
+</ParamField>
 
-Covert a string to integer.
-
-<ParamField path="base">
-  The base of the integer.
+<ParamField path="time_zone">
+  Time zone for the resulting value.
 </ParamField>
 
 <ParamField path="strict">
-  If true, raise an error if the string is not a valid integer.
+  If the conversion fails an error will be raised.
 </ParamField>
+
+<ParamField path="ambiguous">
+  Policy to apply on ambiguos Datetimes:
+‘raise’: saises an error
+‘earliest’: use the earliest datetime
+‘latest’: use the latest datetime
+‘null’: set to null
+</ParamField>
+
+</details>
+
+ <details>
+<summary>
+
+**`to_integer(*, base: int | td_typing.IntoExprColumn = 10, strict: bool = True)`**
+
+</summary>
+
+Covert a string to integer.
 
 Example:
 
@@ -170,24 +182,24 @@ Example:
 └──────┴────────────┘
 ```
 
-</ApiEntry>
-
- <ApiEntry id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_time" signature="to_time(fmt: str | None = None, *, strict: bool = True, cache: bool = True)" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L135">
-
-Convert the string to a time.
-
-<ParamField path="fmt">
-  The time format string (default %H:%M:%S).
-See formats.
+<ParamField path="base">
+  The base of the integer.
 </ParamField>
 
 <ParamField path="strict">
-  Whether to parse the date strictly.
+  If true, raise an error if the string is not a valid integer.
 </ParamField>
 
-<ParamField path="cache">
-  Whether to cache the date.
-</ParamField>
+</details>
+
+ <details>
+<summary>
+
+**`to_time(fmt: str | None = None, *, strict: bool = True, cache: bool = True)`**
+
+</summary>
+
+Convert the string to a time.
 
 Example:
 
@@ -209,8 +221,26 @@ Example:
 └─────────────────────┴─────────────────────┘
 ```
 
-</ApiEntry>
+<ParamField path="fmt">
+  The time format string (default %H:%M:%S).
+See formats.
+</ParamField>
 
- <ApiEntry id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.to_string" signature="to_string(fmt: str | None = None)" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L94">
+<ParamField path="strict">
+  Whether to parse the date strictly.
+</ParamField>
 
-</ApiEntry>
+<ParamField path="cache">
+  Whether to cache the date.
+</ParamField>
+
+</details>
+
+ <details>
+<summary>
+
+**`to_string(fmt: str | None = None)`**
+
+</summary>
+
+</details>

@@ -1,42 +1,23 @@
 ---
 title: "Union"
-sidebarTitle: "Union"
-description: "Union API reference."
 ---
+
 import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
+# Union
 
-<a id="tabsdata.concat"></a>
-<details>
-<summary>concat</summary>
+ <details>
+<summary>
 
+**`concat(items: Iterable[TdType] | None, how: Literal['vertical', 'vertical_relaxed', 'diagonal', 'diagonal_relaxed'] = 'vertical')`**
 
-```python
-def concat(
-    items: Iterable [ TdType ] | None,
-    how: Literal [ 'vertical' , 'vertical_relaxed' , 'diagonal' , 'diagonal_relaxed' ] = 'vertical',
-) -> TdType | None
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/eager.py#L21)
+</summary>
 
 Combine multiple TableFrames by stacking their rows.
 
-**Categories:** union
+Example:
 
-**Parameters:**
-
-<ParamField path="items" type="Iterable [ TdType ] | None" required>
-  The TableFrames to concatenate. If None or empty, returns None. None entries within the iterable are ignored. If all entries are None, returns None.
-</ParamField>
-
-<ParamField path="how" type="Literal [ 'vertical' , 'vertical_relaxed' , 'diagonal' , 'diagonal_relaxed' ]" default="'vertical'">
-  \{‘vertical’, ‘vertical_relaxed’, ‘diagonal’, ‘diagonal_relaxed’} vertical: Appends the rows of each input below the previous one. All inputs must have exactly the same column names and types; otherwise the operation fails. vertical_relaxed: Same as vertical, but if columns with the same name have different data types across inputs, they are converted to a common type (e.g. Int32 → Int64). diagonal: Aligns columns by name across all inputs. If a column is missing from a particular input, that input is padded with null values for the missing column. Matching columns keep their original type if consistent. diagonal_relaxed: Same as diagonal, but when matching columns have different data types, they are converted to a common type (e.g. Int32 → Int64).
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf1: td.TableFrame ...
@@ -75,5 +56,43 @@ Combine multiple TableFrames by stacking their rows.
 └──────┴──────┘
 ```
 
+<ParamField path="items">
+  The TableFrames to concatenate. If None or empty, returns None.
+None entries within the iterable are ignored. If all entries are None,
+returns None.
+</ParamField>
+
+<ParamField path="how">
+  &#123;‘vertical’, ‘vertical_relaxed’, ‘diagonal’, ‘diagonal_relaxed’&#125;
+
+vertical: Appends the rows of each input below the previous one. All
+inputs must have exactly the same column names and types; otherwise the
+operation fails.
+vertical_relaxed: Same as vertical, but if columns with the same name
+have different data types across inputs, they are converted to a common
+type (e.g. Int32 → Int64).
+diagonal: Aligns columns by name across all inputs. If a column is missing
+from a particular input, that input is padded with null values for the
+missing column. Matching columns keep their original type if consistent.
+diagonal_relaxed: Same as diagonal, but when matching columns have
+different data types, they are converted to a common type
+(e.g. Int32 → Int64).
+</ParamField>
+
+<ParamField path="">
+  
+</ParamField>
+
+<ParamField path="">
+  
+</ParamField>
+
+<ParamField path="">
+  
+</ParamField>
+
+<ParamField path="">
+  
+</ParamField>
 
 </details>

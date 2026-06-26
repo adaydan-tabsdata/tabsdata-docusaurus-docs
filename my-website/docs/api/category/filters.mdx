@@ -1,48 +1,26 @@
 ---
 title: "Filters"
-sidebarTitle: "Filters"
-description: "Filters API reference."
 ---
+
 import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
+# Filters
 
-<a id="tabsdata.TableFrame.extract_as_columns"></a>
-<details>
-<summary>extract_as_columns</summary>
+ <details>
+<summary>
 
+**`extract_as_columns(offset: int, length: int)`**
 
-```python
-def extract_as_columns(
-    offset: int,
-    length: int,
-) -> dict[str, list[Any]]
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L2757)
+</summary>
 
 Extract a slice of rows from the table as a column-oriented dictionary.
 
-The result is a mapping of column names to lists of values from the selected rows.
+The result is a mapping of column names to lists of values from the selected
+rows.
 
-**Categories:** filters
+Example:
 
-**Parameters:**
-
-<ParamField path="offset" type="int" required>
-  The starting row index of the slice.
-</ParamField>
-
-<ParamField path="length" type="int" required>
-  The number of rows to include in the slice.
-</ParamField>
-
-**Returns:** A dictionary where each key is a column name, and its value is a list of values from the selected slice.
-
-**Return type:** dict [ str , list [Any]]
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -66,46 +44,36 @@ The result is a mapping of column names to lists of values from the selected row
     }
 ```
 
-
-</details>
-
-<a id="tabsdata.TableFrame.extract_as_rows"></a>
-<details>
-<summary>extract_as_rows</summary>
-
-
-```python
-def extract_as_rows(
-    offset: int,
-    length: int,
-) -> list[dict[str, Any]]
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L2704)
-
-Extract a slice of rows from the TableFrame as a list of dictionaries.
-
-Each dictionary represents one row, where keys are column names and values are the corresponding cell values.
-
-**Categories:** filters
-
-**Parameters:**
-
-<ParamField path="offset" type="int" required>
+<ParamField path="offset" type="int">
   The starting row index of the slice.
 </ParamField>
 
-<ParamField path="length" type="int" required>
+<ParamField path="length" type="int">
   The number of rows to include in the slice.
 </ParamField>
 
-**Returns:** A list of row dictionaries.
+**Returns:** A dictionary where each key is a column name,
+and its value is a list of values from the selected slice.
 
-**Return type:** list [ dict [ str , Any]]
+**Return type:** dict[str, list[Any]]
 
-#### Example
+</details>
 
-```python
+ <details>
+<summary>
+
+**`extract_as_rows(offset: int, length: int)`**
+
+</summary>
+
+Extract a slice of rows from the TableFrame as a list of dictionaries.
+
+Each dictionary represents one row, where keys are column names
+and values are the corresponding cell values.
+
+Example:
+
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -132,29 +100,32 @@ Each dictionary represents one row, where keys are column names and values are t
     ]
 ```
 
+<ParamField path="offset" type="int">
+  The starting row index of the slice.
+</ParamField>
+
+<ParamField path="length" type="int">
+  The number of rows to include in the slice.
+</ParamField>
+
+**Returns:** A list of row dictionaries.
+
+**Return type:** list[dict[str, Any]]
 
 </details>
 
-<a id="tabsdata.TableFrame.filter"></a>
-<details>
-<summary>filter</summary>
+ <details>
+<summary>
 
+**`filter(*predicates: td_typing.IntoExprColumn | Iterable[td_typing.IntoExprColumn] | bool | list[bool] | np.ndarray[Any, Any])`**
 
-```python
-def filter(
-    * predicates: td_typing.IntoExprColumn | Iterable [ td_typing.IntoExprColumn ] | bool | list [ bool ] | np.ndarray [ Any , Any ],
-) -> TableFrame
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L2077)
+</summary>
 
 Filter the TableFrame based on the given predicates.
 
-**Categories:** filters
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -187,27 +158,20 @@ Filter the TableFrame based on the given predicates.
 └─────┴─────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.TableFrame.first"></a>
-<details>
-<summary>first</summary>
+ <details>
+<summary>
 
+**`first`**
 
-```python
-def first() -> TableFrame
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L2540)
+</summary>
 
 Return a TableFrame with the first row.
 
-**Categories:** filters
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -235,29 +199,20 @@ Return a TableFrame with the first row.
 └─────┴─────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.TableFrame.first_row"></a>
-<details>
-<summary>first_row</summary>
+ <details>
+<summary>
 
+**`first_row(named: bool = False)`**
 
-```python
-def first_row(
-    named: bool = False,
-) -> tuple[Any, ...] | dict[str, Any] | None
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L2627)
+</summary>
 
 Return a tuple or dictionary with the first row, or None if no row.
 
-**Categories:** filters
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -281,35 +236,20 @@ Return a tuple or dictionary with the first row, or None if no row.
 {'A': 'a', 'B': '1'}
 ```
 
-
 </details>
 
-<a id="tabsdata.TableFrame.head"></a>
-<details>
-<summary>head</summary>
+ <details>
+<summary>
 
+**`head(n: int = 5)`**
 
-```python
-def head(
-    n: int = 5,
-) -> TableFrame
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L2400)
+</summary>
 
 Return a TableFrame with the first n rows.
 
-**Categories:** filters
+Example:
 
-**Parameters:**
-
-<ParamField path="n" type="int" default="5">
-  The number of rows to return.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -338,27 +278,20 @@ Return a TableFrame with the first n rows.
 └─────┴─────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.TableFrame.last"></a>
-<details>
-<summary>last</summary>
+ <details>
+<summary>
 
+**`last`**
 
-```python
-def last() -> TableFrame
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L2496)
+</summary>
 
 Return a TableFrame with the last row.
 
-**Categories:** filters
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -386,29 +319,20 @@ Return a TableFrame with the last row.
 └─────┴─────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.TableFrame.last_row"></a>
-<details>
-<summary>last_row</summary>
+ <details>
+<summary>
 
+**`last_row(named: bool = False)`**
 
-```python
-def last_row(
-    named: bool = False,
-) -> tuple[Any, ...] | dict[str, Any] | None
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L2584)
+</summary>
 
 Return a tuple or dictionary with the last row, or None if no row.
 
-**Categories:** filters
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -432,35 +356,21 @@ Return a tuple or dictionary with the last row, or None if no row.
 {'A': 'c', 'B': 3}
 ```
 
-
 </details>
 
-<a id="tabsdata.TableFrame.limit"></a>
-<details>
-<summary>limit</summary>
+ <details>
+<summary>
 
+**`limit(n: int = 5)`**
 
-```python
-def limit(
-    n: int = 5,
-) -> TableFrame
-```
+</summary>
 
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L2351)
+Return a TableFrame with the first n rows.
+This is equivalent to head.
 
-Return a TableFrame with the first n rows. This is equivalent to head.
+Example:
 
-**Categories:** filters
-
-**Parameters:**
-
-<ParamField path="n" type="int" default="5">
-  The number of rows to return.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -489,40 +399,20 @@ Return a TableFrame with the first n rows. This is equivalent to head.
 └─────┴─────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.TableFrame.slice"></a>
-<details>
-<summary>slice</summary>
+ <details>
+<summary>
 
+**`slice(offset: int, length: int | None = None)`**
 
-```python
-def slice(
-    offset: int,
-    length: int | None = None,
-) -> TableFrame
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L2302)
+</summary>
 
 Return a TableFrame with a slice of the original TableFrame
 
-**Categories:** filters
+Example:
 
-**Parameters:**
-
-<ParamField path="offset" type="int" required>
-  Slice starting index.
-</ParamField>
-
-<ParamField path="length" type="int | None" default="None">
-  The length of the slice.None means all the way to the end.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -551,35 +441,28 @@ Return a TableFrame with a slice of the original TableFrame
 └─────┴─────┘
 ```
 
+<ParamField path="offset">
+  Slice starting index.
+</ParamField>
+
+<ParamField path="length">
+  The length of the slice. None means all the way to the end.
+</ParamField>
 
 </details>
 
-<a id="tabsdata.TableFrame.tail"></a>
-<details>
-<summary>tail</summary>
+ <details>
+<summary>
 
+**`tail(n: int = 5)`**
 
-```python
-def tail(
-    n: int = 5,
-) -> TableFrame
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L2448)
+</summary>
 
 Return a TableFrame with the last n rows.
 
-**Categories:** filters
+Example:
 
-**Parameters:**
-
-<ParamField path="n" type="int" default="5">
-  The number of rows to return.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -608,46 +491,20 @@ Return a TableFrame with the last n rows.
 └─────┴─────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.TableFrame.unique"></a>
-<details>
-<summary>unique</summary>
+ <details>
+<summary>
 
+**`unique(subset: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector] | None = None, *, keep: td_typing.UniqueKeepStrategy = 'any', maintain_order: bool = False)`**
 
-```python
-def unique(
-    subset: td_typing.ColumnNameOrSelector | Collection [ td_typing.ColumnNameOrSelector ] | None = None,
-    *,
-    keep: td_typing.UniqueKeepStrategy = 'any',
-    maintain_order: bool = False,
-) -> TableFrame
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L1850)
+</summary>
 
 Deduplicate rows from the TableFrame.
 
-**Categories:** filters
+Example:
 
-**Parameters:**
-
-<ParamField path="subset" type="td_typing.ColumnNameOrSelector | Collection [ td_typing.ColumnNameOrSelector ] | None" default="None">
-  Columns to evaluate for duplicate values. If None, all columns are considered.
-</ParamField>
-
-<ParamField path="keep" type="td_typing.UniqueKeepStrategy" default="'any'">
-  Strategy to keep duplicates:first, last, any, none ( eliminate duplicate rows).
-</ParamField>
-
-<ParamField path="maintain_order" type="bool" default="False">
-  Preserve the order of the rows.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -685,39 +542,39 @@ Deduplicate rows from the TableFrame.
 └──────┴──────┘
 ```
 
+<ParamField path="subset">
+  Columns to evaluate for duplicate values. If None, all columns are
+considered.
+</ParamField>
+
+<ParamField path="keep">
+  Strategy to keep duplicates: first, last, any, none (
+eliminate duplicate rows).
+</ParamField>
+
+<ParamField path="maintain_order">
+  Preserve the order of the rows.
+</ParamField>
 
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.filter"></a>
-<details>
-<summary>filter</summary>
+ <details>
+<summary>
 
+**`filter(*predicates: Expr | Series | str | Iterable[Expr | Series | str])`**
 
-```python
-def filter(
-    * predicates: Expr | Series | str | Iterable [ Expr | Series | str ],
-) -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L957)
+</summary>
 
 Apply a filter predicate to an expression.
 
-Elements for which the predicate does not evaluate to true are discarded, evaluations to null are also discarded.
+Elements for which the predicate does not evaluate to true are discarded,
+evaluations to null are also discarded.
 
 Useful in an aggregation expression.
 
-**Categories:** filters
+Example:
 
-**Parameters:**
-
-<ParamField path="predicates" required>
-  Expression(s) that evaluates to a boolean.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -750,40 +607,20 @@ Useful in an aggregation expression.
 └───────┴─────────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.slice"></a>
-<details>
-<summary>slice</summary>
+ <details>
+<summary>
 
+**`slice(offset: int | Expr, length: int | Expr | None = None)`**
 
-```python
-def slice(
-    offset: int | Expr,
-    length: int | Expr | None = None,
-) -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2358)
+</summary>
 
 Compute a slice of the TableFrame for the specified columns.
 
-**Categories:** filters
+Example:
 
-**Parameters:**
-
-<ParamField path="offset" type="int | Expr" required>
-  the offset to start the slice.
-</ParamField>
-
-<ParamField path="length" type="int | Expr | None" default="None">
-  the length of the slice.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -813,5 +650,12 @@ Compute a slice of the TableFrame for the specified columns.
 └─────┴─────┘
 ```
 
+<ParamField path="offset">
+  the offset to start the slice.
+</ParamField>
+
+<ParamField path="length">
+  the length of the slice.
+</ParamField>
 
 </details>

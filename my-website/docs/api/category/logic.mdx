@@ -1,37 +1,24 @@
 ---
 title: "Logic"
-sidebarTitle: "Logic"
-description: "Logic API reference."
 ---
+
 import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
+# Logic
 
-<a id="tabsdata.tableframe.expr.expr.Expr.and_"></a>
-<details>
-<summary>and_</summary>
+ <details>
+<summary>
 
+**`and_(*others: Any)`**
 
-```python
-def and_(
-    * others: Any,
-) -> Expr
-```
+</summary>
 
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L270)
+Bitwise and operator with the given expressions.
+It can be used with integer and bool types.
 
-Bitwise and operator with the given expressions. It can be used with integer and bool types.
+Example:
 
-**Categories:** logic
-
-**Parameters:**
-
-<ParamField path="others" required>
-  expressions to peform the bitwiseand with.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -53,35 +40,21 @@ Bitwise and operator with the given expressions. It can be used with integer and
 └──────┴──────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.eq"></a>
-<details>
-<summary>eq</summary>
+ <details>
+<summary>
 
+**`eq(other: Any)`**
 
-```python
-def eq(
-    other: Any,
-) -> Expr
-```
+</summary>
 
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L777)
+Compare if 2 expressions are equal, equivalent to expr == other. If one
+of the expressions is null (None) it returns null.
 
-Compare if 2 expressions are equal, equivalent to expr == other. If one of the expressions is null (None) it returns null.
+Example:
 
-**Categories:** logic
-
-**Parameters:**
-
-<ParamField path="other" type="Any" required>
-  The value to compare with.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -102,35 +75,21 @@ Compare if 2 expressions are equal, equivalent to expr == other. If one of the e
 └─────┴──────┴───────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.eq_missing"></a>
-<details>
-<summary>eq_missing</summary>
+ <details>
+<summary>
 
+**`eq_missing(other: Any)`**
 
-```python
-def eq_missing(
-    other: Any,
-) -> Expr
-```
+</summary>
 
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L812)
+Compare if 2 expressions are equal an, equivalent to expr == other. If one
+of the expressions is null (None) it returns false.
 
-Compare if 2 expressions are equal an, equivalent to expr == other. If one of the expressions is null (None) it returns false.
+Example:
 
-**Categories:** logic
-
-**Parameters:**
-
-<ParamField path="other" type="Any" required>
-  The value to compare with.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -151,35 +110,20 @@ Compare if 2 expressions are equal an, equivalent to expr == other. If one of th
 └─────┴──────┴───────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.ge"></a>
-<details>
-<summary>ge</summary>
+ <details>
+<summary>
 
+**`ge(other: Any)`**
 
-```python
-def ge(
-    other: Any,
-) -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1096)
+</summary>
 
 Greater or equal operator.
 
-**Categories:** logic
+Example:
 
-**Parameters:**
-
-<ParamField path="other" type="Any" required>
-  The value to compare with.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -196,35 +140,20 @@ Greater or equal operator.
 └──────┴─────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.gt"></a>
-<details>
-<summary>gt</summary>
+ <details>
+<summary>
 
+**`gt(other: Any)`**
 
-```python
-def gt(
-    other: Any,
-) -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1126)
+</summary>
 
 Greater than operator.
 
-**Categories:** logic
+Example:
 
-**Parameters:**
-
-<ParamField path="other" type="Any" required>
-  The value to compare with.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -241,45 +170,20 @@ Greater than operator.
 └──────┴─────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.is_between"></a>
-<details>
-<summary>is_between</summary>
+ <details>
+<summary>
 
+**`is_between(lower_bound: td_typing.IntoExpr, upper_bound: td_typing.IntoExpr, closed: td_typing.ClosedInterval = 'both')`**
 
-```python
-def is_between(
-    lower_bound: td_typing.IntoExpr,
-    upper_bound: td_typing.IntoExpr,
-    closed: td_typing.ClosedInterval = 'both',
-) -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1194)
+</summary>
 
 If an expression is between the given bounds.
 
-**Categories:** logic
+Example:
 
-**Parameters:**
-
-<ParamField path="lower_bound" type="td_typing.IntoExpr" required>
-  The lower bound value.
-</ParamField>
-
-<ParamField path="upper_bound" type="td_typing.IntoExpr" required>
-  The upper bound value.
-</ParamField>
-
-<ParamField path="closed" type="td_typing.ClosedInterval" default="'both'">
-  The interval type, either “both”, “left”, “right”, or “neither”
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -300,27 +204,32 @@ If an expression is between the given bounds.
 └──────┴─────────┘
 ```
 
+<ParamField path="lower_bound">
+  The lower bound value.
+</ParamField>
+
+<ParamField path="upper_bound">
+  The upper bound value.
+</ParamField>
+
+<ParamField path="closed">
+  The interval type, either “both”, “left”, “right”, or “neither”
+</ParamField>
 
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.is_finite"></a>
-<details>
-<summary>is_finite</summary>
+ <details>
+<summary>
 
+**`is_finite`**
 
-```python
-def is_finite() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1241)
+</summary>
 
 If an element value is finite.
 
-**Categories:** logic
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -339,35 +248,20 @@ If an element value is finite.
 └──────┴────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.is_in"></a>
-<details>
-<summary>is_in</summary>
+ <details>
+<summary>
 
+**`is_in(other: Expr | Collection[Any])`**
 
-```python
-def is_in(
-    other: Expr | Collection [ Any ],
-) -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1269)
+</summary>
 
 If an element value is in the given collection.
 
-**Categories:** logic
+Example:
 
-**Parameters:**
-
-<ParamField path="other" type="Expr | Collection [ Any ]" required>
-  The collection to check if the element value is in.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -386,27 +280,20 @@ If an element value is in the given collection.
 └──────┴────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.is_infinite"></a>
-<details>
-<summary>is_infinite</summary>
+ <details>
+<summary>
 
+**`is_infinite`**
 
-```python
-def is_infinite() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1301)
+</summary>
 
 If an element value is infinite.
 
-**Categories:** logic
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -425,27 +312,20 @@ If an element value is infinite.
 └──────┴──────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.is_nan"></a>
-<details>
-<summary>is_nan</summary>
+ <details>
+<summary>
 
+**`is_nan`**
 
-```python
-def is_nan() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1329)
+</summary>
 
 If an element value is NaN.
 
-**Categories:** logic
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -464,27 +344,20 @@ If an element value is NaN.
 └──────┴──────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.is_not_nan"></a>
-<details>
-<summary>is_not_nan</summary>
+ <details>
+<summary>
 
+**`is_not_nan`**
 
-```python
-def is_not_nan() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1357)
+</summary>
 
 If an element value is not NaN.
 
-**Categories:** logic
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -504,27 +377,20 @@ If an element value is not NaN.
 └──────┴──────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.is_not_null"></a>
-<details>
-<summary>is_not_null</summary>
+ <details>
+<summary>
 
+**`is_not_null`**
 
-```python
-def is_not_null() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1386)
+</summary>
 
 If an element value is not null (None).
 
-**Categories:** logic
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -544,27 +410,20 @@ If an element value is not null (None).
 └──────┴──────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.is_null"></a>
-<details>
-<summary>is_null</summary>
+ <details>
+<summary>
 
+**`is_null`**
 
-```python
-def is_null() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1415)
+</summary>
 
 If an element value is null (None).
 
-**Categories:** logic
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -584,27 +443,20 @@ If an element value is null (None).
 └──────┴──────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.is_unique"></a>
-<details>
-<summary>is_unique</summary>
+ <details>
+<summary>
 
+**`is_unique`**
 
-```python
-def is_unique() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1444)
+</summary>
 
 If an element value is unique for all values in the column.
 
-**Categories:** logic
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -624,35 +476,20 @@ If an element value is unique for all values in the column.
 └──────┴──────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.le"></a>
-<details>
-<summary>le</summary>
+ <details>
+<summary>
 
+**`le(other: Any)`**
 
-```python
-def le(
-    other: Any,
-) -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1502)
+</summary>
 
 Less or equal operator.
 
-**Categories:** logic
+Example:
 
-**Parameters:**
-
-<ParamField path="other" type="Any" required>
-  The value to compare with.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -669,35 +506,20 @@ Less or equal operator.
 └──────┴─────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.lt"></a>
-<details>
-<summary>lt</summary>
+ <details>
+<summary>
 
+**`lt(other: Any)`**
 
-```python
-def lt(
-    other: Any,
-) -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1628)
+</summary>
 
 Less than operator.
 
-**Categories:** logic
+Example:
 
-**Parameters:**
-
-<ParamField path="other" type="Any" required>
-  The value to compare with.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -714,35 +536,21 @@ Less than operator.
 └──────┴─────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.ne"></a>
-<details>
-<summary>ne</summary>
+ <details>
+<summary>
 
+**`ne(other: Any)`**
 
-```python
-def ne(
-    other: Any,
-) -> Expr
-```
+</summary>
 
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1723)
+Compare if 2 expressions are not equal, equivalent to expr != other. If one
+of the expressions is null (None) it returns null.
 
-Compare if 2 expressions are not equal, equivalent to expr != other. If one of the expressions is null (None) it returns null.
+Example:
 
-**Categories:** logic
-
-**Parameters:**
-
-<ParamField path="other" type="Any" required>
-  The value to compare with.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -763,35 +571,21 @@ Compare if 2 expressions are not equal, equivalent to expr != other. If one of t
 └─────┴──────┴───────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.ne_missing"></a>
-<details>
-<summary>ne_missing</summary>
+ <details>
+<summary>
 
+**`ne_missing(other: Any)`**
 
-```python
-def ne_missing(
-    other: Any,
-) -> Expr
-```
+</summary>
 
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1758)
+Compare if 2 expressions are not equal an, equivalent to expr != other. If one
+of the expressions is null (None) it returns false.
 
-Compare if 2 expressions are not equal an, equivalent to expr != other. If one of the expressions is null (None) it returns false.
+Example:
 
-**Categories:** logic
-
-**Parameters:**
-
-<ParamField path="other" type="Any" required>
-  The value to compare with.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -812,27 +606,20 @@ Compare if 2 expressions are not equal an, equivalent to expr != other. If one o
 └─────┴──────┴───────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.not_"></a>
-<details>
-<summary>not_</summary>
+ <details>
+<summary>
 
+**`not_`**
 
-```python
-def not_() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1824)
+</summary>
 
 Negate a boolean expression.
 
-**Categories:** logic
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -850,35 +637,21 @@ Negate a boolean expression.
 └───────┴───────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.or_"></a>
-<details>
-<summary>or_</summary>
+ <details>
+<summary>
 
+**`or_(*others: Any)`**
 
-```python
-def or_(
-    * others: Any,
-) -> Expr
-```
+</summary>
 
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1851)
+Bitwise or operator with the given expressions.
+It can be used with integer and bool types.
 
-Bitwise or operator with the given expressions. It can be used with integer and bool types.
+Example:
 
-**Categories:** logic
-
-**Parameters:**
-
-<ParamField path="others" required>
-  expressions to peform the bitwiseor with.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -898,35 +671,21 @@ Bitwise or operator with the given expressions. It can be used with integer and 
 └──────┴──────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.xor"></a>
-<details>
-<summary>xor</summary>
+ <details>
+<summary>
 
+**`xor(other: Any)`**
 
-```python
-def xor(
-    other: Any,
-) -> Expr
-```
+</summary>
 
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2855)
+Bitwise xor operator with the given expression.
+It can be used with integer and bool types.
 
-Bitwise xor operator with the given expression. It can be used with integer and bool types.
+Example:
 
-**Categories:** logic
-
-**Parameters:**
-
-<ParamField path="other" type="Any" required>
-  expression to peform the bitwisexor with.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -944,6 +703,5 @@ Bitwise xor operator with the given expression. It can be used with integer and 
 │ 90  ┆ 82  │
 └─────┴─────┘
 ```
-
 
 </details>

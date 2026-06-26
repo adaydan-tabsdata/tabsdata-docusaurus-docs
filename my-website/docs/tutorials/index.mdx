@@ -1,60 +1,70 @@
 ---
 title: "Tutorials"
-sidebarTitle: "Tutorials"
 ---
 
-In the tutorials below, we show how to make the most of Tabsdata, when working with various sources and destinations. We have shown only specific connectors in the tutorials below. However, in a real-world scenario, your data source could be any other database, or file storage location (cloud or on-prem), and the subscriber could write data to various endpoints such as a database or file system. You can check the list of source and destination connectors.
+# Tutorials
 
+ In the tutorials below, we show how to make the most of Tabsdata, when working with various sources and destinations. We have shown only specific connectors in the tutorials below. However, in a real-world scenario, your data source could be any other database, or file storage location (cloud or on-prem), and the subscriber could write data to various endpoints such as a database or file system. You can check the list of [source](guide/04_01_working_with_publishers/#working-with-publishers) and [destination](guide/04_03_working_with_subscribers/#working-with-subscribers) connectors.
+
+  
 ## 9. Salesforce Reports -> Snowflake!
 
-In this tutorial, we’ll explore how Tabsdata can easily query Salesforce Reports and Subscribe them to Snowflake.
+ In this tutorial, we’ll explore how Tabsdata can easily query Salesforce Reports and Subscribe them to Snowflake.
 
-[Link](https://github.com/tabsdata/tutorials/tree/main/t09_salesforce_report_ingestion) to the Github repo.
+ [Link](https://github.com/tabsdata/tutorials/tree/main/t09_salesforce_report_ingestion) to the Github repo.
 
+   
 ## 8. PII data masking!
 
-In this tutorial, we’ll explore how Tabsdata can be used to mask and redact PII data from customer datasets.
+ In this tutorial, we’ll explore how Tabsdata can be used to mask and redact PII data from customer datasets.
 
-[Link](https://github.com/tabsdata/tutorials/tree/main/t08_customer_pii_masking) to the Github repo.
+ [Link](https://github.com/tabsdata/tutorials/tree/main/t08_customer_pii_masking) to the Github repo.
 
+   
 ## 7. NYC Taxi Data -> AWS Glue!
 
-In this tutorial, we’ll explore how Tabsdata can connect to non-standard external systems to ingest and transform data. In this tutorial, we ingest NYC Taxi Data from the [TLC](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page) website and historical NYC weather data from a free weather API called [OpenMeteo](https://open-meteo.com/). Then, we aggregate our raw taxi data into daily metrics (trips per day, average trip duration, etc.) and enrich the aggregated metrics with weather metrics such as temperature, windspeed, and precipitation.
+ In this tutorial, we’ll explore how Tabsdata can connect to non-standard external systems to ingest and transform data. In this tutorial, we ingest NYC Taxi Data from the [TLC](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page) website and historical NYC weather data from a free weather API called [OpenMeteo](https://open-meteo.com/). Then, we aggregate our raw taxi data into daily metrics (trips per day, average trip duration, etc.) and enrich the aggregated metrics with weather metrics such as temperature, windspeed, and precipitation.
 
-[Link](https://github.com/tabsdata/tutorials/tree/main/t07_nyc_taxi_weather) to the Github repo.
+ [Link](https://github.com/tabsdata/tutorials/tree/main/t07_nyc_taxi_weather) to the Github repo.
 
+   
 ## 6. Insurance Claim Data from Gmail -> Databricks!
 
-In this tutorial, we’ll explore how Tabsdata can collect claim bordereaux files sent to a Gmail inbox, merge them into a running master fact table, enrich the data with policy details, categorize high‑value subsets, and publish the results to Databricks.
+ In this tutorial, we’ll explore how Tabsdata can collect claim bordereaux files sent to a Gmail inbox, merge them into a running master fact table, enrich the data with policy details, categorize high‑value subsets, and publish the results to Databricks.
 
-[Link](https://github.com/tabsdata/tutorials/tree/main/t06_bordeaux_gmail_extract) to the Github repo.
+ [Link](https://github.com/tabsdata/tutorials/tree/main/t06_bordeaux_gmail_extract) to the Github repo.
 
+   
 ## 5. Oracle -> CDC Stream -> PostgreSQL and S3!
 
-In this tutorial, we’ll explore how Tabsdata enables generating a CDC stream from a table in Oracle and subscribe that CDC stream to AWS Iceberg and PostgreSQL.
+ In this tutorial, we’ll explore how Tabsdata enables generating a CDC stream from a table in Oracle and subscribe that CDC stream to AWS Iceberg and PostgreSQL.
 
-[Link](https://github.com/tabsdata/tutorials/tree/main/t05_oracle_cdc) to the Github repo.
+ [Link](https://github.com/tabsdata/tutorials/tree/main/t05_oracle_cdc) to the Github repo.
 
+   
 ## 4. Google Sheet -> Neon PostgreSQL!
 
-In this tutorial, we’ll explore how Tabsdata enables exporting data from Google Sheet to Neon PostgreSQL.
+ In this tutorial, we’ll explore how Tabsdata enables exporting data from Google Sheet to Neon PostgreSQL.
 
-[Link](https://github.com/tabsdata/tutorials/tree/main/t04_gsheet_neon) to the Github repo.
+ [Link](https://github.com/tabsdata/tutorials/tree/main/t04_gsheet_neon) to the Github repo.
 
+   
 ## 3. Local File System CSV -> AWS Glue Iceberg!
 
-In this tutorial, we’ll explore how Tabsdata enables publishing CSV data from local file system and subscribing as an Iceberg table to AWS.
+ In this tutorial, we’ll explore how Tabsdata enables publishing CSV data from local file system and subscribing as an Iceberg table to AWS.
 
-[Link](https://github.com/tabsdata/tutorials/tree/main/t03_csv_iceberg_pub_sub) to the Github repo.
+ [Link](https://github.com/tabsdata/tutorials/tree/main/t03_csv_iceberg_pub_sub) to the Github repo.
 
+   
 ## 2. PostgreSQL -> PostgreSQL!
 
-In this tutorial, we’ll explore how Tabsdata enables Pub/Sub for Tables with source and destination data being a locally hosted PostgreSQL database.
+ In this tutorial, we’ll explore how Tabsdata enables Pub/Sub for Tables with source and destination data being a locally hosted PostgreSQL database.
 
-[Link](https://github.com/tabsdata/tutorials/tree/main/t02_postgres_pub_sub) to the Github repo.
+ [Link](https://github.com/tabsdata/tutorials/tree/main/t02_postgres_pub_sub) to the Github repo.
 
+   
 ## 1. Local File System CSV -> Local File System JSON!
 
-In this first tutorial, we’ll explore how Tabsdata enables Pub/Sub for Tables using a CSV file input and a JSON file output.
+ In this first tutorial, we’ll explore how Tabsdata enables Pub/Sub for Tables using a CSV file input and a JSON file output.
 
-[Link](https://github.com/tabsdata/tutorials/tree/main/t01_csv_pub_sub) to the Github repo.
+ [Link](https://github.com/tabsdata/tutorials/tree/main/t01_csv_pub_sub) to the Github repo.

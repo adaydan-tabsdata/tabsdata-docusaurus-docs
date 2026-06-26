@@ -70,31 +70,33 @@ if args.images:
 else:
     IMAGES_SRC = os.path.join(os.path.dirname(SRC_BASE), "_images")
 
-# Map Sphinx guide directory names → Docusaurus slug
-GUIDE_SLUG = {
-    "01_overview":                        "overview",
-    "02_getting_started":                 "getting-started",
-    "03_key_concepts":                    "key-concepts",
-    "04_01_working_with_publishers":      "publishers",
-    "04_02_working_with_transformers":    "transformers",
-    "04_03_working_with_subscribers":     "subscribers",
-    "05_working_with_triggers":           "triggers",
-    "06_working_with_tables":             "tables",
-    "07_working_with_connector_plugins":  "plugins",
-    "08_testing":                         "testing",
-    "09_contact_support":                 "contact-support",
-    "10_troubleshooting":                 "troubleshooting",
-    "11_cli_commands":                    "cli-commands",
-    "ai_agent":                           "ai-agent",
-    "catalogs":                           "catalogs",
-    "data_quality":                       "data-quality",
-    "permissioning":                      "permissioning",
-    "release_notes":                      "release-notes",
-    "secrets_management":                 "secrets-management",
-    "security":                           "security",
-    "server_configuration":               "server-configuration",
-    "user_interface":                     "user-interface",
-    "working_with_kafka":                 "kafka",
+# Map Sphinx guide directory names → Docusaurus path (relative to docs/)
+# Must match sidebars.ts exactly.
+GUIDE_PATH = {
+    "01_overview":                        "guide/intro/overview",
+    "02_getting_started":                 "guide/intro/getting-started",
+    "03_key_concepts":                    "guide/intro/key-concepts",
+    "04_working_with_functions":          "guide/functions/working-with-functions",
+    "04_01_working_with_publishers":      "guide/publishers/index",
+    "04_02_working_with_transformers":    "guide/transformers/working-with-transformers",
+    "04_03_working_with_subscribers":     "guide/subscribers/index",
+    "05_working_with_triggers":           "guide/triggers/working-with-triggers",
+    "06_working_with_tables":             "guide/tables/tables",
+    "07_working_with_connector_plugins":  "guide/plugins/working-with-connector-plugins",
+    "08_testing":                         "guide/operations/testing",
+    "09_contact_support":                 "guide/operations/contact-support",
+    "10_troubleshooting":                 "guide/operations/troubleshooting",
+    "11_cli_commands":                    "guide/operations/cli-commands",
+    "ai_agent":                           "guide/platform/ai-agent",
+    "catalogs":                           "guide/catalogs/index",
+    "data_quality":                       "guide/data-quality/data-quality",
+    "permissioning":                      "guide/platform/permissioning",
+    "release_notes":                      "guide/operations/release-notes",
+    "secrets_management":                 "guide/platform/secrets-management/index",
+    "security":                           "guide/platform/security",
+    "server_configuration":               "guide/intro/server-configuration",
+    "user_interface":                     "guide/platform/user-interface",
+    "working_with_kafka":                 "guide/kafka/working-with-kafka",
 }
 
 
@@ -102,10 +104,17 @@ GUIDE_SLUG = {
 # HTML → MDX conversion
 # ---------------------------------------------------------------------------
 
+def escape_mdx_text(s):
+    """Escape characters in plain text that MDX would interpret as JSX syntax."""
+    s = s.replace('<', '&lt;').replace('>', '&gt;')
+    s = s.replace('{', '&#123;').replace('}', '&#125;')
+    return s
+
+
 def inline_text(el):
     """Extract inline MDX from an element, handling bold/italic/code/links."""
     if isinstance(el, NavigableString):
-        return str(el)
+        return escape_mdx_text(str(el))
 
     tag = el.name
     children = ''.join(inline_text(c) for c in el.children)
@@ -165,7 +174,7 @@ def list_to_mdx(el, ordered=False, indent=0):
 def table_to_mdx(el):
     rows = []
     for tr in el.find_all('tr'):
-        cells = [td.get_text().strip() for td in tr.find_all(['td', 'th'])]
+        cells = [escape_mdx_text(td.get_text().strip()) for td in tr.find_all(['td', 'th'])]
         rows.append(cells)
     if not rows:
         return ''
@@ -210,7 +219,7 @@ def admonition_to_mdx(el):
     if title_el:
         title_el.decompose()
 
-    body = element_to_mdx(el).strip()
+    body = ''.join(element_to_mdx(c) for c in el.children).strip()
     return f':::{kind}\n{body}\n:::\n\n'
 
 
@@ -246,25 +255,25 @@ def field_list_to_mdx(dl):
             for li in dd.find_all('li'):
                 name_el = li.find('strong')
                 type_el = li.find('em')
-                name = name_el.get_text().strip() if name_el else ''
-                type_str = type_el.get_text().strip() if type_el else ''
+                name = escape_mdx_text(name_el.get_text().strip()) if name_el else ''
+                type_str = escape_mdx_text(type_el.get_text().strip()) if type_el else ''
                 # Get description (text after the em dash –)
                 text = li.get_text()
                 desc = ''
                 if '–' in text:
-                    desc = text.split('–', 1)[1].strip()
+                    desc = escape_mdx_text(text.split('–', 1)[1].strip())
                 elif '-' in text and name in text:
                     idx = text.index(name) + len(name)
-                    desc = text[idx:].lstrip(' :-').strip()
+                    desc = escape_mdx_text(text[idx:].lstrip(' :-').strip())
                 type_attr = f' type="{type_str}"' if type_str else ''
                 parts.append(f'<ParamField path="{name}"{type_attr}>\n  {desc}\n</ParamField>\n\n')
         elif label.lower() in ('returns', 'return type'):
-            value = dd.get_text().strip()
+            value = escape_mdx_text(dd.get_text().strip())
             parts.append(f'**{label}:** {value}\n\n')
         elif label.lower() in ('categories',):
             pass  # skip internal metadata
         else:
-            value = dd.get_text().strip()
+            value = escape_mdx_text(dd.get_text().strip())
             if value:
                 parts.append(f'**{label}:** {value}\n\n')
     return ''.join(parts)
@@ -323,10 +332,45 @@ def api_entry_to_mdx(dl):
     return f'**`{sig}`**\n\n'
 
 
+def sphinx_tabs_to_mdx(el):
+    """Convert <div class="sphinx-tabs"> to Docusaurus <Tabs> (with groupId="os" for OS tabs)."""
+    tablist = el.find('div', role='tablist')
+    panels = el.find_all('div', class_='sphinx-tabs-panel', recursive=False)
+    tabs = tablist.find_all('button', class_='sphinx-tabs-tab') if tablist else []
+
+    if not tabs or not panels:
+        return ''.join(element_to_mdx(c) for c in el.children)
+
+    all_labels = [t.get_text().strip().rstrip(':') for t in tabs]
+    is_os = any(
+        any(kw in label.lower() for kw in ('windows', 'linux', 'macos', 'mac os', 'for linux', 'for mac'))
+        for label in all_labels
+    )
+    group_attr = ' groupId="os"' if is_os else ''
+
+    items = []
+    for tab, panel in zip(tabs, panels):
+        label = tab.get_text().strip().rstrip(':')
+        ll = label.lower()
+        if is_os:
+            if any(kw in ll for kw in ('linux', 'macos', 'mac os', 'mac')):
+                value = 'mac'
+            elif 'windows' in ll:
+                value = 'windows'
+            else:
+                value = re.sub(r'[^a-z0-9]+', '-', ll).strip('-')
+        else:
+            value = re.sub(r'[^a-z0-9]+', '-', ll).strip('-')
+        content = ''.join(element_to_mdx(c) for c in panel.children).strip()
+        items.append(f'<TabItem value="{value}" label="{label}">\n\n{content}\n\n</TabItem>')
+
+    return f'<Tabs{group_attr}>\n\n' + '\n\n'.join(items) + '\n\n</Tabs>\n\n'
+
+
 def element_to_mdx(el, depth=0):
     """Recursively convert a BeautifulSoup element to MDX."""
     if isinstance(el, NavigableString):
-        s = str(el)
+        s = escape_mdx_text(str(el))
         return s if s.strip() else (' ' if s else '')
 
     tag = el.name
@@ -365,6 +409,8 @@ def element_to_mdx(el, depth=0):
             return admonition_to_mdx(el)
         if 'line-block' in classes:
             return ''  # Sphinx spacer — skip
+        if 'sphinx-tabs' in classes:
+            return sphinx_tabs_to_mdx(el)
 
     # --- Images ---
     if tag == 'img':
@@ -433,12 +479,22 @@ def html_file_to_mdx(html_path, title=None):
     # Clean up excessive blank lines
     body = re.sub(r'\n{3,}', '\n\n', body)
 
-    # Deduplicate ParamField imports that might appear multiple times
-    import_line = "import { ParamField, ResponseField } from '@site/src/components/ApiField';"
-    if body.count(import_line) > 1:
-        body = body.replace(import_line + '\n\n', '', body.count(import_line) - 1)
+    # Collect all needed imports, strip them from body, prepend to top
+    imports = []
 
-    return fm + body.strip() + '\n'
+    param_import = "import { ParamField, ResponseField } from '@site/src/components/ApiField';"
+    if param_import in body:
+        body = body.replace(param_import + '\n\n', '').replace(param_import + '\n', '').replace(param_import, '')
+        imports.append(param_import)
+    elif '<ParamField' in body or '<ResponseField' in body:
+        imports.append(param_import)
+
+    tabs_import = "import Tabs from '@theme/Tabs';\nimport TabItem from '@theme/TabItem';"
+    if '<Tabs' in body:
+        imports.append(tabs_import)
+
+    import_block = '\n\n'.join(imports) + '\n\n' if imports else ''
+    return fm + import_block + body.strip() + '\n'
 
 
 # ---------------------------------------------------------------------------
@@ -466,13 +522,13 @@ def convert_file(src_html, dst_mdx, title=None):
     print(f'  ✓ {os.path.relpath(dst_mdx, DST_BASE)}')
 
 
-def slug_from_dir(dirname):
-    """Convert a Sphinx dir name like 01_overview to overview."""
-    if dirname in GUIDE_SLUG:
-        return GUIDE_SLUG[dirname]
-    # Strip leading number prefix (01_, 04_01_, etc.)
-    slug = re.sub(r'^[\d_]+', '', dirname)
-    return slug.replace('_', '-')
+def path_from_dir(dirname):
+    """Return the docs-relative path for a Sphinx guide dir."""
+    if dirname in GUIDE_PATH:
+        return GUIDE_PATH[dirname]
+    # Fallback: strip leading number prefix, keep under guide/
+    slug = re.sub(r'^[\d_]+', '', dirname).replace('_', '-')
+    return f'guide/{slug}'
 
 
 # ---------------------------------------------------------------------------
@@ -501,8 +557,8 @@ def migrate_guide():
                 continue
             html_file = os.path.join(entry_path, htmls[0])
 
-        slug = slug_from_dir(entry)
-        dst_mdx = os.path.join(dst_guide, f'{slug}.mdx')
+        rel_path = path_from_dir(entry)
+        dst_mdx = os.path.join(DST_BASE, f'{rel_path}.mdx')
         convert_file(html_file, dst_mdx)
 
 

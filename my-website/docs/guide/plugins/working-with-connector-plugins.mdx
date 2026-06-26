@@ -1,17 +1,19 @@
 ---
 title: "Working with Plugins"
-sidebarTitle: "Working with Plugins"
 ---
 
-To connect with sources and destinations that are not currently supported natively in Tabsdata, you can use these connector plugins.
+# Working with Plugins
 
+ To connect with sources and destinations that are not currently supported natively in Tabsdata, you can use these connector plugins.
+
+  
 ## Source Plugin
 
-The `SourcePlugin` class enables reading from sources which do not have built-in support in Tabsdata.
+ The `SourcePlugin` class enables reading from sources which do not have built-in support in Tabsdata.
 
-Here is an example of the `SourcePlugin` class in use.
+ Here is an example of the `SourcePlugin` class in use.
 
-```python
+ ```python
 import os
 import polars as pl
 import requests
@@ -42,17 +44,18 @@ def input_plugin_from_pypi(df: td.TableFrame):
     return df
 ```
 
-In the above example, you create a `PyPIPkgStatsSource` class that inherits from the `SourcePlugin` class.
+ In the above example, you create a `PyPIPkgStatsSource` class that inherits from the `SourcePlugin` class.
 
-The `PyPIPkgStatsSource` class takes a Python package name as an input, retrieves the statistics related to the package, stores the data in a file on the server, and returns that file to the publisher. You use the `PyPIPkgStatsSource` class while defining the source property of the publisher.
+ The `PyPIPkgStatsSource` class takes a Python package name as an input, retrieves the statistics related to the package, stores the data in a file on the server, and returns that file to the publisher. You use the `PyPIPkgStatsSource` class while defining the source property of the publisher.
 
+   
 ## Destination Plugin
 
-The `DestinationPlugin` class enables writing to destinations which do not have built-in support in Tabsdata.
+ The `DestinationPlugin` class enables writing to destinations which do not have built-in support in Tabsdata.
 
-Here is an example of the `DestinationPlugin` class in use.
+ Here is an example of the `DestinationPlugin` class in use.
 
-```python
+ ```python
 import os
 import tempfile
 import polars as pl
@@ -89,11 +92,11 @@ def subscriber(df: pl.DataFrame):
     return df
 ```
 
-Where:
+ Where:
 
-- `<gcp-bucket-name>` is the name of your GCP bucket.
+ - `<gcp-bucket-name>` is the name of your GCP bucket.
 - `<path_to_gcp_credentials.json>` is the full system path (typically starting with /users/user_name) to your gcp credentials file.
 
-In the above example, you create a `GCPFileUpload` class that inherits from the `DestinationPlugin` class.
+ In the above example, you create a `GCPFileUpload` class that inherits from the `DestinationPlugin` class.
 
-The `GCPFileUpload` class takes a GCP bucket name and credentials path as input, converts the table into a CSV and stores the csv file in the GCP bucket. Finally, you use the `GCPFileUpload` class while defining the destination for a subscriber.
+ The `GCPFileUpload` class takes a GCP bucket name and credentials path as input, converts the table into a CSV and stores the csv file in the GCP bucket. Finally, you use the `GCPFileUpload` class while defining the destination for a subscriber.

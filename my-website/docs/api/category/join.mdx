@@ -1,73 +1,23 @@
 ---
 title: "Join"
-sidebarTitle: "Join"
-description: "Join API reference."
 ---
+
 import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
+# Join
 
-<a id="tabsdata.TableFrame.join"></a>
-<details>
-<summary>join</summary>
+ <details>
+<summary>
 
+**`join(other: TableFrame, on: str | Expr | Sequence[str | Expr] | None = None, how: Literal['inner', 'left', 'right', 'full', 'semi', 'anti', 'cross', 'outer'] = 'inner', *, left_on: str | Expr | Sequence[str | Expr] | None = None, right_on: str | Expr | Sequence[str | Expr] | None = None, suffix: str = '_right', join_nulls: bool = False, coalesce: bool | None = None)`**
 
-```python
-def join(
-    other: TableFrame,
-    on: str | Expr | Sequence [ str | Expr ] | None = None,
-    how: Literal [ 'inner' , 'left' , 'right' , 'full' , 'semi' , 'anti' , 'cross' , 'outer' ] = 'inner',
-    *,
-    left_on: str | Expr | Sequence [ str | Expr ] | None = None,
-    right_on: str | Expr | Sequence [ str | Expr ] | None = None,
-    suffix: str = '_right',
-    join_nulls: bool = False,
-    coalesce: bool | None = None,
-) -> TableFrame
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L1083)
+</summary>
 
 Join the TableFrame with another TableFrame.
 
-**Categories:** join
+Example:
 
-**Parameters:**
-
-<ParamField path="other" type="TableFrame" required>
-  TheTableFrame to join.
-</ParamField>
-
-<ParamField path="on" type="str | Expr | Sequence [ str | Expr ] | None" default="None">
-  Name(s) of the columns to join on. The column name(s) must be in bothTableFrame’s. Don’t use this parameter if using `left_on and right_on parameters, or if how=”cross”.
-</ParamField>
-
-<ParamField path="how" type="Literal [ 'inner' , 'left' , 'right' , 'full' , 'semi' , 'anti' , 'cross' , 'outer' ]" default="'inner'">
-  Join strategy: inner: An inner join. left: A left join. right: A rigth join. full: A full join. cross: The cartesian product. semi: An inner join but only returning the columns from left TableFrame. `anti`: Rows from the left TableFrame that have no match in the right TableFrame.
-</ParamField>
-
-<ParamField path="left_on" type="str | Expr | Sequence [ str | Expr ] | None" default="None">
-  Name(s) of the columns to join on from the leftTableFrame. It must be used together wit the right_on parameter. It cannot be used with the on parameter.
-</ParamField>
-
-<ParamField path="right_on" type="str | Expr | Sequence [ str | Expr ] | None" default="None">
-  Name(s) of the columns to join on from the rightTableFrame. It must be used together wit the left_on parameter. It cannot be used with the on parameter.
-</ParamField>
-
-<ParamField path="suffix" type="str" default="'_right'">
-  Duplicate columns on the rightTable are appended this suffix.
-</ParamField>
-
-<ParamField path="join_nulls" type="bool" default="False">
-  Ifnull value matches should produce join rows or not.
-</ParamField>
-
-<ParamField path="coalesce" type="bool | None" default="None">
-  Collapse join columns into a single column.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf1: td.TableFrame ...
@@ -163,5 +113,80 @@ Turning off column coalesce:
 └─────┴──────┴─────────┴─────────┘
 ```
 
+<ParamField path="other">
+  The TableFrame to join.
+</ParamField>
+
+<ParamField path="on">
+  Name(s) of the columns to join on. The column name(s) must be in
+both TableFrame’s. Don’t use this parameter if using `left_on
+and right_on parameters, or if how=”cross”.
+</ParamField>
+
+<ParamField path="how">
+  Join strategy:
+
+inner: An inner join.
+left: A left join.
+right: A rigth join.
+full: A full join.
+cross: The cartesian product.
+semi: An inner join but only returning the columns from left
+TableFrame.
+anti: Rows from the left TableFrame that have no match
+in the right TableFrame.
+</ParamField>
+
+<ParamField path="">
+  
+</ParamField>
+
+<ParamField path="">
+  
+</ParamField>
+
+<ParamField path="">
+  
+</ParamField>
+
+<ParamField path="">
+  
+</ParamField>
+
+<ParamField path="">
+  
+</ParamField>
+
+<ParamField path="">
+  
+</ParamField>
+
+<ParamField path="">
+  
+</ParamField>
+
+<ParamField path="left_on">
+  Name(s) of the columns to join on from the left TableFrame.
+It must be used together wit the right_on parameter.
+It cannot be used with the on parameter.
+</ParamField>
+
+<ParamField path="right_on">
+  Name(s) of the columns to join on from the right TableFrame.
+It must be used together wit the left_on parameter.
+It cannot be used with the on parameter.
+</ParamField>
+
+<ParamField path="suffix">
+  Duplicate columns on the right Table are appended this suffix.
+</ParamField>
+
+<ParamField path="join_nulls">
+  If null value matches should produce join rows or not.
+</ParamField>
+
+<ParamField path="coalesce">
+  Collapse join columns into a single column.
+</ParamField>
 
 </details>

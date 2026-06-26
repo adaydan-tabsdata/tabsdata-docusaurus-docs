@@ -1,37 +1,23 @@
 ---
 title: "Aggregation"
-sidebarTitle: "Aggregation"
-description: "Aggregation API reference."
 ---
+
 import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
+# Aggregation
 
-<a id="tabsdata.TableFrame.group_by"></a>
-<details>
-<summary>group_by</summary>
+ <details>
+<summary>
 
+**`group_by(*by: td_typing.IntoExpr | Iterable[td_typing.IntoExpr])`**
 
-```python
-def group_by(
-    * by: td_typing.IntoExpr | Iterable [ td_typing.IntoExpr ],
-) -> td_group_by.TableFrameGroupBy
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L2245)
+</summary>
 
 Perform a group by on the TableFrame.
 
-**Categories:** aggregation
+Example:
 
-**Parameters:**
-
-<ParamField path="by" required>
-  Columns or expressions to group by.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -65,27 +51,21 @@ Perform a group by on the TableFrame.
 └─────┴─────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.count"></a>
-<details>
-<summary>count</summary>
+ <details>
+<summary>
 
+**`count`**
 
-```python
-def count() -> Expr
-```
+</summary>
 
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2273)
+Aggregation operation that counts the non null values of the given column in
+the group.
 
-Aggregation operation that counts the non null values of the given column in the group.
+Examples:
 
-**Categories:** aggregation
-
-#### Examples
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -118,27 +98,20 @@ Aggregation operation that counts the non null values of the given column in the
 └──────┴───────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.first"></a>
-<details>
-<summary>first</summary>
+ <details>
+<summary>
 
+**`first`**
 
-```python
-def first() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1013)
+</summary>
 
 Get the first element.
 
-**Categories:** aggregation
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -158,27 +131,20 @@ Get the first element.
 └──────┴─────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.last"></a>
-<details>
-<summary>last</summary>
+ <details>
+<summary>
 
+**`last`**
 
-```python
-def last() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1473)
+</summary>
 
 Get the last element.
 
-**Categories:** aggregation
+Example:
 
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -198,27 +164,20 @@ Get the last element.
 └──────┴─────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.len"></a>
-<details>
-<summary>len</summary>
+ <details>
+<summary>
 
+**`len`**
 
-```python
-def len() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2316)
+</summary>
 
 Aggregation operation that counts the rows in the group.
 
-**Categories:** aggregation
+Examples:
 
-#### Examples
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -251,27 +210,20 @@ Aggregation operation that counts the rows in the group.
 └──────┴─────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.max"></a>
-<details>
-<summary>max</summary>
+ <details>
+<summary>
 
+**`max`**
 
-```python
-def max() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2472)
+</summary>
 
 Aggregation operation that finds the maximum value in the group.
 
-**Categories:** aggregation
+Examples:
 
-#### Examples
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -310,27 +262,20 @@ Aggregation operation that finds the maximum value in the group.
 └──────┴──────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.mean"></a>
-<details>
-<summary>mean</summary>
+ <details>
+<summary>
 
+**`mean`**
 
-```python
-def mean() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2616)
+</summary>
 
 Aggregation operation that finds the mean of the values in the group.
 
-**Categories:** aggregation
+Examples:
 
-#### Examples
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -369,27 +314,20 @@ Aggregation operation that finds the mean of the values in the group.
 └──────┴──────────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.median"></a>
-<details>
-<summary>median</summary>
+ <details>
+<summary>
 
+**`median`**
 
-```python
-def median() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2664)
+</summary>
 
 Aggregation operation that finds the median of the values in the group.
 
-**Categories:** aggregation
+Examples:
 
-#### Examples
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -428,27 +366,20 @@ Aggregation operation that finds the median of the values in the group.
 └──────┴──────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.min"></a>
-<details>
-<summary>min</summary>
+ <details>
+<summary>
 
+**`min`**
 
-```python
-def min() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2520)
+</summary>
 
 Aggregation operation that finds the minimum value in the group.
 
-**Categories:** aggregation
+Examples:
 
-#### Examples
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -487,27 +418,21 @@ Aggregation operation that finds the minimum value in the group.
 └──────┴──────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.n_unique"></a>
-<details>
-<summary>n_unique</summary>
+ <details>
+<summary>
 
+**`n_unique`**
 
-```python
-def n_unique() -> Expr
-```
+</summary>
 
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2712)
+Aggregation operation that counts the unique values of the given column
+in the group.
 
-Aggregation operation that counts the unique values of the given column in the group.
+Examples:
 
-**Categories:** aggregation
-
-#### Examples
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -546,46 +471,20 @@ Aggregation operation that counts the unique values of the given column in the g
 └──────┴─────┘
 ```
 
-
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.rank"></a>
-<details>
-<summary>rank</summary>
+ <details>
+<summary>
 
+**`rank(method: Literal['average', 'min', 'max', 'dense', 'ordinal', 'random'] = 'average', *, descending: bool = False, seed: int | None = None)`**
 
-```python
-def rank(
-    method: Literal [ 'average' , 'min' , 'max' , 'dense' , 'ordinal' , 'random' ] = 'average',
-    *,
-    descending: bool = False,
-    seed: int | None = None,
-) -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1947)
+</summary>
 
 Compute the rank of the element values. Multiple rank types are available.
 
-**Categories:** aggregation
+Example:
 
-**Parameters:**
-
-<ParamField path="method" type="Literal [ 'average' , 'min' , 'max' , 'dense' , 'ordinal' , 'random' ]" default="'average'">
-  the ranking type: ‘average’ (default), ‘dense’, ‘max’, ‘min’, ‘ordinal’ or ‘random’.
-</ParamField>
-
-<ParamField path="descending" type="bool" default="False">
-  if the order is ascending (default) or descending.
-</ParamField>
-
-<ParamField path="seed" type="int | None" default="None">
-  random seed when using ‘random’ rank type.
-</ParamField>
-
-#### Example
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -607,27 +506,33 @@ Compute the rank of the element values. Multiple rank types are available.
 └──────┴──────┘
 ```
 
+<ParamField path="method">
+  the ranking type: ‘average’ (default), ‘dense’, ‘max’, ‘min’,
+‘ordinal’ or ‘random’.
+</ParamField>
+
+<ParamField path="descending">
+  if the order is ascending (default) or descending.
+</ParamField>
+
+<ParamField path="seed">
+  random seed when using ‘random’ rank type.
+</ParamField>
 
 </details>
 
-<a id="tabsdata.tableframe.expr.expr.Expr.sum"></a>
-<details>
-<summary>sum</summary>
+ <details>
+<summary>
 
+**`sum`**
 
-```python
-def sum() -> Expr
-```
-
-[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2568)
+</summary>
 
 Aggregation operation that sums the values in the group.
 
-**Categories:** aggregation
+Examples:
 
-#### Examples
-
-```python
+```text
 >>> import tabsdata as td
 >>>
 >>> tf: td.TableFrame ...
@@ -665,6 +570,5 @@ Aggregation operation that sums the values in the group.
 │ F    ┆ -5  │
 └──────┴─────┘
 ```
-
 
 </details>
