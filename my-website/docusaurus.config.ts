@@ -11,8 +11,10 @@ const config: Config = {
     v4: true,
   },
 
-  url: 'https://your-docusaurus-site.example.com',
-  baseUrl: '/',
+  url: 'https://adaydan-tabsdata.github.io',
+  baseUrl: '/tabsdata-docusaurus-docs/',
+  organizationName: 'adaydan-tabsdata',
+  projectName: 'tabsdata-docusaurus-docs',
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
