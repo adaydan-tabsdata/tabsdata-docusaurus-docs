@@ -1,0 +1,45 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.degrees"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.degrees"
+description: "Convert a radian value to degrees"
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.degrees"></a>
+<details>
+<summary>degrees</summary>
+
+
+```python
+def degrees() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/expr.py#L711)
+
+Convert a radian value to degrees
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").degrees().alias("degrees"))
+>>>
+┌──────┬────────────┐
+│ val  ┆ degress    │
+│ ---  ┆ ---        │
+│ f64  ┆ f64        │
+╞══════╪════════════╡
+│ 0.1  ┆ 5.729578   │
+│ 1.5  ┆ 85.943669  │
+│ 1.8  ┆ 103.132403 │
+│ 6.0  ┆ 343.774677 │
+│ 6.0  ┆ 343.774677 │
+│ 7.5  ┆ 429.718346 │
+│ null ┆ null       │
+└──────┴────────────┘
+```
+
+
+</details>

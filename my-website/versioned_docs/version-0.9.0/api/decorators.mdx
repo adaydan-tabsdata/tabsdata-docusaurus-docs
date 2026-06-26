@@ -1,0 +1,177 @@
+---
+title: "Functions"
+sidebarTitle: "Functions"
+description: "Decorator that defines a function as a Tabsdata Publisher."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.decorators.publisher"></a>
+<details>
+<summary>publisher</summary>
+
+
+```python
+def publisher(
+    source: AzureSource | LocalFileSource | MariaDBSource | MySQLSource | OracleSource | PostgresSource | S3Source | SourcePlugin,
+    tables: TableOutput | str | List [ str ],
+    name: str = None,
+    trigger_by: str | List [ str ] | None = None,
+) -> callable
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/decorators.py#L108)
+
+Decorator that defines a function as a Tabsdata Publisher.
+
+A Publisher is a function that reads data from an external source and publishes it as Tabsdata table(s).
+
+**Parameters:**
+
+<ParamField path="source" type="AzureSource | LocalFileSource | MariaDBSource | MySQLSource | OracleSource | PostgresSource | S3Source | SourcePlugin" required>
+  A connector to the external source that will provide the data to publish in theTabsdata server.
+</ParamField>
+
+<ParamField path="tables" type="TableOutput | str | List [ str ]" required>
+  Table(s) name(s) where to the data will be published. Name are ‘`<table>`’ (table(s) are always in the same collection as the Publisher).
+</ParamField>
+
+<ParamField path="name" type="str" default="None">
+  (optional) The name with which the Publisher will be registered. If not provided, the Python function name will be used.
+</ParamField>
+
+<ParamField path="trigger_by" type="str | List [ str ] | None" default="None">
+  (optional) The table(s) that will cause the Publisher to execute when a new version is created. Names can be`<collection>`/`<table>` (when the table is in a different collection than the Publisher) or `<table>` (when the table is in the same collection as the Publisher). If not specified, it default to None.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> @td.publisher(
+>>>     source=td.LocalFileSource("/opt/dropzone/users.csv"),
+>>>     tables=["users"]
+>>> )
+>>> def publish_users(users: td.TableFrame) -> td.TableFrame:
+>>>     return users
+```
+
+
+</details>
+
+<a id="tabsdata.decorators.transformer"></a>
+<details>
+<summary>transformer</summary>
+
+
+```python
+def transformer(
+    input_tables: TableInput | str | List [ str ],
+    output_tables: TableOutput | str | List [ str ],
+    name: str = None,
+    trigger_by: str | List [ str ] | None = '*',
+) -> callable
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/decorators.py#L33)
+
+Decorator that defines a function as a Tabsdata Transformer.
+
+A Transformer is a function that reads data from Tabsdata tables, processes them, and writes the result to one or more Tabsdata tables.
+
+**Parameters:**
+
+<ParamField path="input_tables" type="TableInput | str | List [ str ]" required>
+  Input table(s) name(s). Names can be`<collection>`/`<table>` (when the table is in a different collection than the Transformer) or `<table>` (when the table is in the same collection as the Transformer).
+</ParamField>
+
+<ParamField path="output_tables" type="TableOutput | str | List [ str ]" required>
+  Output table(s) name(s). Name are ‘`<table>`’ (output table(s) are always in the same collection as the Transformer).
+</ParamField>
+
+<ParamField path="name" type="str" default="None">
+  (optional) The name with which the Transformer will be registered. If not provided, the Python function name will be used.
+</ParamField>
+
+<ParamField path="trigger_by" type="str | List [ str ] | None" default="'*'">
+  (optional) The table(s) that will cause the Transformer to execute when a new version is created. Names can be`<collection>`/`<table>` (when the table is in a different collection than the Transformer) or `<table>` (when the table is in the same collection as the Transformer). If not specified, it default to all input_tables.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> @td.transformer(
+>>>     input_tables=["users"],
+>>>     output_tables=["active_users", "inactive_users"]
+>>> )
+>>> def split_users(
+>>>     users: td.TableFrame
+>>> ) -> (td.TableFrame, td.TableFrame):
+>>>     active_users = users.filter(td.col("status") == 'active')
+>>>     inactive_users = users.filter(td.col("status") == 'inactive')
+>>>     return active_users, inactive_users
+```
+
+
+</details>
+
+<a id="tabsdata.decorators.subscriber"></a>
+<details>
+<summary>subscriber</summary>
+
+
+```python
+def subscriber(
+    tables: TableInput | str | List [ str ],
+    destination: AzureDestination | LocalFileDestination | MariaDBDestination | MySQLDestination | OracleDestination | PostgresDestination | S3Destination | DestinationPlugin,
+    name: str = None,
+    trigger_by: str | List [ str ] | None = '*',
+) -> callable
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/decorators.py#L186)
+
+Decorator that defines a function as a Tabsdata Subscriber.
+
+A Subscriber is a function that reads data from Tabsdata tables, and writes data to an external system.
+
+**Parameters:**
+
+<ParamField path="tables" type="TableInput | str | List [ str ]" required>
+  Input table(s) name(s). Names can be`<collection>`/`<table>` (when the table is in a different collection than the Transformer) or `<table>` (when the table is in the same collection as the Subscriber).
+</ParamField>
+
+<ParamField path="destination" type="AzureDestination | LocalFileDestination | MariaDBDestination | MySQLDestination | OracleDestination | PostgresDestination | S3Destination | DestinationPlugin" required>
+  A connector to the external source (the subscriber) that will receive the data from theTabsdata server.
+</ParamField>
+
+<ParamField path="name" type="str" default="None">
+  (optional) The name with which the Subscriber will be registered. If not provided, the Python function name will be used.
+</ParamField>
+
+<ParamField path="trigger_by" type="str | List [ str ] | None" default="'*'">
+  (optional) The table(s) that will cause the Subscriber to execute when a new version is created. Names can be`<collection>`/`<table>` (when the table is in a different collection than the Subscriber) or `<table>` (when the table is in the same collection as the Publisher). If not specified, it default to all tables.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> @td.subscriber(
+>>>     tables=["active_users"],
+>>>     destination= td.MariaDBDestination(
+>>>         uri="mariadb+mysqlconnector://127.0.0.1:3307/mydb",
+>>>         destination_table="ACTIVE_USER",
+>>>         credentials=td.UserPasswordCredentials("admin", "supersecret"),
+>>>     )
+>>> )
+>>> def export_active_users(active_users: td.TableFrame) -> td.TableFrame:
+>>>     return active_users
+```
+
+
+</details>

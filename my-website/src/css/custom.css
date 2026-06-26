@@ -1,0 +1,24 @@
+/* Tabsdata brand colors — primary: #1A6EFF */
+:root {
+  --ifm-color-primary: #1a6eff;
+  --ifm-color-primary-dark: #0d63f8;
+  --ifm-color-primary-darker: #085eeb;
+  --ifm-color-primary-darkest: #0047cc;
+  --ifm-color-primary-light: #2f7eff;
+  --ifm-color-primary-lighter: #3f88ff;
+  --ifm-color-primary-lightest: #ebf3ff;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(26, 110, 255, 0.08);
+  --ifm-card-background-color: var(--ifm-background-surface-color);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #5599ff;
+  --ifm-color-primary-dark: #3585ff;
+  --ifm-color-primary-darker: #1a73ff;
+  --ifm-color-primary-darkest: #0047cc;
+  --ifm-color-primary-light: #75adff;
+  --ifm-color-primary-lighter: #8fbeff;
+  --ifm-color-primary-lightest: #c7dfff;
+  --docusaurus-highlighted-code-line-bg: rgba(85, 153, 255, 0.15);
+}

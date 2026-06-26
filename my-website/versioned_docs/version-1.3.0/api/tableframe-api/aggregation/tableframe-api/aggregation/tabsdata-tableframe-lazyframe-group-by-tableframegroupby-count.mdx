@@ -1,0 +1,62 @@
+---
+title: "tabsdata.tableframe.lazyframe.group_by.TableFrameGroupBy.count"
+sidebarTitle: "tabsdata.tableframe.lazyframe.group_by.TableFrameGroupBy.count"
+description: "Aggregation operation that counts the non-null rows in the group. All the columns of the original TableFrame are included in the result, with the count in each of thse columns."
+---
+
+<a id="tabsdata.tableframe.lazyframe.group_by.TableFrameGroupBy.count"></a>
+<details>
+<summary>count</summary>
+
+
+```python
+def count() -> TableFrame
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/lazyframe/group_by.py#L210)
+
+Aggregation operation that counts the non-null rows in the group. All the columns of the original TableFrame are included in the result, with the count in each of thse columns.
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┬──────┐
+│ ss   ┆ u    ┆ ff   │
+│ ---  ┆ ---  ┆ ---  │
+│ str  ┆ i64  ┆ f64  │
+╞══════╪══════╪══════╡
+│ A    ┆ 1    ┆ 1.1  │
+│ B    ┆ 0    ┆ 0.0  │
+│ A    ┆ 2    ┆ 2.2  │
+│ B    ┆ 3    ┆ 3.3  │
+│ B    ┆ 4    ┆ 4.4  │
+│ C    ┆ 5    ┆ -1.1 │
+│ C    ┆ 6    ┆ -2.2 │
+│ C    ┆ 7    ┆ -3.3 │
+│ D    ┆ 8    ┆ inf  │
+│ F    ┆ 9    ┆ NaN  │
+│ null ┆ null ┆ null │
+└──────┴──────┴──────┘
+>>>
+>>> tf.group_by(td.col("ss")).count()
+>>>
+┌──────┬─────┬─────┐
+│ ss   ┆ u   ┆ ff  │
+│ ---  ┆ --- ┆ --- │
+│ str  ┆ u32 ┆ u32 │
+╞══════╪═════╪═════╡
+│ A    ┆ 2   ┆ 2   │
+│ B    ┆ 3   ┆ 3   │
+│ C    ┆ 3   ┆ 3   │
+│ D    ┆ 1   ┆ 1   │
+│ F    ┆ 1   ┆ 1   │
+│ null ┆ 0   ┆ 0   │
+└──────┴─────┴─────┘
+```
+
+
+</details>

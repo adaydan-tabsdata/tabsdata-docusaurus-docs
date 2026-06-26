@@ -1,0 +1,45 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.arccosh"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.arccosh"
+description: "Calculate the inverse hyperbolic cosine of the element value."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.arccosh"></a>
+<details>
+<summary>arccosh</summary>
+
+
+```python
+def arccosh() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L336)
+
+Calculate the inverse hyperbolic cosine of the element value.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").arccosh().alias("arccosh"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ arccosh  │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ 0.1  ┆ NaN      │
+│ 1.5  ┆ 0.962424 │
+│ 1.8  ┆ 1.192911 │
+│ 6.0  ┆ 2.477889 │
+│ 6.0  ┆ 2.477889 │
+│ 7.5  ┆ 2.703576 │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+
+</details>

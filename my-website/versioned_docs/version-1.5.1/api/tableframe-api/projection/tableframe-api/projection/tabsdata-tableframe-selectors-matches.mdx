@@ -1,0 +1,46 @@
+---
+title: "tabsdata.tableframe.selectors.matches"
+sidebarTitle: "tabsdata.tableframe.selectors.matches"
+description: "Select all columns whose names match a regular expression pattern."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.selectors.matches"></a>
+<details>
+<summary>matches</summary>
+
+
+```python
+def matches(
+    pattern: str,
+) -> SelectorProxy
+```
+
+Select all columns whose names match a regular expression pattern.
+
+**Parameters:**
+
+<ParamField path="pattern" type="str" required>
+  A regular expression pattern to match against column names.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata.tableframe as td_tf
+>>>
+>>> tf = td_tf.TableFrame({
+...     "ColA": [1, 2, 3, 4, 5, 6, 7, 8],
+...     "ColB": [8, 7, 6, 5, 4, 3, 2, 1],
+...     "Data2024": [10, 20, 30, 40, 50, 60, 70, 80],
+...     "Meta": ["a", "b", "c", "d", "e", "f", "g", "h"]
+... })
+```
+
+```python
+>>> tf.select(td_tf.selectors.matches(r"^Col"))
+```
+
+
+</details>

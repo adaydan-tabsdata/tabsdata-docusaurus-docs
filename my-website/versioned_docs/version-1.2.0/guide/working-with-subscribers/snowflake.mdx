@@ -1,0 +1,162 @@
+---
+title: "Snowflake"
+sidebarTitle: "Snowflake"
+---
+
+You can use this built-in Tabsdata subscriber to write to Snowflake.
+
+## Installing the connector#
+
+To work with the Snowflake connector you are required to install the dependencies separately. This is to manage the size of the core package. Please run the following command in your terminal to install the dependencies.
+
+```bash
+$ pip install tabsdata[“snowflake”]
+```
+
+or,
+
+```bash
+$ pip install 'tabsdata['snowflake']'
+```
+
+## Example (Subscriber - Snowflake)#
+
+The following example creates a subscriber named `write_sales`. It writes two Tabsdata tables to the database. The subscriber is automatically triggered by a new commit to any of its input tables, and writes data to the database without any modification.
+
+```python
+import tabsdata as td
+
+@td.subscriber(
+    tables=["vendors", "items"],
+    destination = td.SnowflakeDestination(
+        connection_parameters =  {
+            "account" = "xy12345.us-east-1",         # Snowflake account identifier
+            "user" = "JANE_DOE",                     # Snowflake username
+            "password" = "sf_pat_1a2b3c4d5e6f7g8h",  # Personal Access Token (PAT)
+            "role" = "SYSADMIN",                     # Snowflake role
+            "database" = "SALES_DB",                 # Database name
+            "schema" = "PUBLIC",                     # Schema name
+            "warehouse" = "COMPUTE_WH"               # Warehouse name
+        },
+        destination_table= [
+            "vendors",
+            "items"
+        ],
+        if_table_exists = "replace",    # or "append",
+        stage = "test_stage"            # Snowflake stage name, if not
+                                        # provided, a temporary one will
+                                        # be created.
+    )
+)
+
+def write_sales(tf1: td.TableFrame, tf2: td.TableFrame):
+    return tf1, tf2
+```
+
+**Note:** After defining the subscriber, you need to register it with a Tabsdata collection. For more information, see Register a Function.
+
+## Setup (Subscriber - Snowflake)#
+
+The following code uses placeholder values for defining a subscriber that reads Tabsdata tables and writes to Snowflake:
+
+```python
+import tabsdata as td
+
+
+@td.subscriber(
+    tables=["<input_table1>", "<input_table2>"],
+
+    destination=td.SnowflakeDestination(
+    connection_parameters=  {
+       "account": str|Secret,   # Snowflake account
+       "user": str|Secret,      # Snowflake user
+       "password": str|Secret,  # Snowflake user's Personal Access
+                                # Token (PAT).
+                                # Password for programmatic access
+                                # is not supported anymore.
+       "role": str|Secret,      # Snowflake role
+       "database": str|Secret,  # Snowflake database
+       "schema": str|Secret,    # Snowflake schema
+       "warehouse": str|Secret, # Snowflake warehouse
+    },
+    destination_table= [
+       "my_table1",
+       "my_table2",
+       ...
+    ],
+    if_table_exists= "replace",  # or "append",
+    stage = str|None             # Snowflake stage name, if not
+                                 # provided, a temporary one will
+                                 # be created.
+    ),
+
+    trigger_by=["<trigger_table1>", "<trigger_table2>"],
+
+)
+
+def <subscriber_name> (<table_frame1>:td.TableFrame, <table_frame2>:td.TableFrame):
+    <function_logic>
+    return <table_frame_output1>, <table_frame_output2>
+```
+
+**Note:** After defining the subscriber, you need to register it with a Tabsdata collection. For more information, see Register a Function.
+
+Following properties are defined in the code above:
+
+### tables#
+
+`<input_table1>`, `<input_table2>`… are the names of the Tabsdata tables to be written to the external system.
+
+### destination#
+
+**connection_parameters**: Following values are to be defined in connection parameters:
+
+- `account`: Snowflake account
+- `user`: Snowflake user
+- `password`: Snowflake user’s Personal Access Token (PAT). Password for programmatic access is not supported anymore.
+- `role`: Snowflake role
+- `database`: Snowflake database
+- `schema`: Snowflake schema
+- `warehouse`: Snowflake warehouse
+
+**destination_table**: Names of the destination tables to be created, replaced, or appended in Snowflake.
+
+[optional] **if_table_exists**: This is an optional property to define the strategy to follow when the table already exists. ‘replace’ will create overwrite the existing table, and ‘append’ will append to the existing data in the table. Defaults to ‘append’.
+
+[optional] **stage**: Snowflake stage name. If not provided, a temporary one will be created.
+
+### None as an input and output#
+
+A subscriber may receive and return a `None` value instead of TableFrames.
+
+When a subscriber receives a `None` value instead of a TableFrame it means that the requested table dependency version does not exist.
+
+When a subscriber returns a `None` value instead of a TableFrame it means there is no new data to write to the external system. This helps in avoiding the creation of multiple copies of the same data.
+
+### [Optional] trigger_by#
+
+`<trigger_table1>`, `<trigger_table2>`… are the names of the tables in the Tabsdata server. A new commit to any of these tables triggers the subscriber. All listed trigger tables must exist in the server before registering the subscriber.
+
+Defining trigger tables is optional. If you don’t define the `trigger_by` property, the subscriber will be triggered by any of its input tables. If you define the `trigger_by` property, then only those tables listed in the property can automatically trigger the subscriber.
+
+For more information, see Working with Triggers.
+
+### `<subscriber_name>`#
+
+`<subscriber_name>` is the name for the subscriber that you are configuring.
+
+### `<function_logic>`#
+
+`<function_logic>` governs the processing performed by the subscriber. You can specify function logic to be a simple write or to perform additional processing as needed. For more information about the function logic that you can include, see Working with Tables.
+
+`<table_frame1>`, `<table_frame2>`… are the names for the variables that temporarily store source data for processing.
+
+`<table_frame_output1>`, `<table_frame_output2>`… are the output from the function that are written to the external system.
+
+### Data Drift Support#
+
+This section talks about how Tabsdata handles data drift in the output data for this Subscriber connector.
+
+Here, the schema from the first execution (or pre-existing table) is preserved irrespective of the value of any function property such as `if_table_exists`.
+
+Here is how the system will respond to various kinds of changes due to data drift: – New columns introduced by data drift are ignored. – Columns removed from the source remain in the table, with missing values populated as NULL. – Changes to column data types (type drift) cause execution to fail, as the subscriber does not automatically reconcile type mismatches.

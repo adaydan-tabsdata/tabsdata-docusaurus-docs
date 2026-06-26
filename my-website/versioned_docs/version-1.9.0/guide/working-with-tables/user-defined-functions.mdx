@@ -1,0 +1,103 @@
+---
+title: "User-defined Functions (UDFs)"
+sidebarTitle: "User-defined Functions (UDFs)"
+---
+
+Tabsdata TableFrames support UDFs for applying custom logic that cannot be expressed using Tabsdata expressions. Typically they are used for using functionality provided by external libraries or to write logic that would be too cumbersome to write as TableFrame expressions.
+
+Using UDFs to access external systems is *highly discouraged*. UDFs functions should be idempotent or produce equivalent results (i.e. random data).
+
+For example, see the TableFrame below with a ‘zip’ column which has some external, user defined, logic that finds the city corresponding to that zip code coded in a ‘zip_to_city’ UDF. Its use would be:
+
+```
+tf
+
+┌──────────────┬──────────────┐
+│ customer     ┆ zip          │
+│ ---          ┆ ---          │
+│ str          ┆ str          │
+╞══════════════╪══════════════╡
+│ 00001        ┆ 94087        │
+│ 00002        ┆ 94117        │
+│ 00003        ┆ 90264        │
+│ 00004        ┆ 73301        │
+└──────────────┴──────────────┘
+
+tf = tf.udf("zip", zip_to_city(upper_case=True))
+
+┌──────────────┬──────────────┬────────────────┐
+│ customer     ┆ zip          │ city           │
+│ ---          ┆ ---          │ ---            │
+│ str          ┆ str          │ str            │
+╞══════════════╪══════════════╪════════════════╡
+│ 00001        ┆ 94087        │ SUNNYVALE      │
+│ 00002        ┆ 94117        │ SAN FRANCISCO  │
+│ 00003        ┆ 90264        │ MALIBU         │
+│ 00004        ┆ 73301        │ AUSTIN         │
+└──────────────┴──────────────┴────────────────┘
+```
+
+**IMPORTANT**: While Tabsdata optimizes UDF invocations, they have performance impact when compared with logic done with native TableFrame expressions. UDFs should be used only when strictly necessary.
+
+Tabsdata UDFs can operate on multiple columns of the table frame and they can return multiple columns as well. They are applied to the TableFrame in streaming mode, being restricted to use column values of the same row only.
+
+## Creating a User-defined Function
+
+To create a Tabsdata UDF you need to create a Tabsdata UDF sub class. It must define the default output column names and their types and a method implementing the UDF logic.
+
+For example, for the ‘zip_to_city’ UDF its class definition would be:
+
+```python
+import tabsdata as td
+from tabsdata.tableframe.udf.function import UDF
+
+class ZipToCity(UDF):
+
+    ZIP_CITY_MAP = { '<zip>': '<city>' ..... }
+
+    def __init__(self, to_upper_case: bool = False):
+        super().__init__(("city", td.String))
+        self._upper_case = upper_case
+
+    def on_element(self, values: list) -> list:
+        zip = values[0]
+        city = ZIP_TO_CITY.get(zip, "<Invalid ZIP>")
+        if self._upper_case:
+            city = city.upper()
+        return [ city ]
+
+zip_to_city = ZipToCity
+```
+
+The UDF constructor must define the function default column names and types when invoking the `UDF.__init__` constructor.
+
+The UDF constructor may receive parameters that affect the execution of the UDF independent from the values of the TableFrame the UDF is being applied to. In the above example, this would be the case of the `to_upper_case`.
+
+The UDF must implement the `UDF.on_element(...)` or the `UDF.on_batch(...)` methods with the desired functionality. From a functional perspective, both methods are equivalent. The `on_element(...)` method operates on values of one row, the `on_batch(...)` method operates on values of a set of rows. `on_batch(...)` enables a better performance when using logic that operates on vectorized data.
+
+Both methods, the `UDF.on_element(...)` or the `UDF.on_batch(...)`, receive a list and return a list. Each element of the input list corresponds to the columns specified in the `TableFrame.udf(<columns>,...)` invocation. Each element of the returned list corresponds to the output column name and type specified in the UDF constructor.
+
+The `UDF.on_element(...)` input and return list elements are single values.
+
+The `UDF.on_batch(...)` input and return list elements are Series values. All series of the input have the same number of elements. All series of the return list must have the same number of elements as the series in the input. The values on the output series at position N must correspond to the input series at position N.
+
+## Using User-defined Functions
+
+UDFs can be applied to TableFrames through the `udf()` method. UDFs define a default name and type for its output columns, this can be changed when invoking the UDF. For example:
+
+```
+tf = tf.udf("zip", zip_to_city(upper_case=True).output_columns(("ciudad", None)))
+
+┌──────────────┬──────────────┬────────────────┐
+│ customer     ┆ zip          │ ciudad         │
+│ ---          ┆ ---          │ ---            │
+│ str          ┆ str          │ str            │
+╞══════════════╪══════════════╪════════════════╡
+│ 00001        ┆ 94087        │ SUNNYVALE      │
+│ 00002        ┆ 94117        │ SAN FRANCISCO  │
+│ 00003        ┆ 90264        │ MALIBU         │
+│ 00004        ┆ 73301        │ AUSTIN         │
+└──────────────┴──────────────┴────────────────┘
+```
+
+The `output_columns()` method allows changing column names and types both in extensive and selective manners. Refer to the API documentation for details.

@@ -1,0 +1,59 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.diff"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.diff"
+description: "Compute the difference between an element value and the element value of the specified relative row."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.diff"></a>
+<details>
+<summary>diff</summary>
+
+
+```python
+def diff(
+    n: int = 1,
+) -> Expr
+```
+
+Compute the difference between an element value and the element value of the specified relative row.
+
+It supports numberic and datetime types.
+
+**Parameters:**
+
+<ParamField path="n" type="int" default="1">
+  The relative row to compute the difference with. Defaults to 1 (previous). Use a negative number to get a next row.
+</ParamField>
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("i"), td.col("i").diff().diff().alias("diff"))
+>>>
+┌──────┬──────┐
+│ i    ┆ diff │
+│ ---  ┆ ---  │
+│ i64  ┆ i64  │
+╞══════╪══════╡
+│ 1    ┆ null │
+│ 0    ┆ -1   │
+│ 2    ┆ 2    │
+│ 3    ┆ 1    │
+│ 4    ┆ 1    │
+│ -1   ┆ -5   │
+│ -2   ┆ -1   │
+│ -3   ┆ -1   │
+│ -4   ┆ -1   │
+│ -5   ┆ -1   │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+
+</details>

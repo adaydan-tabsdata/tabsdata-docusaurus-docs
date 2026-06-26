@@ -1,0 +1,39 @@
+---
+title: "tabsdata.tableframe.selectors.decimal"
+sidebarTitle: "tabsdata.tableframe.selectors.decimal"
+description: "Select all columns of decimal data type."
+---
+
+<a id="tabsdata.tableframe.selectors.decimal"></a>
+<details>
+<summary>decimal</summary>
+
+
+```python
+def decimal() -> SelectorProxy
+```
+
+Select all columns of decimal data type.
+
+#### Example
+
+```python
+>>> import tabsdata.tableframe as td_tf
+>>> from decimal import Decimal
+>>>
+>>> tf = td_tf.TableFrame({
+...     "Price": [
+...         Decimal("10.99"), Decimal("15.49"), Decimal("8.75"),
+...         Decimal("12.00"), Decimal("9.99"), Decimal("20.00"),
+...         Decimal("7.30"), Decimal("11.45")
+...     ],
+...     "Item": ["A", "B", "C", "D", "E", "F", "G", "H"]
+... })
+```
+
+```python
+>>> tf.select(td_tf.selectors.decimal())
+```
+
+
+</details>

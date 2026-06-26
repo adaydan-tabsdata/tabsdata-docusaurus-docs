@@ -1,0 +1,63 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.replace_all"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.replace_all"
+description: "Replace the all occurences of a pattern with the given string."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.replace_all"></a>
+<details>
+<summary>replace_all</summary>
+
+
+```python
+def replace_all(
+    pattern: str | Expr,
+    value: str | Expr,
+    *,
+    literal: bool = False,
+) -> Expr
+```
+
+Replace the all occurences of a pattern with the given string.
+
+**Parameters:**
+
+<ParamField path="pattern" type="str | Expr" required>
+  The pattern to replace.
+</ParamField>
+
+<ParamField path="value" type="str | Expr" required>
+  The value to replace the pattern with.
+</ParamField>
+
+<ParamField path="literal" type="bool" default="False">
+  Take the pattern as a literal string (not a regex).
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.replace("b", "X").alias("replace"))
+>>>
+┌───────────┬─────────────┐
+│ a         ┆ replace_all │
+│ ---       ┆ ---         │
+│ str       ┆ str         │
+╞═══════════╪═════════════╡
+│ a bAb c d ┆ a XAX c d   │
+│ bCbb c d  ┆ XCXX c d    │
+│ bb        ┆ XX          │
+│ b         ┆ X           │
+│ a         ┆ a           │
+│ null      ┆ null        │
+└───────────┴─────────────┘
+```
+
+
+</details>

@@ -1,0 +1,183 @@
+---
+title: "Azure Blob Storage"
+sidebarTitle: "Azure Blob Storage"
+---
+
+You can use this built-in Tabsdata subscriber to write files from Tabsdata server to Azure Blob Storage. Subscribers can write the following file formats: CSV, jsonl, ndjson, AVRO, and parquet.
+
+## Example (Subscriber - Azure Blob Storage)
+
+Here is an example subscriber named `write_employees`. It reads departments table and multiple employees tables from Tabsdata. Subsequently, it writes the tables to the output HR folder. This subscriber executes automatically as soon as a new commit occurs on any of its input tables.
+
+```python
+import tabsdata as td
+
+azure_credentials = td.AzureAccountKeyCredentials(
+    account_name=td.HashiCorpSecret("path-to-secret","AZURE_ACCOUNT_NAME"),
+    account_key=td.HashiCorpSecret("path-to-secret","AZURE_ACCOUNT_KEY"),
+)
+
+@td.subscriber(
+    tables=["departments", "employees_1", "employees_2"],
+    destination=td.AzureDestination(
+        [
+            "az://opt/hr/departments.csv",
+            "az://opt/hr/employees_1.csv",
+            "az://opt/hr/employees_2.csv",
+        ],
+        credentials = azure_credentials,
+    ),
+)
+def write_employees(tf1: td.TableFrame, tf2: td.TableFrame, tf3: td.TableFrame):
+    return tf1, tf2, tf3
+```
+
+Where:
+
+`AZURE_ACCOUNT_NAME` is your Azure account name.
+
+`AZURE_ACCOUNT_KEY` is the value of your Azure account key.
+
+:::note
+* After defining the function, you need to register it with a Tabsdata collection and execute it. For more information, see Register a Function and Execute a Function.
+:::
+
+## Setup (Subscriber - Azure Blob Storage)
+
+The following code uses placeholder values for defining a subscriber that reads Tabsdata tables and writes them to Azure Blob Storage:
+
+```python
+import tabsdata as td
+
+azure_credentials = td.AzureAccountKeyCredentials(
+    account_name=td.HashiCorpSecret("path-to-secret","AZURE_ACCOUNT_NAME"),
+    account_key=td.HashiCorpSecret("path-to-secret","AZURE_ACCOUNT_KEY"),
+)
+
+@td.subscriber(
+    tables=["<input_table1>", "<input_table2>"],
+    destination=td.AzureDestination(
+        ["az://<path_to_file1>", "az://<path_to_file2>"],
+        credentials = azure_credentials
+    ),
+    trigger_by=["<trigger_table1>", "<trigger_table2>"],
+)
+def <subscriber_name>(<table_frame1>: td.TableFrame, <table_frame2>: td.TableFrame):
+    <function_logic>
+    return <table_frame_output1>, <table_frame_output2>
+```
+
+:::note
+* After defining the function, you need to register it with a Tabsdata collection and execute it. For more information, see Register a Function and Execute a Function.
+:::
+
+Following properties are defined in the setup code above:
+
+### tables
+
+`<input_table1>`, `<input_table2>`… are the names of the Tabsdata tables to be written to the external system.
+
+### destination
+
+#### `<path_to_files>`
+
+`<path_to_file1>`, `<path_to_file2>`… are the full system directory paths to write the files to.
+
+All the destination files in a subscriber need to have the same extension. Following file formats are supported currently: CSV, jsonl, ndjson, AVRO, and parquet.
+
+You can specify as many file paths as needed. Additionally, you can use the following variables within path to files to make the files unique or identifiable by a Tabsdata ID. e.g. `td-iceberg/customers-$EXPORT_TIMESTAMP.parquet` as used in [this Tabsdata tutorial](https://github.com/tabsdata/tutorials/blob/main/t03_csv_iceberg_pub_sub/subscriber.py).
+
+| Field | Description |
+| --- | --- |
+| $EXECUTION_ID | The execution plan ID. |
+| $EXPORT_TIMESTAMP | Datetime the function started executing in epoch millis. |
+| $FUNCTION_RUN_ID | The function run ID. |
+| $SCHEDULER_TIMESTAMP | Datetime when the scheduler set the function run to running, in epoch millis. |
+| $TRIGGER_TIMESTAMP | Datetime when the execution plan was triggered, in epoch millis. |
+| $TRANSACTION_ID | The transaction ID. |
+
+You can define the destination files in the following ways:
+
+**File Path**
+
+To write by file path where the file extension is included as part of the file path, define the destination as follows:
+
+```python
+destination=td.AzureDestination(
+        ["az://<path_to_file1.ext>","az://<path_to_file2.ext>"],
+        azure_credentials),
+```
+
+`<path_to_file1.ext>`, `<path_to_file2.ext>`… have the extensions of the file included in the file name as part of the path.
+
+**File Format**
+
+To write files by file format where format is declared separately and not in the file name, define the destination as follows:
+
+```python
+destination=td.AzureDestination([
+        "az://<path_to_file1_no_extension>",
+        "az://<path_to_file2_no_extension>",
+        ], azure_credentials, format="<format_name>"),
+```
+
+`"<path_to_file1_no_extension>"`, `"<path_to_file2_no_extension>"`… are paths to files with extensions of the file not included in the file name. The extension to all files is mentioned separately in `format`.
+
+**Custom delimiter for CSV**
+
+To define a custom delimiter for reading a CSV file, use the format code as follows:
+
+```python
+destination=td.AzureDestination([
+        "az://<path_to_file1_no_extension>",
+        "az://<path_to_file2_no_extension>",
+        ], azure_credentials, format=td.CSVFormat(separator="<separator_character>")),
+```
+
+`"<path_to_file1_no_extension>"`, `"<path_to_file2_no_extension>"`… are paths to CSV files with a custom delimiter, with extensions of the file not included in the file name. The delimiter is a single byte character such as colon (:), semicolon (;), and period (.) that separate the fields in the given file instead of a comma(,). You define the character in `separator`.
+
+#### credentials
+
+A subscriber needs credentials to write files to Azure Blob Storage. Here the value is defined using a variable **azure_credentials**. The variable is an object of class `AzureAccountKeyCredentials` with following values.
+
+`AZURE_ACCOUNT_NAME` is your Azure account name.
+
+`AZURE_ACCOUNT_KEY` is the value of your Azure account key.
+
+You can use different ways to store the credentials which are highlighted here in the documentation.
+
+### None as an input and output
+
+A subscriber may receive and return a `None` value instead of TableFrames.
+
+When a subscriber receives a `None` value instead of a TableFrame it means that the requested table dependency version does not exist.
+
+When a subscriber returns a `None` value instead of a TableFrame it means there is no new data to write to the external system. This helps in avoiding the creation of multiple copies of the same data.
+
+### [Optional] trigger_by
+
+`<trigger_table1>`, `<trigger_table2>`… are the names of the tables in the Tabsdata server. A new commit to any of these tables triggers the subscriber. All listed trigger tables must exist in the server before registering the subscriber.
+
+Defining trigger tables is optional. If you don’t define the `trigger_by` property, the subscriber will be triggered by any of its input tables. If you define the `trigger_by` property, then only those tables listed in the property can automatically trigger the subscriber.
+
+For more information, see Working with Triggers.
+
+### `<subscriber_name>`
+
+`<subscriber_name>` is the name for the subscriber that you are configuring.
+
+### `<function_logic>`
+
+`<function_logic>` governs the processing performed by the subscriber. You can specify function logic to be a simple write or to perform additional processing as needed. For more information about the function logic that you can include, see Working with Tables.
+
+`<table_frame1>`, `<table_frame2>`… are the names for the variables that temporarily store source data for processing.
+
+`<table_frame_output1>`, `<table_frame_output2>`… are the output from the function that are written to the external system.
+
+### Data Drift Support
+
+This section talks about how Tabsdata handles data drift in the input data for this Subscriber connector.
+
+As this is a file-based subscriber, the exported files will reflect the updated schema. No special handling is required in this case, as the target external system serves purely as a storage layer without schema-dependent logic.
+
+However, this applies only if the subscriber function does not contain schema-dependent logic. If such logic exists, changes in the schema may conflict with the function’s expectations, leading to execution errors.

@@ -1,0 +1,102 @@
+---
+title: "tabsdata.DatabricksDestination"
+sidebarTitle: "tabsdata.DatabricksDestination"
+description: "Bases: DestinationPlugin"
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.DatabricksDestination"></a>
+<details>
+<summary>DatabricksDestination</summary>
+
+
+```python
+class DatabricksDestination(
+    host_url: str,
+    token: str | Secret,
+    tables: list [ str ] | str,
+    volume: str,
+    catalog: str | None = None,
+    schema: str | None = None,
+    warehouse: str | None = None,
+    warehouse_id: str | None = None,
+    if_table_exists: Literal [ 'append' , 'replace' ] = 'append',
+    schema_strategy: Literal [ 'update' , 'strict' ] = 'update',
+    ** kwargs,
+)
+```
+
+Bases: [`DestinationPlugin`](../plugins/tabsdata.DestinationPlugin.html#tabsdata.DestinationPlugin)
+
+Databricks based data outputs.
+
+<a id="tabsdata.DatabricksDestination.__init__"></a>
+#### `__init__`
+
+```python
+def __init__(
+    host_url: str,
+    token: str | Secret,
+    tables: list [ str ] | str,
+    volume: str,
+    catalog: str | None = None,
+    schema: str | None = None,
+    warehouse: str | None = None,
+    warehouse_id: str | None = None,
+    if_table_exists: Literal [ 'append' , 'replace' ] = 'append',
+    schema_strategy: Literal [ 'update' , 'strict' ] = 'update',
+    ** kwargs,
+)
+```
+
+Initializes the DatabricksDestination with the configuration desired to store the data.
+
+**Parameters:**
+
+<ParamField path="host_url" type="str" required>
+  Databricks URL
+</ParamField>
+
+<ParamField path="token" type="str | Secret" required>
+  Databricks Personal Account Token (PAT). The user owning the PAT requires ‘USE CATALOG’, ‘USE SCHEMA’, ‘READ VOLUME’ & ‘WRITE VOLUME’ privileges.
+</ParamField>
+
+<ParamField path="tables" type="list [ str ] | str" required>
+  Tables to be created in Databricks. Each table name provided must either be fully qualified in the form of ‘catalog.schema.table_name’ or have the information provided through the ‘catalog’ or the ‘schema’ parameters. For example, if a table of the form ‘schema.table_name’ is provided, the ‘catalog’ parameter must also be provided. If a table of the form ‘table_name’ is provided, both ‘catalog’ and ‘schema’ must be provided.
+</ParamField>
+
+<ParamField path="volume" type="str" required>
+  Name of the Databricks volume. The connector uses an existing Databricks managed volume. The files written to the volume are deleted after connector finishes writing the data to the Databricks table.
+</ParamField>
+
+<ParamField path="catalog" type="str | None" default="None">
+  Catalog name (optional, can be null if the table name has the catalog name.)
+</ParamField>
+
+<ParamField path="schema" type="str | None" default="None">
+  Schema name (optional, can be null if the table name has the schema name.)
+</ParamField>
+
+<ParamField path="warehouse" type="str | None" default="None">
+  Warehouse name (use either this or warehouse_id) that will be used for uploading data to Databricks tables. The user has to have privileges to use the warehouse.
+</ParamField>
+
+<ParamField path="warehouse_id" type="str | None" default="None">
+  Warehouse Id. Usenull if warehouse name is provided.
+</ParamField>
+
+<ParamField path="if_table_exists" type="Literal [ 'append' , 'replace' ]" default="'append'">
+  This is an optional property to define the strategy to follow when the table already exists. ‘replace’ will create overwrite the existing table, and ‘append’ will append to the existing data in the table. Defaults to ‘append’.
+</ParamField>
+
+<ParamField path="schema_strategy" type="Literal [ 'update' , 'strict' ]" default="'update'">
+  The is to mention the strategy to follow when appending to a table with an existing schema. ‘update’ will update the schema with the possible new columns that might exist in the TableFrame. ‘strict’ will not modify the schema, and will fail if there is any difference.
+</ParamField>
+
+#### Methods
+
+#### Attributes
+
+
+</details>

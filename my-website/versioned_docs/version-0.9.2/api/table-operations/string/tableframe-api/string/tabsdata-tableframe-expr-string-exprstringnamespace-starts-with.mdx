@@ -1,0 +1,54 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.starts_with"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.starts_with"
+description: "Evaluate if the string start with."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.starts_with"></a>
+<details>
+<summary>starts_with</summary>
+
+
+```python
+def starts_with(
+    prefix: str | Expr,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/string.py#L661)
+
+Evaluate if the string start with.
+
+**Parameters:**
+
+<ParamField path="prefix" type="str | Expr" required>
+  The suffix to search for.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a")
+      .str.starts_with("a").alias("starts_with"))
+>>>
+┌──────┬────────────┐
+│ a    ┆ start_with │
+│ ---  ┆ ---        │
+│ str  ┆ bool       │
+╞══════╪════════════╡
+│ a    ┆ true       │
+│ ab   ┆ true       │
+│ b    ┆ false      │
+│ xaby ┆ false      │
+│ null ┆ null       │
+└──────┴────────────┘
+```
+
+
+</details>

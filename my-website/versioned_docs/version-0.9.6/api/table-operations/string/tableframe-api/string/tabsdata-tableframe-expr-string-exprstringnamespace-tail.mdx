@@ -1,0 +1,51 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.tail"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.tail"
+description: "Extract the end of the string up to the given length."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.tail"></a>
+<details>
+<summary>tail</summary>
+
+
+```python
+def tail(
+    n: int | Expr | Series | str,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/string.py#L961)
+
+Extract the end of the string up to the given length.
+
+**Parameters:**
+
+<ParamField path="n" type="int | Expr | Series | str" required>
+  The length of the tail.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.tail(2).alias("tail"))
+>>>
+┌──────┬──────┐
+│ a    ┆ tail │
+│ ---  ┆ ---  │
+│ str  ┆ str  │
+╞══════╪══════╡
+│ abc  ┆ bc   │
+│ a    ┆ a    │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+
+</details>

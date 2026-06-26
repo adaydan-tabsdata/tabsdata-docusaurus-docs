@@ -1,0 +1,64 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.find"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.find"
+description: "Find the position of the first occurrence of the given pattern."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.find"></a>
+<details>
+<summary>find</summary>
+
+
+```python
+def find(
+    pattern: str | Expr,
+    *,
+    literal: bool = False,
+    strict: bool = True,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/string.py#L585)
+
+Find the position of the first occurrence of the given pattern.
+
+**Parameters:**
+
+<ParamField path="pattern" type="str | Expr" required>
+  The pattern to search for.
+</ParamField>
+
+<ParamField path="literal" type="bool" default="False">
+  Take the pattern as a literal string (not a regex).
+</ParamField>
+
+<ParamField path="strict" type="bool" default="True">
+  if the given pattern is not valid regex, raise an error.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.find("b").alias("find"))
+>>>
+┌──────┬──────┐
+│ a    ┆ find │
+│ ---  ┆ ---  │
+│ str  ┆ u32  │
+╞══════╪══════╡
+│ a    ┆ null │
+│ ab   ┆ 1    │
+│ b    ┆ 0    │
+│ xaby ┆ 2    │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+
+</details>

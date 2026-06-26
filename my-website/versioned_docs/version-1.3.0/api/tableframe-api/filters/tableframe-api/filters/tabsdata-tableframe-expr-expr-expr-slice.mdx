@@ -1,0 +1,68 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.slice"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.slice"
+description: "Compute a slice of the TableFrame for the specified columns."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.slice"></a>
+<details>
+<summary>slice</summary>
+
+
+```python
+def slice(
+    offset: int | Expr,
+    length: int | Expr | None = None,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L2222)
+
+Compute a slice of the TableFrame for the specified columns.
+
+**Parameters:**
+
+<ParamField path="offset" type="int | Expr" required>
+  the offset to start the slice.
+</ParamField>
+
+<ParamField path="length" type="int | Expr | None" default="None">
+  the length of the slice.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ x    ┆ y    │
+│ ---  ┆ ---  │
+│ f64  ┆ f64  │
+╞══════╪══════╡
+│ 1.0  ┆ 2.0  │
+│ 2.0  ┆ 2.0  │
+│ NaN  ┆ NaN  │
+│ 4.0  ┆ NaN  │
+│ 5.0  ┆ null │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.select(tf.all().slice(1,2))
+>>>
+┌─────┬─────┐
+│ x   ┆ y   │
+│ --- ┆ --- │
+│ f64 ┆ f64 │
+╞═════╪═════╡
+│ 2.0 ┆ 2.0 │
+│ NaN ┆ NaN │
+└─────┴─────┘
+```
+
+
+</details>

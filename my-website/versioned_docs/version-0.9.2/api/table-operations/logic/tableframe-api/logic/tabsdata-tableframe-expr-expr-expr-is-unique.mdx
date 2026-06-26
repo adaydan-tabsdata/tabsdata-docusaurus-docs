@@ -1,0 +1,43 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.is_unique"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.is_unique"
+description: "If an element value is unique for all values in the column."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.is_unique"></a>
+<details>
+<summary>is_unique</summary>
+
+
+```python
+def is_unique() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/expr.py#L1369)
+
+If an element value is unique for all values in the column.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").is_unique()
+>>>        .alias("unique"))
+>>>
+┌──────┬──────────┐
+│ temp ┆ unique   │
+│ ---  ┆ ---      │
+│ f64  ┆ bool     │
+╞══════╪══════════╡
+│ 1.1  ┆ false    │
+│ 1.1  ┆ false    │
+│ None ┆ true     │
+│ 2.0  ┆ true     │
+└──────┴──────────┘
+```
+
+
+</details>

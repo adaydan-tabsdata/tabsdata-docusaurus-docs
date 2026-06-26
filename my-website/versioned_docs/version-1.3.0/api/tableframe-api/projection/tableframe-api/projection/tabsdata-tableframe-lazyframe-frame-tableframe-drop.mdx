@@ -1,0 +1,72 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.drop"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.drop"
+description: "Discard columns from the TableFrame ."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.drop"></a>
+<details>
+<summary>drop</summary>
+
+
+```python
+def drop(
+    * columns: td_typing.ColumnNameOrSelector | Iterable [ td_typing.ColumnNameOrSelector ],
+    strict: bool = True,
+) -> TableFrame
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/lazyframe/frame.py#L1269)
+
+Discard columns from the TableFrame.
+
+**Parameters:**
+
+<ParamField path="columns" required>
+  Columns to drop.
+</ParamField>
+
+<ParamField path="strict" type="bool" default="True">
+  If True, raises an error if a column does not exist.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ x    ┆ y    │
+│ ---  ┆ ---  │
+│ f64  ┆ f64  │
+╞══════╪══════╡
+│ 1.0  ┆ 2.0  │
+│ 2.0  ┆ 2.0  │
+│ 10.0 ┆ 10.0 │
+│ 4.0  ┆ 10.0 │
+│ 5.0  ┆ null │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.drop("y")
+>>>
+┌──────┐
+│ x    │
+│ ---  │
+│ f64  │
+╞══════╡
+│ 1.0  │
+│ 2.0  │
+│ NaN  │
+│ 4.0  │
+│ 5.0  │
+│ null │
+└──────┘
+```
+
+
+</details>

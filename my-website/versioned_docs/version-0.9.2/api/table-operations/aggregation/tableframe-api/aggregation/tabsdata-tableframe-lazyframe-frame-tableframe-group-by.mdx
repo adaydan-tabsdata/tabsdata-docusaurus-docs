@@ -1,0 +1,67 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.group_by"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.group_by"
+description: "Perform a group by on the TableFrame ."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.group_by"></a>
+<details>
+<summary>group_by</summary>
+
+
+```python
+def group_by(
+    * by: td_expr.IntoExpr | Iterable [ td_expr.IntoExpr ],
+) -> td_group_by.TableFrameGroupBy
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/frame.py#L1207)
+
+Perform a group by on the TableFrame.
+
+**Parameters:**
+
+<ParamField path="by" required>
+  Columns or expressions to group by.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌─────┬─────┐
+│ a   ┆ b   │
+│ --- ┆ --- │
+│ str ┆ i64 │
+╞═════╪═════╡
+│ A   ┆ 1   │
+│ X   ┆ 10  │
+│ C   ┆ 3   │
+│ D   ┆ 5   │
+│ M   ┆ 9   │
+│ A   ┆ 100 │
+│ M   ┆ 50  │
+└─────┴─────┘
+>>>
+>>> tf.group_by(td.col("a")).agg(td.col("b").sum())
+>>>
+┌─────┬─────┐
+│ a   ┆ b   │
+│ --- ┆ --- │
+│ str ┆ i64 │
+╞═════╪═════╡
+│ M   ┆ 59  │
+│ A   ┆ 101 │
+│ C   ┆ 3   │
+│ D   ┆ 5   │
+│ X   ┆ 10  │
+└─────┴─────┘
+```
+
+
+</details>

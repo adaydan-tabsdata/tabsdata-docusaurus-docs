@@ -1,0 +1,69 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.grok"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.grok"
+description: "Parse log text into structured fields using a Grok pattern."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.grok"></a>
+<details>
+<summary>grok</summary>
+
+
+```python
+def grok(
+    pattern: str,
+    schema: dict [ str , Column ],
+) -> Expr
+```
+
+Parse log text into structured fields using a Grok pattern.
+
+Applies the given Grok pattern to the values in the current string expression. Each **named capture group** in the pattern becomes a new output column. Rows that do not match the pattern will return null for the extracted fields.
+
+**Parameters:**
+
+<ParamField path="pattern" type="str" required>
+  Grok pattern with named captures (e.g.,%\{WORD:user}).
+</ParamField>
+
+<ParamField path="schema" type="dict [ str , Column ]" required>
+  A mapping where each capture name is associated with its corresponding column definition, specifying both the column name and its data type.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>> tf = td.TableFrame({"logs": [
+...     "alice-login-2023",
+...     "bob-logout-2024",
+... ]})
+>>>
+>>> log_pattern = r"%{WORD:user}-%{WORD:action}-%{INT:year}"
+>>> log_schema = {
+>>>     "word": td_col.Column("user", td.String),
+>>>     "action": td_col.Column("action", td.String),
+>>>     "year": td_col.Column("year", td.Int8),
+>>> }
+>>> out = tf.grok("logs", log_pattern, log_schema)
+>>> tf.select(
+...     td.col("logs"),
+...     td.col("logs").str.grok(log_pattern, log_schema)
+... )
+>>>
+┌──────────────────┬───────┬────────┬──────┐
+│ logs             ┆ user  ┆ action ┆ year │
+│ ---              ┆ ---   ┆ ---    ┆ ---  │
+│ str              ┆ str   ┆ str    ┆ i64  │
+╞══════════════════╪═══════╪════════╪══════╡
+│ alice-login-2023 ┆ alice ┆ login  ┆ 2023 │
+│ bob-logout-2024  ┆ bob   ┆ logout ┆ 2024 │
+└──────────────────┴───────┴────────┴──────┘
+```
+
+#### Notes
+
+
+</details>

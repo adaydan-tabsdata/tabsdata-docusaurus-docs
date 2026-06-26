@@ -1,0 +1,79 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.cast"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.cast"
+description: "Cast columns to a new data type."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.cast"></a>
+<details>
+<summary>cast</summary>
+
+
+```python
+def cast(
+    dtypes: Mapping [ ColumnNameOrSelector | td_typing.TdDataType , td_typing.TdDataType ] | td_typing.TdDataType,
+    *,
+    strict: bool = True,
+) -> TableFrame
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/lazyframe/frame.py#L375)
+
+Cast columns to a new data type.
+
+**Parameters:**
+
+<ParamField path="dtypes" type="Mapping [ ColumnNameOrSelector | td_typing.TdDataType , td_typing.TdDataType ] | td_typing.TdDataType" required>
+  Mapping of the column name(s) to the new data type(s).
+</ParamField>
+
+<ParamField path="strict" type="bool" default="True">
+  IfTrue, raises an error if the cast cannot be performed.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ X    ┆ 10   │
+│ C    ┆ 3    │
+│ D    ┆ 5    │
+│ M    ┆ 9    │
+│ A    ┆ 100  │
+│ M    ┆ 50   │
+│ null ┆ 20   │
+│ F    ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.cast({"b":pl.Float32}).collect()
+>>>
+┌──────┬───────┐
+│ a    ┆ b     │
+│ ---  ┆ ---   │
+│ str  ┆ f32   │
+╞══════╪═══════╡
+│ A    ┆ 1.0   │
+│ X    ┆ 10.0  │
+│ C    ┆ 3.0   │
+│ D    ┆ 5.0   │
+│ M    ┆ 9.0   │
+│ A    ┆ 100.0 │
+│ M    ┆ 50.0  │
+│ null ┆ 20.0  │
+│ F    ┆ null  │
+└──────┴───────┘
+```
+
+
+</details>

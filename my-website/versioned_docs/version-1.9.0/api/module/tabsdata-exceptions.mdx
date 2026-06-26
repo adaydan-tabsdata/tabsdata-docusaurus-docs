@@ -1,0 +1,575 @@
+---
+title: "tabsdata.exceptions"
+sidebarTitle: "tabsdata.exceptions"
+description: "Bases: TabsDataException"
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.exceptions.CdcError"></a>
+<details>
+<summary>CdcError</summary>
+
+
+```python
+class CdcError(
+    error_code: ErrorCode,
+    * args,
+)
+```
+
+Bases: [`TabsDataException`](#tabsdata.exceptions.TabsDataException)
+
+Exception raised for generic CDC errors.
+
+
+</details>
+
+<a id="tabsdata.exceptions.ConnectionConfigurationError"></a>
+<details>
+<summary>ConnectionConfigurationError</summary>
+
+
+```python
+class ConnectionConfigurationError(
+    error_code: ErrorCode,
+    * args,
+)
+```
+
+Bases: [`TabsDataException`](#tabsdata.exceptions.TabsDataException)
+
+Exception raised when the creation or modification of a Connection object fails.
+
+
+</details>
+
+<a id="tabsdata.exceptions.ConstructorError"></a>
+<details>
+<summary>ConstructorError</summary>
+
+
+```python
+class ConstructorError(
+    error_code: ErrorCode,
+    * args,
+)
+```
+
+Bases: [`TabsDataException`](#tabsdata.exceptions.TabsDataException)
+
+Exception raised when public API classes don’t support using their constructor.
+
+
+</details>
+
+<a id="tabsdata.exceptions.CredentialsConfigurationError"></a>
+<details>
+<summary>CredentialsConfigurationError</summary>
+
+
+```python
+class CredentialsConfigurationError(
+    error_code: ErrorCode,
+    * args,
+)
+```
+
+Bases: [`TabsDataException`](#tabsdata.exceptions.TabsDataException)
+
+Exception raised when the creation or modification of a Credentials object fails.
+
+
+</details>
+
+<a id="tabsdata.exceptions.DataQualityConfigurationError"></a>
+<details>
+<summary>DataQualityConfigurationError</summary>
+
+
+```python
+class DataQualityConfigurationError(
+    error_code: ErrorCode,
+    * args,
+)
+```
+
+Bases: [`TabsDataException`](#tabsdata.exceptions.TabsDataException)
+
+Exception raised when the creation or modification of a DataQuality object or one of its auxiliary objects fails.
+
+
+</details>
+
+<a id="tabsdata.exceptions.DataQualityProcessingError"></a>
+<details>
+<summary>DataQualityProcessingError</summary>
+
+
+```python
+class DataQualityProcessingError(
+    error_code: ErrorCode,
+    * args,
+)
+```
+
+Bases: [`TabsDataException`](#tabsdata.exceptions.TabsDataException)
+
+Exception raised when processing the DataQuality specifications during a function registration or execution.
+
+
+</details>
+
+<a id="tabsdata.exceptions.Db2CdcError"></a>
+<details>
+<summary>Db2CdcError</summary>
+
+
+```python
+class Db2CdcError(
+    error_code: ErrorCode,
+    * args,
+)
+```
+
+Bases: [`CdcError`](#tabsdata.exceptions.CdcError)
+
+Exception raised for DB2 CDC errors.
+
+
+</details>
+
+<a id="tabsdata.exceptions.DecoratorConfigurationError"></a>
+<details>
+<summary>DecoratorConfigurationError</summary>
+
+
+```python
+class DecoratorConfigurationError(
+    error_code: ErrorCode,
+    * args,
+)
+```
+
+Bases: [`TabsDataException`](#tabsdata.exceptions.TabsDataException)
+
+Exception raised when the creation or modification of a decorator object fails.
+
+
+</details>
+
+<a id="tabsdata.exceptions.DestinationConfigurationError"></a>
+<details>
+<summary>DestinationConfigurationError</summary>
+
+
+```python
+class DestinationConfigurationError(
+    error_code: ErrorCode,
+    * args,
+)
+```
+
+Bases: [`TabsDataException`](#tabsdata.exceptions.TabsDataException)
+
+Exception raised when the creation or modification of a destination object fails.
+
+
+</details>
+
+<a id="tabsdata.exceptions.ErrorCode"></a>
+<details>
+<summary>ErrorCode</summary>
+
+
+```python
+class ErrorCode(
+    * values,
+)
+```
+
+Bases: [`Enum`](https://docs.python.org/3/library/enum.html#enum.Enum)
+
+<a id="tabsdata.exceptions.ErrorCode.code"></a>
+#### `code`
+
+```python
+def code() -> str
+```
+
+<a id="tabsdata.exceptions.ErrorCode.message"></a>
+#### `message`
+
+```python
+def message() -> str
+```
+
+
+</details>
+
+<a id="tabsdata.exceptions.FormatConfigurationError"></a>
+<details>
+<summary>FormatConfigurationError</summary>
+
+
+```python
+class FormatConfigurationError(
+    error_code: ErrorCode,
+    * args,
+)
+```
+
+Bases: [`TabsDataException`](#tabsdata.exceptions.TabsDataException)
+
+Exception raised when the creation or modification of a Format object fails.
+
+
+</details>
+
+<a id="tabsdata.exceptions.FunctionConfigurationError"></a>
+<details>
+<summary>FunctionConfigurationError</summary>
+
+
+```python
+class FunctionConfigurationError(
+    error_code: ErrorCode,
+    * args,
+)
+```
+
+Bases: [`TabsDataException`](#tabsdata.exceptions.TabsDataException)
+
+Exception raised when a function is not properly configured to be registered.
+
+
+</details>
+
+<a id="tabsdata.exceptions.MySQLCdcError"></a>
+<details>
+<summary>MySQLCdcError</summary>
+
+
+```python
+class MySQLCdcError(
+    error_code: ErrorCode,
+    * args,
+)
+```
+
+Bases: [`CdcError`](#tabsdata.exceptions.CdcError)
+
+Exception raised for MySQL CDC errors.
+
+
+</details>
+
+<a id="tabsdata.exceptions.ParameterError"></a>
+<details>
+<summary>ParameterError</summary>
+
+
+```python
+class ParameterError(
+    name,
+    type,
+    value,
+    msg,
+)
+```
+
+Bases: [`NamedTuple`](https://docs.python.org/3/library/typing.html#typing.NamedTuple)
+
+<a id="tabsdata.exceptions.ParameterError.msg"></a>
+<ResponseField name="msg">
+Alias for field number 3
+</ResponseField>
+
+<a id="tabsdata.exceptions.ParameterError.name"></a>
+<ResponseField name="name">
+Alias for field number 0
+</ResponseField>
+
+<a id="tabsdata.exceptions.ParameterError.type"></a>
+<ResponseField name="type">
+Alias for field number 1
+</ResponseField>
+
+<a id="tabsdata.exceptions.ParameterError.value"></a>
+<ResponseField name="value">
+Alias for field number 2
+</ResponseField>
+
+
+</details>
+
+<a id="tabsdata.exceptions.ParameterValidationError"></a>
+<details>
+<summary>ParameterValidationError</summary>
+
+
+```python
+class ParameterValidationError(
+    function: LambdaType | MethodType,
+    error_code: ErrorCode,
+    pyd_validation_error: ValidationError,
+)
+```
+
+Bases: [`TabsDataException`](#tabsdata.exceptions.TabsDataException)
+
+Exception raised when public API parameter validation fails.
+
+<a id="tabsdata.exceptions.ParameterValidationError.cls"></a>
+<ResponseField name="cls" type="str | None">
+
+</ResponseField>
+
+<a id="tabsdata.exceptions.ParameterValidationError.errors"></a>
+<ResponseField name="errors" type="Collection[ParameterError]">
+
+</ResponseField>
+
+<a id="tabsdata.exceptions.ParameterValidationError.fn"></a>
+<ResponseField name="fn" type="str | None">
+
+</ResponseField>
+
+<a id="tabsdata.exceptions.ParameterValidationError.mod"></a>
+<ResponseField name="mod" type="str">
+
+</ResponseField>
+
+
+</details>
+
+<a id="tabsdata.exceptions.ParameterValueError"></a>
+<details>
+<summary>ParameterValueError</summary>
+
+
+```python
+class ParameterValueError(
+    error_code: ErrorCode,
+    fn_name: str,
+    param_names: str | list [ str ],
+    msg: str,
+)
+```
+
+Bases: [`TabsDataException`](#tabsdata.exceptions.TabsDataException)
+
+
+</details>
+
+<a id="tabsdata.exceptions.PostgresCdcError"></a>
+<details>
+<summary>PostgresCdcError</summary>
+
+
+```python
+class PostgresCdcError(
+    error_code: ErrorCode,
+    * args,
+)
+```
+
+Bases: [`CdcError`](#tabsdata.exceptions.CdcError)
+
+Exception raised for PostgreSQL CDC errors.
+
+
+</details>
+
+<a id="tabsdata.exceptions.RegistrationError"></a>
+<details>
+<summary>RegistrationError</summary>
+
+
+```python
+class RegistrationError(
+    error_code: ErrorCode,
+    * args,
+)
+```
+
+Bases: [`TabsDataException`](#tabsdata.exceptions.TabsDataException)
+
+Exception raised when registration of a function in the server fails.
+
+
+</details>
+
+<a id="tabsdata.exceptions.SDKError"></a>
+<details>
+<summary>SDKError</summary>
+
+
+```python
+class SDKError(
+    error_code: ErrorCode,
+    * args,
+)
+```
+
+Bases: [`TabsDataException`](#tabsdata.exceptions.TabsDataException)
+
+
+</details>
+
+<a id="tabsdata.exceptions.SecretConfigurationError"></a>
+<details>
+<summary>SecretConfigurationError</summary>
+
+
+```python
+class SecretConfigurationError(
+    error_code: ErrorCode,
+    * args,
+)
+```
+
+Bases: [`TabsDataException`](#tabsdata.exceptions.TabsDataException)
+
+Exception raised when the creation or modification of a Secret object fails.
+
+
+</details>
+
+<a id="tabsdata.exceptions.SourceConfigurationError"></a>
+<details>
+<summary>SourceConfigurationError</summary>
+
+
+```python
+class SourceConfigurationError(
+    error_code: ErrorCode,
+    * args,
+)
+```
+
+Bases: [`TabsDataException`](#tabsdata.exceptions.TabsDataException)
+
+Exception raised when the creation or modification of a source object fails.
+
+
+</details>
+
+<a id="tabsdata.exceptions.StageTriggerConfigurationError"></a>
+<details>
+<summary>StageTriggerConfigurationError</summary>
+
+
+```python
+class StageTriggerConfigurationError(
+    error_code: ErrorCode,
+    * args,
+)
+```
+
+Bases: [`TabsDataException`](#tabsdata.exceptions.TabsDataException)
+
+Exception raised when the creation or modification of a StageTrigger object or one of its auxiliary objects fails.
+
+
+</details>
+
+<a id="tabsdata.exceptions.StageTriggerExecutionError"></a>
+<details>
+<summary>StageTriggerExecutionError</summary>
+
+
+```python
+class StageTriggerExecutionError(
+    error_code: ErrorCode,
+    * args,
+)
+```
+
+Bases: [`TabsDataException`](#tabsdata.exceptions.TabsDataException)
+
+Exception raised when a StageTrigger execution fails during runtime.
+
+
+</details>
+
+<a id="tabsdata.exceptions.TableFrameError"></a>
+<details>
+<summary>TableFrameError</summary>
+
+
+```python
+class TableFrameError(
+    error_code: ErrorCode,
+    * args,
+)
+```
+
+Bases: [`TabsDataException`](#tabsdata.exceptions.TabsDataException)
+
+Exception raised when handling a TableFrame.
+
+
+</details>
+
+<a id="tabsdata.exceptions.TableURIConfigurationError"></a>
+<details>
+<summary>TableURIConfigurationError</summary>
+
+
+```python
+class TableURIConfigurationError(
+    error_code: ErrorCode,
+    * args,
+)
+```
+
+Bases: [`TabsDataException`](#tabsdata.exceptions.TabsDataException)
+
+Exception raised when the creation or modification of a URI object or one of its auxiliary objects fails.
+
+
+</details>
+
+<a id="tabsdata.exceptions.TabsDataException"></a>
+<details>
+<summary>TabsDataException</summary>
+
+
+```python
+class TabsDataException(
+    error_code: ErrorCode,
+    * args,
+)
+```
+
+Bases: [`Exception`](https://docs.python.org/3/library/exceptions.html#Exception)
+
+Base exception for all exceptions in the Tabs Data SDK.
+
+<a id="tabsdata.exceptions.TabsDataException.error_code"></a>
+<ResponseField name="error_code" type="ErrorCode">
+
+</ResponseField>
+
+
+</details>
+
+<a id="tabsdata.exceptions.TabsdataServerError"></a>
+<details>
+<summary>TabsdataServerError</summary>
+
+
+```python
+class TabsdataServerError(
+    error_code: ErrorCode,
+    * args,
+)
+```
+
+Bases: [`TabsDataException`](#tabsdata.exceptions.TabsDataException)
+
+Exception raised when the server returns an error.
+
+
+</details>

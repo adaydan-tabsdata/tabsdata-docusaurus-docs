@@ -1,0 +1,99 @@
+---
+title: "tabsdata.OracleDestination"
+sidebarTitle: "tabsdata.OracleDestination"
+description: "tabsdata.OracleDestination API reference."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.OracleDestination"></a>
+<details>
+<summary>OracleDestination</summary>
+
+
+```python
+class OracleDestination(
+    uri: str,
+    destination_table: List [ str ] | str,
+    credentials: dict | UserPasswordCredentials = None,
+    if_table_exists: Literal [ 'append' , 'replace' ] = 'append',
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/io/output.py#L1126)
+
+Bases: `Output`
+
+Class for managing the configuration of Oracle-based data outputs.
+
+<a id="tabsdata.OracleDestination.to_dict"></a>
+#### `to_dict`
+
+```python
+def to_dict()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/io/output.py#L1208)
+
+Converts the OracleDestination object to a dictionary
+
+<a id="tabsdata.OracleDestination.__init__"></a>
+#### `__init__`
+
+```python
+def __init__(
+    uri: str,
+    destination_table: List [ str ] | str,
+    credentials: dict | UserPasswordCredentials = None,
+    if_table_exists: Literal [ 'append' , 'replace' ] = 'append',
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/io/output.py#L1152)
+
+Initializes the OracleDestination with the given URI and destination table, and optionally connection credentials.
+
+**Parameters:**
+
+<ParamField path="uri" type="str" required>
+  The URI of the database where the data is going to be stored.
+</ParamField>
+
+<ParamField path="destination_table" type="List [ str ] | str" required>
+  The tables to create. If multiple tables are provided, they must be provided as a list.
+</ParamField>
+
+<ParamField path="credentials" type="dict | UserPasswordCredentials" default="None">
+  The credentials required to access the Oracle database. Can be a dictionary or a UserPasswordCredentials object.
+</ParamField>
+
+**Raises:**
+
+<ResponseField name="OutputConfigurationError" type="Exception"></ResponseField>
+
+<a id="tabsdata.OracleDestination.credentials"></a>
+<ResponseField name="credentials" type="UserPasswordCredentials">
+The credentials required to access the Oracle database.
+</ResponseField>
+
+<a id="tabsdata.OracleDestination.destination_table"></a>
+<ResponseField name="destination_table" type="str | List[ str ]">
+The table(s) to create. If multiple tables are provided, they must be provided as a list.
+</ResponseField>
+
+<a id="tabsdata.OracleDestination.if_table_exists"></a>
+<ResponseField name="if_table_exists" type="\{‘append’, ‘replace’}">
+The strategy to follow when the table already exists. - ‘replace’ will create a new database table, overwriting an existing one. - ‘append’ will append to an existing table.
+</ResponseField>
+
+<a id="tabsdata.OracleDestination.uri"></a>
+<ResponseField name="uri" type="str">
+The URI of the database where the data is going to be stored.
+</ResponseField>
+
+#### Methods
+
+#### Attributes
+
+
+</details>

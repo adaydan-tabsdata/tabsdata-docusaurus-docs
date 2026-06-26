@@ -1,0 +1,31 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.from_pandas"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.from_pandas"
+description: "Creates tableframe from a pandas dataframe, or None. None produces as an empty (no column - no row) tableframe."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.from_pandas"></a>
+<details>
+<summary>from_pandas</summary>
+
+
+```python
+def from_pandas(
+    data: pd.DataFrame | None = None,
+) -> TableFrame
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/lazyframe/frame.py#L159)
+
+Creates tableframe from a pandas dataframe, or None. None produces as an empty (no column - no row) tableframe.
+
+**Parameters:**
+
+<ParamField path="data" type="pd.DataFrame | None" default="None">
+  Input data.
+</ParamField>
+
+
+</details>

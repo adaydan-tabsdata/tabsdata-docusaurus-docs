@@ -1,0 +1,72 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.with_columns"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.with_columns"
+description: "Add columns to the TableFrame ."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.with_columns"></a>
+<details>
+<summary>with_columns</summary>
+
+
+```python
+def with_columns(
+    * exprs: td_typing.IntoExpr | Iterable [ td_typing.IntoExpr ],
+    ** named_exprs: td_typing.IntoExpr,
+) -> TableFrame
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/lazyframe/frame.py#L1138)
+
+Add columns to the TableFrame.
+
+**Parameters:**
+
+<ParamField path="exprs" required>
+  Columns or expressions to add.
+</ParamField>
+
+<ParamField path="named_exprs" required>
+  Named expressions to add.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ x    ┆ y    │
+│ ---  ┆ ---  │
+│ f64  ┆ f64  │
+╞══════╪══════╡
+│ 1.0  ┆ 2.0  │
+│ 2.0  ┆ 2.0  │
+│ 10.0 ┆ 10.0 │
+│ 4.0  ┆ 10.0 │
+│ 5.0  ┆ null │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.with_columns(td.col("x").mul(td.col("y")).alias("z"))
+>>>
+┌──────┬──────┬──────┐
+│ x    ┆ y    ┆ z    │
+│ ---  ┆ ---  ┆ ---  │
+│ f64  ┆ f64  ┆ f64  │
+╞══════╪══════╪══════╡
+│ 1.0  ┆ 2.0  ┆ 2.0  │
+│ 2.0  ┆ 2.0  ┆ 4.0  │
+│ NaN  ┆ NaN  ┆ NaN  │
+│ 4.0  ┆ NaN  ┆ NaN  │
+│ 5.0  ┆ null ┆ null │
+│ null ┆ null ┆ null │
+└──────┴──────┴──────┘
+```
+
+
+</details>

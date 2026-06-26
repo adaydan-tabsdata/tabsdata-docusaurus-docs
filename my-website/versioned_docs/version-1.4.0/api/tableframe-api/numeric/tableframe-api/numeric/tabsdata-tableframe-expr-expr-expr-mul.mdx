@@ -1,0 +1,51 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.mul"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.mul"
+description: "Multiplication operator."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.mul"></a>
+<details>
+<summary>mul</summary>
+
+
+```python
+def mul(
+    other: Any,
+) -> Expr
+```
+
+Multiplication operator.
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to multiply by.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").mul(10).alias("mul"))
+>>>
+┌──────┬──────┐
+│ val  ┆ mul  │
+│ ---  ┆ ---  │
+│ i64  ┆ i64  │
+╞══════╪══════╡
+│ 1    ┆ 10   │
+│ 15   ┆ 150  │
+│ 18   ┆ 180  │
+│ 75   ┆ 750  │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+
+</details>

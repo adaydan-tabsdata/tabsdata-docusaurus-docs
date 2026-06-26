@@ -1,0 +1,142 @@
+---
+title: "Salesforce"
+sidebarTitle: "Salesforce"
+---
+
+You can use this built-in Tabsdata publisher to read data from Salesforce into Tabsdata.
+
+## Installing the connector dependencies#
+
+To work with the Salesforce connector you are required to install the dependencies separately. This is done to manage the size of the core package. Please run the following command in your terminal to install the dependencies.
+
+```bash
+$ pip install tabsdata[“salesforce”]
+```
+
+or,
+
+```bash
+$ pip install 'tabsdata['salesforce']'
+```
+
+## Example (Publisher - Salesforce)#
+
+The following example creates a publisher named `read_sales`. This publisher runs two queries on Salesforce tables and writes the results of the query to two Tabsdata tables.
+
+```python
+import tabsdata as td
+
+@td.publisher(
+    source=td.SalesforceSource(
+        username=td.HashiCorpSecret("SALESFORCE_USERNAME"),
+        password=td.HashiCorpSecret("SALESFORCE_PASSWORD"),
+        security_token=td.HashiCorpSecret("SALESFORCE_SECURITY_TOKEN"),
+        query=[
+            "SELECT Id, AccountId, FirstName, LastName, Phone, Email, SystemModStamp FROM Contact WHERE SystemModStamp > $lastModified",
+            "SELECT AccountName, AccountOwner, Type, SystemModStamp FROM Account WHERE SystemModStamp > $lastModified"
+        ],
+        initial_last_modified="2024-03-10T11:03:08.000+0000"),
+    tables=["contacts", "accounts"],
+)
+
+def read_sales(contacts: td.TableFrame, accounts: td.TableFrame):
+
+    return contacts, accounts
+```
+
+Note: After defining the publisher, you need to register it with a Tabsdata collection. For more information, see Register a Function.
+
+## Setup (Publisher - Salesforce)#
+
+The following code uses placeholder values for defining a publisher that reads data from Salesforce and publishes it to Tabsdata tables:
+
+```python
+import tabsdata as td
+
+@td.publisher(
+    source=td.SalesforceSource(
+        username="<username>",
+        password="<password>",
+        security_token="<security_token>",
+        query=["<db_query1>", "<db_query2>"],
+        initial_last_modified="<time_stamp>",
+        include_deleted="<boolean>",
+        instance_url="<salesforce_instance_url>",
+        version="<salesforce_api_version>",
+    ),
+    tables=["<output_table1>", "<output_table2>"],
+    trigger_by=["<trigger_table1>", "<trigger_table2>"],
+)
+
+def <publisher_name> (<table_frame1>:td.TableFrame, <table_frame2>:td.TableFrame):
+    <function_logic>
+    return <table_frame_output1>, <table_frame_output2>
+```
+
+Note: After defining the publisher, you need to register it with a Tabsdata collection. For more information, see Register a Function.
+
+Following properties are defined in the code above:
+
+### source#
+
+#### username#
+
+This is the username of your Salesforce credentials. Please note that you must use your Salesforce username, not your email. You can store the value of username in an environment variable, say `SALESFORCE_USERNAME`, in your server and use `td.EnvironmentSecret("SALESFORCE_USERNAME")` to refer to its value in the publisher Python code.
+
+#### password#
+
+This is the password of your Salesforce credentials. You can store the value of password in an environment variable, say `SALESFORCE_PASSWORD`, in your server and use `td.EnvironmentSecret("SALESFORCE_PASSWORD")` to refer to its value in the publisher Python code.
+
+#### security_token#
+
+This is the value of security token associated with your Salesforce account. If you don’t have the security token, you can find it in your Salesforce app. Go to the `View Profile` on the top right in your Salesforce app, go to `Settings` and select `Reset My Security Token`. You can store the value of security token in an environment variable, say `SALESFORCE_SECURITY_TOKEN`, in your server and use `td.EnvironmentSecret("SALESFORCE_SECURITY_TOKEN")` to refer to its value in the publisher Python code.
+
+#### query#
+
+`<db_query1>`, `<db_query2>`,… are the Salesforce Object Query Language(SOQL) queries to run on Salesforce. Add as many as needed.
+
+You can also define the query to enable **incremental publishing**. This would enable you to publish into Tabsdata only the rows that are new or have been modified since the previous publisher was run. This is supported using the Salesforce column `SystemModStamp` that is available in all Salesforce objects. The `SystemModStamp` column must be in the `SELECT` columns and it must be specified in the `WHERE` clause using Tabsdata `$lastModified` placeholder.
+
+For example, the query can be defined as `SELECT FirstName, LastName, Email, SystemModStamp FROM Contact WHERE SystemModStamp > $lastModified` where `$lastModifed` is a placeholder variable by Tabsdata. The first time the publisher runs it will use the value of `initial_last_modified` for the `$lastModified` variable. For subsequent runs, it will use the highest `SystemModStamp` from the previous runs.
+
+#### [Optional] initial_last_modified#
+
+The value of starting date for incremental publishing is defined here.
+
+#### [Optional] include_deleted#
+
+(default=False) This can be used to access deleted records. This can be required when doing incremental loads to be able to detect what records have been deleted.
+
+#### [Optional] instance_url#
+
+The Salesforce instance URL, in case there is a need to disambiguate the Salesforce instance to use.
+
+#### [Optional] version#
+
+(default=latest) This defines the Salesforce API version to use.
+
+### tables#
+
+`<output_table1>`, `<output_table2>`… are the names of the Tabsdata tables to publish to.
+
+### [Optional] trigger_by#
+
+`<trigger_table1>`, `<trigger_table2>`… are the names of the tables in the Tabsdata server. A new commit to any of these tables triggers the publisher. This can be relevant in cases where you want to import a data if something else in the organization changes. e.g trigger the import of latest manufacturing data in the company if a new supplier get added added. While a new supplier would not be a direct input to the publisher importing manufacturing data, it can still trigger the function.
+
+All listed trigger tables must exist in the server before registering the publisher.
+
+Defining trigger tables is optional. If you don’t define the `trigger_by` property, the publisher can only be triggered manually.
+
+For more information, see Working with Triggers.
+
+### `<publisher_name>`#
+
+`<publisher_name>` is the name for the publisher that you are configuring.
+
+### `<function_logic>`#
+
+`<function_logic>` governs the processing performed by the publisher. You can specify function logic to be a simple write or to perform additional processing, such as dropping nulls, before writing data to output tables. For more information about the function logic that you can include, see Working with Tables.
+
+`<table_frame1>`, `<table_frame2>`… are the names for the variables that temporarily store source data for processing.
+
+`<table_frame_output1>`, `<table_frame_output2>`… are the output from the function that are stored as Tabsdata tables with names as defined in the `tables` property. Consequently, the number of tables returned from the function have to exactly match the number of tables defined in the `tables` property.

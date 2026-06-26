@@ -1,0 +1,57 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.extract"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.extract"
+description: "Extract a pattern from the string."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.extract"></a>
+<details>
+<summary>extract</summary>
+
+
+```python
+def extract(
+    pattern: td_typing.IntoExprColumn,
+    group_index: int = 1,
+) -> td_expr.Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/string.py#L699)
+
+Extract a pattern from the string.
+
+**Parameters:**
+
+<ParamField path="pattern" type="td_typing.IntoExprColumn" required>
+  The pattern to extract.
+</ParamField>
+
+<ParamField path="group_index" type="int" default="1">
+  The group index to extract.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.extract("(b.b)", 1).alias("extract"))
+>>>
+┌───────────┬─────────┐
+│ a         ┆ extract │
+│ ---       ┆ ---     │
+│ str       ┆ str     │
+╞═══════════╪═════════╡
+│ a bAb c d ┆ bAb     │
+│ bCbb c d  ┆ bCb     │
+│ bb        ┆ null    │
+│ null      ┆ null    │
+└───────────┴─────────┘
+```
+
+
+</details>

@@ -1,0 +1,38 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.floor"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.floor"
+description: "Round down the expression to the previous integer value."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.floor"></a>
+<details>
+<summary>floor</summary>
+
+
+```python
+def floor() -> Expr
+```
+
+Round down the expression to the previous integer value.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").ceil().alias("floor"))
+>>>
+┌──────┬─────────┐
+│ temp ┆ floor   │
+│ ---  ┆ ------- │
+│ f64  ┆ i64     │
+╞══════╪═════════╡
+│ 1.0  ┆  1      │
+│ 1.1  ┆  1      │
+└──────┴─────────┘
+```
+
+
+</details>

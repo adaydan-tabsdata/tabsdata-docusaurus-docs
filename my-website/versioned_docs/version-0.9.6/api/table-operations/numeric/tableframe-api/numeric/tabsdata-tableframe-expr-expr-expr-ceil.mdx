@@ -1,0 +1,40 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.ceil"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.ceil"
+description: "Round up the expression to the next integer value."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.ceil"></a>
+<details>
+<summary>ceil</summary>
+
+
+```python
+def ceil() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L556)
+
+Round up the expression to the next integer value.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").first().ceil().alias("ceil"))
+>>>
+┌──────┬─────────┐
+│ temp ┆ ceil    │
+│ ---  ┆ ------- │
+│ f64  ┆ f64     │
+╞══════╪═════════╡
+│ 1.0  ┆  1.0    │
+│ 1.1  ┆  2.0    │
+└──────┴─────────┘
+```
+
+
+</details>

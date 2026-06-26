@@ -1,0 +1,65 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.hash"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.hash"
+description: "Compute the hash of an element value."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.hash"></a>
+<details>
+<summary>hash</summary>
+
+
+```python
+def hash(
+    seed: int = 0,
+    seed_1: int | None = None,
+    seed_2: int | None = None,
+    seed_3: int | None = None,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L1103)
+
+Compute the hash of an element value.
+
+**Parameters:**
+
+<ParamField path="seed" type="int" default="0">
+  The seed for the hash function.
+</ParamField>
+
+<ParamField path="seed_1" type="int | None" default="None">
+  The first seed for the hash function.
+</ParamField>
+
+<ParamField path="seed_2" type="int | None" default="None">
+  The second seed for the hash function.
+</ParamField>
+
+<ParamField path="seed_3" type="int | None" default="None">
+  The third seed for the hash function.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").hash(5).alias("hash"))
+>>>
+┌──────┬─────────────────────┐
+│ temp ┆ hash                │
+│ ---  ┆ ---                 │
+│ f64  ┆ u64                 │
+╞══════╪═════════════════════╡
+│ 1.1  ┆ 1438840365631752616 │
+│ 2.0  ┆ 4738789230185236462 │
+└──────┴─────────────────────┘
+```
+
+
+</details>

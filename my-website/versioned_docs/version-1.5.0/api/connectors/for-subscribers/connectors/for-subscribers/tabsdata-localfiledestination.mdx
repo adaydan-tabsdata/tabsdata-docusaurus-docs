@@ -1,0 +1,56 @@
+---
+title: "tabsdata.LocalFileDestination"
+sidebarTitle: "tabsdata.LocalFileDestination"
+description: "Bases: DestinationPlugin"
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.LocalFileDestination"></a>
+<details>
+<summary>LocalFileDestination</summary>
+
+
+```python
+class LocalFileDestination(
+    path: str | list [ str ],
+    format: str | FileFormat = None,
+)
+```
+
+Bases: [`DestinationPlugin`](../plugins/tabsdata.DestinationPlugin.html#tabsdata.DestinationPlugin)
+
+<a id="tabsdata.LocalFileDestination.__init__"></a>
+#### `__init__`
+
+```python
+def __init__(
+    path: str | list [ str ],
+    format: str | FileFormat = None,
+)
+```
+
+Initializes the LocalFileDestination with the given path; and optionally a format.
+
+**Parameters:**
+
+<ParamField path="path" type="str | list [ str ]" required>
+  The path where the files must be stored. It can be a single path or a list of paths.
+</ParamField>
+
+<ParamField path="format" type="str | FileFormat" default="None">
+  The format of the file. If not provided, it will be inferred from the file extension of the data. Can be either a string with the format or a FileFormat object. Currently supported formats are ‘csv’, ‘parquet’, ‘ndjson’ and ‘jsonl’.
+</ParamField>
+
+**Raises:**
+
+<ResponseField name="OutputConfigurationError" type="Exception"></ResponseField>
+
+<ResponseField name="FormatConfigurationError" type="Exception"></ResponseField>
+
+#### Methods
+
+#### Attributes
+
+
+</details>

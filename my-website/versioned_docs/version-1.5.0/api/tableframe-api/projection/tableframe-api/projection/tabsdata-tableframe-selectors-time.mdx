@@ -1,0 +1,38 @@
+---
+title: "tabsdata.tableframe.selectors.time"
+sidebarTitle: "tabsdata.tableframe.selectors.time"
+description: "Select columns of Python time values."
+---
+
+<a id="tabsdata.tableframe.selectors.time"></a>
+<details>
+<summary>time</summary>
+
+
+```python
+def time() -> SelectorProxy
+```
+
+Select columns of Python time values.
+
+#### Example
+
+```python
+>>> import tabsdata.tableframe as td_tf
+>>> from datetime import time
+>>>
+>>> tf = td_tf.TableFrame({
+...     "EventTime": [
+...         time(8, 0), time(9, 30), time(10, 15), time(11, 45),
+...         time(13, 0), time(14, 20), time(15, 10), time(16, 55)
+...     ],
+...     "Label": ["A", "B", "C", "D", "E", "F", "G", "H"]
+... })
+```
+
+```python
+>>> tf.select(td_tf.selectors.time())
+```
+
+
+</details>

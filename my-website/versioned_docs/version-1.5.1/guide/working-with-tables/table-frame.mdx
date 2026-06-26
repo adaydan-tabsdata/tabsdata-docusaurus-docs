@@ -1,0 +1,482 @@
+---
+title: "Working with Tables"
+sidebarTitle: "Working with Tables"
+---
+
+A table is the basic unit of operation inside Tabsdata. A Tabsdata table is data organized in rows and columns, similar to a database table. Each column has a name and all the values in the column have the same data type. A Tabsdata table only exsists inside the Tabsdata server.
+
+Tables are created in Tabsdata by publishers importing external source data as tables inside the Tabsdata server or by transformers processing some tables in the server to create new ones.
+
+You can use any Tabsdata table, including previous versions of tables, as input to create or modify other tables in Tabsdata. You can also export Tabsdata tables to external systems as CSV, jsonl, ndjson, avro, and parquet files.
+
+## Table CLI Commands
+
+The main table CLI Commands are:
+
+### View a Table Schema
+
+```python
+
+td table schema --coll <COLLECTION> --name <TABLE>
+```
+
+### View a Table Sample
+
+```python
+
+td table sample --coll <COLLECTION> --name <TABLE>
+```
+
+### Download a Table Data
+
+```python
+
+td table download --coll <COLLECTION> --name <TABLE> --file <FILE>
+```
+
+## Table Operations
+
+Table operations are covered in detail in the [API Reference documentation](https://docs.tabsdata.com/latest/api_ref/tableframe_api/index.html).
+
+Some of the key table operations are demonstrated in this section using the following `persons` Tabsdata table:
+
+```python
+
+┌────────────┬────────────┬────────────┬─────────────┬────────────┬────────┐
+│ identifier ┆ first_name ┆ last_name  ┆ nationality ┆ birthdate  ┆ height │
+│ ---        ┆ ---        ┆ ---        ┆ ---         ┆ ---        ┆ ---    │
+│ str        ┆ str        ┆ str        ┆ str         ┆ str        ┆ f64    │
+╞════════════╪════════════╪════════════╪═════════════╪════════════╪════════╡
+│ 74-93/03   ┆ Bennett    ┆ Chandler   ┆ Portuguese  ┆ 1985-10-11 ┆ 1.59   │
+│            ┆            ┆            ┆             ┆            ┆        │
+│ 68-52/94   ┆ Elijah     ┆ Lara       ┆ Costa Rican ┆ 2003-10-16 ┆ 1.75   │
+│ 37-41/89   ┆ Thresa     ┆ Carroll    ┆ Cuban       ┆ 2005-02-03 ┆ 1.53   │
+│ 66-27/19   ┆ Alethia    ┆ Wilkinson  ┆ Colombian   ┆ 1999-04-17 ┆ 1.86   │
+│ 35-07/51   ┆ Elin       ┆ English    ┆ Brazilian   ┆ 1998-02-12 ┆ 1.88   │
+│            ┆            ┆            ┆             ┆            ┆        │
+│ …          ┆ …          ┆ …          ┆ …           ┆ …          ┆ …      │
+│ 85-61/58   ┆ Dudley     ┆ Valenzuela ┆ Iranian     ┆ 1998-04-12 ┆ 1.77   │
+│ 36-24/33   ┆ Willard    ┆ Hodge      ┆ Israeli     ┆ 2002-07-31 ┆ 1.77   │
+│            ┆            ┆            ┆             ┆            ┆        │
+│ 05-43/20   ┆ Salena     ┆ Waller     ┆ Colombian   ┆ 2014-04-19 ┆ 1.88   │
+│ 49-35/73   ┆ August     ┆ Dillard    ┆ Guatemalan  ┆ 1988-05-25 ┆ 1.83   │
+│ 40-49/72   ┆ Coy        ┆ Goodman    ┆ Uruguayan   ┆ 1999-02-17 ┆ 1.56   │
+│            ┆            ┆            ┆             ┆            ┆        │
+└────────────┴────────────┴────────────┴─────────────┴────────────┴────────┘
+```
+
+To work with the table, you define a transformer as follows,
+
+```python
+import tabsdata as td
+
+@td.transformer(
+    input_tables = ["persons"],
+    output_tables = ["persons_modified"],
+)
+
+def transf (tf: td.TableFrame):
+    tf_modified = <function_logic>
+    return tf_modified
+```
+
+where `<function_logic>` can be substituted with various table operations that are demonstrated in the following sections.
+
+### Projection
+
+Projection operations derive projected views from underlying tables.
+
+#### Column selection
+
+Here is an example code to select specific columns from a table.
+
+```python
+tf.select(td.col("first_name"), td.col("last_name"))
+```
+
+```python
+tf.select("first_name", "last_name")
+```
+
+```python
+tf.select(["first_name", "last_name"])
+```
+
+**Result:**
+
+```python
+┌────────────┬────────────┐
+│ first_name ┆ last_name  │
+│ ---        ┆ ---        │
+│ str        ┆ str        │
+╞════════════╪════════════╡
+│ Bennett    ┆ Chandler   │
+│ Elijah     ┆ Lara       │
+│ Thresa     ┆ Carroll    │
+│ Alethia    ┆ Wilkinson  │
+│ Elin       ┆ English    │
+│ …          ┆ …          │
+│ Dudley     ┆ Valenzuela │
+│ Willard    ┆ Hodge      │
+│ Salena     ┆ Waller     │
+│ August     ┆ Dillard    │
+│ Coy        ┆ Goodman    │
+└────────────┴────────────┘
+```
+
+#### Dropping a column:
+
+Here is an example code to drop specific columns from a table.
+
+```python
+tf.drop("last_name")
+```
+
+**Result:**
+
+```python
+┌────────────┬────────────┬─────────────┬────────────┬────────┐
+│ identifier ┆ first_name ┆ nationality ┆ birthdate  ┆ height │
+│ ---        ┆ ---        ┆ ---         ┆ ---        ┆ ---    │
+│ str        ┆ str        ┆ str         ┆ str        ┆ f64    │
+╞════════════╪════════════╪═════════════╪════════════╪════════╡
+│ 74-93/03   ┆ Bennett    ┆ Portuguese  ┆ 1985-10-11 ┆ 1.59   │
+│ 68-52/94   ┆ Elijah     ┆ Costa Rican ┆ 2003-10-16 ┆ 1.75   │
+│ 37-41/89   ┆ Thresa     ┆ Cuban       ┆ 2005-02-03 ┆ 1.53   │
+│ 66-27/19   ┆ Alethia    ┆ Colombian   ┆ 1999-04-17 ┆ 1.86   │
+│ 35-07/51   ┆ Elin       ┆ Brazilian   ┆ 1998-02-12 ┆ 1.88   │
+│ …          ┆ …          ┆ …           ┆ …          ┆ …      │
+│ 85-61/58   ┆ Dudley     ┆ Iranian     ┆ 1998-04-12 ┆ 1.77   │
+│ 36-24/33   ┆ Willard    ┆ Israeli     ┆ 2002-07-31 ┆ 1.77   │
+│ 05-43/20   ┆ Salena     ┆ Colombian   ┆ 2014-04-19 ┆ 1.88   │
+│ 49-35/73   ┆ August     ┆ Guatemalan  ┆ 1988-05-25 ┆ 1.83   │
+│ 40-49/72   ┆ Coy        ┆ Uruguayan   ┆ 1999-02-17 ┆ 1.56   │
+└────────────┴────────────┴─────────────┴────────────┴────────┘
+```
+
+#### Column concatenation
+
+Here is an example code to concatenate 2 columns from a table and call the output column `full_name`.
+
+```python
+tf.select((td.col("first_name") + " " + td.col("last_name")).alias("full_name"))
+```
+
+**Result:**
+
+```python
+┌───────────────────┐
+│ full_name         │
+│ ---               │
+│ str               │
+╞═══════════════════╡
+│ Bennett Chandler  │
+│ Elijah Lara       │
+│ Thresa Carroll    │
+│ Alethia Wilkinson │
+│ Elin English      │
+│ …                 │
+│ Dudley Valenzuela │
+│ Willard Hodge     │
+│ Salena Waller     │
+│ August Dillard    │
+│ Coy Goodman       │
+└───────────────────┘
+```
+
+#### Column string expressions
+
+Here is an example code to convert the `last_name` column to upper case.
+
+```python
+tf.select((td.col("first_name") + " " + td.col("last_name").str.to_uppercase()).alias("full_name"))
+```
+
+**Result:**
+
+```python
+┌───────────────────┐
+│ full_name         │
+│ ---               │
+│ str               │
+╞═══════════════════╡
+│ Bennett CHANDLER  │
+│ Elijah LARA       │
+│ Thresa CARROLL    │
+│ Alethia WILKINSON │
+│ Elin ENGLISH      │
+│ …                 │
+│ Dudley VALENZUELA │
+│ Willard HODGE     │
+│ Salena WALLER     │
+│ August DILLARD    │
+│ Coy GOODMAN       │
+└───────────────────┘
+```
+
+#### Column type casting and datetime expressions
+
+Here is an example code to convert the values in the `birthdate` column to olars Date format, select the year from the converted value, and call the resultant column `birth_year`.
+
+```python
+tf.select(
+    td.col("first_name"),
+    td.col("last_name"),
+    td.col("birthdate").cast(td.Date).dt.year().alias("birth_year"),
+)
+```
+
+**Result:**
+
+```python
+┌────────────┬────────────┬────────────┐
+│ first_name ┆ last_name  ┆ birth_year │
+│ ---        ┆ ---        ┆ ---        │
+│ str        ┆ str        ┆ i32        │
+╞════════════╪════════════╪════════════╡
+│ Bennett    ┆ Chandler   ┆ 1985       │
+│ Elijah     ┆ Lara       ┆ 2003       │
+│ Thresa     ┆ Carroll    ┆ 2005       │
+│ Alethia    ┆ Wilkinson  ┆ 1999       │
+│ Elin       ┆ English    ┆ 1998       │
+│ …          ┆ …          ┆ …          │
+│ Dudley     ┆ Valenzuela ┆ 1998       │
+│ Willard    ┆ Hodge      ┆ 2002       │
+│ Salena     ┆ Waller     ┆ 2014       │
+│ August     ┆ Dillard    ┆ 1988       │
+│ Coy        ┆ Goodman    ┆ 1999       │
+└────────────┴────────────┴────────────┘
+```
+
+#### Column numeric expressions
+
+Here is an example code to select the `height` column from the table, multiply the values to hundred, and name the result column `height_in_cm`.
+
+```python
+tf.select(
+    td.col("first_name"),
+    td.col("last_name"),
+    (td.col("height") * 100).alias("height_in_cm"),
+)
+```
+
+**Result:**
+
+```python
+┌────────────┬────────────┬──────────────┐
+│ first_name ┆ last_name  ┆ height_in_cm │
+│ ---        ┆ ---        ┆ ---          │
+│ str        ┆ str        ┆ f64          │
+╞════════════╪════════════╪══════════════╡
+│ Bennett    ┆ Chandler   ┆ 159.0        │
+│ Elijah     ┆ Lara       ┆ 175.0        │
+│ Thresa     ┆ Carroll    ┆ 153.0        │
+│ Alethia    ┆ Wilkinson  ┆ 186.0        │
+│ Elin       ┆ English    ┆ 188.0        │
+│ …          ┆ …          ┆ …            │
+│ Dudley     ┆ Valenzuela ┆ 177.0        │
+│ Willard    ┆ Hodge      ┆ 177.0        │
+│ Salena     ┆ Waller     ┆ 188.0        │
+│ August     ┆ Dillard    ┆ 183.0        │
+│ Coy        ┆ Goodman    ┆ 156.0        │
+└────────────┴────────────┴──────────────┘
+```
+
+### Filter
+
+Full list of Filters supported can be found in the [API Reference](https://docs.tabsdata.com/latest/api_ref/tableframe_api/filters.html).
+
+#### Simple condition on column value
+
+Here is an example code to filter the values of the `last_name` column by the first letter as “A”.
+
+```python
+tf.filter(td.col("last_name").str.starts_with("A"))
+```
+
+**Result:**
+
+```python
+┌────────────┬────────────┬───────────┬─────────────┬────────────┬────────┐
+│ identifier ┆ first_name ┆ last_name ┆ nationality ┆ birthdate  ┆ height │
+│ ---        ┆ ---        ┆ ---       ┆ ---         ┆ ---        ┆ ---    │
+│ str        ┆ str        ┆ str       ┆ str         ┆ str        ┆ f64    │
+╞════════════╪════════════╪═══════════╪═════════════╪════════════╪════════╡
+│ 10-08/26   ┆ Milan      ┆ Austin    ┆ Swedish     ┆ 1981-08-28 ┆ 1.94   │
+│            ┆            ┆           ┆             ┆            ┆        │
+│ 18-23/80   ┆ Gustavo    ┆ Ayers     ┆ Russian     ┆ 1991-08-27 ┆ 1.84   │
+│            ┆            ┆           ┆             ┆            ┆        │
+│ 43-25/03   ┆ Barton     ┆ Alvarez   ┆ Swiss       ┆ 1995-01-08 ┆ 1.55   │
+│ 46-09/51   ┆ Marvis     ┆ Alston    ┆ Ecuadorian  ┆ 2009-03-30 ┆ 1.55   │
+│ 84-84/87   ┆ Alfred     ┆ Andrews   ┆ Ethiopian   ┆ 2010-08-29 ┆ 1.82   │
+│ …          ┆ …          ┆ …         ┆ …           ┆ …          ┆ …      │
+│ 99-98/21   ┆ Doretta    ┆ Albert    ┆ Ukrainian   ┆ 2011-11-10 ┆ 1.92   │
+│ 13-33/25   ┆ Sharika    ┆ Aguirre   ┆ Romanian    ┆ 1985-10-20 ┆ 1.61   │
+│            ┆            ┆           ┆             ┆            ┆        │
+│ 60-97/39   ┆ Krysta     ┆ Albert    ┆ Greek       ┆ 2017-10-20 ┆ 1.99   │
+│ 97-89/11   ┆ Elden      ┆ Alvarado  ┆ Dominican   ┆ 2014-05-09 ┆ 1.8    │
+│            ┆            ┆           ┆             ┆            ┆        │
+│ 17-61/97   ┆ Rosario    ┆ Austin    ┆ Argentinian ┆ 1982-12-18 ┆ 1.77   │
+│            ┆            ┆           ┆             ┆            ┆        │
+└────────────┴────────────┴───────────┴─────────────┴────────────┴────────┘
+```
+
+#### Multiple conditions on column values
+
+Here is an example code to filter by multiple conditions on `height` and `last_name` column.
+
+```python
+tf.filter((td.col("height") > 1.80).and_(td.col("last_name").str.starts_with("A")))
+```
+
+```python
+tf.filter((td.col("height") > 1.80) & td.col("last_name").str.starts_with("A"))
+```
+
+**Result:**
+
+```python
+┌────────────┬────────────┬───────────┬─────────────┬────────────┬────────┐
+│ identifier ┆ first_name ┆ last_name ┆ nationality ┆ birthdate  ┆ height │
+│ ---        ┆ ---        ┆ ---       ┆ ---         ┆ ---        ┆ ---    │
+│ str        ┆ str        ┆ str       ┆ str         ┆ str        ┆ f64    │
+╞════════════╪════════════╪═══════════╪═════════════╪════════════╪════════╡
+│ 10-08/26   ┆ Milan      ┆ Austin    ┆ Swedish     ┆ 1981-08-28 ┆ 1.94   │
+│            ┆            ┆           ┆             ┆            ┆        │
+│ 18-23/80   ┆ Gustavo    ┆ Ayers     ┆ Russian     ┆ 1991-08-27 ┆ 1.84   │
+│            ┆            ┆           ┆             ┆            ┆        │
+│ 84-84/87   ┆ Alfred     ┆ Andrews   ┆ Ethiopian   ┆ 2010-08-29 ┆ 1.82   │
+│ 98-38/79   ┆ Cody       ┆ Allison   ┆ Australian  ┆ 2023-12-11 ┆ 1.99   │
+│            ┆            ┆           ┆             ┆            ┆        │
+│ 33-44/94   ┆ Walton     ┆ Avery     ┆ Chinese     ┆ 1987-11-20 ┆ 1.85   │
+│            ┆            ┆           ┆             ┆            ┆        │
+│ …          ┆ …          ┆ …         ┆ …           ┆ …          ┆ …      │
+│ 75-70/19   ┆ Ngoc       ┆ Anderson  ┆ Ukrainian   ┆ 2005-11-10 ┆ 1.86   │
+│            ┆            ┆           ┆             ┆            ┆        │
+│ 65-39/04   ┆ Meg        ┆ Andrews   ┆ Colombian   ┆ 2006-04-26 ┆ 1.86   │
+│            ┆            ┆           ┆             ┆            ┆        │
+│ 35-32/81   ┆ Julienne   ┆ Alston    ┆ Chilean     ┆ 2001-08-02 ┆ 1.9    │
+│            ┆            ┆           ┆             ┆            ┆        │
+│ 99-98/21   ┆ Doretta    ┆ Albert    ┆ Ukrainian   ┆ 2011-11-10 ┆ 1.92   │
+│ 60-97/39   ┆ Krysta     ┆ Albert    ┆ Greek       ┆ 2017-10-20 ┆ 1.99   │
+└────────────┴────────────┴───────────┴─────────────┴────────────┴────────┘
+```
+
+### Aggregation
+
+Full list of Aggregations supported can be found in the [API Reference](https://docs.tabsdata.com/latest/api_ref/tableframe_api/aggregation.html).
+
+Here is an example code to group by the birth year and count the number of people born each year. It first converts the `birthdate` column to a Date type, extracts the year, and names it `birth_year`. Then, it groups the data by `birth_year` and counts the occurrences of `first_name`, storing the result in the `people_born` column.
+
+```python
+tf.group_by(td.col("birthdate").cast(td.Date).dt.year().alias("birth_year")).agg(td.col("first_name").count().alias("people_born"))
+```
+
+**Result:**
+
+```python
+┌────────────┬─────────────┐
+│ birth_year ┆ people_born │
+│ ---        ┆ ---         │
+│ i32        ┆ u32         │
+╞════════════╪═════════════╡
+│ 2013       ┆ 17          │
+│ 2008       ┆ 17          │
+│ 1997       ┆ 27          │
+│ 2014       ┆ 26          │
+│ 2007       ┆ 27          │
+│ …          ┆ …           │
+│ 1999       ┆ 26          │
+│ 2017       ┆ 25          │
+│ 2004       ┆ 20          │
+│ 1983       ┆ 24          │
+│ 1993       ┆ 16          │
+└────────────┴─────────────┘
+```
+
+### Join
+
+Here is an example code that uses aggregates, joins and select, to calculate the average birth year for each nationality and filter individuals born after their nationality’s average birth year.
+
+First, it groups the data by `nationality` and computes the mean birth year, storing the result in the `birth_year_mean` column.
+
+Then, it joins this aggregated data back to the original data on `nationality` and filters records where an individual’s birth year is greater than their nationality’s average.
+
+Finally, the code selects only the `last_name`, `birth_year_mean`, and `birthdate` columns to display the relevant information.
+
+Note that the following example is structured differently from the previous examples, because we need to derive the `birth_y_mean` table from `persons` table, to demonstrate the joins operation.
+
+```python
+import tabsdata as td
+
+
+@td.transformer(
+    input_tables=["persons"],
+    output_tables=["persons_modified"],
+)
+def transf(tf: td.TableFrame):
+    birth_y_mean = tf.group_by("nationality").agg(td.col("birthdate").cast(td.Date).dt.year().mean().alias("birth_year_mean"))
+    res = tf.join(birth_y_mean, on="nationality").filter(td.col("birthdate").cast(td.Date).dt.year() > td.col("birth_year_mean"))
+    tf_modified = res.select(td.col("last_name"), td.col("birth_year_mean"), td.col("birthdate"))
+    return tf_modified
+```
+
+**Result:**
+
+```python
+┌───────────┬─────────────────┬────────────┐
+│ last_name ┆ birth_year_mean ┆ birthdate  │
+│ ---       ┆ ---             ┆ ---        │
+│ str       ┆ f64             ┆ str        │
+╞═══════════╪═════════════════╪════════════╡
+│ Carroll   ┆ 2000.25         ┆ 2005-02-03 │
+│ Brock     ┆ 1999.545455     ┆ 2013-10-12 │
+│ Shields   ┆ 2003.172414     ┆ 2013-12-31 │
+│ Decker    ┆ 2005.769231     ┆ 2006-06-26 │
+│ Rodriguez ┆ 2002.866667     ┆ 2019-06-14 │
+│ …         ┆ …               ┆ …          │
+│ Chan      ┆ 2002.181818     ┆ 2017-08-26 │
+│ Vargas    ┆ 1998.925926     ┆ 2003-07-12 │
+│ Crosby    ┆ 2006.769231     ┆ 2010-01-17 │
+│ Jensen    ┆ 1998.925926     ┆ 2005-08-09 │
+│ Waller    ┆ 2004.444444     ┆ 2014-04-19 │
+└───────────┴─────────────────┴────────────┘
+```
+
+## Table Commits
+
+A table commit is generated by a successful execution of a publisher or transformer. When a function reads a table, it reads its latest commit by default.
+
+A commit creation is based on the successful execution of the function and not on changes in the data of the table.
+
+The Tabsdata server retains previous commits and metadata of all tables for auditing and traceability. Once created, the data of a table commit is immutable.
+
+### Working with Table Commits
+
+Tabsdata uses the HEAD command to refer to the latest commit of a table.
+
+```python
+import tabsdata as td
+
+
+@td.transformer(
+    input_tables=[
+        "minors_g@HEAD^",
+        "adults_g@HEAD-5",
+    ],
+    output_tables=["minors_g_oldcommit", "adults_g_oldcommit"],
+)
+def transfs(tf1: td.TableFrame, tf2: td.TableFrame):
+    t1 = tf1.drop_nulls()
+    t2 = tf2.drop_nulls()
+    return t1, t2
+```
+
+In the above example, you define a transformer that takes two tables: 1 table commit behind of minors_g and 5 table commits behind of adults_g, drops nulls from them, and returns the tables as `minors_g_oldcommit` and `adults_g_oldcommit`.
+
+Following commands can be used in the input of transformers and subscribers to refer to the previous commits:
+
+- **HEAD-10**: Refers to the table commit 10 versions before the current one.
+- **HEAD^^^**: Refers to the table commit 3 versions before the current one.
+- **HEAD-3..7**: Refers to the list of table commits between 3 and 7 versions before the current one. (3 and 7 are included)
+- **HEAD, HEAD^^^, HEAD-7..9**: Refers to the list of table commits containing the current commit, the 3rd commit before the current version, and between 7 and 9 versions before the current one.

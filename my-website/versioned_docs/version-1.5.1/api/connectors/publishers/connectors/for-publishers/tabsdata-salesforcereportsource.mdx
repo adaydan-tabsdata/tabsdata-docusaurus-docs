@@ -1,0 +1,96 @@
+---
+title: "tabsdata.SalesforceReportSource"
+sidebarTitle: "tabsdata.SalesforceReportSource"
+description: "tabsdata.SalesforceReportSource API reference."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.SalesforceReportSource"></a>
+<details>
+<summary>SalesforceReportSource</summary>
+
+
+```python
+class SalesforceReportSource(
+    credentials: SalesforceCredentials,
+    report: str | list [ str ],
+    column_name_strategy: Literal [ 'columnName' , 'label' ],
+    find_report_by: Literal [ 'id' , 'name' ] = None,
+    filter: tuple [ str , str , str ] | list [ tuple [ str , str , str ] ] = None,
+    filter_logic: str = None,
+    instance_url: str = None,
+    last_modified_column: str = None,
+    initial_last_modified: str = None,
+    ** kwargs,
+)
+```
+
+Bases: [`SourcePlugin`](../plugins/tabsdata.SourcePlugin.html#tabsdata.SourcePlugin)
+
+Salesforce Reports based data inputs.
+
+<a id="tabsdata.SalesforceReportSource.__init__"></a>
+#### `__init__`
+
+```python
+def __init__(
+    credentials: SalesforceCredentials,
+    report: str | list [ str ],
+    column_name_strategy: Literal [ 'columnName' , 'label' ],
+    find_report_by: Literal [ 'id' , 'name' ] = None,
+    filter: tuple [ str , str , str ] | list [ tuple [ str , str , str ] ] = None,
+    filter_logic: str = None,
+    instance_url: str = None,
+    last_modified_column: str = None,
+    initial_last_modified: str = None,
+    ** kwargs,
+)
+```
+
+Initializes the SalesforceReportSource with the report information and the credentials to access Salesforce.
+
+**Parameters:**
+
+<ParamField path="credentials" type="SalesforceCredentials" required>
+  The credentials to access Salesforce.
+</ParamField>
+
+<ParamField path="report" type="str | list [ str ]" required>
+  The report or reports to execute in Salesforce. It can be a single string or a list of strings. The string must be either the report ID or the name of the report.
+</ParamField>
+
+<ParamField path="column_name_strategy" type="Literal [ 'columnName' , 'label' ]" required>
+  Indicates which column attribute to use as the column name in the output data. It can be one of the following: - “columnName”: The API name of the column (e.g., “ACCOUNT.NAME”). - “label”: The label of the column (e.g., “Account Name”).
+</ParamField>
+
+<ParamField path="find_report_by" type="Literal [ 'id' , 'name' ]" default="None">
+  Indicates whether the ‘report’ parameter contains report IDs or report names. If not provided, it will be inferred from the value of the ‘report’ parameter.
+</ParamField>
+
+<ParamField path="filter" type="tuple [ str , str , str ] | list [ tuple [ str , str , str ] ]" default="None">
+  A filter or list of filters to apply to the report. Each filter is a tuple of three strings: (field, operator, value). For example: [(“CreatedDate”, “greaterThan”, “2023-01-01T00:00:00.000Z”)]. The possible operators are: equals notEqual lessThan greaterThan lessOrEqual greaterOrEqual contains notContain startsWith includes excludes within between Defaults to None.
+</ParamField>
+
+<ParamField path="filter_logic" type="str" default="None">
+  A string representing the logic to apply to the filters. For example: “(1 AND 2) OR 3”. The numbers correspond to the position of the filters in the ‘filter’ list (starting at 1). Defaults to None.
+</ParamField>
+
+<ParamField path="instance_url" type="str" default="None">
+  The URL of the instance to which we want to connect. Only necessary when the username and password are associated to more than one instance. Defaults to None.
+</ParamField>
+
+<ParamField path="last_modified_column" type="str" default="None">
+  The name of the column to use for incremental loading based on the last modified date. If provided, the report must contain this column. Defaults to None.
+</ParamField>
+
+<ParamField path="initial_last_modified" type="str" default="None">
+  The initial last modified date to use for incremental loading. This is useful when we want to load only the records that have been modified since a certain date. Defaults to None. If provided, it must be a string in Salesforce datetime format (with informed timezone).
+</ParamField>
+
+#### Methods
+
+#### Attributes
+
+
+</details>

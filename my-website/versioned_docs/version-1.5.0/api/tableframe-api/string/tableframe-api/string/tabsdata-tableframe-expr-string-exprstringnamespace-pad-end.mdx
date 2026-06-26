@@ -1,0 +1,54 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.pad_end"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.pad_end"
+description: "Pad string values at the end to the given length using the given fill character."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.pad_end"></a>
+<details>
+<summary>pad_end</summary>
+
+
+```python
+def pad_end(
+    length: int,
+    fill_char: str = ' ',
+) -> Expr
+```
+
+Pad string values at the end to the given length using the given fill character.
+
+**Parameters:**
+
+<ParamField path="length" type="int" required>
+  The length to end pad the string to.
+</ParamField>
+
+<ParamField path="fill_char" type="str" default="' '">
+  The character to use for padding.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.pad_end(6, "-").alias("pad_end"))
+>>>
+┌────────┬─────────┐
+│ a      ┆ pad_end │
+│ ---    ┆ ---     │
+│ str    ┆ str     │
+╞════════╪═════════╡
+│ abc    ┆ abc---  │
+│    def ┆    def  │
+│ null   ┆ null    │
+└────────┴─────────┘
+```
+
+
+</details>

@@ -1,0 +1,38 @@
+---
+title: "tabsdata.tableframe.selectors.by_dtype"
+sidebarTitle: "tabsdata.tableframe.selectors.by_dtype"
+description: "Select all columns of the specified data type."
+---
+
+<a id="tabsdata.tableframe.selectors.by_dtype"></a>
+<details>
+<summary>by_dtype</summary>
+
+
+```python
+def by_dtype(
+    * dtypes: td_typing.DataType | PythonDataType | Iterable [ td_typing.DataType ] | Iterable [ PythonDataType ],
+) -> SelectorProxy
+```
+
+Select all columns of the specified data type.
+
+#### Example
+
+```python
+>>> import tabsdata.tableframe as td_tf
+>>>
+>>> tf = td_tf.TableFrame({
+...     "Id": [1, 2, 3, 4, 5, 6, 7, 8],
+...     "Name": ["A", "B", "C", "D", "E", "F", "G", "H"],
+...     "IsActive": [True, True, False, True, False, True, True, False],
+...     "Score": [91.0, 85.5, 78.0, 88.5, 90.0, 76.0, 82.5, 89.0]
+... })
+```
+
+```python
+>>> tf.select(td_tf.selectors.by_dtype(td_tf.Float64))
+```
+
+
+</details>

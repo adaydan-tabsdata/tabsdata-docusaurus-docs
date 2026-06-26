@@ -1,0 +1,51 @@
+---
+title: "tabsdata.tableframe.selectors.exclude"
+sidebarTitle: "tabsdata.tableframe.selectors.exclude"
+description: "Exclude specific columns from selection by name, data type, expression, or selector."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.selectors.exclude"></a>
+<details>
+<summary>exclude</summary>
+
+
+```python
+def exclude(
+    columns: str | DataTypeClass | DataType | Expr | Collection [ str | DataTypeClass | DataType | Expr ],
+    * more_columns: str | DataTypeClass | DataType | Expr,
+) -> SelectorProxy
+```
+
+Exclude specific columns from selection by name, data type, expression, or selector.
+
+**Parameters:**
+
+<ParamField path="columns" type="str | DataTypeClass | DataType | Expr | Collection [ str | DataTypeClass | DataType | Expr ]" required>
+  A single column identifier or a collection of them. This can include: - Column names as strings - Data types - Selector functions - Supported expressions
+</ParamField>
+
+<ParamField path="*more_columns" required>
+  Additional column identifiers passed as positional arguments.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata.tableframe as td_tf
+>>>
+>>> tf = td_tf.TableFrame({
+...     "Id": [1, 2, 3, 4, 5, 6, 7, 8],
+...     "Name": ["A", "B", "C", "D", "E", "F", "G", "H"],
+...     "Score": [90.0, 85.5, 88.0, 91.0, 86.0, 87.5, 84.0, 89.5],
+...     "IsActive": [True, False, True, True, False, True, False, True]
+... })
+```
+
+```python
+>>> tf.select(td_tf.selectors.exclude("Score", td_tf.selectors.boolean()))
+```
+
+
+</details>

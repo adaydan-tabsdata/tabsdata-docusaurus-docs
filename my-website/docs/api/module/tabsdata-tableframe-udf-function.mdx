@@ -1,0 +1,370 @@
+---
+title: "tabsdata.tableframe.udf.function"
+sidebarTitle: "tabsdata.tableframe.udf.function"
+description: "tabsdata.tableframe.udf.function API reference."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.udf.function.UDF"></a>
+<details>
+<summary>UDF</summary>
+
+
+```python
+class UDF(
+    output_columns: list [ tuple [ str , Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 ] ] | tuple [ str , Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 ],
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L68)
+
+Bases: [`ABC`](https://docs.python.org/3/library/abc.html#abc.ABC)
+
+<a id="tabsdata.tableframe.udf.function.UDF.columns"></a>
+#### `columns`
+
+```python
+def columns() -> list[tuple[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]]
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L261)
+
+<a id="tabsdata.tableframe.udf.function.UDF.on_batch"></a>
+#### `on_batch`
+
+```python
+def on_batch(
+    series: list [ Series ],
+) -> list[Series]
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L180)
+
+Creating UDFs:
+
+Using UDFs:
+
+<a id="tabsdata.tableframe.udf.function.UDF.on_element"></a>
+#### `on_element`
+
+```python
+def on_element(
+    values: list [ Any ],
+) -> list[Any]
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L227)
+
+Creating UDFs:
+
+Using UDFs:
+
+<a id="tabsdata.tableframe.udf.function.UDF.with_columns"></a>
+#### `with_columns`
+
+```python
+def with_columns(
+    output_columns: tuple [ str | None , Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None ] | list [ tuple [ str | None , Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None ] ] | dict [ int , tuple [ str | None , Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None ] ],
+) -> UDF
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L285)
+
+<a id="tabsdata.tableframe.udf.function.UDF.signature"></a>
+<ResponseField name="signature" type="Literal['list', 'unpacked']">
+Defines how parameters are passed to on_batch and on_element methods.
+
+Override this property in your UDF subclass to change the parameter style.
+
+**Returns:** Parameters are passed as a single list (default). “unpacked”: Each parameter is passed as a separate argument.
+
+**Return type:** “list”
+</ResponseField>
+
+
+</details>
+
+<a id="id0"></a>
+<details>
+<summary>columns</summary>
+
+
+```python
+def columns() -> list[tuple[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]]
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L261)
+
+
+</details>
+
+<a id="id2"></a>
+<details>
+<summary>on_batch</summary>
+
+
+```python
+def on_batch(
+    series: list [ Series ],
+) -> list[Series]
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L180)
+
+Creating UDFs:
+
+Using UDFs:
+
+
+</details>
+
+<a id="id3"></a>
+<details>
+<summary>on_element</summary>
+
+
+```python
+def on_element(
+    values: list [ Any ],
+) -> list[Any]
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L227)
+
+Creating UDFs:
+
+Using UDFs:
+
+
+</details>
+
+<a id="id4"></a>
+<details>
+<summary>with_columns</summary>
+
+
+```python
+def with_columns(
+    output_columns: tuple [ str | None , Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None ] | list [ tuple [ str | None , Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None ] ] | dict [ int , tuple [ str | None , Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None ] ],
+) -> UDF
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L285)
+
+
+</details>
+
+<a id="tabsdata.tableframe.udf.function.UDFList"></a>
+<details>
+<summary>UDFList</summary>
+
+
+```python
+class UDFList(
+    output_columns,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L490)
+
+Bases: [`UDF`](#tabsdata.tableframe.udf.function.UDF), [`ABC`](https://docs.python.org/3/library/abc.html#abc.ABC)
+
+Abstract base class for UDFs that use list-style parameter passing.
+
+When subclassing UDFList, implement on_batch or on_element with list signature:
+
+- `on_batch(self, series: list[Series]) -> list[Series]`
+
+- `on_element(self, values: list[Any]) -> list[Any]`
+
+<a id="tabsdata.tableframe.udf.function.UDFList.signature"></a>
+<ResponseField name="signature" type="Literal['list', 'unpacked']">
+Defines how parameters are passed to on_batch and on_element methods.
+
+Override this property in your UDF subclass to change the parameter style.
+
+**Returns:** Parameters are passed as a single list (default). “unpacked”: Each parameter is passed as a separate argument.
+
+**Return type:** “list”
+</ResponseField>
+
+
+</details>
+
+<a id="tabsdata.tableframe.udf.function.UDFList.columns"></a>
+<details>
+<summary>columns</summary>
+
+
+```python
+def columns() -> list[tuple[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]]
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L261)
+
+
+</details>
+
+<a id="tabsdata.tableframe.udf.function.UDFList.on_batch"></a>
+<details>
+<summary>on_batch</summary>
+
+
+```python
+def on_batch(
+    * args,
+) -> list[Series]
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L180)
+
+Creating UDFs:
+
+Using UDFs:
+
+
+</details>
+
+<a id="tabsdata.tableframe.udf.function.UDFList.on_element"></a>
+<details>
+<summary>on_element</summary>
+
+
+```python
+def on_element(
+    * args,
+) -> list[Any]
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L227)
+
+Creating UDFs:
+
+Using UDFs:
+
+
+</details>
+
+<a id="tabsdata.tableframe.udf.function.UDFList.with_columns"></a>
+<details>
+<summary>with_columns</summary>
+
+
+```python
+def with_columns(
+    output_columns: tuple [ str | None , Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None ] | list [ tuple [ str | None , Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None ] ] | dict [ int , tuple [ str | None , Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None ] ],
+) -> UDF
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L285)
+
+
+</details>
+
+<a id="tabsdata.tableframe.udf.function.UDFUnpacked"></a>
+<details>
+<summary>UDFUnpacked</summary>
+
+
+```python
+class UDFUnpacked(
+    output_columns,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L513)
+
+Bases: [`UDF`](#tabsdata.tableframe.udf.function.UDF), [`ABC`](https://docs.python.org/3/library/abc.html#abc.ABC)
+
+Abstract base class for UDFs that use unpacked-style parameter passing.
+
+When subclassing UDFUnpacked, implement on_batch or on_element with unpacked signature:
+
+- `on_batch(self, col1: Series, col2: Series, ...) -> list[Series]`
+
+- `on_element(self, val1: Any, val2: Any, ...) -> list[Any]`
+
+<a id="tabsdata.tableframe.udf.function.UDFUnpacked.signature"></a>
+<ResponseField name="signature" type="Literal['list', 'unpacked']">
+Defines how parameters are passed to on_batch and on_element methods.
+
+Override this property in your UDF subclass to change the parameter style.
+
+**Returns:** Parameters are passed as a single list (default). “unpacked”: Each parameter is passed as a separate argument.
+
+**Return type:** “list”
+</ResponseField>
+
+
+</details>
+
+<a id="tabsdata.tableframe.udf.function.UDFUnpacked.columns"></a>
+<details>
+<summary>columns</summary>
+
+
+```python
+def columns() -> list[tuple[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]]
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L261)
+
+
+</details>
+
+<a id="tabsdata.tableframe.udf.function.UDFUnpacked.on_batch"></a>
+<details>
+<summary>on_batch</summary>
+
+
+```python
+def on_batch(
+    * args,
+) -> list[Series]
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L180)
+
+Creating UDFs:
+
+Using UDFs:
+
+
+</details>
+
+<a id="tabsdata.tableframe.udf.function.UDFUnpacked.on_element"></a>
+<details>
+<summary>on_element</summary>
+
+
+```python
+def on_element(
+    * args,
+) -> list[Any]
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L227)
+
+Creating UDFs:
+
+Using UDFs:
+
+
+</details>
+
+<a id="tabsdata.tableframe.udf.function.UDFUnpacked.with_columns"></a>
+<details>
+<summary>with_columns</summary>
+
+
+```python
+def with_columns(
+    output_columns: tuple [ str | None , Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None ] | list [ tuple [ str | None , Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None ] ] | dict [ int , tuple [ str | None , Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None ] ],
+) -> UDF
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L285)
+
+
+</details>

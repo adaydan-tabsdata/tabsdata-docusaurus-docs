@@ -1,0 +1,41 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.not_"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.not_"
+description: "Negate a boolean expression."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.not_"></a>
+<details>
+<summary>not_</summary>
+
+
+```python
+def not_() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L1725)
+
+Negate a boolean expression.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").not_().alias("not"))
+>>>
+┌───────┬───────┐
+│ val   ┆ not   │
+│ ---   ┆ ---   │
+│ bool  ┆ bool  │
+╞═══════╪═══════╡
+│ true  ┆ false │
+│ false ┆ true  │
+│ null  ┆ null  │
+└───────┴───────┘
+```
+
+
+</details>

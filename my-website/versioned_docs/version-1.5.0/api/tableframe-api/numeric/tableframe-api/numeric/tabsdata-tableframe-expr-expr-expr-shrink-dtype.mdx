@@ -1,0 +1,40 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.shrink_dtype"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.shrink_dtype"
+description: "Cast down a column to the smallest type that can hold the element values."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.shrink_dtype"></a>
+<details>
+<summary>shrink_dtype</summary>
+
+
+```python
+def shrink_dtype() -> Expr
+```
+
+Cast down a column to the smallest type that can hold the element values.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").shrink_dtype()
+>>>   .alias("shrink_dtype"))
+>>>
+┌───────┬──────────────┐
+│ val   ┆ shrink_dtype │
+│ ---   ┆ ---          │
+│ i64   ┆ i32          │
+╞═══════╪══════════════╡
+│ 0     ┆ 0            │
+│ 256   ┆ 256          │
+│ 65025 ┆ 65025        │
+└───────┴──────────────┘
+```
+
+
+</details>

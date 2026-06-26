@@ -1,0 +1,45 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.cbrt"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.cbrt"
+description: "Calculate the cub root of the element value."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.cbrt"></a>
+<details>
+<summary>cbrt</summary>
+
+
+```python
+def cbrt() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/expr.py#L527)
+
+Calculate the cub root of the element value.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").cbrt().alias("cbrt"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ cbrt     │
+│ ---  ┆ ---      │
+│ i64  ┆ f64      │
+╞══════╪══════════╡
+│ 1    ┆ 1.0      │
+│ 15   ┆ 2.466212 │
+│ 18   ┆ 2.620741 │
+│ 60   ┆ 3.914868 │
+│ 60   ┆ 3.914868 │
+│ 75   ┆ 4.217163 │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+
+</details>

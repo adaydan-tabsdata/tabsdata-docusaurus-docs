@@ -1,0 +1,166 @@
+---
+title: "Setting up Tabsdata over HTTPS"
+sidebarTitle: "Setting up Tabsdata over HTTPS"
+---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
+The command snippets in this document assume:
+
+- You are using the default Tabsdata instance, `tabsdata`.
+- The Tabsdata server is already running.
+- You are accessing it as `localhost` from the Browser and the command line.
+
+If you are using a different Tabsdata instance or a different hostname, you need to update the command snippets accordingly.
+
+## Tabsdata Server Root Directory
+
+Each Tabsdata server instance has its own root directory structure which is located at `~/.tabsdata/instances/<INSTANCE_NAME>/`.
+
+The root directory for the `tabsdata` instance is `~/.tabsdata/instances/tabsdata/`.
+
+## Find out the Hostname and Corresponding IP Address of the Tabsdata Server
+
+If you are running the tabsdata server in your own machine and accessing it only from your own machine, you can use `localhost` for the hostname and `127.0.0.1` for the IP address.
+
+Otherwise, you need to find out the hostname and IP address used to access the Tabsdata server machine over the network.
+
+## SSL Certificate
+
+A private SSL key and its certificate are needed in PEM format.
+
+HTTPS requires the hostname used in the URL to access a server over HTTPS to be in the certificate.
+
+A signed certificate can be obtained (for a fee) from a public Certificate Authority (CA).
+
+If you are running the tabsdata server in your own machine and accessing it only from your own machine, you can use `localhost`.
+
+For a development environment you can create a self-signed certificate using the following command:
+
+<Tabs>
+  <TabItem value="for-linux-or-macos" label="For Linux or macOS:">
+  ```bash
+  cd
+  export NAME=localhost;
+  export SUBJ="/CN=${NAME}";
+  export CONFIG="[dn]\nCN=${NAME}\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:${NAME}\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth";
+  
+  echo "${CONFIG}" | openssl \
+  req -x509 \
+  -out cert.pem \
+  -keyout key.pem \
+  -newkey rsa:4096 \
+  -nodes -sha256 \
+  -subj "${SUBJ}" \
+  -extensions EXT \
+  -config -;
+  
+  echo
+  echo "Certificate created, private key PEM: `pwd`/key.pem & certificate PEM: `pwd`/cert.pem"
+  echo
+  ```
+  </TabItem>
+  <TabItem value="for-windows-cmd" label="For Windows (CMD):">
+  ```batch
+  cd %USERPROFILE%
+  set NAME=localhost
+  set SUBJ=/CN=%NAME%
+  set CONFIG_FILE=config.cnf
+  (
+  echo [dn]
+  echo CN=%NAME%
+  echo [req]
+  echo distinguished_name = dn
+  echo [EXT]
+  echo subjectAltName=DNS:%NAME%
+  echo keyUsage=digitalSignature
+  echo extendedKeyUsage=serverAuth
+  ) > %CONFIG_FILE%
+  
+  openssl req -x509 ^
+  -out cert.pem ^
+  -keyout key.pem ^
+  -newkey rsa:4096 ^
+  -nodes -sha256 ^
+  -subj "%SUBJ%" ^
+  -extensions EXT ^
+  -config %CONFIG_FILE%
+  
+  echo.
+  echo "Certificate created, private key PEM: %CD%\key.pem & certificate PEM: %CD%\cert.pem"
+  echo.
+  
+  del %CONFIG_FILE%
+  ```
+  </TabItem>
+</Tabs>
+
+To check the certificate use the following command:
+
+```bash
+openssl x509 -in cert.pem --text
+```
+
+## Installing the SSL Certificate in the Tabsdata Server
+
+Copy the key and certificate PEM files to the SSL configuration directory of your Tabsdata instance.
+
+For example, for the `tabsdata` instance, standing in the directory where you have the key and certificate PEM files, run the following command:
+
+<Tabs>
+  <TabItem value="for-linux-or-macos" label="For Linux or macOS:">
+  ```bash
+  cp key.pem cert.pem ~/.tabsdata/instances/tabsdata/workspace/config/ssl/
+  ```
+  </TabItem>
+  <TabItem value="for-windows-cmd" label="For Windows (CMD):">
+  ```bash
+  copy *.pem %USERPROFILE%\.tabsdata\instances\tabsdata\workspace\config\ssl\
+  ```
+  </TabItem>
+</Tabs>
+
+## Configure Tabsdata Server to Use the IP Address Associated to the Hostname in the Certificate
+
+If the certificate has been created for a hostname that is not associated to the `127.0.0.1` IP address, then we need configure Tabsdata server to listen for HTTPS requests in the correct IP address.
+
+Edit Tabsdata ApiServer configuration file `~/.tabsdata/instances/tabsdata/workspace/config/proc/regular/apiserver/config/config.yaml`.
+
+You must update the entry under `addresses` with the IP address associated to the hostname in the certificate (do not modify the `internal_addresses` entries for this):
+
+```yaml
+# storage_url: null # by default given by supervisor
+addresses:
+  - 127.0.0.1:2457
+internal_addresses:
+  - 127.0.0.1:2458
+password:
+```
+
+## Restart Tabsdata Server
+
+```bash
+tdserver stop
+tdserver start
+```
+
+## Accessing Tabsdata Server UI
+
+With your browser go to `https://localhost:2457`. Make sure to use `https` in the URL.
+
+If you are using a self-signed certificate the browser will alert you that certificate authority is not valid and you’ll have to agree to proceed. Do so.
+
+## Accessing Tabsdata Server using Tabsdata Command Line Tool
+
+If you are using a self-signed certificate, Tabsdata command line tool `td` requires a one time configuration to trust the certificate.
+
+```bash
+td auth add-cert --server https://localhost:2457 --pem cert.pem
+```
+
+Make sure to use `https` in the server name when login:
+
+```bash
+td login --server https://localhost:2457 --user admin --password tabsdata --role sys_admin
+```

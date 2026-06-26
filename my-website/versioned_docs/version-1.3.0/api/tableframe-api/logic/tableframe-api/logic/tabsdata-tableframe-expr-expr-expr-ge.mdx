@@ -1,0 +1,50 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.ge"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.ge"
+description: "Greater or equal operator."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.ge"></a>
+<details>
+<summary>ge</summary>
+
+
+```python
+def ge(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L1047)
+
+Greater or equal operator.
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to compare with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").ge(1.0).alias("ge"))
+>>>
+┌──────┬─────────┐
+│ temp ┆ ge      │
+│ ---  ┆ ------- │
+│ f64  ┆ bool    │
+╞══════╪═════════╡
+│ 0.9  ┆  false  │
+│ 1.1  ┆  true   │
+└──────┴─────────┘
+```
+
+
+</details>

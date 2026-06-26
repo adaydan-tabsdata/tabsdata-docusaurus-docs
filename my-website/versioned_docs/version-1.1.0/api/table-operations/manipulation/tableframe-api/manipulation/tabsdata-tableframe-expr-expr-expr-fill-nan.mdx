@@ -1,0 +1,54 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.fill_nan"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.fill_nan"
+description: "Replace NaN values with the given value."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.fill_nan"></a>
+<details>
+<summary>fill_nan</summary>
+
+
+```python
+def fill_nan(
+    value: int | float | Expr | None,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L833)
+
+Replace NaN values with the given value.
+
+**Parameters:**
+
+<ParamField path="value" type="int | float | Expr | None" required>
+  The value to replaceNaN values with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").fill_nan(5.5)
+>>>        .alias("fill_nan"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ fill_nan │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ 1.1  ┆ 1.1      │
+│ 2.0  ┆ 2.0      │
+│ inf  ┆ inf      │
+│ null ┆ null     │
+│ NaN  ┆ 5.5      │
+└──────┴──────────┘
+```
+
+
+</details>

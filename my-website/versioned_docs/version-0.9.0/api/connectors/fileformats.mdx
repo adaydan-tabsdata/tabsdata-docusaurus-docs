@@ -1,0 +1,230 @@
+---
+title: "File Formats"
+sidebarTitle: "File Formats"
+description: "File Formats API reference."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+## File Format
+
+<a id="tabsdata.format.FileFormat"></a>
+<details>
+<summary>FileFormat</summary>
+
+
+```python
+class FileFormat()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/format.py#L18)
+
+Bases: [`ABC`](https://docs.python.org/3/library/abc.html#abc.ABC)
+
+The class of the different possible formats for files.
+
+
+</details>
+
+## CSV Format
+
+<a id="tabsdata.format.CSVFormat"></a>
+<details>
+<summary>CSVFormat</summary>
+
+
+```python
+class CSVFormat(
+    separator: str | int = ',',
+    quote_char: str | int = '"',
+    eol_char: str | int = '\n',
+    input_encoding: str = 'Utf8',
+    input_null_values: list | None = None,
+    input_missing_is_null: bool = True,
+    input_truncate_ragged_lines: bool = False,
+    input_comment_prefix: str | int | None = None,
+    input_try_parse_dates: bool = False,
+    input_decimal_comma: bool = False,
+    input_has_header: bool = True,
+    input_skip_rows: int = 0,
+    input_skip_rows_after_header: int = 0,
+    input_raise_if_empty: bool = True,
+    input_ignore_errors: bool = False,
+    output_include_header: bool = True,
+    output_datetime_format: str | None = None,
+    output_date_format: str | None = None,
+    output_time_format: str | None = None,
+    output_float_scientific: bool | None = None,
+    output_float_precision: int | None = None,
+    output_null_value: str | None = None,
+    output_quote_style: str | None = None,
+    output_maintain_order: bool = True,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/format.py#L67)
+
+Bases: [`FileFormat`](#tabsdata.format.FileFormat)
+
+Initializes the CSV format object.
+
+**Parameters:**
+
+<ParamField path="separator" type="str | int" default="','">
+  The separator of the CSV file.
+</ParamField>
+
+<ParamField path="quote_char" type="str | int" default="'''">
+  (optional) The quote character of the CSV file.
+</ParamField>
+
+<ParamField path="eol_char" type="str | int" default="'\n'">
+  (optional) The end of line character of the CSV file.
+</ParamField>
+
+<ParamField path="input_encoding" type="str" default="'Utf8'">
+  (optional) The encoding of the CSV file. Only used when importing data.
+</ParamField>
+
+<ParamField path="input_null_values" type="list | None" default="None">
+  (optional) The null values of the CSV file. Only used when importing data.
+</ParamField>
+
+<ParamField path="input_missing_is_null" type="bool" default="True">
+  (optional) Whether missing values should be marked as null. Only used when importing data.
+</ParamField>
+
+<ParamField path="input_truncate_ragged_lines" type="bool" default="False">
+  (optional) Whether to truncate ragged lines of the CSV file. Only used when importing data.
+</ParamField>
+
+<ParamField path="input_comment_prefix" type="str | int | None" default="None">
+  (optional) The comment prefix of the CSV file. Only used when importing data.
+</ParamField>
+
+<ParamField path="input_try_parse_dates" type="bool" default="False">
+  (optional) Whether to try parse dates of the CSV file. Only used when importing data.
+</ParamField>
+
+<ParamField path="input_decimal_comma" type="bool" default="False">
+  (optional) Whether the CSV file uses decimal comma. Only used when importing data.
+</ParamField>
+
+<ParamField path="input_has_header" type="bool" default="True">
+  (optional) If the CSV file has header. Only used when importing data.
+</ParamField>
+
+<ParamField path="input_skip_rows" type="int" default="0">
+  (optional) How many rows should be skipped in the CSV file. Only used when importing data.
+</ParamField>
+
+<ParamField path="input_skip_rows_after_header" type="int" default="0">
+  How many rows should be skipped after the header in the CSV file. Only used when importing data.
+</ParamField>
+
+<ParamField path="input_raise_if_empty" type="bool" default="True">
+  (optional) If an error should be raised for an empty CSV. Only used when importing data.
+</ParamField>
+
+<ParamField path="input_ignore_errors" type="bool" default="False">
+  (optional) If the errors loading the CSV must be ignored. Only used when importing data.
+</ParamField>
+
+<ParamField path="output_include_header" type="bool" default="True">
+  (optional) Whether to include header in the CSV output. Only used when exporting data.
+</ParamField>
+
+<ParamField path="output_datetime_format" type="str | None" default="None">
+  (optional) A format string, with the specifiers defined by the chrono Rust crate. If no format specified, the default fractional-second precision is inferred from the maximum timeunit found in the frame’s Datetime cols (if any). Only used when exporting data.
+</ParamField>
+
+<ParamField path="output_date_format" type="str | None" default="None">
+  (optional) A format string, with the specifiers defined by the chrono Rust crate. Only used when exporting data.
+</ParamField>
+
+<ParamField path="output_time_format" type="str | None" default="None">
+  (optional) A format string, with the specifiers defined by the chrono Rust crate. Only used when exporting data.
+</ParamField>
+
+<ParamField path="output_float_scientific" type="bool | None" default="None">
+  (optional) Whether to use scientific form always (true), never (false), or automatically (None). Only used when exporting data.
+</ParamField>
+
+<ParamField path="output_float_precision" type="int | None" default="None">
+  (optional) Number of decimal places to write. Only used when exporting data.
+</ParamField>
+
+<ParamField path="output_null_value" type="str | None" default="None">
+  (optional) A string representing null values (defaulting to the empty string). Only used when exporting data.
+</ParamField>
+
+<ParamField path="output_quote_style" type="str | None" default="None">
+  (optional) Determines the quoting strategy used. Only used when exporting data. * necessary (default): This puts quotes around fields only when necessary. They are necessary when fields contain a quote, separator or record terminator. Quotes are also necessary when writing an empty record (which is indistinguishable from a record with one empty field). This is the default. * always: This puts quotes around every field. Always. * never: This never puts quotes around fields, even if that results in invalid CSV data (e.g.: by not quoting strings containing the separator). * non_numeric: This puts quotes around all fields that are non-numeric. Namely, when writing a field that does not parse as a valid float or integer, then quotes will be used even if they aren`t strictly necessary.
+</ParamField>
+
+<ParamField path="output_maintain_order" type="bool" default="True">
+  (optional) Maintain the order in which data is processed. Setting this to False will be slightly faster. Only used when exporting data.
+</ParamField>
+
+
+</details>
+
+## NDJSON Format
+
+<a id="tabsdata.format.NDJSONFormat"></a>
+<details>
+<summary>NDJSONFormat</summary>
+
+
+```python
+class NDJSONFormat()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/format.py#L348)
+
+Bases: [`FileFormat`](#tabsdata.format.FileFormat)
+
+The class of the log file format.
+
+
+</details>
+
+## Log Format
+
+<a id="tabsdata.format.LogFormat"></a>
+<details>
+<summary>LogFormat</summary>
+
+
+```python
+class LogFormat()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/format.py#L363)
+
+Bases: [`FileFormat`](#tabsdata.format.FileFormat)
+
+The class of the log file format.
+
+
+</details>
+
+## Parquet Format
+
+<a id="tabsdata.format.ParquetFormat"></a>
+<details>
+<summary>ParquetFormat</summary>
+
+
+```python
+class ParquetFormat()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/format.py#L378)
+
+Bases: [`FileFormat`](#tabsdata.format.FileFormat)
+
+The class of the Parquet file format.
+
+
+</details>

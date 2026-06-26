@@ -1,0 +1,40 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.to_lowercase"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.to_lowercase"
+description: "Return the lowercase of a string."
+---
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_lowercase"></a>
+<details>
+<summary>to_lowercase</summary>
+
+
+```python
+def to_lowercase() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/string.py#L240)
+
+Return the lowercase of a string.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.to_lowercase().alias("to_lowercase"))
+>>>
+┌──────┬───────────────┐
+│ a    ┆ to_lowerrcase │
+│ ---  ┆ ---           │
+│ str  ┆ u32           │
+╞══════╪═══════════════╡
+│ aB   ┆ ab            │
+│ null ┆ null          │
+└──────┴───────────────┘
+```
+
+
+</details>

@@ -1,0 +1,20 @@
+---
+title: "Environment Variables"
+sidebarTitle: "Environment Variables"
+---
+
+`td.EnvironmentSecret` is the Tabsdata class to access the secrets stored as environment variables.
+
+**Example**:
+
+In the example below the username and password are passed to the `UserPasswordCredentials` object using the `EnvironmentSecret` object.
+
+```python
+td.UserPasswordCredentials(td.EnvironmentSecret("USERNAME"), td.EnvironmentSecret("PASSWORD"))
+```
+
+where,
+
+“USERNAME” and “PASSWORD” are the environment variables storing the values of username and password respectively.
+
+**Note**: For testing in your local, you need to store the values in environment variables before starting the Tabsdata server and creating the collection.

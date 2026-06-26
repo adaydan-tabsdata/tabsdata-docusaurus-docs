@@ -1,0 +1,53 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.or_"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.or_"
+description: "Bitwise or operator with the given expressions. It can be used with integer and bool types."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.or_"></a>
+<details>
+<summary>or_</summary>
+
+
+```python
+def or_(
+    * others: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L1754)
+
+Bitwise or operator with the given expressions. It can be used with integer and bool types.
+
+**Parameters:**
+
+<ParamField path="others" required>
+  expressions to peform the bitwiseor with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").or_(1).alias("or"))
+>>>
+┌──────┬──────┐
+│ val  ┆ or   │
+│ ---  ┆ ---  │
+│ i64  ┆ i64  │
+╞══════╪══════╡
+│ 1    ┆ 1    │
+│ 15   ┆ 15   │
+│ 18   ┆ 19   │
+│ 60   ┆ 61   │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+
+</details>

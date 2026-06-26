@@ -1,0 +1,46 @@
+---
+title: "tabsdata.DestinationPlugin"
+sidebarTitle: "tabsdata.DestinationPlugin"
+description: "tabsdata.DestinationPlugin API reference."
+---
+
+<a id="tabsdata.DestinationPlugin"></a>
+<details>
+<summary>DestinationPlugin</summary>
+
+
+```python
+class DestinationPlugin()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/plugin.py#L88)
+
+Bases: [`ABC`](https://docs.python.org/3/library/abc.html#abc.ABC)
+
+Abstract class for output plugins.
+
+<a id="tabsdata.DestinationPlugin.trigger_output"></a>
+#### `trigger_output`
+
+```python
+def trigger_output(
+    * args,
+    ** kwargs,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/plugin.py#L100)
+
+Trigger the exporting of the data. This function will receive the resulting data from the dataset function and must store it in the desired location.
+
+<a id="tabsdata.DestinationPlugin.__init__"></a>
+#### `__init__`
+
+```python
+def __init__()
+```
+
+#### Methods
+
+
+</details>

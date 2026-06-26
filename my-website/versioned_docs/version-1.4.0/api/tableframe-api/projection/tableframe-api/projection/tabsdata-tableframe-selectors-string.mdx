@@ -1,0 +1,46 @@
+---
+title: "tabsdata.tableframe.selectors.string"
+sidebarTitle: "tabsdata.tableframe.selectors.string"
+description: "Select all columns of string or categorical data type."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.selectors.string"></a>
+<details>
+<summary>string</summary>
+
+
+```python
+def string(
+    *,
+    include_categorical: bool = False,
+) -> SelectorProxy
+```
+
+Select all columns of string or categorical data type.
+
+**Parameters:**
+
+<ParamField path="include_categorical" type="bool" default="False">
+  If True, also include categorical columns in the selection.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata.tableframe as td_tf
+>>>
+>>> tf = td_tf.TableFrame({
+...     "Name": ["Anna", "Ben", "Cara", "Dean", "Ella", "Finn", "Gina", "Hugo"],
+...     "Country": ["US", "UK", "FR", "DE", "IT", "ES", "NL", "SE"],
+...     "Score": [90.5, 82.0, 88.5, 91.0, 85.5, 89.0, 87.5, 90.0]
+... })
+```
+
+```python
+>>> tf.select(td_tf.selectors.string())
+```
+
+
+</details>

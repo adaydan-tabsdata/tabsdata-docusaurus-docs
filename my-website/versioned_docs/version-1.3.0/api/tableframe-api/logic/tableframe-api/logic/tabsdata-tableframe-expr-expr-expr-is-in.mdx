@@ -1,0 +1,52 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.is_in"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.is_in"
+description: "If an element value is in the given collection."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.is_in"></a>
+<details>
+<summary>is_in</summary>
+
+
+```python
+def is_in(
+    other: Expr | Collection [ Any ],
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L1210)
+
+If an element value is in the given collection.
+
+**Parameters:**
+
+<ParamField path="other" type="Expr | Collection [ Any ]" required>
+  The collection to check if the element value is in.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").is_in([1.1, 2.2])
+>>>        .alias("is_in"))
+>>>
+┌──────┬────────┐
+│ temp ┆ is_in  │
+│ ---  ┆ ---    │
+│ f64  ┆ bool   │
+╞══════╪════════╡
+│ 1.1  ┆ true   │
+│ 2.0  ┆ false  │
+│ inf  ┆ false  │
+└──────┴────────┘
+```
+
+
+</details>

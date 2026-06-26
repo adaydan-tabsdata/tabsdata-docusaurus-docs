@@ -1,0 +1,45 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.arcsinh"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.arcsinh"
+description: "Calculate the inverse hyperbolic sine of the element value."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.arcsinh"></a>
+<details>
+<summary>arcsinh</summary>
+
+
+```python
+def arcsinh() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L394)
+
+Calculate the inverse hyperbolic sine of the element value.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").arcsinh().alias("arcsinh"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ arcsinh  │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ 0.1  ┆ 0.099834 │
+│ 1.5  ┆ 1.194763 │
+│ 1.8  ┆ 1.350441 │
+│ 6.0  ┆ 2.49178  │
+│ 6.0  ┆ 2.49178  │
+│ 7.5  ┆ 2.712465 │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+
+</details>

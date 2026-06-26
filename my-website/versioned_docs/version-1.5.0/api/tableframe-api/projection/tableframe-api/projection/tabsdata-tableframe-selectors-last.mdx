@@ -1,0 +1,37 @@
+---
+title: "tabsdata.tableframe.selectors.last"
+sidebarTitle: "tabsdata.tableframe.selectors.last"
+description: "Select the last column in the TableFrame."
+---
+
+<a id="tabsdata.tableframe.selectors.last"></a>
+<details>
+<summary>last</summary>
+
+
+```python
+def last() -> SelectorProxy
+```
+
+Select the last column in the TableFrame.
+
+Useful when working with dynamically generated schemas where the column order is not fixed.
+
+#### Example
+
+```python
+>>> import tabsdata.tableframe as td_tf
+>>>
+>>> tf = td_tf.TableFrame({
+...     "Id": [1, 2, 3, 4, 5, 6, 7, 8],
+...     "Name": ["A", "B", "C", "D", "E", "F", "G", "H"],
+...     "Score": [95.0, 88.5, 92.0, 76.0, 84.5, 79.0, 91.0, 87.5]
+... })
+```
+
+```python
+>>> tf.select(td_tf.selectors.last())
+```
+
+
+</details>

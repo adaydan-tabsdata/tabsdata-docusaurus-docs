@@ -1,0 +1,76 @@
+---
+title: "tabsdata.tableframe.selectors.temporal"
+sidebarTitle: "tabsdata.tableframe.selectors.temporal"
+description: "Select all columns of temporal data types."
+---
+
+<a id="tabsdata.tableframe.selectors.temporal"></a>
+<details>
+<summary>temporal</summary>
+
+
+```python
+def temporal() -> SelectorProxy
+```
+
+Select all columns of temporal data types.
+
+This includes datetime, date, time, and timedelta.
+
+#### Example
+
+```python
+>>> import tabsdata.tableframe as td_tf
+>>> from datetime import datetime, date, time, timedelta, timezone
+>>>
+>>> tf = td_tf.TableFrame({
+...     "CreatedAt": [
+...         datetime(2024, 1, 1, 9, 0, tzinfo=timezone.utc),
+...         datetime(2024, 1, 2, 10, 0, tzinfo=timezone.utc),
+...         datetime(2024, 1, 3, 11, 0, tzinfo=timezone.utc),
+...         datetime(2024, 1, 4, 12, 0, tzinfo=timezone.utc),
+...         datetime(2024, 1, 5, 13, 0, tzinfo=timezone.utc),
+...         datetime(2024, 1, 6, 14, 0, tzinfo=timezone.utc),
+...         datetime(2024, 1, 7, 15, 0, tzinfo=timezone.utc),
+...         datetime(2024, 1, 8, 16, 0, tzinfo=timezone.utc)
+...     ],
+...     "SessionDate": [
+...         date(2024, 1, 1),
+...         date(2024, 1, 2),
+...         date(2024, 1, 3),
+...         date(2024, 1, 4),
+...         date(2024, 1, 5),
+...         date(2024, 1, 6),
+...         date(2024, 1, 7),
+...         date(2024, 1, 8)
+...     ],
+...     "Duration": [
+...         timedelta(minutes=0),
+...         timedelta(minutes=5),
+...         timedelta(minutes=10),
+...         timedelta(minutes=15),
+...         timedelta(minutes=20),
+...         timedelta(minutes=25),
+...         timedelta(minutes=30),
+...         timedelta(minutes=35)
+...     ],
+...     "EventTime": [
+...         time(9, 0),
+...         time(10, 0),
+...         time(11, 0),
+...         time(12, 0),
+...         time(13, 0),
+...         time(14, 0),
+...         time(15, 0),
+...         time(16, 0)
+...     ],
+...     "User": ["Alice", "Bob", "Cara", "Dan", "Eve", "Finn", "Gus", "Hana"]
+... })
+```
+
+```python
+>>> tf.select(td_tf.selectors.temporal())
+```
+
+
+</details>

@@ -1,0 +1,67 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.fill_null"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.fill_null"
+description: "Replace all null values in the TableFrame with the given value."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.fill_null"></a>
+<details>
+<summary>fill_null</summary>
+
+
+```python
+def fill_null(
+    value: Any | Expr | None = None,
+) -> TableFrame
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/frame.py#L748)
+
+Replace all null values in the TableFrame with the given value.
+
+**Parameters:**
+
+<ParamField path="value" type="Any | Expr | None" default="None">
+  The value to replacenull with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ x    ┆ y    │
+│ ---  ┆ ---  │
+│ f64  ┆ f64  │
+╞══════╪══════╡
+│ 1.0  ┆ 2.0  │
+│ 2.0  ┆ 2.0  │
+│ NaN  ┆ NaN  │
+│ 4.0  ┆ NaN  │
+│ 5.0  ┆ null │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.fill_null(20)
+>>>
+┌──────┬──────┐
+│ x    ┆ y    │
+│ ---  ┆ ---  │
+│ f64  ┆ f64  │
+╞══════╪══════╡
+│ 1.0  ┆ 2.0  │
+│ 2.0  ┆ 2.0  │
+│ NaN  ┆ NaN  │
+│ 4.0  ┆ NaN  │
+│ 5.0  ┆ 20.0 │
+│ 20.0 ┆ 20.0 │
+└──────┴──────┘
+```
+
+
+</details>

@@ -1,0 +1,64 @@
+---
+title: "HashiCorp Secret"
+sidebarTitle: "HashiCorp Secret"
+---
+
+`td.HashiCorpSecret` is the Tabsdata class to access the secrets stored in HachiCorp Vault. You can use an [Enterprise version](https://developer.hashicorp.com/hcp/docs/vault/what-is-hcp-vault) with free trial, or a developer version in [docker](https://hub.docker.com/r/hashicorp/hcp). A HashiCorp Vault stores secrets in paths, and each secret is a key-value pair (secret name, secret value). A path may contain multiple secrets.
+
+**Example**
+
+In the example below, the username and password are passed to the `UserPasswordCredentials` object in Tabsdata using the `HashiCorpSecret` object.
+
+```python
+td.UserPasswordCredentials(
+    td.HashiCorpSecret("<path_to_the_username_secret>", "<name_of_the_username_secret>",
+        vault="<VAULT_NAME>"),
+    td.HashiCorpSecret("<path_to_the_password_secret>", "<name_of_the_password_secret>",
+        vault="<VAULT_NAME>")
+    )
+```
+
+where,
+
+**path**: `<path_to_the_username_secret>` and `<path_to_the_password_secret>` represent the path of the secret in the HashiCorp Vault. This is different from the API path that’s available to copy directly from the HashiCorp Vault’s dahsboard.
+
+![../../../_images/hashicorp_path.png](/img/hashicorp_path.png)
+
+In the image above, the path would be `td-pg`. As mentioned earlier, do not use the API path value.
+
+Currently, we support the credentials stored in the default `secret` secret engine in HashiCorp as seen in the image below. We’ll soon be supporting the storage of credentials in other secret engines.
+
+![../../../_images/mounts.png](/img/mounts.png)
+
+**name**: `<name_of_the_username_secret>` and `<name_of_the_password_secret>` are the names of the specific secret whose value you want to access.
+
+![../../../_images/hashicorp_secret.png](/img/hashicorp_secret.png)
+
+In the screenshot above, the secret names would be `PG_PASSWORD` and `PG_USERNAME`.
+
+[optional] **vault**: `<VAULT_NAME>` is the name of the vault holding secrets. It is a way for the system admin to organize and manage different vaults inside of a Tabsdata server by giving each one of them a different name so that they can be accessed by the functions. This parameter allows for multiple vaults to exist and be accessible in the execution of a function. This value defaults to “HASHICORP” if no vault name is provided.
+
+## Environment Variables for HashiCorp
+
+To access a HashiCorp secret’s value, Tabsdata needs to authenticate using the relevant credentials. For that purpose, the environment variables below need to be set in the server. When testing locally you can use the terminal to set these as environment variable before starting the server and creating the collection:
+
+**TDS_\{VAULT_NAME}_URL:** this environment variable holds the URL of the HashiCorp vault we are connecting to.
+
+**TDS_\{VAULT_NAME}_TOKEN:** this environment variable holds the TOKEN needed to access the HashiCorp vault. For testing purposes you can use the “admin” token.
+
+**TDS_\{VAULT_NAME}_NAMESPACE:** this environment variable holds the namespace from which you are accessing the HashiCorp vault. For testing purposes you can use the “admin” as namespace.
+
+The above variables need to correspond to the role that has the permissions to access the secrets needed.
+
+In the default case, when no vault name is provided in the Python code, these environment variables will be `TDS_HASHICORP_URL`, `TDS_HASHICORP_TOKEN` and `TDS_HASHICORP_NAMESPACE`.
+
+As an alternate, let’s take an example of a user who wants to access the following secret:
+
+```python
+import tabsdata as td
+secret = td.HashiCorpSecret(“path_to_the_secret”, “name_of_the_secret”, vault=”DEV_VAULT”)
+```
+
+To access the secrets stored in DEV_VAULT, the environment variables stored should be `TDS_DEV_VAULT_URL`, `TDS_DEV_VAULT_TOKEN` and `TDS_DEV_VAULT_NAMESPACE`. With vault names, it is possible for a multiple vaults to exist for better management within Tabsdata.
+
+**Note**: You can check if the `secret` is storing the correct value by printing the `secret.secret_value` attribute.

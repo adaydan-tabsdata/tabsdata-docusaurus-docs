@@ -1,0 +1,56 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.count"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.count"
+description: "Aggregation operation that counts the non null values of the given column in the group."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.count"></a>
+<details>
+<summary>count</summary>
+
+
+```python
+def count() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L2141)
+
+Aggregation operation that counts the non null values of the given column in the group.
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ B    ┆ 2    │
+│ A    ┆ 3    │
+│ B    ┆ 0    │
+│ C    ┆ 5    │
+│ null ┆ 6    │
+│ C    ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.group_by(td.col("a")).agg(td.col("b")).count().alias("count"))
+>>>
+┌──────┬───────┐
+│ a    ┆ count │
+│ ---  ┆ ---   │
+│ str  ┆ u32   │
+╞══════╪═══════╡
+│ null ┆ 1     │
+│ A    ┆ 2     │
+│ B    ┆ 2     │
+│ C    ┆ 1     │
+└──────┴───────┘
+```
+
+
+</details>

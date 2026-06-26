@@ -1,0 +1,55 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.add"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.add"
+description: "Equivalent to the + operator."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.add"></a>
+<details>
+<summary>add</summary>
+
+
+```python
+def add(
+    other: Any,
+) -> Expr
+```
+
+Equivalent to the + operator.
+
+For numeric types adds the given input. For string types concatenates the given input.
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to add or concatenate.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").add(1).alias("add"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ add      │
+│ ---  ┆ ---      │
+│ i64  ┆ i64      │
+╞══════╪══════════╡
+│ 1    ┆ 2        │
+│ 15   ┆ 16       │
+│ 18   ┆ 19       │
+│ 60   ┆ 61       │
+│ 60   ┆ 61       │
+│ 75   ┆ 76       │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+
+</details>

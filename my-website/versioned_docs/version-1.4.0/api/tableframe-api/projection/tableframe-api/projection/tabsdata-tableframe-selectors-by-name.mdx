@@ -1,0 +1,51 @@
+---
+title: "tabsdata.tableframe.selectors.by_name"
+sidebarTitle: "tabsdata.tableframe.selectors.by_name"
+description: "Select all columns whose names match any given names."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.selectors.by_name"></a>
+<details>
+<summary>by_name</summary>
+
+
+```python
+def by_name(
+    * names: str | Collection [ str ],
+    require_all: bool = True,
+) -> SelectorProxy
+```
+
+Select all columns whose names match any given names.
+
+**Parameters:**
+
+<ParamField path="names" required>
+  One or more column names to include.
+</ParamField>
+
+<ParamField path="require_all" type="bool" default="True">
+  If True, raises an error if any name is missing.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata.tableframe as td_tf
+>>>
+>>> tf = td_tf.TableFrame({
+...     "Id": [10, 11, 12, 13, 14, 15, 16, 17],
+...     "Name": ["Anna", "Ben", "Cara", "Dean", "Ella", "Finn", "Gina", "Hugo"],
+...     "Country": ["US", "UK", "FR", "DE", "IT", "ES", "NL", "SE"],
+...     "Score": [91.0, 84.5, 88.0, 90.5, 86.0, 87.0, 82.5, 89.5]
+... })
+```
+
+```python
+>>> tf.select(td_tf.selectors.by_name("Name", "Score"))
+```
+
+
+</details>

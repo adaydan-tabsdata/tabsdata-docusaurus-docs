@@ -1,0 +1,58 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.clip"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.clip"
+description: "For element values outside the lower and upper bounds, lower values are replaced with the lower bound and upper values with the upper bound. Values within the lower and upper bounds are unaffected."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.clip"></a>
+<details>
+<summary>clip</summary>
+
+
+```python
+def clip(
+    lower_bound: NumericLiteral | TemporalLiteral | IntoExprColumn | None = None,
+    upper_bound: NumericLiteral | TemporalLiteral | IntoExprColumn | None = None,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L580)
+
+For element values outside the lower and upper bounds, lower values are replaced with the lower bound and upper values with the upper bound. Values within the lower and upper bounds are unaffected.
+
+**Parameters:**
+
+<ParamField path="lower_bound" type="NumericLiteral | TemporalLiteral | IntoExprColumn | None" default="None">
+  The lower bound value. If None, the lower bound is not set.
+</ParamField>
+
+<ParamField path="upper_bound" type="NumericLiteral | TemporalLiteral | IntoExprColumn | None" default="None">
+  The upper bound value. If None, the upper bound is
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("age"), td.col("age").clip(18,65).alias("clip"))
+>>>
+┌──────┬─────────┐
+│ age  ┆ clip    │
+│ ---  ┆ ------- │
+│ i64  ┆ i64     │
+╞══════╪═══+++═══╡
+│ 1    ┆ 18      │
+│ 18   ┆ 18      │
+│ 50   ┆ 50      │
+│ 65   ┆ 65      │
+│ 70   ┆ 65      │
+└──────┴─────────┘
+```
+
+
+</details>

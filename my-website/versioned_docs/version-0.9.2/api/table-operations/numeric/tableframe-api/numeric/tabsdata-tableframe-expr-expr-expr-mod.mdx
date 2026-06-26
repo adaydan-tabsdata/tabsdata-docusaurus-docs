@@ -1,0 +1,52 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.mod"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.mod"
+description: "tabsdata.tableframe.expr.expr.Expr.mod API reference."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.mod"></a>
+<details>
+<summary>mod</summary>
+
+
+```python
+def mod(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/expr.py#L1569)
+
+Modulus operator.
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to divide by.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").mod(5).alias("mod"))
+>>>
+┌──────┬──────┐
+│ val  ┆ mod  │
+│ ---  ┆ ---  │
+│ i64  ┆ i64  │
+╞══════╪══════╡
+│ 1    ┆ 1    │
+│ 15   ┆ 0    │
+│ 18   ┆ 3    │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+
+</details>

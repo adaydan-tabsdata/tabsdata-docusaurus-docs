@@ -1,0 +1,62 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.head"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.head"
+description: "Return a TableFrame with the first n rows."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.head"></a>
+<details>
+<summary>head</summary>
+
+
+```python
+def head(
+    n: int = 5,
+) -> TableFrame
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/frame.py#L1346)
+
+Return a TableFrame with the first n rows.
+
+**Parameters:**
+
+<ParamField path="n" type="int" default="5">
+  The number of rows to return.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌─────┬─────┐
+│ a   ┆ b   │
+│ --- ┆ --- │
+│ str ┆ i64 │
+╞═════╪═════╡
+│ A   ┆ 1   │
+│ X   ┆ 10  │
+│ C   ┆ 3   │
+│ D   ┆ 5   │
+│ M   ┆ 9   │
+└─────┴─────┘
+>>>
+>>> tf.head(2)
+>>>
+┌─────┬─────┐
+│ a   ┆ b   │
+│ --- ┆ --- │
+│ str ┆ i64 │
+╞═════╪═════╡
+│ A   ┆ 1   │
+│ X   ┆ 10  │
+└─────┴─────┘
+```
+
+
+</details>

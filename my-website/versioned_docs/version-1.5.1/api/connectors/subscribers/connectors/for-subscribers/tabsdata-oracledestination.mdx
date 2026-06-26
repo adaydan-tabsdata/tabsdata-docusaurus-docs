@@ -1,0 +1,64 @@
+---
+title: "tabsdata.OracleDestination"
+sidebarTitle: "tabsdata.OracleDestination"
+description: "Bases: DestinationPlugin"
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.OracleDestination"></a>
+<details>
+<summary>OracleDestination</summary>
+
+
+```python
+class OracleDestination(
+    uri: str,
+    destination_table: List [ str ] | str,
+    credentials: UserPasswordCredentials = None,
+    if_table_exists: Literal [ 'append' , 'replace' ] = 'append',
+)
+```
+
+Bases: [`DestinationPlugin`](../plugins/tabsdata.DestinationPlugin.html#tabsdata.DestinationPlugin)
+
+Oracle-based data outputs.
+
+<a id="tabsdata.OracleDestination.__init__"></a>
+#### `__init__`
+
+```python
+def __init__(
+    uri: str,
+    destination_table: List [ str ] | str,
+    credentials: UserPasswordCredentials = None,
+    if_table_exists: Literal [ 'append' , 'replace' ] = 'append',
+)
+```
+
+Initializes the OracleDestination with the given URI and destination table, and optionally connection credentials.
+
+**Parameters:**
+
+<ParamField path="uri" type="str" required>
+  The URI of the database where the data is going to be stored.
+</ParamField>
+
+<ParamField path="destination_table" type="List [ str ] | str" required>
+  The tables to create. If multiple tables are provided, they must be provided as a list.
+</ParamField>
+
+<ParamField path="credentials" type="UserPasswordCredentials" default="None">
+  The credentials required to access the Oracle database. Must be a UserPasswordCredentials object.
+</ParamField>
+
+**Raises:**
+
+<ResponseField name="OutputConfigurationError" type="Exception"></ResponseField>
+
+#### Methods
+
+#### Attributes
+
+
+</details>

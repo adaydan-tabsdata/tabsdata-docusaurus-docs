@@ -1,0 +1,57 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.round_sig_figs"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.round_sig_figs"
+description: "Round floating point element values to the specified significant figures."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.round_sig_figs"></a>
+<details>
+<summary>round_sig_figs</summary>
+
+
+```python
+def round_sig_figs(
+    digits: int,
+) -> Expr
+```
+
+Round floating point element values to the specified significant figures.
+
+**Parameters:**
+
+<ParamField path="digits" type="int" required>
+  number of digits to round up.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").round_sig_figs(2)
+>>>   .alias("round_sig_figs"))
+>>>
+┌────────┬────────────────┐
+│ val    ┆ round_sig_figs │
+│ ---    ┆ ---            │
+│ f64    ┆ f64            │
+╞════════╪════════════════╡
+│ 0.0123 ┆ 0.012          │
+│ 2.0244 ┆ 2.0            │
+│ 0.0    ┆ 0.0            │
+│ inf    ┆ NaN            │
+│ 50.0   ┆ 50.0           │
+│ 1.0    ┆ 1.0            │
+│ NaN    ┆ NaN            │
+│ null   ┆ null           │
+│ 112.0  ┆ 110.0          │
+│ 2142.0 ┆ 2100.0         │
+└────────┴────────────────┘
+```
+
+
+</details>

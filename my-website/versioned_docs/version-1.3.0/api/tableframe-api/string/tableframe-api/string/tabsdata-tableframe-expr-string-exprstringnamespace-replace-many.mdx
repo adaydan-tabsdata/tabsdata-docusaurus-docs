@@ -1,0 +1,62 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.replace_many"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.replace_many"
+description: "Replace the all occurences of any the given patterns with the given string."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.replace_many"></a>
+<details>
+<summary>replace_many</summary>
+
+
+```python
+def replace_many(
+    patterns: td_typing.IntoExpr | Mapping[str, str], replace_with: td_typing.IntoExpr | NoDefault = <no_default>, *, ascii_case_insensitive: bool = False,
+) -> td_expr.Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/string.py#L1074)
+
+Replace the all occurences of any the given patterns with the given string.
+
+**Parameters:**
+
+<ParamField path="patterns" type="td_typing.IntoExpr | Mapping[str, str], replace_with: td_typing.IntoExpr | NoDefault" default="<no_default>, *, ascii_case_insensitive: bool = False">
+  The patterns to replace.
+</ParamField>
+
+<ParamField path="replace_with" required>
+  The value to replace the pattern with.
+</ParamField>
+
+<ParamField path="ascii_case_insensitive" required>
+  If true, the search is case-insensitive.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a")
+      .str.replace_many(["a", "b"], "X").alias("replace_many"))
+>>>
+┌──────┬──────────────┐
+│ a    ┆ replace_many │
+│ ---  ┆ ---          │
+│ str  ┆ str          │
+╞══════╪══════════════╡
+│ abc  ┆ XXc          │
+│ axy  ┆ Xxy          │
+│ xyb  ┆ xyX          │
+│ xyz  ┆ xyz          │
+│ null ┆ null         │
+└──────┴──────────────┘
+```
+
+
+</details>

@@ -1,0 +1,41 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.len_bytes"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.len_bytes"
+description: "Return number of bytes (not chars) of a string."
+---
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.len_bytes"></a>
+<details>
+<summary>len_bytes</summary>
+
+
+```python
+def len_bytes() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/string.py#L161)
+
+Return number of bytes (not chars) of a string.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.len_bytes().alias("len_bytes"))
+>>>
+┌──────┬────────────┐
+│ a    ┆ to_decimal │
+│ ---  ┆ ---        │
+│ str  ┆ u32        │
+╞══════╪════════════╡
+│ ab   ┆ 2          │
+│ 再   ┆ 3          │
+│ null ┆ null       │
+└──────┴────────────┘
+```
+
+
+</details>

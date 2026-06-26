@@ -1,0 +1,1579 @@
+---
+title: "Sources"
+sidebarTitle: "Sources"
+description: "Sources API reference."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.AzureSource"></a>
+<details>
+<summary>AzureSource</summary>
+
+
+```python
+class AzureSource(
+    uri: str | list [ str ],
+    credentials: AzureCredentials,
+    format: str | FileFormat = None,
+    initial_last_modified: str | datetime = None,
+    file_info: str | FileInfo | None = None,
+)
+```
+
+Bases: [`SourcePlugin`](/versions/1.9.0/api/module/tabsdata#tabsdata.SourcePlugin)
+
+Azure-file-based data inputs.
+
+**Categories:** source
+
+<a id="tabsdata.AzureSource.SupportedFormats"></a>
+### `SupportedFormats`
+
+```python
+class SupportedFormats(
+    * values,
+)
+```
+
+Bases: [`Enum`](https://docs.python.org/3/library/enum.html#enum.Enum)
+
+Enum for the supported formats for the AzureSource.
+
+<a id="tabsdata.AzureSource.SupportedFormats.avro"></a>
+<ResponseField name="avro">
+
+</ResponseField>
+
+<a id="tabsdata.AzureSource.SupportedFormats.csv"></a>
+<ResponseField name="csv">
+
+</ResponseField>
+
+<a id="tabsdata.AzureSource.SupportedFormats.log"></a>
+<ResponseField name="log">
+
+</ResponseField>
+
+<a id="tabsdata.AzureSource.SupportedFormats.ndjson"></a>
+<ResponseField name="ndjson">
+
+</ResponseField>
+
+<a id="tabsdata.AzureSource.SupportedFormats.parquet"></a>
+<ResponseField name="parquet">
+
+</ResponseField>
+
+<a id="tabsdata.AzureSource.chunk"></a>
+#### `chunk`
+
+```python
+def chunk(
+    working_dir: str,
+) -> list[str | None | list[str | None]]
+```
+
+Trigger the import of the data. This must be implemented in any class that inherits from this class unless directly implementing streaming. The method will receive a folder where it must store the data as parquet files, and return a list of the paths of the files created. This files will then be loaded and mapped to the dataset function in positional order, so if you want file.parquet to be the first argument of the dataset function, you must return it first. If you want a parameter to receive multiple files, return a list of the paths. For example, you would give the following return to provide a first argument with a single file and a second argument with two files:return [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
+
+**Parameters:**
+
+<ParamField path="working_dir" type="str" required>
+  The folder where the files must be stored
+</ParamField>
+
+**Returns:** The path of the file(s) created, in the order they must be mapped to the dataset function
+
+**Return type:** Union[ str , Tuple[ str , …], List[ str ]]
+
+<a id="tabsdata.AzureSource.credentials"></a>
+<ResponseField name="credentials" type="AzureCredentials">
+The credentials required to access Azure.
+
+**Type:** AzureCredentials
+</ResponseField>
+
+<a id="tabsdata.AzureSource.file_info"></a>
+<ResponseField name="file_info" type="FileInfo | None">
+The file information to add as system columns.
+
+**Type:** FileInfo | None
+</ResponseField>
+
+<a id="tabsdata.AzureSource.format"></a>
+<ResponseField name="format" type="FileFormat">
+The format of the file. If not provided, it will be inferred from the file extension of the data.
+
+**Type:** FileFormat
+</ResponseField>
+
+<a id="tabsdata.AzureSource.initial_last_modified"></a>
+<ResponseField name="initial_last_modified" type="str">
+The date and time after which the files were modified.
+
+**Type:** str
+</ResponseField>
+
+<a id="tabsdata.AzureSource.initial_values"></a>
+<ResponseField name="initial_values" type="dict">
+Return a dictionary with the initial values to be stored after execution of the plugin. They will be accessible in the next execution of the plugin. The dictionary must have the parameter names as keys and the initial values as values, all the type string.
+
+**Returns:** A dictionary with the initial values of the parameters of the plugin.
+
+**Return type:** dict
+</ResponseField>
+
+<a id="tabsdata.AzureSource.uri"></a>
+<ResponseField name="uri" type="str | list[str]">
+‘az://path/to/files’.
+
+**Type:** str | list [ str ]
+
+**Type:** The URI of the files with format
+</ResponseField>
+
+
+</details>
+
+<a id="tabsdata.DatabricksSource"></a>
+<details>
+<summary>DatabricksSource</summary>
+
+
+```python
+class DatabricksSource(
+    host_url: str,
+    token: str | Secret,
+    queries: list [ str ] | str,
+    initial_values: dict | None = None,
+    warehouse: str | None = None,
+    warehouse_id: str | None = None,
+    ** kwargs,
+)
+```
+
+Bases: [`SourcePlugin`](/versions/1.9.0/api/module/tabsdata#tabsdata.SourcePlugin)
+
+Databricks based data inputs.
+
+**Categories:** source
+
+<a id="tabsdata.DatabricksSource.chunk"></a>
+#### `chunk`
+
+```python
+def chunk(
+    working_dir: str,
+) -> str | List[str]
+```
+
+Trigger the import of the data. This must be implemented in any class that inherits from this class unless directly implementing streaming. The method will receive a folder where it must store the data as parquet files, and return a list of the paths of the files created. This files will then be loaded and mapped to the dataset function in positional order, so if you want file.parquet to be the first argument of the dataset function, you must return it first. If you want a parameter to receive multiple files, return a list of the paths. For example, you would give the following return to provide a first argument with a single file and a second argument with two files:return [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
+
+**Parameters:**
+
+<ParamField path="working_dir" type="str" required>
+  The folder where the files must be stored
+</ParamField>
+
+**Returns:** The path of the file(s) created, in the order they must be mapped to the dataset function
+
+**Return type:** Union[ str , Tuple[ str , …], List[ str ]]
+
+<a id="tabsdata.DatabricksSource.host_url"></a>
+<ResponseField name="host_url" type="str">
+
+</ResponseField>
+
+<a id="tabsdata.DatabricksSource.initial_values"></a>
+<ResponseField name="initial_values" type="dict">
+The initial values for the parameters in the SQL queries.
+</ResponseField>
+
+<a id="tabsdata.DatabricksSource.queries"></a>
+<ResponseField name="queries" type="List[str]">
+
+</ResponseField>
+
+<a id="tabsdata.DatabricksSource.token"></a>
+<ResponseField name="token" type="Secret">
+
+</ResponseField>
+
+
+</details>
+
+<a id="tabsdata.Db2Src"></a>
+<details>
+<summary>Db2Src</summary>
+
+
+```python
+class Db2Src(
+    ** kwargs,
+)
+```
+
+Bases: [`SourcePlugin`](/versions/1.9.0/api/module/tabsdata#tabsdata.SourcePlugin)
+
+Source plugin for reading data from Db2.
+
+**Categories:** source
+
+<a id="tabsdata.Db2Src.stream"></a>
+#### `stream`
+
+```python
+def stream(
+    working_dir: str,
+) -> list[TableFrame]
+```
+
+Execute the query and load the results as a list of TableFrames.
+
+**Parameters:**
+
+<ParamField path="working_dir" type="str" required>
+  The directory where the Parquet files will be saved.
+</ParamField>
+
+**Returns:** A list of TableFrames containing the query results.
+
+<a id="tabsdata.Db2Src.chunk_size"></a>
+<ResponseField name="chunk_size" type="int">
+The chunk size in records for reading large queries in batches.
+</ResponseField>
+
+<a id="tabsdata.Db2Src.conn"></a>
+<ResponseField name="conn" type="Db2Conn">
+The Db2 connection configuration.
+</ResponseField>
+
+<a id="tabsdata.Db2Src.initial_values"></a>
+<ResponseField name="initial_values" type="dict">
+The initial values for the parameters in the SQL queries.
+</ResponseField>
+
+<a id="tabsdata.Db2Src.loader"></a>
+<ResponseField name="loader" type="Literal['polars_sqlalchemy', 'pandas']">
+The data processing loader to use for executing SQL imports.
+</ResponseField>
+
+<a id="tabsdata.Db2Src.queries"></a>
+<ResponseField name="queries" type="list[str]">
+The SQL queries to execute to read data.
+</ResponseField>
+
+<a id="tabsdata.Db2Src.schema_overrides"></a>
+<ResponseField name="schema_overrides" type="list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]]| None">
+The schema overrides for the tables being read.
+</ResponseField>
+
+<a id="tabsdata.Db2Src.transactional"></a>
+<ResponseField name="transactional" type="bool">
+Whether to use transactions for reading to ensure consistency.
+</ResponseField>
+
+
+</details>
+
+<a id="tabsdata.GCSSource"></a>
+<details>
+<summary>GCSSource</summary>
+
+
+```python
+class GCSSource(
+    uri: str | list [ str ],
+    credentials: GCPCredentials,
+    format: str | FileFormat = None,
+    initial_last_modified: str | datetime = None,
+    file_info: str | FileInfo | None = None,
+)
+```
+
+Bases: [`SourcePlugin`](/versions/1.9.0/api/module/tabsdata#tabsdata.SourcePlugin)
+
+GCS-file-based data inputs.
+
+**Categories:** source
+
+<a id="tabsdata.GCSSource.SupportedFormats"></a>
+### `SupportedFormats`
+
+```python
+class SupportedFormats(
+    * values,
+)
+```
+
+Bases: [`Enum`](https://docs.python.org/3/library/enum.html#enum.Enum)
+
+Enum for the supported formats for the GCSSource.
+
+<a id="tabsdata.GCSSource.SupportedFormats.avro"></a>
+<ResponseField name="avro">
+
+</ResponseField>
+
+<a id="tabsdata.GCSSource.SupportedFormats.csv"></a>
+<ResponseField name="csv">
+
+</ResponseField>
+
+<a id="tabsdata.GCSSource.SupportedFormats.log"></a>
+<ResponseField name="log">
+
+</ResponseField>
+
+<a id="tabsdata.GCSSource.SupportedFormats.ndjson"></a>
+<ResponseField name="ndjson">
+
+</ResponseField>
+
+<a id="tabsdata.GCSSource.SupportedFormats.parquet"></a>
+<ResponseField name="parquet">
+
+</ResponseField>
+
+<a id="tabsdata.GCSSource.chunk"></a>
+#### `chunk`
+
+```python
+def chunk(
+    working_dir: str,
+) -> list[str | None | list[str | None]]
+```
+
+Trigger the import of the data. This must be implemented in any class that inherits from this class unless directly implementing streaming. The method will receive a folder where it must store the data as parquet files, and return a list of the paths of the files created. This files will then be loaded and mapped to the dataset function in positional order, so if you want file.parquet to be the first argument of the dataset function, you must return it first. If you want a parameter to receive multiple files, return a list of the paths. For example, you would give the following return to provide a first argument with a single file and a second argument with two files:return [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
+
+**Parameters:**
+
+<ParamField path="working_dir" type="str" required>
+  The folder where the files must be stored
+</ParamField>
+
+**Returns:** The path of the file(s) created, in the order they must be mapped to the dataset function
+
+**Return type:** Union[ str , Tuple[ str , …], List[ str ]]
+
+<a id="tabsdata.GCSSource.credentials"></a>
+<ResponseField name="credentials" type="GCPCredentials">
+The credentials required to access GCS.
+
+**Type:** GCPCredentials
+</ResponseField>
+
+<a id="tabsdata.GCSSource.file_info"></a>
+<ResponseField name="file_info" type="FileInfo | None">
+The file information to add as system columns.
+
+**Type:** FileInfo | None
+</ResponseField>
+
+<a id="tabsdata.GCSSource.format"></a>
+<ResponseField name="format" type="FileFormat">
+The format of the file. If not provided, it will be inferred from the file extension of the data.
+
+**Type:** FileFormat
+</ResponseField>
+
+<a id="tabsdata.GCSSource.initial_last_modified"></a>
+<ResponseField name="initial_last_modified" type="str">
+The date and time after which the files were modified.
+
+**Type:** str
+</ResponseField>
+
+<a id="tabsdata.GCSSource.initial_values"></a>
+<ResponseField name="initial_values" type="dict">
+Return a dictionary with the initial values to be stored after execution of the plugin. They will be accessible in the next execution of the plugin. The dictionary must have the parameter names as keys and the initial values as values, all the type string.
+
+**Returns:** A dictionary with the initial values of the parameters of the plugin.
+
+**Return type:** dict
+</ResponseField>
+
+<a id="tabsdata.GCSSource.uri"></a>
+<ResponseField name="uri" type="str | list[str]">
+‘gs://path/to/files’.
+
+**Type:** str | list [ str ]
+
+**Type:** The URI of the files with format
+</ResponseField>
+
+
+</details>
+
+<a id="tabsdata.LocalFileSource"></a>
+<details>
+<summary>LocalFileSource</summary>
+
+
+```python
+class LocalFileSource(
+    path: str | list [ str ],
+    format: str | FileFormat = None,
+    initial_last_modified: str | datetime = None,
+    file_info: str | FileInfo | None = None,
+)
+```
+
+Bases: [`SourcePlugin`](/versions/1.9.0/api/module/tabsdata#tabsdata.SourcePlugin)
+
+Local-file-based data inputs.
+
+**Categories:** source
+
+<a id="tabsdata.LocalFileSource.SupportedFormats"></a>
+### `SupportedFormats`
+
+```python
+class SupportedFormats(
+    * values,
+)
+```
+
+Bases: [`Enum`](https://docs.python.org/3/library/enum.html#enum.Enum)
+
+Enum for the supported formats for the LocalFileSource.
+
+<a id="tabsdata.LocalFileSource.SupportedFormats.avro"></a>
+<ResponseField name="avro">
+
+</ResponseField>
+
+<a id="tabsdata.LocalFileSource.SupportedFormats.csv"></a>
+<ResponseField name="csv">
+
+</ResponseField>
+
+<a id="tabsdata.LocalFileSource.SupportedFormats.log"></a>
+<ResponseField name="log">
+
+</ResponseField>
+
+<a id="tabsdata.LocalFileSource.SupportedFormats.ndjson"></a>
+<ResponseField name="ndjson">
+
+</ResponseField>
+
+<a id="tabsdata.LocalFileSource.SupportedFormats.parquet"></a>
+<ResponseField name="parquet">
+
+</ResponseField>
+
+<a id="tabsdata.LocalFileSource.chunk"></a>
+#### `chunk`
+
+```python
+def chunk(
+    working_dir: str,
+) -> list[str | None | list[str | None]]
+```
+
+Trigger the import of the data. This must be implemented in any class that inherits from this class unless directly implementing streaming. The method will receive a folder where it must store the data as parquet files, and return a list of the paths of the files created. This files will then be loaded and mapped to the dataset function in positional order, so if you want file.parquet to be the first argument of the dataset function, you must return it first. If you want a parameter to receive multiple files, return a list of the paths. For example, you would give the following return to provide a first argument with a single file and a second argument with two files:return [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
+
+**Parameters:**
+
+<ParamField path="working_dir" type="str" required>
+  The folder where the files must be stored
+</ParamField>
+
+**Returns:** The path of the file(s) created, in the order they must be mapped to the dataset function
+
+**Return type:** Union[ str , Tuple[ str , …], List[ str ]]
+
+<a id="tabsdata.LocalFileSource.file_info"></a>
+<ResponseField name="file_info" type="FileInfo | None">
+The file information to add as system columns.
+
+**Type:** FileInfo | None
+</ResponseField>
+
+<a id="tabsdata.LocalFileSource.format"></a>
+<ResponseField name="format" type="FileFormat">
+The format of the file or files. If not provided, it will be inferred from the file extension in the path.
+
+**Type:** FileFormat
+</ResponseField>
+
+<a id="tabsdata.LocalFileSource.initial_last_modified"></a>
+<ResponseField name="initial_last_modified" type="str">
+The date and time after which the files were modified.
+
+**Type:** str
+</ResponseField>
+
+<a id="tabsdata.LocalFileSource.initial_values"></a>
+<ResponseField name="initial_values" type="dict">
+Return a dictionary with the initial values to be stored after execution of the plugin. They will be accessible in the next execution of the plugin. The dictionary must have the parameter names as keys and the initial values as values, all the type string.
+
+**Returns:** A dictionary with the initial values of the parameters of the plugin.
+
+**Return type:** dict
+</ResponseField>
+
+<a id="tabsdata.LocalFileSource.path"></a>
+<ResponseField name="path" type="str | list[str]">
+The path or paths to the files to load.
+
+**Type:** str | list [ str ]
+</ResponseField>
+
+
+</details>
+
+<a id="tabsdata.MSSQLSource"></a>
+<details>
+<summary>MSSQLSource</summary>
+
+
+```python
+class MSSQLSource(
+    ** kwargs,
+)
+```
+
+Bases: [`SourcePlugin`](/versions/1.9.0/api/module/tabsdata#tabsdata.SourcePlugin)
+
+Microsoft SQL Server based data inputs.
+
+**Categories:** source
+
+<a id="tabsdata.MSSQLSource.chunk"></a>
+#### `chunk`
+
+```python
+def chunk(
+    working_dir: str,
+)
+```
+
+Execute the query and yield chunks of data.
+
+**Parameters:**
+
+<ParamField path="working_dir" type="str" required>
+  The working directory for temporary files.
+</ParamField>
+
+**Yields:** pd.DataFrame – A chunk of data from the query result.
+
+<a id="tabsdata.MSSQLSource.connection_string"></a>
+<ResponseField name="connection_string" type="str">
+Get the connection string for the database.
+
+**Returns:** The connection string.
+
+**Return type:** str
+</ResponseField>
+
+<a id="tabsdata.MSSQLSource.credentials"></a>
+<ResponseField name="credentials" type="UserPasswordCredentials | None">
+The credentials required to access Microsoft SQL Server. If no credentials were provided, it will return None.
+
+**Type:** UserPasswordCredentials | None
+</ResponseField>
+
+<a id="tabsdata.MSSQLSource.initial_values"></a>
+<ResponseField name="initial_values" type="dict">
+The initial values for the parameters in the SQL queries.
+
+**Type:** dict
+</ResponseField>
+
+<a id="tabsdata.MSSQLSource.query"></a>
+<ResponseField name="query" type="list[str]">
+Get the SQL query or queries to execute.
+
+**Returns:** The SQL query or queries.
+
+**Return type:** str | list [ str ]
+</ResponseField>
+
+
+</details>
+
+<a id="tabsdata.MSSQLSrc"></a>
+<details>
+<summary>MSSQLSrc</summary>
+
+
+```python
+class MSSQLSrc(
+    conn: MSSQLConn,
+    queries: str | list [ str ],
+    initial_values: dict [ str , Any ] | None = None,
+    transactional: bool = True,
+    chunk_size: Annotated [ int , Gt ( gt = 0 ) ] = 100000,
+    loader: Literal [ 'polars_sqlalchemy' , 'pandas' ] = 'polars_sqlalchemy',
+    schema_overrides: dict [ str , Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 ] | list [ dict [ str , Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 ] ] | None = None,
+)
+```
+
+Bases: [`SourcePlugin`](/versions/1.9.0/api/module/tabsdata#tabsdata.SourcePlugin)
+
+Source Plugin for reading data from a Microsoft SQL Server (MSSQL) database.
+
+**Categories:** source
+
+<a id="tabsdata.MSSQLSrc.stream"></a>
+#### `stream`
+
+```python
+def stream(
+    working_dir: str,
+) -> list[TableFrame]
+```
+
+Execute the query and load the results as a list of TableFrames.
+
+**Parameters:**
+
+<ParamField path="working_dir" type="str" required>
+  The directory where the Parquet files will be saved.
+</ParamField>
+
+**Returns:** A list of TableFrames containing the query results.
+
+<a id="tabsdata.MSSQLSrc.chunk_size"></a>
+<ResponseField name="chunk_size" type="int">
+The chunk size in records for reading large queries in batches.
+</ResponseField>
+
+<a id="tabsdata.MSSQLSrc.conn"></a>
+<ResponseField name="conn" type="MSSQLConn">
+The MSSQL connection configuration.
+</ResponseField>
+
+<a id="tabsdata.MSSQLSrc.initial_values"></a>
+<ResponseField name="initial_values" type="dict">
+The initial values for the parameters in the SQL queries.
+</ResponseField>
+
+<a id="tabsdata.MSSQLSrc.loader"></a>
+<ResponseField name="loader" type="Literal['polars_sqlalchemy', 'pandas']">
+The data processing loader to use for executing SQL imports.
+</ResponseField>
+
+<a id="tabsdata.MSSQLSrc.queries"></a>
+<ResponseField name="queries" type="list[str]">
+The SQL queries to execute to read data.
+</ResponseField>
+
+<a id="tabsdata.MSSQLSrc.schema_overrides"></a>
+<ResponseField name="schema_overrides" type="list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]]| None">
+The schema overrides for the tables being read.
+</ResponseField>
+
+<a id="tabsdata.MSSQLSrc.transactional"></a>
+<ResponseField name="transactional" type="bool">
+Whether to use transactions for reading to ensure consistency.
+</ResponseField>
+
+
+</details>
+
+<a id="tabsdata.MariaDBSource"></a>
+<details>
+<summary>MariaDBSource</summary>
+
+
+```python
+class MariaDBSource(
+    ** kwargs,
+)
+```
+
+Bases: [`SourcePlugin`](/versions/1.9.0/api/module/tabsdata#tabsdata.SourcePlugin)
+
+MariaDB-based data inputs.
+
+**Categories:** source
+
+<a id="tabsdata.MariaDBSource.chunk"></a>
+#### `chunk`
+
+```python
+def chunk(
+    working_dir: str,
+) -> list[str]
+```
+
+Trigger the import of the data. This must be implemented in any class that inherits from this class unless directly implementing streaming. The method will receive a folder where it must store the data as parquet files, and return a list of the paths of the files created. This files will then be loaded and mapped to the dataset function in positional order, so if you want file.parquet to be the first argument of the dataset function, you must return it first. If you want a parameter to receive multiple files, return a list of the paths. For example, you would give the following return to provide a first argument with a single file and a second argument with two files:return [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
+
+**Parameters:**
+
+<ParamField path="working_dir" type="str" required>
+  The folder where the files must be stored
+</ParamField>
+
+**Returns:** The path of the file(s) created, in the order they must be mapped to the dataset function
+
+**Return type:** Union[ str , Tuple[ str , …], List[ str ]]
+
+<a id="tabsdata.MariaDBSource.credentials"></a>
+<ResponseField name="credentials" type="UserPasswordCredentials | None">
+The credentials required to access MariaDB. If no credentials were provided, it will return None.
+
+**Type:** UserPasswordCredentials | None
+</ResponseField>
+
+<a id="tabsdata.MariaDBSource.initial_values"></a>
+<ResponseField name="initial_values" type="dict">
+The initial values for the parameters in the SQL queries.
+
+**Type:** dict
+</ResponseField>
+
+<a id="tabsdata.MariaDBSource.query"></a>
+<ResponseField name="query" type="str | List[str]">
+The SQL query(s) to execute.
+
+**Type:** str | List[ str ]
+</ResponseField>
+
+<a id="tabsdata.MariaDBSource.uri"></a>
+<ResponseField name="uri" type="str">
+The URI of the database where the data is located.
+
+**Type:** str
+</ResponseField>
+
+
+</details>
+
+<a id="tabsdata.MariaDBSrc"></a>
+<details>
+<summary>MariaDBSrc</summary>
+
+
+```python
+class MariaDBSrc(
+    conn: MariaDBConn,
+    queries: str | list [ str ],
+    initial_values: dict [ str , Any ] | None = None,
+    transactional: bool = True,
+    chunk_size: Annotated [ int , Gt ( gt = 0 ) ] = 100000,
+    loader: Literal [ 'polars_sqlalchemy' , 'pandas' ] = 'polars_sqlalchemy',
+    schema_overrides: dict [ str , Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 ] | list [ dict [ str , Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 ] ] | None = None,
+)
+```
+
+Bases: [`SourcePlugin`](/versions/1.9.0/api/module/tabsdata#tabsdata.SourcePlugin)
+
+Source plugin for reading data from MariaDB.
+
+**Categories:** source
+
+<a id="tabsdata.MariaDBSrc.stream"></a>
+#### `stream`
+
+```python
+def stream(
+    working_dir: str,
+) -> list[TableFrame]
+```
+
+Execute the query and load the results as a list of TableFrames.
+
+**Parameters:**
+
+<ParamField path="working_dir" type="str" required>
+  The directory where the Parquet files will be saved.
+</ParamField>
+
+**Returns:** A list of TableFrames containing the query results.
+
+<a id="tabsdata.MariaDBSrc.chunk_size"></a>
+<ResponseField name="chunk_size" type="int">
+The chunk size in records for reading large queries in batches.
+</ResponseField>
+
+<a id="tabsdata.MariaDBSrc.conn"></a>
+<ResponseField name="conn" type="MariaDBConn">
+The MariaDB connection configuration.
+</ResponseField>
+
+<a id="tabsdata.MariaDBSrc.initial_values"></a>
+<ResponseField name="initial_values" type="dict">
+The initial values for the parameters in the SQL queries.
+</ResponseField>
+
+<a id="tabsdata.MariaDBSrc.loader"></a>
+<ResponseField name="loader" type="Literal['polars_sqlalchemy', 'pandas']">
+The data processing loader to use for executing SQL imports.
+</ResponseField>
+
+<a id="tabsdata.MariaDBSrc.queries"></a>
+<ResponseField name="queries" type="list[str]">
+The SQL queries to execute to read data.
+</ResponseField>
+
+<a id="tabsdata.MariaDBSrc.schema_overrides"></a>
+<ResponseField name="schema_overrides" type="list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]]| None">
+
+</ResponseField>
+
+<a id="tabsdata.MariaDBSrc.transactional"></a>
+<ResponseField name="transactional" type="bool">
+Whether to use transactions for reading to ensure consistency.
+</ResponseField>
+
+
+</details>
+
+<a id="tabsdata.MySQLSource"></a>
+<details>
+<summary>MySQLSource</summary>
+
+
+```python
+class MySQLSource(
+    ** kwargs,
+)
+```
+
+Bases: [`SourcePlugin`](/versions/1.9.0/api/module/tabsdata#tabsdata.SourcePlugin)
+
+MySQL-based data inputs.
+
+**Categories:** source
+
+<a id="tabsdata.MySQLSource.chunk"></a>
+#### `chunk`
+
+```python
+def chunk(
+    working_dir: str,
+) -> list[str]
+```
+
+Trigger the import of the data. This must be implemented in any class that inherits from this class unless directly implementing streaming. The method will receive a folder where it must store the data as parquet files, and return a list of the paths of the files created. This files will then be loaded and mapped to the dataset function in positional order, so if you want file.parquet to be the first argument of the dataset function, you must return it first. If you want a parameter to receive multiple files, return a list of the paths. For example, you would give the following return to provide a first argument with a single file and a second argument with two files:return [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
+
+**Parameters:**
+
+<ParamField path="working_dir" type="str" required>
+  The folder where the files must be stored
+</ParamField>
+
+**Returns:** The path of the file(s) created, in the order they must be mapped to the dataset function
+
+**Return type:** Union[ str , Tuple[ str , …], List[ str ]]
+
+<a id="tabsdata.MySQLSource.credentials"></a>
+<ResponseField name="credentials" type="UserPasswordCredentials | None">
+The credentials required to access the MySQLDatabase. If no credentials were provided, it will return None.
+
+**Type:** UserPasswordCredentials | None
+</ResponseField>
+
+<a id="tabsdata.MySQLSource.initial_values"></a>
+<ResponseField name="initial_values" type="dict">
+The initial values for the parameters in the SQL queries.
+
+**Type:** dict
+</ResponseField>
+
+<a id="tabsdata.MySQLSource.query"></a>
+<ResponseField name="query" type="str | List[str]">
+The SQL query(s) to execute.
+
+**Type:** str | List[ str ]
+</ResponseField>
+
+<a id="tabsdata.MySQLSource.uri"></a>
+<ResponseField name="uri" type="str">
+The URI of the database where the data is located.
+
+**Type:** str
+</ResponseField>
+
+
+</details>
+
+<a id="tabsdata.MySQLSrc"></a>
+<details>
+<summary>MySQLSrc</summary>
+
+
+```python
+class MySQLSrc(
+    conn: MySQLConn,
+    queries: str | list [ str ],
+    initial_values: dict [ str , Any ] | None = None,
+    transactional: bool = True,
+    chunk_size: Annotated [ int , Gt ( gt = 0 ) ] = 100000,
+    loader: Literal [ 'polars_sqlalchemy' , 'pandas' ] = 'polars_sqlalchemy',
+    schema_overrides: dict [ str , Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 ] | list [ dict [ str , Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 ] ] | None = None,
+)
+```
+
+Bases: [`SourcePlugin`](/versions/1.9.0/api/module/tabsdata#tabsdata.SourcePlugin)
+
+Source plugin for reading data from MySQL.
+
+**Categories:** source
+
+<a id="tabsdata.MySQLSrc.stream"></a>
+#### `stream`
+
+```python
+def stream(
+    working_dir: str,
+) -> list[TableFrame]
+```
+
+Execute the query and load the results as a list of TableFrames.
+
+**Parameters:**
+
+<ParamField path="working_dir" type="str" required>
+  The directory where the Parquet files will be saved.
+</ParamField>
+
+**Returns:** A list of TableFrames containing the query results.
+
+<a id="tabsdata.MySQLSrc.chunk_size"></a>
+<ResponseField name="chunk_size" type="int">
+The chunk size in records for reading large queries in batches.
+</ResponseField>
+
+<a id="tabsdata.MySQLSrc.conn"></a>
+<ResponseField name="conn" type="MySQLConn">
+The MySQL connection configuration.
+</ResponseField>
+
+<a id="tabsdata.MySQLSrc.initial_values"></a>
+<ResponseField name="initial_values" type="dict">
+The initial values for the parameters in the SQL queries.
+</ResponseField>
+
+<a id="tabsdata.MySQLSrc.loader"></a>
+<ResponseField name="loader" type="Literal['polars_sqlalchemy', 'pandas']">
+The data processing loader to use for executing SQL imports.
+</ResponseField>
+
+<a id="tabsdata.MySQLSrc.queries"></a>
+<ResponseField name="queries" type="list[str]">
+The SQL queries to execute to read data.
+</ResponseField>
+
+<a id="tabsdata.MySQLSrc.schema_overrides"></a>
+<ResponseField name="schema_overrides" type="list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]]| None">
+The schema overrides for the tables being read.
+</ResponseField>
+
+<a id="tabsdata.MySQLSrc.transactional"></a>
+<ResponseField name="transactional" type="bool">
+Whether to use transactions for reading to ensure consistency.
+</ResponseField>
+
+
+</details>
+
+<a id="tabsdata.OracleSource"></a>
+<details>
+<summary>OracleSource</summary>
+
+
+```python
+class OracleSource(
+    ** kwargs,
+)
+```
+
+Bases: [`SourcePlugin`](/versions/1.9.0/api/module/tabsdata#tabsdata.SourcePlugin)
+
+Oracle-based data inputs.
+
+**Categories:** source
+
+<a id="tabsdata.OracleSource.chunk"></a>
+#### `chunk`
+
+```python
+def chunk(
+    working_dir: str,
+) -> list[str]
+```
+
+Trigger the import of the data. This must be implemented in any class that inherits from this class unless directly implementing streaming. The method will receive a folder where it must store the data as parquet files, and return a list of the paths of the files created. This files will then be loaded and mapped to the dataset function in positional order, so if you want file.parquet to be the first argument of the dataset function, you must return it first. If you want a parameter to receive multiple files, return a list of the paths. For example, you would give the following return to provide a first argument with a single file and a second argument with two files:return [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
+
+**Parameters:**
+
+<ParamField path="working_dir" type="str" required>
+  The folder where the files must be stored
+</ParamField>
+
+**Returns:** The path of the file(s) created, in the order they must be mapped to the dataset function
+
+**Return type:** Union[ str , Tuple[ str , …], List[ str ]]
+
+<a id="tabsdata.OracleSource.credentials"></a>
+<ResponseField name="credentials" type="UserPasswordCredentials | None">
+The credentials required to access Oracle. If no credentials were provided, it will return None.
+
+**Type:** UserPasswordCredentials | None
+</ResponseField>
+
+<a id="tabsdata.OracleSource.initial_values"></a>
+<ResponseField name="initial_values" type="dict">
+The initial values for the parameters in the SQL queries.
+
+**Type:** dict
+</ResponseField>
+
+<a id="tabsdata.OracleSource.query"></a>
+<ResponseField name="query" type="str | List[str]">
+The SQL query(s) to execute.
+
+**Type:** str | List[ str ]
+</ResponseField>
+
+<a id="tabsdata.OracleSource.uri"></a>
+<ResponseField name="uri" type="str">
+The URI of the database where the data is located.
+
+**Type:** str
+</ResponseField>
+
+
+</details>
+
+<a id="tabsdata.OracleSrc"></a>
+<details>
+<summary>OracleSrc</summary>
+
+
+```python
+class OracleSrc(
+    conn: OracleConn,
+    queries: str | list [ str ],
+    initial_values: dict [ str , Any ] | None = None,
+    transactional: bool = True,
+    chunk_size: Annotated [ int , Gt ( gt = 0 ) ] = 100000,
+    loader: Literal [ 'polars_sqlalchemy' , 'pandas' ] = 'polars_sqlalchemy',
+    schema_overrides: dict [ str , Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 ] | list [ dict [ str , Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 ] ] | None = None,
+)
+```
+
+Bases: [`SourcePlugin`](/versions/1.9.0/api/module/tabsdata#tabsdata.SourcePlugin)
+
+Source plugin for reading data from Oracle.
+
+**Categories:** source
+
+<a id="tabsdata.OracleSrc.stream"></a>
+#### `stream`
+
+```python
+def stream(
+    working_dir: str,
+) -> list[TableFrame]
+```
+
+Execute the query and load the results as a list of TableFrames.
+
+**Parameters:**
+
+<ParamField path="working_dir" type="str" required>
+  The directory where the Parquet files will be saved.
+</ParamField>
+
+**Returns:** A list of TableFrames containing the query results.
+
+<a id="tabsdata.OracleSrc.chunk_size"></a>
+<ResponseField name="chunk_size" type="int">
+The chunk size in records for reading large queries in batches.
+</ResponseField>
+
+<a id="tabsdata.OracleSrc.conn"></a>
+<ResponseField name="conn" type="OracleConn">
+The Oracle connection configuration.
+</ResponseField>
+
+<a id="tabsdata.OracleSrc.initial_values"></a>
+<ResponseField name="initial_values" type="dict">
+The initial values for the parameters in the SQL queries.
+</ResponseField>
+
+<a id="tabsdata.OracleSrc.loader"></a>
+<ResponseField name="loader" type="Literal['polars_sqlalchemy', 'pandas']">
+The data processing loader to use for executing SQL imports.
+</ResponseField>
+
+<a id="tabsdata.OracleSrc.queries"></a>
+<ResponseField name="queries" type="list[str]">
+The SQL queries to execute to read data.
+</ResponseField>
+
+<a id="tabsdata.OracleSrc.schema_overrides"></a>
+<ResponseField name="schema_overrides" type="list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]]| None">
+The schema overrides for the tables being read.
+</ResponseField>
+
+<a id="tabsdata.OracleSrc.transactional"></a>
+<ResponseField name="transactional" type="bool">
+Whether to use transactions for reading to ensure consistency.
+</ResponseField>
+
+
+</details>
+
+<a id="tabsdata.PostgresSource"></a>
+<details>
+<summary>PostgresSource</summary>
+
+
+```python
+class PostgresSource(
+    ** kwargs,
+)
+```
+
+Bases: [`SourcePlugin`](/versions/1.9.0/api/module/tabsdata#tabsdata.SourcePlugin)
+
+Postgres-based data inputs.
+
+**Categories:** source
+
+<a id="tabsdata.PostgresSource.chunk"></a>
+#### `chunk`
+
+```python
+def chunk(
+    working_dir: str,
+) -> list[str]
+```
+
+Trigger the import of the data. This must be implemented in any class that inherits from this class unless directly implementing streaming. The method will receive a folder where it must store the data as parquet files, and return a list of the paths of the files created. This files will then be loaded and mapped to the dataset function in positional order, so if you want file.parquet to be the first argument of the dataset function, you must return it first. If you want a parameter to receive multiple files, return a list of the paths. For example, you would give the following return to provide a first argument with a single file and a second argument with two files:return [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
+
+**Parameters:**
+
+<ParamField path="working_dir" type="str" required>
+  The folder where the files must be stored
+</ParamField>
+
+**Returns:** The path of the file(s) created, in the order they must be mapped to the dataset function
+
+**Return type:** Union[ str , Tuple[ str , …], List[ str ]]
+
+<a id="tabsdata.PostgresSource.credentials"></a>
+<ResponseField name="credentials" type="UserPasswordCredentials | None">
+The credentials required to access the PostgresDatabase. If no credentials were provided, it will return None.
+
+**Type:** UserPasswordCredentials | None
+</ResponseField>
+
+<a id="tabsdata.PostgresSource.initial_values"></a>
+<ResponseField name="initial_values" type="dict">
+The initial values for the parameters in the SQL queries.
+
+**Type:** dict
+</ResponseField>
+
+<a id="tabsdata.PostgresSource.query"></a>
+<ResponseField name="query" type="str | List[str]">
+The SQL query(s) to execute.
+
+**Type:** str | List[ str ]
+</ResponseField>
+
+<a id="tabsdata.PostgresSource.uri"></a>
+<ResponseField name="uri" type="str">
+The URI of the database where the data is located.
+
+**Type:** str
+</ResponseField>
+
+
+</details>
+
+<a id="tabsdata.PostgresSrc"></a>
+<details>
+<summary>PostgresSrc</summary>
+
+
+```python
+class PostgresSrc(
+    conn: PostgresConn,
+    queries: str | list [ str ],
+    initial_values: dict [ str , Any ] | None = None,
+    transactional: bool = True,
+    chunk_size: Annotated [ int , Gt ( gt = 0 ) ] = 100000,
+    loader: Literal [ 'polars_sqlalchemy' , 'pandas' ] = 'polars_sqlalchemy',
+    schema_overrides: dict [ str , Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 ] | list [ dict [ str , Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 ] ] | None = None,
+)
+```
+
+Bases: [`SourcePlugin`](/versions/1.9.0/api/module/tabsdata#tabsdata.SourcePlugin)
+
+Source plugin for reading data from Postgres.
+
+**Categories:** source
+
+<a id="tabsdata.PostgresSrc.stream"></a>
+#### `stream`
+
+```python
+def stream(
+    working_dir: str,
+) -> list[TableFrame]
+```
+
+Execute the query and load the results as a list of TableFrames.
+
+**Parameters:**
+
+<ParamField path="working_dir" type="str" required>
+  The directory where the Parquet files will be saved.
+</ParamField>
+
+**Returns:** A list of TableFrames containing the query results.
+
+<a id="tabsdata.PostgresSrc.chunk_size"></a>
+<ResponseField name="chunk_size" type="int">
+The chunk size in records for reading large queries in batches.
+</ResponseField>
+
+<a id="tabsdata.PostgresSrc.conn"></a>
+<ResponseField name="conn" type="PostgresConn">
+The Postgres connection configuration.
+</ResponseField>
+
+<a id="tabsdata.PostgresSrc.initial_values"></a>
+<ResponseField name="initial_values" type="dict">
+The initial values for the parameters in the SQL queries.
+</ResponseField>
+
+<a id="tabsdata.PostgresSrc.loader"></a>
+<ResponseField name="loader" type="Literal['polars_sqlalchemy', 'pandas']">
+The data processing loader to use for executing SQL imports.
+</ResponseField>
+
+<a id="tabsdata.PostgresSrc.queries"></a>
+<ResponseField name="queries" type="list[str]">
+The SQL queries to execute to read data.
+</ResponseField>
+
+<a id="tabsdata.PostgresSrc.schema_overrides"></a>
+<ResponseField name="schema_overrides" type="list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]]| None">
+The schema overrides for the tables being read.
+</ResponseField>
+
+<a id="tabsdata.PostgresSrc.transactional"></a>
+<ResponseField name="transactional" type="bool">
+Whether to use transactions for reading to ensure consistency.
+</ResponseField>
+
+
+</details>
+
+<a id="tabsdata.S3Source"></a>
+<details>
+<summary>S3Source</summary>
+
+
+```python
+class S3Source(
+    uri: str | list [ str ],
+    credentials: S3Credentials,
+    format: str | FileFormat = None,
+    initial_last_modified: str | datetime = None,
+    region: str = None,
+    file_info: str | FileInfo | None = None,
+)
+```
+
+Bases: [`SourcePlugin`](/versions/1.9.0/api/module/tabsdata#tabsdata.SourcePlugin)
+
+S3-file-based data inputs.
+
+**Categories:** source
+
+<a id="tabsdata.S3Source.SupportedFormats"></a>
+### `SupportedFormats`
+
+```python
+class SupportedFormats(
+    * values,
+)
+```
+
+Bases: [`Enum`](https://docs.python.org/3/library/enum.html#enum.Enum)
+
+Enum for the supported formats for the S3Source.
+
+<a id="tabsdata.S3Source.SupportedFormats.avro"></a>
+<ResponseField name="avro">
+
+</ResponseField>
+
+<a id="tabsdata.S3Source.SupportedFormats.csv"></a>
+<ResponseField name="csv">
+
+</ResponseField>
+
+<a id="tabsdata.S3Source.SupportedFormats.log"></a>
+<ResponseField name="log">
+
+</ResponseField>
+
+<a id="tabsdata.S3Source.SupportedFormats.ndjson"></a>
+<ResponseField name="ndjson">
+
+</ResponseField>
+
+<a id="tabsdata.S3Source.SupportedFormats.parquet"></a>
+<ResponseField name="parquet">
+
+</ResponseField>
+
+<a id="tabsdata.S3Source.chunk"></a>
+#### `chunk`
+
+```python
+def chunk(
+    working_dir: str,
+) -> list[str | None | list[str | None]]
+```
+
+Trigger the import of the data. This must be implemented in any class that inherits from this class unless directly implementing streaming. The method will receive a folder where it must store the data as parquet files, and return a list of the paths of the files created. This files will then be loaded and mapped to the dataset function in positional order, so if you want file.parquet to be the first argument of the dataset function, you must return it first. If you want a parameter to receive multiple files, return a list of the paths. For example, you would give the following return to provide a first argument with a single file and a second argument with two files:return [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
+
+**Parameters:**
+
+<ParamField path="working_dir" type="str" required>
+  The folder where the files must be stored
+</ParamField>
+
+**Returns:** The path of the file(s) created, in the order they must be mapped to the dataset function
+
+**Return type:** Union[ str , Tuple[ str , …], List[ str ]]
+
+<a id="tabsdata.S3Source.credentials"></a>
+<ResponseField name="credentials" type="S3Credentials">
+The credentials required to access the S3 bucket.
+
+**Type:** S3Credentials
+</ResponseField>
+
+<a id="tabsdata.S3Source.file_info"></a>
+<ResponseField name="file_info" type="FileInfo | None">
+The file information to add as system columns.
+
+**Type:** FileInfo | None
+</ResponseField>
+
+<a id="tabsdata.S3Source.format"></a>
+<ResponseField name="format" type="FileFormat">
+The format of the file. If not provided, it will be inferred from the file.
+
+**Type:** FileFormat
+</ResponseField>
+
+<a id="tabsdata.S3Source.initial_last_modified"></a>
+<ResponseField name="initial_last_modified" type="str">
+The date and time after which the files were modified.
+
+**Type:** str
+</ResponseField>
+
+<a id="tabsdata.S3Source.initial_values"></a>
+<ResponseField name="initial_values" type="dict">
+Return a dictionary with the initial values to be stored after execution of the plugin. They will be accessible in the next execution of the plugin. The dictionary must have the parameter names as keys and the initial values as values, all the type string.
+
+**Returns:** A dictionary with the initial values of the parameters of the plugin.
+
+**Return type:** dict
+</ResponseField>
+
+<a id="tabsdata.S3Source.region"></a>
+<ResponseField name="region" type="str | None">
+The region where the S3 bucket is located.
+
+**Type:** str
+</ResponseField>
+
+<a id="tabsdata.S3Source.uri"></a>
+<ResponseField name="uri" type="str | list[str]">
+‘s3://path/to/files’.
+
+**Type:** str | list [ str ]
+
+**Type:** The URI of the files with format
+</ResponseField>
+
+
+</details>
+
+<a id="tabsdata.SalesforceReportSource"></a>
+<details>
+<summary>SalesforceReportSource</summary>
+
+
+```python
+class SalesforceReportSource(
+    credentials: SalesforceCredentials,
+    report: str | list [ str ],
+    column_name_strategy: Literal [ 'columnName' , 'label' ],
+    find_report_by: Literal [ 'id' , 'name' ] = None,
+    filter: tuple [ str , str , str ] | list [ tuple [ str , str , str ] ] = None,
+    filter_logic: str = None,
+    instance_url: str = None,
+    last_modified_column: str = None,
+    initial_last_modified: str = None,
+    ** kwargs,
+)
+```
+
+Bases: [`SourcePlugin`](/versions/1.9.0/api/module/tabsdata#tabsdata.SourcePlugin)
+
+Salesforce Reports based data inputs.
+
+**Categories:** source
+
+<a id="tabsdata.SalesforceReportSource.chunk"></a>
+#### `chunk`
+
+```python
+def chunk(
+    working_dir: str,
+) -> list[str]
+```
+
+Trigger the import of the data. This must be implemented in any class that inherits from this class unless directly implementing streaming. The method will receive a folder where it must store the data as parquet files, and return a list of the paths of the files created. This files will then be loaded and mapped to the dataset function in positional order, so if you want file.parquet to be the first argument of the dataset function, you must return it first. If you want a parameter to receive multiple files, return a list of the paths. For example, you would give the following return to provide a first argument with a single file and a second argument with two files:return [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
+
+**Parameters:**
+
+<ParamField path="working_dir" type="str" required>
+  The folder where the files must be stored
+</ParamField>
+
+**Returns:** The path of the file(s) created, in the order they must be mapped to the dataset function
+
+**Return type:** Union[ str , Tuple[ str , …], List[ str ]]
+
+<a id="tabsdata.SalesforceReportSource.column_name_strategy"></a>
+<ResponseField name="column_name_strategy" type="Literal['columnName', 'label']">
+
+</ResponseField>
+
+<a id="tabsdata.SalesforceReportSource.credentials"></a>
+<ResponseField name="credentials" type="SalesforceCredentials | SalesforceTokenCredentials">
+
+</ResponseField>
+
+<a id="tabsdata.SalesforceReportSource.filter"></a>
+<ResponseField name="filter" type="list[tuple[str, str, str]]| None">
+
+</ResponseField>
+
+<a id="tabsdata.SalesforceReportSource.filter_logic"></a>
+<ResponseField name="filter_logic" type="str | None">
+
+</ResponseField>
+
+<a id="tabsdata.SalesforceReportSource.find_report_by"></a>
+<ResponseField name="find_report_by" type="Literal['id', 'name']">
+
+</ResponseField>
+
+<a id="tabsdata.SalesforceReportSource.report"></a>
+<ResponseField name="report" type="list[str]">
+
+</ResponseField>
+
+
+</details>
+
+<a id="tabsdata.SalesforceSource"></a>
+<details>
+<summary>SalesforceSource</summary>
+
+
+```python
+class SalesforceSource(
+    credentials: SalesforceCredentials,
+    query: str | list [ str ],
+    instance_url: str = None,
+    include_deleted: bool = False,
+    initial_last_modified: str = None,
+    ** kwargs,
+)
+```
+
+Bases: [`SourcePlugin`](/versions/1.9.0/api/module/tabsdata#tabsdata.SourcePlugin)
+
+Salesforce (SOQL query) based data inputs (not Salesforce Reports).
+
+**Categories:** source
+
+<a id="tabsdata.SalesforceSource.chunk"></a>
+#### `chunk`
+
+```python
+def chunk(
+    working_dir: str,
+) -> list[str]
+```
+
+Trigger the import of the data. This must be implemented in any class that inherits from this class unless directly implementing streaming. The method will receive a folder where it must store the data as parquet files, and return a list of the paths of the files created. This files will then be loaded and mapped to the dataset function in positional order, so if you want file.parquet to be the first argument of the dataset function, you must return it first. If you want a parameter to receive multiple files, return a list of the paths. For example, you would give the following return to provide a first argument with a single file and a second argument with two files:return [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
+
+**Parameters:**
+
+<ParamField path="working_dir" type="str" required>
+  The folder where the files must be stored
+</ParamField>
+
+**Returns:** The path of the file(s) created, in the order they must be mapped to the dataset function
+
+**Return type:** Union[ str , Tuple[ str , …], List[ str ]]
+
+<a id="tabsdata.SalesforceSource.credentials"></a>
+<ResponseField name="credentials" type="SalesforceCredentials | SalesforceTokenCredentials">
+
+</ResponseField>
+
+<a id="tabsdata.SalesforceSource.query"></a>
+<ResponseField name="query" type="list[str]">
+
+</ResponseField>
+
+
+</details>
+
+<a id="tabsdata.Stage"></a>
+<details>
+<summary>Stage</summary>
+
+
+```python
+class Stage(
+    use_existing_data: bool = True,
+)
+```
+
+Bases: [`SourcePlugin`](/versions/1.9.0/api/module/tabsdata#tabsdata.SourcePlugin)
+
+Inputs that have been placed in a stage, usually from a StageTrigger.
+
+**Categories:** source
+
+<a id="tabsdata.Stage.stream"></a>
+#### `stream`
+
+```python
+def stream(
+    working_dir: str,
+) -> list[TableFrame | None | list[TableFrame | None]]
+```
+
+<a id="tabsdata.Stage.use_existing_data"></a>
+<ResponseField name="use_existing_data" type="bool">
+
+</ResponseField>
+
+
+</details>

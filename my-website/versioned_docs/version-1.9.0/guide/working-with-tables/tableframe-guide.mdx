@@ -1,0 +1,1018 @@
+---
+title: "TableFrame API Guide"
+sidebarTitle: "TableFrame API Guide"
+---
+
+This guide provides an in-depth exploration of the Tabsdata TableFrame API, extending the concepts introduced in Working with Tables. The TableFrame is the core data structure in Tabsdata for representing and manipulating tabular data within Tabsdata functions.
+
+On this page - Overview
+- Creating TableFrames - From a Dictionary
+  - From Pandas
+  - From Polars
+  - Converting TableFrames
+- Column Selection and Projection - Selecting Columns
+  - Column Selectors
+  - Adding and Modifying Columns
+  - Dropping Columns
+  - Renaming Columns
+  - Column Aliasing
+- Filtering Data - Basic Filtering
+  - Combining Conditions
+  - Range and Membership Checks
+  - Limiting Results
+  - Unique Values
+- String Operations - Case Transformations
+  - Pattern Matching
+  - String Extraction and Replacement
+  - String Manipulation
+  - String Length and Position
+  - Grok Parsing
+- Numeric Operations - Arithmetic Operations
+  - Rounding and Clipping
+  - Mathematical Functions
+  - Trigonometric Functions
+  - Difference and Comparison
+- Date and Time Operations - Extracting Components
+  - Date Arithmetic
+  - Truncation
+  - Total Durations
+  - Timezone Operations
+  - Formatting
+- Aggregation and Grouping - Basic Aggregations
+  - Group By Operations
+  - Shorthand Group Aggregations
+  - Ranking
+- Joining Tables - Join Types
+  - Join on Multiple Columns
+  - Handling Duplicate Column Names
+  - Join Example
+- Union Operations - Concatenation
+- Data Manipulation - Handling Null Values
+  - Handling NaN Values
+  - Sorting
+  - Type Casting
+- TableFrame Attributes - Schema Information
+  - Empty Checks
+  - Query Explanation
+- Literal Values
+- Extracting Data - Extract as Columns
+  - Extract as Rows
+  - Unnesting
+- Best Practices
+- See Also
+
+## Overview
+
+A TableFrame is Tabsdata’s lazy evaluation data structure that represents tabular data organized in rows and columns. Unlike eager evaluation frameworks, TableFrame operations are not executed immediately—instead, they build a query plan that is optimized and executed when the data is materialized.
+
+Key characteristics:
+
+- **Lazy Evaluation**: Operations are deferred until explicitly collected, enabling query optimization.
+- **Immutable**: Each operation returns a new TableFrame; the original is unchanged.
+- **Columnar**: Data is stored and processed column-wise for efficient analytical operations.
+- **Type-safe**: Each column has a defined data type that is enforced throughout operations.
+
+## Creating TableFrames
+
+While TableFrames are typically received as input in publishers and transformers, you can also create them programmatically for testing or data generation purposes.
+
+### From a Dictionary
+
+Use `TableFrame.from_dict()` to create a TableFrame from a Python dictionary:
+
+```python
+import tabsdata as td
+
+data = {
+    "name": ["Alice", "Bob", "Charlie"],
+    "age": [25, 30, 35],
+    "city": ["New York", "London", "Paris"]
+}
+
+tf = td.TableFrame.from_dict(data)
+```
+
+### From Pandas
+
+Convert a Pandas DataFrame to a TableFrame:
+
+```python
+import pandas as pd
+import tabsdata as td
+
+df = pd.DataFrame({
+    "product": ["Widget", "Gadget"],
+    "price": [19.99, 29.99]
+})
+
+tf = td.TableFrame.from_pandas(df)
+```
+
+### From Polars
+
+Convert from Polars LazyFrame or DataFrame:
+
+```python
+import polars as pl
+import tabsdata as td
+
+# From Polars LazyFrame
+lf = pl.LazyFrame({"x": [1, 2, 3], "y": [4, 5, 6]})
+tf = td.TableFrame.from_polars(lf)
+
+# From Polars DataFrame
+pdf = pl.DataFrame({"x": [1, 2, 3], "y": [4, 5, 6]})
+tf = td.TableFrame.from_polars(pdf)
+```
+
+### Converting TableFrames
+
+Export TableFrames to other formats:
+
+```python
+# To dictionary
+data_dict = tf.to_dict()
+
+# To Pandas DataFrame
+pandas_df = tf.to_pandas()
+
+# To Polars DataFrame
+polars_df = tf.to_polars_df()
+
+# To Polars LazyFrame
+polars_lf = tf.to_polars_lf()
+```
+
+## Column Selection and Projection
+
+Projection operations allow you to select, transform, and reshape columns in your data.
+
+### Selecting Columns
+
+Use `select()` to choose specific columns. Multiple syntax forms are supported:
+
+```python
+# Using td.col() expressions
+tf.select(td.col("first_name"), td.col("last_name"))
+
+# Using column names directly
+tf.select("first_name", "last_name")
+
+# Using a list of column names
+tf.select(["first_name", "last_name"])
+```
+
+### Column Selectors
+
+Tabsdata provides powerful selectors to dynamically select columns by type or pattern:
+
+**By Data Type:**
+
+```python
+import tabsdata.tableframe.selectors as cs
+
+# Select all numeric columns
+tf.select(cs.numeric())
+
+# Select all string columns
+tf.select(cs.string())
+
+# Select all temporal columns (date, datetime, time)
+tf.select(cs.temporal())
+
+# Select by specific dtype
+tf.select(cs.by_dtype(td.Int64, td.Float64))
+```
+
+**By Pattern:**
+
+```python
+# Columns starting with a prefix
+tf.select(cs.starts_with("customer_"))
+
+# Columns ending with a suffix
+tf.select(cs.ends_with("_id"))
+
+# Columns containing a substring
+tf.select(cs.contains("price"))
+
+# Columns matching a regex pattern
+tf.select(cs.matches(r"^amount_\d+$"))
+```
+
+**By Position:**
+
+```python
+# First N columns
+tf.select(cs.first(3))
+
+# Last N columns
+tf.select(cs.last(2))
+
+# By index (0-based)
+tf.select(cs.by_index(0, 2, 4))
+```
+
+**Excluding Columns:**
+
+```python
+# All columns except specific ones
+tf.select(cs.exclude("internal_id", "metadata"))
+
+# Combine with other selectors
+tf.select(cs.numeric() - cs.ends_with("_raw"))
+```
+
+### Adding and Modifying Columns
+
+Use `with_columns()` to add new columns or modify existing ones without dropping other columns:
+
+```python
+tf.with_columns(
+    # Add a new calculated column
+    (td.col("price") * td.col("quantity")).alias("total"),
+
+    # Modify an existing column
+    td.col("name").str.to_uppercase().alias("name"),
+
+    # Add a literal value column
+    td.lit("USD").alias("currency")
+)
+```
+
+### Dropping Columns
+
+Use `drop()` to remove columns:
+
+```python
+# Drop single column
+tf.drop("temporary_column")
+
+# Drop multiple columns
+tf.drop("col1", "col2", "col3")
+
+# Drop using selectors
+tf.drop(cs.ends_with("_raw"))
+```
+
+### Renaming Columns
+
+Use `rename()` to change column names:
+
+```python
+tf.rename({
+    "old_name": "new_name",
+    "customer_id": "cust_id"
+})
+```
+
+### Column Aliasing
+
+Use `alias()` on expressions to name computed columns:
+
+```python
+tf.select(
+    (td.col("first_name") + " " + td.col("last_name")).alias("full_name"),
+    (td.col("price") * 1.1).alias("price_with_tax")
+)
+```
+
+## Filtering Data
+
+Filter operations allow you to select rows based on conditions.
+
+### Basic Filtering
+
+Use `filter()` with boolean expressions:
+
+```python
+# Simple comparison
+tf.filter(td.col("age") > 18)
+
+# Equality check
+tf.filter(td.col("status") == "active")
+
+# Not equal
+tf.filter(td.col("category") != "archived")
+```
+
+### Combining Conditions
+
+Combine multiple conditions using logical operators:
+
+```python
+# AND conditions (two syntaxes)
+tf.filter((td.col("age") > 18) & (td.col("age") < 65))
+tf.filter((td.col("age") > 18).and_(td.col("age") < 65))
+
+# OR conditions
+tf.filter((td.col("status") == "active") | (td.col("status") == "pending"))
+tf.filter((td.col("status") == "active").or_(td.col("status") == "pending"))
+
+# NOT condition
+tf.filter(~(td.col("is_deleted")))
+tf.filter(td.col("is_deleted").not_())
+
+# XOR condition
+tf.filter(td.col("flag_a").xor(td.col("flag_b")))
+```
+
+### Range and Membership Checks
+
+```python
+# Between (inclusive)
+tf.filter(td.col("price").is_between(10.0, 100.0))
+
+# In a set of values
+tf.filter(td.col("country").is_in(["USA", "Canada", "Mexico"]))
+
+# Null checks
+tf.filter(td.col("email").is_not_null())
+tf.filter(td.col("optional_field").is_null())
+
+# NaN checks (for floating point)
+tf.filter(td.col("ratio").is_not_nan())
+```
+
+### Limiting Results
+
+```python
+# First N rows
+tf.head(10)
+tf.limit(10)
+tf.first(10)
+
+# Last N rows
+tf.tail(10)
+tf.last(10)
+
+# Slice with offset
+tf.slice(offset=100, length=50)
+
+# Single row access
+first_row = tf.first_row()
+last_row = tf.last_row()
+```
+
+### Unique Values
+
+Remove duplicate rows (De-duplication):
+
+```python
+# Unique across all columns
+tf.unique()
+
+# Unique based on specific columns
+tf.unique(subset=["customer_id", "date"])
+
+# Keep first or last occurrence
+tf.unique(subset=["customer_id"], keep="first")
+tf.unique(subset=["customer_id"], keep="last")
+```
+
+## String Operations
+
+The `.str` namespace provides comprehensive string manipulation functions.
+
+### Case Transformations
+
+```python
+td.col("name").str.to_uppercase()
+td.col("name").str.to_lowercase()
+td.col("name").str.to_titlecase()
+```
+
+### Pattern Matching
+
+```python
+# Check if string starts/ends with pattern
+td.col("email").str.ends_with("@example.com")
+td.col("phone").str.starts_with("+1")
+
+# Contains substring
+td.col("description").str.contains("urgent")
+
+# Contains any of multiple patterns
+td.col("text").str.contains_any(["error", "warning", "critical"])
+
+# Regex matching
+td.col("code").str.contains(r"^[A-Z]{3}-\d{4}$")
+```
+
+### String Extraction and Replacement
+
+```python
+# Extract using regex groups
+td.col("email").str.extract(r"@(\w+)\.", group_index=1)
+
+# Replace patterns
+td.col("text").str.replace("old", "new")
+td.col("text").str.replace_all(r"\s+", " ")  # Replace all whitespace
+
+# Replace multiple patterns
+td.col("text").str.replace_many(["a", "b", "c"], ["x", "y", "z"])
+```
+
+### String Manipulation
+
+```python
+# Trimming
+td.col("name").str.strip_chars()                    # Both sides
+td.col("name").str.strip_chars_start()              # Left side
+td.col("name").str.strip_chars_end()                # Right side
+td.col("path").str.strip_prefix("/api/")
+td.col("filename").str.strip_suffix(".txt")
+
+# Padding
+td.col("id").str.pad_start(10, "0")                 # Left pad with zeros
+td.col("code").str.pad_end(20, " ")                 # Right pad with spaces
+td.col("number").str.zfill(5)                       # Zero-fill to length
+
+# Slicing
+td.col("text").str.head(10)                         # First 10 characters
+td.col("text").str.tail(5)                          # Last 5 characters
+td.col("text").str.slice(offset=5, length=10)       # Substring
+
+# Reverse
+td.col("text").str.reverse()
+```
+
+### String Length and Position
+
+```python
+# Length
+td.col("description").str.len_chars()               # Character count
+td.col("data").str.len_bytes()                      # Byte count
+
+# Find position
+td.col("text").str.find("@")                        # First occurrence index
+
+# Count matches
+td.col("log").str.count_matches(r"\berror\b")       # Count pattern matches
+```
+
+### Grok Parsing
+
+Parse semi-structured text using Grok patterns:
+
+```python
+# Parse Apache log format
+tf.grok(
+    "log_line",
+    r"%{IP:client_ip} - - \[%{HTTPDATE:timestamp}\] \"%{WORD:method} %{URIPATHPARAM:path}\""
+)
+```
+
+## Numeric Operations
+
+Mathematical and numeric operations on columns.
+
+### Arithmetic Operations
+
+```python
+# Basic arithmetic
+td.col("price") + 10
+td.col("price") - td.col("discount")
+td.col("quantity") * td.col("unit_price")
+td.col("total") / td.col("count")
+
+# Method syntax
+td.col("a").add(td.col("b"))
+td.col("a").sub(td.col("b"))
+td.col("a").mul(td.col("b"))
+td.col("a").truediv(td.col("b"))
+td.col("a").mod(td.col("b"))          # Modulo
+```
+
+### Rounding and Clipping
+
+```python
+# Rounding
+td.col("price").round(2)                           # Round to 2 decimal places
+td.col("value").round_sig_figs(3)                  # Round to 3 significant figures
+td.col("amount").floor()                           # Round down
+td.col("amount").ceil()                            # Round up
+
+# Clipping (constrain to range)
+td.col("score").clip(lower_bound=0, upper_bound=100)
+```
+
+### Mathematical Functions
+
+```python
+# Absolute value and sign
+td.col("change").abs()
+td.col("value").sign()                             # Returns -1, 0, or 1
+td.col("value").neg()                              # Negate
+
+# Powers and roots
+td.col("x").pow(2)                                 # Square
+td.col("x").sqrt()                                 # Square root
+td.col("x").cbrt()                                 # Cube root
+
+# Logarithms
+td.col("x").log()                                  # Natural logarithm
+td.col("x").log10()                                # Base-10 logarithm
+td.col("x").log1p()                                # log(1 + x)
+td.col("x").exp()                                  # e^x
+```
+
+### Trigonometric Functions
+
+```python
+# Basic trig functions
+td.col("angle").sin()
+td.col("angle").cos()
+td.col("angle").tan()
+td.col("angle").cot()
+
+# Inverse trig functions
+td.col("x").arcsin()
+td.col("x").arccos()
+td.col("x").arctan()
+
+# Hyperbolic functions
+td.col("x").sinh()
+td.col("x").cosh()
+td.col("x").tanh()
+
+# Angle conversions
+td.col("degrees").radians()                        # Degrees to radians
+td.col("radians").degrees()                        # Radians to degrees
+```
+
+### Difference and Comparison
+
+```python
+# Row-to-row difference
+td.col("value").diff()                             # Difference from previous row
+td.col("value").diff(n=2)                          # Difference from 2 rows ago
+```
+
+## Date and Time Operations
+
+The `.dt` namespace provides datetime manipulation functions.
+
+### Extracting Components
+
+```python
+# Date components
+td.col("date").dt.year()
+td.col("date").dt.month()
+td.col("date").dt.day()
+td.col("date").dt.quarter()
+td.col("date").dt.week()
+td.col("date").dt.weekday()                        # 0 = Monday
+td.col("date").dt.ordinal_day()                    # Day of year (1-366)
+td.col("date").dt.is_leap_year()
+
+# Time components
+td.col("timestamp").dt.hour()
+td.col("timestamp").dt.minute()
+td.col("timestamp").dt.second()
+td.col("timestamp").dt.millisecond()
+td.col("timestamp").dt.microsecond()
+td.col("timestamp").dt.nanosecond()
+
+# ISO calendar
+td.col("date").dt.iso_year()
+```
+
+### Date Arithmetic
+
+```python
+# Add/subtract time intervals
+td.col("date").dt.offset_by("1w")                  # Add 1 week
+td.col("date").dt.offset_by("-3d")                 # Subtract 3 days
+td.col("date").dt.offset_by("2mo")                 # Add 2 months
+
+# Business days
+td.col("date").dt.add_business_days(5)
+
+# Month boundaries
+td.col("date").dt.month_start()                    # First day of month
+td.col("date").dt.month_end()                      # Last day of month
+```
+
+### Truncation
+
+```python
+# Truncate to time unit
+td.col("timestamp").dt.truncate("1h")              # Truncate to hour
+td.col("timestamp").dt.truncate("1d")              # Truncate to day
+td.col("timestamp").dt.truncate("1mo")             # Truncate to month
+td.col("timestamp").dt.truncate("1w")              # Truncate to week
+```
+
+### Total Durations
+
+```python
+# Convert duration to total units
+td.col("duration").dt.total_days()
+td.col("duration").dt.total_hours()
+td.col("duration").dt.total_minutes()
+td.col("duration").dt.total_seconds()
+td.col("duration").dt.total_milliseconds()
+td.col("duration").dt.total_microseconds()
+```
+
+### Timezone Operations
+
+```python
+# Convert timezone
+td.col("timestamp").dt.convert_time_zone("America/New_York")
+
+# Replace timezone (without conversion)
+td.col("timestamp").dt.replace_time_zone("UTC")
+
+# Get timezone offsets
+td.col("timestamp").dt.base_utc_offset()
+td.col("timestamp").dt.dst_offset()
+```
+
+### Formatting
+
+```python
+# Format as string
+td.col("date").dt.to_string("%Y-%m-%d")
+td.col("timestamp").dt.strftime("%Y-%m-%d %H:%M:%S")
+
+# Get epoch timestamp
+td.col("timestamp").dt.epoch(time_unit="s")        # Seconds since epoch
+td.col("timestamp").dt.timestamp()                 # Microseconds since epoch
+```
+
+## Aggregation and Grouping
+
+Aggregate data to compute summary statistics.
+
+### Basic Aggregations
+
+```python
+# Count
+td.col("id").count()                               # Non-null count
+td.col("id").len()                                 # Total count including nulls
+
+# Sum and mean
+td.col("amount").sum()
+td.col("amount").mean()
+td.col("amount").median()
+
+# Min and max
+td.col("date").min()
+td.col("value").max()
+
+# First and last
+td.col("timestamp").first()
+td.col("timestamp").last()
+
+# Unique counts
+td.col("category").n_unique()
+```
+
+### Group By Operations
+
+Use `group_by()` to aggregate by groups:
+
+```python
+# Single column grouping
+tf.group_by("category").agg(
+    td.col("sales").sum().alias("total_sales"),
+    td.col("quantity").mean().alias("avg_quantity")
+)
+
+# Multiple column grouping
+tf.group_by("region", "product_type").agg(
+    td.col("revenue").sum().alias("total_revenue"),
+    td.col("order_id").count().alias("order_count")
+)
+
+# Group by expression
+tf.group_by(
+    td.col("timestamp").dt.year().alias("year"),
+    td.col("timestamp").dt.month().alias("month")
+).agg(
+    td.col("amount").sum().alias("monthly_total")
+)
+```
+
+### Shorthand Group Aggregations
+
+For simple aggregations:
+
+```python
+# Count per group
+tf.group_by("category").count()
+
+# Sum per group
+tf.group_by("category").sum()
+
+# Mean per group
+tf.group_by("category").mean()
+
+# Min/Max per group
+tf.group_by("category").min()
+tf.group_by("category").max()
+```
+
+### Ranking
+
+Assign ranks to values:
+
+```python
+tf.with_columns(
+    td.col("score").rank(method="ordinal").alias("rank"),
+    td.col("score").rank(method="dense").alias("dense_rank"),
+    td.col("score").rank(method="min").alias("min_rank"),
+    td.col("score").rank(method="max").alias("max_rank"),
+    td.col("score").rank(method="average").alias("avg_rank")
+)
+```
+
+## Joining Tables
+
+Combine data from multiple TableFrames.
+
+### Join Types
+
+```python
+# Inner join (default)
+tf1.join(tf2, on="key_column")
+tf1.join(tf2, on="key_column", how="inner")
+
+# Left join
+tf1.join(tf2, on="key_column", how="left")
+
+# Right join
+tf1.join(tf2, on="key_column", how="right")
+
+# Outer (full) join
+tf1.join(tf2, on="key_column", how="full")
+
+# Semi join (keep left rows that have matches)
+tf1.join(tf2, on="key_column", how="semi")
+
+# Anti join (keep left rows that don't have matches)
+tf1.join(tf2, on="key_column", how="anti")
+```
+
+### Join on Multiple Columns
+
+```python
+# Same column names in both tables
+tf1.join(tf2, on=["customer_id", "date"])
+
+# Different column names
+tf1.join(
+    tf2,
+    left_on=["cust_id", "order_date"],
+    right_on=["customer_id", "date"]
+)
+```
+
+### Handling Duplicate Column Names
+
+```python
+# Add suffix to duplicate columns
+tf1.join(tf2, on="id", suffix="_right")
+```
+
+### Join Example
+
+```python
+import tabsdata as td
+
+@td.transformer(
+    input_tables=["orders", "customers"],
+    output_tables=["order_details"],
+)
+def enrich_orders(orders: td.TableFrame, customers: td.TableFrame):
+    return orders.join(
+        customers.select("customer_id", "name", "region"),
+        on="customer_id",
+        how="left"
+    )
+```
+
+## Union Operations
+
+Combine rows from multiple TableFrames.
+
+### Concatenation
+
+Use `td.concat()` to stack TableFrames vertically:
+
+```python
+import tabsdata as td
+
+# Concatenate multiple TableFrames
+combined = td.concat([tf1, tf2, tf3])
+
+# With rechunking for optimization
+combined = td.concat([tf1, tf2, tf3], rechunk=True)
+```
+
+:::note
+All TableFrames must have the same schema (column names and types) for concatenation.
+:::
+
+## Data Manipulation
+
+Handle missing values and transform data.
+
+### Handling Null Values
+
+```python
+# Drop rows with any null values
+tf.drop_nulls()
+
+# Drop rows with nulls in specific columns
+tf.drop_nulls(subset=["email", "phone"])
+
+# Fill null values with a constant
+tf.fill_null(0)
+td.col("status").fill_null("unknown")
+
+# Fill nulls in the entire TableFrame
+tf.fill_null({
+    "quantity": 0,
+    "status": "pending",
+    "price": 0.0
+})
+```
+
+### Handling NaN Values
+
+For floating-point columns:
+
+```python
+# Drop rows with NaN values
+tf.drop_nans()
+tf.drop_nans(subset=["ratio", "percentage"])
+
+# Fill NaN values
+tf.fill_nan(0.0)
+td.col("rate").fill_nan(0.0)
+```
+
+### Sorting
+
+```python
+# Sort by single column (ascending)
+tf.sort("date")
+
+# Sort descending
+tf.sort("date", descending=True)
+
+# Sort by multiple columns
+tf.sort(["category", "date"], descending=[False, True])
+
+# Nulls placement
+tf.sort("value", nulls_last=True)
+```
+
+### Type Casting
+
+```python
+# Cast expression type
+td.col("id").cast(td.Int64)
+td.col("price").cast(td.Float64)
+td.col("is_active").cast(td.Boolean)
+
+# Cast entire TableFrame columns
+tf.cast({"id": td.String, "amount": td.Float64})
+
+# String to date/time
+td.col("date_str").str.to_date("%Y-%m-%d")
+td.col("ts_str").str.to_datetime("%Y-%m-%d %H:%M:%S")
+td.col("time_str").str.to_time("%H:%M:%S")
+td.col("num_str").str.to_integer()
+
+# Date to string
+td.col("date").dt.to_string("%Y-%m-%d")
+```
+
+## TableFrame Attributes
+
+Access metadata about your TableFrame.
+
+### Schema Information
+
+```python
+# Get column data types
+dtypes = tf.dtypes
+
+# Check if columns exist
+tf.has_cols("column_name")
+tf.has_cols(["col1", "col2"])
+
+# Assert columns exist (raises error if not)
+tf.assert_has_cols(["required_col1", "required_col2"])
+
+# Compare schemas
+tf.has_same_schema(other_tf)
+```
+
+### Empty Checks
+
+```python
+# Check if TableFrame is empty
+tf.is_empty()
+
+# Create an empty TableFrame with same schema
+empty_tf = tf.empty()
+
+# Clear all rows
+cleared_tf = tf.clear()
+```
+
+### Query Explanation
+
+For debugging and optimization:
+
+```python
+# Get query plan explanation
+plan = tf.explain()
+print(plan)
+
+# Visualize query graph
+tf.show_graph()
+```
+
+## Literal Values
+
+Create constant value columns:
+
+```python
+# Add literal value columns
+tf.with_columns(
+    td.lit(1).alias("version"),
+    td.lit("active").alias("status"),
+    td.lit(True).alias("is_valid"),
+    td.lit(3.14159).alias("pi")
+)
+```
+
+## Extracting Data
+
+Extract specific data patterns from tables.
+
+### Extract as Columns
+
+Pivot unique values into columns:
+
+```python
+# Extract unique values from a column as separate columns
+tf.extract_as_columns(
+    column="metric_name",
+    value_column="metric_value"
+)
+```
+
+### Extract as Rows
+
+Unpivot columns into rows:
+
+```python
+# Melt multiple columns into rows
+tf.extract_as_rows(
+    columns=["jan_sales", "feb_sales", "mar_sales"],
+    variable_name="month",
+    value_name="sales"
+)
+```
+
+### Unnesting
+
+Flatten nested structures:
+
+```python
+# Unnest struct columns
+tf.unnest("address")  # Expands struct fields to columns
+```
+
+## Best Practices
+
+1. **Chain Operations**: TableFrame operations return new TableFrames, enabling fluent method chaining:
+```python
+result = (
+    tf
+    .filter(td.col("status") == "active")
+    .with_columns(
+        (td.col("price") * td.col("quantity")).alias("total")
+    )
+    .group_by("category")
+    .agg(td.col("total").sum().alias("category_total"))
+    .sort("category_total", descending=True)
+)
+```
+2. **Use Selectors for Dynamic Column Selection**: Instead of hardcoding column names, use selectors for more maintainable code.
+3. **Prefer Native Operations Over UDFs**: TableFrame expressions are optimized; use UDFs only when necessary.
+4. **Filter Early**: Apply filters as early as possible in your pipeline to reduce data volume.
+5. **Use Aliases**: Always alias computed columns for clarity and to avoid naming conflicts.
+
+## See Also
+
+- Working with Tables - Basic table operations and CLI commands
+- User-defined Functions (UDFs) - Custom UDF implementation
+- [TableFrame API Reference](https://docs.tabsdata.com/latest/api_ref/tableframe_api/index.html) - Complete API documentation

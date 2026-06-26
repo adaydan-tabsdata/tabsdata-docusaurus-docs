@@ -1,0 +1,135 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.udf"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.udf"
+description: "Apply a user-defined function (UDF) to the columns resolved by expr ."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.udf"></a>
+<details>
+<summary>udf</summary>
+
+
+```python
+def udf(
+    on: td_typing.IntoExpr | list [ td_typing.IntoExpr ],
+    function: td_udf.UDF,
+) -> TableFrame
+```
+
+Apply a user-defined function (UDF) to the columns resolved by expr.
+
+The selected columns are supplied to function, which can implement either on_batch or on_element. An on_batch implementation receives a list of Polars series representing the selected columns and must return a list of Polars series with matching length. An on_element implementation receives a list of Python scalars for each row and returns a list of scalars; the framework wraps this in an efficient batch executor, so data still flows in batches even when authoring row-wise logic. In both cases the returned series become new columns appended to the original TableFrame.
+
+By default, both methods receive their inputs as a list. Override the signature property in your UDF class to return “unpacked” to have each column passed as a separate argument instead.
+
+**Parameters:**
+
+<ParamField path="on" type="td_typing.IntoExpr | list [ td_typing.IntoExpr ]" required>
+  Expression selecting the input column(s) of the UDF.
+</ParamField>
+
+<ParamField path="function" type="td_udf.UDF" required>
+  Instance of`tabsdata.tableframe.udf.function.UDF` defining on_batch or on_element to produce the output series.
+</ParamField>
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>> import tabsdata.tableframe as tdf
+>>>
+>>> class SumUDF(tdf.UDF):
+...     def __init__(self):
+...         super().__init__(("total", tdf.Int64))
+...
+...     def on_batch(self, series):
+...         return [series[0] + series[1]]
+>>>
+>>> tf = td.TableFrame({"a": [1, 2, 3], "b": [10, 20, 30]})
+>>> print(tf)
+┌─────┬─────┐
+│ a   ┆ b   │
+│ --- ┆ --- │
+│ i64 ┆ i64 │
+╞═════╪═════╡
+│ 1   ┆ 10  │
+│ 2   ┆ 20  │
+│ 3   ┆ 30  │
+└─────┴─────┘
+>>> tf.udf(td.col("a", "b"), SumUDF())
+>>> print(tf)
+┌─────┬─────┬───────┐
+│ a   ┆ b   ┆ total │
+│ --- ┆ --- ┆ ---   │
+│ i64 ┆ i64 ┆ i64   │
+╞═════╪═════╪═══════╡
+│ 1   ┆ 10  ┆ 11    │
+│ 2   ┆ 20  ┆ 22    │
+│ 3   ┆ 30  ┆ 33    │
+└─────┴─────┴───────┘
+```
+
+```python
+>>> class RatioUDF(tdf.UDF):
+...     def __init__(self):
+...         super().__init__(("ratio", tdf.Float64))
+...
+...     def on_element(self, values):
+...         return [values[0] / values[1]]
+>>>
+>>> tf = td.TableFrame({"numerator": [10, 20, 30],
+>>>                     "denominator": [2, 5, 10],})
+>>> print(tf)
+┌───────────┬──────────────┐
+│ numerator ┆ denominator  │
+│ ---       ┆ ---          │
+│ i64       ┆ i64          │
+╞═══════════╪══════════════╡
+│ 10        ┆ 2            │
+│ 20        ┆ 5            │
+│ 30        ┆ 10           │
+└───────────┴──────────────┘
+>>> tf.udf(td.col("numerator", "denominator"), RatioUDF()).collect()
+>>> print(tf)
+┌───────────┬──────────────┬──────┐
+│ numerator ┆ denominator  ┆ ratio│
+│ ---       ┆ ---          ┆ ---  │
+│ i64       ┆ i64          ┆ f64  │
+╞═══════════╪══════════════╪══════╡
+│ 10        ┆ 2            ┆ 5.0  │
+│ 20        ┆ 5            ┆ 4.0  │
+│ 30        ┆ 10           ┆ 3.0  │
+└───────────┴──────────────┴──────┘
+```
+
+```python
+>>> class RatioUnpackedUDF(tdf.UDF):
+...     def __init__(self):
+...         super().__init__(("ratio", tdf.Float64))
+...
+...     @property
+...     def signature(self):
+...         return "unpacked"
+...
+...     def on_element(self, numerator, denominator):
+...         return [numerator / denominator]
+>>>
+>>> tf = td.TableFrame({"numerator": [10, 20, 30],
+>>>                     "denominator": [2, 5, 10],})
+>>> tf.udf(td.col("numerator", "denominator"), RatioUnpackedUDF()).collect()
+>>> print(tf)
+┌───────────┬──────────────┬──────┐
+│ numerator ┆ denominator  ┆ ratio│
+│ ---       ┆ ---          ┆ ---  │
+│ i64       ┆ i64          ┆ f64  │
+╞═══════════╪══════════════╪══════╡
+│ 10        ┆ 2            ┆ 5.0  │
+│ 20        ┆ 5            ┆ 4.0  │
+│ 30        ┆ 10           ┆ 3.0  │
+└───────────┴──────────────┴──────┘
+```
+
+
+</details>

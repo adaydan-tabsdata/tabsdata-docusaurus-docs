@@ -1,0 +1,98 @@
+---
+title: "tabsdata.S3Destination"
+sidebarTitle: "tabsdata.S3Destination"
+description: "tabsdata.S3Destination API reference."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.S3Destination"></a>
+<details>
+<summary>S3Destination</summary>
+
+
+```python
+class S3Destination(
+    uri: str | List [ str ],
+    credentials: dict | S3Credentials,
+    format: str | dict | FileFormat = None,
+    region: str = None,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L2729)
+
+Bases: `Output`
+
+Class for managing the configuration of S3-file-based data outputs.
+
+<a id="tabsdata.S3Destination.to_dict"></a>
+#### `to_dict`
+
+```python
+def to_dict()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L2835)
+
+Converts the S3Destination object to a dictionary.
+
+<a id="tabsdata.S3Destination.__init__"></a>
+#### `__init__`
+
+```python
+def __init__(
+    uri: str | List [ str ],
+    credentials: dict | S3Credentials,
+    format: str | dict | FileFormat = None,
+    region: str = None,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L2760)
+
+**Parameters:**
+
+<ParamField path="uri" type="str | List [ str ]" required>
+  The URI of the files with format: ‘s3://path/to/files’. It can be a single URI or a list of URIs.
+</ParamField>
+
+<ParamField path="credentials" type="dict | S3Credentials" required>
+  The credentials required to access the S3 bucket. Can be a dictionary or a S3Credentials object.
+</ParamField>
+
+<ParamField path="format" type="str | dict | FileFormat" default="None">
+  The format of the file. If not provided, it will be inferred from the file extension of the data. Can be either a string with the format, a FileFormat object or a dictionary with the format as the ‘type’ key and any additional format-specific information. Currently supported formats are ‘csv’, ‘parquet’, ‘ndjson’ and ‘jsonl’.
+</ParamField>
+
+<ParamField path="region" type="str" default="None">
+  The region where the S3 bucket is located. If not provided, the default AWS region will be used.
+</ParamField>
+
+**Raises:**
+
+<ResponseField name="OutputConfigurationError" type="Exception"></ResponseField>
+
+<ResponseField name="FormatConfigurationError" type="Exception"></ResponseField>
+
+<a id="tabsdata.S3Destination.format"></a>
+<ResponseField name="format" type="FileFormat">
+The format of the file. If not provided, it will be inferred from the file extension.
+</ResponseField>
+
+<a id="tabsdata.S3Destination.uri"></a>
+<ResponseField name="uri" type="str | List[ str ]">
+The URI of the files with format: ‘s3://path/to/files’. It can be a single URI or a list of URIs.
+</ResponseField>
+
+<a id="tabsdata.S3Destination.credentials"></a>
+<ResponseField name="credentials" type="S3Credentials">
+The credentials required to access the S3 bucket.
+</ResponseField>
+
+#### Methods
+
+#### Attributes
+
+
+</details>

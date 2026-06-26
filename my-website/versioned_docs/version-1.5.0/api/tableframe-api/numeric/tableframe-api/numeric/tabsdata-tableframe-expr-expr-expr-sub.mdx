@@ -1,0 +1,53 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.sub"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.sub"
+description: "Equivalent to the - operator."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.sub"></a>
+<details>
+<summary>sub</summary>
+
+
+```python
+def sub(
+    other: Any,
+) -> Expr
+```
+
+Equivalent to the - operator.
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  value to subtract.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").sub(1).alias("sub"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ sub      │
+│ ---  ┆ ---      │
+│ i64  ┆ i64      │
+╞══════╪══════════╡
+│ 1    ┆  0       │
+│ 15   ┆ 14       │
+│ 18   ┆ 17       │
+│ 60   ┆ 59       │
+│ 60   ┆ 59       │
+│ 75   ┆ 74       │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+
+</details>

@@ -1,0 +1,37 @@
+---
+title: "tabsdata.tableframe.selectors.categorical"
+sidebarTitle: "tabsdata.tableframe.selectors.categorical"
+description: "Select all columns with categorical data type."
+---
+
+<a id="tabsdata.tableframe.selectors.categorical"></a>
+<details>
+<summary>categorical</summary>
+
+
+```python
+def categorical() -> SelectorProxy
+```
+
+Select all columns with categorical data type.
+
+#### Example
+
+```python
+>>> import tabsdata.tableframe as td_tf
+>>>
+>>> tf = td_tf.TableFrame({
+...     "Id": [1, 2, 3, 4, 5, 6, 7, 8],
+...     "Category": ["A", "B", "A", "C", "B", "A", "C", "B"],
+...     "Score": [88.0, 92.5, 79.0, 85.0, 91.0, 87.5, 90.0, 86.5]
+... }).with_columns([
+...     td_tf.col("Category").cast(td_tf.Categorical)
+... ])
+```
+
+```python
+>>> tf.select(td_tf.selectors.categorical())
+```
+
+
+</details>

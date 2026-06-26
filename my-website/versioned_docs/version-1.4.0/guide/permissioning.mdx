@@ -1,0 +1,99 @@
+---
+title: "Role Based Access Control (RBAC)"
+sidebarTitle: "Role Based Access Control (RBAC)"
+---
+
+Role based access control (RBAC) in Tabsdata has 2 levels.
+
+1. Role level permissions.
+2. Collection level permissions.
+
+In the document, various paramters available for permission configuration are provided along with important CLI commands.
+
+## Permissions#
+
+### Role level permissions#
+
+Following configurations are available for roles.
+
+#### System Permissions#
+
+Top-level permissions such as System Administrator and Security Administrator grant comprehensive control over core system configurations and security settings. Two such permissions exist:
+
+- System administration: To grant control over core system configurations.
+- Security administration: To grant control over security settings.
+
+#### Collection Permissions#
+
+You have the option to assign permissions at “All collections” or to a specific collection. Here are the options available:
+
+- Administration: Manage collection roles
+- Development: Manage tables & functions
+- Execution: Manage functions execution
+- Read: Read tables
+
+#### Assigned Users#
+
+You can see the users assigned to a particular role or assign users to a role.
+
+### Collection level permissions#
+
+Following configurations are available for collections.
+
+#### Inter-collection Permissions#
+
+This allows you to assign permissions to collections to read tables from other collection.
+
+## CLI Commands for RBAC#
+
+### Role#
+
+You can access the commands available for **Role Management** using:
+
+```bash
+$ td role --help
+```
+
+- add-perm: Add a permission to a role
+- add-user: Add a user to a role
+- create: Create a new role
+- delete: Delete a role by name
+- delete-perm: Delete a permission from a role
+- delete-user: Delete a user from a role
+- info: Display a role by name
+- list: List all roles
+- list-perm: List all permissions of a role
+- list-user: List all users of a role
+- pin: Pin a role by name
+- unpin: Unpin the currently pinned role
+- update: Update a role by name
+
+After creating the role you can use `add-perm`, to add permissions to the role.
+
+```bash
+$ td role add-perm --help
+```
+
+Here are the options:
+
+- –name: Name of the role to which the permissions will be added.
+- –perm: Permission to add. Will be prompted for it if not provided. Valid values are (‘coll_admin’, ‘ca’), (‘coll_dev’, ‘cd’), (‘coll_exe’, ‘cx’), (‘coll_read’,’cr’), (‘sec_admin’, ‘ss’), (‘sys_admin’, ‘sa’)
+- –coll: Collection to which the permission will apply. If ‘`<ALL>`’ is provided, it will apply to all collections. This option is only allowed for permissions that require an entity, which are (‘coll_admin’, ‘ca’), (‘coll_dev’, ‘cd’), (‘coll_exe’, ‘cx’), (‘coll_read’, ‘cr’).
+
+As you can see, the options in `--perm` directly map to the permissions highlighted in Permissions.
+
+### User#
+
+You can access the commands available for **User Management** using:
+
+```bash
+$ td user --help
+```
+
+### Inter-collection permissions#
+
+You can access the commands available for **Collection Permissions Management** using:
+
+```bash
+$ td collection --help
+```

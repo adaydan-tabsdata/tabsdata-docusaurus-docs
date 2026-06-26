@@ -1,0 +1,90 @@
+---
+title: "tabsdata.MariaDBSource"
+sidebarTitle: "tabsdata.MariaDBSource"
+description: "tabsdata.MariaDBSource API reference."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.MariaDBSource"></a>
+<details>
+<summary>MariaDBSource</summary>
+
+
+```python
+class MariaDBSource(
+    uri: str,
+    query: str | List [ str ],
+    credentials: UserPasswordCredentials | None = None,
+    initial_values: dict | None = None,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/_io/inputs/sql_inputs.py#L49)
+
+Bases: [`SourcePlugin`](../plugins/tabsdata.SourcePlugin.html#tabsdata.SourcePlugin)
+
+Class for managing the configuration of MariaDB-based data inputs.
+
+<a id="tabsdata.MariaDBSource.__init__"></a>
+#### `__init__`
+
+```python
+def __init__(
+    uri: str,
+    query: str | List [ str ],
+    credentials: UserPasswordCredentials | None = None,
+    initial_values: dict | None = None,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/_io/inputs/sql_inputs.py#L64)
+
+**Parameters:**
+
+<ParamField path="uri" type="str" required>
+  The URI of the database where the data is located
+</ParamField>
+
+<ParamField path="query" type="str | List [ str ]" required>
+  The SQL query(s) to execute. If multiple queries are provided, they must be provided as a list, and they will be mapped to the function inputs in the same order as they are defined.
+</ParamField>
+
+<ParamField path="credentials" type="UserPasswordCredentials | None" default="None">
+  The credentials required to access the MariaDB database. Must be a UserPasswordCredentials object.
+</ParamField>
+
+<ParamField path="initial_values" type="dict | None" default="None">
+  The initial values for the parameters in the SQL queries.
+</ParamField>
+
+**Raises:**
+
+<ResponseField name="InputConfigurationError" type="Exception"></ResponseField>
+
+<a id="tabsdata.MariaDBSource.credentials"></a>
+<ResponseField name="credentials" type="UserPasswordCredentials">
+The credentials required to access the MariaDB database.
+</ResponseField>
+
+<a id="tabsdata.MariaDBSource.initial_values"></a>
+<ResponseField name="initial_values" type="dict">
+The initial values for the parameters in the SQL queries.
+</ResponseField>
+
+<a id="tabsdata.MariaDBSource.query"></a>
+<ResponseField name="query" type="str | List[ str ]">
+The SQL query(s) to execute. If multiple queries are provided, they must be provided as a dictionary, with the parameter name in the registered function as the key and the SQL query as the value.
+</ResponseField>
+
+<a id="tabsdata.MariaDBSource.uri"></a>
+<ResponseField name="uri" type="str">
+The URI of the database where the data is located.
+</ResponseField>
+
+#### Methods
+
+#### Attributes
+
+
+</details>

@@ -1,0 +1,81 @@
+---
+title: "tabsdata.AzureDestination"
+sidebarTitle: "tabsdata.AzureDestination"
+description: "Bases: DestinationPlugin"
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.AzureDestination"></a>
+<details>
+<summary>AzureDestination</summary>
+
+
+```python
+class AzureDestination(
+    uri: str | list [ str ],
+    credentials: AzureCredentials,
+    format: str | FileFormat = None,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/_io/outputs/file_outputs.py#L412)
+
+Bases: [`DestinationPlugin`](../plugins/tabsdata.DestinationPlugin.html#tabsdata.DestinationPlugin)
+
+Class for managing the configuration of Azure-file-based data outputs.
+
+<a id="tabsdata.AzureDestination.__init__"></a>
+#### `__init__`
+
+```python
+def __init__(
+    uri: str | list [ str ],
+    credentials: AzureCredentials,
+    format: str | FileFormat = None,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/_io/outputs/file_outputs.py#L434)
+
+**Parameters:**
+
+<ParamField path="uri" type="str | list [ str ]" required>
+  The URI of the files to export with format: ‘az://path/to/files’. It can be a single URI or a list of URIs.
+</ParamField>
+
+<ParamField path="credentials" type="AzureCredentials" required>
+  The credentials required to access Azure. Must be an AzureCredentials object.
+</ParamField>
+
+<ParamField path="format" type="str | FileFormat" default="None">
+  The format of the file. If not provided, it will be inferred from the file extension. Can be either a string with the format or a FileFormat object. Currently supported formats are ‘csv’, ‘parquet’, ‘ndjson’ and ‘jsonl’.
+</ParamField>
+
+**Raises:**
+
+<ResponseField name="OutputConfigurationError" type="Exception"></ResponseField>
+
+<ResponseField name="FormatConfigurationError" type="Exception"></ResponseField>
+
+<a id="tabsdata.AzureDestination.format"></a>
+<ResponseField name="format" type="FileFormat">
+The format of the file to be created. If not provided, it will be inferred from the file extension.
+</ResponseField>
+
+<a id="tabsdata.AzureDestination.uri"></a>
+<ResponseField name="uri" type="str | list [ str ]">
+The URI of the files with format: ‘az://path/to/files’. It can be a single URI or a list of URIs.
+</ResponseField>
+
+<a id="tabsdata.AzureDestination.credentials"></a>
+<ResponseField name="credentials" type="AzureCredentials">
+The credentials required to access Azure.
+</ResponseField>
+
+#### Methods
+
+#### Attributes
+
+
+</details>

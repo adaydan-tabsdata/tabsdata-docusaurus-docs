@@ -1,0 +1,70 @@
+---
+title: "tabsdata.GCSSource"
+sidebarTitle: "tabsdata.GCSSource"
+description: "tabsdata.GCSSource API reference."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.GCSSource"></a>
+<details>
+<summary>GCSSource</summary>
+
+
+```python
+class GCSSource(
+    uri: str | list [ str ],
+    credentials: GCPCredentials,
+    format: str | FileFormat = None,
+    initial_last_modified: str | datetime = None,
+)
+```
+
+Bases: [`SourcePlugin`](../plugins/tabsdata.SourcePlugin.html#tabsdata.SourcePlugin)
+
+GCS-file-based data inputs.
+
+<a id="tabsdata.GCSSource.__init__"></a>
+#### `__init__`
+
+```python
+def __init__(
+    uri: str | list [ str ],
+    credentials: GCPCredentials,
+    format: str | FileFormat = None,
+    initial_last_modified: str | datetime = None,
+)
+```
+
+Initializes the GCSSource with the given URI and the credentials required to access GCS, and optionally a format and date and time after which the files were modified.
+
+**Parameters:**
+
+<ParamField path="uri" type="str | list [ str ]" required>
+  The URI of the files with format: ‘az://path/to/files’. It can be a single URI or a list of URIs.
+</ParamField>
+
+<ParamField path="credentials" type="GCPCredentials" required>
+  The credentials required to access GCS. Must be a GCPCredentials object.
+</ParamField>
+
+<ParamField path="format" type="str | FileFormat" default="None">
+  The format of the file. If not provided, it will be inferred from the file extension of the data. Can be either a string with the format or a FileFormat object. Currently supported formats are ‘csv’, ‘parquet’, ‘avro’, ‘ndjson’, ‘jsonl’ and ‘log’.
+</ParamField>
+
+<ParamField path="initial_last_modified" type="str | datetime" default="None">
+  If provided, only the files modified after this date and time will be considered. The date and time can be provided as a string in [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601) or as a datetime object. If no timezone is provided, UTC will be assumed.
+</ParamField>
+
+**Raises:**
+
+<ResponseField name="InputConfigurationError" type="Exception"></ResponseField>
+
+<ResponseField name="FormatConfigurationError" type="Exception"></ResponseField>
+
+#### Methods
+
+#### Attributes
+
+
+</details>

@@ -1,0 +1,64 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.contains"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.contains"
+description: "Evaluate if the string contains a pattern."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.contains"></a>
+<details>
+<summary>contains</summary>
+
+
+```python
+def contains(
+    pattern: str | Expr,
+    *,
+    literal: bool = False,
+    strict: bool = True,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/string.py#L541)
+
+Evaluate if the string contains a pattern.
+
+**Parameters:**
+
+<ParamField path="pattern" type="str | Expr" required>
+  The pattern to search for.
+</ParamField>
+
+<ParamField path="literal" type="bool" default="False">
+  Take the pattern as a literal string (not a regex).
+</ParamField>
+
+<ParamField path="strict" type="bool" default="True">
+  if the given pattern is not valid regex, raise an error.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.contains("ab").alias("contains"))
+>>>
+┌──────┬──────────┐
+│ a    ┆ contains │
+│ ---  ┆ ---      │
+│ str  ┆ bool     │
+╞══════╪══════════╡
+│ a    ┆ false    │
+│ ab   ┆ true     │
+│ b    ┆ false    │
+│ xaby ┆ true     │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+
+</details>

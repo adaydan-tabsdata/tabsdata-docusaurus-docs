@@ -1,0 +1,43 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.is_not_nan"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.is_not_nan"
+description: "If an element value is not NaN ."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.is_not_nan"></a>
+<details>
+<summary>is_not_nan</summary>
+
+
+```python
+def is_not_nan() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L1288)
+
+If an element value is not NaN.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").is_not_nan()
+>>>        .alias("not_nan"))
+>>>
+┌──────┬──────────┐
+│ temp ┆ not_nan  │
+│ ---  ┆ ---      │
+│ f64  ┆ bool     │
+╞══════╪══════════╡
+│ 1.1  ┆ true     │
+│ Nan  ┆ false    │
+│ None ┆ false    │
+│ inf  ┆ true     │
+└──────┴──────────┘
+```
+
+
+</details>

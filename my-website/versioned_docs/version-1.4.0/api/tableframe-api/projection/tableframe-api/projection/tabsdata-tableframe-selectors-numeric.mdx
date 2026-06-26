@@ -1,0 +1,38 @@
+---
+title: "tabsdata.tableframe.selectors.numeric"
+sidebarTitle: "tabsdata.tableframe.selectors.numeric"
+description: "Select all columns of numeric data types."
+---
+
+<a id="tabsdata.tableframe.selectors.numeric"></a>
+<details>
+<summary>numeric</summary>
+
+
+```python
+def numeric() -> SelectorProxy
+```
+
+Select all columns of numeric data types.
+
+This includes integer and float columns of any size or signedness.
+
+#### Example
+
+```python
+>>> import tabsdata.tableframe as td_tf
+>>>
+>>> tf = td_tf.TableFrame({
+...     "Id": [1, 2, 3, 4, 5, 6, 7, 8],
+...     "Score": [91.5, 85.0, 78.25, 88.75, 90.0, 76.5, 82.25, 89.0],
+...     "Name": ["Alice", "Bob", "Cara", "Dan", "Eve", "Finn", "Gus", "Hana"],
+...     "IsActive": [True, False, True, True, False, True, True, False]
+... })
+```
+
+```python
+>>> tf.select(td_tf.selectors.numeric())
+```
+
+
+</details>

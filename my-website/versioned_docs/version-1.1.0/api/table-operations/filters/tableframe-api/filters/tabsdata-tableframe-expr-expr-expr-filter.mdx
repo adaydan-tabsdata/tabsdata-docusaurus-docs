@@ -1,0 +1,70 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.filter"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.filter"
+description: "Apply a filter predicate to an expression."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.filter"></a>
+<details>
+<summary>filter</summary>
+
+
+```python
+def filter(
+    * predicates: Expr | Series | str | Iterable [ Expr | Series | str ],
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L910)
+
+Apply a filter predicate to an expression.
+
+Elements for which the predicate does not evaluate to true are discarded, evaluations to null are also discarded.
+
+Useful in an aggregation expression.
+
+**Parameters:**
+
+<ParamField path="predicates" required>
+  Expression(s) that evaluates to a boolean.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌───────┬─────────┐
+│ state ┆ tickets │
+│ ---   ┆ ---     │
+│ str   ┆ i64     │
+╞═══════╪═════════╡
+│ CA    ┆ 1       │
+│ AL    ┆ 3       │
+│ CA    ┆ 2       │
+│ NY    ┆ 2       │
+│ NY    ┆ 3       │
+└───────┴─────────┘
+>>>
+>>> import tabsdata as td
+>>> tf.group_by("state").agg(td.col("tickets")
+>>>   .filter(td.col("tickets") !=2)
+>>>   .sum().alias("sum_non_two"))
+>>>
+┌───────┬─────────────┐
+│ state ┆ sum_non_two │
+│ ---   ┆ ---         │
+│ str   ┆ i64         │
+╞═══════╪═════════════╡
+│ AL    ┆ 3           │
+│ NY    ┆ 3           │
+│ CA    ┆ 1           │
+└───────┴─────────────┘
+```
+
+
+</details>

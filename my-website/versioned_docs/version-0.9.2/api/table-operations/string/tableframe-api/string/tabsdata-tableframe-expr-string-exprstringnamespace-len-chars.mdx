@@ -1,0 +1,41 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.len_chars"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.len_chars"
+description: "Return number of chars (not bytes) of a string."
+---
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.len_chars"></a>
+<details>
+<summary>len_chars</summary>
+
+
+```python
+def len_chars() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/string.py#L186)
+
+Return number of chars (not bytes) of a string.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.len_chars().alias("len_chars"))
+>>>
+┌──────┬────────────┐
+│ a    ┆ to_decimal │
+│ ---  ┆ ---        │
+│ str  ┆ u32        │
+╞══════╪════════════╡
+│ ab   ┆ 2          │
+│ 再   ┆ 3          │
+│ null ┆ null       │
+└──────┴────────────┘
+```
+
+
+</details>

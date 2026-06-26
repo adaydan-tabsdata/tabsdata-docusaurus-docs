@@ -1,0 +1,67 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.fill_nan"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.fill_nan"
+description: "Replace all NaN values in the TableFrame with the given value."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.fill_nan"></a>
+<details>
+<summary>fill_nan</summary>
+
+
+```python
+def fill_nan(
+    value: int | float | Expr | None,
+) -> TableFrame
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/lazyframe/frame.py#L1457)
+
+Replace all NaN values in the TableFrame with the given value.
+
+**Parameters:**
+
+<ParamField path="value" type="int | float | Expr | None" required>
+  The value to replaceNaN with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ x    ┆ y    │
+│ ---  ┆ ---  │
+│ f64  ┆ f64  │
+╞══════╪══════╡
+│ 1.0  ┆ 2.0  │
+│ 2.0  ┆ 2.0  │
+│ NaN  ┆ NaN  │
+│ 4.0  ┆ NaN  │
+│ 5.0  ┆ null │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.fill_nan(10)
+>>>
+┌──────┬──────┐
+│ x    ┆ y    │
+│ ---  ┆ ---  │
+│ f64  ┆ f64  │
+╞══════╪══════╡
+│ 1.0  ┆ 2.0  │
+│ 2.0  ┆ 2.0  │
+│ 10.0 ┆ 10.0 │
+│ 4.0  ┆ 10.0 │
+│ 5.0  ┆ null │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+
+</details>

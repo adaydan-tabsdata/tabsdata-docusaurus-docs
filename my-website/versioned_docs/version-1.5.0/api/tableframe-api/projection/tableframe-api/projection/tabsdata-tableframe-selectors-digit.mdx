@@ -1,0 +1,46 @@
+---
+title: "tabsdata.tableframe.selectors.digit"
+sidebarTitle: "tabsdata.tableframe.selectors.digit"
+description: "Select all columns whose names consist only of digit characters."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.selectors.digit"></a>
+<details>
+<summary>digit</summary>
+
+
+```python
+def digit(
+    ascii_only: bool = False,
+) -> SelectorProxy
+```
+
+Select all columns whose names consist only of digit characters.
+
+**Parameters:**
+
+<ParamField path="ascii_only" type="bool" default="False">
+  Restrict matching to ASCII digits (“0”–“9”) only, instead of all Unicode digits (`d’).
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata.tableframe as td_tf
+>>>
+>>> tf = td_tf.TableFrame({
+...     "2023": [100, 200, 300, 400, 500, 600, 700, 800],
+...     "Temp": [20.5, 21.0, 22.0, 20.0, 19.5, 18.0, 21.5, 22.5],
+...     "01": [1, 2, 3, 4, 5, 6, 7, 8],
+...     "Humidity": [60, 65, 55, 70, 75, 80, 68, 66]
+... })
+```
+
+```python
+>>> tf.select(td_tf.selectors.digit())
+```
+
+
+</details>

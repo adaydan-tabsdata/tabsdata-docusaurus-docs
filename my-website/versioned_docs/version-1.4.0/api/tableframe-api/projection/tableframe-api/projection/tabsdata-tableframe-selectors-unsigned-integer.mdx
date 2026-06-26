@@ -1,0 +1,38 @@
+---
+title: "tabsdata.tableframe.selectors.unsigned_integer"
+sidebarTitle: "tabsdata.tableframe.selectors.unsigned_integer"
+description: "Select all columns of unsigned integer data types."
+---
+
+<a id="tabsdata.tableframe.selectors.unsigned_integer"></a>
+<details>
+<summary>unsigned_integer</summary>
+
+
+```python
+def unsigned_integer() -> SelectorProxy
+```
+
+Select all columns of unsigned integer data types.
+
+Unsigned integers include types such as UInt8, UInt16, UInt32, and UInt64.
+
+#### Example
+
+```python
+>>> import tabsdata.tableframe as td_tf
+>>>
+>>> tf = td_tf.TableFrame({
+...     "UserId": [10, 11, 12, 13, 14, 15, 16, 17],
+...     "Score": [100, 98, 95, 87, 90, 93, 88, 96],
+...     "Flags": [1, 0, 1, 0, 1, 0, 1, 0],
+...     "Change": [-1, 2, -3, 1, 0, -2, 3, -1]
+... })
+```
+
+```python
+>>> tf.select(td_tf.selectors.unsigned_integer())
+```
+
+
+</details>

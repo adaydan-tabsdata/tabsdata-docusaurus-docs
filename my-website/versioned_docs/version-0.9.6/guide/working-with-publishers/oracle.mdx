@@ -1,0 +1,110 @@
+---
+title: "Oracle"
+sidebarTitle: "Oracle"
+---
+
+You can use a publisher to read from an Oracle database.
+
+## Example (Publisher - Oracle)#
+
+The following example creates a publisher named `read_sales`. This publisher runs two queries to the database at the specified URL. It writes the results of the queries to two Tabsdata tables. The publisher is triggered by each new commit to the `new_customer` table, and writes data to the output tables in the Tabsdata server without any modification.
+
+```python
+import tabsdata as td
+
+db_username = td.HashiCorpSecret("path-to-secret", "DB_USERNAME")
+db_password = td.HashiCorpSecret("path-to-secret", "DB_PASSWORD")
+
+@td.publisher(
+    source=td.OracleSource(
+        uri="oracle://127.0.0.1:1521/sales_db",
+        query=[
+            "select * from INVOICE_VENDOR where id > :number",
+            "select * from INVOICE_ITEM where id > :number",
+        ],
+        credentials=td.UserPasswordCredentials(db_username, db_password),
+        initial_values={"number": 2},
+    ),
+    tables=["vendors", "items"],
+    trigger_by="new_customer",
+)
+def import_sales(tf1: td.TableFrame, tf2: td.TableFrame):
+    id = tf1.select(td.col("id").max()).item()
+    return tf1, tf2, {"number": str(id)}
+```
+
+**Note:** After defining the publisher, you need to register it with a Tabsdata collection. For more information, see Register a Function.
+
+## Setup (Publisher - Oracle)#
+
+The following code uses placeholder values for defining a publisher that reads data from an Oracle database and publishes it to Tabsdata tables:
+
+```python
+import tabsdata as td
+
+
+@td.publisher(
+    source=td.OracleSource(
+        uri="oracle://<path_to_db>",
+        query=["<db_query1>", "<db_query2>"],
+        credentials=td.UserPasswordCredentials("<db_username>", "<db_password>"),
+        initial_values={
+            "<variable_name1>": <variable_value1>,
+            "<variable_name2>": <variable_value2>,
+        },
+    ),
+    tables=["<output_table1>", "<output_table2>"],
+    trigger_by=["<trigger_table1>", "<trigger_table2>"],
+)
+def <publisher_name>(<table_frame1>:td.TableFrame, <table_frame2>:td.TableFrame):
+    <function_logic>
+    return <table_frame_output1>, <table_frame_output2>
+```
+
+**Note:** After defining the publisher, you need to register it with a Tabsdata collection. For more information, see Register a Function.
+
+Following properties are defined in the code above:
+
+### Source#
+
+**Database URI**: `<path_to_db>` is the URI to the database.
+
+**Database Query**: `<db_query1>`, `<db_query2>`,… are the queries to run on the database. Add as many as needed. Optionally include variables in the queries to be defined by initial values.
+
+**Database Credentials**: `<db_username>` and `<db_password>` are the username and password to log in to the database respectively. You can use different ways to store the credentials which are highlighted here in the documentation.
+
+**Initial Values**:
+
+[optional] `<variable_name1>`, `<variable_name2>`,… are the variable names included in the database queries.
+
+[optional] `<variable_value1>`, `<variable_value2>`,… are the values to assign to the defined variables.
+
+If you are using `initial_values`, the function can return the initial values for the next run. The last parameter in the function output, after the tableframes, can be a dictionary with the initial values for the next run.
+
+### tables#
+
+`<output_table1>`, `<output_table2>`… are the names of the Tabsdata tables to publish to.
+
+### trigger_by#
+
+[optional] `<trigger_table1>`, `<trigger_table2>`… are the names of the tables in the Tabsdata server. A new commit to any of these tables triggers the publisher. This can be relevant in cases where you want to import a data if something else in the organization changes. e.g trigger the import of latest manufacturing data in the company if a new supplier get added added. While a new supplier would not be a direct input to the publisher importing manufacturing data, it can still trigger the function.
+
+All listed trigger tables must exist in the server before registering the publisher.
+
+Defining trigger tables is optional. If you don’t define the `trigger_by` property, the publisher can only be triggered manually.
+
+For more information, see Working with Triggers.
+
+### `<publisher_name>`#
+
+`<publisher_name>` is the name for the publisher that you are configuring.
+
+### `<function_logic>`#
+
+`<function_logic>` governs the processing performed by the publisher. You can specify function logic to be a simple write or to perform additional processing, such as dropping nulls, before writing data to output tables. For more information about the function logic that you can include, see Working with Tables.
+
+`<table_frame1>`, `<table_frame2>`… are the names for the variables that temporarily store source data for processing.
+
+`<table_frame_output1>`, `<table_frame_output2>`… are the output from the function that are stored as Tabsdata tables with names as defined in the `tables` property. Consequently, the number of tables returned from the function have to exactly match the number of tables defined in the `tables` property.
+
+`<new_value1>`, `<new_value2>`.. are the revised values of variable_names as defined in function logic. This enables you to have dynamic allocation of variable values for usage in queries.

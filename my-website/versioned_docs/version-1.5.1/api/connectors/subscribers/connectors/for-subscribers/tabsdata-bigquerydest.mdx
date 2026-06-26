@@ -1,0 +1,64 @@
+---
+title: "tabsdata.BigQueryDest"
+sidebarTitle: "tabsdata.BigQueryDest"
+description: "Bases: DestinationPlugin"
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.BigQueryDest"></a>
+<details>
+<summary>BigQueryDest</summary>
+
+
+```python
+class BigQueryDest(
+    conn: BigQueryConn,
+    tables: str | list [ str ] | None = None,
+    if_table_exists: Literal [ 'append' , 'replace' ] = 'append',
+    schema_strategy: Literal [ 'update' , 'strict' ] = 'update',
+)
+```
+
+Bases: [`DestinationPlugin`](../plugins/tabsdata.DestinationPlugin.html#tabsdata.DestinationPlugin)
+
+BigQuery based data outputs. The data is first stored in parquet files in a GCS bucket, and then loaded into the BigQuery tables.
+
+<a id="tabsdata.BigQueryDest.__init__"></a>
+#### `__init__`
+
+```python
+def __init__(
+    conn: BigQueryConn,
+    tables: str | list [ str ] | None = None,
+    if_table_exists: Literal [ 'append' , 'replace' ] = 'append',
+    schema_strategy: Literal [ 'update' , 'strict' ] = 'update',
+)
+```
+
+Initializes the BigQueryDest with the configuration desired to store the data.
+
+**Parameters:**
+
+<ParamField path="conn" type="BigQueryConn" required>
+  The BigQuery connection configuration.
+</ParamField>
+
+<ParamField path="tables" type="str | list [ str ] | None" default="None">
+  The table(s) to store the data in. If multiple tables are provided, they must be provided as a list. If None, the table names will be those of the input tables for the function. Defaults to None.
+</ParamField>
+
+<ParamField path="if_table_exists" type="Literal [ 'append' , 'replace' ]" default="'append'">
+  The strategy to follow when the table already exists. ‘append’ will append to an existing table. ‘replace’ will create a new table, overwriting an existing one. Defaults to ‘append’.
+</ParamField>
+
+<ParamField path="schema_strategy" type="Literal [ 'update' , 'strict' ]" default="'update'">
+  The strategy to follow for the schema when the table already exists. ‘update’ will update the schema with the possible new columns that might exist in the TableFrame. ‘strict’ will not modify the schema, and will fail if there is any difference. Defaults to ‘update’.
+</ParamField>
+
+#### Methods
+
+#### Attributes
+
+
+</details>

@@ -1,0 +1,42 @@
+---
+title: "tabsdata.SourcePlugin"
+sidebarTitle: "tabsdata.SourcePlugin"
+description: "tabsdata.SourcePlugin API reference."
+---
+
+<a id="tabsdata.SourcePlugin"></a>
+<details>
+<summary>SourcePlugin</summary>
+
+
+```python
+class SourcePlugin()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/_io/plugin.py#L40)
+
+Bases: [`object`](https://docs.python.org/3/library/functions.html#object)
+
+Parent class for input plugins.
+
+#### `chunk(working_dir`
+
+```python
+def chunk(working_dir()
+```
+
+str) -> Union[str, Tuple[str, …], List[str]] Trigger the import of the data. The method will receive a folder where it must store the data as parquet files, and return a list of the paths of the files created. This files will then be loaded and mapped to the dataset function in positional order, so if you want file.parquet to be the first argument of the dataset function, you must return it first. If you want a parameter to receive multiple files, return a list of the paths. For example, you would give the following return to provide a first argument with a single file and a second argument with two files: return [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
+
+<a id="tabsdata.SourcePlugin.__init__"></a>
+#### `__init__`
+
+```python
+def __init__()
+```
+
+#### Methods
+
+#### Attributes
+
+
+</details>

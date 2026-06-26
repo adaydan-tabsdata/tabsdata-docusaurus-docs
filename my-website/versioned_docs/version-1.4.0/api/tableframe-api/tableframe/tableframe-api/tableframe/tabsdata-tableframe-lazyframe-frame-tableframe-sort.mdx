@@ -1,0 +1,91 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.sort"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.sort"
+description: "Sort the TableFrame by the given column(s) or expression(s)."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.sort"></a>
+<details>
+<summary>sort</summary>
+
+
+```python
+def sort(
+    by: td_typing.IntoExpr | Iterable [ td_typing.IntoExpr ],
+    * more_by: td_typing.IntoExpr,
+    descending: bool | Sequence [ bool ] = False,
+    nulls_last: bool | Sequence [ bool ] = False,
+    maintain_order: bool = False,
+) -> TableFrame
+```
+
+Sort the TableFrame by the given column(s) or expression(s).
+
+**Parameters:**
+
+<ParamField path="by" type="td_typing.IntoExpr | Iterable [ td_typing.IntoExpr ]" required>
+  Column(s) or expression(s) to sort by.
+</ParamField>
+
+<ParamField path="more_by" required>
+  Additional colums to sort by.
+</ParamField>
+
+<ParamField path="descending" type="bool | Sequence [ bool ]" default="False">
+  Specifies if the sorting should be descending or not.
+</ParamField>
+
+<ParamField path="nulls_last" type="bool | Sequence [ bool ]" default="False">
+  Specifies ifnull values should be placed last.
+</ParamField>
+
+<ParamField path="maintain_order" type="bool" default="False">
+  Preserve the order of equal rows.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ X    ┆ 10   │
+│ C    ┆ 3    │
+│ D    ┆ 5    │
+│ M    ┆ 9    │
+│ A    ┆ 100  │
+│ M    ┆ 50   │
+│ null ┆ 20   │
+│ F    ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.sort(td.col("a"), descending = True)
+>>>
+┌──────┬───────┐
+│ a    ┆ b     │
+│ ---  ┆ ---   │
+│ str  ┆ f32   │
+╞══════╪═══════╡
+│ A    ┆ 1.0   │
+│ X    ┆ 10.0  │
+│ C    ┆ 3.0   │
+│ D    ┆ 5.0   │
+│ M    ┆ 9.0   │
+│ A    ┆ 100.0 │
+│ M    ┆ 50.0  │
+│ null ┆ 20.0  │
+│ F    ┆ null  │
+└──────┴───────┘
+```
+
+
+</details>

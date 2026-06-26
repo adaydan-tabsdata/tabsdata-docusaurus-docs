@@ -1,0 +1,43 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.exp"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.exp"
+description: "Calculate the exponential of the element value."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.exp"></a>
+<details>
+<summary>exp</summary>
+
+
+```python
+def exp() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L806)
+
+Calculate the exponential of the element value.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").exp().alias("exp"))
+>>>
+┌──────┬─────────────┐
+│ val  ┆ exp         │
+│ ---  ┆ ---         │
+│ f64  ┆ f64         │
+╞══════╪═════════════╡
+│ 0.1  ┆ 1.105171    │
+│ 6.0  ┆ 403.428793  │
+│ 6.0  ┆ 403.428793  │
+│ 7.5  ┆ 1808.042414 │
+│ null ┆ null        │
+└──────┴─────────────┘
+```
+
+
+</details>

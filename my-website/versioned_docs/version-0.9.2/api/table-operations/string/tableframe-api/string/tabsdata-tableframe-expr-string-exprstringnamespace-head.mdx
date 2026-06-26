@@ -1,0 +1,51 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.head"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.head"
+description: "Extract the start of the string up to the given length."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.head"></a>
+<details>
+<summary>head</summary>
+
+
+```python
+def head(
+    n: int | Expr | Series | str,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/string.py#L930)
+
+Extract the start of the string up to the given length.
+
+**Parameters:**
+
+<ParamField path="n" type="int | Expr | Series | str" required>
+  The length of the head.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.head(2).alias("head"))
+>>>
+┌──────┬──────┐
+│ a    ┆ head │
+│ ---  ┆ ---  │
+│ str  ┆ str  │
+╞══════╪══════╡
+│ abc  ┆ ab   │
+│ a    ┆ a    │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+
+</details>

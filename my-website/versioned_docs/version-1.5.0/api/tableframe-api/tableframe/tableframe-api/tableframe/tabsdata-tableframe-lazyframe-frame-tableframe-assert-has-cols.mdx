@@ -1,0 +1,54 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.assert_has_cols"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.assert_has_cols"
+description: "Ensures that the (non-system) columns in the TableFrame match the expected columns."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.assert_has_cols"></a>
+<details>
+<summary>assert_has_cols</summary>
+
+
+```python
+def assert_has_cols(
+    cols: str | list [ str ],
+    exact: bool | None = False,
+) -> None
+```
+
+Ensures that the (non-system) columns in the TableFrame match the expected columns.
+
+Raises an exception if the expectation is not met.
+
+If exact is True, the check verifies that the TableFrame contains exactly the expected columns, with no extra or missing ones.
+
+**Parameters:**
+
+<ParamField path="cols" type="str | list [ str ]" required>
+  The expected column name(s). Can be a string or a list of strings.
+</ParamField>
+
+<ParamField path="exact" type="bool | None" default="False">
+  If True, checks that the TableFrame contains exactly the specified columns.
+</ParamField>
+
+**Raises:**
+
+<ResponseField name="ValueError" type="Exception">
+If expected columns are missing or unexpected columns are present in the TableFrame.
+</ResponseField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>> tf.assert_has_cols("a")
+>>> tf.assert_has_cols(["a", "b"], exact=True)
+```
+
+
+</details>

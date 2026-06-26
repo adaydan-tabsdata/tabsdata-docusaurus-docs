@@ -1,0 +1,61 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.count_matches"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.count_matches"
+description: "Counts the ocurrrences of the given pattern in the string."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.count_matches"></a>
+<details>
+<summary>count_matches</summary>
+
+
+```python
+def count_matches(
+    pattern: str | Expr,
+    *,
+    literal: bool = False,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/string.py#L732)
+
+Counts the ocurrrences of the given pattern in the string.
+
+**Parameters:**
+
+<ParamField path="pattern" type="str | Expr" required>
+  The pattern to extract.
+</ParamField>
+
+<ParamField path="literal" type="bool" default="False">
+  Take the pattern as a literal string (not a regex).
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a")
+      .str.count_matches("b.").alias("count_matches"))
+>>>
+┌───────────┬───────────────┐
+│ a         ┆ count_matches │
+│ ---       ┆ ---           │
+│ str       ┆ u32           │
+╞═══════════╪═══════════════╡
+│ a bAb c d ┆ 2             │
+│ bCbb c d  ┆ 2             │
+│ bb        ┆ 1             │
+│ b         ┆ 0             │
+│ a         ┆ 0             │
+│ null      ┆ null          │
+└───────────┴───────────────┘
+```
+
+
+</details>

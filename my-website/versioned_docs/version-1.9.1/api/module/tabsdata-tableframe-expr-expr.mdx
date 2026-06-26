@@ -1,0 +1,7058 @@
+---
+title: "tabsdata.tableframe.expr.expr"
+sidebarTitle: "tabsdata.tableframe.expr.expr"
+description: "tabsdata.tableframe.expr.expr API reference."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr"></a>
+<details>
+<summary>Expr</summary>
+
+
+```python
+class Expr(
+    expr: Expr | Expr,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L42)
+
+Bases: [`object`](https://docs.python.org/3/library/functions.html#object)
+
+<a id="tabsdata.tableframe.expr.expr.Expr.abs"></a>
+#### `abs`
+
+```python
+def abs() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L187)
+
+Return the abso lute value of the expression.
+
+**Categories:** numeric
+
+<a id="tabsdata.tableframe.expr.expr.Expr.add"></a>
+#### `add`
+
+```python
+def add(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L196)
+
+Equivalent to the + operator.
+
+For numeric types adds the given input. For string types concatenates the given input.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to add or concatenate.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").add(1).alias("add"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ add      │
+│ ---  ┆ ---      │
+│ i64  ┆ i64      │
+╞══════╪══════════╡
+│ 1    ┆ 2        │
+│ 15   ┆ 16       │
+│ 18   ┆ 19       │
+│ 60   ┆ 61       │
+│ 60   ┆ 61       │
+│ 75   ┆ 76       │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.alias"></a>
+#### `alias`
+
+```python
+def alias(
+    name: str,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L234)
+
+Set the name for a column or expression.
+
+**Categories:** manipulation
+
+**Parameters:**
+
+<ParamField path="name" type="str" required>
+  Column or expression new name. The name must be a word ([A-Za-z_][A-Za-z0-9_]*) of up to 100 characters.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("age"), td.col("age").alias("Age"))
+>>>
+┌──────┬──────┐
+│ age  ┆ Age  │
+│ ---  ┆ ---  │
+│ i64  ┆ i64  │
+╞══════╪══════╡
+│ 1    ┆ 1    │
+│ 15   ┆ 15   │
+│ 18   ┆ 18   │
+│ 60   ┆ 60   │
+│ 60   ┆ 60   │
+│ 75   ┆ 75   │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.and_"></a>
+#### `and_`
+
+```python
+def and_(
+    * others: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L270)
+
+Bitwise and operator with the given expressions. It can be used with integer and bool types.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="others" required>
+  expressions to peform the bitwiseand with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("i"), td.col("i").and_(2).alias("and_"))
+>>>
+┌──────┬──────┐
+│ i    ┆ and_ │
+│ ---  ┆ ---  │
+│ i64  ┆ i64  │
+╞══════╪══════╡
+│ -1   ┆ 2    │
+│ 2    ┆ 2    │
+│ -3   ┆ 0    │
+│ 0    ┆ 0    │
+│ 5    ┆ 0    │
+│ 7    ┆ 2    │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.arccos"></a>
+#### `arccos`
+
+```python
+def arccos() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L306)
+
+Calculate the inverse cosine of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").arccos().alias("arccos"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ arccos   │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ 0.01 ┆ 1.560796 │
+│ 0.15 ┆ 1.420228 │
+│ 0.18 ┆ 1.38981  │
+│ 0.6  ┆ 0.927295 │
+│ 0.6  ┆ 0.927295 │
+│ 0.75 ┆ 0.722734 │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.arccosh"></a>
+#### `arccosh`
+
+```python
+def arccosh() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L337)
+
+Calculate the inverse hyperbolic cosine of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").arccosh().alias("arccosh"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ arccosh  │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ 0.1  ┆ NaN      │
+│ 1.5  ┆ 0.962424 │
+│ 1.8  ┆ 1.192911 │
+│ 6.0  ┆ 2.477889 │
+│ 6.0  ┆ 2.477889 │
+│ 7.5  ┆ 2.703576 │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.arcsin"></a>
+#### `arcsin`
+
+```python
+def arcsin() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L368)
+
+Calculate the inverse sine of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").arcsin().alias("arcsin"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ arcsin   │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ 0.01 ┆ 0.01     │
+│ 0.15 ┆ 0.150568 │
+│ 0.18 ┆ 0.180986 │
+│ 0.6  ┆ 0.643501 │
+│ 0.6  ┆ 0.643501 │
+│ 0.75 ┆ 0.848062 │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.arcsinh"></a>
+#### `arcsinh`
+
+```python
+def arcsinh() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L399)
+
+Calculate the inverse hyperbolic sine of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").arcsinh().alias("arcsinh"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ arcsinh  │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ 0.1  ┆ 0.099834 │
+│ 1.5  ┆ 1.194763 │
+│ 1.8  ┆ 1.350441 │
+│ 6.0  ┆ 2.49178  │
+│ 6.0  ┆ 2.49178  │
+│ 7.5  ┆ 2.712465 │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.arctan"></a>
+#### `arctan`
+
+```python
+def arctan() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L430)
+
+Calculate the inverse tangent of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), , td.col("val").arctan().alias("arctan"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ arctan   │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ 0.01 ┆ 0.01     │
+│ 0.15 ┆ 0.14889  │
+│ 0.18 ┆ 0.178093 │
+│ 0.6  ┆ 0.54042  │
+│ 0.6  ┆ 0.54042  │
+│ 0.75 ┆ 0.643501 │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.arctanh"></a>
+#### `arctanh`
+
+```python
+def arctanh() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L461)
+
+Calculate the inverse hyperbolic tangent of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), , td.col("val").arctanh().alias("arctanh"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ arctanh  │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ 0.01 ┆ 0.01     │
+│ 0.15 ┆ 0.15114  │
+│ 0.18 ┆ 0.181983 │
+│ 0.6  ┆ 0.693147 │
+│ 0.6  ┆ 0.693147 │
+│ 0.75 ┆ 0.972955 │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.cast"></a>
+#### `cast`
+
+```python
+def cast(
+    dtype: Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | type [ Any ],
+    *,
+    strict: bool = True,
+    wrap_numerical: bool = False,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L492)
+
+Cast a value to d different type.
+
+**Categories:** type_casting
+
+**Parameters:**
+
+<ParamField path="dtype" type="Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | type [ Any ]" required>
+  The data type to cast to.
+</ParamField>
+
+<ParamField path="strict" type="bool" default="True">
+  If false, invalid casts produce null’s; if true, an excetion is raised.
+</ParamField>
+
+<ParamField path="wrap_numerical" type="bool" default="False">
+  If true, overflowing numbers ara handled; if false, an excetion is raised.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>> import polars as pl
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").cast(td.Float64)).alias("cast")
+>>>
+┌──────┬──────┐
+│ val  ┆ cast │
+│ ---  ┆ ---  │
+│ i64  ┆ f64  │
+╞══════╪══════╡
+│ 1    ┆ 1.0  │
+│ 15   ┆ 15.0 │
+│ 18   ┆ 18.0 │
+│ 60   ┆ 60.0 │
+│ 60   ┆ 60.0 │
+│ 75   ┆ 75.0 │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.cbrt"></a>
+#### `cbrt`
+
+```python
+def cbrt() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L540)
+
+Calculate the cub root of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").cbrt().alias("cbrt"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ cbrt     │
+│ ---  ┆ ---      │
+│ i64  ┆ f64      │
+╞══════╪══════════╡
+│ 1    ┆ 1.0      │
+│ 15   ┆ 2.466212 │
+│ 18   ┆ 2.620741 │
+│ 60   ┆ 3.914868 │
+│ 60   ┆ 3.914868 │
+│ 75   ┆ 4.217163 │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.ceil"></a>
+#### `ceil`
+
+```python
+def ceil() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L571)
+
+Round up the expression to the next integer value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").first().ceil().alias("ceil"))
+>>>
+┌──────┬─────────┐
+│ temp ┆ ceil    │
+│ ---  ┆ ------- │
+│ f64  ┆ f64     │
+╞══════╪═════════╡
+│ 1.0  ┆  1.0    │
+│ 1.1  ┆  2.0    │
+└──────┴─────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.clip"></a>
+#### `clip`
+
+```python
+def clip(
+    lower_bound: int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None = None,
+    upper_bound: int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None = None,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L597)
+
+For element values outside the lower and upper bounds, lower values are replaced with the lower bound and upper values with the upper bound. Values within the lower and upper bounds are unaffected.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="lower_bound" type="int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None" default="None">
+  The lower bound value. If None, the lower bound is not set.
+</ParamField>
+
+<ParamField path="upper_bound" type="int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None" default="None">
+  The upper bound value. If None, the upper bound is
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("age"), td.col("age").clip(18,65).alias("clip"))
+>>>
+┌──────┬─────────┐
+│ age  ┆ clip    │
+│ ---  ┆ ------- │
+│ i64  ┆ i64     │
+╞══════╪═══+++═══╡
+│ 1    ┆ 18      │
+│ 18   ┆ 18      │
+│ 50   ┆ 50      │
+│ 65   ┆ 65      │
+│ 70   ┆ 65      │
+└──────┴─────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.cos"></a>
+#### `cos`
+
+```python
+def cos() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L653)
+
+Calculate the cosine of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").cos().alias("cos"))
+>>>
+┌──────┬───────────┐
+│ val  ┆ cos       │
+│ ---  ┆ ---       │
+│ f64  ┆ f64       │
+╞══════╪═══════════╡
+│ 0.1  ┆ 0.995004  │
+│ 1.5  ┆ 0.070737  │
+│ 1.8  ┆ -0.227202 │
+│ 6.0  ┆ 0.96017   │
+│ 6.0  ┆ 0.96017   │
+│ 7.5  ┆ 0.346635  │
+│ null ┆ null      │
+└──────┴───────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.cosh"></a>
+#### `cosh`
+
+```python
+def cosh() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L684)
+
+Calculate the hyperbolic cosine of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").cosh().alias("cosh"))
+>>>
+┌──────┬────────────┐
+│ val  ┆ cosh       │
+│ ---  ┆ ---        │
+│ f64  ┆ f64        │
+╞══════╪════════════╡
+│ 0.1  ┆ 1.005004   │
+│ 1.5  ┆ 2.35241    │
+│ 1.8  ┆ 3.107473   │
+│ 6.0  ┆ 201.715636 │
+│ 6.0  ┆ 201.715636 │
+│ 7.5  ┆ 904.021484 │
+│ null ┆ null       │
+└──────┴────────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.cot"></a>
+#### `cot`
+
+```python
+def cot() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L715)
+
+Calculate the cotangent of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").cot().alias("cot"))
+>>>
+┌──────┬───────────┐
+│ val  ┆ cot       │
+│ ---  ┆ ---       │
+│ f64  ┆ f64       │
+╞══════╪═══════════╡
+│ 0.1  ┆ 9.966644  │
+│ 1.5  ┆ 0.070915  │
+│ 1.8  ┆ -0.233304 │
+│ 6.0  ┆ -3.436353 │
+│ 6.0  ┆ -3.436353 │
+│ 7.5  ┆ 0.369547  │
+│ null ┆ null      │
+└──────┴───────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.count"></a>
+#### `count`
+
+```python
+def count() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2273)
+
+Aggregation operation that counts the non null values of the given column in the group.
+
+**Categories:** aggregation
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ B    ┆ 2    │
+│ A    ┆ 3    │
+│ B    ┆ 0    │
+│ C    ┆ 5    │
+│ null ┆ 6    │
+│ C    ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.group_by(td.col("a")).agg(td.col("b")).count().alias("count"))
+>>>
+┌──────┬───────┐
+│ a    ┆ count │
+│ ---  ┆ ---   │
+│ str  ┆ u32   │
+╞══════╪═══════╡
+│ null ┆ 1     │
+│ A    ┆ 2     │
+│ B    ┆ 2     │
+│ C    ┆ 1     │
+└──────┴───────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.degrees"></a>
+#### `degrees`
+
+```python
+def degrees() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L746)
+
+Convert a radian value to degrees
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").degrees().alias("degrees"))
+>>>
+┌──────┬────────────┐
+│ val  ┆ degress    │
+│ ---  ┆ ---        │
+│ f64  ┆ f64        │
+╞══════╪════════════╡
+│ 0.1  ┆ 5.729578   │
+│ 1.5  ┆ 85.943669  │
+│ 1.8  ┆ 103.132403 │
+│ 6.0  ┆ 343.774677 │
+│ 6.0  ┆ 343.774677 │
+│ 7.5  ┆ 429.718346 │
+│ null ┆ null       │
+└──────┴────────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.diff"></a>
+#### `diff`
+
+```python
+def diff(
+    n: int = 1,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1990)
+
+Compute the difference between an element value and the element value of the specified relative row.
+
+It supports numberic and datetime types.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="n" type="int" default="1">
+  The relative row to compute the difference with. Defaults to 1 (previous). Use a negative number to get a next row.
+</ParamField>
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("i"), td.col("i").diff().diff().alias("diff"))
+>>>
+┌──────┬──────┐
+│ i    ┆ diff │
+│ ---  ┆ ---  │
+│ i64  ┆ i64  │
+╞══════╪══════╡
+│ 1    ┆ null │
+│ 0    ┆ -1   │
+│ 2    ┆ 2    │
+│ 3    ┆ 1    │
+│ 4    ┆ 1    │
+│ -1   ┆ -5   │
+│ -2   ┆ -1   │
+│ -3   ┆ -1   │
+│ -4   ┆ -1   │
+│ -5   ┆ -1   │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.eq"></a>
+#### `eq`
+
+```python
+def eq(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L777)
+
+Compare if 2 expressions are equal, equivalent to expr == other. If one of the expressions is null (None) it returns null.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to compare with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("a").eq(td.col("b")).alias("eq"))
+>>>
+┌─────┬──────┬───────┐
+│ a   ┆ b    ┆ eq    │
+│ --- ┆ ---  ┆ ---   │
+│ f64 ┆ f64  ┆ bool  │
+╞═════╪══════╪═══════╡
+│ 1.0 ┆ 2.0  ┆ false │
+│ 2.0 ┆ 2.0  ┆ true  │
+│ NaN ┆ NaN  ┆ true  │
+│ 4.0 ┆ NaN  ┆ false │
+│ 5.0 ┆ null ┆ null  │
+│ null┆ null ┆ null  │
+└─────┴──────┴───────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.eq_missing"></a>
+#### `eq_missing`
+
+```python
+def eq_missing(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L812)
+
+Compare if 2 expressions are equal an, equivalent to expr == other. If one of the expressions is null (None) it returns false.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to compare with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("a").eq(td.col("b")).alias("eq_missing"))
+>>>
+┌─────┬──────┬───────────┐
+│ a   ┆ b    ┆ eq_missing│
+│ --- ┆ ---  ┆ ---       │
+│ f64 ┆ f64  ┆ bool      │
+╞═════╪══════╪═══════════╡
+│ 1.0 ┆ 2.0  ┆ false     │
+│ 2.0 ┆ 2.0  ┆ true      │
+│ NaN ┆ NaN  ┆ true      │
+│ 4.0 ┆ NaN  ┆ false     │
+│ 5.0 ┆ null ┆ false     │
+│ null┆ null ┆ true      │
+└─────┴──────┴───────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.exp"></a>
+#### `exp`
+
+```python
+def exp() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L847)
+
+Calculate the exponential of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").exp().alias("exp"))
+>>>
+┌──────┬─────────────┐
+│ val  ┆ exp         │
+│ ---  ┆ ---         │
+│ f64  ┆ f64         │
+╞══════╪═════════════╡
+│ 0.1  ┆ 1.105171    │
+│ 6.0  ┆ 403.428793  │
+│ 6.0  ┆ 403.428793  │
+│ 7.5  ┆ 1808.042414 │
+│ null ┆ null        │
+└──────┴─────────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.fill_nan"></a>
+#### `fill_nan`
+
+```python
+def fill_nan(
+    value: int | float | Expr | None,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L876)
+
+Replace NaN values with the given value.
+
+**Categories:** manipulation
+
+**Parameters:**
+
+<ParamField path="value" type="int | float | Expr | None" required>
+  The value to replaceNaN values with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").fill_nan(5.5)
+>>>        .alias("fill_nan"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ fill_nan │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ 1.1  ┆ 1.1      │
+│ 2.0  ┆ 2.0      │
+│ inf  ┆ inf      │
+│ null ┆ null     │
+│ NaN  ┆ 5.5      │
+└──────┴──────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.fill_null"></a>
+#### `fill_null`
+
+```python
+def fill_null(
+    value: Any | Expr | None = None,
+    strategy: Literal [ 'forward' , 'backward' , 'min' , 'max' , 'mean' , 'zero' , 'one' ] | None = None,
+    limit: int | None = None,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L910)
+
+Replace null values with the given value.
+
+**Categories:** manipulation
+
+**Parameters:**
+
+<ParamField path="value" type="Any | Expr | None" default="None">
+  The value to replacenull values with.
+</ParamField>
+
+<ParamField path="strategy" type="Literal [ 'forward' , 'backward' , 'min' , 'max' , 'mean' , 'zero' , 'one' ] | None" default="None">
+  The strategy to use for fillingnull values.
+</ParamField>
+
+<ParamField path="limit" type="int | None" default="None">
+  The maximum number ofnull values to replace.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val")
+>>>        .fill_null(5.5).alias("fill_null"))
+>>>
+┌──────┬───────────┐
+│ val  ┆ fill_null │
+│ ---  ┆ ---       │
+│ f64  ┆ f64       │
+╞══════╪═══════════╡
+│ -1.0 ┆ -1.0      │
+│ 0.0  ┆ 0.0       │
+│ 1.1  ┆ 1.1       │
+│ 2.0  ┆ 2.0       │
+│ inf  ┆ inf       │
+│ null ┆ 5.5       │
+│ NaN  ┆ NaN       │
+└──────┴───────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.filter"></a>
+#### `filter`
+
+```python
+def filter(
+    * predicates: Expr | Series | str | Iterable [ Expr | Series | str ],
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L957)
+
+Apply a filter predicate to an expression.
+
+Elements for which the predicate does not evaluate to true are discarded, evaluations to null are also discarded.
+
+Useful in an aggregation expression.
+
+**Categories:** filters
+
+**Parameters:**
+
+<ParamField path="predicates" required>
+  Expression(s) that evaluates to a boolean.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌───────┬─────────┐
+│ state ┆ tickets │
+│ ---   ┆ ---     │
+│ str   ┆ i64     │
+╞═══════╪═════════╡
+│ CA    ┆ 1       │
+│ AL    ┆ 3       │
+│ CA    ┆ 2       │
+│ NY    ┆ 2       │
+│ NY    ┆ 3       │
+└───────┴─────────┘
+>>>
+>>> import tabsdata as td
+>>> tf.group_by("state").agg(td.col("tickets")
+>>>   .filter(td.col("tickets") !=2)
+>>>   .sum().alias("sum_non_two"))
+>>>
+┌───────┬─────────────┐
+│ state ┆ sum_non_two │
+│ ---   ┆ ---         │
+│ str   ┆ i64         │
+╞═══════╪═════════════╡
+│ AL    ┆ 3           │
+│ NY    ┆ 3           │
+│ CA    ┆ 1           │
+└───────┴─────────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.first"></a>
+#### `first`
+
+```python
+def first() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1013)
+
+Get the first element.
+
+**Categories:** aggregation
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("age"), td.col("age").first().alias("first"))
+>>>
+┌──────┬─────────┐
+│ age  ┆ first   │
+│ ---  ┆ ------- │
+│ i64  ┆ i64     │
+╞══════╪═════════╡
+│ 10   ┆ 10      │
+│ 11   ┆ 10      │
+│ 18   ┆ 10      │
+│ 65   ┆ 10      │
+│ 70   ┆ 10      │
+└──────┴─────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.floor"></a>
+#### `floor`
+
+```python
+def floor() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1042)
+
+Round down the expression to the previous integer value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").ceil().alias("floor"))
+>>>
+┌──────┬─────────┐
+│ temp ┆ floor   │
+│ ---  ┆ ------- │
+│ f64  ┆ i64     │
+╞══════╪═════════╡
+│ 1.0  ┆  1      │
+│ 1.1  ┆  1      │
+└──────┴─────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.floordiv"></a>
+#### `floordiv`
+
+```python
+def floordiv(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1068)
+
+Calculate the floor on the division.
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to divide by.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").floordiv(2)
+>>>        .alias("floordiv"))
+>>>
+┌──────┬──────────┐
+│ temp ┆ floordiv │
+│ ---  ┆ -------  │
+│ f64  ┆ i64      │
+╞══════╪══════════╡
+│ 2.5  ┆  1       │
+│ 1.4  ┆  0       │
+└──────┴──────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.ge"></a>
+#### `ge`
+
+```python
+def ge(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1096)
+
+Greater or equal operator.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to compare with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").ge(1.0).alias("ge"))
+>>>
+┌──────┬─────────┐
+│ temp ┆ ge      │
+│ ---  ┆ ------- │
+│ f64  ┆ bool    │
+╞══════╪═════════╡
+│ 0.9  ┆  false  │
+│ 1.1  ┆  true   │
+└──────┴─────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.gt"></a>
+#### `gt`
+
+```python
+def gt(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1126)
+
+Greater than operator.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to compare with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").gt(1.0).alias("gt"))
+>>>
+┌──────┬─────────┐
+│ temp ┆ ge      │
+│ ---  ┆ ------- │
+│ f64  ┆ bool    │
+╞══════╪═════════╡
+│ 1.0  ┆  false  │
+│ 1.1  ┆  true   │
+└──────┴─────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.hash"></a>
+#### `hash`
+
+```python
+def hash(
+    seed: int = 0,
+    seed_1: int | None = None,
+    seed_2: int | None = None,
+    seed_3: int | None = None,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1156)
+
+Compute the hash of an element value.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="seed" type="int" default="0">
+  The seed for the hash function.
+</ParamField>
+
+<ParamField path="seed_1" type="int | None" default="None">
+  The first seed for the hash function.
+</ParamField>
+
+<ParamField path="seed_2" type="int | None" default="None">
+  The second seed for the hash function.
+</ParamField>
+
+<ParamField path="seed_3" type="int | None" default="None">
+  The third seed for the hash function.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").hash(5).alias("hash"))
+>>>
+┌──────┬─────────────────────┐
+│ temp ┆ hash                │
+│ ---  ┆ ---                 │
+│ f64  ┆ u64                 │
+╞══════╪═════════════════════╡
+│ 1.1  ┆ 1438840365631752616 │
+│ 2.0  ┆ 4738789230185236462 │
+└──────┴─────────────────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.is_between"></a>
+#### `is_between`
+
+```python
+def is_between(
+    lower_bound: td_typing.IntoExpr,
+    upper_bound: td_typing.IntoExpr,
+    closed: td_typing.ClosedInterval = 'both',
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1194)
+
+If an expression is between the given bounds.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="lower_bound" type="td_typing.IntoExpr" required>
+  The lower bound value.
+</ParamField>
+
+<ParamField path="upper_bound" type="td_typing.IntoExpr" required>
+  The upper bound value.
+</ParamField>
+
+<ParamField path="closed" type="td_typing.ClosedInterval" default="'both'">
+  The interval type, either “both”, “left”, “right”, or “neither”
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp")
+>>> .is_between(0, 1).alias("between"))
+>>>
+┌──────┬─────────┐
+│ temp ┆ between │
+│ ---  ┆ ------- │
+│ f64  ┆ bool    │
+╞══════╪═════════╡
+│-1.0  ┆  false  │
+│ 0.0  ┆  true   │
+│ 0.5  ┆  true   │
+│ 1.0  ┆  true   │
+│ 1.1  ┆  false  │
+└──────┴─────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.is_finite"></a>
+#### `is_finite`
+
+```python
+def is_finite() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1241)
+
+If an element value is finite.
+
+**Categories:** logic
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").is_finite()
+>>>        .alias("finite"))
+>>>
+┌──────┬────────┐
+│ temp ┆ finite │
+│ ---  ┆ ---    │
+│ f64  ┆ bool   │
+╞══════╪════════╡
+│ 1.1  ┆ true   │
+│ 2.0  ┆ true   │
+│ inf  ┆ false  │
+└──────┴────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.is_in"></a>
+#### `is_in`
+
+```python
+def is_in(
+    other: Expr | Collection [ Any ],
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1269)
+
+If an element value is in the given collection.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other" type="Expr | Collection [ Any ]" required>
+  The collection to check if the element value is in.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").is_in([1.1, 2.2])
+>>>        .alias("is_in"))
+>>>
+┌──────┬────────┐
+│ temp ┆ is_in  │
+│ ---  ┆ ---    │
+│ f64  ┆ bool   │
+╞══════╪════════╡
+│ 1.1  ┆ true   │
+│ 2.0  ┆ false  │
+│ inf  ┆ false  │
+└──────┴────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.is_infinite"></a>
+#### `is_infinite`
+
+```python
+def is_infinite() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1301)
+
+If an element value is infinite.
+
+**Categories:** logic
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp")
+>>>        .is_infinite().alias("infinite"))
+>>>
+┌──────┬──────────┐
+│ temp ┆ infinite │
+│ ---  ┆ ---      │
+│ f64  ┆ bool     │
+╞══════╪══════════╡
+│ 1.1  ┆ false    │
+│ 2.0  ┆ false    │
+│ inf  ┆ true     │
+└──────┴──────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.is_nan"></a>
+#### `is_nan`
+
+```python
+def is_nan() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1329)
+
+If an element value is NaN.
+
+**Categories:** logic
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").is_nan().alias("nan"))
+>>>
+┌──────┬──────────┐
+│ temp ┆ nan      │
+│ ---  ┆ ---      │
+│ f64  ┆ bool     │
+╞══════╪══════════╡
+│ 1.1  ┆ false    │
+│ Nan  ┆ true     │
+│ None ┆ false    │
+│ inf  ┆ false    │
+└──────┴──────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.is_not_nan"></a>
+#### `is_not_nan`
+
+```python
+def is_not_nan() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1357)
+
+If an element value is not NaN.
+
+**Categories:** logic
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").is_not_nan()
+>>>        .alias("not_nan"))
+>>>
+┌──────┬──────────┐
+│ temp ┆ not_nan  │
+│ ---  ┆ ---      │
+│ f64  ┆ bool     │
+╞══════╪══════════╡
+│ 1.1  ┆ true     │
+│ Nan  ┆ false    │
+│ None ┆ false    │
+│ inf  ┆ true     │
+└──────┴──────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.is_not_null"></a>
+#### `is_not_null`
+
+```python
+def is_not_null() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1386)
+
+If an element value is not null (None).
+
+**Categories:** logic
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").is_not_null()
+>>>        .alias("null"))
+>>>
+┌──────┬──────────┐
+│ temp ┆ not_nulL │
+│ ---  ┆ ---      │
+│ f64  ┆ bool     │
+╞══════╪══════════╡
+│ 1.1  ┆ true     │
+│ Nan  ┆ true     │
+│ None ┆ false    │
+│ inf  ┆ true     │
+└──────┴──────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.is_null"></a>
+#### `is_null`
+
+```python
+def is_null() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1415)
+
+If an element value is null (None).
+
+**Categories:** logic
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").is_not_null()
+>>>        .alias("null"))
+>>>
+┌──────┬──────────┐
+│ temp ┆ null     │
+│ ---  ┆ ---      │
+│ f64  ┆ bool     │
+╞══════╪══════════╡
+│ 1.1  ┆ false    │
+│ Nan  ┆ false    │
+│ None ┆ true     │
+│ inf  ┆ false    │
+└──────┴──────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.is_unique"></a>
+#### `is_unique`
+
+```python
+def is_unique() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1444)
+
+If an element value is unique for all values in the column.
+
+**Categories:** logic
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").is_unique()
+>>>        .alias("unique"))
+>>>
+┌──────┬──────────┐
+│ temp ┆ unique   │
+│ ---  ┆ ---      │
+│ f64  ┆ bool     │
+╞══════╪══════════╡
+│ 1.1  ┆ false    │
+│ 1.1  ┆ false    │
+│ None ┆ true     │
+│ 2.0  ┆ true     │
+└──────┴──────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.last"></a>
+#### `last`
+
+```python
+def last() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1473)
+
+Get the last element.
+
+**Categories:** aggregation
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("age"), td.col("age").first().alias("last"))
+>>>
+┌──────┬─────────┐
+│ age  ┆ last    │
+│ ---  ┆ ------- │
+│ i64  ┆ i64     │
+╞══════╪═════════╡
+│ 10   ┆ 70      │
+│ 11   ┆ 70      │
+│ 18   ┆ 70      │
+│ 65   ┆ 70      │
+│ 70   ┆ 70      │
+└──────┴─────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.le"></a>
+#### `le`
+
+```python
+def le(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1502)
+
+Less or equal operator.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to compare with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").le(1.0).alias("le"))
+>>>
+┌──────┬─────────┐
+│ temp ┆ le      │
+│ ---  ┆ ------- │
+│ f64  ┆ bool    │
+╞══════╪═════════╡
+│ 0.9  ┆  true   │
+│ 1.1  ┆  false  │
+└──────┴─────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.len"></a>
+#### `len`
+
+```python
+def len() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2316)
+
+Aggregation operation that counts the rows in the group.
+
+**Categories:** aggregation
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ B    ┆ 2    │
+│ A    ┆ 3    │
+│ B    ┆ 0    │
+│ C    ┆ 5    │
+│ null ┆ 6    │
+│ C    ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.group_by(td.col("a")).agg(td.col("b")).len().alias("len"))
+>>>
+┌──────┬─────┐
+│ a    ┆ len │
+│ ---  ┆ --- │
+│ str  ┆ u32 │
+╞══════╪═════╡
+│ null ┆ 1   │
+│ A    ┆ 2   │
+│ B    ┆ 2   │
+│ C    ┆ 2   │
+└──────┴─────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.log"></a>
+#### `log`
+
+```python
+def log(
+    base: float = 2.718281828459045,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1532)
+
+Calculate the logarithm to the given base.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="base" type="float" default="2.718281828459045">
+  logarithm base, defaults toe.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").log().alias("log")
+>>>
+┌──────┬──────────┐
+│ val  ┆ log      │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ -1.0 ┆ NaN      │
+│ 0.0  ┆ -inf     │
+│ 1.1  ┆ 0.09531  │
+│ 2.0  ┆ 0.693147 │
+│ inf  ┆ inf      │
+│ null ┆ null     │
+│ NaN  ┆ NaN      │
+└──────┴──────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.log10"></a>
+#### `log10`
+
+```python
+def log10() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1597)
+
+Calculate the logarithm base 10.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").log10().alias("log10")
+>>>
+┌──────┬──────────┐
+│ val  ┆ log10    │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ -1.0 ┆ NaN      │
+│ 0.0  ┆ -inf     │
+│ 1.1  ┆ 0.041393 │
+│ 2.0  ┆ 0.30103  │
+│ inf  ┆ inf      │
+│ null ┆ null     │
+│ NaN  ┆ NaN      │
+└──────┴──────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.log1p"></a>
+#### `log1p`
+
+```python
+def log1p() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1566)
+
+Calculate the natural logarithm plus one.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").log1p().alias("log1p")
+>>>
+┌──────┬──────────┐
+│ val  ┆ log1p    │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ -1.0 ┆ -inf     │
+│ 0.0  ┆ 0.0      │
+│ 1.1  ┆ 0.741937 │
+│ 2.0  ┆ 1.098612 │
+│ inf  ┆ inf      │
+│ null ┆ null     │
+│ NaN  ┆ NaN      │
+└──────┴──────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.lt"></a>
+#### `lt`
+
+```python
+def lt(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1628)
+
+Less than operator.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to compare with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").lt(1.0).alias("lt"))
+>>>
+┌──────┬─────────┐
+│ val  ┆ tl      │
+│ ---  ┆ ------- │
+│ f64  ┆ bool    │
+╞══════╪═════════╡
+│ 1.0  ┆  false  │
+│ 0.1  ┆  true   │
+└──────┴─────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.max"></a>
+#### `max`
+
+```python
+def max() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2472)
+
+Aggregation operation that finds the maximum value in the group.
+
+**Categories:** aggregation
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ ss   ┆ i    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ B    ┆ 0    │
+│ A    ┆ 2    │
+│ B    ┆ 3    │
+│ B    ┆ 4    │
+│ C    ┆ -1   │
+│ C    ┆ -2   │
+│ C    ┆ -3   │
+│ D    ┆ -4   │
+│ F    ┆ -5   │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.group_by(td.col("a")).agg(td.col("b")).max())
+>>>
+┌──────┬──────┐
+│ ss   ┆ i    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ F    ┆ -5   │
+│ C    ┆ -1   │
+│ A    ┆ 2    │
+│ B    ┆ 4    │
+│ D    ┆ -4   │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.mean"></a>
+#### `mean`
+
+```python
+def mean() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2616)
+
+Aggregation operation that finds the mean of the values in the group.
+
+**Categories:** aggregation
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ ss   ┆ i    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ B    ┆ 0    │
+│ A    ┆ 2    │
+│ B    ┆ 3    │
+│ B    ┆ 4    │
+│ C    ┆ -1   │
+│ C    ┆ -2   │
+│ C    ┆ -3   │
+│ D    ┆ -4   │
+│ F    ┆ -5   │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.group_by(td.col("a")).agg(td.col("b").mean())
+>>>
+┌──────┬──────────┐
+│ ss   ┆ i        │
+│ ---  ┆ ---      │
+│ str  ┆ f64      │
+╞══════╪══════════╡
+│ null ┆ null     │
+│ A    ┆ 1.5      │
+│ F    ┆ -5.0     │
+│ C    ┆ -2.0     │
+│ D    ┆ -4.0     │
+│ B    ┆ 2.333333 │
+└──────┴──────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.median"></a>
+#### `median`
+
+```python
+def median() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2664)
+
+Aggregation operation that finds the median of the values in the group.
+
+**Categories:** aggregation
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ ss   ┆ i    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ B    ┆ 0    │
+│ A    ┆ 2    │
+│ B    ┆ 3    │
+│ B    ┆ 4    │
+│ C    ┆ -1   │
+│ C    ┆ -2   │
+│ C    ┆ -3   │
+│ D    ┆ -4   │
+│ F    ┆ -5   │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.group_by(td.col("a")).agg(td.col("b")).median())
+>>>
+┌──────┬──────┐
+│ ss   ┆ i    │
+│ ---  ┆ ---  │
+│ str  ┆ f64  │
+╞══════╪══════╡
+│ F    ┆ -5.0 │
+│ C    ┆ -2.0 │
+│ B    ┆ 3.0  │
+│ D    ┆ -4.0 │
+│ A    ┆ 1.5  │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.min"></a>
+#### `min`
+
+```python
+def min() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2520)
+
+Aggregation operation that finds the minimum value in the group.
+
+**Categories:** aggregation
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ ss   ┆ i    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ B    ┆ 0    │
+│ A    ┆ 2    │
+│ B    ┆ 3    │
+│ B    ┆ 4    │
+│ C    ┆ -1   │
+│ C    ┆ -2   │
+│ C    ┆ -3   │
+│ D    ┆ -4   │
+│ F    ┆ -5   │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.group_by(td.col("a")).agg(td.col("b")).min())
+>>>
+┌──────┬──────┐
+│ ss   ┆ i    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ C    ┆ -3   │
+│ A    ┆ 1    │
+│ null ┆ null │
+│ B    ┆ 0    │
+│ F    ┆ -5   │
+│ D    ┆ -4   │
+└──────┴──────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.mod"></a>
+#### `mod`
+
+```python
+def mod(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1658)
+
+Modulus operator.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to divide by.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").mod(5).alias("mod"))
+>>>
+┌──────┬──────┐
+│ val  ┆ mod  │
+│ ---  ┆ ---  │
+│ i64  ┆ i64  │
+╞══════╪══════╡
+│ 1    ┆ 1    │
+│ 15   ┆ 0    │
+│ 18   ┆ 3    │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.mul"></a>
+#### `mul`
+
+```python
+def mul(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1690)
+
+Multiplication operator.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to multiply by.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").mul(10).alias("mul"))
+>>>
+┌──────┬──────┐
+│ val  ┆ mul  │
+│ ---  ┆ ---  │
+│ i64  ┆ i64  │
+╞══════╪══════╡
+│ 1    ┆ 10   │
+│ 15   ┆ 150  │
+│ 18   ┆ 180  │
+│ 75   ┆ 750  │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.n_unique"></a>
+#### `n_unique`
+
+```python
+def n_unique() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2712)
+
+Aggregation operation that counts the unique values of the given column in the group.
+
+**Categories:** aggregation
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ ss   ┆ i    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ B    ┆ 0    │
+│ A    ┆ 2    │
+│ B    ┆ 3    │
+│ B    ┆ 4    │
+│ C    ┆ -1   │
+│ C    ┆ -2   │
+│ C    ┆ -3   │
+│ D    ┆ -4   │
+│ F    ┆ -5   │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.group_by(td.col("a")).agg(td.col("b")).n_unique())
+>>>
+┌──────┬─────┐
+│ ss   ┆ i   │
+│ ---  ┆ --- │
+│ str  ┆ u32 │
+╞══════╪═════╡
+│ D    ┆ 1   │
+│ C    ┆ 3   │
+│ A    ┆ 2   │
+│ B    ┆ 3   │
+│ F    ┆ 1   │
+│ null ┆ 1   │
+└──────┴─────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.ne"></a>
+#### `ne`
+
+```python
+def ne(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1723)
+
+Compare if 2 expressions are not equal, equivalent to expr != other. If one of the expressions is null (None) it returns null.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to compare with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("a").ne(td.col("b")).alias("ne"))
+>>>
+┌─────┬──────┬───────┐
+│ a   ┆ b    ┆ ne    │
+│ --- ┆ ---  ┆ ---   │
+│ f64 ┆ f64  ┆ bool  │
+╞═════╪══════╪═══════╡
+│ 1.0 ┆ 2.0  ┆ true  │
+│ 2.0 ┆ 2.0  ┆ false │
+│ NaN ┆ NaN  ┆ false │
+│ 4.0 ┆ NaN  ┆ true  │
+│ 5.0 ┆ null ┆ null  │
+│ null┆ null ┆ null  │
+└─────┴──────┴───────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.ne_missing"></a>
+#### `ne_missing`
+
+```python
+def ne_missing(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1758)
+
+Compare if 2 expressions are not equal an, equivalent to expr != other. If one of the expressions is null (None) it returns false.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to compare with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("a").eq(td.col("b")).alias("ne_missing"))
+>>>
+┌─────┬──────┬───────────┐
+│ a   ┆ b    ┆ ne_missing│
+│ --- ┆ ---  ┆ ---       │
+│ f64 ┆ f64  ┆ bool      │
+╞═════╪══════╪═══════════╡
+│ 1.0 ┆ 2.0  ┆ true      │
+│ 2.0 ┆ 2.0  ┆ false     │
+│ NaN ┆ NaN  ┆ false     │
+│ 4.0 ┆ NaN  ┆ true      │
+│ 5.0 ┆ null ┆ true      │
+│ null┆ null ┆ false     │
+└─────┴──────┴───────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.neg"></a>
+#### `neg`
+
+```python
+def neg() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1793)
+
+Unary minus operator.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").neg().alias("neg"))
+>>>
+┌──────┬──────┐
+│ val  ┆ neg  │
+│ ---  ┆ ---  │
+│ f64  ┆ f64  │
+╞══════╪══════╡
+│ -1.0 ┆ 1.0  │
+│ 0.0  ┆ -0.0 │
+│ 1.1  ┆ -1.1 │
+│ 2.0  ┆ -2.0 │
+│ inf  ┆ -inf │
+│ null ┆ null │
+│ NaN  ┆ NaN  │
+└──────┴──────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.not_"></a>
+#### `not_`
+
+```python
+def not_() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1824)
+
+Negate a boolean expression.
+
+**Categories:** logic
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").not_().alias("not"))
+>>>
+┌───────┬───────┐
+│ val   ┆ not   │
+│ ---   ┆ ---   │
+│ bool  ┆ bool  │
+╞═══════╪═══════╡
+│ true  ┆ false │
+│ false ┆ true  │
+│ null  ┆ null  │
+└───────┴───────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.or_"></a>
+#### `or_`
+
+```python
+def or_(
+    * others: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1851)
+
+Bitwise or operator with the given expressions. It can be used with integer and bool types.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="others" required>
+  expressions to peform the bitwiseor with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").or_(1).alias("or"))
+>>>
+┌──────┬──────┐
+│ val  ┆ or   │
+│ ---  ┆ ---  │
+│ i64  ┆ i64  │
+╞══════╪══════╡
+│ 1    ┆ 1    │
+│ 15   ┆ 15   │
+│ 18   ┆ 19   │
+│ 60   ┆ 61   │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.pow"></a>
+#### `pow`
+
+```python
+def pow(
+    exponent: Expr | Series | str | int | float,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1885)
+
+Exponentiation operator.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="exponent" type="Expr | Series | str | int | float" required>
+  exponent value.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").pow(2).alias("pow"))
+>>>
+┌──────┬──────┐
+│ age  ┆ pow  │
+│ ---  ┆ ---  │
+│ i64  ┆ i64  │
+╞══════╪══════╡
+│ 1    ┆ 1    │
+│ 15   ┆ 225  │
+│ 18   ┆ 324  │
+│ 60   ┆ 3600 │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.radians"></a>
+#### `radians`
+
+```python
+def radians() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1918)
+
+Convert a degree value to radians
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").radians().alias("radians"))
+>>>
+┌─────────┬──────────┐
+│ val     ┆ radians  │
+│ ---     ┆ ---      │
+│ i64     ┆ f64      │
+╞═════════╪══════════╡
+│ 1       ┆ 0.017453 │
+│ 15      ┆ 0.261799 │
+│ 60      ┆ 1.047198 │
+│ 75      ┆ 1.308997 │
+│ null    ┆ null     │
+└─────────┴──────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.rank"></a>
+#### `rank`
+
+```python
+def rank(
+    method: Literal [ 'average' , 'min' , 'max' , 'dense' , 'ordinal' , 'random' ] = 'average',
+    *,
+    descending: bool = False,
+    seed: int | None = None,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1947)
+
+Compute the rank of the element values. Multiple rank types are available.
+
+**Categories:** aggregation
+
+**Parameters:**
+
+<ParamField path="method" type="Literal [ 'average' , 'min' , 'max' , 'dense' , 'ordinal' , 'random' ]" default="'average'">
+  the ranking type: ‘average’ (default), ‘dense’, ‘max’, ‘min’, ‘ordinal’ or ‘random’.
+</ParamField>
+
+<ParamField path="descending" type="bool" default="False">
+  if the order is ascending (default) or descending.
+</ParamField>
+
+<ParamField path="seed" type="int | None" default="None">
+  random seed when using ‘random’ rank type.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").rank("max").alias("rank"))
+>>>
+┌──────┬──────┐
+│ val  ┆ rank │
+│ ---  ┆ ---  │
+│ f64  ┆ u32  │
+╞══════╪══════╡
+│ -1.0 ┆ 1    │
+│ 0.0  ┆ 2    │
+│ 1.1  ┆ 3    │
+│ 2.0  ┆ 4    │
+│ inf  ┆ 5    │
+│ null ┆ null │
+│ NaN  ┆ 6    │
+└──────┴──────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.reinterpret"></a>
+#### `reinterpret`
+
+```python
+def reinterpret(
+    *,
+    signed: bool = True,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2034)
+
+Reinterpret the 64bit element values (i64 or u64) as a signed/unsigned integers. Only valid for 64bit integers, for other types use cast.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="signed" type="bool" default="True">
+  true to convert to i64, false to convert to u64. This named argument must be specified.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val")
+>>>   .reinterpret(signed=False).alias("reinterpret"))
+>>>
+┌──────┬─────────────┐
+│ val  ┆ reinterpret │
+│ ---  ┆ ---         │
+│ i64  ┆ u64         │
+╞══════╪═════════════╡
+│ 3    ┆ 3           │
+│ 1    ┆ 1           │
+│ 5    ┆ 5           │
+│ 4    ┆ 4           │
+│ 2    ┆ 2           │
+│ 6    ┆ 6           │
+│ null ┆ null        │
+└──────┴─────────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.round"></a>
+#### `round`
+
+```python
+def round(
+    decimals: int = 0,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2071)
+
+Round floating point element values.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="decimals" type="int" default="0">
+  number of decimal places to round to.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").round().alias("round"))
+>>>
+┌──────┬───────┐
+│ val  ┆ round │
+│ ---  ┆ ---   │
+│ f64  ┆ f64   │
+╞══════╪═══════╡
+│ -1.0 ┆ -1.0  │
+│ 0.0  ┆ 0.0   │
+│ 1.1  ┆ 1.0   │
+│ 2.0  ┆ 2.0   │
+│ inf  ┆ inf   │
+│ null ┆ null  │
+│ NaN  ┆ NaN   │
+└──────┴───────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.round_sig_figs"></a>
+#### `round_sig_figs`
+
+```python
+def round_sig_figs(
+    digits: int,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2105)
+
+Round floating point element values to the specified significant figures.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="digits" type="int" required>
+  number of digits to round up.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").round_sig_figs(2)
+>>>   .alias("round_sig_figs"))
+>>>
+┌────────┬────────────────┐
+│ val    ┆ round_sig_figs │
+│ ---    ┆ ---            │
+│ f64    ┆ f64            │
+╞════════╪════════════════╡
+│ 0.0123 ┆ 0.012          │
+│ 2.0244 ┆ 2.0            │
+│ 0.0    ┆ 0.0            │
+│ inf    ┆ NaN            │
+│ 50.0   ┆ 50.0           │
+│ 1.0    ┆ 1.0            │
+│ NaN    ┆ NaN            │
+│ null   ┆ null           │
+│ 112.0  ┆ 110.0          │
+│ 2142.0 ┆ 2100.0         │
+└────────┴────────────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.shrink_dtype"></a>
+#### `shrink_dtype`
+
+```python
+def shrink_dtype() -> Expr
+```
+
+Cast down a column to the smallest type that can hold the element values.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").shrink_dtype()
+>>>   .alias("shrink_dtype"))
+>>>
+┌───────┬──────────────┐
+│ val   ┆ shrink_dtype │
+│ ---   ┆ ---          │
+│ i64   ┆ i32          │
+╞═══════╪══════════════╡
+│ 0     ┆ 0            │
+│ 256   ┆ 256          │
+│ 65025 ┆ 65025        │
+└───────┴──────────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.sign"></a>
+#### `sign`
+
+```python
+def sign() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2182)
+
+Calculate the sign of element values.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").sign().alias("sign"))
+>>>
+┌────────┬──────┐
+│ val    ┆ sign │
+│ ---    ┆ ---  │
+│ f64    ┆ f64  │
+╞════════╪══════╡
+│ 0.0123 ┆ 1.0  │
+│ 2.0244 ┆ 1.0  │
+│ 0.0    ┆ 0.0  │
+│ inf    ┆ 1.0  │
+│ -50.0  ┆ -1.0 │
+│ 1.0    ┆ 1.0  │
+│ NaN    ┆ NaN  │
+│ null   ┆ null │
+│ -112.0 ┆ -1.0 │
+│ 2142.0 ┆ 1.0  │
+└────────┴──────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.sin"></a>
+#### `sin`
+
+```python
+def sin() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2216)
+
+Calculate the sine of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").sin().alias("sin"))
+>>>
+┌─────┬───────────┐
+│ val ┆ sin       │
+│ --- ┆ ---       │
+│ i64 ┆ f64       │
+╞═════╪═══════════╡
+│ 0   ┆ 0.0       │
+│ 30  ┆ -0.988032 │
+│ 60  ┆ -0.304811 │
+│ 90  ┆ 0.893997  │
+└─────┴───────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.sinh"></a>
+#### `sinh`
+
+```python
+def sinh() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2245)
+
+Calculate the hyperbolic sine of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").sinh().alias("sinh"))
+>>>
+┌─────┬───────────┐
+│ val ┆ sinh      │
+│ --- ┆ ---       │
+│ i64 ┆ f64       │
+╞═════╪═══════════╡
+│ 0   ┆ 0.0       │
+│ 30  ┆ 5.3432e12 │
+│ 60  ┆ 5.7100e25 │
+│ 90  ┆ 6.1020e38 │
+└─────┴───────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.slice"></a>
+#### `slice`
+
+```python
+def slice(
+    offset: int | Expr,
+    length: int | Expr | None = None,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2358)
+
+Compute a slice of the TableFrame for the specified columns.
+
+**Categories:** filters
+
+**Parameters:**
+
+<ParamField path="offset" type="int | Expr" required>
+  the offset to start the slice.
+</ParamField>
+
+<ParamField path="length" type="int | Expr | None" default="None">
+  the length of the slice.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ x    ┆ y    │
+│ ---  ┆ ---  │
+│ f64  ┆ f64  │
+╞══════╪══════╡
+│ 1.0  ┆ 2.0  │
+│ 2.0  ┆ 2.0  │
+│ NaN  ┆ NaN  │
+│ 4.0  ┆ NaN  │
+│ 5.0  ┆ null │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.select(tf.all().slice(1,2))
+>>>
+┌─────┬─────┐
+│ x   ┆ y   │
+│ --- ┆ --- │
+│ f64 ┆ f64 │
+╞═════╪═════╡
+│ 2.0 ┆ 2.0 │
+│ NaN ┆ NaN │
+└─────┴─────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.sqrt"></a>
+#### `sqrt`
+
+```python
+def sqrt() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2407)
+
+Calculate the square root of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").sqrt().alias("sqrt"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ sqrt     │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ 1.0  ┆ 1.0      │
+│ 2.0  ┆ 1.414214 │
+│ NaN  ┆ NaN      │
+│ 4.0  ┆ 2.0      │
+│ 5.0  ┆ 2.236068 │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.sub"></a>
+#### `sub`
+
+```python
+def sub(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2437)
+
+Equivalent to the - operator.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  value to subtract.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").sub(1).alias("sub"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ sub      │
+│ ---  ┆ ---      │
+│ i64  ┆ i64      │
+╞══════╪══════════╡
+│ 1    ┆  0       │
+│ 15   ┆ 14       │
+│ 18   ┆ 17       │
+│ 60   ┆ 59       │
+│ 60   ┆ 59       │
+│ 75   ┆ 74       │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.sum"></a>
+#### `sum`
+
+```python
+def sum() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2568)
+
+Aggregation operation that sums the values in the group.
+
+**Categories:** aggregation
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ ss   ┆ i    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ B    ┆ 0    │
+│ A    ┆ 2    │
+│ B    ┆ 3    │
+│ B    ┆ 4    │
+│ C    ┆ -1   │
+│ C    ┆ -2   │
+│ C    ┆ -3   │
+│ D    ┆ -4   │
+│ F    ┆ -5   │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.group_by(td.col("a")).agg(td.col("b")).sum())
+>>>
+┌──────┬─────┐
+│ ss   ┆ i   │
+│ ---  ┆ --- │
+│ str  ┆ i64 │
+╞══════╪═════╡
+│ null ┆ 0   │
+│ A    ┆ 3   │
+│ B    ┆ 7   │
+│ C    ┆ -6  │
+│ D    ┆ -4  │
+│ F    ┆ -5  │
+└──────┴─────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.tan"></a>
+#### `tan`
+
+```python
+def tan() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2761)
+
+Calculate the tangent of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").tan().alias("tan"))
+>>>
+┌─────┬───────────┐
+│ val ┆ tan       │
+│ --- ┆ ---       │
+│ i64 ┆ f64       │
+╞═════╪═══════════╡
+│ 0   ┆ 0.0       │
+│ 30  ┆ -6.405331 │
+│ 60  ┆ 0.32004   │
+│ 90  ┆ -1.9952   │
+└─────┴───────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.tanh"></a>
+#### `tanh`
+
+```python
+def tanh() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2789)
+
+Calculate the hyperbolic tangent of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").tanh().alias("tanh"))
+>>>
+┌─────┬──────────┐
+│ val ┆ tanh     │
+│ --- ┆ ---      │
+│ f64 ┆ f64      │
+╞═════╪══════════╡
+│ 0.0 ┆ 0.0      │
+│ 3.0 ┆ 0.995055 │
+│ 6.0 ┆ 0.999988 │
+│ 9.0 ┆ 1.0      │
+└─────┴──────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.truediv"></a>
+#### `truediv`
+
+```python
+def truediv(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2817)
+
+Equivalent to the float / operator.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  value to divide by.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").truediv(3).alias("truediv"))
+>>>
+┌────────┬────────────┐
+│ val    ┆ truediv    │
+│ ---    ┆ ---        │
+│ f64    ┆ f64        │
+╞════════╪════════════╡
+│ 0.0123 ┆ 0.0041     │
+│ 2.0244 ┆ 0.6748     │
+│ 0.0    ┆ 0.0        │
+│ inf    ┆ inf        │
+│ -50.0  ┆ -16.666667 │
+│ 1.0    ┆ 0.333333   │
+│ NaN    ┆ NaN        │
+│ null   ┆ null       │
+│ -112.0 ┆ -37.333333 │
+│ 2142.0 ┆ 714.0      │
+└────────┴────────────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.xor"></a>
+#### `xor`
+
+```python
+def xor(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2855)
+
+Bitwise xor operator with the given expression. It can be used with integer and bool types.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  expression to peform the bitwisexor with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").xor(8).alias("xor"))
+>>>
+┌─────┬─────┐
+│ val ┆ xor │
+│ --- ┆ --- │
+│ i64 ┆ i64 │
+╞═════╪═════╡
+│ 0   ┆ 8   │
+│ 30  ┆ 22  │
+│ 60  ┆ 52  │
+│ 90  ┆ 82  │
+└─────┴─────┘
+```
+
+<a id="tabsdata.tableframe.expr.expr.Expr.dt"></a>
+<ResponseField name="dt" type="ExprDateTimeNameSpace">
+type_casting
+
+Return an object namespace with all date-time methods for a date-time value.
+
+**Type:** categories
+</ResponseField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.str"></a>
+<ResponseField name="str" type="ExprStringNameSpace">
+type_casting
+
+Return an object namespace with all string methods for a string value.
+
+**Type:** categories
+</ResponseField>
+
+
+</details>
+
+<a id="id0"></a>
+<details>
+<summary>abs</summary>
+
+
+```python
+def abs() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L187)
+
+Return the abso lute value of the expression.
+
+**Categories:** numeric
+
+
+</details>
+
+<a id="id2"></a>
+<details>
+<summary>add</summary>
+
+
+```python
+def add(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L196)
+
+Equivalent to the + operator.
+
+For numeric types adds the given input. For string types concatenates the given input.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to add or concatenate.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").add(1).alias("add"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ add      │
+│ ---  ┆ ---      │
+│ i64  ┆ i64      │
+╞══════╪══════════╡
+│ 1    ┆ 2        │
+│ 15   ┆ 16       │
+│ 18   ┆ 19       │
+│ 60   ┆ 61       │
+│ 60   ┆ 61       │
+│ 75   ┆ 76       │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+
+</details>
+
+<a id="id3"></a>
+<details>
+<summary>alias</summary>
+
+
+```python
+def alias(
+    name: str,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L234)
+
+Set the name for a column or expression.
+
+**Categories:** manipulation
+
+**Parameters:**
+
+<ParamField path="name" type="str" required>
+  Column or expression new name. The name must be a word ([A-Za-z_][A-Za-z0-9_]*) of up to 100 characters.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("age"), td.col("age").alias("Age"))
+>>>
+┌──────┬──────┐
+│ age  ┆ Age  │
+│ ---  ┆ ---  │
+│ i64  ┆ i64  │
+╞══════╪══════╡
+│ 1    ┆ 1    │
+│ 15   ┆ 15   │
+│ 18   ┆ 18   │
+│ 60   ┆ 60   │
+│ 60   ┆ 60   │
+│ 75   ┆ 75   │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+
+</details>
+
+<a id="id4"></a>
+<details>
+<summary>and_</summary>
+
+
+```python
+def and_(
+    * others: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L270)
+
+Bitwise and operator with the given expressions. It can be used with integer and bool types.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="others" required>
+  expressions to peform the bitwiseand with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("i"), td.col("i").and_(2).alias("and_"))
+>>>
+┌──────┬──────┐
+│ i    ┆ and_ │
+│ ---  ┆ ---  │
+│ i64  ┆ i64  │
+╞══════╪══════╡
+│ -1   ┆ 2    │
+│ 2    ┆ 2    │
+│ -3   ┆ 0    │
+│ 0    ┆ 0    │
+│ 5    ┆ 0    │
+│ 7    ┆ 2    │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+
+</details>
+
+<a id="id5"></a>
+<details>
+<summary>arccos</summary>
+
+
+```python
+def arccos() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L306)
+
+Calculate the inverse cosine of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").arccos().alias("arccos"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ arccos   │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ 0.01 ┆ 1.560796 │
+│ 0.15 ┆ 1.420228 │
+│ 0.18 ┆ 1.38981  │
+│ 0.6  ┆ 0.927295 │
+│ 0.6  ┆ 0.927295 │
+│ 0.75 ┆ 0.722734 │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+
+</details>
+
+<a id="id6"></a>
+<details>
+<summary>arccosh</summary>
+
+
+```python
+def arccosh() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L337)
+
+Calculate the inverse hyperbolic cosine of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").arccosh().alias("arccosh"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ arccosh  │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ 0.1  ┆ NaN      │
+│ 1.5  ┆ 0.962424 │
+│ 1.8  ┆ 1.192911 │
+│ 6.0  ┆ 2.477889 │
+│ 6.0  ┆ 2.477889 │
+│ 7.5  ┆ 2.703576 │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+
+</details>
+
+<a id="id7"></a>
+<details>
+<summary>arcsin</summary>
+
+
+```python
+def arcsin() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L368)
+
+Calculate the inverse sine of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").arcsin().alias("arcsin"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ arcsin   │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ 0.01 ┆ 0.01     │
+│ 0.15 ┆ 0.150568 │
+│ 0.18 ┆ 0.180986 │
+│ 0.6  ┆ 0.643501 │
+│ 0.6  ┆ 0.643501 │
+│ 0.75 ┆ 0.848062 │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+
+</details>
+
+<a id="id8"></a>
+<details>
+<summary>arcsinh</summary>
+
+
+```python
+def arcsinh() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L399)
+
+Calculate the inverse hyperbolic sine of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").arcsinh().alias("arcsinh"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ arcsinh  │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ 0.1  ┆ 0.099834 │
+│ 1.5  ┆ 1.194763 │
+│ 1.8  ┆ 1.350441 │
+│ 6.0  ┆ 2.49178  │
+│ 6.0  ┆ 2.49178  │
+│ 7.5  ┆ 2.712465 │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+
+</details>
+
+<a id="id9"></a>
+<details>
+<summary>arctan</summary>
+
+
+```python
+def arctan() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L430)
+
+Calculate the inverse tangent of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), , td.col("val").arctan().alias("arctan"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ arctan   │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ 0.01 ┆ 0.01     │
+│ 0.15 ┆ 0.14889  │
+│ 0.18 ┆ 0.178093 │
+│ 0.6  ┆ 0.54042  │
+│ 0.6  ┆ 0.54042  │
+│ 0.75 ┆ 0.643501 │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+
+</details>
+
+<a id="id10"></a>
+<details>
+<summary>arctanh</summary>
+
+
+```python
+def arctanh() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L461)
+
+Calculate the inverse hyperbolic tangent of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), , td.col("val").arctanh().alias("arctanh"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ arctanh  │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ 0.01 ┆ 0.01     │
+│ 0.15 ┆ 0.15114  │
+│ 0.18 ┆ 0.181983 │
+│ 0.6  ┆ 0.693147 │
+│ 0.6  ┆ 0.693147 │
+│ 0.75 ┆ 0.972955 │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+
+</details>
+
+<a id="id11"></a>
+<details>
+<summary>cast</summary>
+
+
+```python
+def cast(
+    dtype: Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | type [ Any ],
+    *,
+    strict: bool = True,
+    wrap_numerical: bool = False,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L492)
+
+Cast a value to d different type.
+
+**Categories:** type_casting
+
+**Parameters:**
+
+<ParamField path="dtype" type="Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | type [ Any ]" required>
+  The data type to cast to.
+</ParamField>
+
+<ParamField path="strict" type="bool" default="True">
+  If false, invalid casts produce null’s; if true, an excetion is raised.
+</ParamField>
+
+<ParamField path="wrap_numerical" type="bool" default="False">
+  If true, overflowing numbers ara handled; if false, an excetion is raised.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>> import polars as pl
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").cast(td.Float64)).alias("cast")
+>>>
+┌──────┬──────┐
+│ val  ┆ cast │
+│ ---  ┆ ---  │
+│ i64  ┆ f64  │
+╞══════╪══════╡
+│ 1    ┆ 1.0  │
+│ 15   ┆ 15.0 │
+│ 18   ┆ 18.0 │
+│ 60   ┆ 60.0 │
+│ 60   ┆ 60.0 │
+│ 75   ┆ 75.0 │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+
+</details>
+
+<a id="id12"></a>
+<details>
+<summary>cbrt</summary>
+
+
+```python
+def cbrt() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L540)
+
+Calculate the cub root of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").cbrt().alias("cbrt"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ cbrt     │
+│ ---  ┆ ---      │
+│ i64  ┆ f64      │
+╞══════╪══════════╡
+│ 1    ┆ 1.0      │
+│ 15   ┆ 2.466212 │
+│ 18   ┆ 2.620741 │
+│ 60   ┆ 3.914868 │
+│ 60   ┆ 3.914868 │
+│ 75   ┆ 4.217163 │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+
+</details>
+
+<a id="id13"></a>
+<details>
+<summary>ceil</summary>
+
+
+```python
+def ceil() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L571)
+
+Round up the expression to the next integer value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").first().ceil().alias("ceil"))
+>>>
+┌──────┬─────────┐
+│ temp ┆ ceil    │
+│ ---  ┆ ------- │
+│ f64  ┆ f64     │
+╞══════╪═════════╡
+│ 1.0  ┆  1.0    │
+│ 1.1  ┆  2.0    │
+└──────┴─────────┘
+```
+
+
+</details>
+
+<a id="id14"></a>
+<details>
+<summary>clip</summary>
+
+
+```python
+def clip(
+    lower_bound: int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None = None,
+    upper_bound: int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None = None,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L597)
+
+For element values outside the lower and upper bounds, lower values are replaced with the lower bound and upper values with the upper bound. Values within the lower and upper bounds are unaffected.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="lower_bound" type="int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None" default="None">
+  The lower bound value. If None, the lower bound is not set.
+</ParamField>
+
+<ParamField path="upper_bound" type="int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None" default="None">
+  The upper bound value. If None, the upper bound is
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("age"), td.col("age").clip(18,65).alias("clip"))
+>>>
+┌──────┬─────────┐
+│ age  ┆ clip    │
+│ ---  ┆ ------- │
+│ i64  ┆ i64     │
+╞══════╪═══+++═══╡
+│ 1    ┆ 18      │
+│ 18   ┆ 18      │
+│ 50   ┆ 50      │
+│ 65   ┆ 65      │
+│ 70   ┆ 65      │
+└──────┴─────────┘
+```
+
+
+</details>
+
+<a id="id15"></a>
+<details>
+<summary>cos</summary>
+
+
+```python
+def cos() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L653)
+
+Calculate the cosine of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").cos().alias("cos"))
+>>>
+┌──────┬───────────┐
+│ val  ┆ cos       │
+│ ---  ┆ ---       │
+│ f64  ┆ f64       │
+╞══════╪═══════════╡
+│ 0.1  ┆ 0.995004  │
+│ 1.5  ┆ 0.070737  │
+│ 1.8  ┆ -0.227202 │
+│ 6.0  ┆ 0.96017   │
+│ 6.0  ┆ 0.96017   │
+│ 7.5  ┆ 0.346635  │
+│ null ┆ null      │
+└──────┴───────────┘
+```
+
+
+</details>
+
+<a id="id16"></a>
+<details>
+<summary>cosh</summary>
+
+
+```python
+def cosh() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L684)
+
+Calculate the hyperbolic cosine of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").cosh().alias("cosh"))
+>>>
+┌──────┬────────────┐
+│ val  ┆ cosh       │
+│ ---  ┆ ---        │
+│ f64  ┆ f64        │
+╞══════╪════════════╡
+│ 0.1  ┆ 1.005004   │
+│ 1.5  ┆ 2.35241    │
+│ 1.8  ┆ 3.107473   │
+│ 6.0  ┆ 201.715636 │
+│ 6.0  ┆ 201.715636 │
+│ 7.5  ┆ 904.021484 │
+│ null ┆ null       │
+└──────┴────────────┘
+```
+
+
+</details>
+
+<a id="id17"></a>
+<details>
+<summary>cot</summary>
+
+
+```python
+def cot() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L715)
+
+Calculate the cotangent of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").cot().alias("cot"))
+>>>
+┌──────┬───────────┐
+│ val  ┆ cot       │
+│ ---  ┆ ---       │
+│ f64  ┆ f64       │
+╞══════╪═══════════╡
+│ 0.1  ┆ 9.966644  │
+│ 1.5  ┆ 0.070915  │
+│ 1.8  ┆ -0.233304 │
+│ 6.0  ┆ -3.436353 │
+│ 6.0  ┆ -3.436353 │
+│ 7.5  ┆ 0.369547  │
+│ null ┆ null      │
+└──────┴───────────┘
+```
+
+
+</details>
+
+<a id="id18"></a>
+<details>
+<summary>count</summary>
+
+
+```python
+def count() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2273)
+
+Aggregation operation that counts the non null values of the given column in the group.
+
+**Categories:** aggregation
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ B    ┆ 2    │
+│ A    ┆ 3    │
+│ B    ┆ 0    │
+│ C    ┆ 5    │
+│ null ┆ 6    │
+│ C    ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.group_by(td.col("a")).agg(td.col("b")).count().alias("count"))
+>>>
+┌──────┬───────┐
+│ a    ┆ count │
+│ ---  ┆ ---   │
+│ str  ┆ u32   │
+╞══════╪═══════╡
+│ null ┆ 1     │
+│ A    ┆ 2     │
+│ B    ┆ 2     │
+│ C    ┆ 1     │
+└──────┴───────┘
+```
+
+
+</details>
+
+<a id="id19"></a>
+<details>
+<summary>degrees</summary>
+
+
+```python
+def degrees() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L746)
+
+Convert a radian value to degrees
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").degrees().alias("degrees"))
+>>>
+┌──────┬────────────┐
+│ val  ┆ degress    │
+│ ---  ┆ ---        │
+│ f64  ┆ f64        │
+╞══════╪════════════╡
+│ 0.1  ┆ 5.729578   │
+│ 1.5  ┆ 85.943669  │
+│ 1.8  ┆ 103.132403 │
+│ 6.0  ┆ 343.774677 │
+│ 6.0  ┆ 343.774677 │
+│ 7.5  ┆ 429.718346 │
+│ null ┆ null       │
+└──────┴────────────┘
+```
+
+
+</details>
+
+<a id="id20"></a>
+<details>
+<summary>diff</summary>
+
+
+```python
+def diff(
+    n: int = 1,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1990)
+
+Compute the difference between an element value and the element value of the specified relative row.
+
+It supports numberic and datetime types.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="n" type="int" default="1">
+  The relative row to compute the difference with. Defaults to 1 (previous). Use a negative number to get a next row.
+</ParamField>
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("i"), td.col("i").diff().diff().alias("diff"))
+>>>
+┌──────┬──────┐
+│ i    ┆ diff │
+│ ---  ┆ ---  │
+│ i64  ┆ i64  │
+╞══════╪══════╡
+│ 1    ┆ null │
+│ 0    ┆ -1   │
+│ 2    ┆ 2    │
+│ 3    ┆ 1    │
+│ 4    ┆ 1    │
+│ -1   ┆ -5   │
+│ -2   ┆ -1   │
+│ -3   ┆ -1   │
+│ -4   ┆ -1   │
+│ -5   ┆ -1   │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+
+</details>
+
+<a id="id21"></a>
+<details>
+<summary>eq</summary>
+
+
+```python
+def eq(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L777)
+
+Compare if 2 expressions are equal, equivalent to expr == other. If one of the expressions is null (None) it returns null.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to compare with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("a").eq(td.col("b")).alias("eq"))
+>>>
+┌─────┬──────┬───────┐
+│ a   ┆ b    ┆ eq    │
+│ --- ┆ ---  ┆ ---   │
+│ f64 ┆ f64  ┆ bool  │
+╞═════╪══════╪═══════╡
+│ 1.0 ┆ 2.0  ┆ false │
+│ 2.0 ┆ 2.0  ┆ true  │
+│ NaN ┆ NaN  ┆ true  │
+│ 4.0 ┆ NaN  ┆ false │
+│ 5.0 ┆ null ┆ null  │
+│ null┆ null ┆ null  │
+└─────┴──────┴───────┘
+```
+
+
+</details>
+
+<a id="id22"></a>
+<details>
+<summary>eq_missing</summary>
+
+
+```python
+def eq_missing(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L812)
+
+Compare if 2 expressions are equal an, equivalent to expr == other. If one of the expressions is null (None) it returns false.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to compare with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("a").eq(td.col("b")).alias("eq_missing"))
+>>>
+┌─────┬──────┬───────────┐
+│ a   ┆ b    ┆ eq_missing│
+│ --- ┆ ---  ┆ ---       │
+│ f64 ┆ f64  ┆ bool      │
+╞═════╪══════╪═══════════╡
+│ 1.0 ┆ 2.0  ┆ false     │
+│ 2.0 ┆ 2.0  ┆ true      │
+│ NaN ┆ NaN  ┆ true      │
+│ 4.0 ┆ NaN  ┆ false     │
+│ 5.0 ┆ null ┆ false     │
+│ null┆ null ┆ true      │
+└─────┴──────┴───────────┘
+```
+
+
+</details>
+
+<a id="id23"></a>
+<details>
+<summary>exp</summary>
+
+
+```python
+def exp() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L847)
+
+Calculate the exponential of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").exp().alias("exp"))
+>>>
+┌──────┬─────────────┐
+│ val  ┆ exp         │
+│ ---  ┆ ---         │
+│ f64  ┆ f64         │
+╞══════╪═════════════╡
+│ 0.1  ┆ 1.105171    │
+│ 6.0  ┆ 403.428793  │
+│ 6.0  ┆ 403.428793  │
+│ 7.5  ┆ 1808.042414 │
+│ null ┆ null        │
+└──────┴─────────────┘
+```
+
+
+</details>
+
+<a id="id24"></a>
+<details>
+<summary>fill_nan</summary>
+
+
+```python
+def fill_nan(
+    value: int | float | Expr | None,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L876)
+
+Replace NaN values with the given value.
+
+**Categories:** manipulation
+
+**Parameters:**
+
+<ParamField path="value" type="int | float | Expr | None" required>
+  The value to replaceNaN values with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").fill_nan(5.5)
+>>>        .alias("fill_nan"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ fill_nan │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ 1.1  ┆ 1.1      │
+│ 2.0  ┆ 2.0      │
+│ inf  ┆ inf      │
+│ null ┆ null     │
+│ NaN  ┆ 5.5      │
+└──────┴──────────┘
+```
+
+
+</details>
+
+<a id="id25"></a>
+<details>
+<summary>fill_null</summary>
+
+
+```python
+def fill_null(
+    value: Any | Expr | None = None,
+    strategy: Literal [ 'forward' , 'backward' , 'min' , 'max' , 'mean' , 'zero' , 'one' ] | None = None,
+    limit: int | None = None,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L910)
+
+Replace null values with the given value.
+
+**Categories:** manipulation
+
+**Parameters:**
+
+<ParamField path="value" type="Any | Expr | None" default="None">
+  The value to replacenull values with.
+</ParamField>
+
+<ParamField path="strategy" type="Literal [ 'forward' , 'backward' , 'min' , 'max' , 'mean' , 'zero' , 'one' ] | None" default="None">
+  The strategy to use for fillingnull values.
+</ParamField>
+
+<ParamField path="limit" type="int | None" default="None">
+  The maximum number ofnull values to replace.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val")
+>>>        .fill_null(5.5).alias("fill_null"))
+>>>
+┌──────┬───────────┐
+│ val  ┆ fill_null │
+│ ---  ┆ ---       │
+│ f64  ┆ f64       │
+╞══════╪═══════════╡
+│ -1.0 ┆ -1.0      │
+│ 0.0  ┆ 0.0       │
+│ 1.1  ┆ 1.1       │
+│ 2.0  ┆ 2.0       │
+│ inf  ┆ inf       │
+│ null ┆ 5.5       │
+│ NaN  ┆ NaN       │
+└──────┴───────────┘
+```
+
+
+</details>
+
+<a id="id26"></a>
+<details>
+<summary>filter</summary>
+
+
+```python
+def filter(
+    * predicates: Expr | Series | str | Iterable [ Expr | Series | str ],
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L957)
+
+Apply a filter predicate to an expression.
+
+Elements for which the predicate does not evaluate to true are discarded, evaluations to null are also discarded.
+
+Useful in an aggregation expression.
+
+**Categories:** filters
+
+**Parameters:**
+
+<ParamField path="predicates" required>
+  Expression(s) that evaluates to a boolean.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌───────┬─────────┐
+│ state ┆ tickets │
+│ ---   ┆ ---     │
+│ str   ┆ i64     │
+╞═══════╪═════════╡
+│ CA    ┆ 1       │
+│ AL    ┆ 3       │
+│ CA    ┆ 2       │
+│ NY    ┆ 2       │
+│ NY    ┆ 3       │
+└───────┴─────────┘
+>>>
+>>> import tabsdata as td
+>>> tf.group_by("state").agg(td.col("tickets")
+>>>   .filter(td.col("tickets") !=2)
+>>>   .sum().alias("sum_non_two"))
+>>>
+┌───────┬─────────────┐
+│ state ┆ sum_non_two │
+│ ---   ┆ ---         │
+│ str   ┆ i64         │
+╞═══════╪═════════════╡
+│ AL    ┆ 3           │
+│ NY    ┆ 3           │
+│ CA    ┆ 1           │
+└───────┴─────────────┘
+```
+
+
+</details>
+
+<a id="id27"></a>
+<details>
+<summary>first</summary>
+
+
+```python
+def first() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1013)
+
+Get the first element.
+
+**Categories:** aggregation
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("age"), td.col("age").first().alias("first"))
+>>>
+┌──────┬─────────┐
+│ age  ┆ first   │
+│ ---  ┆ ------- │
+│ i64  ┆ i64     │
+╞══════╪═════════╡
+│ 10   ┆ 10      │
+│ 11   ┆ 10      │
+│ 18   ┆ 10      │
+│ 65   ┆ 10      │
+│ 70   ┆ 10      │
+└──────┴─────────┘
+```
+
+
+</details>
+
+<a id="id28"></a>
+<details>
+<summary>floor</summary>
+
+
+```python
+def floor() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1042)
+
+Round down the expression to the previous integer value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").ceil().alias("floor"))
+>>>
+┌──────┬─────────┐
+│ temp ┆ floor   │
+│ ---  ┆ ------- │
+│ f64  ┆ i64     │
+╞══════╪═════════╡
+│ 1.0  ┆  1      │
+│ 1.1  ┆  1      │
+└──────┴─────────┘
+```
+
+
+</details>
+
+<a id="id29"></a>
+<details>
+<summary>floordiv</summary>
+
+
+```python
+def floordiv(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1068)
+
+Calculate the floor on the division.
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to divide by.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").floordiv(2)
+>>>        .alias("floordiv"))
+>>>
+┌──────┬──────────┐
+│ temp ┆ floordiv │
+│ ---  ┆ -------  │
+│ f64  ┆ i64      │
+╞══════╪══════════╡
+│ 2.5  ┆  1       │
+│ 1.4  ┆  0       │
+└──────┴──────────┘
+```
+
+
+</details>
+
+<a id="id30"></a>
+<details>
+<summary>ge</summary>
+
+
+```python
+def ge(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1096)
+
+Greater or equal operator.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to compare with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").ge(1.0).alias("ge"))
+>>>
+┌──────┬─────────┐
+│ temp ┆ ge      │
+│ ---  ┆ ------- │
+│ f64  ┆ bool    │
+╞══════╪═════════╡
+│ 0.9  ┆  false  │
+│ 1.1  ┆  true   │
+└──────┴─────────┘
+```
+
+
+</details>
+
+<a id="id31"></a>
+<details>
+<summary>gt</summary>
+
+
+```python
+def gt(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1126)
+
+Greater than operator.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to compare with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").gt(1.0).alias("gt"))
+>>>
+┌──────┬─────────┐
+│ temp ┆ ge      │
+│ ---  ┆ ------- │
+│ f64  ┆ bool    │
+╞══════╪═════════╡
+│ 1.0  ┆  false  │
+│ 1.1  ┆  true   │
+└──────┴─────────┘
+```
+
+
+</details>
+
+<a id="id32"></a>
+<details>
+<summary>hash</summary>
+
+
+```python
+def hash(
+    seed: int = 0,
+    seed_1: int | None = None,
+    seed_2: int | None = None,
+    seed_3: int | None = None,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1156)
+
+Compute the hash of an element value.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="seed" type="int" default="0">
+  The seed for the hash function.
+</ParamField>
+
+<ParamField path="seed_1" type="int | None" default="None">
+  The first seed for the hash function.
+</ParamField>
+
+<ParamField path="seed_2" type="int | None" default="None">
+  The second seed for the hash function.
+</ParamField>
+
+<ParamField path="seed_3" type="int | None" default="None">
+  The third seed for the hash function.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").hash(5).alias("hash"))
+>>>
+┌──────┬─────────────────────┐
+│ temp ┆ hash                │
+│ ---  ┆ ---                 │
+│ f64  ┆ u64                 │
+╞══════╪═════════════════════╡
+│ 1.1  ┆ 1438840365631752616 │
+│ 2.0  ┆ 4738789230185236462 │
+└──────┴─────────────────────┘
+```
+
+
+</details>
+
+<a id="id33"></a>
+<details>
+<summary>is_between</summary>
+
+
+```python
+def is_between(
+    lower_bound: td_typing.IntoExpr,
+    upper_bound: td_typing.IntoExpr,
+    closed: td_typing.ClosedInterval = 'both',
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1194)
+
+If an expression is between the given bounds.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="lower_bound" type="td_typing.IntoExpr" required>
+  The lower bound value.
+</ParamField>
+
+<ParamField path="upper_bound" type="td_typing.IntoExpr" required>
+  The upper bound value.
+</ParamField>
+
+<ParamField path="closed" type="td_typing.ClosedInterval" default="'both'">
+  The interval type, either “both”, “left”, “right”, or “neither”
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp")
+>>> .is_between(0, 1).alias("between"))
+>>>
+┌──────┬─────────┐
+│ temp ┆ between │
+│ ---  ┆ ------- │
+│ f64  ┆ bool    │
+╞══════╪═════════╡
+│-1.0  ┆  false  │
+│ 0.0  ┆  true   │
+│ 0.5  ┆  true   │
+│ 1.0  ┆  true   │
+│ 1.1  ┆  false  │
+└──────┴─────────┘
+```
+
+
+</details>
+
+<a id="id34"></a>
+<details>
+<summary>is_finite</summary>
+
+
+```python
+def is_finite() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1241)
+
+If an element value is finite.
+
+**Categories:** logic
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").is_finite()
+>>>        .alias("finite"))
+>>>
+┌──────┬────────┐
+│ temp ┆ finite │
+│ ---  ┆ ---    │
+│ f64  ┆ bool   │
+╞══════╪════════╡
+│ 1.1  ┆ true   │
+│ 2.0  ┆ true   │
+│ inf  ┆ false  │
+└──────┴────────┘
+```
+
+
+</details>
+
+<a id="id35"></a>
+<details>
+<summary>is_in</summary>
+
+
+```python
+def is_in(
+    other: Expr | Collection [ Any ],
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1269)
+
+If an element value is in the given collection.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other" type="Expr | Collection [ Any ]" required>
+  The collection to check if the element value is in.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").is_in([1.1, 2.2])
+>>>        .alias("is_in"))
+>>>
+┌──────┬────────┐
+│ temp ┆ is_in  │
+│ ---  ┆ ---    │
+│ f64  ┆ bool   │
+╞══════╪════════╡
+│ 1.1  ┆ true   │
+│ 2.0  ┆ false  │
+│ inf  ┆ false  │
+└──────┴────────┘
+```
+
+
+</details>
+
+<a id="id36"></a>
+<details>
+<summary>is_infinite</summary>
+
+
+```python
+def is_infinite() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1301)
+
+If an element value is infinite.
+
+**Categories:** logic
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp")
+>>>        .is_infinite().alias("infinite"))
+>>>
+┌──────┬──────────┐
+│ temp ┆ infinite │
+│ ---  ┆ ---      │
+│ f64  ┆ bool     │
+╞══════╪══════════╡
+│ 1.1  ┆ false    │
+│ 2.0  ┆ false    │
+│ inf  ┆ true     │
+└──────┴──────────┘
+```
+
+
+</details>
+
+<a id="id37"></a>
+<details>
+<summary>is_nan</summary>
+
+
+```python
+def is_nan() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1329)
+
+If an element value is NaN.
+
+**Categories:** logic
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").is_nan().alias("nan"))
+>>>
+┌──────┬──────────┐
+│ temp ┆ nan      │
+│ ---  ┆ ---      │
+│ f64  ┆ bool     │
+╞══════╪══════════╡
+│ 1.1  ┆ false    │
+│ Nan  ┆ true     │
+│ None ┆ false    │
+│ inf  ┆ false    │
+└──────┴──────────┘
+```
+
+
+</details>
+
+<a id="id38"></a>
+<details>
+<summary>is_not_nan</summary>
+
+
+```python
+def is_not_nan() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1357)
+
+If an element value is not NaN.
+
+**Categories:** logic
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").is_not_nan()
+>>>        .alias("not_nan"))
+>>>
+┌──────┬──────────┐
+│ temp ┆ not_nan  │
+│ ---  ┆ ---      │
+│ f64  ┆ bool     │
+╞══════╪══════════╡
+│ 1.1  ┆ true     │
+│ Nan  ┆ false    │
+│ None ┆ false    │
+│ inf  ┆ true     │
+└──────┴──────────┘
+```
+
+
+</details>
+
+<a id="id39"></a>
+<details>
+<summary>is_not_null</summary>
+
+
+```python
+def is_not_null() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1386)
+
+If an element value is not null (None).
+
+**Categories:** logic
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").is_not_null()
+>>>        .alias("null"))
+>>>
+┌──────┬──────────┐
+│ temp ┆ not_nulL │
+│ ---  ┆ ---      │
+│ f64  ┆ bool     │
+╞══════╪══════════╡
+│ 1.1  ┆ true     │
+│ Nan  ┆ true     │
+│ None ┆ false    │
+│ inf  ┆ true     │
+└──────┴──────────┘
+```
+
+
+</details>
+
+<a id="id40"></a>
+<details>
+<summary>is_null</summary>
+
+
+```python
+def is_null() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1415)
+
+If an element value is null (None).
+
+**Categories:** logic
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").is_not_null()
+>>>        .alias("null"))
+>>>
+┌──────┬──────────┐
+│ temp ┆ null     │
+│ ---  ┆ ---      │
+│ f64  ┆ bool     │
+╞══════╪══════════╡
+│ 1.1  ┆ false    │
+│ Nan  ┆ false    │
+│ None ┆ true     │
+│ inf  ┆ false    │
+└──────┴──────────┘
+```
+
+
+</details>
+
+<a id="id41"></a>
+<details>
+<summary>is_unique</summary>
+
+
+```python
+def is_unique() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1444)
+
+If an element value is unique for all values in the column.
+
+**Categories:** logic
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").is_unique()
+>>>        .alias("unique"))
+>>>
+┌──────┬──────────┐
+│ temp ┆ unique   │
+│ ---  ┆ ---      │
+│ f64  ┆ bool     │
+╞══════╪══════════╡
+│ 1.1  ┆ false    │
+│ 1.1  ┆ false    │
+│ None ┆ true     │
+│ 2.0  ┆ true     │
+└──────┴──────────┘
+```
+
+
+</details>
+
+<a id="id42"></a>
+<details>
+<summary>last</summary>
+
+
+```python
+def last() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1473)
+
+Get the last element.
+
+**Categories:** aggregation
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("age"), td.col("age").first().alias("last"))
+>>>
+┌──────┬─────────┐
+│ age  ┆ last    │
+│ ---  ┆ ------- │
+│ i64  ┆ i64     │
+╞══════╪═════════╡
+│ 10   ┆ 70      │
+│ 11   ┆ 70      │
+│ 18   ┆ 70      │
+│ 65   ┆ 70      │
+│ 70   ┆ 70      │
+└──────┴─────────┘
+```
+
+
+</details>
+
+<a id="id43"></a>
+<details>
+<summary>le</summary>
+
+
+```python
+def le(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1502)
+
+Less or equal operator.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to compare with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").le(1.0).alias("le"))
+>>>
+┌──────┬─────────┐
+│ temp ┆ le      │
+│ ---  ┆ ------- │
+│ f64  ┆ bool    │
+╞══════╪═════════╡
+│ 0.9  ┆  true   │
+│ 1.1  ┆  false  │
+└──────┴─────────┘
+```
+
+
+</details>
+
+<a id="id44"></a>
+<details>
+<summary>len</summary>
+
+
+```python
+def len() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2316)
+
+Aggregation operation that counts the rows in the group.
+
+**Categories:** aggregation
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ B    ┆ 2    │
+│ A    ┆ 3    │
+│ B    ┆ 0    │
+│ C    ┆ 5    │
+│ null ┆ 6    │
+│ C    ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.group_by(td.col("a")).agg(td.col("b")).len().alias("len"))
+>>>
+┌──────┬─────┐
+│ a    ┆ len │
+│ ---  ┆ --- │
+│ str  ┆ u32 │
+╞══════╪═════╡
+│ null ┆ 1   │
+│ A    ┆ 2   │
+│ B    ┆ 2   │
+│ C    ┆ 2   │
+└──────┴─────┘
+```
+
+
+</details>
+
+<a id="id45"></a>
+<details>
+<summary>log</summary>
+
+
+```python
+def log(
+    base: float = 2.718281828459045,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1532)
+
+Calculate the logarithm to the given base.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="base" type="float" default="2.718281828459045">
+  logarithm base, defaults toe.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").log().alias("log")
+>>>
+┌──────┬──────────┐
+│ val  ┆ log      │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ -1.0 ┆ NaN      │
+│ 0.0  ┆ -inf     │
+│ 1.1  ┆ 0.09531  │
+│ 2.0  ┆ 0.693147 │
+│ inf  ┆ inf      │
+│ null ┆ null     │
+│ NaN  ┆ NaN      │
+└──────┴──────────┘
+```
+
+
+</details>
+
+<a id="id46"></a>
+<details>
+<summary>log10</summary>
+
+
+```python
+def log10() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1597)
+
+Calculate the logarithm base 10.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").log10().alias("log10")
+>>>
+┌──────┬──────────┐
+│ val  ┆ log10    │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ -1.0 ┆ NaN      │
+│ 0.0  ┆ -inf     │
+│ 1.1  ┆ 0.041393 │
+│ 2.0  ┆ 0.30103  │
+│ inf  ┆ inf      │
+│ null ┆ null     │
+│ NaN  ┆ NaN      │
+└──────┴──────────┘
+```
+
+
+</details>
+
+<a id="id47"></a>
+<details>
+<summary>log1p</summary>
+
+
+```python
+def log1p() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1566)
+
+Calculate the natural logarithm plus one.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").log1p().alias("log1p")
+>>>
+┌──────┬──────────┐
+│ val  ┆ log1p    │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ -1.0 ┆ -inf     │
+│ 0.0  ┆ 0.0      │
+│ 1.1  ┆ 0.741937 │
+│ 2.0  ┆ 1.098612 │
+│ inf  ┆ inf      │
+│ null ┆ null     │
+│ NaN  ┆ NaN      │
+└──────┴──────────┘
+```
+
+
+</details>
+
+<a id="id48"></a>
+<details>
+<summary>lt</summary>
+
+
+```python
+def lt(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1628)
+
+Less than operator.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to compare with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").lt(1.0).alias("lt"))
+>>>
+┌──────┬─────────┐
+│ val  ┆ tl      │
+│ ---  ┆ ------- │
+│ f64  ┆ bool    │
+╞══════╪═════════╡
+│ 1.0  ┆  false  │
+│ 0.1  ┆  true   │
+└──────┴─────────┘
+```
+
+
+</details>
+
+<a id="id49"></a>
+<details>
+<summary>max</summary>
+
+
+```python
+def max() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2472)
+
+Aggregation operation that finds the maximum value in the group.
+
+**Categories:** aggregation
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ ss   ┆ i    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ B    ┆ 0    │
+│ A    ┆ 2    │
+│ B    ┆ 3    │
+│ B    ┆ 4    │
+│ C    ┆ -1   │
+│ C    ┆ -2   │
+│ C    ┆ -3   │
+│ D    ┆ -4   │
+│ F    ┆ -5   │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.group_by(td.col("a")).agg(td.col("b")).max())
+>>>
+┌──────┬──────┐
+│ ss   ┆ i    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ F    ┆ -5   │
+│ C    ┆ -1   │
+│ A    ┆ 2    │
+│ B    ┆ 4    │
+│ D    ┆ -4   │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+
+</details>
+
+<a id="id50"></a>
+<details>
+<summary>mean</summary>
+
+
+```python
+def mean() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2616)
+
+Aggregation operation that finds the mean of the values in the group.
+
+**Categories:** aggregation
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ ss   ┆ i    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ B    ┆ 0    │
+│ A    ┆ 2    │
+│ B    ┆ 3    │
+│ B    ┆ 4    │
+│ C    ┆ -1   │
+│ C    ┆ -2   │
+│ C    ┆ -3   │
+│ D    ┆ -4   │
+│ F    ┆ -5   │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.group_by(td.col("a")).agg(td.col("b").mean())
+>>>
+┌──────┬──────────┐
+│ ss   ┆ i        │
+│ ---  ┆ ---      │
+│ str  ┆ f64      │
+╞══════╪══════════╡
+│ null ┆ null     │
+│ A    ┆ 1.5      │
+│ F    ┆ -5.0     │
+│ C    ┆ -2.0     │
+│ D    ┆ -4.0     │
+│ B    ┆ 2.333333 │
+└──────┴──────────┘
+```
+
+
+</details>
+
+<a id="id51"></a>
+<details>
+<summary>median</summary>
+
+
+```python
+def median() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2664)
+
+Aggregation operation that finds the median of the values in the group.
+
+**Categories:** aggregation
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ ss   ┆ i    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ B    ┆ 0    │
+│ A    ┆ 2    │
+│ B    ┆ 3    │
+│ B    ┆ 4    │
+│ C    ┆ -1   │
+│ C    ┆ -2   │
+│ C    ┆ -3   │
+│ D    ┆ -4   │
+│ F    ┆ -5   │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.group_by(td.col("a")).agg(td.col("b")).median())
+>>>
+┌──────┬──────┐
+│ ss   ┆ i    │
+│ ---  ┆ ---  │
+│ str  ┆ f64  │
+╞══════╪══════╡
+│ F    ┆ -5.0 │
+│ C    ┆ -2.0 │
+│ B    ┆ 3.0  │
+│ D    ┆ -4.0 │
+│ A    ┆ 1.5  │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+
+</details>
+
+<a id="id52"></a>
+<details>
+<summary>min</summary>
+
+
+```python
+def min() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2520)
+
+Aggregation operation that finds the minimum value in the group.
+
+**Categories:** aggregation
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ ss   ┆ i    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ B    ┆ 0    │
+│ A    ┆ 2    │
+│ B    ┆ 3    │
+│ B    ┆ 4    │
+│ C    ┆ -1   │
+│ C    ┆ -2   │
+│ C    ┆ -3   │
+│ D    ┆ -4   │
+│ F    ┆ -5   │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.group_by(td.col("a")).agg(td.col("b")).min())
+>>>
+┌──────┬──────┐
+│ ss   ┆ i    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ C    ┆ -3   │
+│ A    ┆ 1    │
+│ null ┆ null │
+│ B    ┆ 0    │
+│ F    ┆ -5   │
+│ D    ┆ -4   │
+└──────┴──────┘
+```
+
+
+</details>
+
+<a id="id53"></a>
+<details>
+<summary>mod</summary>
+
+
+```python
+def mod(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1658)
+
+Modulus operator.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to divide by.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").mod(5).alias("mod"))
+>>>
+┌──────┬──────┐
+│ val  ┆ mod  │
+│ ---  ┆ ---  │
+│ i64  ┆ i64  │
+╞══════╪══════╡
+│ 1    ┆ 1    │
+│ 15   ┆ 0    │
+│ 18   ┆ 3    │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+
+</details>
+
+<a id="id54"></a>
+<details>
+<summary>mul</summary>
+
+
+```python
+def mul(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1690)
+
+Multiplication operator.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to multiply by.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").mul(10).alias("mul"))
+>>>
+┌──────┬──────┐
+│ val  ┆ mul  │
+│ ---  ┆ ---  │
+│ i64  ┆ i64  │
+╞══════╪══════╡
+│ 1    ┆ 10   │
+│ 15   ┆ 150  │
+│ 18   ┆ 180  │
+│ 75   ┆ 750  │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+
+</details>
+
+<a id="id55"></a>
+<details>
+<summary>n_unique</summary>
+
+
+```python
+def n_unique() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2712)
+
+Aggregation operation that counts the unique values of the given column in the group.
+
+**Categories:** aggregation
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ ss   ┆ i    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ B    ┆ 0    │
+│ A    ┆ 2    │
+│ B    ┆ 3    │
+│ B    ┆ 4    │
+│ C    ┆ -1   │
+│ C    ┆ -2   │
+│ C    ┆ -3   │
+│ D    ┆ -4   │
+│ F    ┆ -5   │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.group_by(td.col("a")).agg(td.col("b")).n_unique())
+>>>
+┌──────┬─────┐
+│ ss   ┆ i   │
+│ ---  ┆ --- │
+│ str  ┆ u32 │
+╞══════╪═════╡
+│ D    ┆ 1   │
+│ C    ┆ 3   │
+│ A    ┆ 2   │
+│ B    ┆ 3   │
+│ F    ┆ 1   │
+│ null ┆ 1   │
+└──────┴─────┘
+```
+
+
+</details>
+
+<a id="id56"></a>
+<details>
+<summary>ne</summary>
+
+
+```python
+def ne(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1723)
+
+Compare if 2 expressions are not equal, equivalent to expr != other. If one of the expressions is null (None) it returns null.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to compare with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("a").ne(td.col("b")).alias("ne"))
+>>>
+┌─────┬──────┬───────┐
+│ a   ┆ b    ┆ ne    │
+│ --- ┆ ---  ┆ ---   │
+│ f64 ┆ f64  ┆ bool  │
+╞═════╪══════╪═══════╡
+│ 1.0 ┆ 2.0  ┆ true  │
+│ 2.0 ┆ 2.0  ┆ false │
+│ NaN ┆ NaN  ┆ false │
+│ 4.0 ┆ NaN  ┆ true  │
+│ 5.0 ┆ null ┆ null  │
+│ null┆ null ┆ null  │
+└─────┴──────┴───────┘
+```
+
+
+</details>
+
+<a id="id57"></a>
+<details>
+<summary>ne_missing</summary>
+
+
+```python
+def ne_missing(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1758)
+
+Compare if 2 expressions are not equal an, equivalent to expr != other. If one of the expressions is null (None) it returns false.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to compare with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("a").eq(td.col("b")).alias("ne_missing"))
+>>>
+┌─────┬──────┬───────────┐
+│ a   ┆ b    ┆ ne_missing│
+│ --- ┆ ---  ┆ ---       │
+│ f64 ┆ f64  ┆ bool      │
+╞═════╪══════╪═══════════╡
+│ 1.0 ┆ 2.0  ┆ true      │
+│ 2.0 ┆ 2.0  ┆ false     │
+│ NaN ┆ NaN  ┆ false     │
+│ 4.0 ┆ NaN  ┆ true      │
+│ 5.0 ┆ null ┆ true      │
+│ null┆ null ┆ false     │
+└─────┴──────┴───────────┘
+```
+
+
+</details>
+
+<a id="id58"></a>
+<details>
+<summary>neg</summary>
+
+
+```python
+def neg() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1793)
+
+Unary minus operator.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").neg().alias("neg"))
+>>>
+┌──────┬──────┐
+│ val  ┆ neg  │
+│ ---  ┆ ---  │
+│ f64  ┆ f64  │
+╞══════╪══════╡
+│ -1.0 ┆ 1.0  │
+│ 0.0  ┆ -0.0 │
+│ 1.1  ┆ -1.1 │
+│ 2.0  ┆ -2.0 │
+│ inf  ┆ -inf │
+│ null ┆ null │
+│ NaN  ┆ NaN  │
+└──────┴──────┘
+```
+
+
+</details>
+
+<a id="id59"></a>
+<details>
+<summary>not_</summary>
+
+
+```python
+def not_() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1824)
+
+Negate a boolean expression.
+
+**Categories:** logic
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").not_().alias("not"))
+>>>
+┌───────┬───────┐
+│ val   ┆ not   │
+│ ---   ┆ ---   │
+│ bool  ┆ bool  │
+╞═══════╪═══════╡
+│ true  ┆ false │
+│ false ┆ true  │
+│ null  ┆ null  │
+└───────┴───────┘
+```
+
+
+</details>
+
+<a id="id60"></a>
+<details>
+<summary>or_</summary>
+
+
+```python
+def or_(
+    * others: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1851)
+
+Bitwise or operator with the given expressions. It can be used with integer and bool types.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="others" required>
+  expressions to peform the bitwiseor with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").or_(1).alias("or"))
+>>>
+┌──────┬──────┐
+│ val  ┆ or   │
+│ ---  ┆ ---  │
+│ i64  ┆ i64  │
+╞══════╪══════╡
+│ 1    ┆ 1    │
+│ 15   ┆ 15   │
+│ 18   ┆ 19   │
+│ 60   ┆ 61   │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+
+</details>
+
+<a id="id61"></a>
+<details>
+<summary>pow</summary>
+
+
+```python
+def pow(
+    exponent: Expr | Series | str | int | float,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1885)
+
+Exponentiation operator.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="exponent" type="Expr | Series | str | int | float" required>
+  exponent value.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").pow(2).alias("pow"))
+>>>
+┌──────┬──────┐
+│ age  ┆ pow  │
+│ ---  ┆ ---  │
+│ i64  ┆ i64  │
+╞══════╪══════╡
+│ 1    ┆ 1    │
+│ 15   ┆ 225  │
+│ 18   ┆ 324  │
+│ 60   ┆ 3600 │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+
+</details>
+
+<a id="id62"></a>
+<details>
+<summary>radians</summary>
+
+
+```python
+def radians() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1918)
+
+Convert a degree value to radians
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").radians().alias("radians"))
+>>>
+┌─────────┬──────────┐
+│ val     ┆ radians  │
+│ ---     ┆ ---      │
+│ i64     ┆ f64      │
+╞═════════╪══════════╡
+│ 1       ┆ 0.017453 │
+│ 15      ┆ 0.261799 │
+│ 60      ┆ 1.047198 │
+│ 75      ┆ 1.308997 │
+│ null    ┆ null     │
+└─────────┴──────────┘
+```
+
+
+</details>
+
+<a id="id63"></a>
+<details>
+<summary>rank</summary>
+
+
+```python
+def rank(
+    method: Literal [ 'average' , 'min' , 'max' , 'dense' , 'ordinal' , 'random' ] = 'average',
+    *,
+    descending: bool = False,
+    seed: int | None = None,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L1947)
+
+Compute the rank of the element values. Multiple rank types are available.
+
+**Categories:** aggregation
+
+**Parameters:**
+
+<ParamField path="method" type="Literal [ 'average' , 'min' , 'max' , 'dense' , 'ordinal' , 'random' ]" default="'average'">
+  the ranking type: ‘average’ (default), ‘dense’, ‘max’, ‘min’, ‘ordinal’ or ‘random’.
+</ParamField>
+
+<ParamField path="descending" type="bool" default="False">
+  if the order is ascending (default) or descending.
+</ParamField>
+
+<ParamField path="seed" type="int | None" default="None">
+  random seed when using ‘random’ rank type.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").rank("max").alias("rank"))
+>>>
+┌──────┬──────┐
+│ val  ┆ rank │
+│ ---  ┆ ---  │
+│ f64  ┆ u32  │
+╞══════╪══════╡
+│ -1.0 ┆ 1    │
+│ 0.0  ┆ 2    │
+│ 1.1  ┆ 3    │
+│ 2.0  ┆ 4    │
+│ inf  ┆ 5    │
+│ null ┆ null │
+│ NaN  ┆ 6    │
+└──────┴──────┘
+```
+
+
+</details>
+
+<a id="id64"></a>
+<details>
+<summary>reinterpret</summary>
+
+
+```python
+def reinterpret(
+    *,
+    signed: bool = True,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2034)
+
+Reinterpret the 64bit element values (i64 or u64) as a signed/unsigned integers. Only valid for 64bit integers, for other types use cast.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="signed" type="bool" default="True">
+  true to convert to i64, false to convert to u64. This named argument must be specified.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val")
+>>>   .reinterpret(signed=False).alias("reinterpret"))
+>>>
+┌──────┬─────────────┐
+│ val  ┆ reinterpret │
+│ ---  ┆ ---         │
+│ i64  ┆ u64         │
+╞══════╪═════════════╡
+│ 3    ┆ 3           │
+│ 1    ┆ 1           │
+│ 5    ┆ 5           │
+│ 4    ┆ 4           │
+│ 2    ┆ 2           │
+│ 6    ┆ 6           │
+│ null ┆ null        │
+└──────┴─────────────┘
+```
+
+
+</details>
+
+<a id="id65"></a>
+<details>
+<summary>round</summary>
+
+
+```python
+def round(
+    decimals: int = 0,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2071)
+
+Round floating point element values.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="decimals" type="int" default="0">
+  number of decimal places to round to.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").round().alias("round"))
+>>>
+┌──────┬───────┐
+│ val  ┆ round │
+│ ---  ┆ ---   │
+│ f64  ┆ f64   │
+╞══════╪═══════╡
+│ -1.0 ┆ -1.0  │
+│ 0.0  ┆ 0.0   │
+│ 1.1  ┆ 1.0   │
+│ 2.0  ┆ 2.0   │
+│ inf  ┆ inf   │
+│ null ┆ null  │
+│ NaN  ┆ NaN   │
+└──────┴───────┘
+```
+
+
+</details>
+
+<a id="id66"></a>
+<details>
+<summary>round_sig_figs</summary>
+
+
+```python
+def round_sig_figs(
+    digits: int,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2105)
+
+Round floating point element values to the specified significant figures.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="digits" type="int" required>
+  number of digits to round up.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").round_sig_figs(2)
+>>>   .alias("round_sig_figs"))
+>>>
+┌────────┬────────────────┐
+│ val    ┆ round_sig_figs │
+│ ---    ┆ ---            │
+│ f64    ┆ f64            │
+╞════════╪════════════════╡
+│ 0.0123 ┆ 0.012          │
+│ 2.0244 ┆ 2.0            │
+│ 0.0    ┆ 0.0            │
+│ inf    ┆ NaN            │
+│ 50.0   ┆ 50.0           │
+│ 1.0    ┆ 1.0            │
+│ NaN    ┆ NaN            │
+│ null   ┆ null           │
+│ 112.0  ┆ 110.0          │
+│ 2142.0 ┆ 2100.0         │
+└────────┴────────────────┘
+```
+
+
+</details>
+
+<a id="id67"></a>
+<details>
+<summary>shrink_dtype</summary>
+
+
+```python
+def shrink_dtype() -> Expr
+```
+
+Cast down a column to the smallest type that can hold the element values.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").shrink_dtype()
+>>>   .alias("shrink_dtype"))
+>>>
+┌───────┬──────────────┐
+│ val   ┆ shrink_dtype │
+│ ---   ┆ ---          │
+│ i64   ┆ i32          │
+╞═══════╪══════════════╡
+│ 0     ┆ 0            │
+│ 256   ┆ 256          │
+│ 65025 ┆ 65025        │
+└───────┴──────────────┘
+```
+
+
+</details>
+
+<a id="id68"></a>
+<details>
+<summary>sign</summary>
+
+
+```python
+def sign() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2182)
+
+Calculate the sign of element values.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").sign().alias("sign"))
+>>>
+┌────────┬──────┐
+│ val    ┆ sign │
+│ ---    ┆ ---  │
+│ f64    ┆ f64  │
+╞════════╪══════╡
+│ 0.0123 ┆ 1.0  │
+│ 2.0244 ┆ 1.0  │
+│ 0.0    ┆ 0.0  │
+│ inf    ┆ 1.0  │
+│ -50.0  ┆ -1.0 │
+│ 1.0    ┆ 1.0  │
+│ NaN    ┆ NaN  │
+│ null   ┆ null │
+│ -112.0 ┆ -1.0 │
+│ 2142.0 ┆ 1.0  │
+└────────┴──────┘
+```
+
+
+</details>
+
+<a id="id69"></a>
+<details>
+<summary>sin</summary>
+
+
+```python
+def sin() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2216)
+
+Calculate the sine of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").sin().alias("sin"))
+>>>
+┌─────┬───────────┐
+│ val ┆ sin       │
+│ --- ┆ ---       │
+│ i64 ┆ f64       │
+╞═════╪═══════════╡
+│ 0   ┆ 0.0       │
+│ 30  ┆ -0.988032 │
+│ 60  ┆ -0.304811 │
+│ 90  ┆ 0.893997  │
+└─────┴───────────┘
+```
+
+
+</details>
+
+<a id="id70"></a>
+<details>
+<summary>sinh</summary>
+
+
+```python
+def sinh() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2245)
+
+Calculate the hyperbolic sine of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").sinh().alias("sinh"))
+>>>
+┌─────┬───────────┐
+│ val ┆ sinh      │
+│ --- ┆ ---       │
+│ i64 ┆ f64       │
+╞═════╪═══════════╡
+│ 0   ┆ 0.0       │
+│ 30  ┆ 5.3432e12 │
+│ 60  ┆ 5.7100e25 │
+│ 90  ┆ 6.1020e38 │
+└─────┴───────────┘
+```
+
+
+</details>
+
+<a id="id71"></a>
+<details>
+<summary>slice</summary>
+
+
+```python
+def slice(
+    offset: int | Expr,
+    length: int | Expr | None = None,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2358)
+
+Compute a slice of the TableFrame for the specified columns.
+
+**Categories:** filters
+
+**Parameters:**
+
+<ParamField path="offset" type="int | Expr" required>
+  the offset to start the slice.
+</ParamField>
+
+<ParamField path="length" type="int | Expr | None" default="None">
+  the length of the slice.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ x    ┆ y    │
+│ ---  ┆ ---  │
+│ f64  ┆ f64  │
+╞══════╪══════╡
+│ 1.0  ┆ 2.0  │
+│ 2.0  ┆ 2.0  │
+│ NaN  ┆ NaN  │
+│ 4.0  ┆ NaN  │
+│ 5.0  ┆ null │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.select(tf.all().slice(1,2))
+>>>
+┌─────┬─────┐
+│ x   ┆ y   │
+│ --- ┆ --- │
+│ f64 ┆ f64 │
+╞═════╪═════╡
+│ 2.0 ┆ 2.0 │
+│ NaN ┆ NaN │
+└─────┴─────┘
+```
+
+
+</details>
+
+<a id="id72"></a>
+<details>
+<summary>sqrt</summary>
+
+
+```python
+def sqrt() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2407)
+
+Calculate the square root of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").sqrt().alias("sqrt"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ sqrt     │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ 1.0  ┆ 1.0      │
+│ 2.0  ┆ 1.414214 │
+│ NaN  ┆ NaN      │
+│ 4.0  ┆ 2.0      │
+│ 5.0  ┆ 2.236068 │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+
+</details>
+
+<a id="id73"></a>
+<details>
+<summary>sub</summary>
+
+
+```python
+def sub(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2437)
+
+Equivalent to the - operator.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  value to subtract.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").sub(1).alias("sub"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ sub      │
+│ ---  ┆ ---      │
+│ i64  ┆ i64      │
+╞══════╪══════════╡
+│ 1    ┆  0       │
+│ 15   ┆ 14       │
+│ 18   ┆ 17       │
+│ 60   ┆ 59       │
+│ 60   ┆ 59       │
+│ 75   ┆ 74       │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+
+</details>
+
+<a id="id74"></a>
+<details>
+<summary>sum</summary>
+
+
+```python
+def sum() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2568)
+
+Aggregation operation that sums the values in the group.
+
+**Categories:** aggregation
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ ss   ┆ i    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ B    ┆ 0    │
+│ A    ┆ 2    │
+│ B    ┆ 3    │
+│ B    ┆ 4    │
+│ C    ┆ -1   │
+│ C    ┆ -2   │
+│ C    ┆ -3   │
+│ D    ┆ -4   │
+│ F    ┆ -5   │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.group_by(td.col("a")).agg(td.col("b")).sum())
+>>>
+┌──────┬─────┐
+│ ss   ┆ i   │
+│ ---  ┆ --- │
+│ str  ┆ i64 │
+╞══════╪═════╡
+│ null ┆ 0   │
+│ A    ┆ 3   │
+│ B    ┆ 7   │
+│ C    ┆ -6  │
+│ D    ┆ -4  │
+│ F    ┆ -5  │
+└──────┴─────┘
+```
+
+
+</details>
+
+<a id="id75"></a>
+<details>
+<summary>tan</summary>
+
+
+```python
+def tan() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2761)
+
+Calculate the tangent of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").tan().alias("tan"))
+>>>
+┌─────┬───────────┐
+│ val ┆ tan       │
+│ --- ┆ ---       │
+│ i64 ┆ f64       │
+╞═════╪═══════════╡
+│ 0   ┆ 0.0       │
+│ 30  ┆ -6.405331 │
+│ 60  ┆ 0.32004   │
+│ 90  ┆ -1.9952   │
+└─────┴───────────┘
+```
+
+
+</details>
+
+<a id="id76"></a>
+<details>
+<summary>tanh</summary>
+
+
+```python
+def tanh() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2789)
+
+Calculate the hyperbolic tangent of the element value.
+
+**Categories:** numeric
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").tanh().alias("tanh"))
+>>>
+┌─────┬──────────┐
+│ val ┆ tanh     │
+│ --- ┆ ---      │
+│ f64 ┆ f64      │
+╞═════╪══════════╡
+│ 0.0 ┆ 0.0      │
+│ 3.0 ┆ 0.995055 │
+│ 6.0 ┆ 0.999988 │
+│ 9.0 ┆ 1.0      │
+└─────┴──────────┘
+```
+
+
+</details>
+
+<a id="id77"></a>
+<details>
+<summary>truediv</summary>
+
+
+```python
+def truediv(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2817)
+
+Equivalent to the float / operator.
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  value to divide by.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").truediv(3).alias("truediv"))
+>>>
+┌────────┬────────────┐
+│ val    ┆ truediv    │
+│ ---    ┆ ---        │
+│ f64    ┆ f64        │
+╞════════╪════════════╡
+│ 0.0123 ┆ 0.0041     │
+│ 2.0244 ┆ 0.6748     │
+│ 0.0    ┆ 0.0        │
+│ inf    ┆ inf        │
+│ -50.0  ┆ -16.666667 │
+│ 1.0    ┆ 0.333333   │
+│ NaN    ┆ NaN        │
+│ null   ┆ null       │
+│ -112.0 ┆ -37.333333 │
+│ 2142.0 ┆ 714.0      │
+└────────┴────────────┘
+```
+
+
+</details>
+
+<a id="id78"></a>
+<details>
+<summary>xor</summary>
+
+
+```python
+def xor(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2855)
+
+Bitwise xor operator with the given expression. It can be used with integer and bool types.
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  expression to peform the bitwisexor with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").xor(8).alias("xor"))
+>>>
+┌─────┬─────┐
+│ val ┆ xor │
+│ --- ┆ --- │
+│ i64 ┆ i64 │
+╞═════╪═════╡
+│ 0   ┆ 8   │
+│ 30  ┆ 22  │
+│ 60  ┆ 52  │
+│ 90  ┆ 82  │
+└─────┴─────┘
+```
+
+
+</details>
+
+<a id="tabsdata.tableframe.expr.expr.P"></a>
+<details>
+<summary>P</summary>
+
+
+Parameter specification variable.
+
+The preferred way to construct a parameter specification is via the dedicated syntax for generic functions, classes, and type aliases, where the use of ‘**’ creates a parameter specification:
+
+```python
+type IntFunc[**P] = Callable[P, int]
+```
+
+```python
+P = ParamSpec('P')
+```
+
+```python
+def add_logging[**P, T](f: Callable[P, T]) -> Callable[P, T]:
+    '''A type-safe decorator to add logging to a function.'''
+    def inner(*args: P.args, **kwargs: P.kwargs) -> T:
+        logging.info(f'{f.__name__} was called')
+        return f(*args, **kwargs)
+    return inner
+
+@add_logging
+def add_two(x: float, y: float) -> float:
+    '''Add two numbers together.'''
+    return x + y
+```
+
+```python
+>>> P = ParamSpec("P")
+>>> P.__name__
+'P'
+```
+
+
+</details>
+
+<a id="tabsdata.tableframe.expr.expr.T"></a>
+<details>
+<summary>T</summary>
+
+
+Type variable.
+
+The preferred way to construct a type variable is via the dedicated syntax for generic functions, classes, and type aliases:
+
+```python
+class Sequence[T]:  # T is a TypeVar
+    ...
+```
+
+```python
+# S is a TypeVar bound to str
+class StrSequence[S: str]:
+    ...
+
+# A is a TypeVar constrained to str or bytes
+class StrOrBytesSequence[A: (str, bytes)]:
+    ...
+```
+
+```python
+T = TypeVar('T')  # Can be anything
+S = TypeVar('S', bound=str)  # Can be any subtype of str
+A = TypeVar('A', str, bytes)  # Must be exactly str or bytes
+```
+
+
+</details>
+
+<a id="tabsdata.tableframe.expr.expr.deprecated_category"></a>
+<details>
+<summary>deprecated_category</summary>
+
+
+```python
+def deprecated_category(
+    reason: str,
+    replacement: str | None = None,
+    since: str | None = None,
+) -> type[TabsdataDeprecatedWarning]
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/annotations.py#L22)
+
+
+</details>
+
+<a id="tabsdata.tableframe.expr.expr.expr_resolves_to_multiple_outputs"></a>
+<details>
+<summary>expr_resolves_to_multiple_outputs</summary>
+
+
+```python
+def expr_resolves_to_multiple_outputs(
+    expr: Expr,
+) -> bool
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L2911)
+
+
+</details>

@@ -1,0 +1,72 @@
+---
+title: "tabsdata.tableframe.functions.eager.concat"
+sidebarTitle: "tabsdata.tableframe.functions.eager.concat"
+description: "Combine multiple TableFrames by stacking their rows."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.functions.eager.concat"></a>
+<details>
+<summary>concat</summary>
+
+
+```python
+def concat(
+    items: Iterable [ TdType ],
+) -> TdType
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/functions/eager.py#L21)
+
+Combine multiple TableFrames by stacking their rows.
+
+**Parameters:**
+
+<ParamField path="items" type="Iterable [ TdType ]" required>
+  The TableFrames to concatenate.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf1: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ a    ┆ 1    │
+│ b    ┆ 2    │
+└──────┴──────┘
+>>>
+>>> tf2: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ x    ┆ 10   │
+│ y    ┆ 20   │
+└──────┴──────┘
+>>>
+>>> tf = td.concat(tf1, tf2)
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ a    ┆ 1    │
+│ b    ┆ 2    │
+│ x    ┆ 10   │
+│ y    ┆ 20   │
+└──────┴──────┘
+```
+
+
+</details>

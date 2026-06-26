@@ -1,0 +1,41 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.to_titlecase"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.to_titlecase"
+description: "Uppercase the first character and lowercase all the others ones of a string."
+---
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_titlecase"></a>
+<details>
+<summary>to_titlecase</summary>
+
+
+```python
+def to_titlecase() -> Expr
+```
+
+Uppercase the first character and lowercase all the others ones of a string.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.to_titlecase().alias("titlecase"))
+>>>
+┌──────┬───────────┐
+│ a    ┆ titlecase │
+│ ---  ┆ ---       │
+│ str  ┆ str       │
+╞══════╪═══════════╡
+│ ab   ┆ Ab        │
+│ Ab   ┆ Ab        │
+│ AB   ┆ Ab        │
+│ aB   ┆ Ab        │
+│ null ┆ null      │
+└──────┴───────────┘
+```
+
+
+</details>

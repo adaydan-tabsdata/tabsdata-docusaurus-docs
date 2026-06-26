@@ -1,0 +1,90 @@
+---
+title: "Working with Functions"
+sidebarTitle: "Working with Functions"
+---
+
+Functions process data. You configure Tabsdata functions to read data from external systems, modify data, and write to external systems.
+
+There are 3 kinds of Tabsdata functions:
+
+**Publishers**
+
+A publisher function reads data from an external system and writes the data to one or more tables in the Tabsdata server. For information on creating and running publishers, see Publishers.
+
+**Transformers**
+
+A transformer function reads data from one or more tables in the Tabsdata server, transforms the data, then writes the transformed data to tables in the server. For information on creating and running transformers, see Transformers.
+
+**Subscribers**
+
+A subscriber function reads data from tables in the Tabsdata server and writes the data to an external system. For information on creating and running subscribers, see Subscribers.
+
+To create and run a Tabsdata function, you complete the following tasks:
+
+- Define a function
+- Register a function
+- Execute a function
+
+## Define a Function
+
+A Tabsdata function is written in Python. When defining any Tabsdata function, use any Python integrated development environment (IDE) to configure the following properties:
+
+**Name**
+
+The name of the function. It must be unique within the collection that it is registered with.
+
+**Input**
+
+The input data to the function. Depending on the function type, this can be external files, database tables, or tables in the Tabsdata server.
+
+**Output**
+
+The output data from the function. Depending on the function type, this can be files or database tables to be written to an external system, or tables in the Tabsdata server.
+
+**Function Logic**
+
+Function logic defines the task that a Tabsdata function performs. For example, you can define a function logic for a transformer to join two tables on a variable and write the output data to a Tabsdata table.
+
+You can configure the function logic to be as simple or as complex as needed. The simplest function logic is a pass-through, where the function takes the input data and gives it as output without any modifications.
+
+**Triggers (Optional)**
+
+The triggers cause the function to execute. By default, transformers and subscribers are triggered by their input tables, and publishers don’t have any triggers. Additionally, when you configure a function, you can specify the tables to act as trigger to the function. When a commit occurs to one or more of the specified trigger tables, the function executes.
+
+For more information, see Working with Triggers.
+
+## Register a Function
+
+After you define a Tabsdata function, you register it with a collection in the Tabsdata server. A collection is the logical container where the Tabsdata server organizes tables and functions.
+
+To register a function, use the following command in a CLI:
+
+```bash
+$ td fn register --coll <collection_name> --path <path_to_python_file>::<function_name> --update
+```
+
+Where:
+
+- `<collection_name>` is the name of the collection in the Tabsdata server to register the function with.
+- `<path_to_python_file>` is the path to the Python file containing the function. It can be absolute system path or relative to the CLI directory from which the comannd is run.
+- `<function_name>` is the name of the function as defined in the Python file.
+- `--update` flag enables updation of the function if the function with the same name already exists.
+
+## Execute a Function
+
+Once executed, a function takes the input data, processes it as specified, and writes the output as configured.
+
+To execute a function manually, use the following command in a CLI:
+
+```bash
+$ td fn trigger --coll <collection_name> --name <function_name>
+```
+
+Where:
+
+- `<collection_name>` is the name of the collection in the Tabsdata server that the function is registered with.
+- `<function_name>` is the name of the function to be executed. This name is defined when the function is registered.
+
+The function execution happens by initiating a trigger. A trigger can be manual or automated. Manual triggers are initiated by a CLI command from a user. Automated triggers are initiated by the creation of a new table commit on a trigger table associated with the function. Regardless of the trigger defined in a function, you can always manually execute a function from CLI.
+
+For more information on triggers, see Working with Triggers.

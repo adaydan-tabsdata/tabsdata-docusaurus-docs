@@ -1,0 +1,60 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.to_time"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.to_time"
+description: "Convert the string to a time."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_time"></a>
+<details>
+<summary>to_time</summary>
+
+
+```python
+def to_time(
+    fmt: str | None = None,
+    *,
+    strict: bool = True,
+    cache: bool = True,
+) -> Expr
+```
+
+Convert the string to a time.
+
+**Parameters:**
+
+<ParamField path="fmt" type="str | None" default="None">
+  The time format string (default %H:%M:%S)[formats] ([https://docs.rs/chrono/0.4.19/chrono/format/strftime/index.html](https://docs.rs/chrono/0.4.19/chrono/format/strftime/index.html)).
+</ParamField>
+
+<ParamField path="strict" type="bool" default="True">
+  Whether to parse the date strictly.
+</ParamField>
+
+<ParamField path="cache" type="bool" default="True">
+  Whether to cache the date.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.to_time().alias("to_time"))
+>>>
+┌─────────────────────┬─────────────────────┐
+│ a                   ┆ to_datetime         │
+│ ---                 ┆ ---                 │
+│ str                 ┆ datetime[μs]        │
+╞═════════════════════╪═════════════════════╡
+│ 2024-12-13 08:45:34 ┆ 2024-12-13 08:45:34 │
+│ 2024-12-15 18:33:00 ┆ 2024-12-15 18:33:00 │
+│ null                ┆ null                │
+└─────────────────────┴─────────────────────┘
+```
+
+
+</details>

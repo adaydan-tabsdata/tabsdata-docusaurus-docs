@@ -1,0 +1,75 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.drop_nans"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.drop_nans"
+description: "Drop rows with NaN values."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.drop_nans"></a>
+<details>
+<summary>drop_nans</summary>
+
+
+```python
+def drop_nans(
+    subset: ColumnNameOrSelector | Collection [ ColumnNameOrSelector ] | None = None,
+) -> TableFrame
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/lazyframe/frame.py#L928)
+
+Drop rows with NaN values.
+
+**Parameters:**
+
+<ParamField path="subset" type="ColumnNameOrSelector | Collection [ ColumnNameOrSelector ] | None" default="None">
+  Columns to look forNan values. If None, all columns are considered.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┬──────┐
+│ ss   ┆ u    ┆ ff   │
+│ ---  ┆ ---  ┆ ---  │
+│ str  ┆ i64  ┆ f64  │
+╞══════╪══════╪══════╡
+│ A    ┆ 1    ┆ 1.1  │
+│ B    ┆ 0    ┆ 0.0  │
+│ A    ┆ 2    ┆ 2.2  │
+│ B    ┆ 3    ┆ 3.3  │
+│ B    ┆ 4    ┆ 4.4  │
+│ C    ┆ 5    ┆ -1.1 │
+│ C    ┆ 6    ┆ -2.2 │
+│ C    ┆ 7    ┆ -3.3 │
+│ D    ┆ 8    ┆ inf  │
+│ F    ┆ 9    ┆ NaN  │
+│ null ┆ null ┆ null │
+└──────┴──────┴──────┘
+>>>
+>>> tf.unique("a", keep="last")
+┌─────┬─────┬──────┐
+│ ss  ┆ u   ┆ ff   │
+│ --- ┆ --- ┆ ---  │
+│ str ┆ i64 ┆ f64  │
+╞═════╪═════╪══════╡
+│ A   ┆ 1   ┆ 1.1  │
+│ B   ┆ 0   ┆ 0.0  │
+│ A   ┆ 2   ┆ 2.2  │
+│ B   ┆ 3   ┆ 3.3  │
+│ B   ┆ 4   ┆ 4.4  │
+│ C   ┆ 5   ┆ -1.1 │
+│ C   ┆ 6   ┆ -2.2 │
+│ C   ┆ 7   ┆ -3.3 │
+│ D   ┆ 8   ┆ inf  │
+└─────┴─────┴──────┘
+>>>
+```
+
+
+</details>

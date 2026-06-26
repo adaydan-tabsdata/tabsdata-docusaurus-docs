@@ -1,0 +1,92 @@
+---
+title: "tabsdata.LocalFileSource"
+sidebarTitle: "tabsdata.LocalFileSource"
+description: "tabsdata.LocalFileSource API reference."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.LocalFileSource"></a>
+<details>
+<summary>LocalFileSource</summary>
+
+
+```python
+class LocalFileSource(
+    path: str | List [ str ],
+    format: str | dict | FileFormat = None,
+    initial_last_modified: str | datetime = None,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L400)
+
+Bases: `Input`
+
+Class for managing the configuration of local-file-based data inputs.
+
+<a id="tabsdata.LocalFileSource.to_dict"></a>
+#### `to_dict`
+
+```python
+def to_dict()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L507)
+
+Converts the LocalFileSource object to a dictionary.
+
+<a id="tabsdata.LocalFileSource.__init__"></a>
+#### `__init__`
+
+```python
+def __init__(
+    path: str | List [ str ],
+    format: str | dict | FileFormat = None,
+    initial_last_modified: str | datetime = None,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L432)
+
+**Parameters:**
+
+<ParamField path="path" type="str | List [ str ]" required>
+  The path where the files can be found. It can be a single path or a list of paths.
+</ParamField>
+
+<ParamField path="format" type="str | dict | FileFormat" default="None">
+  The format of the file. If not provided, it will be inferred from the file extension of the data. Can be either a string with the format, a FileFormat object or a dictionary with the format as the ‘type’ key and any additional format-specific information. Currently supported formats are ‘csv’, ‘parquet’, ‘ndjson’, ‘jsonl’ and ‘log’.
+</ParamField>
+
+<ParamField path="initial_last_modified" type="str | datetime" default="None">
+  If provided, only the files modified after this date and time will be considered. The date and time can be provided as a string in [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601) or as a datetime object. If no timezone is provided, UTC will be assumed.
+</ParamField>
+
+**Raises:**
+
+<ResponseField name="InputConfigurationError" type="Exception"></ResponseField>
+
+<ResponseField name="FormatConfigurationError" type="Exception"></ResponseField>
+
+<a id="tabsdata.LocalFileSource.format"></a>
+<ResponseField name="format" type="FileFormat">
+The format of the file. If not provided, it will be inferred from the file extension of the data.
+</ResponseField>
+
+<a id="tabsdata.LocalFileSource.path"></a>
+<ResponseField name="path" type="str | List[ str ]">
+The path where the files can be found. It can be a single path or a list of paths.
+</ResponseField>
+
+<a id="tabsdata.LocalFileSource.initial_last_modified"></a>
+<ResponseField name="initial_last_modified" type="str | None">
+If not None, only the files modified after this date and time will be considered.
+</ResponseField>
+
+#### Methods
+
+#### Attributes
+
+
+</details>

@@ -1,0 +1,54 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.ne_missing"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.ne_missing"
+description: "Compare if 2 expressions are not equal an, equivalent to expr != other . If one of the expressions is null (None) it returns false ."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.ne_missing"></a>
+<details>
+<summary>ne_missing</summary>
+
+
+```python
+def ne_missing(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L1667)
+
+Compare if 2 expressions are not equal an, equivalent to expr != other. If one of the expressions is null (None) it returns false.
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to compare with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("a").eq(td.col("b")).alias("ne_missing"))
+>>>
+┌─────┬──────┬───────────┐
+│ a   ┆ b    ┆ ne_missing│
+│ --- ┆ ---  ┆ ---       │
+│ f64 ┆ f64  ┆ bool      │
+╞═════╪══════╪═══════════╡
+│ 1.0 ┆ 2.0  ┆ true      │
+│ 2.0 ┆ 2.0  ┆ false     │
+│ NaN ┆ NaN  ┆ false     │
+│ 4.0 ┆ NaN  ┆ true      │
+│ 5.0 ┆ null ┆ true      │
+│ null┆ null ┆ false     │
+└─────┴──────┴───────────┘
+```
+
+
+</details>

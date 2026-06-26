@@ -1,0 +1,42 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.is_infinite"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.is_infinite"
+description: "If an element value is infinite."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.is_infinite"></a>
+<details>
+<summary>is_infinite</summary>
+
+
+```python
+def is_infinite() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L1240)
+
+If an element value is infinite.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp")
+>>>        .is_infinite().alias("infinite"))
+>>>
+┌──────┬──────────┐
+│ temp ┆ infinite │
+│ ---  ┆ ---      │
+│ f64  ┆ bool     │
+╞══════╪══════════╡
+│ 1.1  ┆ false    │
+│ 2.0  ┆ false    │
+│ inf  ┆ true     │
+└──────┴──────────┘
+```
+
+
+</details>

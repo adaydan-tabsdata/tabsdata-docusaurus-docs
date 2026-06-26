@@ -1,0 +1,259 @@
+---
+title: "Troubleshooting"
+sidebarTitle: "Troubleshooting"
+---
+
+## The Execution of a Function Failed
+
+After triggering a function, the `td exe list-trx` reports the transaction as failed.
+
+For example:
+
+![../../_images/image7_2.png](/img/image7_2.png)
+
+If a transaction is in `Stalled` status, all functions that did not complete successfully yet are either in `Failed` status or on `Hold`. Any other execution depending on the failed transaction will also be on `Scheduled` status.
+
+If this is the case, you need to:
+
+1. Check the logs for issues.
+2. Cancel the failed transaction.
+3. Fix the issue in the code.
+4. Update the function body in the Tabsdata server.
+5. Re-trigger the function that started the cancelled transaction.
+
+### Check the logs for issues
+
+#### Find the Workers of the Failed Transaction that Already Executed
+
+To know the exact reason for fialure, you will need to access the constituent workers of a transaction. To find the workers of the stalled transaction, use the `td exe list-worker` command with one of the following 3 options:
+
+- `--trx <TRX_ID>` to list workers of a specific transaction.
+- `--plan <PLAN_ID>` to list workers of a specific execution plan.
+- `--fn <FN_ID>` to list workers of a specific function.
+
+![../../_images/image8_2.png](/img/image8_2.png)
+
+#### Fetch the logs of a Worker
+
+To fetch the logs of a worker, use the `td exe logs --worker <WORKER_ID>` command.
+
+```python
+$ td exe logs --worker 06ACHMC505VC10HMF7NI1D9RUG
+Logs from worker '06ACHMC505VC10HMF7NI1D9RUG':
+********************
+/Users/foo/.tabsdata/instances/tabsdata/workspace/work/proc/ephemeral/function/work/cast/06ACHMC505VC10HMF7NI1D9RUG_1/work/log/err.log
+-----------------------------------------------
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/foo/.tabsdata/environments/726fbc09de/lib/python3.12/site-packages/tabsserver/function_execution/execute_function_from_bundle_path.py", line 106, in <module>
+    raise e
+  File "/Users/foo/.tabsdata/environments/726fbc09de/lib/python3.12/site-packages/tabsserver/function_execution/execute_function_from_bundle_path.py", line 96, in <module>
+    execute_bundled_function(
+  File "/Users/foo/.tabsdata/environments/726fbc09de/lib/python3.12/site-packages/tabsserver/function_execution/execute_function_from_bundle_path.py", line 35, in execute_bundled_function
+    results = execution_utils.execute_function_from_config(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/foo/.tabsdata/environments/726fbc09de/lib/python3.12/site-packages/tabsserver/function_execution/execution_utils.py", line 87, in execute_function_from_config
+    return execute_function_with_config(config, met, working_dir, execution_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/foo/.tabsdata/environments/726fbc09de/lib/python3.12/site-packages/tabsserver/function_execution/execution_utils.py", line 131, in execute_function_with_config
+    result = met(*parameters)
+             ^^^^^^^^^^^^^^^^
+  File "/Users/foo/src/tabsdata/github/tabsdata-ex/publisher.py", line 10, in pub
+    assert False
+           ^^^^^
+AssertionError
+===============================================
+/Users/foo/.tabsdata/instances/tabsdata/workspace/work/proc/ephemeral/function/work/cast/06ACHMC505VC10HMF7NI1D9RUG_1/work/log/fn.log
+-----------------------------------------------
+...
+```
+
+Depending on the type of error, you may need to retry the transaction or cancel it.
+
+##### If logs show up empty
+
+In the rare case that the logs show up empty, follow the path below to find the logs in the server folder. Remember to replace the `06ACHMC505VC10HMF7NI1D9RUG` with the id of your run that you want to check the logs for.
+
+```python
+/Users/foo/.tabsdata/instances/tabsdata/workspace/work/proc/ephemeral/function/work/cast/06ACHMC505VC10HMF7NI1D9RUG_1/work/log/fn.log
+```
+
+#### Cancel the Transaction
+
+To cancel the transaction use the `td exe cancel --trx <TRX_ID>` command. It will cancel all workers of the transaction, including the ones that finished successfully. The cancel also applies to all the dependent transactions.
+
+For example:
+
+```python
+$ td exe cancel --trx 06ACE0ME7TV95DKETOAMVB88DK
+Canceling transaction with ID '06ACHMC4H1QJ3E7VS99VSRES4K'
+----------
+Execution plan canceled successfully
+```
+
+##### Recover the Transaction
+
+To recover the transaction use the `td exe recover --trx <TRX_ID>` command. It will retry all workers that failed and reschedule all workers that were on hold. The recover also applies to all the dependent transactions.
+
+For example:
+
+```python
+$ td exe recover --trx 06ACE0ME7TV95DKETOAMVB88DK
+Recovering transaction with ID '06ACHMC4H1QJ3E7VS99VSRES4K'
+----------
+Execution plan recovered successfully
+```
+
+#### Update the function body in the Tabsdata server
+
+The function changes you made are still in your local and need to be moved to the Tabsdata server. To do that, use the below command and modify as needed.
+
+```python
+$ td fn update --coll examples --name <FUNCTION>
+
+            --path <PYTHON_FILE>::<PYTHON_FUNCTION>
+
+            --description <DESCRIPTION> --local-pkg <LOCAL_PACKAGE_PATH>
+
+            --requirements <REQUIREMENTS_TXT_PATH>
+```
+
+## Common Error Resolutions
+
+### Authentication Failed
+
+![../../_images/authentication_failed.png](/img/authentication_failed.png)
+
+If authentication is failing, try logging back in.
+
+```python
+td login --server localhost --user <USERNAME> --role <ROLE> --password <PASSWORD>
+```
+
+**Default:**
+
+```python
+td login --server localhost:2457 --username admin --role sys_admin --password tabsdata
+```
+
+### Empty Table Schema/Sample
+
+![../../_images/empty_schema.png](/img/empty_schema.png)
+
+If the table value is empty, check if the path to the input file in the Python code is correct or not. If the path seems correct, you may also want to check the folder from which you are running the function registration CLI command. If you are using `os.getcwd()` in the python code, it is important to remember that this command retrieves the path of the folder from which the function is registered in the CLI.
+
+## Server Related Issues
+
+### Check the Server Status
+
+Use the `tdserver status` command to check the status of the Tabsdata server.
+
+*Sample output when running:*
+
+![../../_images/image1.png](/img/image1.png)
+
+*Sample output when not running:*
+
+```python
+$ tdserver status
+2025-02-02T21:34:16.330213Z  WARN tabsdatalib::bin::tdserver: ✅ ✅ ✅ Activated tabsdata enterprise in production mode
+2025-02-02T21:34:16.348513Z  WARN tabsdatalib::bin::tdserver: TabsData instance '/Users/foo/.tabsdata/instances/tabsdata/workspace' not running: 'NotRunning { pid: 90788 }'
+```
+
+### Check the Server Logs
+
+Use the `tdserver log` command to check the logs of the Tabsdata server. It will print (continuously) the logs of the server. Press `Ctrl+C` to stop.
+
+*For example:*
+
+```python
+$ tdserver log
+...
+Source: /Users/foo/.tabsdata/instances/tabsdata/workspace/work/proc/regular/apisrv/work/log/td.log - Line: 2025-02-02T22:12:10.370237Z DEBUG tower::buffer::worker: service.ready=true processing request
+Source: /Users/foo/.tabsdata/instances/tabsdata/workspace/work/proc/regular/apisrv/work/log/td.log - Line: 2025-02-02T22:12:10.370237Z DEBUG tower::buffer::worker: service.ready=true processing request
+Source: /Users/foo/.tabsdata/instances/tabsdata/workspace/work/log/td.log - Line: 2025-02-02T22:12:10.746806Z DEBUG td_common::monitor:
+Source: /Users/foo/.tabsdata/instances/tabsdata/workspace/work/log/td.log - Line: - Process PID...: 11056
+Source: /Users/foo/.tabsdata/instances/tabsdata/workspace/work/log/td.log - Line: - Process Physical Memory: 30 mb
+Source: /Users/foo/.tabsdata/instances/tabsdata/workspace/work/log/td.log - Line: - Process Virtual Memory.: 402,494 mb
+Source: /Users/foo/.tabsdata/instances/tabsdata/workspace/work/log/td.log - Line: - System Total Memory....: 131,072 mb
+Source: /Users/foo/.tabsdata/instances/tabsdata/workspace/work/log/td.log - Line: - System Used Memory.....: 56,216 mb
+Source: /Users/foo/.tabsdata/instances/tabsdata/workspace/work/log/td.log - Line: - System Free Memory.....: 36,798 mb
+Source: /Users/foo/.tabsdata/instances/tabsdata/workspace/work/proc/regular/apisrv/work/log/td.log - Line: 2025-02-02T22:12:10.872019Z DEBUG tower::buffer::worker: service.ready=true processing request
+S
+...
+```
+
+### Check the Server Status using the Client Command-Line Tool
+
+Use the `td status` command to check the status of the Tabsdata server. You must be logged in to the server to use the `td` command-line tool.
+
+*Sample output when logged in:*
+
+```python
+$ td status
+Obtaining server status
+----------
+Status: 'OK', latency_as_nanos: 24333
+```
+
+*Sample output when not logged in:*
+
+```python
+$ td status
+No credentials found. Please login first.
+```
+
+*Sample output when Tabsdata server is not running:*
+
+![../../_images/image5.png](/img/image5.png)
+
+## Hard Reset
+
+### Remove Tabsdata instance
+
+All the information related to Tabsdata server is stored in instances. By default instances are created in the root folder. You can run the following command to delete the instance and start the process from scratch with `tdserver start`.
+
+```python
+$ tdserver delete
+```
+
+Clean the Tabsdat related libraries from pip and uv cache:
+
+```python
+$ tdserver clean
+```
+
+**Note:** You can also delete the server by finding the `.tabsdata` folder in your system and deleting it. This folder gets created in the root directory of your system by default.
+
+### Delete stray Servers
+
+There may be also be a stray Tabsdata server (supervisor and/or apiserver) running in the background.
+
+You can delete the servers using the methods below:
+
+#### Searching through processes
+
+```python
+$ ps -ef | grep tabsdata
+$ kill <PID>
+```
+
+#### Using btop
+
+You can use `btop` (Read more about the tool on [btop github](https://github.com/aristocratos/btop)).
+
+```python
+$ brew install btop
+$ btop
+```
+
+Click on filter and type tabsdata.
+
+![../../_images/btop_output.png](/img/btop_output.png)
+
+Use your arrow keys to navigate to the apiserv.
+
+Press `k` to kill the server.
+
+![../../_images/btop_kill.png](/img/btop_kill.png)

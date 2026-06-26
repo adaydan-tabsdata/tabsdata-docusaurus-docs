@@ -1,0 +1,47 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.first_row"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.first_row"
+description: "Return a tuple or dictionary with the first row, or None if no row."
+---
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.first_row"></a>
+<details>
+<summary>first_row</summary>
+
+
+```python
+def first_row(
+    named: bool = False,
+) -> tuple[Any, ...] | dict[str, Any] | None
+```
+
+Return a tuple or dictionary with the first row, or None if no row.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌─────┬─────┐
+│ A   ┆ B   │
+│ --- ┆ --- │
+│ str ┆ i64 │
+╞═════╪═════╡
+│ a   ┆ 1   │
+│ b   ┆ 2   │
+│ c   ┆ 3   │
+└─────┴─────┘
+>>>
+>>> tf.last_row()
+>>>
+('a', 1)
+>>>
+>>> tf.last_row(named=True)
+>>>
+{'A': 'a', 'B': '1'}
+```
+
+
+</details>

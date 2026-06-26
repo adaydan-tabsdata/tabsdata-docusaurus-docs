@@ -1,0 +1,73 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.unnest"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.unnest"
+description: "Expand one or more struct columns so that each field within the struct becomes a separate column in the TableFrame ."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.unnest"></a>
+<details>
+<summary>unnest</summary>
+
+
+```python
+def unnest(
+    columns: td_typing.ColumnNameOrSelector | Collection [ td_typing.ColumnNameOrSelector ],
+    * more_columns: td_typing.ColumnNameOrSelector,
+) -> TableFrame
+```
+
+Expand one or more struct columns so that each field within the struct becomes a separate column in the TableFrame.
+
+The resulting TableFrame will place these new columns in the same position as the original struct column, effectively replacing it. This makes it easier to work directly with the inner fields as standard columns.
+
+**Parameters:**
+
+<ParamField path="columns" type="td_typing.ColumnNameOrSelector | Collection [ td_typing.ColumnNameOrSelector ]" required>
+  Name of the struct column(s) to expand.
+</ParamField>
+
+<ParamField path="more_columns" required>
+  Additional struct columns to expand, provided as positional arguments.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf = td.TableFrame({
+...     "id": [1, 2],
+...     "info": [
+...         {"name": "Alice", "age": 30},
+...         {"name": "Bob", "age": None},
+...     ],
+...     "status": ["active", "inactive"],
+... })
+>>>
+>>> tf
+>>>
+┌─────┬───────────────┬───────────┐
+│ id  ┆ info          ┆ status    │
+│ --- ┆ ---           ┆ ---       │
+│ i64 ┆ struct[2]     ┆ str       │
+╞═════╪═══════════════╪═══════════╡
+│ 1   ┆ {"Alice",30}  ┆ active    │
+│ 2   ┆ {"Bob",null}  ┆ inactive  │
+└─────┴───────────────┴───────────┘
+>>>
+>>> tf.unnest("info")
+>>>
+┌─────┬───────┬──────┬───────────┐
+│ id  ┆ name  ┆ age  ┆ status    │
+│ --- ┆ ---   ┆ ---  ┆ ---       │
+│ i64 ┆ str   ┆ i64  ┆ str       │
+╞═════╪═══════╪══════╪═══════════╡
+│ 1   ┆ Alice ┆ 30   ┆ active    │
+│ 2   ┆ Bob   ┆ null ┆ inactive  │
+└─────┴───────┴──────┴───────────┘
+```
+
+
+</details>

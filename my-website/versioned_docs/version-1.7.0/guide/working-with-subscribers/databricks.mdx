@@ -1,0 +1,143 @@
+---
+title: "Databricks"
+sidebarTitle: "Databricks"
+---
+
+You can use this built-in Tabsdata subscriber to write to Unity-Catalog managed delta tables in Databricks.
+
+## Installing the connector
+
+To work with the Databricks connector you are required to install the dependencies separately. This is to manage the size of the core package. Please run the following command in your terminal to install the dependencies.
+
+```bash
+$ pip install tabsdata[“databricks”]
+```
+
+or,
+
+```bash
+$ pip install 'tabsdata['databricks']'
+```
+
+## Example (Subscriber - Databricks)
+
+The following example creates a subscriber named `write_sales`. It writes two Tabsdata tables to the database. The subscriber is automatically triggered by a new commit to any of its input tables, and writes data to the database without any modification.
+
+```python
+import tabsdata as td
+
+@td.subscriber(
+    tables=["vendors", "items"],
+    destination=td.DatabricksDestination(
+        host_url = "https://adb-1234567890123456.7.azuredatabricks.net",
+        token = "dapi1234567890abcdef1234567890abcd",
+        tables = ["vendors", "items"],
+        volume = "main_volume",
+        catalog = "hive_metastore",
+        schema = "default",
+        warehouse = "my_sql_warehouse",
+        warehouse_id = null,
+        if_table_exists = "append",
+        schema_strategy = "update"
+    )
+)
+
+def write_sales(tf1: td.TableFrame, tf2: td.TableFrame):
+    return tf1, tf2
+```
+
+**Note:** After defining the function, you need to register it with a Tabsdata collection and execute it. For more information, see Register a Function and Execute a Function.
+
+## Setup (Subscriber - Databricks)
+
+The following code uses placeholder values for defining a subscriber that reads Tabsdata tables and writes to Databricks:
+
+```python
+import tabsdata as td
+
+
+@td.subscriber(
+    tables=["<input_table1>", "<input_table2>"],
+
+    destination=td.DatabricksDestination(
+        host_url: str,                  # Databricks URL
+        token: str|Secret,              # Databricks Personal Account Token (PAT)
+        tables: list[str]|str,          # Tables to be created in Databricks
+        volume: str,                    # Name of the Databricks volume
+        catalog: str|None,              # Catalog name (optional, can be null if the table name has the catalog name.)
+        schema: str|None,               # Schema name (optional, can be null if the table name has the schema name.)
+        warehouse: str|None,            # SQL warehouse name (use either this or warehouse_id)
+        warehouse_id: str|None,         # Use null if warehouse name is provided
+        if_table_exists: str = "append" # append or replace
+        schema_strategy: str = "update" # update or strict
+    ),
+
+    trigger_by=["<trigger_table1>", "<trigger_table2>"],
+
+)
+
+def <subscriber_name> (<table_frame1>:td.TableFrame, <table_frame2>:td.TableFrame):
+    <function_logic>
+    return <table_frame_output1>, <table_frame_output2>
+```
+
+**Note:** After defining the function, you need to register it with a Tabsdata collection and execute it. For more information, see Register a Function and Execute a Function.
+
+Following properties are defined in the code above:
+
+### tables
+
+`<input_table1>`, `<input_table2>`… are the names of the Tabsdata tables to be written to the external system.
+
+### destination
+
+- **host_url**: Databricks URL
+- **token**: Databricks Personal Account Token (PAT). The user owning the PAT requires ‘USE CATALOG’, ‘USE SCHEMA’, ‘READ VOLUME’ & ‘WRITE VOLUME’ privileges.
+- **tables**: Tables to be created in Databricks. Each table name provided must either be fully qualified in the form of ‘catalog.schema.table_name’ or have the information provided through the ‘catalog’ or the ‘schema’ parameters. For example, if a table of the form ‘schema.table_name’ is provided, the ‘catalog’ parameter must also be provided. If a table of the form ‘table_name’ is provided, both ‘catalog’ and ‘schema’ must be provided.
+- **volume**: Name of the Databricks volume. The connector uses an existing Databricks managed volume. The files written to the volume are deleted after connector finishes writing the data to the Databricks table.
+- **catalog**: Catalog name (optional, can be null if the table name has the catalog name.)
+- **schema**: Schema name (optional, can be null if the table name has the schema name.)
+- **warehouse**: Warehouse name (use either this or warehouse_id) that will be used for uploading data to Databricks tables. The user has to have privileges to use the warehouse.
+- **warehouse_id**: Warehouse Id. Use null if warehouse name is provided.
+- [optional] **if_table_exists**: This is an optional property to define the strategy to follow when the table already exists. ‘replace’ will create overwrite the existing table, and ‘append’ will append to the existing data in the table. Defaults to ‘append’.
+- **schema_strategy**: The is to mention the strategy to follow when appending to a table with an existing schema. ‘update’ will update the schema with the possible new columns that might exist in the TableFrame. ‘strict’ will not modify the schema, and will fail if there is any difference.
+
+### None as an input and output
+
+A subscriber may receive and return a `None` value instead of TableFrames.
+
+When a subscriber receives a `None` value instead of a TableFrame it means that the requested table dependency version does not exist.
+
+When a subscriber returns a `None` value instead of a TableFrame it means there is no new data to write to the external system. This helps in avoiding the creation of multiple copies of the same data.
+
+### [Optional] trigger_by
+
+`<trigger_table1>`, `<trigger_table2>`… are the names of the tables in the Tabsdata server. A new commit to any of these tables triggers the subscriber. All listed trigger tables must exist in the server before registering the subscriber.
+
+Defining trigger tables is optional. If you don’t define the `trigger_by` property, the subscriber will be triggered by any of its input tables. If you define the `trigger_by` property, then only those tables listed in the property can automatically trigger the subscriber.
+
+For more information, see Working with Triggers.
+
+### `<subscriber_name>`
+
+`<subscriber_name>` is the name for the subscriber that you are configuring.
+
+### `<function_logic>`
+
+`<function_logic>` governs the processing performed by the subscriber. You can specify function logic to be a simple write or to perform additional processing as needed. For more information about the function logic that you can include, see Working with Tables.
+
+`<table_frame1>`, `<table_frame2>`… are the names for the variables that temporarily store source data for processing.
+
+`<table_frame_output1>`, `<table_frame_output2>`… are the output from the function that are written to the external system.
+
+### Data Drift Support
+
+This section talks about how Tabsdata handles data drift in the output data for this Subscriber connector.
+
+The behaviour depends on how `if_table_exists` and `schema_strategy` are configured in the subscriber.
+
+For a Databricks subscriber with `if_table_exists=replace` (`schema_strategy` is ignored), the table is dropped and recreated on each execution. The resulting schema exactly matches the newly exported data, and type changes are fully reflected in the new table schema.
+
+For a Databricks subscriber with `if_table_exists=append` and `schema_strategy=update`, the existing table schema is augmented to include new columns. Columns that are no longer present in the source remain in the table.
+
+For a Databricks subscriber with `if_table_exists=append` and `schema_strategy=strict`, any schema changes (added, removed, or modified columns) will cause execution to fail.

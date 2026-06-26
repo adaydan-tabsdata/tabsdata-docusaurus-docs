@@ -1,0 +1,55 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.log"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.log"
+description: "Calculate the logarithm to the given base."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.log"></a>
+<details>
+<summary>log</summary>
+
+
+```python
+def log(
+    base: float = 2.718281828459045,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L1455)
+
+Calculate the logarithm to the given base.
+
+**Parameters:**
+
+<ParamField path="base" type="float" default="2.718281828459045">
+  logarithm base, defaults toe.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").log().alias("log")
+>>>
+┌──────┬──────────┐
+│ val  ┆ log      │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ -1.0 ┆ NaN      │
+│ 0.0  ┆ -inf     │
+│ 1.1  ┆ 0.09531  │
+│ 2.0  ┆ 0.693147 │
+│ inf  ┆ inf      │
+│ null ┆ null     │
+│ NaN  ┆ NaN      │
+└──────┴──────────┘
+```
+
+
+</details>

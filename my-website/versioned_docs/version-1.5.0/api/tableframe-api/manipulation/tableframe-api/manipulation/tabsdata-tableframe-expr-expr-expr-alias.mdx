@@ -1,0 +1,53 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.alias"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.alias"
+description: "Set the name for a column or expression."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.alias"></a>
+<details>
+<summary>alias</summary>
+
+
+```python
+def alias(
+    name: str,
+) -> Expr
+```
+
+Set the name for a column or expression.
+
+**Parameters:**
+
+<ParamField path="name" type="str" required>
+  Column or expression new name. The name must be a word ([A-Za-z_][A-Za-z0-9_]*) of up to 100 characters.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("age"), td.col("age").alias("Age"))
+>>>
+┌──────┬──────┐
+│ age  ┆ Age  │
+│ ---  ┆ ---  │
+│ i64  ┆ i64  │
+╞══════╪══════╡
+│ 1    ┆ 1    │
+│ 15   ┆ 15   │
+│ 18   ┆ 18   │
+│ 60   ┆ 60   │
+│ 60   ┆ 60   │
+│ 75   ┆ 75   │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+
+</details>

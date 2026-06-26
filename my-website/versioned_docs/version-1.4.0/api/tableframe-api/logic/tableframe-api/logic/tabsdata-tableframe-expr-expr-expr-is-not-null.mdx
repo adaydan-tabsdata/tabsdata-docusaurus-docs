@@ -1,0 +1,41 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.is_not_null"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.is_not_null"
+description: "If an element value is not null (None)."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.is_not_null"></a>
+<details>
+<summary>is_not_null</summary>
+
+
+```python
+def is_not_null() -> Expr
+```
+
+If an element value is not null (None).
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").is_not_null()
+>>>        .alias("null"))
+>>>
+┌──────┬──────────┐
+│ temp ┆ not_nulL │
+│ ---  ┆ ---      │
+│ f64  ┆ bool     │
+╞══════╪══════════╡
+│ 1.1  ┆ true     │
+│ Nan  ┆ true     │
+│ None ┆ false    │
+│ inf  ┆ true     │
+└──────┴──────────┘
+```
+
+
+</details>

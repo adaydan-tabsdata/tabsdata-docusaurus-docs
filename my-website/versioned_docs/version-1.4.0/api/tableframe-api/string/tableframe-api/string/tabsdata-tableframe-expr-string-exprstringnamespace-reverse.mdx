@@ -1,0 +1,39 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.reverse"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.reverse"
+description: "tabsdata.tableframe.expr.string.ExprStringNameSpace.reverse API reference."
+---
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.reverse"></a>
+<details>
+<summary>reverse</summary>
+
+
+```python
+def reverse() -> Expr
+```
+
+Reverse the string.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.reverse().alias("reverse"))
+>>>
+┌──────┬─────────┐
+│ a    ┆ reverse │
+│ ---  ┆ ---     │
+│ str  ┆ str     │
+╞══════╪═════════╡
+│ abc  ┆ cba     │
+│ a    ┆ a       │
+│ null ┆ null    │
+└──────┴─────────┘
+```
+
+
+</details>

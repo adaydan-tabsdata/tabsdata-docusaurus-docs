@@ -1,0 +1,48 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.le"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.le"
+description: "Less or equal operator."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.le"></a>
+<details>
+<summary>le</summary>
+
+
+```python
+def le(
+    other: Any,
+) -> Expr
+```
+
+Less or equal operator.
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to compare with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").le(1.0).alias("le"))
+>>>
+┌──────┬─────────┐
+│ temp ┆ le      │
+│ ---  ┆ ------- │
+│ f64  ┆ bool    │
+╞══════╪═════════╡
+│ 0.9  ┆  true   │
+│ 1.1  ┆  false  │
+└──────┴─────────┘
+```
+
+
+</details>

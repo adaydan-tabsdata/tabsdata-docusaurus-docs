@@ -1,0 +1,62 @@
+---
+title: "tabsdata.tableframe.lazyframe.group_by.TableFrameGroupBy.mean"
+sidebarTitle: "tabsdata.tableframe.lazyframe.group_by.TableFrameGroupBy.mean"
+description: "Aggregation operation that computes the mean value in the group for of all the non group by columns."
+---
+
+<a id="tabsdata.tableframe.lazyframe.group_by.TableFrameGroupBy.mean"></a>
+<details>
+<summary>mean</summary>
+
+
+```python
+def mean() -> TableFrame
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/group_by.py#L210)
+
+Aggregation operation that computes the mean value in the group for of all the non group by columns.
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┬──────┐
+│ ss   ┆ u    ┆ ff   │
+│ ---  ┆ ---  ┆ ---  │
+│ str  ┆ i64  ┆ f64  │
+╞══════╪══════╪══════╡
+│ A    ┆ 1    ┆ 1.1  │
+│ B    ┆ 0    ┆ 0.0  │
+│ A    ┆ 2    ┆ 2.2  │
+│ B    ┆ 3    ┆ 3.3  │
+│ B    ┆ 4    ┆ 4.4  │
+│ C    ┆ 5    ┆ -1.1 │
+│ C    ┆ 6    ┆ -2.2 │
+│ C    ┆ 7    ┆ -3.3 │
+│ D    ┆ 8    ┆ inf  │
+│ F    ┆ 9    ┆ NaN  │
+│ null ┆ null ┆ null │
+└──────┴──────┴──────┘
+>>>
+>>> tf.group_by("ss").mean()
+>>>
+┌──────┬──────────┬──────────┐
+│ ss   ┆ u        ┆ ff       │
+│ ---  ┆ ---      ┆ ---      │
+│ str  ┆ f64      ┆ f64      │
+╞══════╪══════════╪══════════╡
+│ null ┆ null     ┆ null     │
+│ A    ┆ 1.5      ┆ 1.65     │
+│ B    ┆ 2.333333 ┆ 2.566667 │
+│ C    ┆ 6.0      ┆ -2.2     │
+│ D    ┆ 8.0      ┆ inf      │
+│ F    ┆ 9.0      ┆ NaN      │
+└──────┴──────────┴──────────┘
+```
+
+
+</details>

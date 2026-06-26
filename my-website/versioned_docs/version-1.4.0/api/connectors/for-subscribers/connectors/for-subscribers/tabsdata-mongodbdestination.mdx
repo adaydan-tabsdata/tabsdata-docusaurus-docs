@@ -1,0 +1,104 @@
+---
+title: "tabsdata.MongoDBDestination"
+sidebarTitle: "tabsdata.MongoDBDestination"
+description: "Bases: DestinationPlugin"
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.MongoDBDestination"></a>
+<details>
+<summary>MongoDBDestination</summary>
+
+
+```python
+class MongoDBDestination(
+    uri: str,
+    collections_with_ids: tuple [ str , str | None ] | List [ tuple [ str , str | None ] ],
+    credentials: UserPasswordCredentials = None,
+    connection_options: dict = None,
+    if_collection_exists: Literal [ 'append' , 'replace' ] = 'append',
+    use_trxs: bool = False,
+    docs_per_trx: int = 1000,
+    maintain_order: bool = False,
+    update_existing: bool = True,
+    fail_on_duplicate_key: bool = True,
+    log_intermediate_files: bool = False,
+    ** kwargs,
+)
+```
+
+Bases: [`DestinationPlugin`](../plugins/tabsdata.DestinationPlugin.html#tabsdata.DestinationPlugin)
+
+<a id="tabsdata.MongoDBDestination.__init__"></a>
+#### `__init__`
+
+```python
+def __init__(
+    uri: str,
+    collections_with_ids: tuple [ str , str | None ] | List [ tuple [ str , str | None ] ],
+    credentials: UserPasswordCredentials = None,
+    connection_options: dict = None,
+    if_collection_exists: Literal [ 'append' , 'replace' ] = 'append',
+    use_trxs: bool = False,
+    docs_per_trx: int = 1000,
+    maintain_order: bool = False,
+    update_existing: bool = True,
+    fail_on_duplicate_key: bool = True,
+    log_intermediate_files: bool = False,
+    ** kwargs,
+)
+```
+
+**Parameters:**
+
+<ParamField path="uri" type="str" required>
+  The URI of the MongoDB database.
+</ParamField>
+
+<ParamField path="collections_with_ids" type="tuple [ str , str | None ] | List [ tuple [ str , str | None ] ]" required>
+  A tuple or list of tuples with the collection and the name of the field that will be used as the unique identifier. For example, if you want to store the data in a collection called ‘my_collection’ in database ‘my_database’ and use the field ‘username’ as the unique identifier, you would provide the following tuple: ( ‘my_database.my_collection’, ‘username’). If you wanted MongoDB to autogenerate the id, you would provide the following tuple: (‘my_database.my_collection’, None).
+</ParamField>
+
+<ParamField path="credentials" type="UserPasswordCredentials" default="None">
+  The credentials to connect with the database. If None, no credentials will be used.
+</ParamField>
+
+<ParamField path="connection_options" type="dict" default="None">
+  A dictionary with the options to pass to the pymongo.MongoClient constructor. For example, if you want to set the timeout to 1000 milliseconds, you would provide the following dictionary: \{‘serverSelectionTimeoutMS’: 1000}.
+</ParamField>
+
+<ParamField path="if_collection_exists" type="Literal [ 'append' , 'replace' ]" default="'append'">
+  The action to take if the collection already exists. If ‘append’, the data will be appended to the existing collection. If ‘replace’, the existing collection will be replaced with the new data. Defaults to ‘append’.
+</ParamField>
+
+<ParamField path="use_trxs" type="bool" default="False">
+  Whether to use a transaction when storing the data in the database. If True, the data will be stored in a transaction, which will ensure that all the data is stored or none of it is (requires that the database is configured with a replica set). If False, the data will be stored without a transaction, which may lead to inconsistent data in the database. Defaults to False.
+</ParamField>
+
+<ParamField path="docs_per_trx" type="int" default="1000">
+  The maximum number of documents to store in a single transaction. If the number of documents to store exceeds this number, the data will be stored in multiple transactions.
+</ParamField>
+
+<ParamField path="maintain_order" type="bool" default="False">
+  Whether to maintain the order of the documents when storing them in the database. If True, the documents will be stored in the same order as they are in the TableFrame. If False, the documents will be stored in the order that they are processed. Defaults to False.
+</ParamField>
+
+<ParamField path="update_existing" type="bool" default="True">
+  Whether to update the existing documents in the database. If True, the documents will be updated if they already exist in the database. If False, the documents will be inserted without updating the existing documents, and if a document with the same id already exists execution will fail. Defaults to True.
+</ParamField>
+
+<ParamField path="fail_on_duplicate_key" type="bool" default="True">
+  Whether to raise an exception if a document with the same id already exists in the collection. If True, an exception will be raised. If False, the operation will continue without raising an exception. Defaults to True.
+</ParamField>
+
+<ParamField path="log_intermediate_files" type="bool" default="False">
+  Whether to log when each batch of data is stored in the database. If True, a message will be logged for each batch of data stored. If False, no message will be logged until all the data for a single collection has been stored. Defaults to False.
+</ParamField>
+
+#### Methods
+
+#### Attributes
+
+
+</details>

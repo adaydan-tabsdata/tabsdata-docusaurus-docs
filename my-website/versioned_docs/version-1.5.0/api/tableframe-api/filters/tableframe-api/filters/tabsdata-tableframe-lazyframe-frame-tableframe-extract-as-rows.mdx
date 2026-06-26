@@ -1,0 +1,69 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.extract_as_rows"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.extract_as_rows"
+description: "Extract a slice of rows from the TableFrame as a list of dictionaries."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.extract_as_rows"></a>
+<details>
+<summary>extract_as_rows</summary>
+
+
+```python
+def extract_as_rows(
+    offset: int,
+    length: int,
+) -> list[dict[str, Any]]
+```
+
+Extract a slice of rows from the TableFrame as a list of dictionaries.
+
+Each dictionary represents one row, where keys are column names and values are the corresponding cell values.
+
+**Parameters:**
+
+<ParamField path="offset" type="int" required>
+  The starting row index of the slice.
+</ParamField>
+
+<ParamField path="length" type="int" required>
+  The number of rows to include in the slice.
+</ParamField>
+
+**Returns:** A list of row dictionaries.
+
+**Return type:** list [ dict [ str , Any]]
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌─────┬─────┐
+│ a   ┆ b   │
+│ --- ┆ --- │
+│ str ┆ i64 │
+╞═════╪═════╡
+│ A   ┆ 1   │
+│ X   ┆ 10  │
+│ C   ┆ 3   │
+│ D   ┆ 5   │
+│ M   ┆ 9   │
+└─────┴─────┘
+>>>
+>>> tf.extract_as_rows(offset=0, length=2)
+[
+>>>
+>>> tf.extract_as_rows(offset=0, length=2)
+    [
+        {"a": "A", "b": 1},
+        {"a": "X", "b": 10},
+    ]
+```
+
+
+</details>

@@ -1,0 +1,1237 @@
+---
+title: "For Publishers"
+sidebarTitle: "For Publishers"
+description: "For Publishers API reference."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+## Local File Source
+
+<a id="tabsdata.tabsdatafunction.LocalFileSource"></a>
+<details>
+<summary>LocalFileSource</summary>
+
+
+```python
+class LocalFileSource(
+    path: str | List [ str ],
+    format: str | dict | FileFormat = None,
+    initial_last_modified: str | datetime = None,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L400)
+
+Bases: `Input`
+
+Class for managing the configuration of local-file-based data inputs.
+
+<a id="tabsdata.tabsdatafunction.LocalFileSource.to_dict"></a>
+##### `to_dict`
+
+```python
+def to_dict()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L507)
+
+Converts the LocalFileSource object to a dictionary.
+
+<a id="tabsdata.tabsdatafunction.LocalFileSource.format"></a>
+<ResponseField name="format" type="FileFormat">
+The format of the file. If not provided, it will be inferred from the file extension of the data.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.LocalFileSource.path"></a>
+<ResponseField name="path" type="str | List[ str ]">
+The path where the files can be found. It can be a single path or a list of paths.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.LocalFileSource.initial_last_modified"></a>
+<ResponseField name="initial_last_modified" type="str | None">
+If not None, only the files modified after this date and time will be considered.
+</ResponseField>
+
+<a id="id0"></a>
+<ResponseField name="format" type="FileFormat #">
+The format of the file or files. If not provided, it will be inferred from the file extension in the path.
+
+**Type:** FileFormat
+</ResponseField>
+
+<a id="id1"></a>
+<ResponseField name="initial_last_modified" type="str #">
+The date and time after which the files were modified.
+
+**Type:** str
+</ResponseField>
+
+<a id="id2"></a>
+<ResponseField name="path" type="str | List [ str ] #">
+The path or paths to the files to load.
+
+**Type:** str | List[ str ]
+</ResponseField>
+
+
+</details>
+
+## S3 Source
+
+<a id="tabsdata.tabsdatafunction.S3Source"></a>
+<details>
+<summary>S3Source</summary>
+
+
+```python
+class S3Source(
+    uri: str | List [ str ],
+    credentials: dict | S3Credentials,
+    format: str | dict | FileFormat = None,
+    initial_last_modified: str | datetime = None,
+    region: str = None,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L609)
+
+Bases: `Input`
+
+Class for managing the configuration of S3-file-based data inputs.
+
+<a id="tabsdata.tabsdatafunction.S3Source.to_dict"></a>
+##### `to_dict`
+
+```python
+def to_dict()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L726)
+
+Converts the S3Source object to a dictionary.
+
+<a id="tabsdata.tabsdatafunction.S3Source.format"></a>
+<ResponseField name="format" type="FileFormat">
+The format of the file. If not provided, it will be inferred from the file extension of the data.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.S3Source.uri"></a>
+<ResponseField name="uri" type="str | List[ str ]">
+The URI of the files with format: ‘s3://path/to/files’. It can be a single URI or a list of URIs.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.S3Source.credentials"></a>
+<ResponseField name="credentials" type="S3Credentials">
+The credentials required to access the S3 bucket.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.S3Source.initial_last_modified"></a>
+<ResponseField name="initial_last_modified" type="str | datetime.datetime">
+If provided, only the files modified after this date and time will be considered.
+</ResponseField>
+
+<a id="id3"></a>
+<ResponseField name="credentials" type="S3Credentials #">
+The credentials required to access the S3 bucket.
+
+**Type:** S3Credentials
+</ResponseField>
+
+<a id="id4"></a>
+<ResponseField name="format" type="FileFormat #">
+The format of the file. If not provided, it will be inferred from the file.
+
+**Type:** FileFormat
+</ResponseField>
+
+<a id="id5"></a>
+<ResponseField name="initial_last_modified" type="str #">
+The date and time after which the files were modified.
+
+**Type:** str
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.S3Source.region"></a>
+<ResponseField name="region" type="str | None #">
+The region where the S3 bucket is located.
+
+**Type:** str
+</ResponseField>
+
+<a id="id6"></a>
+<ResponseField name="uri" type="str | List [ str ] #">
+‘s3://path/to/files’.
+
+**Type:** str | List[ str ]
+
+**Type:** The URI of the files with format
+</ResponseField>
+
+
+</details>
+
+## Azure Source
+
+<a id="tabsdata.tabsdatafunction.AzureSource"></a>
+<details>
+<summary>AzureSource</summary>
+
+
+```python
+class AzureSource(
+    uri: str | List [ str ],
+    credentials: dict | AzureCredentials,
+    format: str | dict | FileFormat = None,
+    initial_last_modified: str | datetime = None,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L165)
+
+Bases: `Input`
+
+Class for managing the configuration of Azure-file-based data inputs.
+
+<a id="tabsdata.tabsdatafunction.AzureSource.to_dict"></a>
+##### `to_dict`
+
+```python
+def to_dict()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L277)
+
+Converts the AzureSource object to a dictionary.
+
+<a id="tabsdata.tabsdatafunction.AzureSource.format"></a>
+<ResponseField name="format" type="FileFormat">
+The format of the file. If not provided, it will be inferred from the file extension of the data.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.AzureSource.uri"></a>
+<ResponseField name="uri" type="str | List[ str ]">
+The URI of the files with format: ‘az://path/to/files’. It can be a single URI or a list of URIs.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.AzureSource.credentials"></a>
+<ResponseField name="credentials" type="AzureCredentials">
+The credentials required to access Azure.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.AzureSource.initial_last_modified"></a>
+<ResponseField name="initial_last_modified" type="str | datetime.datetime">
+If provided, only the files modified after this date and time will be considered.
+</ResponseField>
+
+<a id="id7"></a>
+<ResponseField name="credentials" type="AzureCredentials #">
+The credentials required to access Azure.
+
+**Type:** AzureCredentials
+</ResponseField>
+
+<a id="id8"></a>
+<ResponseField name="format" type="FileFormat #">
+The format of the file. If not provided, it will be inferred from the file extension of the data.
+
+**Type:** FileFormat
+</ResponseField>
+
+<a id="id9"></a>
+<ResponseField name="initial_last_modified" type="str #">
+The date and time after which the files were modified.
+
+**Type:** str
+</ResponseField>
+
+<a id="id10"></a>
+<ResponseField name="uri" type="str | List [ str ] #">
+‘az://path/to/files’.
+
+**Type:** str | List[ str ]
+
+**Type:** The URI of the files with format
+</ResponseField>
+
+
+</details>
+
+## MySQL Source
+
+<a id="tabsdata.tabsdatafunction.MySQLSource"></a>
+<details>
+<summary>MySQLSource</summary>
+
+
+```python
+class MySQLSource(
+    uri: str,
+    query: str | List [ str ],
+    credentials: dict | UserPasswordCredentials | None = None,
+    initial_values: dict | None = None,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L1060)
+
+Bases: `Input`
+
+Class for managing the configuration of MySQL-based data inputs.
+
+<a id="tabsdata.tabsdatafunction.MySQLSource.to_dict"></a>
+##### `to_dict`
+
+```python
+def to_dict()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L1215)
+
+Converts the MySQLSource object to a dictionary.
+
+<a id="tabsdata.tabsdatafunction.MySQLSource.credentials"></a>
+<ResponseField name="credentials" type="UserPasswordCredentials">
+The credentials required to access the MySQL database.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.MySQLSource.initial_values"></a>
+<ResponseField name="initial_values" type="dict">
+The initial values for the parameters in the SQL queries.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.MySQLSource.query"></a>
+<ResponseField name="query" type="str | List[ str ]">
+The SQL query(s) to execute. If multiple queries are provided, they must be provided as a dictionary, with the parameter name in the registered function as the key and the SQL query as the value.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.MySQLSource.uri"></a>
+<ResponseField name="uri" type="str">
+The URI of the database where the data is located.
+</ResponseField>
+
+<a id="id11"></a>
+<ResponseField name="credentials" type="UserPasswordCredentials | None #">
+The credentials required to access the MySQLDatabase. If no credentials were provided, it will return None.
+
+**Type:** UserPasswordCredentials | None
+</ResponseField>
+
+<a id="id12"></a>
+<ResponseField name="initial_values" type="dict #">
+The initial values for the parameters in the SQL queries.
+
+**Type:** dict
+</ResponseField>
+
+<a id="id13"></a>
+<ResponseField name="query" type="str | List [ str ] #">
+The SQL query(s) to execute.
+
+**Type:** str | List[ str ]
+</ResponseField>
+
+<a id="id14"></a>
+<ResponseField name="uri" type="str #">
+The URI of the database where the data is located.
+
+**Type:** str
+</ResponseField>
+
+
+</details>
+
+## MariaDB Source
+
+<a id="tabsdata.tabsdatafunction.MariaDBSource"></a>
+<details>
+<summary>MariaDBSource</summary>
+
+
+```python
+class MariaDBSource(
+    uri: str,
+    query: str | List [ str ],
+    credentials: dict | UserPasswordCredentials | None = None,
+    initial_values: dict | None = None,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L884)
+
+Bases: `Input`
+
+Class for managing the configuration of MariaDB-based data inputs.
+
+<a id="tabsdata.tabsdatafunction.MariaDBSource.to_dict"></a>
+##### `to_dict`
+
+```python
+def to_dict()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L1039)
+
+Converts the MariaDBSource object to a dictionary.
+
+<a id="tabsdata.tabsdatafunction.MariaDBSource.credentials"></a>
+<ResponseField name="credentials" type="UserPasswordCredentials">
+The credentials required to access the MariaDB database.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.MariaDBSource.initial_values"></a>
+<ResponseField name="initial_values" type="dict">
+The initial values for the parameters in the SQL queries.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.MariaDBSource.query"></a>
+<ResponseField name="query" type="str | List[ str ]">
+The SQL query(s) to execute. If multiple queries are provided, they must be provided as a dictionary, with the parameter name in the registered function as the key and the SQL query as the value.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.MariaDBSource.uri"></a>
+<ResponseField name="uri" type="str">
+The URI of the database where the data is located.
+</ResponseField>
+
+<a id="id15"></a>
+<ResponseField name="credentials" type="UserPasswordCredentials | None #">
+The credentials required to access MariaDB. If no credentials were provided, it will return None.
+
+**Type:** UserPasswordCredentials | None
+</ResponseField>
+
+<a id="id16"></a>
+<ResponseField name="initial_values" type="dict #">
+The initial values for the parameters in the SQL queries.
+
+**Type:** dict
+</ResponseField>
+
+<a id="id17"></a>
+<ResponseField name="query" type="str | List [ str ] #">
+The SQL query(s) to execute.
+
+**Type:** str | List[ str ]
+</ResponseField>
+
+<a id="id18"></a>
+<ResponseField name="uri" type="str #">
+The URI of the database where the data is located.
+
+**Type:** str
+</ResponseField>
+
+
+</details>
+
+## Postgres Source
+
+<a id="tabsdata.tabsdatafunction.PostgresSource"></a>
+<details>
+<summary>PostgresSource</summary>
+
+
+```python
+class PostgresSource(
+    uri: str,
+    query: str | List [ str ],
+    credentials: dict | UserPasswordCredentials | None = None,
+    initial_values: dict | None = None,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L1412)
+
+Bases: `Input`
+
+Class for managing the configuration of Postgres-based data inputs.
+
+<a id="tabsdata.tabsdatafunction.PostgresSource.to_dict"></a>
+##### `to_dict`
+
+```python
+def to_dict()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L1567)
+
+Converts the PostgresSource object to a dictionary.
+
+<a id="tabsdata.tabsdatafunction.PostgresSource.credentials"></a>
+<ResponseField name="credentials" type="UserPasswordCredentials">
+The credentials required to access the Postgres database.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.PostgresSource.initial_values"></a>
+<ResponseField name="initial_values" type="dict">
+The initial values for the parameters in the SQL queries.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.PostgresSource.query"></a>
+<ResponseField name="query" type="str | List[ str ]">
+The SQL query(s) to execute. If multiple queries are provided, they must be provided as a dictionary, with the parameter name in the registered function as the key and the SQL query as the value.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.PostgresSource.uri"></a>
+<ResponseField name="uri" type="str">
+The URI of the database where the data is located.
+</ResponseField>
+
+<a id="id19"></a>
+<ResponseField name="credentials" type="UserPasswordCredentials | None #">
+The credentials required to access the PostgresDatabase. If no credentials were provided, it will return None.
+
+**Type:** UserPasswordCredentials | None
+</ResponseField>
+
+<a id="id20"></a>
+<ResponseField name="initial_values" type="dict #">
+The initial values for the parameters in the SQL queries.
+
+**Type:** dict
+</ResponseField>
+
+<a id="id21"></a>
+<ResponseField name="query" type="str | List [ str ] #">
+The SQL query(s) to execute.
+
+**Type:** str | List[ str ]
+</ResponseField>
+
+<a id="id22"></a>
+<ResponseField name="uri" type="str #">
+The URI of the database where the data is located.
+
+**Type:** str
+</ResponseField>
+
+
+</details>
+
+## Oracle Source
+
+<a id="tabsdata.tabsdatafunction.OracleSource"></a>
+<details>
+<summary>OracleSource</summary>
+
+
+```python
+class OracleSource(
+    uri: str,
+    query: str | List [ str ],
+    credentials: dict | UserPasswordCredentials | None = None,
+    initial_values: dict | None = None,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L1236)
+
+Bases: `Input`
+
+Class for managing the configuration of Oracle-based data inputs.
+
+<a id="tabsdata.tabsdatafunction.OracleSource.to_dict"></a>
+##### `to_dict`
+
+```python
+def to_dict()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L1391)
+
+Converts the OracleSource object to a dictionary.
+
+<a id="tabsdata.tabsdatafunction.OracleSource.credentials"></a>
+<ResponseField name="credentials" type="UserPasswordCredentials">
+The credentials required to access the Oracle database.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.OracleSource.initial_values"></a>
+<ResponseField name="initial_values" type="dict">
+The initial values for the parameters in the SQL queries.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.OracleSource.query"></a>
+<ResponseField name="query" type="str | List[ str ]">
+The SQL query(s) to execute. If multiple queries are provided, they must be provided as a dictionary, with the parameter name in the registered function as the key and the SQL query as the value.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.OracleSource.uri"></a>
+<ResponseField name="uri" type="str">
+The URI of the database where the data is located.
+</ResponseField>
+
+<a id="id23"></a>
+<ResponseField name="credentials" type="UserPasswordCredentials | None #">
+The credentials required to access Oracle. If no credentials were provided, it will return None.
+
+**Type:** UserPasswordCredentials | None
+</ResponseField>
+
+<a id="id24"></a>
+<ResponseField name="initial_values" type="dict #">
+The initial values for the parameters in the SQL queries.
+
+**Type:** dict
+</ResponseField>
+
+<a id="id25"></a>
+<ResponseField name="query" type="str | List [ str ] #">
+The SQL query(s) to execute.
+
+**Type:** str | List[ str ]
+</ResponseField>
+
+<a id="id26"></a>
+<ResponseField name="uri" type="str #">
+The URI of the database where the data is located.
+
+**Type:** str
+</ResponseField>
+
+
+</details>
+
+## Custom Source (Plugin)
+
+<a id="tabsdata.tabsdatafunction.SourcePlugin"></a>
+<details>
+<summary>SourcePlugin</summary>
+
+
+```python
+class SourcePlugin()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/plugin.py#L9)
+
+Bases: [`ABC`](https://docs.python.org/3/library/abc.html#abc.ABC)
+
+Abstract class for input plugins.
+
+##### `trigger_input(working_dir`
+
+```python
+def trigger_input(working_dir()
+```
+
+str) -> Union[str, Tuple[str, …], List[str]] Trigger the import of the data. The method will receive a folder where it must store the data as parquet files, and return a list of the paths of the files created. This files will then be loaded and mapped to the dataset function in positional order, so if you want file.parquet to be the first argument of the dataset function, you must return it first. If you want a parameter to receive multiple files, return a list of the paths. For example, you would give the following return to provide a first argument with a single file and a second argument with two files: return [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
+
+<a id="tabsdata.tabsdatafunction.SourcePlugin.trigger_input"></a>
+##### `trigger_input`
+
+```python
+def trigger_input(
+    working_dir: str,
+) -> str | Tuple[str, ...] | List[str]
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/plugin.py#L28)
+
+**Parameters:**
+
+<ParamField path="working_dir" type="str" required>
+  The folder where the files must be stored
+</ParamField>
+
+**Returns:** The path of the file(s) created, in the order they must be mapped to the dataset function
+
+**Return type:** Union[ str , Tuple[ str , …], List[ str ]]
+
+<a id="tabsdata.tabsdatafunction.SourcePlugin.initial_values"></a>
+<ResponseField name="initial_values" type="dict #">
+Return a dictionary with the initial values to be stored after execution of the plugin. They will be accessible in the next execution of the plugin. The dictionary must have the parameter names as keys and the initial values as values, all the type string.
+
+**Returns:** A dictionary with the initial values of the parameters of the plugin.
+
+**Return type:** dict
+</ResponseField>
+
+
+</details>
+
+# For Subscribers
+
+## Local File Destination
+
+<a id="tabsdata.tabsdatafunction.LocalFileDestination"></a>
+<details>
+<summary>LocalFileDestination</summary>
+
+
+```python
+class LocalFileDestination(
+    path: str | List [ str ],
+    format: str | dict | FileFormat = None,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L1875)
+
+Bases: `Output`
+
+<a id="tabsdata.tabsdatafunction.LocalFileDestination.format"></a>
+<ResponseField name="format" type="FileFormat #">
+The format of the file or files. If not provided, it will be inferred from the file extension in the path.
+
+**Type:** FileFormat
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.LocalFileDestination.path"></a>
+<ResponseField name="path" type="str | List [ str ] #">
+The path or paths to store the files.
+
+**Type:** str | List[ str ]
+</ResponseField>
+
+
+</details>
+
+## S3 Destination
+
+<a id="tabsdata.tabsdatafunction.S3Destination"></a>
+<details>
+<summary>S3Destination</summary>
+
+
+```python
+class S3Destination(
+    uri: str | List [ str ],
+    credentials: dict | S3Credentials,
+    format: str | dict | FileFormat = None,
+    region: str = None,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L2729)
+
+Bases: `Output`
+
+Class for managing the configuration of S3-file-based data outputs.
+
+<a id="tabsdata.tabsdatafunction.S3Destination.to_dict"></a>
+##### `to_dict`
+
+```python
+def to_dict()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L2835)
+
+Converts the S3Destination object to a dictionary.
+
+<a id="tabsdata.tabsdatafunction.S3Destination.format"></a>
+<ResponseField name="format" type="FileFormat">
+The format of the file. If not provided, it will be inferred from the file extension.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.S3Destination.uri"></a>
+<ResponseField name="uri" type="str | List[ str ]">
+The URI of the files with format: ‘s3://path/to/files’. It can be a single URI or a list of URIs.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.S3Destination.credentials"></a>
+<ResponseField name="credentials" type="S3Credentials">
+The credentials required to access the S3 bucket.
+</ResponseField>
+
+<a id="id27"></a>
+<ResponseField name="credentials" type="S3Credentials #">
+The credentials required to access the S3 bucket.
+
+**Type:** S3Credentials
+</ResponseField>
+
+<a id="id28"></a>
+<ResponseField name="format" type="FileFormat #">
+The format of the file. If not provided, it will be inferred from the file.
+
+**Type:** FileFormat
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.S3Destination.region"></a>
+<ResponseField name="region" type="str | None #">
+The region where the S3 bucket is located.
+
+**Type:** str
+</ResponseField>
+
+<a id="id29"></a>
+<ResponseField name="uri" type="str | List [ str ] #">
+‘s3://path/to/files’.
+
+**Type:** str | List[ str ]
+
+**Type:** The URI of the files with format
+</ResponseField>
+
+
+</details>
+
+## Azure Destination
+
+<a id="tabsdata.tabsdatafunction.AzureDestination"></a>
+<details>
+<summary>AzureDestination</summary>
+
+
+```python
+class AzureDestination(
+    uri: str | List [ str ],
+    credentials: dict | AzureCredentials,
+    format: str | dict | FileFormat = None,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L1693)
+
+Bases: `Output`
+
+Class for managing the configuration of Azure-file-based data outputs.
+
+<a id="tabsdata.tabsdatafunction.AzureDestination.to_dict"></a>
+##### `to_dict`
+
+```python
+def to_dict()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L1793)
+
+Converts the AzureDestination object to a dictionary.
+
+<a id="tabsdata.tabsdatafunction.AzureDestination.format"></a>
+<ResponseField name="format" type="FileFormat">
+The format of the file to be created. If not provided, it will be inferred from the file extension.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.AzureDestination.uri"></a>
+<ResponseField name="uri" type="str | List[ str ]">
+The URI of the files with format: ‘az://path/to/files’. It can be a single URI or a list of URIs.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.AzureDestination.credentials"></a>
+<ResponseField name="credentials" type="AzureCredentials">
+The credentials required to access Azure.
+</ResponseField>
+
+<a id="id30"></a>
+<ResponseField name="credentials" type="AzureCredentials #">
+The credentials required to access Azure.
+
+**Type:** AzureCredentials
+</ResponseField>
+
+<a id="id31"></a>
+<ResponseField name="format" type="FileFormat #">
+The format of the file. If not provided, it will be inferred from the file extension of the URI.
+
+**Type:** FileFormat
+</ResponseField>
+
+<a id="id32"></a>
+<ResponseField name="uri" type="str | List [ str ] #">
+‘az://path/to/files’.
+
+**Type:** str | List[ str ]
+
+**Type:** The URI of the files with format
+</ResponseField>
+
+
+</details>
+
+## MySQL Destination
+
+<a id="tabsdata.tabsdatafunction.MySQLDestination"></a>
+<details>
+<summary>MySQLDestination</summary>
+
+
+```python
+class MySQLDestination(
+    uri: str,
+    destination_table: List [ str ] | str,
+    credentials: dict | UserPasswordCredentials = None,
+    if_table_exists: Literal [ 'append' , 'replace' ] = 'append',
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L2200)
+
+Bases: `Output`
+
+Class for managing the configuration of MySQL-based data outputs.
+
+<a id="tabsdata.tabsdatafunction.MySQLDestination.to_dict"></a>
+##### `to_dict`
+
+```python
+def to_dict()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L2282)
+
+Converts the MySQLDestination object to a dictionary
+
+<a id="tabsdata.tabsdatafunction.MySQLDestination.credentials"></a>
+<ResponseField name="credentials" type="UserPasswordCredentials">
+The credentials required to access the MySQL database.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.MySQLDestination.destination_table"></a>
+<ResponseField name="destination_table" type="str | List[ str ]">
+The table(s) to create. If multiple tables are provided, they must be provided as a list.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.MySQLDestination.if_table_exists"></a>
+<ResponseField name="if_table_exists" type="\{‘append’, ‘replace’}">
+The strategy to follow when the table already exists. - ‘replace’ will create a new database table, overwriting an existing one. - ‘append’ will append to an existing table.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.MySQLDestination.uri"></a>
+<ResponseField name="uri" type="str">
+The URI of the database where the data is going to be stored.
+</ResponseField>
+
+<a id="id33"></a>
+<ResponseField name="credentials" type="UserPasswordCredentials #">
+The credentials required to access the MySQLDatabase.
+
+**Type:** UserPasswordCredentials
+</ResponseField>
+
+<a id="id34"></a>
+<ResponseField name="destination_table" type="str | List [ str ] #">
+The table(s) to create. If multiple tables are provided, they must be provided as a list.
+
+**Type:** str | List[ str ]
+</ResponseField>
+
+<a id="id35"></a>
+<ResponseField name="if_table_exists" type="Literal [ 'append' , 'replace' ] #">
+The strategy to follow when the table already exists.
+
+**Type:** str
+</ResponseField>
+
+<a id="id36"></a>
+<ResponseField name="uri" type="str #">
+The URI of the database where the data is going to be stored.
+
+**Type:** str
+</ResponseField>
+
+
+</details>
+
+## Maria DBDestination
+
+<a id="tabsdata.tabsdatafunction.MariaDBDestination"></a>
+<details>
+<summary>MariaDBDestination</summary>
+
+
+```python
+class MariaDBDestination(
+    uri: str,
+    destination_table: List [ str ] | str,
+    credentials: dict | UserPasswordCredentials = None,
+    if_table_exists: Literal [ 'append' , 'replace' ] = 'append',
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L2019)
+
+Bases: `Output`
+
+Class for managing the configuration of MariaDB-based data outputs.
+
+<a id="tabsdata.tabsdatafunction.MariaDBDestination.to_dict"></a>
+##### `to_dict`
+
+```python
+def to_dict()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L2106)
+
+Converts the MariaDBDestination object to a dictionary
+
+<a id="tabsdata.tabsdatafunction.MariaDBDestination.credentials"></a>
+<ResponseField name="credentials" type="UserPasswordCredentials">
+The credentials required to access the MariaDB database.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.MariaDBDestination.destination_table"></a>
+<ResponseField name="destination_table" type="str | List[ str ]">
+The table(s) to create. If multiple tables are provided, they must be provided as a list.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.MariaDBDestination.if_table_exists"></a>
+<ResponseField name="if_table_exists" type="\{‘append’, ‘replace’}">
+The strategy to follow when the table already exists. - ‘replace’ will create a new database table, overwriting an existing one. - ‘append’ will append to an existing table.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.MariaDBDestination.uri"></a>
+<ResponseField name="uri" type="str">
+The URI of the database where the data is going to be stored.
+</ResponseField>
+
+<a id="id37"></a>
+<ResponseField name="credentials" type="UserPasswordCredentials #">
+The credentials required to access the MariaDB database.
+
+**Type:** UserPasswordCredentials
+</ResponseField>
+
+<a id="id38"></a>
+<ResponseField name="destination_table" type="str | List [ str ] #">
+The table(s) to create. If multiple tables are provided, they must be provided as a list.
+
+**Type:** str | List[ str ]
+</ResponseField>
+
+<a id="id39"></a>
+<ResponseField name="if_table_exists" type="Literal [ 'append' , 'replace' ] #">
+The strategy to follow when the table already exists.
+
+**Type:** str
+</ResponseField>
+
+<a id="id40"></a>
+<ResponseField name="uri" type="str #">
+The URI of the database where the data is going to be stored.
+
+**Type:** str
+</ResponseField>
+
+
+</details>
+
+## Postgres Destination
+
+<a id="tabsdata.tabsdatafunction.PostgresDestination"></a>
+<details>
+<summary>PostgresDestination</summary>
+
+
+```python
+class PostgresDestination(
+    uri: str,
+    destination_table: List [ str ] | str,
+    credentials: dict | UserPasswordCredentials = None,
+    if_table_exists: Literal [ 'append' , 'replace' ] = 'append',
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L2551)
+
+Bases: `Output`
+
+Class for managing the configuration of Postgres-based data outputs.
+
+<a id="tabsdata.tabsdatafunction.PostgresDestination.to_dict"></a>
+##### `to_dict`
+
+```python
+def to_dict()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L2633)
+
+Converts the PostgresDestination object to a dictionary
+
+<a id="tabsdata.tabsdatafunction.PostgresDestination.credentials"></a>
+<ResponseField name="credentials" type="UserPasswordCredentials">
+The credentials required to access the Postgres database.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.PostgresDestination.destination_table"></a>
+<ResponseField name="destination_table" type="str | List[ str ]">
+The table(s) to create. If multiple tables are provided, they must be provided as a list.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.PostgresDestination.if_table_exists"></a>
+<ResponseField name="if_table_exists" type="\{‘append’, ‘replace’}">
+The strategy to follow when the table already exists. - ‘replace’ will create a new database table, overwriting an existing one. - ‘append’ will append to an existing table.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.PostgresDestination.uri"></a>
+<ResponseField name="uri" type="str">
+The URI of the database where the data is going to be stored.
+</ResponseField>
+
+<a id="id41"></a>
+<ResponseField name="credentials" type="UserPasswordCredentials #">
+The credentials required to access the Postgres database.
+
+**Type:** UserPasswordCredentials
+</ResponseField>
+
+<a id="id42"></a>
+<ResponseField name="destination_table" type="str | List [ str ] #">
+The table(s) to create. If multiple tables are provided, they must be provided as a list.
+
+**Type:** str | List[ str ]
+</ResponseField>
+
+<a id="id43"></a>
+<ResponseField name="if_table_exists" type="Literal [ 'append' , 'replace' ] #">
+The strategy to follow when the table already exists.
+
+**Type:** str
+</ResponseField>
+
+<a id="id44"></a>
+<ResponseField name="uri" type="str #">
+The URI of the database where the data is going to be stored.
+
+**Type:** str
+</ResponseField>
+
+
+</details>
+
+## Oracle Destination
+
+<a id="tabsdata.tabsdatafunction.OracleDestination"></a>
+<details>
+<summary>OracleDestination</summary>
+
+
+```python
+class OracleDestination(
+    uri: str,
+    destination_table: List [ str ] | str,
+    credentials: dict | UserPasswordCredentials = None,
+    if_table_exists: Literal [ 'append' , 'replace' ] = 'append',
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L2375)
+
+Bases: `Output`
+
+Class for managing the configuration of Oracle-based data outputs.
+
+<a id="tabsdata.tabsdatafunction.OracleDestination.to_dict"></a>
+##### `to_dict`
+
+```python
+def to_dict()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L2457)
+
+Converts the OracleDestination object to a dictionary
+
+<a id="tabsdata.tabsdatafunction.OracleDestination.credentials"></a>
+<ResponseField name="credentials" type="UserPasswordCredentials">
+The credentials required to access the Oracle database.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.OracleDestination.destination_table"></a>
+<ResponseField name="destination_table" type="str | List[ str ]">
+The table(s) to create. If multiple tables are provided, they must be provided as a list.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.OracleDestination.if_table_exists"></a>
+<ResponseField name="if_table_exists" type="\{‘append’, ‘replace’}">
+The strategy to follow when the table already exists. - ‘replace’ will create a new database table, overwriting an existing one. - ‘append’ will append to an existing table.
+</ResponseField>
+
+<a id="tabsdata.tabsdatafunction.OracleDestination.uri"></a>
+<ResponseField name="uri" type="str">
+The URI of the database where the data is going to be stored.
+</ResponseField>
+
+<a id="id45"></a>
+<ResponseField name="credentials" type="UserPasswordCredentials #">
+The credentials required to access the Oracle database.
+
+**Type:** UserPasswordCredentials
+</ResponseField>
+
+<a id="id46"></a>
+<ResponseField name="destination_table" type="str | List [ str ] #">
+The table(s) to create. If multiple tables are provided, they must be provided as a list.
+
+**Type:** str | List[ str ]
+</ResponseField>
+
+<a id="id47"></a>
+<ResponseField name="if_table_exists" type="Literal [ 'append' , 'replace' ] #">
+The strategy to follow when the table already exists.
+
+**Type:** str
+</ResponseField>
+
+<a id="id48"></a>
+<ResponseField name="uri" type="str #">
+The URI of the database where the data is going to be stored.
+
+**Type:** str
+</ResponseField>
+
+
+</details>
+
+## Custom Destination (Plugin)
+
+<a id="tabsdata.tabsdatafunction.DestinationPlugin"></a>
+<details>
+<summary>DestinationPlugin</summary>
+
+
+```python
+class DestinationPlugin()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/plugin.py#L88)
+
+Bases: [`ABC`](https://docs.python.org/3/library/abc.html#abc.ABC)
+
+Abstract class for output plugins.
+
+<a id="tabsdata.tabsdatafunction.DestinationPlugin.trigger_output"></a>
+##### `trigger_output`
+
+```python
+def trigger_output(
+    * args,
+    ** kwargs,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/plugin.py#L100)
+
+Trigger the exporting of the data. This function will receive the resulting data from the dataset function and must store it in the desired location.
+
+<a id="id49"></a>
+##### `trigger_output`
+
+```python
+def trigger_output(
+    * args,
+    ** kwargs,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/plugin.py#L100)
+
+**Parameters:**
+
+<ParamField path="*args" required>
+  The data to be exported
+</ParamField>
+
+<ParamField path="**kwargs" required>
+  Additional parameters to be used in the export
+</ParamField>
+
+**Returns:** None
+
+
+</details>

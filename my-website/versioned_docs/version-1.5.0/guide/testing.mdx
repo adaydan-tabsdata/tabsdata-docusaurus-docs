@@ -1,0 +1,52 @@
+---
+title: "Testing"
+sidebarTitle: "Testing"
+---
+
+You can use the [polars](https://docs.pola.rs/) or [pandas](https://pandas.pydata.org/docs/index.html) Python package to test out your function logic before registering and executing your functions on the server. When testing, the accepted input types are pandas.DataFrame, polars.DataFrame, and polars.LazyFrame, and the type of the returned output will match the input type. Regardless of the input type, the function itself always receives a Tabsdata TableFrame when executed on the server.
+
+Here is an example of how to do that.
+
+Let’s take the function logic of the transformer code from the Getting Started section here. You can test the function logic using the following code:
+
+```python
+import polars as pl
+
+import tabsdata as td
+
+@td.transformer(
+    input_tables=["persons"],
+    output_tables=["spanish", "french", "german"]
+    )
+
+def tfr(persons: td.TableFrame):
+    persons = persons.select(
+        ["identifier", "name", "surname", "nationality", "language"]
+    )
+    res = {}
+    for nationality in ["Spanish", "French", "German"]:
+        res[nationality] = persons.filter(td.col("nationality").eq(nationality)).drop(
+            ["nationality"]
+        )
+    return res["Spanish"], res["French"], res["German"]
+
+# Local test (optional)
+if __name__ == "__main__":
+
+    tf = pl.read_csv("<<path_to_persons.csv>>")
+
+    s, f, g = tfr(tf)
+
+    print("--------- Spanish ---------\n", s.sample)
+    print("--------- French ---------\n", f.sample)
+    print("--------- German ---------\n", g.sample)
+```
+
+Note:
+
+- This method is only applicable to test the function logic, and not the input and output to the function.
+- Remember to update the path to your input file (`<<path_to_persons.csv>>`) as needed.
+
+Here Polars `read_csv` is used to read the csv file and store the resultant dataframe in a variable called `tf`. This `tf` dataframe is passed to the `tfr` function as input, and the resultant output tables from the function are stored as s,f and g variables. Subsequently a sample is printed from these. You can check the output as per your requirement to confirm if the function is generating the output as needed.
+
+Once the correcteness of output is confirmed, you just need to define the Python decorator (`@td.publisher`, `@td.transformer`, `@td.subscriber`) with the relevant paramters to create the connections.

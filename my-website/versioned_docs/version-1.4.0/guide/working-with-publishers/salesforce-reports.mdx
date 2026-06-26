@@ -1,0 +1,194 @@
+---
+title: "Salesforce Reports"
+sidebarTitle: "Salesforce Reports"
+---
+
+You can use this built-in Tabsdata publisher to read data from Salesforce reports into Tabsdata.
+
+## Installing the connector dependencies#
+
+To work with the Salesforce connector you are required to install the dependencies separately. This is done to manage the size of the core package. Please run the following command in your terminal to install the dependencies.
+
+```bash
+$ pip install tabsdata[“salesforce”]
+```
+
+or,
+
+```bash
+$ pip install 'tabsdata['salesforce']'
+```
+
+## Example (Publisher - Salesforce)#
+
+The following example creates a publisher named `read_contacts`. This publisher retreives a report from Salesforce, filters on certain parameters including last modification time and writes the result to a Tabsdata table.
+
+```python
+import tabsdata as td
+
+salesforce_credentials = td.SalesforceTokenCredentials(
+        username=td.HashiCorpSecret("path-to-secret","SALESFORCE_USERNAME"),
+        password=td.HashiCorpSecret("path-to-secret","SALESFORCE_PASSWORD"),
+        security_token=td.HashiCorpSecret("path-to-secret","SALESFORCE_SECURITY_TOKEN"),
+    )
+
+@td.publisher(
+    source=td.SalesforceReportSource(
+        credentials = salesforce_credentials,
+        report=["contacts"],
+        column_name_strategy = "columnName",
+        filter=[("COUNTRY", "equals", “USA”),("COUNTRY", "equals", “France”)]
+        filter_logic="1 or 2",
+        initial_last_modified="2024-03-10T11:03:08.000+0000"),
+    tables=["contacts"],
+)
+
+def read_contacts(contacts: td.TableFrame):
+    return contacts
+```
+
+Where:
+
+`SALESFORCE_USERNAME` is the username of your Salesforce credentials. Please note that you must use your Salesforce username, not your email.
+
+`SALESFORCE_PASSWORD` is the password of your Salesforce credentials.
+
+`SALESFORCE_SECURITY_TOKEN` is the value of security token associated with your Salesforce account. If you don’t have the security token, you can find it in your Salesforce app. Go to the `View Profile` on the top right in your Salesforce app, go to `Settings` and select `Reset My Security Token`.
+
+**Note:** After defining the function, you need to register it with a Tabsdata collection and execute it. For more information, see Register a Function and Execute a Function.
+
+## Setup (Publisher - Salesforce)#
+
+The following code uses placeholder values for defining a publisher that reads data from Salesforce and publishes it to Tabsdata tables:
+
+```python
+import tabsdata as td
+
+salesforce_credentials = td.SalesforceTokenCredentials(
+        username=td.HashiCorpSecret("path-to-secret","SALESFORCE_USERNAME"),
+        password=td.HashiCorpSecret("path-to-secret","SALESFORCE_PASSWORD"),
+        security_token=td.HashiCorpSecret("path-to-secret","SALESFORCE_SECURITY_TOKEN"),
+    )
+
+@td.publisher(
+    source=td.SalesforceReportSource(
+        credentials = salesforce_credentials,
+        report=["<report_name>"],
+        find_report_by = ["<id/name>"],
+        column_name_strategy = ["<columnName/label>"],
+        filter = [("<filter_column_1>","<filter_operator_1>","<filter_value_1>"),("<filter_column_2>","<filter_operator_2>","<filter_value_2>")],
+        filter_logic = "<filter_logic>",
+        initial_last_modified="<time_stamp>",
+        last_modified_column = "<last_modified_column>",
+        instance_url="<salesforce_instance_url>",
+        maximum_wait_time = "<maximum_wait_time>",
+        poll_interval = "<poll_interval>",
+        chunk_size = "<chunk_size>",
+        version="<salesforce_api_version>",
+    ),
+    tables=["<output_table1>", "<output_table2>"],
+    trigger_by=["<trigger_table1>", "<trigger_table2>"],
+)
+
+def <publisher_name> (<table_frame1>:td.TableFrame, <table_frame2>:td.TableFrame):
+    <function_logic>
+    return <table_frame_output1>, <table_frame_output2>
+```
+
+**Note:** After defining the function, you need to register it with a Tabsdata collection and execute it. For more information, see Register a Function and Execute a Function.
+
+Following properties are defined in the code above:
+
+### source#
+
+#### credentials#
+
+A publisher needs credentials to read files from Salesforce. Here the value is defined using a variable `salesforce_credentials`. The variable is an object of class `SalesforceTokenCredentials` with following values.
+
+`SALESFORCE_USERNAME` is the username of your Salesforce credentials. Please note that you must use your Salesforce username, not your email.
+
+`SALESFORCE_PASSWORD` is the password of your Salesforce credentials.
+
+`SALESFORCE_SECURITY_TOKEN` is the value of security token associated with your Salesforce account. If you don’t have the security token, you can find it in your Salesforce app. Go to the `View Profile` on the top right in your Salesforce app, go to `Settings` and select `Reset My Security Token`.
+
+You can use different ways to store the credentials which are highlighted here in the documentation.
+
+#### report#
+
+This property provides the name of the report in Salesforce that needs to be read in Tabsdata. It can be a single report or a list of reports. It can be refernece by ‘id’ or ‘name’.
+
+#### column_name_strategy#
+
+This parameter indicates whether the column names will be obtained from the “columnName” field in the report, or from the “label” field. These are part of the Salesforce Report when created. For instance, an example of a “columnName” could be “CREATED_ALIAS”, while the corresponding “label” could be “alias”. This will affect the name of the columns of the Table generated in Tabsdata, as well as the name that must be used in the filters if provided.
+
+#### [Optional] find_report_by#
+
+The report reference by `id` or `name` can be explicity stated using this optional parameter. If not provided, it will be inferred from the value of report parameter. If using find_report_by=’name’ the name is what salesforce refers to as the report unique name or the developer name.
+
+#### [Optional] filter#
+
+Filters are provided as a tuple of a column (“`<filter_column_1>`”,”`<filter_column_2>`”), an operator(“`<filter_operator_1>`”,”`<filter_operator_2>`”), and a value(“`<filter_value_1>`”,”`<filter_value_2>`”), as is customary for Salesforce Report queries. If multiple filters are provided, they must be provided in a list.
+
+#### [Optional] filter_logic#
+
+This property defines the relationship between various filters, if multiple filters are provided. The relationship in defined using filter index, where first filter in the list of filters defined in `filter` property is referred as 1, the second filter in the list is referred as 2 and so on. Hence, the `filter_logic` value would be for example “1 OR 2”, or “1 OR (2 AND 3)” etc.
+
+#### [Optional] initial_last_modified#
+
+The value of starting date for incremental publishing is defined here. If provided, it must be a string in Salesforce datetime format (with informed timezone).
+
+#### [Optional] last_modified_column#
+
+The property to use for incremental loading based on the last modified date. If provided, the report must contain this column. Defaults to None.
+
+#### [Optional] instance_url#
+
+The Salesforce instance URL, in case there is a need to disambiguate the Salesforce instance to use. By default, the URL will be inferred from the username and password if they are associated with a single URL.
+
+#### [Optional] version#
+
+(default=latest) This defines the Salesforce API version to use.
+
+### tables#
+
+`<output_table1>`, `<output_table2>`… are the names of the Tabsdata tables to publish to.
+
+### None as an input and output#
+
+A publisher may receive and return a `None` value instead of a TableFrame parameter or return value.
+
+When a publisher **receives** a `None` value instead of a TableFrame it means the absence of input data. For example, the system didn’t return any results because of the file being absent or query returning empty results.
+
+When a publisher **returns** a `None` value instead of a TableFrame it means that the associated table will preserve the existing data from the previous commit. This helps in avoiding the creation of multiple copies of the same data.
+
+### [Optional] trigger_by#
+
+`<trigger_table1>`, `<trigger_table2>`… are the names of the tables in the Tabsdata server. A new commit to any of these tables triggers the publisher. This can be relevant in cases where you want to import a data if something else in the organization changes. e.g trigger the import of latest manufacturing data in the company if a new supplier get added added. While a new supplier would not be a direct input to the publisher importing manufacturing data, it can still trigger the function.
+
+All listed trigger tables must exist in the server before registering the publisher.
+
+Defining trigger tables is optional. If you don’t define the `trigger_by` property, the publisher can only be triggered manually.
+
+For more information, see Working with Triggers.
+
+### `<publisher_name>`#
+
+`<publisher_name>` is the name for the publisher that you are configuring.
+
+### `<function_logic>`#
+
+`<function_logic>` governs the processing performed by the publisher. You can specify function logic to be a simple write or to perform additional processing, such as dropping nulls, before writing data to output tables. For more information about the function logic that you can include, see Working with Tables.
+
+`<table_frame1>`, `<table_frame2>`… are the names for the variables that temporarily store source data for processing.
+
+`<table_frame_output1>`, `<table_frame_output2>`… are the output from the function that are stored as Tabsdata tables with names as defined in the `tables` property. Consequently, the number of tables returned from the function have to exactly match the number of tables defined in the `tables` property.
+
+`<new_value1>`, `<new_value2>`.. are the revised values of variable_names as defined in function logic. This enables you to have dynamic allocation of variable values for usage in queries. You can return a new dictionary e.g. `{"<variable_name1>": <new_value1>, "<variable_name2>": <new_value2>}` to change the initial values for processing new data, or return `SAME` to keep the current initial values.
+
+### Data Drift Support#
+
+This section talks about how Tabsdata handles data drift in the input data for this Publisher connector.
+
+This connector natively supports data drift as Tabsdata automatically creates a new version of the table with each function execution. Hence, schema changes in the input data won’t cause the function to fail. Any modifications are captured in a newly versioned output table generated by the publisher.
+
+However, this applies only if the publisher function does not contain schema-dependent logic. If such logic exists, changes in the schema may conflict with the function’s expectations, leading to execution errors.

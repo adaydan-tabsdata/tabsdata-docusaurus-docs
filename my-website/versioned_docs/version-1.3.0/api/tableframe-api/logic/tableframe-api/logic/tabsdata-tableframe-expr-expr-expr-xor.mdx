@@ -1,0 +1,52 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.xor"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.xor"
+description: "Bitwise xor operator with the given expression. It can be used with integer and bool types."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.xor"></a>
+<details>
+<summary>xor</summary>
+
+
+```python
+def xor(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L2695)
+
+Bitwise xor operator with the given expression. It can be used with integer and bool types.
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  expression to peform the bitwisexor with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").xor(8).alias("xor"))
+>>>
+┌─────┬─────┐
+│ val ┆ xor │
+│ --- ┆ --- │
+│ i64 ┆ i64 │
+╞═════╪═════╡
+│ 0   ┆ 8   │
+│ 30  ┆ 22  │
+│ 60  ┆ 52  │
+│ 90  ┆ 82  │
+└─────┴─────┘
+```
+
+
+</details>

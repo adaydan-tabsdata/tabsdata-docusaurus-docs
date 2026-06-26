@@ -1,0 +1,66 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.rank"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.rank"
+description: "Compute the rank of the element values. Multiple rank types are available."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.rank"></a>
+<details>
+<summary>rank</summary>
+
+
+```python
+def rank(
+    method: Literal [ 'average' , 'min' , 'max' , 'dense' , 'ordinal' , 'random' ] = 'average',
+    *,
+    descending: bool = False,
+    seed: int | None = None,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/expr.py#L1840)
+
+Compute the rank of the element values. Multiple rank types are available.
+
+**Parameters:**
+
+<ParamField path="method" type="Literal [ 'average' , 'min' , 'max' , 'dense' , 'ordinal' , 'random' ]" default="'average'">
+  the ranking type: ‘average’ (default), ‘dense’, ‘max’, ‘min’, ‘ordinal’ or ‘random’.
+</ParamField>
+
+<ParamField path="descending" type="bool" default="False">
+  if the order is ascending (default) or descending.
+</ParamField>
+
+<ParamField path="seed" type="int | None" default="None">
+  random seed when using ‘random’ rank type.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").rank("max").alias("rank"))
+>>>
+┌──────┬──────┐
+│ val  ┆ rank │
+│ ---  ┆ ---  │
+│ f64  ┆ u32  │
+╞══════╪══════╡
+│ -1.0 ┆ 1    │
+│ 0.0  ┆ 2    │
+│ 1.1  ┆ 3    │
+│ 2.0  ┆ 4    │
+│ inf  ┆ 5    │
+│ null ┆ null │
+│ NaN  ┆ 6    │
+└──────┴──────┘
+```
+
+
+</details>

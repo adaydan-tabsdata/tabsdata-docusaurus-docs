@@ -1,0 +1,45 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.item"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.item"
+description: "Returns a scalar value if the TableFrame contains exactly one user column and one row."
+---
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.item"></a>
+<details>
+<summary>item</summary>
+
+
+```python
+def item() -> Any
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/lazyframe/frame.py#L1576)
+
+Returns a scalar value if the TableFrame contains exactly one user column and one row.
+
+Raises an exception if there is more than one user column or more than one row.
+
+Returns None if the TableFrame is empty.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌─────┐
+│ a   │
+│ --- │
+│ str │
+╞═════╡
+│ A   │
+└─────┘
+>>>
+>>> tf.item()
+>>>
+A
+```
+
+
+</details>

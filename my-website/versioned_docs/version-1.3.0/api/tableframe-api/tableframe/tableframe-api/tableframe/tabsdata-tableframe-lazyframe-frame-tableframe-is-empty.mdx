@@ -1,0 +1,54 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.is_empty"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.is_empty"
+description: "Checks if a TableFrame has no rows."
+---
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.is_empty"></a>
+<details>
+<summary>is_empty</summary>
+
+
+```python
+def is_empty() -> bool
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/lazyframe/frame.py#L622)
+
+Checks if a TableFrame has no rows.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+└──────┴──────┘
+>>>
+>>> tf.is_empty()
+>>>
+False
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+└──────┴──────┘
+>>>
+>>> tf.is_empty()
+>>>
+True
+```
+
+
+</details>

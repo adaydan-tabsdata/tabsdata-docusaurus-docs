@@ -1,0 +1,63 @@
+---
+title: "tabsdata.tableframe.functions.lit"
+sidebarTitle: "tabsdata.tableframe.functions.lit"
+description: "tabsdata.tableframe.functions.lit API reference."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.functions.lit.lit"></a>
+<details>
+<summary>lit</summary>
+
+
+```python
+def lit(
+    value: Any,
+    dtype: Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None = None,
+    *,
+    allow_object: bool = False,
+) -> Expr
+```
+
+Expression for the given literal value.
+
+**Categories:** generation
+
+**Parameters:**
+
+<ParamField path="value" type="Any" required>
+  The literal value.
+</ParamField>
+
+<ParamField path="dtype" type="Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None" default="None">
+  The data type of the literal value.
+</ParamField>
+
+<ParamField path="allow_object" type="bool" default="False">
+  Whether to allow object data type.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.lit("Hi").alias("lit"), td.col("age").alias("Age"))
+>>>
+┌──────┬──────┐
+│ lit  ┆ Age  │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ Hi   ┆ 1    │
+│ Hi   ┆ 15   │
+│ Hi   ┆ 18   │
+│ Hi   ┆ null │
+└──────┴──────┘
+```
+
+
+</details>

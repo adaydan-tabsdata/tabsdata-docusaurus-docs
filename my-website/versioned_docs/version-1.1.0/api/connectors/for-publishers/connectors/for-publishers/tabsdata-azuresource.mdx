@@ -1,0 +1,103 @@
+---
+title: "tabsdata.AzureSource"
+sidebarTitle: "tabsdata.AzureSource"
+description: "tabsdata.AzureSource API reference."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.AzureSource"></a>
+<details>
+<summary>AzureSource</summary>
+
+
+```python
+class AzureSource(
+    uri: str | List [ str ],
+    credentials: dict | AzureCredentials,
+    format: str | dict | FileFormat = None,
+    initial_last_modified: str | datetime = None,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/io/input.py#L115)
+
+Bases: `Input`
+
+Class for managing the configuration of Azure-file-based data inputs.
+
+<a id="tabsdata.AzureSource.to_dict"></a>
+#### `to_dict`
+
+```python
+def to_dict()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/io/input.py#L227)
+
+Converts the AzureSource object to a dictionary.
+
+<a id="tabsdata.AzureSource.__init__"></a>
+#### `__init__`
+
+```python
+def __init__(
+    uri: str | List [ str ],
+    credentials: dict | AzureCredentials,
+    format: str | dict | FileFormat = None,
+    initial_last_modified: str | datetime = None,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/io/input.py#L149)
+
+**Parameters:**
+
+<ParamField path="uri" type="str | List [ str ]" required>
+  The URI of the files with format: ‘az://path/to/files’. It can be a single URI or a list of URIs.
+</ParamField>
+
+<ParamField path="credentials" type="dict | AzureCredentials" required>
+  The credentials required to access Azure. Can be a dictionary or a AzureCredentials object.
+</ParamField>
+
+<ParamField path="format" type="str | dict | FileFormat" default="None">
+  The format of the file. If not provided, it will be inferred from the file extension of the data. Can be either a string with the format, a FileFormat object or a dictionary with the format as the ‘type’ key and any additional format-specific information. Currently supported formats are ‘csv’, ‘parquet’, ‘ndjson’, ‘jsonl’ and ‘log’.
+</ParamField>
+
+<ParamField path="initial_last_modified" type="str | datetime" default="None">
+  If provided, only the files modified after this date and time will be considered. The date and time can be provided as a string in [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601) or as a datetime object. If no timezone is provided, UTC will be assumed.
+</ParamField>
+
+**Raises:**
+
+<ResponseField name="InputConfigurationError" type="Exception"></ResponseField>
+
+<ResponseField name="FormatConfigurationError" type="Exception"></ResponseField>
+
+<a id="tabsdata.AzureSource.format"></a>
+<ResponseField name="format" type="FileFormat">
+The format of the file. If not provided, it will be inferred from the file extension of the data.
+</ResponseField>
+
+<a id="tabsdata.AzureSource.uri"></a>
+<ResponseField name="uri" type="str | List[ str ]">
+The URI of the files with format: ‘az://path/to/files’. It can be a single URI or a list of URIs.
+</ResponseField>
+
+<a id="tabsdata.AzureSource.credentials"></a>
+<ResponseField name="credentials" type="AzureCredentials">
+The credentials required to access Azure.
+</ResponseField>
+
+<a id="tabsdata.AzureSource.initial_last_modified"></a>
+<ResponseField name="initial_last_modified" type="str | datetime.datetime">
+If provided, only the files modified after this date and time will be considered.
+</ResponseField>
+
+#### Methods
+
+#### Attributes
+
+
+</details>

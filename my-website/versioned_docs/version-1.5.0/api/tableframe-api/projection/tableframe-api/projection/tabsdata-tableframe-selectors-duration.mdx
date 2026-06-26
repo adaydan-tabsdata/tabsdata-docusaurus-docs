@@ -1,0 +1,54 @@
+---
+title: "tabsdata.tableframe.selectors.duration"
+sidebarTitle: "tabsdata.tableframe.selectors.duration"
+description: "Select all columns of duration data type."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.selectors.duration"></a>
+<details>
+<summary>duration</summary>
+
+
+```python
+def duration(
+    time_unit: Literal [ 'ns' , 'us' , 'ms' ] | Collection [ Literal [ 'ns' , 'us' , 'ms' ] ] | None = None,
+) -> SelectorProxy
+```
+
+Select all columns of duration data type.
+
+**Parameters:**
+
+<ParamField path="time_unit" type="Literal [ 'ns' , 'us' , 'ms' ] | Collection [ Literal [ 'ns' , 'us' , 'ms' ] ] | None" default="None">
+  One or more of the supported time precision units: “ms”, “us”, or “ns”. If omitted, selects datetime columns with any time unit.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata.tableframe as td_tf
+>>> from datetime import timedelta
+>>>
+>>> tf = td_tf.TableFrame({
+...     "Elapsed": [
+...         timedelta(seconds=5),
+...         timedelta(seconds=10),
+...         timedelta(seconds=15),
+...         timedelta(seconds=20),
+...         timedelta(seconds=25),
+...         timedelta(seconds=30),
+...         timedelta(seconds=35),
+...         timedelta(seconds=40)
+...     ],
+...     "Label": ["A", "B", "C", "D", "E", "F", "G", "H"]
+... })
+```
+
+```python
+>>> tf.select(td_tf.selectors.duration())
+```
+
+
+</details>

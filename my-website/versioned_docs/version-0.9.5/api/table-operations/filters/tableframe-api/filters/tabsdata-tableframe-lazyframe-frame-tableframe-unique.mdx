@@ -1,0 +1,82 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.unique"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.unique"
+description: "Deduplicate rows from the TableFrame ."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.unique"></a>
+<details>
+<summary>unique</summary>
+
+
+```python
+def unique(
+    subset: ColumnNameOrSelector | Collection [ ColumnNameOrSelector ] | None = None,
+    *,
+    keep: UniqueKeepStrategy = 'any',
+    maintain_order: bool = False,
+) -> TableFrame
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/lazyframe/frame.py#L858)
+
+Deduplicate rows from the TableFrame.
+
+**Parameters:**
+
+<ParamField path="subset" type="ColumnNameOrSelector | Collection [ ColumnNameOrSelector ] | None" default="None">
+  Columns to evaluate for duplicate values. If None, all columns are considered.
+</ParamField>
+
+<ParamField path="keep" type="UniqueKeepStrategy" default="'any'">
+  Strategy to keep duplicates:first, last, any, none ( eliminate duplicate rows).
+</ParamField>
+
+<ParamField path="maintain_order" type="bool" default="False">
+  Preserve the order of the rows.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ X    ┆ 10   │
+│ C    ┆ 3    │
+│ D    ┆ 5    │
+│ M    ┆ 9    │
+│ A    ┆ 100  │
+│ M    ┆ 50   │
+│ null ┆ 20   │
+│ F    ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.unique("a", keep="last")
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ D    ┆ 5    │
+│ C    ┆ 3    │
+│ X    ┆ 10   │
+│ A    ┆ 100  │
+│ M    ┆ 50   │
+│ F    ┆ null │
+│ null ┆ 20   │
+└──────┴──────┘
+```
+
+
+</details>

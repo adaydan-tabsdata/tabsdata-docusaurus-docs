@@ -1,0 +1,68 @@
+---
+title: "tabsdata.SalesforceSource"
+sidebarTitle: "tabsdata.SalesforceSource"
+description: "tabsdata.SalesforceSource API reference."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.SalesforceSource"></a>
+<details>
+<summary>SalesforceSource</summary>
+
+
+```python
+class SalesforceSource(
+    credentials: SalesforceCredentials,
+    query: str | list [ str ],
+    instance_url: str = None,
+    include_deleted: bool = False,
+    initial_last_modified: str = None,
+    ** kwargs,
+)
+```
+
+Bases: [`SourcePlugin`](../plugins/tabsdata.SourcePlugin.html#tabsdata.SourcePlugin)
+
+<a id="tabsdata.SalesforceSource.__init__"></a>
+#### `__init__`
+
+```python
+def __init__(
+    credentials: SalesforceCredentials,
+    query: str | list [ str ],
+    instance_url: str = None,
+    include_deleted: bool = False,
+    initial_last_modified: str = None,
+    ** kwargs,
+)
+```
+
+**Parameters:**
+
+<ParamField path="credentials" type="SalesforceCredentials" required>
+  The credentials to access Salesforce.
+</ParamField>
+
+<ParamField path="query" type="str | list [ str ]" required>
+  The query or queries to execute in Salesforce. It can be a single string or a list of strings.
+</ParamField>
+
+<ParamField path="instance_url" type="str" default="None">
+  The URL of the instance to which we want to connect. Only necessary when the username and password are associated to more than one instance. Defaults to None.
+</ParamField>
+
+<ParamField path="include_deleted" type="bool" default="False">
+  Whether to include deleted records in the query results. Defaults to False.
+</ParamField>
+
+<ParamField path="initial_last_modified" type="str" default="None">
+  The initial last modified date to use in the queries. This is useful when we want to query only the records that have been modified since a certain date. Defaults to None. If provided, it must be a string in Salesforce datetime format (with informed timezone) and the query must contain the token $lastModified, which will be replaced by the latest ‘last_modified’ value in each execution.
+</ParamField>
+
+#### Methods
+
+#### Attributes
+
+
+</details>

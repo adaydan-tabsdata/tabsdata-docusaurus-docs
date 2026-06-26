@@ -1,0 +1,68 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.to_datetime"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.to_datetime"
+description: "Convert the string to a datetime."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_datetime"></a>
+<details>
+<summary>to_datetime</summary>
+
+
+```python
+def to_datetime(
+    format: str | None = None,
+    *,
+    time_unit: Literal [ 'ns' , 'us' , 'ms' ] | None = None,
+    time_zone: str | None = None,
+    strict: bool = True,
+    ambiguous: Literal [ 'earliest' , 'latest' , 'raise' , 'null' ] | Expr = 'raise',
+) -> Expr
+```
+
+Convert the string to a datetime.
+
+**Parameters:**
+
+<ParamField path="format" type="str | None" default="None">
+  The datetime format string (default %Y-%m-%d %H:%M:%S)[formats] ([https://docs.rs/chrono/0.4.19/chrono/format/strftime/index.html](https://docs.rs/chrono/0.4.19/chrono/format/strftime/index.html)).
+</ParamField>
+
+<ParamField path="time_unit" type="Literal [ 'ns' , 'us' , 'ms' ] | None" default="None">
+  \{None, ‘us’, ‘ns’, ‘ms’} If None (default), it inferred from the format string
+</ParamField>
+
+<ParamField path="time_zone" type="str | None" default="None">
+  Time zone for the resulting value.
+</ParamField>
+
+<ParamField path="strict" type="bool" default="True">
+  If the conversion fails an error will be raised.
+</ParamField>
+
+<ParamField path="ambiguous" type="Literal [ 'earliest' , 'latest' , 'raise' , 'null' ] | Expr" default="'raise'">
+  Policy to apply on ambiguos Datetimes: ‘raise’: saises an error ‘earliest’: use the earliest datetime ‘latest’: use the latest datetime ‘null’: set to null
+</ParamField>
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.to_datetime().alias("to_datetime"))
+>>>
+┌─────────────────────┬─────────────────────┐
+│ a                   ┆ to_datetime         │
+│ ---                 ┆ ---                 │
+│ str                 ┆ datetime[μs]        │
+╞═════════════════════╪═════════════════════╡
+│ 2024-12-13 08:45:34 ┆ 2024-12-13 08:45:34 │
+│ 2024-12-15 18:33:00 ┆ 2024-12-15 18:33:00 │
+│ null                ┆ null                │
+└─────────────────────┴─────────────────────┘
+```
+
+
+</details>

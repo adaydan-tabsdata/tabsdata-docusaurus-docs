@@ -1,0 +1,34 @@
+---
+title: "tabsdata.tableframe.selectors.boolean"
+sidebarTitle: "tabsdata.tableframe.selectors.boolean"
+description: "Select all columns of boolean data type."
+---
+
+<a id="tabsdata.tableframe.selectors.boolean"></a>
+<details>
+<summary>boolean</summary>
+
+
+```python
+def boolean() -> SelectorProxy
+```
+
+Select all columns of boolean data type.
+
+#### Example
+
+```python
+>>> import tabsdata.tableframe as td_tf
+>>>
+>>> tf = td_tf.TableFrame({
+...     "IsValid": [True, False, True, True, False, False, True, False],
+...     "Score": [95, 88, 92, 76, 84, 79, 91, 87]
+... })
+```
+
+```python
+>>> tf.select(td_tf.selectors.boolean())
+```
+
+
+</details>

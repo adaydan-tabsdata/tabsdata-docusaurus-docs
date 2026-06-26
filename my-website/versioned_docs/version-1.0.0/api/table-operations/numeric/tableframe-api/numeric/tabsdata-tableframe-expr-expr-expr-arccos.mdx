@@ -1,0 +1,45 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.arccos"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.arccos"
+description: "Calculate the inverse cosine of the element value."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.arccos"></a>
+<details>
+<summary>arccos</summary>
+
+
+```python
+def arccos() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L307)
+
+Calculate the inverse cosine of the element value.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").arccos().alias("arccos"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ arccos   │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ 0.01 ┆ 1.560796 │
+│ 0.15 ┆ 1.420228 │
+│ 0.18 ┆ 1.38981  │
+│ 0.6  ┆ 0.927295 │
+│ 0.6  ┆ 0.927295 │
+│ 0.75 ┆ 0.722734 │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+
+</details>

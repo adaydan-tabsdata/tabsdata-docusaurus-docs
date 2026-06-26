@@ -1,0 +1,385 @@
+---
+title: "Db2 CDC"
+sidebarTitle: "Db2 CDC"
+---
+
+The Db2 CDC publisher captures row-level changes (inserts, updates, deletes) from a Db2 database using SQL Replication. Unlike MySQL and PostgreSQL which stream changes via replication protocols, Db2 CDC polls Change Data (CD) tables that are populated by the Db2 capture agent.
+
+> **Note:** Db2 CDC is currently marked as unstable and may undergo API changes in future releases.
+
+## Example
+
+```python
+from typing import Tuple
+import tabsdata as td
+
+conn = td.Db2CdcConn(
+    uri="db2://localhost:50000/ecommerce",
+    credentials=td.UserPasswordCredentials(
+        user=td.EnvironmentSecret("DB2_USER"),
+        password=td.EnvironmentSecret("DB2_PASS"),
+    ),
+)
+
+trigger = td.Db2CdcTrigger(
+    conn=conn,
+    tables=["ASN.TD_T__ORDERS", "ASN.TD_T__ORDER_ITEMS"],
+    start_from="tail",
+)
+
+@td.publisher(
+    trigger=trigger,
+    tables=["orders", "order_items"],
+)
+def capture_ecommerce(
+    orders: list[td.TableFrame],
+    order_items: list[td.TableFrame],
+) -> Tuple[td.TableFrame, td.TableFrame]:
+    return td.concat(orders), td.concat(order_items)
+```
+
+This example publishes CDC data for the `orders` and `order_items` tables, capturing only changes that occur after the publisher has been first registered.
+
+After defining the function, register it with a Tabsdata collection and trigger its execution.
+
+## Setup
+
+Db2 must be configured to enable CDC before using this publisher. See Db2 Setup to Enable CDC.
+
+### Connection: Db2CdcConn
+
+`Db2CdcConn` defines how to connect to the Db2 server. It accepts a standard Db2 URI and optional credentials.
+
+```python
+conn = td.Db2CdcConn(
+    uri="db2://localhost:50000/my_database",
+    credentials=td.UserPasswordCredentials(
+        user=td.EnvironmentSecret("DB2_CDC_USER"),
+        password=td.EnvironmentSecret("DB2_CDC_PASSWORD"),
+    ),
+)
+```
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| uri | str | Db2 connection URI ( db2://host:port/database ). If the port is omitted, defaults to 50000 . If the database is omitted, defaults to "sample" . |
+| credentials | UserPasswordCredentials | None | Optional user/password credentials. If None , credentials from the URI are used. |
+| cx_src_configs_db2 | dict | None | Optional Db2-specific connection parameters passed to the underlying driver. |
+
+### Trigger: Db2CdcTrigger
+
+`Db2CdcTrigger` connects to Db2, polls the specified CD tables for new changes, and stages batches for downstream processing.
+
+```python
+trigger = td.Db2CdcTrigger(
+    conn=conn,
+    tables=["ASN.TD_T__ORDERS", "ASN.TD_T__ORDER_ITEMS"],
+    start_from="tail",
+)
+```
+
+#### tables (CD Tables)
+
+Unlike MySQL and PostgreSQL where you specify the source tables directly, the `tables` parameter in Db2 refers to the **CD (Change Data) tables** created during capture registration — not the original source tables.
+
+A single source table can be registered for SQL Replication more than once, producing multiple CD tables with different configurations (e.g., different column subsets or capture schemas). By specifying the CD table, you select exactly which registration to consume from.
+
+The connector automatically infers the original source table from the CD table by querying the `ASN.ibmsnap_register` metadata. Output `TableFrame`s are named after the source tables, not the CD tables.
+
+```python
+# Specify CD tables (created by capture registration), not source tables
+tables=["ASN.TD_T__ORDERS", "ASN.TD_T__ORDER_ITEMS"]
+
+# The connector resolves these to the original source tables
+# (e.g., MY_SCHEMA.ORDERS, MY_SCHEMA.ORDER_ITEMS) automatically.
+```
+
+All CD tables must exist before the trigger starts.
+
+> **Note:** Schema changes on tracked tables are supported, but performing a schema change on a table for which CDC is enabled is a complex administration effort on the Db2 side. The Tabsdata publisher should be stopped while schema changes are being made. Refer to the [IBM Db2 documentation](https://www.ibm.com/docs/en/db2) for details on managing schema changes with SQL Replication.
+
+#### start_from
+
+Determines where the connector begins reading from the CD tables. Position is tracked via `IBMSNAP_COMMITSEQ` values. On subsequent runs, the connector resumes automatically from its last committed position.
+
+| Value | Type | Behavior |
+| --- | --- | --- |
+| "head" | str | Start from the earliest available data in the CD tables. |
+| "tail" | str | Start from the current end, capturing only new changes. |
+| CommitSeqPosition(seq="...") | CommitSeqPosition | Resume from a specific commit sequence number (global across all tables). |
+| TableCommitSeqPosition(seqs=\{...}) | TableCommitSeqPosition | Resume from per-table commit sequence numbers. |
+| TimestampPosition(ts=datetime(...)) | TimestampPosition | Start from the first change at or after the given timestamp. |
+
+## Advanced Configuration
+
+### CDC Output Format (cdc_format)
+
+The `cdc_format` parameter controls how change data is structured in the output `TableFrame`s, configured via `CdcFormat`.
+
+```python
+from tabsdata.connector.cdc.common.typing import CdcFormat
+
+cdc_format=CdcFormat(values_format="columns", flatten_values=True)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| values_format | "columns" | "struct" | "map" | "columns" | Controls how old and new row values are laid out in the output. |
+| flatten_values | bool | True | When True , new values are promoted to individual top-level columns instead of being packed into a container column. |
+
+#### Metadata columns (always present)
+
+Every output row includes the following metadata columns regardless of `values_format`:
+
+| Column | Type | Description |
+| --- | --- | --- |
+| @td.cdc.meta.op | str | Operation type: "i" (insert), "u" (update), or "d" (delete). |
+| @td.cdc.meta.tx | str | Transaction identifier from the source database. |
+| @td.cdc.meta.sq | int | Sequence number ordering changes within a transaction. |
+
+#### values_format = "columns"
+
+Each source table column is represented as two explicit output columns — one for the old value and one for the new value:
+
+| Column | Description |
+| --- | --- |
+| @td.cdc.data.col.old.`<COL_NAME>` | Value before the change. |
+| @td.cdc.data.col.new.`<COL_NAME>` | Value after the change. Present when flatten_values=False . |
+| `<COL_NAME>` | Value after the change. Present when flatten_values=True (replaces the new prefixed column). |
+
+**Semantics by operation:**
+
+| Operation | @td.cdc.data.col.old.`<COL_NAME>` | New value column |
+| --- | --- | --- |
+| Insert ( i ) | null | Inserted data |
+| Update ( u ) | Value prior to the update | Value after the update |
+| Delete ( d ) | null | Deleted data |
+
+#### values_format = "map"
+
+Old and new values are packed into map columns keyed by table column name:
+
+| Column | Type | Description |
+| --- | --- | --- |
+| @td.cdc.data.map.old | Map`<str, str>` | Old values. Present when flatten_values=False or for old values always. |
+| @td.cdc.data.map.new | Map`<str, str>` | New values packed as a map. Present when flatten_values=False . |
+| `<COL_NAME>` | — | New values as individual columns. Present when flatten_values=True (replaces @td.cdc.data.map.new ). |
+
+**Semantics by operation:**
+
+| Operation | @td.cdc.data.map.old | New value column(s) |
+| --- | --- | --- |
+| Insert ( i ) | null | Inserted data |
+| Update ( u ) | Values prior to the update | Values after the update |
+| Delete ( d ) | null | Deleted data |
+
+#### values_format = "struct"
+
+Identical to `"map"` but old and new values are packed into struct fields instead of map columns:
+
+| Column | Type | Description |
+| --- | --- | --- |
+| @td.cdc.data.row.old | struct | Old values. Present when flatten_values=False or for old values always. |
+| @td.cdc.data.row.new | struct | New values packed as a struct. Present when flatten_values=False . |
+| `<COL_NAME>` | — | New values as individual columns. Present when flatten_values=True (replaces @td.cdc.data.row.new ). |
+
+Semantics by operation are identical to `"map"` above.
+
+#### Output Examples
+
+**values_format="columns", flatten_values=True**
+
+| @td.cdc.meta.op | @td.cdc.meta.tx | @td.cdc.meta.sq | @td.cdc.meta.fmt | @td.cdc.meta.flat | id | username | first_name | last_name | email | @td.cdc.data.col.old.id | @td.cdc.data.col.old.username | @td.cdc.data.col.old.first_name | @td.cdc.data.col.old.last_name | @td.cdc.data.col.old.email |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| i | 225e1410-…:18 | 1 | columns | true | 1 | deals_1914 | Johnny | Woods | replaced1800@gmail.com | null | null | null | null | null |
+| u | 225e1410-…:19 | 1 | columns | true | 7 | filename_2073 | Gerardo | Mcintosh | surgery1995@duck.com | 7 | filename_2073 | Maren | Puckett | examinations2009@yahoo.com |
+| d | 225e1410-…:20 | 1 | columns | true | 2 | incl_1972 | Emery | Reilly | exposed2025@example.com | null | null | null | null | null |
+
+**values_format="columns", flatten_values=False**
+
+| @td.cdc.meta.op | @td.cdc.meta.tx | @td.cdc.meta.sq | @td.cdc.meta.fmt | @td.cdc.meta.flat | @td.cdc.data.col.new.id | @td.cdc.data.col.new.username | @td.cdc.data.col.new.first_name | @td.cdc.data.col.new.last_name | @td.cdc.data.col.new.email | @td.cdc.data.col.old.id | @td.cdc.data.col.old.username | @td.cdc.data.col.old.first_name | @td.cdc.data.col.old.last_name | @td.cdc.data.col.old.email |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| i | 225e1410-…:22 | 1 | columns | false | 1 | beat_1843 | Kathyrn | Stokes | true1875@outlook.com | null | null | null | null | null |
+| u | 225e1410-…:23 | 1 | columns | false | 7 | douglas_1901 | Lawrence | Bauer | submission2025@yahoo.com | 7 | douglas_1901 | Hermine | Preston | commodities1921@outlook.com |
+| d | 225e1410-…:24 | 1 | columns | false | 7 | douglas_1901 | Lawrence | Bauer | submission2025@yahoo.com | null | null | null | null | null |
+
+**values_format="struct", flatten_values=True**
+
+| @td.cdc.meta.op | @td.cdc.meta.tx | @td.cdc.meta.sq | @td.cdc.meta.fmt | @td.cdc.meta.flat | id | username | first_name | last_name | email | @td.cdc.data.row.old |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| i | 225e1410-…:26 | 1 | struct | true | 1 | loops_1939 | Agueda | Duncan | clinical2027@protonmail.com | \{null,null,null,null,null} |
+| u | 225e1410-…:27 | 1 | struct | true | 8 | evaluating_1979 | Carletta | Deleon | wrapping1938@yandex.com | \{8,”evaluating_1979”,”Marlen”,”Estrada”,”hitachi1882@example.org”} |
+| d | 225e1410-…:28 | 1 | struct | true | 4 | majority_1865 | Eulah | Whitney | touched1819@yahoo.com | \{null,null,null,null,null} |
+
+**values_format="struct", flatten_values=False**
+
+| @td.cdc.meta.op | @td.cdc.meta.tx | @td.cdc.meta.sq | @td.cdc.meta.fmt | @td.cdc.meta.flat | @td.cdc.data.row.new | @td.cdc.data.row.old |
+| --- | --- | --- | --- | --- | --- | --- |
+| i | 225e1410-…:30 | 1 | struct | false | \{1,”processes_2081”,”Leon”,”Pollard”,”browse1909@duck.com”} | \{null,null,null,null,null} |
+| u | 225e1410-…:31 | 1 | struct | false | \{5,”virtually_1823”,”Gavin”,”Macdonald”,”rocky2058@yandex.com”} | \{5,”virtually_1823”,”Erich”,”Hood”,”skin2004@gmail.com”} |
+| d | 225e1410-…:32 | 1 | struct | false | \{7,”thank_1865”,”Lashawna”,”Petty”,”classical2074@yandex.com”} | \{null,null,null,null,null} |
+
+**values_format="map", flatten_values=True**
+
+| @td.cdc.meta.op | @td.cdc.meta.tx | @td.cdc.meta.sq | @td.cdc.meta.fmt | @td.cdc.meta.flat | id | username | first_name | last_name | email | @td.cdc.data.map.old |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| i | 225e1410-…:34 | 1 | map | true | 1 | uni_2028 | Sandy | Hinton | husband1960@example.org | \{“id”:null,”username”:null,”first_name”:null,”last_name”:null,”email”:null} |
+| u | 225e1410-…:35 | 1 | map | true | 1 | uni_2028 | Kelle | Noel | see2021@example.com | \{“id”:1,”username”:”uni_2028”,”first_name”:”Sandy”,”last_name”:”Hinton”,”email”:”husband1960@example.org”} |
+| d | 225e1410-…:36 | 1 | map | true | 1 | uni_2028 | Kelle | Noel | see2021@example.com | \{“id”:null,”username”:null,”first_name”:null,”last_name”:null,”email”:null} |
+
+**values_format="map", flatten_values=False**
+
+| @td.cdc.meta.op | @td.cdc.meta.tx | @td.cdc.meta.sq | @td.cdc.meta.fmt | @td.cdc.meta.flat | @td.cdc.data.map.new | @td.cdc.data.map.old |
+| --- | --- | --- | --- | --- | --- | --- |
+| i | a4a17b92-…:38 | 1 | map | false | \{“id”:1,”username”:”vacancies_2045”,”first_name”:”Tony”,”last_name”:”Oliver”,”email”:”rec1977@yandex.com”} | \{“id”:null,”username”:null,”first_name”:null,”last_name”:null,”email”:null} |
+| u | a4a17b92-…:39 | 1 | map | false | \{“id”:7,”username”:”strategies_1852”,”first_name”:”Foster”,”last_name”:”Nolan”,”email”:”ambient1829@example.com”} | \{“id”:7,”username”:”strategies_1852”,”first_name”:”Doreatha”,”last_name”:”Mclaughlin”,”email”:”buffalo2065@yandex.com”} |
+| d | a4a17b92-…:40 | 1 | map | false | \{“id”:8,”username”:”boc_1991”,”first_name”:”Peg”,”last_name”:”Vang”,”email”:”blacks1939@yandex.com”} | \{“id”:null,”username”:null,”first_name”:null,”last_name”:null,”email”:null} |
+
+### Start Position Examples
+
+```python
+from tabsdata.connector.cdc.db2.typing import CommitSeqPosition, TableCommitSeqPosition
+from tabsdata.connector.cdc.common.typing import TimestampPosition
+from datetime import datetime, timezone
+
+# Start from the end — capture only new changes going forward
+start_from="tail"
+
+# Start from the beginning of the CD tables
+start_from="head"
+
+# Resume from a global commit sequence number
+start_from=CommitSeqPosition(seq="00000000000000001234")
+
+# Resume with per-table commit sequence numbers
+start_from=TableCommitSeqPosition(seqs={
+    "my_schema.orders": "00000000000000001234",
+    "my_schema.order_items": "00000000000000001200",
+})
+
+# Start from a specific timestamp
+start_from=TimestampPosition(ts=datetime(2026, 1, 15, tzinfo=timezone.utc))
+```
+
+### Buffer and Trigger Thresholds
+
+The CDC connector uses a two-stage pipeline: changes accumulate in memory (buffer), are flushed to the working directory, then staged to the output location.
+
+#### Buffer thresholds (memory → working directory)
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| buffer_max_rows | int | 10,000 | Flush to disk when row count in memory reaches this limit. |
+| buffer_max_bytes | int | None | None | Flush to disk when byte size in memory reaches this limit. |
+| buffer_max_sec | float | 60.0 | Flush to disk when this many seconds have elapsed since the last flush. |
+
+#### Trigger thresholds (working directory → stage location)
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| trigger_max_rows | int | None | None | Stage when total rows on disk reach this limit. |
+| trigger_max_bytes | int | None | None | Stage when total bytes on disk reach this limit. |
+| trigger_max_sec | float | 60.0 | Stage when this many seconds have elapsed since the last stage. |
+
+### Other Parameters
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| poll_interval_sec | float | 1.0 | Seconds between polling the CD tables for new changes. Directly determines minimum capture latency. |
+| blocking_timeout_sec | float | 1.0 | Timeout in seconds for blocking reads. |
+| start | datetime | None | None | Delay trigger execution until this datetime (UTC). |
+| end | datetime | None | None | Stop the trigger at this datetime (UTC). |
+
+## Limitations
+
+- **TRUNCATE:** `TRUNCATE TABLE` operations are not captured. A truncate on a tracked table will not produce any change events.
+- **Large/Blob types:** `BLOB`, `CLOB`, `LONGBLOB`, `BYTEA`, and `TEXT` (in some configurations) column types are not currently supported. Tables containing these types should exclude them from capture or use alternative ingestion methods.
+- **Static table list:** All CD tables in the `tables` parameter must exist before the trigger starts. The connector does not perform runtime table discovery.
+
+## Db2 Setup to Enable CDC
+
+> The steps below are provided for convenience. Refer to the [IBM Db2 documentation](https://www.ibm.com/docs/en/db2) for comprehensive and up-to-date configuration instructions.
+
+### Enable Archive Logging
+
+SQL Replication requires archive logging so the capture agent can read the recovery log.
+
+```shell
+mkdir $HOME/archive
+mkdir $HOME/backup
+
+db2 UPDATE DB CFG FOR my_database USING logarchmeth1 disk:$HOME/archive/
+
+db2 BACKUP DB my_database TO $HOME/backup/
+```
+
+A full backup is required after enabling archive logging.
+
+### Create ASN Control Tables
+
+The ASN control tables store capture metadata. Create them using the `asnclp` tool:
+
+```shell
+asnclp << EOF
+SET SERVER CAPTURE TO DB my_database;
+SET CAPTURE SCHEMA SOURCE ASN;
+CREATE CONTROL TABLES FOR CAPTURE SERVER;
+EOF
+```
+
+### Start the Capture Agent
+
+```shell
+asncap capture_server=my_database capture_schema=ASN &
+```
+
+The capture agent runs continuously, reading the recovery log and writing changes to CD tables. It must be running before the connector can capture changes.
+
+### Register Tables for Capture
+
+Each source table must be explicitly registered for CDC. Registration creates a corresponding CD table that stores captured changes.
+
+```shell
+asnclp << EOF
+SET SERVER CAPTURE TO DB my_database;
+SET CAPTURE SCHEMA SOURCE ASN;
+SET RUN SCRIPT NOW STOP ON SQL ERROR ON;
+CREATE REGISTRATION (
+    my_schema.orders
+)
+DIFFERENTIAL REFRESH
+IMAGE BOTH
+PREFIX _
+CAPTURE ALL;
+EOF
+```
+
+| Option | Description |
+| --- | --- |
+| DIFFERENTIAL REFRESH | Only changed rows are captured, not full table snapshots. |
+| IMAGE BOTH | Both before-image and after-image are recorded for updates. |
+| PREFIX _ | Before-image column names are prefixed with underscore (e.g., _NAME for the old value of NAME ). |
+| CAPTURE ALL | All column changes are captured. |
+
+After registration, insert a `CAPSTART` signal to activate capture and wait for the capture agent to process it:
+
+```sql
+INSERT INTO ASN.ibmsnap_signal
+    (signal_type, signal_subtype, signal_input_in, signal_state)
+VALUES
+    ('CMD', 'CAPSTART', 'ASN.MY_SCHEMA_ORDERS', 'P');
+
+-- Verify capture is active (signal_state should become 'C')
+SELECT signal_state FROM ASN.ibmsnap_signal
+WHERE signal_input_in = 'ASN.MY_SCHEMA_ORDERS';
+```
+
+### Create a CDC User
+
+Create a dedicated Db2 user with the privileges required to read the CD tables and ASN metadata:
+
+```sql
+GRANT SELECT ON TABLE ASN.ibmsnap_register TO USER cdc_user;
+GRANT SELECT ON TABLE ASN.TD_T__ORDERS TO USER cdc_user;
+GRANT SELECT ON TABLE ASN.TD_T__ORDER_ITEMS TO USER cdc_user;
+```

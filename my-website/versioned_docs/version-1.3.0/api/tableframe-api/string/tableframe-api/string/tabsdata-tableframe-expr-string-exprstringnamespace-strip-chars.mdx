@@ -1,0 +1,52 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.strip_chars"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.strip_chars"
+description: "tabsdata.tableframe.expr.string.ExprStringNameSpace.strip_chars API reference."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.strip_chars"></a>
+<details>
+<summary>strip_chars</summary>
+
+
+```python
+def strip_chars(
+    characters: td_typing.IntoExpr = None,
+) -> td_expr.Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/string.py#L291)
+
+Trim string values.
+
+**Parameters:**
+
+<ParamField path="characters" type="td_typing.IntoExpr" default="None">
+  Characters to trim from start and end of the string. All characteres in the given string are removed, regardless the order. Default is whitespace.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a")
+      .str.strip_chars("a ").alias("strip_chars"))
+>>>
+┌─────────────────────────────────┬─────────────┐
+│ a                               ┆ strip_chars │
+│ ---                             ┆ ---         │
+│ str                             ┆ str         │
+╞═════════════════════════════════╪═════════════╡
+│ acba cda                      … ┆ cba cd      │
+│    xy z                         ┆ xy z        │
+│ null                            ┆ null        │
+└─────────────────────────────────┴─────────────┘
+```
+
+
+</details>

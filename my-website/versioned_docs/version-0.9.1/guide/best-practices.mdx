@@ -1,0 +1,58 @@
+---
+title: "Best Practices"
+sidebarTitle: "Best Practices"
+---
+
+## Processing only in Transformers#
+
+While all the three kinds of functions, publishers, transformers, and subscribers, can support processing, it is recommended to use only transformers for it. This woould help you make the most of Tabsdata’s current and future capabilities.
+
+## Testing#
+
+You can use the [polars](https://docs.pola.rs/) or [pandas](https://pandas.pydata.org/docs/index.html) Python package to test out your function logic before registering and executing your functions on the server.
+
+Let’s take the function logic of the transformer code from the Getting Started section here. You can test the function logic using the following code:
+
+```python
+import polars as pl
+
+import tabsdata as td
+
+
+@td.transformer(input_tables=["persons"], output_tables=["spanish", "french", "german"])
+def tfr(persons: td.TableFrame):
+    persons = persons.select(
+        ["identifier", "name", "surname", "nationality", "language"]
+    )
+    res = {}
+    for nationality in ["Spanish", "French", "German"]:
+        res[nationality] = persons.filter(td.col("nationality").eq(nationality)).drop(
+            ["nationality"]
+        )
+    return res["Spanish"], res["French"], res["German"]
+
+
+def test_tfr():
+    # Assuming that the persons.csv file exists in the same directory where the
+    # script is run
+    tf = pl.read_csv("persons.csv")
+    assert isinstance(tf, pl.TableFrame)
+    s, f, g = tfr(tf)
+
+    # Testing that the output is of the correct type and has the proper columns
+    assert isinstance(s, pl.TableFrame)
+    assert s.columns == ["identifier", "name", "surname", "language"]
+    assert isinstance(f, pl.TableFrame)
+    assert f.columns == ["identifier", "name", "surname", "language"]
+    assert isinstance(g, pl.TableFrame)
+    assert g.columns == ["identifier", "name", "surname", "language"]
+```
+
+Note:
+
+- This method is only applicable to test the function logic, and not the input and output to the function.
+- `persons.csv` is assumed to be the same working directory where the Python file containing this code exists. If that’s not the case, input the correct path to file in the `read_csv` function.
+
+In the `test_tfr` function, `pl.read_csv` is used to read the csv file and store the resultant polars dataframe in a variable called `tf`. This tf dataframe is passed to the `tfr` function as input, and the resultant output tables from the function are stored as s,f and g variables. They are subsequently tested for correctness.
+
+You can run `test_tfr` to understand if the function logic is performing as expected.

@@ -1,0 +1,62 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.mean"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.mean"
+description: "Aggregation operation that finds the mean of the values in the group."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.mean"></a>
+<details>
+<summary>mean</summary>
+
+
+```python
+def mean() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/expr.py#L2464)
+
+Aggregation operation that finds the mean of the values in the group.
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ ss   ┆ i    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ B    ┆ 0    │
+│ A    ┆ 2    │
+│ B    ┆ 3    │
+│ B    ┆ 4    │
+│ C    ┆ -1   │
+│ C    ┆ -2   │
+│ C    ┆ -3   │
+│ D    ┆ -4   │
+│ F    ┆ -5   │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.group_by(td.col("a")).agg(td.col("b")).mean())
+>>>
+┌──────┬──────────┐
+│ ss   ┆ i        │
+│ ---  ┆ ---      │
+│ str  ┆ f64      │
+╞══════╪══════════╡
+│ null ┆ null     │
+│ A    ┆ 1.5      │
+│ F    ┆ -5.0     │
+│ C    ┆ -2.0     │
+│ D    ┆ -4.0     │
+│ B    ┆ 2.333333 │
+└──────┴──────────┘
+```
+
+
+</details>

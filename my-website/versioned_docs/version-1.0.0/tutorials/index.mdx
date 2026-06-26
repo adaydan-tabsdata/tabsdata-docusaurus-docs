@@ -1,0 +1,61 @@
+---
+title: "Tutorials"
+sidebarTitle: "Tutorials"
+---
+
+In the tutorials below, we show how to make the most of Tabsdata, when working with various sources and destinations. We have shown only specific connectors in the tutorials below. However, in a real-world scenario, your data source could be any other database, or file storage location (cloud or on-prem), and the subscriber could write data to various endpoints such as a database or file system. You can check the list of source and destination connectors.
+
+## 5. Publishing, Transforming, and Subscribing a CDC Stream from Oracle into PostgreSQL and S3!#
+
+In this tutorial, we’ll explore how Tabsdata enables generating a CDC stream from a table in Oracle and subscribe that CDC stream to AWS Iceberg and PostgreSQL. We will do the following steps:
+
+- Set up an Oracle Database in a Docker container
+- Set up Tabsdata
+- Register a publisher function to read customer data from an Oracle table
+- Register a transformer function to capture data changes and store the CDC stream in a new table
+- Register subscriber functions to deliver the CDC stream and customer table to PostgreSQL and AWS Iceberg
+
+[Link](https://github.com/tabsdata/tutorials/tree/main/t05_oracle_cdc) to the Github repo.
+
+## 4. Pre-processing, Publishing and Subscribing a Google Sheet to Neon PostgreSQL!#
+
+In this tutorial, we’ll explore how Tabsdata enables exporting data from Google Sheet to Neon PostgreSQL. We will do the following steps:
+
+- Set up Tabsdata
+- Register a publisher to read from Google Sheet, drop some columns from it, and publish the data as a table into Tabsdata.
+- Register a subscriber that subscribes to this published table, and writes it to PostgreSQL Table in Neon.
+
+[Link](https://github.com/tabsdata/tutorials/tree/main/t04_gsheet_neon) to the Github repo.
+
+## 3. Pre-processing, Publishing and Subscribing a CSV to AWS Glue Iceberg!#
+
+In this tutorial, we’ll explore how Tabsdata enables publishing CSV data from local file system and subscribing as an Iceberg table to AWS. We will do the following steps:
+
+- Set up Tabsdata
+- Register a publisher that reads data from a CSV file, selects some aspects of it, and publishes it as a table within Tabsdata.
+- Register a subscriber that subscribes to this published table, and exports it as an Iceberg Table to AWS.
+- Demonstrate that when the publisher is re-run to load new data, the subscriber automatically writes the new data to AWS.
+
+[Link](https://github.com/tabsdata/tutorials/tree/main/t03_csv_iceberg_pub_sub) to the Github repo.
+
+## 2. Publishing and Subscribing a PostgreSQL Table!#
+
+In this tutorial, we’ll explore how Tabsdata enables Pub/Sub for Tables with source and destination data being a locally hosted PostgreSQL database. We will do the following steps:
+
+- Set up Tabsdata
+- Register a publisher that reads data from PostgreSQL, and publishes that as a table to Tabsdata.
+- Register a subscriber that subscribes to this published table, filters some data, and exports it to PostgreSQL.
+- Demonstrate that when the publisher is re-run to load new data, the subscriber automatically writes the new data to PostgreSQL.
+
+[Link](https://github.com/tabsdata/tutorials/tree/main/t02_postgres_pub_sub) to the Github repo.
+
+## 1. Pre-processing, Publishing and Subscribing a CSV!#
+
+In this first tutorial, we’ll explore how Tabsdata enables Pub/Sub for Tables using a CSV file input. We will do the following steps:
+
+- Set up Tabsdata
+- Register a publisher that reads data from a CSV file, selects some aspects of it, and publishes it as a table within the system.
+- Register a subscriber that subscribes to this published table, and exports it to the file system in a JSON format.
+- Demonstrate that when the publisher is re-run to load new data, the subscriber automatically writes the new data to the CSV in local file system.
+
+[Link](https://github.com/tabsdata/tutorials/tree/main/t01_csv_pub_sub) to the Github repo.

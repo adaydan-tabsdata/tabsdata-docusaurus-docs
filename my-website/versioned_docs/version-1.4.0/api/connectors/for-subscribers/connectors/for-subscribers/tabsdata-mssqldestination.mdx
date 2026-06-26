@@ -1,0 +1,70 @@
+---
+title: "tabsdata.MSSQLDestination"
+sidebarTitle: "tabsdata.MSSQLDestination"
+description: "Bases: DestinationPlugin"
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.MSSQLDestination"></a>
+<details>
+<summary>MSSQLDestination</summary>
+
+
+```python
+class MSSQLDestination(
+    connection_string: str,
+    destination_table: str | list [ str ],
+    credentials: dict | UserPasswordCredentials | None = None,
+    server: str | Secret = None,
+    database: str | Secret = None,
+    driver: str | Secret = None,
+    if_table_exists: Literal [ 'append' , 'replace' ] = 'append',
+    chunk_size: int = 50000,
+    ** kwargs,
+)
+```
+
+Bases: [`DestinationPlugin`](../plugins/tabsdata.DestinationPlugin.html#tabsdata.DestinationPlugin)
+
+Destination plugin for Microsoft SQL Server.
+
+<a id="tabsdata.MSSQLDestination.__init__"></a>
+#### `__init__`
+
+```python
+def __init__(
+    connection_string: str,
+    destination_table: str | list [ str ],
+    credentials: dict | UserPasswordCredentials | None = None,
+    server: str | Secret = None,
+    database: str | Secret = None,
+    driver: str | Secret = None,
+    if_table_exists: Literal [ 'append' , 'replace' ] = 'append',
+    chunk_size: int = 50000,
+    ** kwargs,
+)
+```
+
+Initialize the MSSQLDestination with a connection string and a table name.
+
+**Parameters:**
+
+<ParamField path="connection_string" type="str" required>
+  The connection string to connect to the database.
+</ParamField>
+
+<ParamField path="destination_table" type="str | list [ str ]" required>
+  The table(s) to create. If multiple tables are provided, they must be provided as a list.
+</ParamField>
+
+<ParamField path="if_table_exists" type="Literal [ 'append' , 'replace' ]" default="'append'">
+  The strategy to follow when the table already exists. - ‘replace’ will create a new database table, overwriting an existing one. ‘append’ will append to an existing table.
+</ParamField>
+
+#### Methods
+
+#### Attributes
+
+
+</details>

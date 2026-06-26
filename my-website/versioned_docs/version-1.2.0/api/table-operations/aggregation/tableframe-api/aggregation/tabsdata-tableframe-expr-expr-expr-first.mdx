@@ -1,0 +1,43 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.first"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.first"
+description: "Get the first element."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.first"></a>
+<details>
+<summary>first</summary>
+
+
+```python
+def first() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L964)
+
+Get the first element.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("age"), td.col("age").first().alias("first"))
+>>>
+┌──────┬─────────┐
+│ age  ┆ first   │
+│ ---  ┆ ------- │
+│ i64  ┆ i64     │
+╞══════╪═════════╡
+│ 10   ┆ 10      │
+│ 11   ┆ 10      │
+│ 18   ┆ 10      │
+│ 65   ┆ 10      │
+│ 70   ┆ 10      │
+└──────┴─────────┘
+```
+
+
+</details>

@@ -1,0 +1,60 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.contains_any"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.contains_any"
+description: "Evaluate if the string contains any of the given patterns."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.contains_any"></a>
+<details>
+<summary>contains_any</summary>
+
+
+```python
+def contains_any(
+    patterns: td_expr.IntoExpr,
+    *,
+    ascii_case_insensitive: bool = False,
+) -> td_expr.Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/string.py#L1030)
+
+Evaluate if the string contains any of the given patterns.
+
+**Parameters:**
+
+<ParamField path="patterns" type="td_expr.IntoExpr" required>
+  The patterns to search for.
+</ParamField>
+
+<ParamField path="ascii_case_insensitive" type="bool" default="False">
+  If true, the search is case-insensitive.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a")
+      .str.contains_any(["a", "b"]).alias("contains_any"))
+>>>
+┌──────┬──────────────┐
+│ a    ┆ contains_any │
+│ ---  ┆ ---          │
+│ str  ┆ bool         │
+╞══════╪══════════════╡
+│ abc  ┆ true         │
+│ axy  ┆ true         │
+│ xyb  ┆ true         │
+│ xyz  ┆ false        │
+│ null ┆ null         │
+└──────┴──────────────┘
+```
+
+
+</details>

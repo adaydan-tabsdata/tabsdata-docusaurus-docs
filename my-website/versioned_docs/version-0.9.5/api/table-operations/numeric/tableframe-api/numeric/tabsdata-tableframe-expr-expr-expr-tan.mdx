@@ -1,0 +1,42 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.tan"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.tan"
+description: "Calculate the tangent of the element value."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.tan"></a>
+<details>
+<summary>tan</summary>
+
+
+```python
+def tan() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L2603)
+
+Calculate the tangent of the element value.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").tan().alias("tan"))
+>>>
+┌─────┬───────────┐
+│ val ┆ tan       │
+│ --- ┆ ---       │
+│ i64 ┆ f64       │
+╞═════╪═══════════╡
+│ 0   ┆ 0.0       │
+│ 30  ┆ -6.405331 │
+│ 60  ┆ 0.32004   │
+│ 90  ┆ -1.9952   │
+└─────┴───────────┘
+```
+
+
+</details>

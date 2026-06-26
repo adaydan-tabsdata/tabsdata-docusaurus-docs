@@ -1,0 +1,53 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.and_"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.and_"
+description: "Bitwise and operator with the given expressions. It can be used with integer and bool types."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.and_"></a>
+<details>
+<summary>and_</summary>
+
+
+```python
+def and_(
+    * others: Any,
+) -> Expr
+```
+
+Bitwise and operator with the given expressions. It can be used with integer and bool types.
+
+**Parameters:**
+
+<ParamField path="others" required>
+  expressions to peform the bitwiseand with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("i"), td.col("i").and_(2).alias("and_"))
+>>>
+┌──────┬──────┐
+│ i    ┆ and_ │
+│ ---  ┆ ---  │
+│ i64  ┆ i64  │
+╞══════╪══════╡
+│ -1   ┆ 2    │
+│ 2    ┆ 2    │
+│ -3   ┆ 0    │
+│ 0    ┆ 0    │
+│ 5    ┆ 0    │
+│ 7    ┆ 2    │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+
+</details>

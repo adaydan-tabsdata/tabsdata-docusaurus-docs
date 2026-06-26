@@ -1,0 +1,147 @@
+---
+title: "Grok for Log Files"
+sidebarTitle: "Grok for Log Files"
+---
+
+The grok function is a powerful log parsing tool for TableFrames that extracts structured data from log files and similar text formats. Originally developed for log analysis, it transforms a single text column into multiple typed columns by applying grok patterns with named captures.
+
+Grok is based on the Elasticsearch implementation and follows the same pattern syntax. For comprehensive pattern documentation, see the official Elasticsearch Grok documentation ([https://www.elastic.co/docs/explore-analyze/scripting/grok](https://www.elastic.co/docs/explore-analyze/scripting/grok)) and the predefined pattern library ([elastic/elasticsearch](https://github.com/elastic/elasticsearch/tree/main/libs/grok/src/main/resources/patterns)).
+
+Grok uses regular expressions with predefined patterns to parse text. Each pattern includes named captures that become columns in your result. The function takes three inputs:
+
+- Column Expression: Any expression that selects one column containing text to parse
+- Pattern: A grok pattern string with named captures
+- Schema: A mapping that defines output column names and data types for each capture
+
+## Examples#
+
+### Basic Log Parsing#
+
+Apache access log parsing. The followig code creates columns: ip_address, http_method, status_code, response_bytes, request_time
+
+```python
+import tabsdata as td
+import tabsdata.tableframe as tdf
+
+pattern = (
+    r"%{IPV4:client_ip} "
+    r"%{USER:ident} "
+    r"%{USER:auth} "
+    r"\[%{HTTPDATE:timestamp}\] "
+    r'"%{WORD:method} '
+    r'%{URIPATHPARAM:request} '
+    r'HTTP/%{NUMBER:http_version}" '
+    r"%{INT:response_code} %{INT:bytes}"
+)
+
+schema = {
+    "client_ip": tdf.Column("ip_address", td.String),
+    "method": tdf.Column("http_method", td.String),
+    "response_code": tdf.Column("status_code", td.Int32),
+    "bytes": tdf.Column("response_bytes", td.Int64),
+    "timestamp": tdf.Column("request_time", td.String),
+}
+
+log_data = [
+    '192.168.1.1 '
+    '- '
+    'frank '
+    '[10/Oct/2000:13:55:36 -0700] '
+    '"GET '
+    '/apache_pb.gif '
+    'HTTP/1.0" '
+    '200 '
+    '2326'
+]
+
+tf = td.TableFrame(df={"log_entry": log_data}, origin=None)
+result = tf.grok("log_entry", pattern, schema)
+```
+
+### Discovering Pattern Captures#
+
+```python
+import tabsdata as td
+import tabsdata.tableframe as tdf
+from tabsdata.expansions.tableframe.features.grok.engine import grok_fields
+
+pattern = r"%{WORD:action}-%{INT:year}-%{WORD:action}-%{INT:year}"
+captures = grok_fields(pattern)
+# Returns: ['action', 'year', 'action[1]', 'year[1]']
+
+schema = {
+"action": tdf.Column("first_name", td.String),
+"action[1]": tdf.Column("second_name", td.String),
+"year": tdf.Column("first_year", td.Int64),
+"year[1]": tdf.Column("second_year", td.Int64),
+}
+```
+
+### Simple Key-Value Extraction#
+
+```python
+import tabsdata as td
+import tabsdata.tableframe as tdf
+
+pattern = r"%{WORD:operation} %{INT:value} %{WORD:status}"
+schema = {
+    "operation": tdf.Column("action", td.String),
+    "value": tdf.Column("amount", td.Int32),
+    "status": tdf.Column("result", td.String),
+}
+
+data = ["save 100 success", "load 200 failed", "delete 50 success"]
+tf = td.TableFrame(df={"events": data}, origin=None)
+result = tf.grok("events", pattern, schema)
+```
+
+## Pattern Syntax#
+
+Grok patterns use the format **%\{name:alias:extract:definition}** where:
+
+- name: A predefined pattern name (e.g., IPV4, WORD, INT)
+- alias: A custom name for this capture (becomes the capture name)
+- extract: Reserved for future use (not used in current version)
+- definition: A regular expression definition (required if name is not specified)
+
+Examples:
+
+**%\{IPV4:client_ip}** - Uses predefined IPV4 pattern, captures as “client_ip” **%\{WORD:method}** - Uses predefined WORD pattern, captures as “method” **%\{(?P`<custom_field>`[0-9]+)}** - Custom regex definition for numeric capture
+
+## Schema Definition#
+
+The schema controls how captures become columns. For each capture name in your pattern, you specify:
+
+- The final column name (optional - defaults to capture name)
+- The data type (optional - defaults to String)
+
+## Column Generation Rules#
+
+- New columns are generated in the order they appear in the schema
+- Only captures defined in the schema become columns
+- When capture names repeat in a pattern, grok automatically disambiguates them by appending [n] where n starts from 1 (e.g., word, word[1], word[2])
+- Subexpressions within nested patterns also generate their own captures with their original names
+- Rows that don’t match the pattern receive null values for all grok columns
+- Individual captures that don’t match within a partially matching row also receive null values
+
+## Common Grok Patterns for Log Analysis#
+
+- %\{IPV4:ip} - IPv4 addresses
+- %\{WORD:name} - Single words (alphanumeric + underscore)
+- %\{INT:number} - Integers
+- %\{NUMBER:decimal} - Floating point numbers
+- %\{TIMESTAMP_ISO8601:time} - ISO timestamps
+- %\{HTTPDATE:timestamp} - Common log format timestamps
+- %\{LOGLEVEL:level} - Log levels (INFO, ERROR, DEBUG, etc.)
+- %\{GREEDYDATA:message} - Everything until end of line
+- %\{DATA:field} - Non-greedy data match
+- %\{UUID:id} - UUID format
+- %\{URI:url} - URLs and URIs
+
+## Development Helper#
+
+During development, use the **grok_fields** in module **tabsdata.expansions.tableframe.features.grok.engine**. This is a function to preview exactly which capture names your pattern will generate. This is especially helpful with complex nested patterns, as it shows the exact names and order that the grok evaluator will produce.
+
+## Performance and Integration#
+
+Grok is optimized for large datasets and integrates seamlessly with TableFrame operations. Results can be filtered, grouped, joined, and processed like any other TableFrame. The implementation is particularly well-suited for log analysis workflows.

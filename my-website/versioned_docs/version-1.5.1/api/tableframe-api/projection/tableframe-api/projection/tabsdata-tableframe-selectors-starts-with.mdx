@@ -1,0 +1,46 @@
+---
+title: "tabsdata.tableframe.selectors.starts_with"
+sidebarTitle: "tabsdata.tableframe.selectors.starts_with"
+description: "Select all columns whose names start with any of the given prefixes."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.selectors.starts_with"></a>
+<details>
+<summary>starts_with</summary>
+
+
+```python
+def starts_with(
+    * prefix: str,
+) -> SelectorProxy
+```
+
+Select all columns whose names start with any of the given prefixes.
+
+**Parameters:**
+
+<ParamField path="prefix" required>
+  One or more string prefixes to match at the beginning of column names.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata.tableframe as td_tf
+>>>
+>>> tf = td_tf.TableFrame({
+...     "PreName": ["Alice", "Bob", "Caro", "Dan", "Eve", "Fay", "Gus", "Hana"],
+...     "PreScore": [90, 85, 78, 92, 88, 91, 84, 89],
+...     "Id": [1, 2, 3, 4, 5, 6, 7, 8],
+...     "Note": ["A", "B", "C", "D", "E", "F", "G", "H"]
+... })
+```
+
+```python
+>>> tf.select(td_tf.selectors.starts_with("Pre"))
+```
+
+
+</details>

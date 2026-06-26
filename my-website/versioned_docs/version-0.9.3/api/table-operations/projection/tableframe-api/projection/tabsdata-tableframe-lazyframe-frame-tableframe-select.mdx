@@ -1,0 +1,74 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.select"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.select"
+description: "Select column(s) from the TableFrame ."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.select"></a>
+<details>
+<summary>select</summary>
+
+
+```python
+def select(
+    * exprs: td_expr.IntoExpr | Iterable [ td_expr.IntoExpr ],
+    ** named_exprs: td_expr.IntoExpr,
+) -> TableFrame
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/lazyframe/frame.py#L1122)
+
+Select column(s) from the TableFrame.
+
+**Parameters:**
+
+<ParamField path="exprs" required>
+  Columns or expressions to select.
+</ParamField>
+
+<ParamField path="named_exprs" required>
+  Named expressions to select.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌─────┬─────┐
+│ a   ┆ b   │
+│ --- ┆ --- │
+│ str ┆ i64 │
+╞═════╪═════╡
+│ A   ┆ 1   │
+│ X   ┆ 10  │
+│ C   ┆ 3   │
+│ D   ┆ 5   │
+│ M   ┆ 9   │
+│ A   ┆ 100 │
+│ M   ┆ 50  │
+└─────┴─────┘
+>>>
+>>> tf.select(td.col("a"), td.col("b").mul(2).alias("bx2"),)
+>>>
+┌─────┬─────┐
+│ a   ┆ bx2 │
+│ --- ┆ --- │
+│ str ┆ i64 │
+╞═════╪═════╡
+│ A   ┆ 2   │
+│ X   ┆ 20  │
+│ C   ┆ 6   │
+│ D   ┆ 10  │
+│ M   ┆ 18  │
+│ A   ┆ 200 │
+│ M   ┆ 100 │
+└─────┴─────┘
+```
+
+
+</details>

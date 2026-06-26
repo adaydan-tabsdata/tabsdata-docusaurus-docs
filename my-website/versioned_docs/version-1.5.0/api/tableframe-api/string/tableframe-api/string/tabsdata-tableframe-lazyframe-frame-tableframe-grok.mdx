@@ -1,0 +1,75 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.grok"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.grok"
+description: "Parse log text into structured fields using a Grok pattern."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.grok"></a>
+<details>
+<summary>grok</summary>
+
+
+```python
+def grok(
+    expr: td_typing.IntoExpr,
+    pattern: str,
+    schema: dict [ str , td_col.Column ],
+) -> TableFrame
+```
+
+Parse log text into structured fields using a Grok pattern.
+
+Applies a Grok pattern to the given column or expression and directly appends **one new column per named capture** in the pattern to the output TableFrame. Rows that do not match the pattern will contain null values for the extracted columns.
+
+**Parameters:**
+
+<ParamField path="expr" type="td_typing.IntoExpr" required>
+  Column name or expression that resolves to a single string column containing log lines.
+</ParamField>
+
+<ParamField path="pattern" type="str" required>
+  Grok pattern with named captures (e.g.,%\{WORD:user}).
+</ParamField>
+
+<ParamField path="schema" type="dict [ str , td_col.Column ]" required>
+  A mapping where each capture name is associated with its corresponding column definition, specifying both the column name and its data type.
+</ParamField>
+
+**Returns:** A new TableFrame with one column per Grok capture added.
+
+**Return type:** TableFrame
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>> tf = td.TableFrame({"logs": [
+...     "alice-login-2023",
+...     "bob-logout-2024",
+... ]})
+>>>
+>>> # Capture 3 fields: user, action, year
+>>> log_pattern = r"%{WORD:user}-%{WORD:action}-%{INT:year}"
+>>> log_schema = {
+>>>     "word": td_col.Column("user", td.String),
+>>>     "action": td_col.Column("action", td.String),
+>>>     "year": td_col.Column("year", td.Int8),
+>>> }
+>>> out = tf.grok("logs", log_pattern, log_schema)
+>>> out.collect()
+┌──────────────────┬───────┬────────┬──────┐
+│ logs             ┆ user  ┆ action ┆ year │
+│ ---              ┆ ---   ┆ ---    ┆ ---  │
+│ str              ┆ str   ┆ str    ┆ i64  │
+╞══════════════════╪═══════╪════════╪══════╡
+│ alice-login-2023 ┆ alice ┆ login  ┆ 2023 │
+│ bob-logout-2024  ┆ bob   ┆ logout ┆ 2024 │
+└──────────────────┴───────┴────────┴──────┘
+```
+
+#### Notes
+
+
+</details>

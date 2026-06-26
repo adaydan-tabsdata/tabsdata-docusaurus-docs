@@ -1,0 +1,62 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.sum"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.sum"
+description: "Aggregation operation that sums the values in the group."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.sum"></a>
+<details>
+<summary>sum</summary>
+
+
+```python
+def sum() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/expr.py#L2418)
+
+Aggregation operation that sums the values in the group.
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ ss   ┆ i    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ B    ┆ 0    │
+│ A    ┆ 2    │
+│ B    ┆ 3    │
+│ B    ┆ 4    │
+│ C    ┆ -1   │
+│ C    ┆ -2   │
+│ C    ┆ -3   │
+│ D    ┆ -4   │
+│ F    ┆ -5   │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.group_by(td.col("a")).agg(td.col("b")).sum())
+>>>
+┌──────┬─────┐
+│ ss   ┆ i   │
+│ ---  ┆ --- │
+│ str  ┆ i64 │
+╞══════╪═════╡
+│ null ┆ 0   │
+│ A    ┆ 3   │
+│ B    ┆ 7   │
+│ C    ┆ -6  │
+│ D    ┆ -4  │
+│ F    ┆ -5  │
+└──────┴─────┘
+```
+
+
+</details>

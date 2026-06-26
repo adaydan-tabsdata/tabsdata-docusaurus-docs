@@ -1,0 +1,35 @@
+---
+title: "tabsdata.tableframe.selectors.float"
+sidebarTitle: "tabsdata.tableframe.selectors.float"
+description: "Select all columns of float data types."
+---
+
+<a id="tabsdata.tableframe.selectors.float"></a>
+<details>
+<summary>float</summary>
+
+
+```python
+def float() -> SelectorProxy
+```
+
+Select all columns of float data types.
+
+#### Example
+
+```python
+>>> import tabsdata.tableframe as td_tf
+>>>
+>>> tf = td_tf.TableFrame({
+...     "Id": [1, 2, 3, 4, 5, 6, 7, 8],
+...     "Score": [91.5, 85.0, 88.5, 90.0, 87.5, 89.0, 84.0, 86.5],
+...     "Name": ["A", "B", "C", "D", "E", "F", "G", "H"]
+... })
+```
+
+```python
+>>> tf.select(td_tf.selectors.float())
+```
+
+
+</details>

@@ -1,0 +1,62 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.is_between"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.is_between"
+description: "If an expression is between the given bounds."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.is_between"></a>
+<details>
+<summary>is_between</summary>
+
+
+```python
+def is_between(
+    lower_bound: td_typing.IntoExpr,
+    upper_bound: td_typing.IntoExpr,
+    closed: td_typing.ClosedInterval = 'both',
+) -> Expr
+```
+
+If an expression is between the given bounds.
+
+**Parameters:**
+
+<ParamField path="lower_bound" type="td_typing.IntoExpr" required>
+  The lower bound value.
+</ParamField>
+
+<ParamField path="upper_bound" type="td_typing.IntoExpr" required>
+  The upper bound value.
+</ParamField>
+
+<ParamField path="closed" type="td_typing.ClosedInterval" default="'both'">
+  The interval type, either “both”, “left”, “right”, or “neither”
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp")
+>>> .is_between(0, 1).alias("between"))
+>>>
+┌──────┬─────────┐
+│ temp ┆ between │
+│ ---  ┆ ------- │
+│ f64  ┆ bool    │
+╞══════╪═════════╡
+│-1.0  ┆  false  │
+│ 0.0  ┆  true   │
+│ 0.5  ┆  true   │
+│ 1.0  ┆  true   │
+│ 1.1  ┆  false  │
+└──────┴─────────┘
+```
+
+
+</details>

@@ -1,0 +1,42 @@
+---
+title: "Tutorials"
+sidebarTitle: "Tutorials"
+---
+
+Welcome to Tabsdata Tutorials! Explore different examples to take inspiration from.
+
+## 3. Pre-processing, Publishing and Subscribing a CSV to AWS Glue Iceberg!#
+
+In this tutorial, we’ll explore how Tabsdata enables exporting CSV data from local file system as an Iceberg table to AWS.
+
+We will start by setting up Tabsdata and registering a publisher that reads data from a CSV file, selects some aspects of it, and publishes it as a table within Tabsdata.
+
+Following that, we will register a subscriber that subscribes to this published table, and exports it as an Iceberg Table to AWS.
+
+We will then demonstrate that when the publisher is rerun to load new data, the subscriber automatically writes it to the external system.
+
+[Link](https://github.com/tabsdata/tutorials/tree/main/t03_csv_iceberg_pub_sub) to the Github repo.
+
+## 2. Publishing and Subscribing a PostgreSQL Table!#
+
+In this tutorial, we’ll explore how Tabsdata enables Pub/Sub for Tables with source and destination data being a locally hosted PostgreSQL database.
+
+We will start by setting up Tabsdata, and PostgreSQL. Then we register and run a publisher that reads data from PostgreSQL, and publishes that as a table to Tabsdata.
+
+Following that, we will register a subscriber that subscribes to this published table, filters some data, and exports it to PostgreSQL.
+
+We will then demonstrate that when the publisher is re-run to load new data, the subscriber automatically writes it to Postgres.
+
+[Link](https://github.com/tabsdata/tutorials/tree/main/t02_postgres_pub_sub) to the Github repo.
+
+## 1. Pre-processing, Publishing and Subscribing a CSV!#
+
+In this first tutorial, we’ll explore how Tabsdata enables Pub/Sub for Tables using a CSV file input.
+
+We will start by setting up Tabsdata and registering a publisher that reads data from a CSV file, selects some aspects of it, and publishes it as a table within the system.
+
+Following that, we will register a subscriber that subscribes to this published table, and exports it to the file system in a JSON format.
+
+We will then demonstrate that when the publisher is rerun to load new data, the subscriber automatically writes it to the external system.
+
+[Link](https://github.com/tabsdata/tutorials/tree/main/t01_csv_pub_sub) to the Github repo.

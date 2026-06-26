@@ -1,0 +1,76 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.drop_nulls"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.drop_nulls"
+description: "Drop rows with null values."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.drop_nulls"></a>
+<details>
+<summary>drop_nulls</summary>
+
+
+```python
+def drop_nulls(
+    subset: td_typing.ColumnNameOrSelector | Collection [ td_typing.ColumnNameOrSelector ] | None = None,
+) -> TableFrame
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/lazyframe/frame.py#L1657)
+
+Drop rows with null values.
+
+**Parameters:**
+
+<ParamField path="subset" type="td_typing.ColumnNameOrSelector | Collection [ td_typing.ColumnNameOrSelector ] | None" default="None">
+  Columns to evaluate for null values. If None, all columns are considered.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┬──────┐
+│ ss   ┆ u    ┆ ff   │
+│ ---  ┆ ---  ┆ ---  │
+│ str  ┆ i64  ┆ f64  │
+╞══════╪══════╪══════╡
+│ A    ┆ 1    ┆ 1.1  │
+│ B    ┆ 0    ┆ 0.0  │
+│ A    ┆ 2    ┆ 2.2  │
+│ B    ┆ 3    ┆ 3.3  │
+│ B    ┆ 4    ┆ 4.4  │
+│ C    ┆ 5    ┆ -1.1 │
+│ C    ┆ 6    ┆ -2.2 │
+│ C    ┆ 7    ┆ -3.3 │
+│ D    ┆ 8    ┆ inf  │
+│ F    ┆ 9    ┆ NaN  │
+│ G    ┆ null ┆ 2.3  │
+└──────┴──────┴──────┘
+>>>
+>>> tf.drop_nulls("a")
+>>>
+┌─────┬─────┬──────┐
+│ ss  ┆ u   ┆ ff   │
+│ --- ┆ --- ┆ ---  │
+│ str ┆ i64 ┆ f64  │
+╞═════╪═════╪══════╡
+│ A   ┆ 1   ┆ 1.1  │
+│ B   ┆ 0   ┆ 0.0  │
+│ A   ┆ 2   ┆ 2.2  │
+│ B   ┆ 3   ┆ 3.3  │
+│ B   ┆ 4   ┆ 4.4  │
+│ C   ┆ 5   ┆ -1.1 │
+│ C   ┆ 6   ┆ -2.2 │
+│ C   ┆ 7   ┆ -3.3 │
+│ D   ┆ 8   ┆ inf  │
+│ F   ┆ 9   ┆ NaN  │
+└─────┴─────┴──────┘
+```
+
+
+</details>

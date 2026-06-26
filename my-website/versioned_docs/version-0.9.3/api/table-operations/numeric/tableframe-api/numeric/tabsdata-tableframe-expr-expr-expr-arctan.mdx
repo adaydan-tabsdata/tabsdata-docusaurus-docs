@@ -1,0 +1,45 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.arctan"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.arctan"
+description: "Calculate the inverse tangent of the element value."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.arctan"></a>
+<details>
+<summary>arctan</summary>
+
+
+```python
+def arctan() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L423)
+
+Calculate the inverse tangent of the element value.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), , td.col("val").arctan().alias("arctan"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ arctan   │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ 0.01 ┆ 0.01     │
+│ 0.15 ┆ 0.14889  │
+│ 0.18 ┆ 0.178093 │
+│ 0.6  ┆ 0.54042  │
+│ 0.6  ┆ 0.54042  │
+│ 0.75 ┆ 0.643501 │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+
+</details>

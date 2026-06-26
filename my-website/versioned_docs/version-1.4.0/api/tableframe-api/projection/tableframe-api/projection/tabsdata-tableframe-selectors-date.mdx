@@ -1,0 +1,56 @@
+---
+title: "tabsdata.tableframe.selectors.date"
+sidebarTitle: "tabsdata.tableframe.selectors.date"
+description: "Select all columns of date data type."
+---
+
+<a id="tabsdata.tableframe.selectors.date"></a>
+<details>
+<summary>date</summary>
+
+
+```python
+def date() -> SelectorProxy
+```
+
+Select all columns of date data type.
+
+This selector matches columns that store calendar dates without time information.
+
+#### Example
+
+```python
+>>> import tabsdata.tableframe as td_tf
+>>> from datetime import datetime, timezone, timedelta
+>>>
+>>> tf = td_tf.TableFrame({
+...     "TimestampUTC": [
+...         datetime(2024, 1, 1, tzinfo=timezone.utc),
+...         datetime(2024, 1, 2, tzinfo=timezone.utc),
+...         datetime(2024, 1, 3, tzinfo=timezone.utc),
+...         datetime(2024, 1, 4, tzinfo=timezone.utc),
+...         datetime(2024, 1, 5, tzinfo=timezone.utc),
+...         datetime(2024, 1, 6, tzinfo=timezone.utc),
+...         datetime(2024, 1, 7, tzinfo=timezone.utc),
+...         datetime(2024, 1, 8, tzinfo=timezone.utc),
+...     ],
+...     "Event": ["A", "B", "C", "D", "E", "F", "G", "H"],
+...     "TimestampLocal": [
+...         datetime(2024, 1, 1, 1, 0, tzinfo=timezone(timedelta(hours=1))),
+...         datetime(2024, 1, 2, 1, 0, tzinfo=timezone(timedelta(hours=1))),
+...         datetime(2024, 1, 3, 1, 0, tzinfo=timezone(timedelta(hours=1))),
+...         datetime(2024, 1, 4, 1, 0, tzinfo=timezone(timedelta(hours=1))),
+...         datetime(2024, 1, 5, 1, 0, tzinfo=timezone(timedelta(hours=1))),
+...         datetime(2024, 1, 6, 1, 0, tzinfo=timezone(timedelta(hours=1))),
+...         datetime(2024, 1, 7, 1, 0, tzinfo=timezone(timedelta(hours=1))),
+...         datetime(2024, 1, 8, 1, 0, tzinfo=timezone(timedelta(hours=1))),
+...     ]
+... })
+```
+
+```python
+>>> tf.select(td_tf.selectors.date())
+```
+
+
+</details>

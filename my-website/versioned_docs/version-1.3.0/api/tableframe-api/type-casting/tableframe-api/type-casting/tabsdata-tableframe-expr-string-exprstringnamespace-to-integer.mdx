@@ -1,0 +1,59 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.to_integer"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.to_integer"
+description: "Covert a string to integer."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_integer"></a>
+<details>
+<summary>to_integer</summary>
+
+
+```python
+def to_integer(
+    *,
+    base: int | td_typing.IntoExprColumn = 10,
+    strict: bool = True,
+) -> td_expr.Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/string.py#L997)
+
+Covert a string to integer.
+
+**Parameters:**
+
+<ParamField path="base" type="int | td_typing.IntoExprColumn" default="10">
+  The base of the integer.
+</ParamField>
+
+<ParamField path="strict" type="bool" default="True">
+  If true, raise an error if the string is not a valid integer.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a")
+      .str.to_integer(strict=False).alias("to_integer"))
+>>>
+┌──────┬────────────┐
+│ a    ┆ to_integer │
+│ ---  ┆ ---        │
+│ str  ┆ i64        │
+╞══════╪════════════╡
+│ 1    ┆ 1          │
+│ 2.2  ┆ null       │
+│ a    ┆ null       │
+│ null ┆ null       │
+└──────┴────────────┘
+```
+
+
+</details>

@@ -1,0 +1,182 @@
+---
+title: "Azure Blob Storage"
+sidebarTitle: "Azure Blob Storage"
+---
+
+You can use this built-in Tabsdata publisher to read files from Azure Blob Storage to the Tabsdata server. Publishers can read the following file formats: CSV, jsonl, ndjson, parquet, and log.
+
+## Example (Publisher - Azure Blob Storage)#
+
+Here is an example publisher named `read_employees`. It reads departments table and multiple employees tables, with their file names starting from `employees_`, from the HR folder. It checks that last modified dates for the files, which should be after the date defined in `initial_last_modified`. Subsequently, it writes the departments and first two employees files to the Tabsdata tables. This publisher executes automatically as soon as a new commit occurs on the `jobs_closed` table:
+
+```python
+from typing import List
+
+import tabsdata as td
+
+azure_credentials = td.AzureAccountKeyCredentials(
+    account_name=td.HashiCorpSecret("path-to-secret","AZURE_ACCOUNT_NAME"),
+    account_key=td.HashiCorpSecret("path-to-secret","AZURE_ACCOUNT_KEY"),
+)
+
+
+@td.publisher(
+    source=td.AzureSource(
+        [
+            "az://opt/hr/departments.csv",
+            "az://opt/hr/employees_*.csv",
+        ],
+        azure_credentials,
+        initial_last_modified="2021-01-01",
+    ),
+    tables=["departments", "employees_1", "employees_2"],
+    trigger_by="jobs_closed",
+)
+def read_employees(tf: td.TableFrame, tf2: List[td.TableFrame]):
+    return tf, tf2[0], tf2[1]
+```
+
+Where:
+
+`AZURE_ACCOUNT_NAME` is your Azure account name.
+
+`AZURE_ACCOUNT_KEY` is the value of your Azure account key.
+
+**Note:** After defining the function, you need to register it with a Tabsdata collection. For more information, see here.
+
+## Setup (Publisher - Azure Blob Storage)#
+
+The following code uses placeholder values for defining a publisher that reads data from Azure Blob Storage and publishes it to Tabsdata tables:
+
+```python
+import tabsdata as td
+
+azure_credentials = td.AzureAccountKeyCredentials(
+    account_name=td.HashiCorpSecret("path-to-secret","AZURE_ACCOUNT_NAME"),
+    account_key=td.HashiCorpSecret("path-to-secret","AZURE_ACCOUNT_KEY"),
+)
+
+
+@td.publisher(
+    source=td.AzureSource(
+        ["az://<path_to_file1>", "az://<path_to_file2>"],
+        azure_credentials,
+        initial_last_modified="<date_time>",
+    ),
+    tables=["<output_table1>", "<output_table2>"],
+    trigger_by=["<trigger_table1>", "<trigger_table2>"],
+)
+def <publisher_name>(<table_frame1>: td.TableFrame, <table_frame2>: td.TableFrame):
+    <function_logic>
+    return <table_frame_output1>, <table_frame_output2>
+```
+
+**Note:** After defining the function, you need to register it with a Tabsdata collection. For more information, see here here.
+
+Following properties are defined in the setup code above:
+
+### credentials#
+
+A publisher needs credentials to read files from Azure Blob Storage.
+
+`AZURE_ACCOUNT_NAME` is your Azure account name.
+
+`AZURE_ACCOUNT_KEY` is the value of your Azure account key.
+
+You can use different ways to store the credentials which are highlighted here in the documentation.
+
+### source#
+
+#### `<path_to_files>`#
+
+`<path_to_file1>`, `<path_to_file2>`… are the full system directory paths to the files to read.
+
+All the source files in a publisher need to be have the same extension. Following file formats are supported currently: CSV, jsonl, ndjson, parquet, and log.
+
+You can specify as many file paths as needed. You can also use the `asterisk (*)` wildcard in file names to read multiple files with similar names. **When using a wildcard, the resultant output is a list of TableFrames, if the number of files matching the pattern are more than one.** You can work with the List in the same way as an array and use index to access specific TableFrames as shown in the function logic of the example here.
+
+You can define the source files in the following ways:
+
+**File Path**
+
+To read by file path where the file extension is included as part of the file path, define the source as follows:
+
+```python
+source=td.AzureSource(["az://<path_to_file1.ext>","az://<path_to_file2.ext>"], azure_credentials),
+```
+
+`<path_to_file1.ext>`, `<path_to_file2.ext>`… have the extensions of the file included in the file name as part of the path.
+
+**File Format**
+
+To read files by file format where format is declared separately and not in the file name, define the source as follows:
+
+```python
+source=td.AzureSource([
+        "az://<path_to_file1_no_extension>",
+        "az://<path_to_file2_no_extension>",
+        ], azure_credentials, format="<format_name>"),
+```
+
+`"<path_to_file1_no_extension>"`, `"<path_to_file2_no_extension>"`… are paths to files with extensions of the file not included in the file name. The extension is to all files is mentioned separately in `format`.
+
+**Custom delimiter for CSV**
+
+To define a custom delimiter for reading a CSV file, use the format code as follows:
+
+```python
+source=td.AzureSource([
+        "az://<path_to_file1.csv>",
+        "az://<path_to_file2.csv>",
+        ], azure_credentials, format=td.CSVFormat(separator="<separator_character>")),
+```
+
+`"<path_to_file1.csv>"`, `"<path_to_file2.csv>"`… are paths to CSV files with a custom delimiter, with csv extension. The delimiter is a single byte character such as colon (:), semicolon (;), and period (.) that separate the fields in the given file instead of a comma(,). You define the character in `separator`.
+
+#### [Optional] initial_last_modified#
+
+`<date_time>` is a date time string in the [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601) format (e.g. 2025-02-05 or 2025-02-05T03:12:36Z). If provided, only the files modified after this date and time will be considered to be read by the publisher. If no timezone is provided, UTC will be assumed.
+
+### tables#
+
+`<output_table1>`, `<output_table2>`… are the names of the Tabsdata tables to publish to.
+
+### None as an input and output#
+
+A publisher may receive and return a `None` value instead of a TableFrame parameter or return value.
+
+When a publisher **receives** a `None` value instead of a TableFrame it means the absence of input data. For example, the system didn’t return any results because of the file being absent or query returning empty results.
+
+When a publisher **returns** a `None` value instead of a TableFrame it means that the associated table will preserve the existing data from the previous commit. This helps in avoiding the creation of multiple copies of the same data.
+
+### [Optional] trigger_by#
+
+`<trigger_table1>`, `<trigger_table2>`… are the names of the tables in the Tabsdata server. A new commit to any of these tables triggers the publisher. This can be relevant in cases where you want to import a data if something else in the organization changes. e.g trigger the import of latest manufacturing data in the company if a new supplier get added added. While a new supplier would not be a direct input to the publisher importing manufacturing data, it can still trigger the function.
+
+All listed trigger tables must exist in the server before registering the publisher.
+
+Defining trigger tables is optional. If you don’t define the `trigger_by` property, the publisher can only be triggered manually.
+
+For more information, see Working with Triggers.
+
+### `<publisher_name>`#
+
+`<publisher_name>` is the name for the publisher that you are configuring.
+
+### `<function_logic>`#
+
+`<function_logic>` governs the processing performed by the publisher. You can specify function logic to be a simple write or to perform additional processing, such as dropping nulls, before writing data to output tables. For more information about the function logic that you can include, see Working with Tables.
+
+`<table_frame1>`, `<table_frame2>`… are the names for the variables that temporarily store source data for processing.
+
+`<table_frame_output1>`, `<table_frame_output2>`… are the output from the function that are stored as Tabsdata tables with names as defined in the `tables` property. Consequently, the number of tables returned from the function have to exactly match the number of tables defined in the `tables` property.
+
+`<new_value1>`, `<new_value2>`.. are the revised values of variable_names as defined in function logic. This enables you to have dynamic allocation of variable values for usage in queries. You can return a new dictionary e.g. `{"<variable_name1>": <new_value1>, "<variable_name2>": <new_value2>}` to change the initial values for processing new data, or return `SAME` to keep the current initial values.
+
+### Data Drift Support#
+
+This section talks about how Tabsdata handles data drift in the input data for this Publisher connector.
+
+This connector natively supports data drift as Tabsdata automatically creates a new version of the table with each function execution. Hence, schema changes in the input data won’t cause the function to fail. Any modifications are captured in a newly versioned output table generated by the publisher.
+
+However, this applies only if the publisher function does not contain schema-dependent logic. If such logic exists, changes in the schema may conflict with the function’s expectations, leading to execution errors.

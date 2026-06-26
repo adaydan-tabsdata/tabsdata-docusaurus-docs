@@ -1,0 +1,54 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.len"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.len"
+description: "Aggregation operation that counts the rows in the group."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.len"></a>
+<details>
+<summary>len</summary>
+
+
+```python
+def len() -> Expr
+```
+
+Aggregation operation that counts the rows in the group.
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ B    ┆ 2    │
+│ A    ┆ 3    │
+│ B    ┆ 0    │
+│ C    ┆ 5    │
+│ null ┆ 6    │
+│ C    ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.group_by(td.col("a")).agg(td.col("b")).len().alias("len"))
+>>>
+┌──────┬─────┐
+│ a    ┆ len │
+│ ---  ┆ --- │
+│ str  ┆ u32 │
+╞══════╪═════╡
+│ null ┆ 1   │
+│ A    ┆ 2   │
+│ B    ┆ 2   │
+│ C    ┆ 2   │
+└──────┴─────┘
+```
+
+
+</details>

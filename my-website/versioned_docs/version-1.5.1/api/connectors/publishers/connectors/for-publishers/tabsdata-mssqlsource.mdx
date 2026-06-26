@@ -1,0 +1,70 @@
+---
+title: "tabsdata.MSSQLSource"
+sidebarTitle: "tabsdata.MSSQLSource"
+description: "tabsdata.MSSQLSource API reference."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.MSSQLSource"></a>
+<details>
+<summary>MSSQLSource</summary>
+
+
+```python
+class MSSQLSource(
+    connection_string: str,
+    query: str | list [ str ],
+    chunk_size: int = 50000,
+    credentials: dict | UserPasswordCredentials | None = None,
+    server: str | Secret = None,
+    database: str | Secret = None,
+    driver: str | Secret = None,
+    initial_values: dict | None = None,
+    ** kwargs,
+)
+```
+
+Bases: [`SourcePlugin`](../plugins/tabsdata.SourcePlugin.html#tabsdata.SourcePlugin)
+
+Microsoft SQL Server based data inputs.
+
+<a id="tabsdata.MSSQLSource.__init__"></a>
+#### `__init__`
+
+```python
+def __init__(
+    connection_string: str,
+    query: str | list [ str ],
+    chunk_size: int = 50000,
+    credentials: dict | UserPasswordCredentials | None = None,
+    server: str | Secret = None,
+    database: str | Secret = None,
+    driver: str | Secret = None,
+    initial_values: dict | None = None,
+    ** kwargs,
+)
+```
+
+Initialize the MSSQLSource with a connection string and a query.
+
+**Parameters:**
+
+<ParamField path="connection_string" type="str" required>
+  The connection string to connect to the database.
+</ParamField>
+
+<ParamField path="query" type="str | list [ str ]" required>
+  The SQL query or queries to execute.
+</ParamField>
+
+<ParamField path="chunk_size" type="int" default="50000">
+  The number of rows to fetch in each chunk. Defaults to 50000.
+</ParamField>
+
+#### Methods
+
+#### Attributes
+
+
+</details>

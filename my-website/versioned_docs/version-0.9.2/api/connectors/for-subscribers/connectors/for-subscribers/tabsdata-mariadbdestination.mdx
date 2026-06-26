@@ -1,0 +1,103 @@
+---
+title: "tabsdata.MariaDBDestination"
+sidebarTitle: "tabsdata.MariaDBDestination"
+description: "tabsdata.MariaDBDestination API reference."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.MariaDBDestination"></a>
+<details>
+<summary>MariaDBDestination</summary>
+
+
+```python
+class MariaDBDestination(
+    uri: str,
+    destination_table: List [ str ] | str,
+    credentials: dict | UserPasswordCredentials = None,
+    if_table_exists: Literal [ 'append' , 'replace' ] = 'append',
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L2019)
+
+Bases: `Output`
+
+Class for managing the configuration of MariaDB-based data outputs.
+
+<a id="tabsdata.MariaDBDestination.to_dict"></a>
+#### `to_dict`
+
+```python
+def to_dict()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L2106)
+
+Converts the MariaDBDestination object to a dictionary
+
+<a id="tabsdata.MariaDBDestination.__init__"></a>
+#### `__init__`
+
+```python
+def __init__(
+    uri: str,
+    destination_table: List [ str ] | str,
+    credentials: dict | UserPasswordCredentials = None,
+    if_table_exists: Literal [ 'append' , 'replace' ] = 'append',
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L2045)
+
+Initializes the MariaDBDestination with the given URI and destination table, and optionally connection credentials.
+
+**Parameters:**
+
+<ParamField path="uri" type="str" required>
+  The URI of the database where the data is going to be stored.
+</ParamField>
+
+<ParamField path="destination_table" type="List [ str ] | str" required>
+  The tables to create. If multiple tables are provided, they must be provided as a list.
+</ParamField>
+
+<ParamField path="credentials" type="dict | UserPasswordCredentials" default="None">
+  The credentials required to access the MariaDB database. Can be a dictionary or a UserPasswordCredentials object.
+</ParamField>
+
+<ParamField path="if_table_exists" type="Literal [ 'append' , 'replace' ]" default="'append'">
+  The strategy to follow when the table already exists. Defaults to ‘append’. - ‘replace’ will create a new database table, overwriting an existing one. - ‘append’ will append to an existing table.
+</ParamField>
+
+**Raises:**
+
+<ResponseField name="OutputConfigurationError" type="Exception"></ResponseField>
+
+<a id="tabsdata.MariaDBDestination.credentials"></a>
+<ResponseField name="credentials" type="UserPasswordCredentials">
+The credentials required to access the MariaDB database.
+</ResponseField>
+
+<a id="tabsdata.MariaDBDestination.destination_table"></a>
+<ResponseField name="destination_table" type="str | List[ str ]">
+The table(s) to create. If multiple tables are provided, they must be provided as a list.
+</ResponseField>
+
+<a id="tabsdata.MariaDBDestination.if_table_exists"></a>
+<ResponseField name="if_table_exists" type="\{‘append’, ‘replace’}">
+The strategy to follow when the table already exists. - ‘replace’ will create a new database table, overwriting an existing one. - ‘append’ will append to an existing table.
+</ResponseField>
+
+<a id="tabsdata.MariaDBDestination.uri"></a>
+<ResponseField name="uri" type="str">
+The URI of the database where the data is going to be stored.
+</ResponseField>
+
+#### Methods
+
+#### Attributes
+
+
+</details>

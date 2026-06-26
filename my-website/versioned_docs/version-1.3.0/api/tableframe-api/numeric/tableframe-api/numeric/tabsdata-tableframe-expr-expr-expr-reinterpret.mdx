@@ -1,0 +1,57 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.reinterpret"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.reinterpret"
+description: "Reinterpret the 64bit element values (i64 or u64) as a signed/unsigned integers. Only valid for 64bit integers, for other types use cast."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.reinterpret"></a>
+<details>
+<summary>reinterpret</summary>
+
+
+```python
+def reinterpret(
+    *,
+    signed: bool = True,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L1927)
+
+Reinterpret the 64bit element values (i64 or u64) as a signed/unsigned integers. Only valid for 64bit integers, for other types use cast.
+
+**Parameters:**
+
+<ParamField path="signed" type="bool" default="True">
+  true to convert to i64, false to convert to u64. This named argument must be specified.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val")
+>>>   .reinterpret(signed=False).alias("reinterpret"))
+>>>
+┌──────┬─────────────┐
+│ val  ┆ reinterpret │
+│ ---  ┆ ---         │
+│ i64  ┆ u64         │
+╞══════╪═════════════╡
+│ 3    ┆ 3           │
+│ 1    ┆ 1           │
+│ 5    ┆ 5           │
+│ 4    ┆ 4           │
+│ 2    ┆ 2           │
+│ 6    ┆ 6           │
+│ null ┆ null        │
+└──────┴─────────────┘
+```
+
+
+</details>

@@ -1,0 +1,42 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.sinh"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.sinh"
+description: "Calculate the hyperbolic sine of the element value."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.sinh"></a>
+<details>
+<summary>sinh</summary>
+
+
+```python
+def sinh() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L2111)
+
+Calculate the hyperbolic sine of the element value.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").sinh().alias("sinh"))
+>>>
+┌─────┬───────────┐
+│ val ┆ sinh      │
+│ --- ┆ ---       │
+│ i64 ┆ f64       │
+╞═════╪═══════════╡
+│ 0   ┆ 0.0       │
+│ 30  ┆ 5.3432e12 │
+│ 60  ┆ 5.7100e25 │
+│ 90  ┆ 6.1020e38 │
+└─────┴───────────┘
+```
+
+
+</details>

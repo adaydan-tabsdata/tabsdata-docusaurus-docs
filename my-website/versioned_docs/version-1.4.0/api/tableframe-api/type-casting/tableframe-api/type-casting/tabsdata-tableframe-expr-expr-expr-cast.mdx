@@ -1,0 +1,65 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.cast"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.cast"
+description: "Cast a value to d different type."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.cast"></a>
+<details>
+<summary>cast</summary>
+
+
+```python
+def cast(
+    dtype: DataTypeClass | DataType | type [ Any ],
+    *,
+    strict: bool = True,
+    wrap_numerical: bool = False,
+) -> Expr
+```
+
+Cast a value to d different type.
+
+**Parameters:**
+
+<ParamField path="dtype" type="DataTypeClass | DataType | type [ Any ]" required>
+  The data type to cast to.
+</ParamField>
+
+<ParamField path="strict" type="bool" default="True">
+  If false, invalid casts produce null’s; if true, an excetion is raised.
+</ParamField>
+
+<ParamField path="wrap_numerical" type="bool" default="False">
+  If true, overflowing numbers ara handled; if false, an excetion is raised.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>> import polars as pl
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").cast(td.Float64)).alias("cast")
+>>>
+┌──────┬──────┐
+│ val  ┆ cast │
+│ ---  ┆ ---  │
+│ i64  ┆ f64  │
+╞══════╪══════╡
+│ 1    ┆ 1.0  │
+│ 15   ┆ 15.0 │
+│ 18   ┆ 18.0 │
+│ 60   ┆ 60.0 │
+│ 60   ┆ 60.0 │
+│ 75   ┆ 75.0 │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+
+</details>

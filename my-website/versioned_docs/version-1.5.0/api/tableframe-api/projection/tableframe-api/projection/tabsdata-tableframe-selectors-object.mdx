@@ -1,0 +1,39 @@
+---
+title: "tabsdata.tableframe.selectors.object"
+sidebarTitle: "tabsdata.tableframe.selectors.object"
+description: "Select all columns of object data type."
+---
+
+<a id="tabsdata.tableframe.selectors.object"></a>
+<details>
+<summary>object</summary>
+
+
+```python
+def object() -> SelectorProxy
+```
+
+Select all columns of object data type.
+
+#### Example
+
+```python
+>>> import tabsdata.tableframe as td_tf
+>>> from datetime import date
+>>>
+>>> tf = td_tf.TableFrame({
+...     "Custom": [{"a": 1}, {"b": 2}, {"c": 3}, {"d": 4},
+...                {"e": 5}, {"f": 6}, {"g": 7}, {"h": 8}],
+...     "Date": [date(2024, 1, 1), date(2024, 1, 2),
+                 date(2024, 1, 3), date(2024, 1, 4),
+...              date(2024, 1, 5), date(2024, 1, 6),
+                 date(2024, 1, 7), date(2024, 1, 8)],
+... })
+```
+
+```python
+>>> tf.select(td_tf.selectors.object())
+```
+
+
+</details>

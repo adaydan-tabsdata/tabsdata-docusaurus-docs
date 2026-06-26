@@ -1,0 +1,54 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.clear"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.clear"
+description: "Clears all rows of the TableFrame preserving the schema."
+---
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.clear"></a>
+<details>
+<summary>clear</summary>
+
+
+```python
+def clear(
+    n: int = 0,
+) -> TableFrame
+```
+
+Clears all rows of the TableFrame preserving the schema.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ X    ┆ 10   │
+│ C    ┆ 3    │
+│ D    ┆ 5    │
+│ M    ┆ 9    │
+│ A    ┆ 100  │
+│ M    ┆ 50   │
+│ null ┆ 20   │
+│ F    ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.cast({"b":td.Float32}).collect()
+>>>
+┌──────┬───────┐
+│ a    ┆ b     │
+│ ---  ┆ ---   │
+│ str  ┆ f32   │
+╞══════╪═══════╡
+└──────┴───────┘
+```
+
+
+</details>

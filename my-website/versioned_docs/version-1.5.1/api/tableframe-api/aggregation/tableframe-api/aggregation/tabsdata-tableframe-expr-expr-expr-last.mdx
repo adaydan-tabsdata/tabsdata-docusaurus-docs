@@ -1,0 +1,41 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.last"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.last"
+description: "Get the last element."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.last"></a>
+<details>
+<summary>last</summary>
+
+
+```python
+def last() -> Expr
+```
+
+Get the last element.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("age"), td.col("age").first().alias("last"))
+>>>
+┌──────┬─────────┐
+│ age  ┆ last    │
+│ ---  ┆ ------- │
+│ i64  ┆ i64     │
+╞══════╪═════════╡
+│ 10   ┆ 70      │
+│ 11   ┆ 70      │
+│ 18   ┆ 70      │
+│ 65   ┆ 70      │
+│ 70   ┆ 70      │
+└──────┴─────────┘
+```
+
+
+</details>

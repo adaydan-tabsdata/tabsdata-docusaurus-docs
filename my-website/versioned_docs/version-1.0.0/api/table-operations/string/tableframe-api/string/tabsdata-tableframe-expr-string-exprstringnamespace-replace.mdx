@@ -1,0 +1,70 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.replace"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.replace"
+description: "Replace the first occurence of a pattern with the given string."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.replace"></a>
+<details>
+<summary>replace</summary>
+
+
+```python
+def replace(
+    pattern: str | Expr,
+    value: str | Expr,
+    *,
+    literal: bool = False,
+    n: int = 1,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/string.py#L772)
+
+Replace the first occurence of a pattern with the given string.
+
+**Parameters:**
+
+<ParamField path="pattern" type="str | Expr" required>
+  The pattern to replace.
+</ParamField>
+
+<ParamField path="value" type="str | Expr" required>
+  The value to replace the pattern with.
+</ParamField>
+
+<ParamField path="literal" type="bool" default="False">
+  Take the pattern as a literal string (not a regex).
+</ParamField>
+
+<ParamField path="n" type="int" default="1">
+  Number of matches to replace.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.replace("b", "X").alias("replace"))
+>>>
+┌───────────┬───────────┐
+│ a         ┆ replace   │
+│ ---       ┆ ---       │
+│ str       ┆ str       │
+╞═══════════╪═══════════╡
+│ a bAb c d ┆ a XAb c d │
+│ bCbb c d  ┆ XCbb c d  │
+│ bb        ┆ Xb        │
+│ b         ┆ X         │
+│ a         ┆ a         │
+│ null      ┆ null      │
+└───────────┴───────────┘
+```
+
+
+</details>

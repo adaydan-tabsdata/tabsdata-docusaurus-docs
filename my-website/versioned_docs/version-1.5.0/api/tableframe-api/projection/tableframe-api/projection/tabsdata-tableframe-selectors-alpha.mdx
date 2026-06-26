@@ -1,0 +1,51 @@
+---
+title: "tabsdata.tableframe.selectors.alpha"
+sidebarTitle: "tabsdata.tableframe.selectors.alpha"
+description: "Select all columns with names made up of only alphabetic characters."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.selectors.alpha"></a>
+<details>
+<summary>alpha</summary>
+
+
+```python
+def alpha(
+    ascii_only: bool = False,
+    *,
+    ignore_spaces: bool = False,
+) -> SelectorProxy
+```
+
+Select all columns with names made up of only alphabetic characters.
+
+**Parameters:**
+
+<ParamField path="ascii_only" type="bool" default="False">
+  Only consider alphabetic the ASCII letters.
+</ParamField>
+
+<ParamField path="ignore_spaces" type="bool" default="False">
+  Consider only non-white characters in column names.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata.tableframe as td_tf
+>>>
+>>> tf = td_tf.TableFrame({
+...     "Name": ["Alice", "Bob", "Caro", "Dan", "Eve", "Fay", "Gus", "Hana"],
+...     "Score": [87, 92, 78, 95, 88, 91, 76, 84],
+...     "Id1": [101, 102, 103, 104, 105, 106, 107, 108]
+... })
+```
+
+```python
+>>> tf.select(td_tf.selectors.alpha())
+```
+
+
+</details>

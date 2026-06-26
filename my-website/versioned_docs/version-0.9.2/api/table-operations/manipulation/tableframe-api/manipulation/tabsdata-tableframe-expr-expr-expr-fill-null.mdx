@@ -1,0 +1,66 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.fill_null"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.fill_null"
+description: "Replace null values with the given value."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.fill_null"></a>
+<details>
+<summary>fill_null</summary>
+
+
+```python
+def fill_null(
+    value: Any | Expr | None = None,
+    strategy: Literal [ 'forward' , 'backward' , 'min' , 'max' , 'mean' , 'zero' , 'one' ] | None = None,
+    limit: int | None = None,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/expr.py#L865)
+
+Replace null values with the given value.
+
+**Parameters:**
+
+<ParamField path="value" type="Any | Expr | None" default="None">
+  The value to replacenull values with.
+</ParamField>
+
+<ParamField path="strategy" type="Literal [ 'forward' , 'backward' , 'min' , 'max' , 'mean' , 'zero' , 'one' ] | None" default="None">
+  The strategy to use for fillingnull values.
+</ParamField>
+
+<ParamField path="limit" type="int | None" default="None">
+  The maximum number ofnull values to replace.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val")
+>>>        .fill_null(5.5).alias("fill_null"))
+>>>
+┌──────┬───────────┐
+│ val  ┆ fill_null │
+│ ---  ┆ ---       │
+│ f64  ┆ f64       │
+╞══════╪═══════════╡
+│ -1.0 ┆ -1.0      │
+│ 0.0  ┆ 0.0       │
+│ 1.1  ┆ 1.1       │
+│ 2.0  ┆ 2.0       │
+│ inf  ┆ inf       │
+│ null ┆ 5.5       │
+│ NaN  ┆ NaN       │
+└──────┴───────────┘
+```
+
+
+</details>

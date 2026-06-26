@@ -1,0 +1,48 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.sign"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.sign"
+description: "Calculate the sign of element values."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.sign"></a>
+<details>
+<summary>sign</summary>
+
+
+```python
+def sign() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/expr.py#L2052)
+
+Calculate the sign of element values.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").sign().alias("sign"))
+>>>
+┌────────┬──────┐
+│ val    ┆ sign │
+│ ---    ┆ ---  │
+│ f64    ┆ f64  │
+╞════════╪══════╡
+│ 0.0123 ┆ 1.0  │
+│ 2.0244 ┆ 1.0  │
+│ 0.0    ┆ 0.0  │
+│ inf    ┆ 1.0  │
+│ -50.0  ┆ -1.0 │
+│ 1.0    ┆ 1.0  │
+│ NaN    ┆ NaN  │
+│ null   ┆ null │
+│ -112.0 ┆ -1.0 │
+│ 2142.0 ┆ 1.0  │
+└────────┴──────┘
+```
+
+
+</details>

@@ -1,0 +1,56 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.pad_start"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.pad_start"
+description: "Pad string values at the front to the given length using the given fill character."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.pad_start"></a>
+<details>
+<summary>pad_start</summary>
+
+
+```python
+def pad_start(
+    length: int,
+    fill_char: str = ' ',
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/string.py#L452)
+
+Pad string values at the front to the given length using the given fill character.
+
+**Parameters:**
+
+<ParamField path="length" type="int" required>
+  The length to front pad the string to.
+</ParamField>
+
+<ParamField path="fill_char" type="str" default="' '">
+  The character to use for padding.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.pad_start(6, "-").alias("pad_start"))
+>>>
+┌────────┬───────────┐
+│ a      ┆ pad_start │
+│ ---    ┆ ---       │
+│ str    ┆ str       │
+╞════════╪═══════════╡
+│ abc    ┆ ---abc    │
+│    def ┆    def    │
+│ null   ┆ null      │
+└────────┴───────────┘
+```
+
+
+</details>

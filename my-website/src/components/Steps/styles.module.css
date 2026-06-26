@@ -1,0 +1,27 @@
+.steps {
+  counter-reset: steps-counter;
+  margin: 1.5rem 0;
+}
+
+/* Target h2 headings that start with "Step" inside steps container */
+.steps :global(h2) {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  counter-increment: steps-counter;
+}
+
+.steps :global(h2)::before {
+  content: counter(steps-counter);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
+  border-radius: 50%;
+  background: var(--ifm-color-primary);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+}

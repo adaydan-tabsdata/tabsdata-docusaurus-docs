@@ -1,0 +1,72 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.has_cols"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.has_cols"
+description: "Verifies the presence of (non-system) columns in the TableFrame."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.has_cols"></a>
+<details>
+<summary>has_cols</summary>
+
+
+```python
+def has_cols(
+    cols: str | list [ str ],
+    exact: bool | None = False,
+) -> Tuple[bool, set[str], set[str]]
+```
+
+Verifies the presence of (non-system) columns in the TableFrame.
+
+If exact is True, the check ensures that the TableFrame contains exactly the specified columns (excluding system columns), with no extras or omissions.
+
+**Parameters:**
+
+<ParamField path="cols" type="str | list [ str ]" required>
+  The column name(s) to verify. Can be a string or a list of strings.
+</ParamField>
+
+<ParamField path="exact" type="bool | None" default="False">
+  If True, checks that the TableFrame contains exactly the specified columns.
+</ParamField>
+
+**Returns:** A boolean indicating whether the check was successful. A set of columns in cols missing in the TableFrame. A set of columns in the TableFrame missing in cols .
+
+**Return type:** tuple [ bool , set [ str ], set [ str ]]
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+└──────┴──────┘
+>>>
+>>> tf.has_cols("a")
+>>>
+(True, {}, {"b"})
+>>>
+>>> tf.has_cols(["a", "c", "d"])
+>>>
+(False, {"c", "d"}, {"b"})
+>>>
+>>> tf.has_cols("a", exact=True)
+>>>
+(False, {}, {"b"})
+>>>
+>>> tf.has_cols(["a", "b"], exact=True)
+>>>
+(True, {}, {})
+```
+
+
+</details>

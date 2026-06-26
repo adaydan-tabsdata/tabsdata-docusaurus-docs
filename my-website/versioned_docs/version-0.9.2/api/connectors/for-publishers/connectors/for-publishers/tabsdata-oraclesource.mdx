@@ -1,0 +1,101 @@
+---
+title: "tabsdata.OracleSource"
+sidebarTitle: "tabsdata.OracleSource"
+description: "tabsdata.OracleSource API reference."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.OracleSource"></a>
+<details>
+<summary>OracleSource</summary>
+
+
+```python
+class OracleSource(
+    uri: str,
+    query: str | List [ str ],
+    credentials: dict | UserPasswordCredentials | None = None,
+    initial_values: dict | None = None,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L1236)
+
+Bases: `Input`
+
+Class for managing the configuration of Oracle-based data inputs.
+
+<a id="tabsdata.OracleSource.to_dict"></a>
+#### `to_dict`
+
+```python
+def to_dict()
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L1391)
+
+Converts the OracleSource object to a dictionary.
+
+<a id="tabsdata.OracleSource.__init__"></a>
+#### `__init__`
+
+```python
+def __init__(
+    uri: str,
+    query: str | List [ str ],
+    credentials: dict | UserPasswordCredentials | None = None,
+    initial_values: dict | None = None,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/tabsdatafunction.py#L1260)
+
+**Parameters:**
+
+<ParamField path="uri" type="str" required>
+  The URI of the database where the data is located
+</ParamField>
+
+<ParamField path="query" type="str | List [ str ]" required>
+  The SQL query(s) to execute. If multiple queries are provided, they must be provided as a list, and they will be mapped to the function inputs in the same order as they are defined.
+</ParamField>
+
+<ParamField path="credentials" type="dict | UserPasswordCredentials | None" default="None">
+  The credentials required to access the Oracle database. Can be a dictionary or a UserPasswordCredentials object.
+</ParamField>
+
+<ParamField path="initial_values" type="dict | None" default="None">
+  The initial values for the parameters in the SQL queries.
+</ParamField>
+
+**Raises:**
+
+<ResponseField name="InputConfigurationError" type="Exception"></ResponseField>
+
+<a id="tabsdata.OracleSource.credentials"></a>
+<ResponseField name="credentials" type="UserPasswordCredentials">
+The credentials required to access the Oracle database.
+</ResponseField>
+
+<a id="tabsdata.OracleSource.initial_values"></a>
+<ResponseField name="initial_values" type="dict">
+The initial values for the parameters in the SQL queries.
+</ResponseField>
+
+<a id="tabsdata.OracleSource.query"></a>
+<ResponseField name="query" type="str | List[ str ]">
+The SQL query(s) to execute. If multiple queries are provided, they must be provided as a dictionary, with the parameter name in the registered function as the key and the SQL query as the value.
+</ResponseField>
+
+<a id="tabsdata.OracleSource.uri"></a>
+<ResponseField name="uri" type="str">
+The URI of the database where the data is located.
+</ResponseField>
+
+#### Methods
+
+#### Attributes
+
+
+</details>

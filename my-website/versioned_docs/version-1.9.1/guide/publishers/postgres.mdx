@@ -1,0 +1,152 @@
+---
+title: "Postgres"
+sidebarTitle: "Postgres"
+---
+
+You can use this built-in Tabsdata publisher to read from a Postgres database.
+
+## Installing the connector dependencies
+
+To work with the PostgreSQL connector you are required to install the dependencies separately which can be done by running the following command.
+
+```bash
+$ pip install psycopg2-binary==2.9.10
+```
+
+## Example (Publisher - Postgres)
+
+The following example creates a publisher named `read_sales`. This publisher runs two queries to the database at the specified URL. It writes the results of the queries to two Tabsdata tables. The publisher is triggered by each new commit to the `new_customer` table, and writes data to the output tables in the Tabsdata server without any modification. Using `initial_values` and `id`, the publisher picks up new data for every run.
+
+```python
+import tabsdata as td
+
+# HashiCorp is a type of secret store, ideal for production use cases.
+# For rapid testing, you can assign the credential values directly. You can also use environment variables as detailed here: https://docs.tabsdata.com/latest/guide/secrets_management/env_variables/main.html.
+db_username = td.HashiCorpSecret("path-to-secret", "DB_USERNAME")
+db_password = td.HashiCorpSecret("path-to-secret", "DB_PASSWORD")
+
+@td.publisher(
+    source=td.PostgresSource(
+        uri="postgres://127.0.0.1:5432/sales_db",
+        query=[
+            "select * from INVOICE_VENDOR where id > :number",
+            "select * from INVOICE_ITEM where id > :number",
+        ],
+        credentials=td.UserPasswordCredentials(db_username, db_password),
+        initial_values={"number": 2},
+    ),
+    tables=["vendors", "items"],
+    trigger_by="new_customer",
+)
+def import_sales(tf1: td.TableFrame, tf2: td.TableFrame):
+    id = tf1.select(td.col("id").max()).item()
+    return tf1, tf2, {"number": str(id)}
+```
+
+:::note
+* After defining the function, you need to register it with a Tabsdata collection and execute it. For more information, see Register a Function and Execute a Function.
+:::
+
+## Setup (Publisher - Postgres)
+
+The following code uses placeholder values for defining a publisher that reads data from a Postgres database and publishes it to Tabsdata tables:
+
+```python
+import tabsdata as td
+
+@td.publisher(
+    source=td.PostgresSource(
+        uri="postgres://<path_to_db>",
+        query=["<db_query1>", "<db_query2>"],
+        credentials=td.UserPasswordCredentials("<db_username>", "<db_password>"),
+        initial_values={
+            "<variable_name1>": "<variable_value1>",
+            "<variable_name2>": "<variable_value2>",
+        },
+    ),
+    tables=["<output_table1>", "<output_table2>"],
+    on_tables=[...],
+    trigger_by=["<trigger_table1>", "<trigger_table2>"],
+)
+def <publisher_name>(<table_frame1>:td.TableFrame, <table_frame2>:td.TableFrame):
+    <function_logic>
+    return <table_frame_output1>, <table_frame_output2>
+```
+
+:::note
+* After defining the function, you need to register it with a Tabsdata collection and execute it. For more information, see Register a Function and Execute a Function.
+:::
+
+Following properties are defined in the code above:
+
+### source
+
+#### uri
+
+`<path_to_db>` is the URI to the database.
+
+#### query
+
+`<db_query1>`, `<db_query2>`,… are the queries to run on the database. Add as many as needed. Optionally include variables in the queries to be defined by initial values.
+
+#### credentials
+
+`<db_username>` and `<db_password>` are the username and password to log in to the database respectively. You can use different ways to store the credentials which are highlighted here in the documentation.
+
+#### [Optional] initial_values
+
+`<variable_name1>`, `<variable_name2>`,… are the variable names included in the database queries.
+
+`<variable_value1>`, `<variable_value2>`,… are the values to assign to the defined variables.
+
+If you are using `initial_values`, the function can return the initial values for the next run. The last parameter in the function output, after the tableframes, can be a dictionary with the initial values for the next run.
+
+### tables
+
+`<output_table1>`, `<output_table2>`… are the names of the Tabsdata tables to publish to.
+
+### None as an input and output
+
+A publisher may receive and return a `None` value instead of a TableFrame parameter or return value.
+
+When a publisher **receives** a `None` value instead of a TableFrame it means the absence of input data. For example, the system didn’t return any results because of the file being absent or query returning empty results.
+
+When a publisher **returns** a `None` value instead of a TableFrame it means that the associated table will preserve the existing data from the previous commit. This helps in avoiding the creation of multiple copies of the same data.
+
+### on_tables
+
+Tabsdata Data Quality (DQ) parameter `on_tables` lets you attach declarative quality checks to the output of publishers and transformers. Every run inspects the data that was just produced, enriches it with quality signals, and optionally quarantines or rejects rows that fail your criteria.
+
+For more details, check Data Quality.
+
+### [Optional] trigger_by
+
+`<trigger_table1>`, `<trigger_table2>`… are the names of the tables in the Tabsdata server. A new commit to any of these tables triggers the publisher. This can be relevant in cases where you want to import a data if something else in the organization changes. e.g trigger the import of latest manufacturing data in the company if a new supplier get added added. While a new supplier would not be a direct input to the publisher importing manufacturing data, it can still trigger the function.
+
+All listed trigger tables must exist in the server before registering the publisher.
+
+Defining trigger tables is optional. If you don’t define the `trigger_by` property, the publisher can only be triggered manually.
+
+For more information, see Working with Triggers.
+
+### `<publisher_name>`
+
+`<publisher_name>` is the name for the publisher that you are configuring.
+
+### `<function_logic>`
+
+`<function_logic>` governs the processing performed by the publisher. You can specify function logic to be a simple write or to perform additional processing, such as dropping nulls, before writing data to output tables. For more information about the function logic that you can include, see Working with Tables.
+
+`<table_frame1>`, `<table_frame2>`… are the names for the variables that temporarily store source data for processing.
+
+`<table_frame_output1>`, `<table_frame_output2>`… are the output from the function that are stored as Tabsdata tables with names as defined in the `tables` property. Consequently, the number of tables returned from the function have to exactly match the number of tables defined in the `tables` property.
+
+`<new_value1>`, `<new_value2>`.. are the revised values of variable_names as defined in function logic. This enables you to have dynamic allocation of variable values for usage in queries. You can return a new dictionary e.g. `{"<variable_name1>": <new_value1>, "<variable_name2>": <new_value2>}` to change the initial values for processing new data, or return `SAME` to keep the current initial values.
+
+### Data Drift Support
+
+This section talks about how Tabsdata handles data drift in the input data for this Publisher connector.
+
+This connector natively supports data drift as Tabsdata automatically creates a new version of the table with each function execution. Hence, schema changes in the input data won’t cause the function to fail. Any modifications are captured in a newly versioned output table generated by the publisher.
+
+However, this applies only if the publisher function does not contain schema-dependent logic. If such logic exists, changes in the schema may conflict with the function’s expectations, leading to execution errors.

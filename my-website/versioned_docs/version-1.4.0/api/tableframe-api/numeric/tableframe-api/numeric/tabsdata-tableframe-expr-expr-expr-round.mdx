@@ -1,0 +1,53 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.round"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.round"
+description: "Round floating point element values."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.round"></a>
+<details>
+<summary>round</summary>
+
+
+```python
+def round(
+    decimals: int = 0,
+) -> Expr
+```
+
+Round floating point element values.
+
+**Parameters:**
+
+<ParamField path="decimals" type="int" default="0">
+  number of decimal places to round to.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").round().alias("round"))
+>>>
+┌──────┬───────┐
+│ val  ┆ round │
+│ ---  ┆ ---   │
+│ f64  ┆ f64   │
+╞══════╪═══════╡
+│ -1.0 ┆ -1.0  │
+│ 0.0  ┆ 0.0   │
+│ 1.1  ┆ 1.0   │
+│ 2.0  ┆ 2.0   │
+│ inf  ┆ inf   │
+│ null ┆ null  │
+│ NaN  ┆ NaN   │
+└──────┴───────┘
+```
+
+
+</details>

@@ -1,0 +1,67 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.slice"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.slice"
+description: "Return a TableFrame with a slice of the original TableFrame"
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.slice"></a>
+<details>
+<summary>slice</summary>
+
+
+```python
+def slice(
+    offset: int,
+    length: int | None = None,
+) -> TableFrame
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/lazyframe/frame.py#L1937)
+
+Return a TableFrame with a slice of the original TableFrame
+
+**Parameters:**
+
+<ParamField path="offset" type="int" required>
+  Slice starting index.
+</ParamField>
+
+<ParamField path="length" type="int | None" default="None">
+  The length of the slice.None means all the way to the end.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌─────┬─────┐
+│ a   ┆ b   │
+│ --- ┆ --- │
+│ str ┆ i64 │
+╞═════╪═════╡
+│ A   ┆ 1   │
+│ X   ┆ 10  │
+│ C   ┆ 3   │
+│ D   ┆ 5   │
+│ M   ┆ 9   │
+└─────┴─────┘
+>>>
+>>> tf.slice(2,2)
+>>>
+┌─────┬─────┐
+│ a   ┆ b   │
+│ --- ┆ --- │
+│ str ┆ i64 │
+╞═════╪═════╡
+│ C   ┆ 3   │
+│ D   ┆ 5   │
+└─────┴─────┘
+```
+
+
+</details>

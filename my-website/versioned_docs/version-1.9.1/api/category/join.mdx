@@ -1,0 +1,167 @@
+---
+title: "Join"
+sidebarTitle: "Join"
+description: "Join API reference."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.TableFrame.join"></a>
+<details>
+<summary>join</summary>
+
+
+```python
+def join(
+    other: TableFrame,
+    on: str | Expr | Sequence [ str | Expr ] | None = None,
+    how: Literal [ 'inner' , 'left' , 'right' , 'full' , 'semi' , 'anti' , 'cross' , 'outer' ] = 'inner',
+    *,
+    left_on: str | Expr | Sequence [ str | Expr ] | None = None,
+    right_on: str | Expr | Sequence [ str | Expr ] | None = None,
+    suffix: str = '_right',
+    join_nulls: bool = False,
+    coalesce: bool | None = None,
+) -> TableFrame
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L1083)
+
+Join the TableFrame with another TableFrame.
+
+**Categories:** join
+
+**Parameters:**
+
+<ParamField path="other" type="TableFrame" required>
+  TheTableFrame to join.
+</ParamField>
+
+<ParamField path="on" type="str | Expr | Sequence [ str | Expr ] | None" default="None">
+  Name(s) of the columns to join on. The column name(s) must be in bothTableFrame’s. Don’t use this parameter if using `left_on and right_on parameters, or if how=”cross”.
+</ParamField>
+
+<ParamField path="how" type="Literal [ 'inner' , 'left' , 'right' , 'full' , 'semi' , 'anti' , 'cross' , 'outer' ]" default="'inner'">
+  Join strategy: inner: An inner join. left: A left join. right: A rigth join. full: A full join. cross: The cartesian product. semi: An inner join but only returning the columns from left TableFrame. `anti`: Rows from the left TableFrame that have no match in the right TableFrame.
+</ParamField>
+
+<ParamField path="left_on" type="str | Expr | Sequence [ str | Expr ] | None" default="None">
+  Name(s) of the columns to join on from the leftTableFrame. It must be used together wit the right_on parameter. It cannot be used with the on parameter.
+</ParamField>
+
+<ParamField path="right_on" type="str | Expr | Sequence [ str | Expr ] | None" default="None">
+  Name(s) of the columns to join on from the rightTableFrame. It must be used together wit the left_on parameter. It cannot be used with the on parameter.
+</ParamField>
+
+<ParamField path="suffix" type="str" default="'_right'">
+  Duplicate columns on the rightTable are appended this suffix.
+</ParamField>
+
+<ParamField path="join_nulls" type="bool" default="False">
+  Ifnull value matches should produce join rows or not.
+</ParamField>
+
+<ParamField path="coalesce" type="bool | None" default="None">
+  Collapse join columns into a single column.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf1: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ X    ┆ 10   │
+│ C    ┆ 3    │
+│ D    ┆ 5    │
+│ M    ┆ 9    │
+│ A    ┆ 100  │
+│ M    ┆ 50   │
+│ null ┆ 20   │
+│ F    ┆ null │
+└──────┴──────┘
+>>>
+>>> tf2: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 3    │
+│ Y    ┆ 4    │
+│ Z    ┆ 5    │
+│ A    ┆ 0    │
+│ M    ┆ 6    │
+│ null ┆ 8    │
+│ F    ┆ null │
+└──────┴──────┘
+>>>
+An inner join:
+>>>
+>>> tf1.join(tf2, on="a", how="inner")
+>>>
+┌─────┬──────┬─────────┐
+│ a   ┆ b    ┆ b_right │
+│ --- ┆ ---  ┆ ---     │
+│ str ┆ i64  ┆ i64     │
+╞═════╪══════╪═════════╡
+│ A   ┆ 1    ┆ 3       │
+│ A   ┆ 1    ┆ 0       │
+│ M   ┆ 9    ┆ 6       │
+│ A   ┆ 100  ┆ 3       │
+│ A   ┆ 100  ┆ 0       │
+│ M   ┆ 50   ┆ 6       │
+│ F   ┆ null ┆ null    │
+└─────┴──────┴─────────┘
+>>>
+A left join:
+>>>
+>>> tf1.join(tf2, on="a", how="left")
+>>>
+┌──────┬──────┬─────────┐
+│ a    ┆ b    ┆ b_right │
+│ ---  ┆ ---  ┆ ---     │
+│ str  ┆ i64  ┆ i64     │
+╞══════╪══════╪═════════╡
+│ A    ┆ 1    ┆ 3       │
+│ A    ┆ 1    ┆ 0       │
+│ X    ┆ 10   ┆ null    │
+│ C    ┆ 3    ┆ null    │
+│ D    ┆ 5    ┆ null    │
+│ …    ┆ …    ┆ …       │
+│ A    ┆ 100  ┆ 3       │
+│ A    ┆ 100  ┆ 0       │
+│ M    ┆ 50   ┆ 6       │
+│ null ┆ 20   ┆ null    │
+│ F    ┆ null ┆ null    │
+└──────┴──────┴─────────┘
+>>>
+Turning off column coalesce:
+>>>
+>>> tf1.join(tf2, on="a", coalesce=False)
+>>>
+┌─────┬──────┬─────────┬─────────┐
+│ a   ┆ b    ┆ a_right ┆ b_right │
+│ --- ┆ ---  ┆ ---     ┆ ---     │
+│ str ┆ i64  ┆ str     ┆ i64     │
+╞═════╪══════╪═════════╪═════════╡
+│ A   ┆ 1    ┆ A       ┆ 3       │
+│ A   ┆ 1    ┆ A       ┆ 0       │
+│ M   ┆ 9    ┆ M       ┆ 6       │
+│ A   ┆ 100  ┆ A       ┆ 3       │
+│ A   ┆ 100  ┆ A       ┆ 0       │
+│ M   ┆ 50   ┆ M       ┆ 6       │
+│ F   ┆ null ┆ F       ┆ null    │
+└─────┴──────┴─────────┴─────────┘
+```
+
+
+</details>

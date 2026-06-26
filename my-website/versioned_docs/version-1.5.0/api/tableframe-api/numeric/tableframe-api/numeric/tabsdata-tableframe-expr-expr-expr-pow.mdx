@@ -1,0 +1,51 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.pow"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.pow"
+description: "Exponentiation operator."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.pow"></a>
+<details>
+<summary>pow</summary>
+
+
+```python
+def pow(
+    exponent: Expr | Series | str | int | float,
+) -> Expr
+```
+
+Exponentiation operator.
+
+**Parameters:**
+
+<ParamField path="exponent" type="Expr | Series | str | int | float" required>
+  exponent value.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").pow(2).alias("pow"))
+>>>
+┌──────┬──────┐
+│ age  ┆ pow  │
+│ ---  ┆ ---  │
+│ i64  ┆ i64  │
+╞══════╪══════╡
+│ 1    ┆ 1    │
+│ 15   ┆ 225  │
+│ 18   ┆ 324  │
+│ 60   ┆ 3600 │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+
+</details>

@@ -1,0 +1,51 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.last"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.last"
+description: "Return a TableFrame with the last row."
+---
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.last"></a>
+<details>
+<summary>last</summary>
+
+
+```python
+def last() -> TableFrame
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/frame.py#L1428)
+
+Return a TableFrame with the last row.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌─────┬─────┐
+│ a   ┆ b   │
+│ --- ┆ --- │
+│ str ┆ i64 │
+╞═════╪═════╡
+│ A   ┆ 1   │
+│ X   ┆ 10  │
+│ C   ┆ 3   │
+│ D   ┆ 5   │
+│ M   ┆ 9   │
+└─────┴─────┘
+>>>
+>>> tf.last()
+>>>
+┌─────┬─────┐
+│ a   ┆ b   │
+│ --- ┆ --- │
+│ str ┆ i64 │
+╞═════╪═════╡
+│ M   ┆ 9   │
+└─────┴─────┘
+```
+
+
+</details>

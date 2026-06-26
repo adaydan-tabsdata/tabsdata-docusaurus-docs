@@ -1,0 +1,58 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.filter"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.filter"
+description: "Filter the TableFrame based on the given predicates."
+---
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.filter"></a>
+<details>
+<summary>filter</summary>
+
+
+```python
+def filter(
+    * predicates: Expr | Series | str | Iterable [ Expr | Series | str ] | bool | list [ bool ] | ndarray [ Any , Any ],
+) -> TableFrame
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/lazyframe/frame.py#L1131)
+
+Filter the TableFrame based on the given predicates.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌─────┬─────┐
+│ a   ┆ b   │
+│ --- ┆ --- │
+│ str ┆ i64 │
+╞═════╪═════╡
+│ A   ┆ 1   │
+│ X   ┆ 10  │
+│ C   ┆ 3   │
+│ D   ┆ 5   │
+│ M   ┆ 9   │
+│ A   ┆ 100 │
+│ M   ┆ 50  │
+└─────┴─────┘
+>>>
+>>> tf.filter(td.col("a").is_in(["A", "C"]).or_(td.col("b").eq(10)))
+>>>
+┌─────┬─────┐
+│ a   ┆ b   │
+│ --- ┆ --- │
+│ str ┆ i64 │
+╞═════╪═════╡
+│ A   ┆ 1   │
+│ X   ┆ 10  │
+│ C   ┆ 3   │
+│ A   ┆ 100 │
+└─────┴─────┘
+```
+
+
+</details>

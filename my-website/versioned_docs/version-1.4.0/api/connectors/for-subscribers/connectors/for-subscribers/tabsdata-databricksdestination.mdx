@@ -1,0 +1,56 @@
+---
+title: "tabsdata.DatabricksDestination"
+sidebarTitle: "tabsdata.DatabricksDestination"
+description: "Bases: DestinationPlugin"
+---
+
+<a id="tabsdata.DatabricksDestination"></a>
+<details>
+<summary>DatabricksDestination</summary>
+
+
+```python
+class DatabricksDestination(
+    host_url: str,
+    token: str | Secret,
+    tables: list [ str ] | str,
+    volume: str,
+    catalog: str | None = None,
+    schema: str | None = None,
+    warehouse: str | None = None,
+    warehouse_id: str | None = None,
+    if_table_exists: Literal [ 'append' , 'replace' ] = 'append',
+    schema_strategy: Literal [ 'update' , 'strict' ] = 'update',
+    ** kwargs,
+)
+```
+
+Bases: [`DestinationPlugin`](../plugins/tabsdata.DestinationPlugin.html#tabsdata.DestinationPlugin)
+
+<a id="tabsdata.DatabricksDestination.__init__"></a>
+#### `__init__`
+
+```python
+def __init__(
+    host_url: str,
+    token: str | Secret,
+    tables: list [ str ] | str,
+    volume: str,
+    catalog: str | None = None,
+    schema: str | None = None,
+    warehouse: str | None = None,
+    warehouse_id: str | None = None,
+    if_table_exists: Literal [ 'append' , 'replace' ] = 'append',
+    schema_strategy: Literal [ 'update' , 'strict' ] = 'update',
+    ** kwargs,
+)
+```
+
+Args:
+
+#### Methods
+
+#### Attributes
+
+
+</details>

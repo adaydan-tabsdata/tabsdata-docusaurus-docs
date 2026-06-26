@@ -1,0 +1,43 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.cosh"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.cosh"
+description: "Calculate the hyperbolic cosine of the element value."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.cosh"></a>
+<details>
+<summary>cosh</summary>
+
+
+```python
+def cosh() -> Expr
+```
+
+Calculate the hyperbolic cosine of the element value.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").cosh().alias("cosh"))
+>>>
+┌──────┬────────────┐
+│ val  ┆ cosh       │
+│ ---  ┆ ---        │
+│ f64  ┆ f64        │
+╞══════╪════════════╡
+│ 0.1  ┆ 1.005004   │
+│ 1.5  ┆ 2.35241    │
+│ 1.8  ┆ 3.107473   │
+│ 6.0  ┆ 201.715636 │
+│ 6.0  ┆ 201.715636 │
+│ 7.5  ┆ 904.021484 │
+│ null ┆ null       │
+└──────┴────────────┘
+```
+
+
+</details>

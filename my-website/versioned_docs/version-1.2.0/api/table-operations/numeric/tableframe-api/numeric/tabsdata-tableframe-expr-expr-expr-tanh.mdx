@@ -1,0 +1,42 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.tanh"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.tanh"
+description: "Calculate the hyperbolic tangent of the element value."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.tanh"></a>
+<details>
+<summary>tanh</summary>
+
+
+```python
+def tanh() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L2629)
+
+Calculate the hyperbolic tangent of the element value.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("val"), td.col("val").tanh().alias("tanh"))
+>>>
+┌─────┬──────────┐
+│ val ┆ tanh     │
+│ --- ┆ ---      │
+│ f64 ┆ f64      │
+╞═════╪══════════╡
+│ 0.0 ┆ 0.0      │
+│ 3.0 ┆ 0.995055 │
+│ 6.0 ┆ 0.999988 │
+│ 9.0 ┆ 1.0      │
+└─────┴──────────┘
+```
+
+
+</details>

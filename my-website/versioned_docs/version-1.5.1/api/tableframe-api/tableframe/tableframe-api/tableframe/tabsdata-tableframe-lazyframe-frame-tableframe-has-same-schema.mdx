@@ -1,0 +1,85 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.has_same_schema"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.has_same_schema"
+description: "Verifies if the schema of the current TableFrame is same than the provided TableFrame."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.has_same_schema"></a>
+<details>
+<summary>has_same_schema</summary>
+
+
+```python
+def has_same_schema(
+    tf: TableFrame,
+) -> bool
+```
+
+Verifies if the schema of the current TableFrame is same than the provided TableFrame.
+
+**Parameters:**
+
+<ParamField path="tf" type="TableFrame" required>
+  The TableFrame to compare with.
+</ParamField>
+
+**Returns:** Whether the condition is met or not.
+
+**Return type:** bool
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf1: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+└──────┴──────┘
+>>>
+>>> tf2: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ c    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+└──────┴──────┘
+>>> tf1.has_same_schema(tf2)
+>>>
+False
+>>>
+>>> tf1: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+└──────┴──────┘
+>>>
+>>> tf2: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ str  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+└──────┴──────┘
+>>> tf1.has_same_schema(tf2)
+>>>
+False
+```
+
+
+</details>

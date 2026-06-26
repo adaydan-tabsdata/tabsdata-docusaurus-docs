@@ -1,0 +1,50 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.gt"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.gt"
+description: "Greater than operator."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.expr.Expr.gt"></a>
+<details>
+<summary>gt</summary>
+
+
+```python
+def gt(
+    other: Any,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L1071)
+
+Greater than operator.
+
+**Parameters:**
+
+<ParamField path="other" type="Any" required>
+  The value to compare with.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").gt(1.0).alias("gt"))
+>>>
+┌──────┬─────────┐
+│ temp ┆ ge      │
+│ ---  ┆ ------- │
+│ f64  ┆ bool    │
+╞══════╪═════════╡
+│ 1.0  ┆  false  │
+│ 1.1  ┆  true   │
+└──────┴─────────┘
+```
+
+
+</details>

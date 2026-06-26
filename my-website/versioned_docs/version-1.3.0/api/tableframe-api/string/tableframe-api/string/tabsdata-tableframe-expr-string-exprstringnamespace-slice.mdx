@@ -1,0 +1,56 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.slice"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.slice"
+description: "Extract the substring at the given offset for the given length."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.slice"></a>
+<details>
+<summary>slice</summary>
+
+
+```python
+def slice(
+    offset: int | td_typing.IntoExprColumn,
+    length: int | td_typing.IntoExprColumn | None = None,
+) -> td_expr.Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/string.py#L896)
+
+Extract the substring at the given offset for the given length.
+
+**Parameters:**
+
+<ParamField path="offset" type="int | td_typing.IntoExprColumn" required>
+  The offset to start the slice.
+</ParamField>
+
+<ParamField path="length" type="int | td_typing.IntoExprColumn | None" default="None">
+  The length of the slice. If None, slice until the end of the string.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.slice(1,1).alias("slice"))
+>>>
+┌──────┬───────┐
+│ a    ┆ slice │
+│ ---  ┆ ---   │
+│ str  ┆ str   │
+╞══════╪═══════╡
+│ abc  ┆ b     │
+│ a    ┆       │
+│ null ┆ null  │
+└──────┴───────┘
+```
+
+
+</details>

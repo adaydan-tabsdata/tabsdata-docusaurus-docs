@@ -1,0 +1,67 @@
+---
+title: "Working with Triggers"
+sidebarTitle: "Working with Triggers"
+---
+
+Triggers execute Tabsdata functions. A trigger can be initiated manually through a CLI command or automatically by a new commit to its associated table.
+
+## Manual Triggers
+
+Manual triggers are initiated by a CLI command. For example, you can use a CLI command to manually trigger a publisher to read sales data from a database table and publish it to the Tabsdata server.
+
+You can manually trigger any Tabsdata function, even those with a specified automated trigger.
+
+### Using Manual Triggers
+
+To trigger a function, use the following command in a command line interface:
+
+```bash
+$ td fn trigger --coll <collection_name> --name <function_name>
+```
+
+Where:
+
+- `<collection_name>` is the name of the collection in the Tabsdata server that the function is registered with.
+- `<function_name>` is the name of the function to be executed. This name is defined when the function is registered.
+
+## Automated Triggers
+
+Automated triggers are initiated by a new commit to one of the tables associated with the function. For example, you might define an inventory subscriber function that exports data from a Tabsdata inventory table to AWS S3 every time the inventory table receives a commit.
+
+Note that a commit does not always include changes in the table data. For example, a publisher that writes to three tables performs a commit to all three tables with each execution, irrespective of whether there is a change in data for any of the tables.
+
+Since, the functions are automatically triggered which in turn create a new commit to other tables, Tabsdata enables a cascading workflow of updates to downstream tables.
+
+## trigger_by
+
+Triggers in Tabsdata functions are defined using the `trigger_by` property.
+
+Below are the different ways in which `trigger_by` can be configured:
+
+### Not Defining
+
+If the `trigger_by` property is not defined, the behavior depends on the default behaviour of the function:
+
+**Publishers:** By default, publishers do not have any triggers. If `trigger_by` is not defined, the publisher can only be triggered manually.
+
+**Transformers:** By default, transformers are triggered by a commit to any of their input tables. Hence, if `trigger_by` is not defined, the transformer will automatically respond to new commits to any of its input tables. To specify different trigger tables, define the `trigger_by` tables using a non-empty array.
+
+**Subscribers:** By default, subscribers are triggered by a commit to any of its input tables. Hence, if `trigger_by` is not defined, the subscriber will automatically respond to new commits to any of its input tables. To specify different trigger tables, define the `trigger_by` tables using a non-empty array.
+
+### Defining an Empty Array
+
+```python
+trigger_by = []
+```
+
+Setting `trigger_by` to an empty array disables automatic triggering. This is useful for transformers and subscribers when you want to prevent them from being triggered by their input tables.
+
+### Defining a Non-Empty Array
+
+```python
+trigger_by = ["<table_name>", "<collection_name>/<table_name>"]
+```
+
+Setting `trigger_by` to a non-empty array explicitly defines which tables can trigger the function. If you want the functions to be triggered by a subset of their input tables or by external tables, list them in the array. To reference tables outside the function’s collection, use the format `<collection_name>/<table_name>`.
+
+Only those tables listed in the `trigger_by` array will trigger the function. List as many as needed.

@@ -1,0 +1,53 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.ends_with"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.ends_with"
+description: "Evaluate if the string ends with."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.ends_with"></a>
+<details>
+<summary>ends_with</summary>
+
+
+```python
+def ends_with(
+    suffix: str | Expr,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/string.py#L629)
+
+Evaluate if the string ends with.
+
+**Parameters:**
+
+<ParamField path="suffix" type="str | Expr" required>
+  The suffix to search for.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.ends_with("b").alias("ends_with"))
+>>>
+┌──────┬───────────┐
+│ a    ┆ ends_with │
+│ ---  ┆ ---       │
+│ str  ┆ bool      │
+╞══════╪═══════════╡
+│ a    ┆ false     │
+│ ab   ┆ true      │
+│ b    ┆ true      │
+│ xaby ┆ false     │
+│ null ┆ null      │
+└──────┴───────────┘
+```
+
+
+</details>

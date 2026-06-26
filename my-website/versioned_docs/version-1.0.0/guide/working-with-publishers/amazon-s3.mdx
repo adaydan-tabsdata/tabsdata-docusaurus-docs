@@ -1,0 +1,168 @@
+---
+title: "Amazon S3"
+sidebarTitle: "Amazon S3"
+---
+
+You can use this built-in Tabsdata publisher to read files from Amazon S3 to the Tabsdata server. Publishers can read the following file formats: CSV, jsonl, ndjson, parquet, and log.
+
+## Example (Publisher - Amazon S3)#
+
+Here is an example publisher named `read_employees`. It reads departments table and multiple employees tables, with their file names starting from `employees_`, from the HR folder. It checks that last modified dates for the files, which should be after the date defined in `initial_last_modified`. Subsequently, it writes the departments and first two employees files to the Tabsdata tables. This publisher executes automatically as soon as a new commit occurs on the `jobs_closed` table:
+
+```python
+from typing import List
+
+import tabsdata as td
+
+s3_credentials = td.S3AccessKeyCredentials(
+    aws_access_key_id=td.HashiCorpSecret("path-to-secret","S3_ACCESS_KEY"),
+    aws_secret_access_key=td.HashiCorpSecret("path-to-secret","S3_SECRET_KEY"),
+)
+
+@td.publisher(
+    source=td.S3Source(
+        [
+            "s3://opt/hr/departments.csv",
+            "s3://opt/hr/employees_*.csv",
+        ],
+        s3_credentials,
+        initial_last_modified="2021-01-01",
+        region = "us-east-2",
+    ),
+    tables=["departments", "employees_1", "employees_2"],
+    trigger_by="jobs_closed",
+)
+def read_employees(tf: td.TableFrame, tf2: List[td.TableFrame]):
+    return tf, tf2[0], tf2[1]
+```
+
+Where:
+
+`S3_ACCESS_KEY` is the value of your Amazon S3 access key.
+
+`S3_SECRET_KEY` is the value of your Amazon S3 secret key.
+
+**Note:** After defining the function, you need to register it with a Tabsdata collection. For more information, see here.
+
+## Setup (Publisher - Amazon S3)#
+
+The following code uses placeholder values for defining a publisher that reads data from Amazon S3 and publishes it to Tabsdata tables:
+
+```python
+import tabsdata as td
+
+s3_credentials = td.S3AccessKeyCredentials(
+    aws_access_key_id=td.HashiCorpSecret("path-to-secret","S3_ACCESS_KEY"),
+    aws_secret_access_key=td.HashiCorpSecret("path-to-secret","S3_SECRET_KEY"),
+)
+
+@td.publisher(
+    source=td.S3Source(
+        ["s3://<path_to_file1>", "s3://<path_to_file2>"],
+        s3_credentials,
+        initial_last_modified="<date_time>",
+        region = "<region_name>"
+    ),
+    tables=["<output_table1>", "<output_table2>"],
+    trigger_by=["<trigger_table1>", "<trigger_table2>"],
+)
+def <publisher_name>(<table_frame1>: td.TableFrame, <table_frame2>: td.TableFrame):
+    <function_logic>
+    return <table_frame_output1>, <table_frame_output2>
+```
+
+**Note:** After defining the function, you need to register it with a Tabsdata collection. For more information, see here here.
+
+Following properties are defined in the setup code above:
+
+### source#
+
+#### `<path_to_files>`#
+
+`<path_to_file1>`, `<path_to_file2>`… are the full system directory paths to the files to read.
+
+All the source files in a publisher need to be have the same extension. Following file formats are supported currently: CSV, jsonl, ndjson, parquet, and log.
+
+You can specify as many file paths as needed. You can also use the `asterisk (*)` wildcard in file names to read multiple files with similar names. **When using a wildcard, the resultant output is a list of TableFrames, if the number of files matching the pattern are more than one.** You can work with the List in the same way as an array and use index to access specific TableFrames as shown in the function logic of the example here.
+
+You can define the source files in the following ways:
+
+**File Path**
+
+To read by file path where the file extension is included as part of the file path, define the source as follows:
+
+```python
+source=td.S3Source(["s3://<path_to_file1.ext>","s3://<path_to_file2.ext>"],s3_credentials, region = "<region_name>"),
+```
+
+`<path_to_file1.ext>`… have the extensions of the file included in the file name as part of the path.
+
+**File Format**
+
+To read files by file format where format is declared separately and not in the file name, define the source as follows:
+
+```python
+source=td.S3Source([
+        "s3://<path_to_file1_no_extension>",
+        "s3://<path_to_file2_no_extension>",
+        ], s3_credentials, format="<format_name>", region = "<region_name>"),
+```
+
+`"<path_to_file1_no_extension>"`, `"<path_to_file2_no_extension>"`… don’t have the extension in the file name. The extension to all files is mentioned separately in `format`.
+
+**Custom delimiter for CSV**
+
+To define a custom delimiter for reading a CSV file, use the format code as follows:
+
+```python
+source=td.S3Source([
+        "s3://<path_to_file1.csv>",
+        "s3://<path_to_file2.csv>",
+        ], s3_credentials, format=td.CSVFormat(separator="<separator_character>"), region = "<region_name>"),
+```
+
+`"<path_to_file1.csv>"`, `"<path_to_file2.csv>"`… are paths to CSV files with a custom delimiter, with csv extension. The delimiter is a single byte character such as colon (:), semicolon (;), and period (.) that separate the fields in the given file instead of a comma(,). You define the character in `separator`.
+
+#### credentials#
+
+A publisher needs credentials to read files from Amazon S3. Here the value is defined using a variable `s3_credentials`. The variable is an object of class `S3AccessKeyCredentials` with following values.
+
+`S3_ACCESS_KEY` is the value of your Amazon S3 access key.
+
+`S3_SECRET_KEY` is the value of your Amazon S3 secret key.
+
+You can use different ways to store the credentials which are highlighted here in the documentation.
+
+#### initial_last_modified#
+
+[optional] `<date_time>` is a date time string in the [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601) format (e.g. 2025-02-05 or 2025-02-05T03:12:36Z). If provided, only the files modified after this date and time will be considered to be read by the publisher. If no timezone is provided, UTC will be assumed.
+
+#### region#
+
+`<region_name>"` is where you have your S3 bucket is located.
+
+### tables#
+
+`<output_table1>`, `<output_table2>`… are the names of the Tabsdata tables to publish to.
+
+### [Optional] trigger_by#
+
+`<trigger_table1>`, `<trigger_table2>`… are the names of the tables in the Tabsdata server. A new commit to any of these tables triggers the publisher. This can be relevant in cases where you want to import a data if something else in the organization changes. e.g trigger the import of latest manufacturing data in the company if a new supplier get added added. While a new supplier would not be a direct input to the publisher importing manufacturing data, it can still trigger the function.
+
+All listed trigger tables must exist in the server before registering the publisher.
+
+Defining trigger tables is optional. If you don’t define the `trigger_by` property, the publisher can only be triggered manually.
+
+For more information, see Working with Triggers.
+
+### `<publisher_name>`#
+
+`<publisher_name>` is the name for the publisher that you are configuring.
+
+### `<function_logic>`#
+
+`<function_logic>` governs the processing performed by the publisher. You can specify function logic to be a simple write or to perform additional processing, such as dropping nulls, before writing data to output tables. For more information about the function logic that you can include, see Working with Tables.
+
+`<table_frame1>`, `<table_frame2>`… are the names for the variables that temporarily store source data for processing.
+
+`<table_frame_output1>`, `<table_frame_output2>`… are the output from the function that are stored as Tabsdata tables with names as defined in the `tables` property. Consequently, the number of tables returned from the function have to exactly match the number of tables defined in the `tables` property.

@@ -1,0 +1,68 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.extract_as_columns"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.extract_as_columns"
+description: "Extract a slice of rows from the table as a column-oriented dictionary."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.extract_as_columns"></a>
+<details>
+<summary>extract_as_columns</summary>
+
+
+```python
+def extract_as_columns(
+    offset: int,
+    length: int,
+) -> dict[str, list[Any]]
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/lazyframe/frame.py#L2365)
+
+Extract a slice of rows from the table as a column-oriented dictionary.
+
+The result is a mapping of column names to lists of values from the selected rows.
+
+**Parameters:**
+
+<ParamField path="offset" type="int" required>
+  The starting row index of the slice.
+</ParamField>
+
+<ParamField path="length" type="int" required>
+  The number of rows to include in the slice.
+</ParamField>
+
+**Returns:** A dictionary where each key is a column name, and its value is a list of values from the selected slice.
+
+**Return type:** dict [ str , list [Any]]
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌─────┬─────┐
+│ a   ┆ b   │
+│ --- ┆ --- │
+│ str ┆ i64 │
+╞═════╪═════╡
+│ A   ┆ 1   │
+│ X   ┆ 10  │
+│ C   ┆ 3   │
+│ D   ┆ 5   │
+│ M   ┆ 9   │
+└─────┴─────┘
+>>>
+>>> tf.extract_as_columns(offset=0, length=2)
+    {
+        "a": ["A", 1],
+        "b": ["X", 10]
+    }
+```
+
+
+</details>

@@ -1,0 +1,29 @@
+---
+title: "tabsdata.tableframe.lazyframe.frame.TableFrame.from_polars"
+sidebarTitle: "tabsdata.tableframe.lazyframe.frame.TableFrame.from_polars"
+description: "Creates tableframe from a polars dataframe or lazyframe, or None. None produces as an empty (no column - no row) tableframe."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.lazyframe.frame.TableFrame.from_polars"></a>
+<details>
+<summary>from_polars</summary>
+
+
+```python
+def from_polars(
+    data: LazyFrame | DataFrame | None = None,
+) -> TableFrame
+```
+
+Creates tableframe from a polars dataframe or lazyframe, or None. None produces as an empty (no column - no row) tableframe.
+
+**Parameters:**
+
+<ParamField path="data" type="LazyFrame | DataFrame | None" default="None">
+  Input data.
+</ParamField>
+
+
+</details>

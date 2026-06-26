@@ -1,0 +1,80 @@
+---
+title: "tabsdata.BigQueryConn"
+sidebarTitle: "tabsdata.BigQueryConn"
+description: "tabsdata.BigQueryConn API reference."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.BigQueryConn"></a>
+<details>
+<summary>BigQueryConn</summary>
+
+
+```python
+class BigQueryConn(
+    gcs_folder: str,
+    credentials: GCPCredentials,
+    project: str = None,
+    dataset: str = None,
+    enforce_connection_params: bool = True,
+    cx_dst_configs_gcs: dict = None,
+    cx_dst_configs_bigquery: dict = None,
+)
+```
+
+Bases: `Conn`
+
+Represents a connection configuration to BigQuery.
+
+<a id="tabsdata.BigQueryConn.__init__"></a>
+#### `__init__`
+
+```python
+def __init__(
+    gcs_folder: str,
+    credentials: GCPCredentials,
+    project: str = None,
+    dataset: str = None,
+    enforce_connection_params: bool = True,
+    cx_dst_configs_gcs: dict = None,
+    cx_dst_configs_bigquery: dict = None,
+)
+```
+
+**Parameters:**
+
+<ParamField path="gcs_folder" type="str" required>
+  A gcs:// URI indicating the folder where the table(s) will be staged before being uploaded to BigQuery. After the upload is done, the files created in this folder will be deleted.
+</ParamField>
+
+<ParamField path="credentials" type="GCPCredentials" required>
+  The GCP credentials to use for authentication.
+</ParamField>
+
+<ParamField path="project" type="str" default="None">
+  The default GCP project to use. If not provided, the project must be specified in the table names provided in the destination. Defaults to None.
+</ParamField>
+
+<ParamField path="dataset" type="str" default="None">
+  The default BigQuery dataset to use. If not provided, the dataset must be specified in the table names provided in the destination. Defaults to None.
+</ParamField>
+
+<ParamField path="enforce_connection_params" type="bool" default="True">
+  If True, enforce that project and dataset are used to fully qualify table names in the destination if provided. If set to False, the connection will allow the project and/or dataset to be overriden by the table names provided in the destination. Defaults to True.
+</ParamField>
+
+<ParamField path="cx_dst_configs_gcs" type="dict" default="None">
+  Additional configuration parameters to pass to the GCS client. Defaults to None.
+</ParamField>
+
+<ParamField path="cx_dst_configs_bigquery" type="dict" default="None">
+  Additional configuration parameters to pass to the BigQuery client. Defaults to None.
+</ParamField>
+
+#### Methods
+
+#### Attributes
+
+
+</details>

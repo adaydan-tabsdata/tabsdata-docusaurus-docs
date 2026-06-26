@@ -1,0 +1,35 @@
+---
+title: "tabsdata.tableframe.selectors.first"
+sidebarTitle: "tabsdata.tableframe.selectors.first"
+description: "Select the first column in the TableFrame."
+---
+
+<a id="tabsdata.tableframe.selectors.first"></a>
+<details>
+<summary>first</summary>
+
+
+```python
+def first() -> SelectorProxy
+```
+
+Select the first column in the TableFrame.
+
+#### Example
+
+```python
+>>> import tabsdata.tableframe as td_tf
+>>>
+>>> tf = td_tf.TableFrame({
+...     "Id": [101, 102, 103, 104, 105, 106, 107, 108],
+...     "Name": ["A", "B", "C", "D", "E", "F", "G", "H"],
+...     "Score": [90.5, 84.0, 87.0, 91.5, 86.5, 88.0, 85.5, 89.0]
+... })
+```
+
+```python
+>>> tf.select(td_tf.selectors.first())
+```
+
+
+</details>

@@ -1,0 +1,60 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.max"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.max"
+description: "Aggregation operation that finds the maximum value in the group."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.max"></a>
+<details>
+<summary>max</summary>
+
+
+```python
+def max() -> Expr
+```
+
+Aggregation operation that finds the maximum value in the group.
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ ss   ┆ i    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ B    ┆ 0    │
+│ A    ┆ 2    │
+│ B    ┆ 3    │
+│ B    ┆ 4    │
+│ C    ┆ -1   │
+│ C    ┆ -2   │
+│ C    ┆ -3   │
+│ D    ┆ -4   │
+│ F    ┆ -5   │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.group_by(td.col("a")).agg(td.col("b")).max())
+>>>
+┌──────┬──────┐
+│ ss   ┆ i    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ F    ┆ -5   │
+│ C    ┆ -1   │
+│ A    ┆ 2    │
+│ B    ┆ 4    │
+│ D    ┆ -4   │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+
+</details>

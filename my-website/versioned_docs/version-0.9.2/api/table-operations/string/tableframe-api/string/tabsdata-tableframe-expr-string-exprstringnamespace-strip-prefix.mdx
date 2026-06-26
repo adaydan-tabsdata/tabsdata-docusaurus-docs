@@ -1,0 +1,52 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.strip_prefix"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.strip_prefix"
+description: "Trim string values removing the given prefix"
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.strip_prefix"></a>
+<details>
+<summary>strip_prefix</summary>
+
+
+```python
+def strip_prefix(
+    prefix: td_expr.IntoExpr,
+) -> td_expr.Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/string.py#L394)
+
+Trim string values removing the given prefix
+
+**Parameters:**
+
+<ParamField path="prefix" type="td_expr.IntoExpr" required>
+  Prefix to remove from the string.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a")
+      .str.strip_prefix("cb").alias("strip_prefix"))
+>>>
+┌───────────────────────────────┬─────────────────┐
+│ a                             ┆ strip_prefix    │
+│ ---                           ┆ ---             │
+│ str                           ┆ str             │
+╞═══════════════════════════════╪═════════════════╡
+│ cba cd                        ┆ a cd            │
+│ bx                            ┆ bx              │
+│ null                          ┆ null            │
+└───────────────────────────────┴─────────────────┘
+```
+
+
+</details>

@@ -1,0 +1,60 @@
+---
+title: "tabsdata.tableframe.lazyframe.group_by.TableFrameGroupBy.n_unique"
+sidebarTitle: "tabsdata.tableframe.lazyframe.group_by.TableFrameGroupBy.n_unique"
+description: "Aggregation operation that counts the unique values of the given column in the group for of all the non group by columns."
+---
+
+<a id="tabsdata.tableframe.lazyframe.group_by.TableFrameGroupBy.n_unique"></a>
+<details>
+<summary>n_unique</summary>
+
+
+```python
+def n_unique() -> TableFrame
+```
+
+Aggregation operation that counts the unique values of the given column in the group for of all the non group by columns.
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┬──────┐
+│ ss   ┆ u    ┆ ff   │
+│ ---  ┆ ---  ┆ ---  │
+│ str  ┆ i64  ┆ f64  │
+╞══════╪══════╪══════╡
+│ A    ┆ 1    ┆ 1.1  │
+│ B    ┆ 0    ┆ 0.0  │
+│ A    ┆ 2    ┆ 2.2  │
+│ B    ┆ 3    ┆ 3.3  │
+│ B    ┆ 4    ┆ 4.4  │
+│ C    ┆ 5    ┆ -1.1 │
+│ C    ┆ 6    ┆ -2.2 │
+│ C    ┆ 7    ┆ -3.3 │
+│ D    ┆ 8    ┆ inf  │
+│ F    ┆ 9    ┆ NaN  │
+│ null ┆ null ┆ null │
+└──────┴──────┴──────┘
+>>>
+>>> tf.group_by("ss").n_unique()
+>>>
+┌──────┬─────┬─────┐
+│ ss   ┆ u   ┆ ff  │
+│ ---  ┆ --- ┆ --- │
+│ str  ┆ u32 ┆ u32 │
+╞══════╪═════╪═════╡
+│ null ┆ 1   ┆ 1   │
+│ A    ┆ 2   ┆ 2   │
+│ B    ┆ 3   ┆ 3   │
+│ C    ┆ 3   ┆ 3   │
+│ D    ┆ 1   ┆ 1   │
+│ F    ┆ 1   ┆ 1   │
+└──────┴─────┴─────┘
+```
+
+
+</details>

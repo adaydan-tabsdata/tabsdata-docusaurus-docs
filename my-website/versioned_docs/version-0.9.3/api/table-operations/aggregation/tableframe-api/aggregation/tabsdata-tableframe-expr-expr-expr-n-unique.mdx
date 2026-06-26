@@ -1,0 +1,62 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.n_unique"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.n_unique"
+description: "Aggregation operation that counts the unique values of the given column in the group."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.n_unique"></a>
+<details>
+<summary>n_unique</summary>
+
+
+```python
+def n_unique() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L2556)
+
+Aggregation operation that counts the unique values of the given column in the group.
+
+#### Examples
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ ss   ┆ i    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ B    ┆ 0    │
+│ A    ┆ 2    │
+│ B    ┆ 3    │
+│ B    ┆ 4    │
+│ C    ┆ -1   │
+│ C    ┆ -2   │
+│ C    ┆ -3   │
+│ D    ┆ -4   │
+│ F    ┆ -5   │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.group_by(td.col("a")).agg(td.col("b")).n_unique())
+>>>
+┌──────┬─────┐
+│ ss   ┆ i   │
+│ ---  ┆ --- │
+│ str  ┆ u32 │
+╞══════╪═════╡
+│ D    ┆ 1   │
+│ C    ┆ 3   │
+│ A    ┆ 2   │
+│ B    ┆ 3   │
+│ F    ┆ 1   │
+│ null ┆ 1   │
+└──────┴─────┘
+```
+
+
+</details>

@@ -1,0 +1,36 @@
+---
+title: "tabsdata.tableframe.selectors.signed_integer"
+sidebarTitle: "tabsdata.tableframe.selectors.signed_integer"
+description: "Select all columns of signed integer data types."
+---
+
+<a id="tabsdata.tableframe.selectors.signed_integer"></a>
+<details>
+<summary>signed_integer</summary>
+
+
+```python
+def signed_integer() -> SelectorProxy
+```
+
+Select all columns of signed integer data types.
+
+#### Example
+
+```python
+>>> import tabsdata.tableframe as td_tf
+>>>
+>>> tf = td_tf.TableFrame({
+...     "UserId": [10, 11, 12, 13, 14, 15, 16, 17],
+...     "Rating": [5, 3, 4, 2, 5, 1, 3, 4],
+...     "Change": [-1, 0, 1, -2, 2, 0, -1, 1],
+...     "Tag": ["x", "y", "x", "y", "z", "x", "z", "y"]
+... })
+```
+
+```python
+>>> tf.select(td_tf.selectors.signed_integer())
+```
+
+
+</details>

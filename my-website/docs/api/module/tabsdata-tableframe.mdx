@@ -1,0 +1,209 @@
+---
+title: "tabsdata.tableframe"
+sidebarTitle: "tabsdata.tableframe"
+description: "tabsdata.tableframe API reference."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.SysCol"></a>
+<details>
+<summary>SysCol</summary>
+
+
+```python
+class SysCol(
+    * values,
+)
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/_constants.py#L189)
+
+Bases: [`StrEnum`](https://docs.python.org/3/library/enum.html#enum.StrEnum)
+
+
+</details>
+
+<a id="tabsdata.tableframe.empty"></a>
+<details>
+<summary>empty</summary>
+
+
+```python
+def empty() -> TableFrame
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/builders.py#L20)
+
+Creates an empty (no column - no row) TableFrame.
+
+
+</details>
+
+<a id="tabsdata.tableframe.from_dict"></a>
+<details>
+<summary>from_dict</summary>
+
+
+```python
+def from_dict(
+    data: Mapping [ str , Sequence [ object ] | Mapping [ str , Sequence [ object ] ] ] | None = None,
+) -> TableFrame
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/builders.py#L54)
+
+Creates tableframe from a dictionary, or None. None produces as an empty (no column - no row) tableframe.
+
+**Parameters:**
+
+<ParamField path="data" type="Mapping [ str , Sequence [ object ] | Mapping [ str , Sequence [ object ] ] ] | None" default="None">
+  Input data.
+</ParamField>
+
+
+</details>
+
+<a id="tabsdata.tableframe.from_pandas"></a>
+<details>
+<summary>from_pandas</summary>
+
+
+```python
+def from_pandas(
+    data: pd.DataFrame | None = None,
+) -> td_frame.TableFrame
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/builders.py#L43)
+
+Creates tableframe from a pandas dataframe, or None. None produces as an empty (no column - no row) tableframe.
+
+**Parameters:**
+
+<ParamField path="data" type="pd.DataFrame | None" default="None">
+  Input data.
+</ParamField>
+
+
+</details>
+
+<a id="tabsdata.tableframe.from_polars"></a>
+<details>
+<summary>from_polars</summary>
+
+
+```python
+def from_polars(
+    data: LazyFrame | DataFrame | None = None,
+) -> TableFrame
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/builders.py#L32)
+
+Creates tableframe from a polars dataframe or lazyframe, or None. None produces as an empty (no column - no row) tableframe.
+
+**Parameters:**
+
+<ParamField path="data" type="LazyFrame | DataFrame | None" default="None">
+  Input data.
+</ParamField>
+
+
+</details>
+
+<a id="tabsdata.tableframe.to_dict"></a>
+<details>
+<summary>to_dict</summary>
+
+
+```python
+def to_dict(
+    data: TableFrame,
+) -> dict[str, list[Any]]
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/builders.py#L98)
+
+Creates dictionary from a tableframe, or None. None produces and empty (no key) dictionary.
+
+**Parameters:**
+
+<ParamField path="data" type="TableFrame" required>
+  Input data.
+</ParamField>
+
+
+</details>
+
+<a id="tabsdata.tableframe.to_pandas"></a>
+<details>
+<summary>to_pandas</summary>
+
+
+```python
+def to_pandas(
+    data: td_frame.TableFrame,
+) -> pd.DataFrame
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/builders.py#L87)
+
+Creates pandas dataframe from a tableframe, or None. None produces and empty (no column - no row) pandas dataframe.
+
+**Parameters:**
+
+<ParamField path="data" type="td_frame.TableFrame" required>
+  Input data.
+</ParamField>
+
+
+</details>
+
+<a id="tabsdata.tableframe.to_polars_df"></a>
+<details>
+<summary>to_polars_df</summary>
+
+
+```python
+def to_polars_df(
+    data: TableFrame,
+) -> DataFrame
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/builders.py#L76)
+
+Creates polars dataframe from a tableframe, or None. None produces and empty (no column - no row) polars dataframe.
+
+**Parameters:**
+
+<ParamField path="data" type="TableFrame" required>
+  Input data.
+</ParamField>
+
+
+</details>
+
+<a id="tabsdata.tableframe.to_polars_lf"></a>
+<details>
+<summary>to_polars_lf</summary>
+
+
+```python
+def to_polars_lf(
+    data: TableFrame,
+) -> LazyFrame
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/builders.py#L65)
+
+Creates polars lazyframe from a tableframe, or None. None produces and empty (no column - no row) polars lazyframe.
+
+**Parameters:**
+
+<ParamField path="data" type="TableFrame" required>
+  Input data.
+</ParamField>
+
+
+</details>

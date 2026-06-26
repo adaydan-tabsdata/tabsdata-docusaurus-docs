@@ -1,0 +1,69 @@
+---
+title: "tabsdata.tableframe.selectors.datetime"
+sidebarTitle: "tabsdata.tableframe.selectors.datetime"
+description: "Select all columns of datetime data type."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.selectors.datetime"></a>
+<details>
+<summary>datetime</summary>
+
+
+```python
+def datetime(
+    time_unit: Literal [ 'ns' , 'us' , 'ms' ] | Collection [ Literal [ 'ns' , 'us' , 'ms' ] ] | None = None,
+    time_zone: str | timezone | Collection [ str | timezone | None ] | None = ('*', None),
+) -> SelectorProxy
+```
+
+Select all columns of datetime data type.
+
+**Parameters:**
+
+<ParamField path="time_unit" type="Literal [ 'ns' , 'us' , 'ms' ] | Collection [ Literal [ 'ns' , 'us' , 'ms' ] ] | None" default="None">
+  One or more of the supported time precision units: “ms”, “us”, or “ns”. If omitted, selects datetime columns with any time unit.
+</ParamField>
+
+<ParamField path="time_zone" type="str | timezone | Collection [ str | timezone | None ] | None" default="('*', None)">
+  Specifies which time zone(s) to match: * Pass one or more valid time zone strings (as defined by the zoneinfo module). To list all available zones, use: import zoneinfo; zoneinfo.available_timezones(). Use None to select datetime columns with no time zone. Use “*” to match any column with any time zone.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata.tableframe as td_tf
+>>> from datetime import datetime, timedelta, timezone
+>>>
+>>> tf = td_tf.TableFrame({
+...     "TimestampUTC": [
+...         datetime(2024, 1, 1, 9, 0, tzinfo=timezone.utc),
+...         datetime(2024, 1, 2, 10, 0, tzinfo=timezone.utc),
+...         datetime(2024, 1, 3, 11, 0, tzinfo=timezone.utc),
+...         datetime(2024, 1, 4, 12, 0, tzinfo=timezone.utc),
+...         datetime(2024, 1, 5, 13, 0, tzinfo=timezone.utc),
+...         datetime(2024, 1, 6, 14, 0, tzinfo=timezone.utc),
+...         datetime(2024, 1, 7, 15, 0, tzinfo=timezone.utc),
+...         datetime(2024, 1, 8, 16, 0, tzinfo=timezone.utc),
+...     ],
+...     "Event": ["A", "B", "C", "D", "E", "F", "G", "H"],
+...     "TimestampLocal": [
+...         datetime(2024, 1, 1, 10, 0, tzinfo=timezone(timedelta(hours=1))),
+...         datetime(2024, 1, 2, 11, 0, tzinfo=timezone(timedelta(hours=1))),
+...         datetime(2024, 1, 3, 12, 0, tzinfo=timezone(timedelta(hours=1))),
+...         datetime(2024, 1, 4, 13, 0, tzinfo=timezone(timedelta(hours=1))),
+...         datetime(2024, 1, 5, 14, 0, tzinfo=timezone(timedelta(hours=1))),
+...         datetime(2024, 1, 6, 15, 0, tzinfo=timezone(timedelta(hours=1))),
+...         datetime(2024, 1, 7, 16, 0, tzinfo=timezone(timedelta(hours=1))),
+...         datetime(2024, 1, 8, 17, 0, tzinfo=timezone(timedelta(hours=1))),
+...     ]
+... })
+```
+
+```python
+>>> tf.select(td_tf.selectors.datetime(time_zone="UTC"))
+```
+
+
+</details>

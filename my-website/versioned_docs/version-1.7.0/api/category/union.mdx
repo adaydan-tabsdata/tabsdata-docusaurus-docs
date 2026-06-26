@@ -1,0 +1,77 @@
+---
+title: "Union"
+sidebarTitle: "Union"
+description: "Union API reference."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.concat"></a>
+<details>
+<summary>concat</summary>
+
+
+```python
+def concat(
+    items: Iterable [ TdType ],
+    how: Literal [ 'vertical' , 'vertical_relaxed' , 'diagonal' , 'diagonal_relaxed' ] = 'vertical',
+) -> TdType
+```
+
+Combine multiple TableFrames by stacking their rows.
+
+**Categories:** union
+
+**Parameters:**
+
+<ParamField path="items" type="Iterable [ TdType ]" required>
+  The TableFrames to concatenate.
+</ParamField>
+
+<ParamField path="how" type="Literal [ 'vertical' , 'vertical_relaxed' , 'diagonal' , 'diagonal_relaxed' ]" default="'vertical'">
+  \{‘vertical’, ‘vertical_relaxed’, ‘diagonal’, ‘diagonal_relaxed’} vertical: Appends the rows of each input below the previous one. All inputs must have exactly the same column names and types; otherwise the operation fails. vertical_relaxed: Same as vertical, but if columns with the same name have different data types across inputs, they are converted to a common type (e.g. Int32 → Int64). diagonal: Aligns columns by name across all inputs. If a column is missing from a particular input, that input is padded with null values for the missing column. Matching columns keep their original type if consistent. diagonal_relaxed: Same as diagonal, but when matching columns have different data types, they are converted to a common type (e.g. Int32 → Int64).
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf1: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ a    ┆ 1    │
+│ b    ┆ 2    │
+└──────┴──────┘
+>>>
+>>> tf2: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ x    ┆ 10   │
+│ y    ┆ 20   │
+└──────┴──────┘
+>>>
+>>> tf = td.concat([tf1, tf2])
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ a    ┆ 1    │
+│ b    ┆ 2    │
+│ x    ┆ 10   │
+│ y    ┆ 20   │
+└──────┴──────┘
+```
+
+
+</details>

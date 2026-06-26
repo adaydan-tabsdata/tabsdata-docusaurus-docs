@@ -1,0 +1,42 @@
+---
+title: "tabsdata.tableframe.expr.expr.Expr.is_finite"
+sidebarTitle: "tabsdata.tableframe.expr.expr.Expr.is_finite"
+description: "If an element value is finite."
+---
+
+<a id="tabsdata.tableframe.expr.expr.Expr.is_finite"></a>
+<details>
+<summary>is_finite</summary>
+
+
+```python
+def is_finite() -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/blob/main/client/td-sdk/tabsdata/tableframe/expr/expr.py#L1180)
+
+If an element value is finite.
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("temp"), td.col("temp").is_finite()
+>>>        .alias("finite"))
+>>>
+┌──────┬────────┐
+│ temp ┆ finite │
+│ ---  ┆ ---    │
+│ f64  ┆ bool   │
+╞══════╪════════╡
+│ 1.1  ┆ true   │
+│ 2.0  ┆ true   │
+│ inf  ┆ false  │
+└──────┴────────┘
+```
+
+
+</details>

@@ -1,0 +1,46 @@
+---
+title: "tabsdata.tableframe.selectors.contains"
+sidebarTitle: "tabsdata.tableframe.selectors.contains"
+description: "Select all columns whose names contain one or more of the given substrings."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.selectors.contains"></a>
+<details>
+<summary>contains</summary>
+
+
+```python
+def contains(
+    * substring: str,
+) -> SelectorProxy
+```
+
+Select all columns whose names contain one or more of the given substrings.
+
+**Parameters:**
+
+<ParamField path="substring" required>
+  One or more substrings to search for in column names.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata.tableframe as td_tf
+>>>
+>>> tf = td_tf.TableFrame({
+...     "UserId": [1, 2, 3, 4, 5, 6, 7, 8],
+...     "UserName": ["A", "B", "C", "D", "E", "F", "G", "H"],
+...     "Age": [22, 34, 28, 45, 30, 33, 26, 29],
+...     "Email": ["a@x", "b@x", "c@x", "d@x", "e@x", "f@x", "g@x", "h@x"]
+... })
+```
+
+```python
+>>> tf.select(td_tf.selectors.contains("Name", "Id"))
+```
+
+
+</details>

@@ -1,0 +1,57 @@
+---
+title: "tabsdata.tableframe.expr.string.ExprStringNameSpace.to_date"
+sidebarTitle: "tabsdata.tableframe.expr.string.ExprStringNameSpace.to_date"
+description: "Convert the string to a date."
+---
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_date"></a>
+<details>
+<summary>to_date</summary>
+
+
+```python
+def to_date(
+    fmt: str | None = None,
+    *,
+    strict: bool = True,
+) -> Expr
+```
+
+[View source ↗](https://github.com/tabsdata/tabsdata/tree/main/client/td-sdk/tabsdata/string.py#L35)
+
+Convert the string to a date.
+
+**Parameters:**
+
+<ParamField path="fmt" type="str | None" default="None">
+  The date format string (default %Y-%m-%d)[formats] ([https://docs.rs/chrono/0.4.19/chrono/format/strftime/index.html](https://docs.rs/chrono/0.4.19/chrono/format/strftime/index.html)).
+</ParamField>
+
+<ParamField path="strict" type="bool" default="True">
+  Whether to parse the date strictly.
+</ParamField>
+
+#### Example
+
+```python
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.to_date().alias("to_date"))
+>>>
+┌────────────┬────────────┐
+│ a          ┆ to_date    │
+│ ---        ┆ ---        │
+│ str        ┆ date       │
+╞════════════╪════════════╡
+│ 2024-12-13 ┆ 2024-12-13 │
+│ 2024-12-15 ┆ 2024-12-15 │
+│ null       ┆ null       │
+└────────────┴────────────┘
+```
+
+
+</details>
