@@ -6,7 +6,7 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # tabsdata
 
- <details>
+ <details open>
 <summary>
 
 **`AWSGlue(definition: dict, tables: str | list[str], auto_create_at: list[str | None] | str | None = None, if_table_exists: Literal['append', 'replace'] = 'append', partitioned_table: bool = False, schema_strategy: Literal['update', 'strict'] = 'update', s3_credentials: S3Credentials = None, s3_region: str = None, **kwargs)`**
@@ -15,17 +15,17 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 Bases: `Catalog`
 
-<details>
+<details open>
 <summary>`auto_create_at`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`definition`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 The strategy to follow when the table already exists.
@@ -34,7 +34,7 @@ The strategy to follow when the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>`partitioned_table`</summary>
 
 Whether the table is partitioned or not.
@@ -43,12 +43,12 @@ Whether the table is partitioned or not.
 
 </details>
 
-<details>
+<details open>
 <summary>`s3_credentials`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`s3_region`</summary>
 
 The region where the S3 bucket is located.
@@ -57,7 +57,7 @@ The region where the S3 bucket is located.
 
 </details>
 
-<details>
+<details open>
 <summary>`schema_strategy`</summary>
 
 The strategy to follow when appending to a table with an existing schema.
@@ -66,14 +66,14 @@ The strategy to follow when appending to a table with an existing schema.
 
 </details>
 
-<details>
+<details open>
 <summary>`tables`</summary>
 
 </details>
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`AvroFormat(chunk_size: int = 50000)`**
@@ -84,7 +84,7 @@ Bases: `FileFormat`
 
 Avro file format.
 
-<details>
+<details open>
 <summary>`chunk_size`</summary>
 
 Returns the chunk size for reading/writing AVRO files.
@@ -97,7 +97,7 @@ Returns the chunk size for reading/writing AVRO files.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`AwsGlueSchemaRegistry(**kwargs)`**
@@ -108,35 +108,35 @@ Bases: `KafkaSchemaRegistry`
 
 Configuration for AWS Glue Schema Registry.
 
-<details>
+<details open>
 <summary>`configs`</summary>
 
 Additional configuration properties for the AWS Glue client.
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 Credentials for authenticating with AWS Glue.
 
 </details>
 
-<details>
+<details open>
 <summary>`region_name`</summary>
 
 The AWS region of the Schema Registry.
 
 </details>
 
-<details>
+<details open>
 <summary>`registry_name`</summary>
 
 Registry name for AWS Glue Schema Registry.
 
 </details>
 
-<details>
+<details open>
 <summary>`schema_name`</summary>
 
 Schema name for AWS Glue Schema Registry.
@@ -145,14 +145,14 @@ Schema name for AWS Glue Schema Registry.
 
 </details>
 
- <details>
+ <details open>
 <summary>`AwsGlueSchemaRegistryCredentialsSpec`</summary>
 
 alias of S3AccessKeyCredentials
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`AzureAccountKeyCredentials(account_name: str | Secret, account_key: str | Secret)`**
@@ -164,7 +164,7 @@ Bases: `AzureCredentials`
 Credentials class to access Azure using account key credentials (account name and
 account key).
 
-<details>
+<details open>
 <summary>`account_key`</summary>
 
 The Azure account key.
@@ -173,7 +173,7 @@ The Azure account key.
 
 </details>
 
-<details>
+<details open>
 <summary>`account_name`</summary>
 
 The Azure account name.
@@ -197,7 +197,7 @@ dictionary
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`AzureConfig(container: str, base_path: str, credentials: AzureAccountKeyCredentials)`**
@@ -208,17 +208,17 @@ Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
 Configuration for staging files in Azure Blob Storage.
 
-<details>
+<details open>
 <summary>`base_path`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`container`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 </details>
@@ -239,7 +239,7 @@ staged files (via azure-storage-blob).
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`AzureDestination(uri: str | list[str], credentials: AzureCredentials, format: str | FileFormat = None)`**
@@ -250,7 +250,7 @@ Bases: DestinationPlugin
 
 Azure-file-based data outputs.
 
-<details>
+<details open>
 <summary>
 
 **`SupportedFormats(*values)`**
@@ -261,29 +261,29 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
 Enum for the supported formats for the AzureDestination.
 
-<details>
+<details open>
 <summary>`avro`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`csv`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`ndjson`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`parquet`</summary>
 
 </details>
 
 </details>
 
-<details>
+<details open>
 <summary>`allow_fragments`</summary>
 
 Whether to allow fragments in the output.
@@ -292,7 +292,7 @@ Whether to allow fragments in the output.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str, *results)`**
@@ -319,7 +319,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access Azure.
@@ -328,7 +328,7 @@ The credentials required to access Azure.
 
 </details>
 
-<details>
+<details open>
 <summary>`format`</summary>
 
 The format of the file. If not provided, it will be inferred from
@@ -338,7 +338,7 @@ the file extension of the URI.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results)`**
@@ -365,7 +365,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 ‘az://path/to/files’.
@@ -378,7 +378,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str, *results)`**
@@ -405,7 +405,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`stream(working_dir: str, *results)`**
@@ -432,7 +432,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`AzureSource(uri: str | list[str], credentials: AzureCredentials, format: str | FileFormat = None, initial_last_modified: str | datetime = None, file_info: str | FileInfo | None = None)`**
@@ -443,7 +443,7 @@ Bases: SourcePlugin
 
 Azure-file-based data inputs.
 
-<details>
+<details open>
 <summary>
 
 **`SupportedFormats(*values)`**
@@ -454,34 +454,34 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
 Enum for the supported formats for the AzureSource.
 
-<details>
+<details open>
 <summary>`avro`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`csv`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`log`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`ndjson`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`parquet`</summary>
 
 </details>
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -505,7 +505,7 @@ single file and a second argument with two files:return
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access Azure.
@@ -514,7 +514,7 @@ The credentials required to access Azure.
 
 </details>
 
-<details>
+<details open>
 <summary>`file_info`</summary>
 
 The file information to add as system columns.
@@ -523,7 +523,7 @@ The file information to add as system columns.
 
 </details>
 
-<details>
+<details open>
 <summary>`format`</summary>
 
 The format of the file. If not provided, it will be inferred from
@@ -533,7 +533,7 @@ the file extension of the data.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_last_modified`</summary>
 
 The date and time after which the files were modified.
@@ -542,7 +542,7 @@ The date and time after which the files were modified.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 Return a dictionary with the initial values to be stored after execution of
@@ -556,7 +556,7 @@ as values, all the type string.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 ‘az://path/to/files’.
@@ -569,7 +569,7 @@ as values, all the type string.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -593,7 +593,7 @@ single file and a second argument with two files:return
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`BigQueryConn(gcs_folder: str, credentials: GCPCredentials, project: str = None, dataset: str = None, enforce_connection_params: bool = True, cx_dst_configs_gcs: dict = None, cx_dst_configs_bigquery: dict = None)`**
@@ -604,44 +604,44 @@ Bases: Conn
 
 For connection configuration to BigQueryDest.
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`cx_dst_configs_bigquery`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`cx_dst_configs_gcs`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`dataset`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`enforce_connection_params`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`gcs_folder`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`project`</summary>
 
 </details>
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`BigQueryDest(conn: BigQueryConn, tables: TableSpec | None = None, if_table_exists: IfTableExistStrategySpec = 'append', schema_strategy: SchemaStrategySpec = 'update')`**
@@ -654,12 +654,12 @@ BigQuery based data outputs.
 The data is first stored in parquet files in a GCS bucket, and then loaded into the
 BigQuery tables.
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 The strategy to follow when the table already exists.
@@ -668,7 +668,7 @@ The strategy to follow when the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>`schema_strategy`</summary>
 
 The strategy to follow when appending to a table with an existing schema.
@@ -677,7 +677,7 @@ The strategy to follow when appending to a table with an existing schema.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results: list[LazyFrame | None] | LazyFrame | None)`**
@@ -704,14 +704,14 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`tables`</summary>
 
 </details>
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`stream(working_dir: str, *results: list[LazyFrame | None] | LazyFrame | None)`**
@@ -738,7 +738,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`CSVFormat(separator: str | int = ',', quote_char: str | int = '"', eol_char: str | int = '\n', input_encoding: str = 'Utf8', input_null_values: list | None = None, input_missing_is_null: bool = True, input_truncate_ragged_lines: bool = False, input_comment_prefix: str | int | None = None, input_try_parse_dates: bool = False, input_decimal_comma: bool = False, input_has_header: bool = True, input_skip_rows: int = 0, input_skip_rows_after_header: int = 0, input_raise_if_empty: bool = True, input_ignore_errors: bool = False, output_include_header: bool = True, output_datetime_format: str | None = None, output_date_format: str | None = None, output_time_format: str | None = None, output_float_scientific: bool | None = None, output_float_precision: int | None = None, output_null_value: str | None = None, output_quote_style: str | None = None, output_maintain_order: bool = True)`**
@@ -886,7 +886,7 @@ when exporting data.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`CdcConn`**
@@ -897,19 +897,19 @@ Bases: Conn, [ABC](https://docs.python.org/3/library/abc.html#abc.ABC)
 
 Base connection configuration for Change Data Capture (CDC) connectors.
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 </details>
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`CdcTrigger(**kwargs)`**
@@ -924,35 +924,35 @@ This abstract trigger provides the common polling loop, buffering, and staging
 logic for all CDC connectors. Database-specific subclasses implement the
 ingestion details for their respective replication protocols.
 
-<details>
+<details open>
 <summary>`buffer_max_bytes`</summary>
 
 Maximum bytes in memory before flushing to the working directory.
 
 </details>
 
-<details>
+<details open>
 <summary>`buffer_max_rows`</summary>
 
 Maximum rows in memory before flushing to the working directory.
 
 </details>
 
-<details>
+<details open>
 <summary>`buffer_max_secs`</summary>
 
 Maximum seconds before flushing memory data to the working directory.
 
 </details>
 
-<details>
+<details open>
 <summary>`cdc_format`</summary>
 
 Output format specification for CDC data.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`collect_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
@@ -961,14 +961,14 @@ Output format specification for CDC data.
 
 </details>
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 CDC connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`harvest_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
@@ -977,21 +977,21 @@ CDC connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`out`</summary>
 
 Mapping of table indices to qualified table names.
 
 </details>
 
-<details>
+<details open>
 <summary>`poll_interval_seconds`</summary>
 
 Interval in seconds between polling for new changes.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`run(context: StageTriggerContext)`**
@@ -1006,28 +1006,28 @@ STOPPED upon a signal. exit with 0.
 
 </details>
 
-<details>
+<details open>
 <summary>`tables`</summary>
 
 Qualified table names being tracked for changes.
 
 </details>
 
-<details>
+<details open>
 <summary>`trigger_max_bytes`</summary>
 
 Maximum total bytes before staging from working directory to the stage location.
 
 </details>
 
-<details>
+<details open>
 <summary>`trigger_max_rows`</summary>
 
 Maximum total rows before staging from working directory to the stage location.
 
 </details>
 
-<details>
+<details open>
 <summary>`trigger_max_secs`</summary>
 
 Maximum seconds before staging from working directory to the stage location.
@@ -1036,7 +1036,7 @@ Maximum seconds before staging from working directory to the stage location.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`collect_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
@@ -1045,7 +1045,7 @@ Maximum seconds before staging from working directory to the stage location.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`harvest_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
@@ -1054,7 +1054,7 @@ Maximum seconds before staging from working directory to the stage location.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`run(context: StageTriggerContext)`**
@@ -1069,7 +1069,7 @@ STOPPED upon a signal. exit with 0.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`ClickHouseConn(**kwargs)`**
@@ -1086,7 +1086,7 @@ first uploaded to the configured staging area and then loaded into ClickHouse
 using the matching table function (`s3()`, `azureBlobStorage()`, or
 `s3()` pointed at GCS).
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials used to authenticate with ClickHouse.  `None` if no
@@ -1094,56 +1094,56 @@ credentials were provided (ClickHouse `default` user, no password).
 
 </details>
 
-<details>
+<details open>
 <summary>`cx_dst_configs_clickhouse`</summary>
 
 Destination-specific configuration parameters for the ClickHouse connection.
 
 </details>
 
-<details>
+<details open>
 <summary>`cx_src_configs_clickhouse`</summary>
 
 Source-specific configuration parameters for the ClickHouse connection.
 
 </details>
 
-<details>
+<details open>
 <summary>`database`</summary>
 
 The target ClickHouse database name.
 
 </details>
 
-<details>
+<details open>
 <summary>`enforce_connection_params`</summary>
 
 Whether to enforce connection parameters for the ClickHouse connection.
 
 </details>
 
-<details>
+<details open>
 <summary>`host`</summary>
 
 The ClickHouse server hostname or IP address.
 
 </details>
 
-<details>
+<details open>
 <summary>`port`</summary>
 
 The HTTP(S) port of the ClickHouse server.
 
 </details>
 
-<details>
+<details open>
 <summary>`secure`</summary>
 
 Whether to connect to ClickHouse over HTTPS/TLS.
 
 </details>
 
-<details>
+<details open>
 <summary>`staging`</summary>
 
 The cloud storage staging configuration (S3Config, AzureConfig, or
@@ -1153,7 +1153,7 @@ GCSConfig).
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`ClickHouseDest(**kwargs)`**
@@ -1168,35 +1168,35 @@ Data is first written as Parquet files to the configured cloud storage staging a
 (S3, Azure Blob, or GCS) and then ingested into ClickHouse via its native table
 functions (`s3()`, `azureBlobStorage()`).
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 The ClickHouse connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`destination_tables`</summary>
 
 The table(s) to load data into.
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 The strategy to follow when the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>`schema_evolution`</summary>
 
 The schema evolution strategy.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results: list[LazyFrame | None])`**
@@ -1219,7 +1219,7 @@ in the same order as destination_tables.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`stream(working_dir: str, *results: list[LazyFrame | None])`**
@@ -1240,7 +1240,7 @@ in the same order as destination_tables.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`ConfluentSchemaRegistry(**kwargs)`**
@@ -1251,21 +1251,21 @@ Bases: `KafkaSchemaRegistry`
 
 Configuration for Confluent Schema Registry.
 
-<details>
+<details open>
 <summary>`configs`</summary>
 
 Additional configuration properties for the Schema Registry client.
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 Credentials for authenticating with the Schema Registry.
 
 </details>
 
-<details>
+<details open>
 <summary>`url`</summary>
 
 The URL of the Schema Registry.
@@ -1274,14 +1274,14 @@ The URL of the Schema Registry.
 
 </details>
 
- <details>
+ <details open>
 <summary>`ConfluentSchemaRegistryCredentialsSpec`</summary>
 
 alias of UserPasswordCredentials
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`Conn`**
@@ -1294,7 +1294,7 @@ Represents a connection configuration. This is a base class.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`CronTrigger(mask: str, start: datetime | None = None, end: datetime | None = None)`**
@@ -1310,7 +1310,7 @@ This class defines a trigger based on a cron expression, with optional
 start and end times to constrain its activation period. It validates the
 cron mask and time boundaries to ensure the trigger is well-formed.
 
-<details>
+<details open>
 <summary>`end`</summary>
 
 Gets the end time of the trigger as a timezone-aware ISO 8601 string
@@ -1320,7 +1320,7 @@ with ‘Z’ timezone.
 
 </details>
 
-<details>
+<details open>
 <summary>`mask`</summary>
 
 Gets the cron expression mask.
@@ -1329,7 +1329,7 @@ Gets the cron expression mask.
 
 </details>
 
-<details>
+<details open>
 <summary>`start`</summary>
 
 Gets the start time of the trigger as a timezone-aware ISO 8601 string
@@ -1341,7 +1341,7 @@ with ‘Z’ timezone.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`CustomException(message: str, error_code=None)`**
@@ -1354,7 +1354,7 @@ Custom exception for execution errors.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`DatabricksDestination(host_url: str, token: str | Secret, tables: list[str] | str, volume: str, catalog: str | None = None, schema: str | None = None, warehouse: str | None = None, warehouse_id: str | None = None, if_table_exists: Literal['append', 'replace'] = 'append', schema_strategy: Literal['update', 'strict'] = 'update', **kwargs)`**
@@ -1365,7 +1365,7 @@ Bases: DestinationPlugin
 
 Databricks based data outputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str, *results: LazyFrame | None)`**
@@ -1392,12 +1392,12 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`host_url`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 The strategy to follow when the table already exists.
@@ -1406,7 +1406,7 @@ The strategy to follow when the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>`schema_strategy`</summary>
 
 The strategy to follow when appending to a table with an existing schema.
@@ -1415,7 +1415,7 @@ The strategy to follow when appending to a table with an existing schema.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results: List[LazyFrame | None] | LazyFrame | None)`**
@@ -1442,17 +1442,17 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`tables`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`token`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`write(files)`**
@@ -1466,7 +1466,7 @@ from the stream method, and it is not intended to be called directly.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str, *results: LazyFrame | None)`**
@@ -1493,7 +1493,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`stream(working_dir: str, *results: List[LazyFrame | None] | LazyFrame | None)`**
@@ -1520,7 +1520,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`write(files)`**
@@ -1532,7 +1532,7 @@ from the stream method, and it is not intended to be called directly.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`DatabricksSource(host_url: str, token: str | Secret, queries: list[str] | str, initial_values: dict | None = None, warehouse: str | None = None, warehouse_id: str | None = None, **kwargs)`**
@@ -1543,7 +1543,7 @@ Bases: SourcePlugin
 
 Databricks based data inputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -1567,31 +1567,31 @@ single file and a second argument with two files:return
 
 </details>
 
-<details>
+<details open>
 <summary>`host_url`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 The initial values for the parameters in the SQL queries.
 
 </details>
 
-<details>
+<details open>
 <summary>`queries`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`token`</summary>
 
 </details>
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -1615,7 +1615,7 @@ single file and a second argument with two files:return
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`Db2CdcConn(**kwargs)`**
@@ -1628,7 +1628,7 @@ Db2 CDC connection configuration.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`Db2CdcTrigger(**kwargs)`**
@@ -1642,14 +1642,14 @@ A CdcTrigger that captures changes from a Db2 database using SQL Replication.
 This trigger connects to a Db2 server, reads change data capture events (inserts,
 updates, deletes) on specified tables via SQL Replication, and stages them.
 
-<details>
+<details open>
 <summary>`blocking_timeout_seconds`</summary>
 
 Timeout in seconds for blocking reads from the replication stream.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`collect_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
@@ -1658,7 +1658,7 @@ Timeout in seconds for blocking reads from the replication stream.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`harvest_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
@@ -1667,7 +1667,7 @@ Timeout in seconds for blocking reads from the replication stream.
 
 </details>
 
-<details>
+<details open>
 <summary>`start_from`</summary>
 
 Position to start reading changes from.
@@ -1676,7 +1676,7 @@ Position to start reading changes from.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`collect_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
@@ -1685,7 +1685,7 @@ Position to start reading changes from.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`harvest_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
@@ -1694,7 +1694,7 @@ Position to start reading changes from.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`Db2Conn(**kwargs)`**
@@ -1705,7 +1705,7 @@ Bases: Conn
 
 Represents a connection configuration to Db2.
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access the Db2 database. If no credentials were
@@ -1713,28 +1713,28 @@ provided, it will return None.
 
 </details>
 
-<details>
+<details open>
 <summary>`cx_dst_configs_db2`</summary>
 
 Destination-specific configuration parameters for the Db2 connection.
 
 </details>
 
-<details>
+<details open>
 <summary>`cx_src_configs_db2`</summary>
 
 Source-specific configuration parameters for the Db2 connection.
 
 </details>
 
-<details>
+<details open>
 <summary>`enforce_connection_params`</summary>
 
 Whether to enforce connection parameters for the Db2 connection.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 The URI of the database where the data is located.
@@ -1743,7 +1743,7 @@ The URI of the database where the data is located.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`Db2Src(**kwargs)`**
@@ -1754,49 +1754,49 @@ Bases: SourcePlugin
 
 Source plugin for reading data from Db2.
 
-<details>
+<details open>
 <summary>`chunk_size`</summary>
 
 The chunk size in records for reading large queries in batches.
 
 </details>
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 The Db2 connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 The initial values for the parameters in the SQL queries.
 
 </details>
 
-<details>
+<details open>
 <summary>`loader`</summary>
 
 The data processing loader to use for executing SQL imports.
 
 </details>
 
-<details>
+<details open>
 <summary>`queries`</summary>
 
 The SQL queries to execute to read data.
 
 </details>
 
-<details>
+<details open>
 <summary>`schema_overrides`</summary>
 
 The schema overrides for the tables being read.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str)`**
@@ -1809,7 +1809,7 @@ Execute the query and load the results as a list of TableFrames.
 
 </details>
 
-<details>
+<details open>
 <summary>`transactional`</summary>
 
 Whether to use transactions for reading to ensure consistency.
@@ -1818,7 +1818,7 @@ Whether to use transactions for reading to ensure consistency.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`stream(working_dir: str)`**
@@ -1831,7 +1831,7 @@ Execute the query and load the results as a list of TableFrames.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`DestinationPlugin`**
@@ -1846,7 +1846,7 @@ Parent class for subscriber connectors.
 receive the resulting data from the dataset function
 and must store it in the desired location.
 
-   <details>
+   <details open>
 <summary>
 
 **`chunk(working_dir: str, *results: VALID_PLUGIN_RESULT)`**
@@ -1873,7 +1873,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results: VALID_PLUGIN_RESULT)`**
@@ -1900,7 +1900,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`write(files: List[str | List[str] | List[List[str]]])`**
@@ -1915,7 +1915,7 @@ should be of an appropriate size.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str, *results: VALID_PLUGIN_RESULT)`**
@@ -1942,7 +1942,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`stream(working_dir: str, *results: VALID_PLUGIN_RESULT)`**
@@ -1969,7 +1969,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`write(files: List[str | List[str] | List[List[str]]])`**
@@ -1982,7 +1982,7 @@ should be of an appropriate size.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`DruidConn(**kwargs)`**
@@ -1998,7 +1998,7 @@ Data is first uploaded to the configured cloud staging area (S3, Azure
 Blob, or GCS) and then ingested into Druid via the Overlord REST API
 using a native batch `index_parallel` ingestion task.
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials used for HTTP Basic authentication.  `None` if no
@@ -2006,49 +2006,49 @@ credentials were provided.
 
 </details>
 
-<details>
+<details open>
 <summary>`http_timeout_sec`</summary>
 
 Timeout in seconds for HTTP requests to the Overlord API.
 
 </details>
 
-<details>
+<details open>
 <summary>`max_concurrent_subtasks`</summary>
 
 Maximum number of parallel sub-tasks inside the ingestion task.
 
 </details>
 
-<details>
+<details open>
 <summary>`max_rows_in_memory`</summary>
 
 In-memory buffer size during ingestion.
 
 </details>
 
-<details>
+<details open>
 <summary>`max_rows_per_segment`</summary>
 
 Maximum number of rows per segment (dynamic partitioning threshold).
 
 </details>
 
-<details>
+<details open>
 <summary>`overlord_url`</summary>
 
 The base URL of the Druid Overlord REST API.
 
 </details>
 
-<details>
+<details open>
 <summary>`segment_granularity`</summary>
 
 Time-based partitioning granularity for new segments.
 
 </details>
 
-<details>
+<details open>
 <summary>`staging`</summary>
 
 The cloud storage staging configuration (S3Config, AzureConfig, or
@@ -2056,7 +2056,7 @@ GCSConfig).
 
 </details>
 
-<details>
+<details open>
 <summary>`time_column`</summary>
 
 The PyArrow column to use as Druid’s `__time` primary timestamp.
@@ -2066,7 +2066,7 @@ The PyArrow column to use as Druid’s `__time` primary timestamp.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`DruidDest(**kwargs)`**
@@ -2082,28 +2082,28 @@ Data is first written as Parquet files to the configured cloud storage
 staging area (S3, Azure Blob, or GCS) and then ingested into Druid via
 a native batch `index_parallel` task submitted to the Overlord REST API.
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 The Druid connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`destination_tables`</summary>
 
 The datasource(s) to load data into.
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 The strategy to follow when the datasource already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results: list[LazyFrame | None])`**
@@ -2126,7 +2126,7 @@ datasource, in the same order as destination_tables.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`stream(working_dir: str, *results: list[LazyFrame | None])`**
@@ -2147,7 +2147,7 @@ datasource, in the same order as destination_tables.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`EnvironmentSecret(environment_variable_name: str)`**
@@ -2159,7 +2159,7 @@ Bases: `Secret`
 Secrets class representing a secret obtained from an environment variable in the
 server.
 
-<details>
+<details open>
 <summary>`secret_value`</summary>
 
 Get the secret value pointed at by the secret. To be used only during execution
@@ -2186,7 +2186,7 @@ we will obtain the secret value.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`FileInfo(*values)`**
@@ -2197,7 +2197,7 @@ Bases: [StrEnum](https://docs.python.org/3/library/enum.html#enum.StrEnum)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`GCPServiceAccountKeyCredentials(service_account_key: str | Secret)`**
@@ -2209,7 +2209,7 @@ Bases: `GCPCredentials`
 Credentials class to store the credentials needed to access GCS
 using account key credentials (service account key).
 
-<details>
+<details open>
 <summary>`service_account_key`</summary>
 
 The GCS service account key.
@@ -2229,7 +2229,7 @@ dictionary
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`GCSConfig(bucket: str, base_path: str, upload_credentials: GCPServiceAccountKeyCredentials | None = None, hmac_credentials: HMACCredentials | None = None)`**
@@ -2240,22 +2240,22 @@ Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
 Configuration for staging files in Google Cloud Storage.
 
-<details>
+<details open>
 <summary>`base_path`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`bucket`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`hmac_credentials`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`upload_credentials`</summary>
 
 </details>
@@ -2284,7 +2284,7 @@ credentials (suitable for public buckets or server-side IAM).
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`GCSDestination(uri: str | list[str], credentials: GCPCredentials, format: str | FileFormat = None)`**
@@ -2295,7 +2295,7 @@ Bases: DestinationPlugin
 
 GCS-file-based data outputs.
 
-<details>
+<details open>
 <summary>
 
 **`SupportedFormats(*values)`**
@@ -2306,29 +2306,29 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
 Enum for the supported formats for the GCSDestination.
 
-<details>
+<details open>
 <summary>`avro`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`csv`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`ndjson`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`parquet`</summary>
 
 </details>
 
 </details>
 
-<details>
+<details open>
 <summary>`allow_fragments`</summary>
 
 Whether to allow fragments in the output.
@@ -2337,7 +2337,7 @@ Whether to allow fragments in the output.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str, *results)`**
@@ -2364,7 +2364,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access GCS.
@@ -2373,7 +2373,7 @@ The credentials required to access GCS.
 
 </details>
 
-<details>
+<details open>
 <summary>`format`</summary>
 
 The format of the file. If not provided, it will be inferred from
@@ -2383,7 +2383,7 @@ the file extension of the URI.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results)`**
@@ -2410,7 +2410,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 ‘gs://path/to/files’.
@@ -2423,7 +2423,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str, *results)`**
@@ -2450,7 +2450,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`stream(working_dir: str, *results)`**
@@ -2477,7 +2477,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`GCSSource(uri: str | list[str], credentials: GCPCredentials, format: str | FileFormat = None, initial_last_modified: str | datetime = None, file_info: str | FileInfo | None = None)`**
@@ -2488,7 +2488,7 @@ Bases: SourcePlugin
 
 GCS-file-based data inputs.
 
-<details>
+<details open>
 <summary>
 
 **`SupportedFormats(*values)`**
@@ -2499,34 +2499,34 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
 Enum for the supported formats for the GCSSource.
 
-<details>
+<details open>
 <summary>`avro`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`csv`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`log`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`ndjson`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`parquet`</summary>
 
 </details>
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -2550,7 +2550,7 @@ single file and a second argument with two files:return
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access GCS.
@@ -2559,7 +2559,7 @@ The credentials required to access GCS.
 
 </details>
 
-<details>
+<details open>
 <summary>`file_info`</summary>
 
 The file information to add as system columns.
@@ -2568,7 +2568,7 @@ The file information to add as system columns.
 
 </details>
 
-<details>
+<details open>
 <summary>`format`</summary>
 
 The format of the file. If not provided, it will be inferred from
@@ -2578,7 +2578,7 @@ the file extension of the data.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_last_modified`</summary>
 
 The date and time after which the files were modified.
@@ -2587,7 +2587,7 @@ The date and time after which the files were modified.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 Return a dictionary with the initial values to be stored after execution of
@@ -2601,7 +2601,7 @@ as values, all the type string.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 ‘gs://path/to/files’.
@@ -2614,7 +2614,7 @@ as values, all the type string.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -2638,7 +2638,7 @@ single file and a second argument with two files:return
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`HMACCredentials(access_key: str | Secret, secret_key: str | Secret)`**
@@ -2653,7 +2653,7 @@ These credentials follow the same shape as AWS S3 access keys and are
 compatible with any service that uses HMAC-based authentication over the
 S3-compatible API, such as GCS HMAC keys or MinIO credentials.
 
-<details>
+<details open>
 <summary>`access_key`</summary>
 
 The HMAC access key id.
@@ -2662,7 +2662,7 @@ The HMAC access key id.
 
 </details>
 
-<details>
+<details open>
 <summary>`secret_key`</summary>
 
 The HMAC secret key.
@@ -2685,7 +2685,7 @@ The HMAC secret key.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`HashiCorpSecret(path: str, name: str, vault: str = 'HASHICORP')`**
@@ -2696,7 +2696,7 @@ Bases: `Secret`
 
 Secrets class representing a secret stored in Hashicorp Vault.
 
-<details>
+<details open>
 <summary>`secret_value`</summary>
 
 Get the secret value pointed at by the secret. To be used only during execution
@@ -2708,7 +2708,7 @@ in the backend.
 
 </details>
 
-<details>
+<details open>
 <summary>`vault`</summary>
 
 </details>
@@ -2739,7 +2739,7 @@ numbers and underscores, and can’t begin with a number. Defaults to
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`KafkaConn(**kwargs)`**
@@ -2750,42 +2750,42 @@ Bases: Conn
 
 Kafka Consumer Connection configuration.
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 Kafka credentials.
 
 </details>
 
-<details>
+<details open>
 <summary>`cx_src_configs`</summary>
 
 Source-specific configuration parameters for the Kafka connection.
 
 </details>
 
-<details>
+<details open>
 <summary>`enforce_connection_params`</summary>
 
 Whether to enforce connection parameters.
 
 </details>
 
-<details>
+<details open>
 <summary>`group_id`</summary>
 
 Kafka consumer group ID.
 
 </details>
 
-<details>
+<details open>
 <summary>`schema_registry`</summary>
 
 Kafka schema registry configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`servers`</summary>
 
 Kafka bootstrap servers.
@@ -2794,14 +2794,14 @@ Kafka bootstrap servers.
 
 </details>
 
- <details>
+ <details open>
 <summary>`KafkaCredentialsSpec`</summary>
 
 alias of UserPasswordCredentials
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`KafkaTrigger(**kwargs)`**
@@ -2816,42 +2816,42 @@ This trigger connects to a Kafka cluster, consumes messages from a specified
 topic, and uses rollover conditions (time, size, and message count) to
 buffer and stage the data.
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 Kafka consumer connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`data_format`</summary>
 
 Data format of the messages (“avro”, “json”, “protobuf”).
 
 </details>
 
-<details>
+<details open>
 <summary>`dlq_topic`</summary>
 
 Dead-letter queue topic.
 
 </details>
 
-<details>
+<details open>
 <summary>`group_id`</summary>
 
 Kafka consumer group ID.
 
 </details>
 
-<details>
+<details open>
 <summary>`messages_rollover`</summary>
 
 Message count-based rollover configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`run(context: StageTriggerContext)`**
@@ -2863,28 +2863,28 @@ based on rollover conditions.
 
 </details>
 
-<details>
+<details open>
 <summary>`schema`</summary>
 
 Schema string for deserializing messages.
 
 </details>
 
-<details>
+<details open>
 <summary>`size_rollover_mb`</summary>
 
 Size-based rollover configuration. Size is specified in megabytes.
 
 </details>
 
-<details>
+<details open>
 <summary>`time_rollover_secs`</summary>
 
 Timeout in seconds for consuming each message.
 
 </details>
 
-<details>
+<details open>
 <summary>`topic`</summary>
 
 Kafka topic to consume from.
@@ -2893,7 +2893,7 @@ Kafka topic to consume from.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`run(context: StageTriggerContext)`**
@@ -2905,7 +2905,7 @@ based on rollover conditions.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`LocalFileDestination(path: str | list[str], format: str | FileFormat = None)`**
@@ -2916,7 +2916,7 @@ Bases: DestinationPlugin
 
 LocalFile-based data outputs.
 
-<details>
+<details open>
 <summary>
 
 **`SupportedFormats(*values)`**
@@ -2927,29 +2927,29 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
 Enum for the supported formats for the LocalFileDestination.
 
-<details>
+<details open>
 <summary>`avro`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`csv`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`ndjson`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`parquet`</summary>
 
 </details>
 
 </details>
 
-<details>
+<details open>
 <summary>`allow_fragments`</summary>
 
 Whether to allow fragments in the output.
@@ -2958,7 +2958,7 @@ Whether to allow fragments in the output.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str, *results)`**
@@ -2985,7 +2985,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`format`</summary>
 
 The format of the file or files. If not provided, it will be
@@ -2995,7 +2995,7 @@ inferred from the file extension in the path.
 
 </details>
 
-<details>
+<details open>
 <summary>`path`</summary>
 
 The path or paths to store the files.
@@ -3004,7 +3004,7 @@ The path or paths to store the files.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results)`**
@@ -3033,7 +3033,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str, *results)`**
@@ -3060,7 +3060,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`stream(working_dir: str, *results)`**
@@ -3087,7 +3087,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`LocalFileSource(path: str | list[str], format: str | FileFormat = None, initial_last_modified: str | datetime = None, file_info: str | FileInfo | None = None)`**
@@ -3098,7 +3098,7 @@ Bases: SourcePlugin
 
 Local-file-based data inputs.
 
-<details>
+<details open>
 <summary>
 
 **`SupportedFormats(*values)`**
@@ -3109,34 +3109,34 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
 Enum for the supported formats for the LocalFileSource.
 
-<details>
+<details open>
 <summary>`avro`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`csv`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`log`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`ndjson`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`parquet`</summary>
 
 </details>
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -3160,7 +3160,7 @@ single file and a second argument with two files:return
 
 </details>
 
-<details>
+<details open>
 <summary>`file_info`</summary>
 
 The file information to add as system columns.
@@ -3169,7 +3169,7 @@ The file information to add as system columns.
 
 </details>
 
-<details>
+<details open>
 <summary>`format`</summary>
 
 The format of the file or files. If not provided, it will be
@@ -3179,7 +3179,7 @@ inferred  from the file extension in the path.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_last_modified`</summary>
 
 The date and time after which the files were modified.
@@ -3188,7 +3188,7 @@ The date and time after which the files were modified.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 Return a dictionary with the initial values to be stored after execution of
@@ -3202,7 +3202,7 @@ as values, all the type string.
 
 </details>
 
-<details>
+<details open>
 <summary>`path`</summary>
 
 The path or paths to the files to load.
@@ -3213,7 +3213,7 @@ The path or paths to the files to load.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -3237,7 +3237,7 @@ single file and a second argument with two files:return
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`LogFormat`**
@@ -3250,7 +3250,7 @@ Log file format.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MSSQLConn(connection_string_or_uri: str, credentials: UserPasswordCredentials | None = None, enforce_connection_params: bool = True, cx_src_configs_mssql: dict | None = None, cx_dst_configs_mssql: dict | None = None)`**
@@ -3261,35 +3261,35 @@ Bases: Conn
 
 Represents a connection configuration to Microsoft SQL Server (MSSQL).
 
-<details>
+<details open>
 <summary>`connection_string_or_uri`</summary>
 
 The connection string or URI for the MSSQL database.
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials used to authenticate with the database.
 
 </details>
 
-<details>
+<details open>
 <summary>`cx_dst_configs_mssql`</summary>
 
 The destination configuration parameters for the MSSQL connection.
 
 </details>
 
-<details>
+<details open>
 <summary>`cx_src_configs_mssql`</summary>
 
 The source configuration parameters for the MSSQL connection.
 
 </details>
 
-<details>
+<details open>
 <summary>`enforce_connection_params`</summary>
 
 Whether to enforce connection parameters for the MSSQL connection.
@@ -3297,7 +3297,7 @@ Applicable only for a connection to a MSSQL Destination.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 The URI for the MSSQL database.
@@ -3306,7 +3306,7 @@ The URI for the MSSQL database.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MSSQLDestination(connection_string: str, destination_table: str | list[str], credentials: dict | UserPasswordCredentials | None = None, server: str | Secret = None, database: str | Secret = None, driver: str | Secret = None, if_table_exists: Literal['append', 'replace'] = 'append', chunk_size: int = 50000, **kwargs)`**
@@ -3317,7 +3317,7 @@ Bases: DestinationPlugin
 
 MSSQL-based data outputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str, *results: LazyFrame | None)`**
@@ -3344,7 +3344,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`connection_string`</summary>
 
 Get the connection string for the database.
@@ -3355,7 +3355,7 @@ Get the connection string for the database.
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access
@@ -3365,7 +3365,7 @@ Microsoft SQL Server. If no credentials were provided, it will return None.
 
 </details>
 
-<details>
+<details open>
 <summary>`destination_table`</summary>
 
 Get the destination table(s) where the data will be stored.
@@ -3376,7 +3376,7 @@ Get the destination table(s) where the data will be stored.
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 Returns the value of the if_table_exists property.
@@ -3384,7 +3384,7 @@ This property determines what to do if the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results: list[LazyFrame | None] | LazyFrame | None)`**
@@ -3411,7 +3411,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`write(files)`**
@@ -3425,7 +3425,7 @@ from the stream method, and it is not intended to be called directly.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str, *results: LazyFrame | None)`**
@@ -3452,7 +3452,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`stream(working_dir: str, *results: list[LazyFrame | None] | LazyFrame | None)`**
@@ -3479,7 +3479,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`write(files)`**
@@ -3491,7 +3491,7 @@ from the stream method, and it is not intended to be called directly.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MSSQLSource(**kwargs)`**
@@ -3502,7 +3502,7 @@ Bases: SourcePlugin
 
 Microsoft SQL Server based data inputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -3515,7 +3515,7 @@ Execute the query and yield chunks of data.
 
 </details>
 
-<details>
+<details open>
 <summary>`connection_string`</summary>
 
 Get the connection string for the database.
@@ -3526,7 +3526,7 @@ Get the connection string for the database.
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access
@@ -3536,7 +3536,7 @@ Microsoft SQL Server. If no credentials were provided, it will return None.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 The initial values for the parameters in the SQL queries.
@@ -3545,7 +3545,7 @@ The initial values for the parameters in the SQL queries.
 
 </details>
 
-<details>
+<details open>
 <summary>`query`</summary>
 
 Get the SQL query or queries to execute.
@@ -3558,7 +3558,7 @@ Get the SQL query or queries to execute.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -3571,7 +3571,7 @@ Execute the query and yield chunks of data.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MSSQLSrc(conn: MSSQLConn, queries: str | list[str], initial_values: dict[str, Any] | None = None, transactional: bool = True, chunk_size: Annotated[int, Gt(gt=0)] = 100000, loader: Literal['polars_sqlalchemy', 'pandas'] = 'polars_sqlalchemy', schema_overrides: dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64] | list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]] | None = None)`**
@@ -3582,49 +3582,49 @@ Bases: SourcePlugin
 
 Source Plugin for reading data from a Microsoft SQL Server (MSSQL) database.
 
-<details>
+<details open>
 <summary>`chunk_size`</summary>
 
 The chunk size in records for reading large queries in batches.
 
 </details>
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 The MSSQL connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 The initial values for the parameters in the SQL queries.
 
 </details>
 
-<details>
+<details open>
 <summary>`loader`</summary>
 
 The data processing loader to use for executing SQL imports.
 
 </details>
 
-<details>
+<details open>
 <summary>`queries`</summary>
 
 The SQL queries to execute to read data.
 
 </details>
 
-<details>
+<details open>
 <summary>`schema_overrides`</summary>
 
 The schema overrides for the tables being read.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str)`**
@@ -3637,7 +3637,7 @@ Execute the query and load the results as a list of TableFrames.
 
 </details>
 
-<details>
+<details open>
 <summary>`transactional`</summary>
 
 Whether to use transactions for reading to ensure consistency.
@@ -3646,7 +3646,7 @@ Whether to use transactions for reading to ensure consistency.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`stream(working_dir: str)`**
@@ -3659,7 +3659,7 @@ Execute the query and load the results as a list of TableFrames.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MariaDBConn(uri: str, credentials: UserPasswordCredentials | None = None, enforce_connection_params: bool = True, cx_src_configs_mariadb: dict | None = None, cx_dst_configs_mariadb: dict | None = None)`**
@@ -3670,7 +3670,7 @@ Bases: Conn
 
 Represents a connection configuration to MariaDB.
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access the MariaDB database. If no credentials were
@@ -3678,28 +3678,28 @@ provided, it will return None.
 
 </details>
 
-<details>
+<details open>
 <summary>`cx_dst_configs_mariadb`</summary>
 
 Destination-specific configuration parameters for the MariaDB connection.
 
 </details>
 
-<details>
+<details open>
 <summary>`cx_src_configs_mariadb`</summary>
 
 Source-specific configuration parameters for the MariaDB connection.
 
 </details>
 
-<details>
+<details open>
 <summary>`enforce_connection_params`</summary>
 
 Whether to enforce connection parameters for the MariaDB connection.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 The URI of the database where the data is located.
@@ -3708,7 +3708,7 @@ The URI of the database where the data is located.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MariaDBDest(conn: MariaDBConn, destination_tables: str | list[str], if_table_exists: Literal['append', 'replace'] = 'append', transactional: bool = True, chunk_size: Annotated[int, Gt(gt=0)] = 100000, loader: Literal['polars_sqlalchemy'] = 'polars_sqlalchemy')`**
@@ -3719,21 +3719,21 @@ Bases: DestinationPlugin
 
 Destination plugin for writing data to MySQL.
 
-<details>
+<details open>
 <summary>`chunk_size`</summary>
 
 The chunk size for writing large results in batches.
 
 </details>
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 The MariaDB connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`destination_tables`</summary>
 
 The table(s) to create. If multiple tables are provided,
@@ -3741,21 +3741,21 @@ they must be provided as a list.
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 The strategy to follow when the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>`loader`</summary>
 
 The data processing loader to use for executing DB write operation.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results: list[LazyFrame | None])`**
@@ -3774,7 +3774,7 @@ Store the results into the MariaDB database.
 
 </details>
 
-<details>
+<details open>
 <summary>`transactional`</summary>
 
 Whether to use transactions for writing data to ensure consistency.
@@ -3783,7 +3783,7 @@ Whether to use transactions for writing data to ensure consistency.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`stream(working_dir: str, *results: list[LazyFrame | None])`**
@@ -3802,7 +3802,7 @@ Store the results into the MariaDB database.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MariaDBDestination(**kwargs)`**
@@ -3813,7 +3813,7 @@ Bases: DestinationPlugin
 
 MariaDB-based data outputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str, *results: LazyFrame | None)`**
@@ -3833,7 +3833,7 @@ destination.
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access the MariaDB
@@ -3843,7 +3843,7 @@ database.
 
 </details>
 
-<details>
+<details open>
 <summary>`destination_table`</summary>
 
 The table(s) to create. If multiple tables are provided,
@@ -3853,7 +3853,7 @@ they must be provided as a list.
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 The strategy to follow when the table already exists.
@@ -3862,7 +3862,7 @@ The strategy to follow when the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 The URI of the database where the data is going to be stored.
@@ -3871,7 +3871,7 @@ The URI of the database where the data is going to be stored.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`write(files: list[str | None])`**
@@ -3886,7 +3886,7 @@ should be of an appropriate size.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str, *results: LazyFrame | None)`**
@@ -3906,7 +3906,7 @@ destination.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`write(files: list[str | None])`**
@@ -3919,7 +3919,7 @@ should be of an appropriate size.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MariaDBSource(**kwargs)`**
@@ -3930,7 +3930,7 @@ Bases: SourcePlugin
 
 MariaDB-based data inputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -3954,7 +3954,7 @@ single file and a second argument with two files:return
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access
@@ -3964,7 +3964,7 @@ MariaDB. If no credentials were provided, it will return None.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 The initial values for the parameters in the SQL queries.
@@ -3973,7 +3973,7 @@ The initial values for the parameters in the SQL queries.
 
 </details>
 
-<details>
+<details open>
 <summary>`query`</summary>
 
 The SQL query(s) to execute.
@@ -3982,7 +3982,7 @@ The SQL query(s) to execute.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 The URI of the database where the data is located.
@@ -3993,7 +3993,7 @@ The URI of the database where the data is located.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -4017,7 +4017,7 @@ single file and a second argument with two files:return
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MariaDBSrc(conn: MariaDBConn, queries: str | list[str], initial_values: dict[str, Any] | None = None, transactional: bool = True, chunk_size: Annotated[int, Gt(gt=0)] = 100000, loader: Literal['polars_sqlalchemy', 'pandas'] = 'polars_sqlalchemy', schema_overrides: dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64] | list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]] | None = None)`**
@@ -4028,47 +4028,47 @@ Bases: SourcePlugin
 
 Source plugin for reading data from MariaDB.
 
-<details>
+<details open>
 <summary>`chunk_size`</summary>
 
 The chunk size in records for reading large queries in batches.
 
 </details>
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 The MariaDB connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 The initial values for the parameters in the SQL queries.
 
 </details>
 
-<details>
+<details open>
 <summary>`loader`</summary>
 
 The data processing loader to use for executing SQL imports.
 
 </details>
 
-<details>
+<details open>
 <summary>`queries`</summary>
 
 The SQL queries to execute to read data.
 
 </details>
 
-<details>
+<details open>
 <summary>`schema_overrides`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str)`**
@@ -4081,7 +4081,7 @@ Execute the query and load the results as a list of TableFrames.
 
 </details>
 
-<details>
+<details open>
 <summary>`transactional`</summary>
 
 Whether to use transactions for reading to ensure consistency.
@@ -4090,7 +4090,7 @@ Whether to use transactions for reading to ensure consistency.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`stream(working_dir: str)`**
@@ -4103,7 +4103,7 @@ Execute the query and load the results as a list of TableFrames.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MongoDBDestination(uri: str, collections_with_ids: tuple[str, str | None] | List[tuple[str, str | None]], credentials: UserPasswordCredentials = None, connection_options: dict = None, if_collection_exists: Literal['append', 'replace'] = 'append', use_trxs: bool = False, docs_per_trx: int = 1000, maintain_order: bool = False, update_existing: bool = True, fail_on_duplicate_key: bool = True, log_intermediate_files: bool = False, **kwargs)`**
@@ -4114,7 +4114,7 @@ Bases: DestinationPlugin
 
 MongoDB-based data outputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str, *results: LazyFrame | None)`**
@@ -4141,27 +4141,27 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`collections_with_ids`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`connection_options`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`if_collection_exists`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results: List[LazyFrame | None] | LazyFrame | None)`**
@@ -4188,12 +4188,12 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`write(files)`**
@@ -4207,7 +4207,7 @@ from the stream method, and it is not intended to be called directly.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str, *results: LazyFrame | None)`**
@@ -4234,7 +4234,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`stream(working_dir: str, *results: List[LazyFrame | None] | LazyFrame | None)`**
@@ -4261,7 +4261,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`write(files)`**
@@ -4273,7 +4273,7 @@ from the stream method, and it is not intended to be called directly.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MySQLCdcConn(**kwargs)`**
@@ -4286,7 +4286,7 @@ MySQL CDC connection configuration.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MySQLCdcTrigger(**kwargs)`**
@@ -4300,14 +4300,14 @@ A CdcTrigger that captures changes from a MySQL database using binlog replicatio
 This trigger connects to a MySQL server, reads the binary log for change data
 capture events (inserts, updates, deletes) on specified tables, and stages them.
 
-<details>
+<details open>
 <summary>`blocking_timeout_seconds`</summary>
 
 Timeout in seconds for blocking reads from the binlog stream.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`collect_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
@@ -4316,7 +4316,7 @@ Timeout in seconds for blocking reads from the binlog stream.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`harvest_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
@@ -4325,14 +4325,14 @@ Timeout in seconds for blocking reads from the binlog stream.
 
 </details>
 
-<details>
+<details open>
 <summary>`server_id`</summary>
 
 MySQL server ID for binlog replication.
 
 </details>
 
-<details>
+<details open>
 <summary>`start_from`</summary>
 
 Position to start reading changes from.
@@ -4341,7 +4341,7 @@ Position to start reading changes from.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`collect_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
@@ -4350,7 +4350,7 @@ Position to start reading changes from.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`harvest_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
@@ -4359,7 +4359,7 @@ Position to start reading changes from.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MySQLConn(uri: str, credentials: UserPasswordCredentials | None = None, enforce_connection_params: bool = True, cx_src_configs_mysql: dict | None = None, cx_dst_configs_mysql: dict | None = None)`**
@@ -4370,7 +4370,7 @@ Bases: Conn
 
 Represents a connection configuration to MySQL.
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access the MySQL database. If no credentials were
@@ -4378,28 +4378,28 @@ provided, it will return None.
 
 </details>
 
-<details>
+<details open>
 <summary>`cx_dst_configs_mysql`</summary>
 
 The destination configuration parameters for the MySQL connection.
 
 </details>
 
-<details>
+<details open>
 <summary>`cx_src_configs_mysql`</summary>
 
 The source configuration parameters for the MySQL connection.
 
 </details>
 
-<details>
+<details open>
 <summary>`enforce_connection_params`</summary>
 
 Whether to enforce connection parameters for the MySQL connection.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 The URI of the database where the data is located.
@@ -4408,7 +4408,7 @@ The URI of the database where the data is located.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MySQLDest(conn: MySQLConn, destination_tables: str | list[str], if_table_exists: Literal['append', 'replace'] = 'append', transactional: bool = True, chunk_size: Annotated[int, Gt(gt=0)] = 100000, loader: Literal['polars_sqlalchemy'] = 'polars_sqlalchemy')`**
@@ -4419,21 +4419,21 @@ Bases: DestinationPlugin
 
 Destination plugin for writing data to MySQL.
 
-<details>
+<details open>
 <summary>`chunk_size`</summary>
 
 The chunk size for writing large results in batches.
 
 </details>
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 The MySQL connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`destination_tables`</summary>
 
 The table(s) to create. If multiple tables are provided,
@@ -4441,21 +4441,21 @@ they must be provided as a list.
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 The strategy to follow when the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>`loader`</summary>
 
 The data processing loader to use for executing DB write operation.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results: list[LazyFrame | None])`**
@@ -4474,7 +4474,7 @@ Store the results into the MySQL database.
 
 </details>
 
-<details>
+<details open>
 <summary>`transactional`</summary>
 
 Whether to use transactions for writing data to ensure consistency.
@@ -4483,7 +4483,7 @@ Whether to use transactions for writing data to ensure consistency.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`stream(working_dir: str, *results: list[LazyFrame | None])`**
@@ -4502,7 +4502,7 @@ Store the results into the MySQL database.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MySQLDestination(**kwargs)`**
@@ -4513,7 +4513,7 @@ Bases: DestinationPlugin
 
 MySQL-based data outputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str, *results: LazyFrame | None)`**
@@ -4533,7 +4533,7 @@ destination.
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access the MySQLDatabase.
@@ -4542,7 +4542,7 @@ The credentials required to access the MySQLDatabase.
 
 </details>
 
-<details>
+<details open>
 <summary>`destination_table`</summary>
 
 The table(s) to create. If multiple tables are provided,
@@ -4552,7 +4552,7 @@ they must be provided as a list.
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 The strategy to follow when the table already exists.
@@ -4561,7 +4561,7 @@ The strategy to follow when the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 The URI of the database where the data is going to be stored.
@@ -4570,7 +4570,7 @@ The URI of the database where the data is going to be stored.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`write(files: list[str | None])`**
@@ -4585,7 +4585,7 @@ should be of an appropriate size.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str, *results: LazyFrame | None)`**
@@ -4605,7 +4605,7 @@ destination.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`write(files: list[str | None])`**
@@ -4618,7 +4618,7 @@ should be of an appropriate size.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MySQLSource(**kwargs)`**
@@ -4629,7 +4629,7 @@ Bases: SourcePlugin
 
 MySQL-based data inputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -4653,7 +4653,7 @@ single file and a second argument with two files:return
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access the
@@ -4663,7 +4663,7 @@ MySQLDatabase. If no credentials were provided, it will return None.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 The initial values for the parameters in the SQL queries.
@@ -4672,7 +4672,7 @@ The initial values for the parameters in the SQL queries.
 
 </details>
 
-<details>
+<details open>
 <summary>`query`</summary>
 
 The SQL query(s) to execute.
@@ -4681,7 +4681,7 @@ The SQL query(s) to execute.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 The URI of the database where the data is located.
@@ -4692,7 +4692,7 @@ The URI of the database where the data is located.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -4716,7 +4716,7 @@ single file and a second argument with two files:return
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MySQLSrc(conn: MySQLConn, queries: str | list[str], initial_values: dict[str, Any] | None = None, transactional: bool = True, chunk_size: Annotated[int, Gt(gt=0)] = 100000, loader: Literal['polars_sqlalchemy', 'pandas'] = 'polars_sqlalchemy', schema_overrides: dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64] | list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]] | None = None)`**
@@ -4727,49 +4727,49 @@ Bases: SourcePlugin
 
 Source plugin for reading data from MySQL.
 
-<details>
+<details open>
 <summary>`chunk_size`</summary>
 
 The chunk size in records for reading large queries in batches.
 
 </details>
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 The MySQL connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 The initial values for the parameters in the SQL queries.
 
 </details>
 
-<details>
+<details open>
 <summary>`loader`</summary>
 
 The data processing loader to use for executing SQL imports.
 
 </details>
 
-<details>
+<details open>
 <summary>`queries`</summary>
 
 The SQL queries to execute to read data.
 
 </details>
 
-<details>
+<details open>
 <summary>`schema_overrides`</summary>
 
 The schema overrides for the tables being read.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str)`**
@@ -4782,7 +4782,7 @@ Execute the query and load the results as a list of TableFrames.
 
 </details>
 
-<details>
+<details open>
 <summary>`transactional`</summary>
 
 Whether to use transactions for reading to ensure consistency.
@@ -4791,7 +4791,7 @@ Whether to use transactions for reading to ensure consistency.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`stream(working_dir: str)`**
@@ -4804,7 +4804,7 @@ Execute the query and load the results as a list of TableFrames.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`NDJSONFormat`**
@@ -4817,7 +4817,7 @@ JSON file format.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`OracleConn(uri: str, credentials: UserPasswordCredentials | None = None, enforce_connection_params: bool = True, cx_src_configs_oracle: dict | None = None, cx_dst_configs_oracle: dict | None = None)`**
@@ -4828,7 +4828,7 @@ Bases: Conn
 
 Represents a connection configuration to Oracle.
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access the Oracle database. If no credentials were
@@ -4836,28 +4836,28 @@ provided, it will return None.
 
 </details>
 
-<details>
+<details open>
 <summary>`cx_dst_configs_oracle`</summary>
 
 Destination-specific configuration parameters for the Oracle connection.
 
 </details>
 
-<details>
+<details open>
 <summary>`cx_src_configs_oracle`</summary>
 
 Source-specific configuration parameters for the Oracle connection.
 
 </details>
 
-<details>
+<details open>
 <summary>`enforce_connection_params`</summary>
 
 Whether to enforce connection parameters for the Oracle connection.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 The URI of the database where the data is located.
@@ -4866,7 +4866,7 @@ The URI of the database where the data is located.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`OracleDestination(uri: str, destination_table: List[str] | str, credentials: UserPasswordCredentials = None, if_table_exists: Literal['append', 'replace'] = 'append')`**
@@ -4877,7 +4877,7 @@ Bases: DestinationPlugin
 
 Oracle-based data outputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str, *results: LazyFrame | None)`**
@@ -4897,7 +4897,7 @@ destination.
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access the Oracle
@@ -4907,7 +4907,7 @@ database.
 
 </details>
 
-<details>
+<details open>
 <summary>`destination_table`</summary>
 
 The table(s) to create. If multiple tables are provided,
@@ -4917,7 +4917,7 @@ they must be provided as a list.
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 The strategy to follow when the table already exists.
@@ -4926,7 +4926,7 @@ The strategy to follow when the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 The URI of the database where the data is going to be stored.
@@ -4935,7 +4935,7 @@ The URI of the database where the data is going to be stored.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`write(files: list[str | None])`**
@@ -4950,7 +4950,7 @@ should be of an appropriate size.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str, *results: LazyFrame | None)`**
@@ -4970,7 +4970,7 @@ destination.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`write(files: list[str | None])`**
@@ -4983,7 +4983,7 @@ should be of an appropriate size.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`OracleSource(**kwargs)`**
@@ -4994,7 +4994,7 @@ Bases: SourcePlugin
 
 Oracle-based data inputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -5018,7 +5018,7 @@ single file and a second argument with two files:return
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access
@@ -5028,7 +5028,7 @@ Oracle. If no credentials were provided, it will return None.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 The initial values for the parameters in the SQL queries.
@@ -5037,7 +5037,7 @@ The initial values for the parameters in the SQL queries.
 
 </details>
 
-<details>
+<details open>
 <summary>`query`</summary>
 
 The SQL query(s) to execute.
@@ -5046,7 +5046,7 @@ The SQL query(s) to execute.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 The URI of the database where the data is located.
@@ -5057,7 +5057,7 @@ The URI of the database where the data is located.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -5081,7 +5081,7 @@ single file and a second argument with two files:return
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`OracleSrc(conn: OracleConn, queries: str | list[str], initial_values: dict[str, Any] | None = None, transactional: bool = True, chunk_size: Annotated[int, Gt(gt=0)] = 100000, loader: Literal['polars_sqlalchemy', 'pandas'] = 'polars_sqlalchemy', schema_overrides: dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64] | list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]] | None = None)`**
@@ -5092,49 +5092,49 @@ Bases: SourcePlugin
 
 Source plugin for reading data from Oracle.
 
-<details>
+<details open>
 <summary>`chunk_size`</summary>
 
 The chunk size in records for reading large queries in batches.
 
 </details>
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 The Oracle connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 The initial values for the parameters in the SQL queries.
 
 </details>
 
-<details>
+<details open>
 <summary>`loader`</summary>
 
 The data processing loader to use for executing SQL imports.
 
 </details>
 
-<details>
+<details open>
 <summary>`queries`</summary>
 
 The SQL queries to execute to read data.
 
 </details>
 
-<details>
+<details open>
 <summary>`schema_overrides`</summary>
 
 The schema overrides for the tables being read.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str)`**
@@ -5147,7 +5147,7 @@ Execute the query and load the results as a list of TableFrames.
 
 </details>
 
-<details>
+<details open>
 <summary>`transactional`</summary>
 
 Whether to use transactions for reading to ensure consistency.
@@ -5156,7 +5156,7 @@ Whether to use transactions for reading to ensure consistency.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`stream(working_dir: str)`**
@@ -5169,7 +5169,7 @@ Execute the query and load the results as a list of TableFrames.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`ParquetFormat`**
@@ -5182,7 +5182,7 @@ Parquet file format.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`PostgresCdcConn(**kwargs)`**
@@ -5195,7 +5195,7 @@ PostgreSQL CDC connection configuration.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`PostgresCdcTrigger(**kwargs)`**
@@ -5211,14 +5211,14 @@ This trigger connects to a PostgreSQL server, reads the write-ahead log via
 the wal2json output plugin for change data capture events (inserts, updates,
 deletes) on specified tables, and stages them.
 
-<details>
+<details open>
 <summary>`blocking_timeout_seconds`</summary>
 
 Timeout in seconds for blocking reads from the replication stream.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`collect_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
@@ -5227,7 +5227,7 @@ Timeout in seconds for blocking reads from the replication stream.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`harvest_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
@@ -5236,28 +5236,28 @@ Timeout in seconds for blocking reads from the replication stream.
 
 </details>
 
-<details>
+<details open>
 <summary>`publication_name`</summary>
 
 Name of the PostgreSQL publication to subscribe to.
 
 </details>
 
-<details>
+<details open>
 <summary>`replication_slot`</summary>
 
 Name of the logical replication slot.
 
 </details>
 
-<details>
+<details open>
 <summary>`slot_behavior`</summary>
 
 Whether to create a new replication slot or reuse an existing one.
 
 </details>
 
-<details>
+<details open>
 <summary>`start_from`</summary>
 
 Position to start reading changes from.
@@ -5266,7 +5266,7 @@ Position to start reading changes from.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`collect_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
@@ -5275,7 +5275,7 @@ Position to start reading changes from.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`harvest_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
@@ -5284,7 +5284,7 @@ Position to start reading changes from.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`PostgresConn(uri: str, credentials: UserPasswordCredentials | None = None, enforce_connection_params: bool = True, cx_src_configs_postgres: dict | None = None, cx_dst_configs_postgres: dict | None = None)`**
@@ -5295,7 +5295,7 @@ Bases: Conn
 
 Represents a connection configuration to Postgres.
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access the Postgres database. If no credentials were
@@ -5303,28 +5303,28 @@ provided, it will return None.
 
 </details>
 
-<details>
+<details open>
 <summary>`cx_dst_configs_postgres`</summary>
 
 Destination-specific configuration parameters for the Postgres connection.
 
 </details>
 
-<details>
+<details open>
 <summary>`cx_src_configs_postgres`</summary>
 
 Source-specific configuration parameters for the Postgres connection.
 
 </details>
 
-<details>
+<details open>
 <summary>`enforce_connection_params`</summary>
 
 Whether to enforce connection parameters for the Postgres connection.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 The URI of the database where the data is located.
@@ -5333,7 +5333,7 @@ The URI of the database where the data is located.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`PostgresDest(conn: PostgresConn, destination_tables: str | list[str], if_table_exists: Literal['append', 'replace'] = 'append', transactional: bool = True, chunk_size: Annotated[int, Gt(gt=0)] = 100000, loader: Literal['polars_sqlalchemy'] = 'polars_sqlalchemy')`**
@@ -5344,21 +5344,21 @@ Bases: DestinationPlugin
 
 Destination plugin for writing data to PostgreSQL.
 
-<details>
+<details open>
 <summary>`chunk_size`</summary>
 
 The chunk size for writing large results in batches.
 
 </details>
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 The Postgres connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`destination_tables`</summary>
 
 The table(s) to create. If multiple tables are provided,
@@ -5366,21 +5366,21 @@ they must be provided as a list.
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 The strategy to follow when the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>`loader`</summary>
 
 The data processing loader to use for executing DB write operation.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results: list[LazyFrame | None])`**
@@ -5399,7 +5399,7 @@ Store the results into the PostgreSQL database.
 
 </details>
 
-<details>
+<details open>
 <summary>`transactional`</summary>
 
 Whether to use transactions for writing data to ensure consistency.
@@ -5408,7 +5408,7 @@ Whether to use transactions for writing data to ensure consistency.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`stream(working_dir: str, *results: list[LazyFrame | None])`**
@@ -5427,7 +5427,7 @@ Store the results into the PostgreSQL database.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`PostgresDestination(**kwargs)`**
@@ -5438,7 +5438,7 @@ Bases: DestinationPlugin
 
 Postgres-based data outputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str, *results: LazyFrame | None)`**
@@ -5458,7 +5458,7 @@ destination.
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access the
@@ -5468,7 +5468,7 @@ Postgres database.
 
 </details>
 
-<details>
+<details open>
 <summary>`destination_table`</summary>
 
 The table(s) to create. If multiple tables are provided,
@@ -5478,7 +5478,7 @@ they must be provided as a list.
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 The strategy to follow when the table already exists.
@@ -5487,7 +5487,7 @@ The strategy to follow when the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 The URI of the database where the data is going to be stored.
@@ -5496,7 +5496,7 @@ The URI of the database where the data is going to be stored.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`write(files: list[str | None])`**
@@ -5511,7 +5511,7 @@ should be of an appropriate size.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str, *results: LazyFrame | None)`**
@@ -5531,7 +5531,7 @@ destination.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`write(files: list[str | None])`**
@@ -5544,7 +5544,7 @@ should be of an appropriate size.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`PostgresSource(**kwargs)`**
@@ -5555,7 +5555,7 @@ Bases: SourcePlugin
 
 Postgres-based data inputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -5579,7 +5579,7 @@ single file and a second argument with two files:return
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access the
@@ -5589,7 +5589,7 @@ PostgresDatabase. If no credentials were provided, it will return None.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 The initial values for the parameters in the SQL queries.
@@ -5598,7 +5598,7 @@ The initial values for the parameters in the SQL queries.
 
 </details>
 
-<details>
+<details open>
 <summary>`query`</summary>
 
 The SQL query(s) to execute.
@@ -5607,7 +5607,7 @@ The SQL query(s) to execute.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 The URI of the database where the data is located.
@@ -5618,7 +5618,7 @@ The URI of the database where the data is located.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -5642,7 +5642,7 @@ single file and a second argument with two files:return
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`PostgresSrc(conn: PostgresConn, queries: str | list[str], initial_values: dict[str, Any] | None = None, transactional: bool = True, chunk_size: Annotated[int, Gt(gt=0)] = 100000, loader: Literal['polars_sqlalchemy', 'pandas'] = 'polars_sqlalchemy', schema_overrides: dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64] | list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]] | None = None)`**
@@ -5653,49 +5653,49 @@ Bases: SourcePlugin
 
 Source plugin for reading data from Postgres.
 
-<details>
+<details open>
 <summary>`chunk_size`</summary>
 
 The chunk size in records for reading large queries in batches.
 
 </details>
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 The Postgres connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 The initial values for the parameters in the SQL queries.
 
 </details>
 
-<details>
+<details open>
 <summary>`loader`</summary>
 
 The data processing loader to use for executing SQL imports.
 
 </details>
 
-<details>
+<details open>
 <summary>`queries`</summary>
 
 The SQL queries to execute to read data.
 
 </details>
 
-<details>
+<details open>
 <summary>`schema_overrides`</summary>
 
 The schema overrides for the tables being read.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str)`**
@@ -5708,7 +5708,7 @@ Execute the query and load the results as a list of TableFrames.
 
 </details>
 
-<details>
+<details open>
 <summary>`transactional`</summary>
 
 Whether to use transactions for reading to ensure consistency.
@@ -5717,7 +5717,7 @@ Whether to use transactions for reading to ensure consistency.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`stream(working_dir: str)`**
@@ -5730,7 +5730,7 @@ Execute the query and load the results as a list of TableFrames.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`S3AccessKeyCredentials(aws_access_key_id: str | Secret, aws_secret_access_key: str | Secret)`**
@@ -5742,7 +5742,7 @@ Bases: `S3Credentials`
 Credentials class to access an S3 bucket using access key credentials (access key
 id and secret access key).
 
-<details>
+<details open>
 <summary>`aws_access_key_id`</summary>
 
 The AWS access key id.
@@ -5751,7 +5751,7 @@ The AWS access key id.
 
 </details>
 
-<details>
+<details open>
 <summary>`aws_secret_access_key`</summary>
 
 The AWS secret access key.
@@ -5774,7 +5774,7 @@ The AWS secret access key.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`S3Config(bucket: str, region: str, base_path: str, credentials: S3AccessKeyCredentials)`**
@@ -5785,22 +5785,22 @@ Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
 Configuration for staging files in Amazon S3.
 
-<details>
+<details open>
 <summary>`base_path`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`bucket`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`region`</summary>
 
 </details>
@@ -5825,7 +5825,7 @@ files (via boto3).
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`S3Destination(uri: str | list[str], credentials: S3Credentials, format: str | FileFormat = None, region: str = None, catalog: AWSGlue = None)`**
@@ -5836,7 +5836,7 @@ Bases: DestinationPlugin
 
 S3-file-based data outputs.
 
-<details>
+<details open>
 <summary>
 
 **`SupportedFormats(*values)`**
@@ -5847,29 +5847,29 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
 Enum for the supported formats for the S3Destination.
 
-<details>
+<details open>
 <summary>`avro`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`csv`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`ndjson`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`parquet`</summary>
 
 </details>
 
 </details>
 
-<details>
+<details open>
 <summary>`allow_fragments`</summary>
 
 Whether to allow fragments in the output.
@@ -5878,7 +5878,7 @@ Whether to allow fragments in the output.
 
 </details>
 
-<details>
+<details open>
 <summary>`catalog`</summary>
 
 The catalog to store the data in.
@@ -5887,7 +5887,7 @@ The catalog to store the data in.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str, *results)`**
@@ -5914,7 +5914,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access the S3 bucket.
@@ -5923,7 +5923,7 @@ The credentials required to access the S3 bucket.
 
 </details>
 
-<details>
+<details open>
 <summary>`format`</summary>
 
 The format of the file. If not provided, it will be inferred from
@@ -5933,7 +5933,7 @@ the file.
 
 </details>
 
-<details>
+<details open>
 <summary>`region`</summary>
 
 The region where the S3 bucket is located.
@@ -5942,7 +5942,7 @@ The region where the S3 bucket is located.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results)`**
@@ -5969,7 +5969,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 ‘s3://path/to/files’.
@@ -5982,7 +5982,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str, *results)`**
@@ -6009,7 +6009,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`stream(working_dir: str, *results)`**
@@ -6036,7 +6036,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`S3Source(uri: str | list[str], credentials: S3Credentials, format: str | FileFormat = None, initial_last_modified: str | datetime = None, region: str = None, file_info: str | FileInfo | None = None)`**
@@ -6047,7 +6047,7 @@ Bases: SourcePlugin
 
 S3-file-based data inputs.
 
-<details>
+<details open>
 <summary>
 
 **`SupportedFormats(*values)`**
@@ -6058,34 +6058,34 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
 Enum for the supported formats for the S3Source.
 
-<details>
+<details open>
 <summary>`avro`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`csv`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`log`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`ndjson`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`parquet`</summary>
 
 </details>
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -6109,7 +6109,7 @@ single file and a second argument with two files:return
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access the S3 bucket.
@@ -6118,7 +6118,7 @@ The credentials required to access the S3 bucket.
 
 </details>
 
-<details>
+<details open>
 <summary>`file_info`</summary>
 
 The file information to add as system columns.
@@ -6127,7 +6127,7 @@ The file information to add as system columns.
 
 </details>
 
-<details>
+<details open>
 <summary>`format`</summary>
 
 The format of the file. If not provided, it will be inferred from
@@ -6137,7 +6137,7 @@ the file.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_last_modified`</summary>
 
 The date and time after which the files were modified.
@@ -6146,7 +6146,7 @@ The date and time after which the files were modified.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 Return a dictionary with the initial values to be stored after execution of
@@ -6160,7 +6160,7 @@ as values, all the type string.
 
 </details>
 
-<details>
+<details open>
 <summary>`region`</summary>
 
 The region where the S3 bucket is located.
@@ -6169,7 +6169,7 @@ The region where the S3 bucket is located.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 ‘s3://path/to/files’.
@@ -6182,7 +6182,7 @@ The region where the S3 bucket is located.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -6206,7 +6206,7 @@ single file and a second argument with two files:return
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`SalesforceReportSource(credentials: SalesforceCredentials, report: str | list[str], column_name_strategy: Literal['columnName', 'label'], find_report_by: Literal['id', 'name'] = None, filter: tuple[str, str, str] | list[tuple[str, str, str]] = None, filter_logic: str = None, instance_url: str = None, last_modified_column: str = None, initial_last_modified: str = None, **kwargs)`**
@@ -6217,7 +6217,7 @@ Bases: SourcePlugin
 
 Salesforce Reports based data inputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -6241,39 +6241,39 @@ single file and a second argument with two files:return
 
 </details>
 
-<details>
+<details open>
 <summary>`column_name_strategy`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`filter`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`filter_logic`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`find_report_by`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`report`</summary>
 
 </details>
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -6297,7 +6297,7 @@ single file and a second argument with two files:return
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`SalesforceSource(credentials: SalesforceCredentials, query: str | list[str], instance_url: str = None, include_deleted: bool = False, initial_last_modified: str = None, **kwargs)`**
@@ -6308,7 +6308,7 @@ Bases: SourcePlugin
 
 Salesforce (SOQL query) based data inputs (not Salesforce Reports).
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -6332,19 +6332,19 @@ single file and a second argument with two files:return
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`query`</summary>
 
 </details>
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -6368,7 +6368,7 @@ single file and a second argument with two files:return
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`SalesforceTokenCredentials(username: str | Secret, password: str | Secret, security_token: str | Secret)`**
@@ -6380,7 +6380,7 @@ Bases: `SalesforceCredentials`
 Credentials class to store the credentials needed to access a Salesforce
 using a username, a password and a token.
 
-<details>
+<details open>
 <summary>`password`</summary>
 
 The password to access Salesforce.
@@ -6389,7 +6389,7 @@ The password to access Salesforce.
 
 </details>
 
-<details>
+<details open>
 <summary>`security_token`</summary>
 
 The security token to access Salesforce.
@@ -6398,7 +6398,7 @@ The security token to access Salesforce.
 
 </details>
 
-<details>
+<details open>
 <summary>`username`</summary>
 
 The username to access Salesforce.
@@ -6426,7 +6426,7 @@ dictionary
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`SnowflakeDestination(connection_parameters: dict, destination_table: List[str] | str, if_table_exists: Literal['append', 'replace'] = 'append', stage: str | None = None, **kwargs)`**
@@ -6437,7 +6437,7 @@ Bases: DestinationPlugin
 
 Snowflake based data outputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str, *results: LazyFrame | None)`**
@@ -6464,7 +6464,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`destination_table`</summary>
 
 Get the destination table(s) where the data will be stored.
@@ -6475,7 +6475,7 @@ Get the destination table(s) where the data will be stored.
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 Returns the value of the if_table_exists property.
@@ -6483,7 +6483,7 @@ This property determines what to do if the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results: List[LazyFrame | None] | LazyFrame | None)`**
@@ -6510,7 +6510,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`write(files)`**
@@ -6524,7 +6524,7 @@ from the stream method, and it is not intended to be called directly.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str, *results: LazyFrame | None)`**
@@ -6551,7 +6551,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`stream(working_dir: str, *results: List[LazyFrame | None] | LazyFrame | None)`**
@@ -6578,7 +6578,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`write(files)`**
@@ -6590,7 +6590,7 @@ from the stream method, and it is not intended to be called directly.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`SourcePlugin`**
@@ -6611,7 +6611,7 @@ For example, you would give the following return to provide a first argument
 with a single file and a second argument with two files:
 return [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
 
-   <details>
+   <details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -6635,7 +6635,7 @@ single file and a second argument with two files:return
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 Return a dictionary with the initial values to be stored after execution of
@@ -6649,7 +6649,7 @@ as values, all the type string.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str)`**
@@ -6660,7 +6660,7 @@ as values, all the type string.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -6684,7 +6684,7 @@ single file and a second argument with two files:return
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`stream(working_dir: str)`**
@@ -6693,7 +6693,7 @@ single file and a second argument with two files:return
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`Stage(use_existing_data: bool = True)`**
@@ -6704,7 +6704,7 @@ Bases: SourcePlugin
 
 Inputs that have been placed in a stage, usually from a StageTrigger.
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str)`**
@@ -6713,14 +6713,14 @@ Inputs that have been placed in a stage, usually from a StageTrigger.
 
 </details>
 
-<details>
+<details open>
 <summary>`use_existing_data`</summary>
 
 </details>
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`stream(working_dir: str)`**
@@ -6729,7 +6729,7 @@ Inputs that have been placed in a stage, usually from a StageTrigger.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`StageTrigger(**kwargs)`**
@@ -6738,12 +6738,12 @@ Inputs that have been placed in a stage, usually from a StageTrigger.
 
 Bases: [ABC](https://docs.python.org/3/library/abc.html#abc.ABC)
 
-<details>
+<details open>
 <summary>`end`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`out`</summary>
 
 Returns a mapping of positional index to table name for the outputs
@@ -6752,7 +6752,7 @@ supports generating a single table.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`run(ctx: StageTriggerContext)`**
@@ -6767,14 +6767,14 @@ STOPPED upon a signal. exit with 0.
 
 </details>
 
-<details>
+<details open>
 <summary>`start`</summary>
 
 </details>
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`run(ctx: StageTriggerContext)`**
@@ -6789,7 +6789,7 @@ STOPPED upon a signal. exit with 0.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`StarRocksConn(**kwargs)`**
@@ -6806,7 +6806,7 @@ first uploaded to the configured staging area and then loaded into StarRocks
 using the `FILES()` table function in an `INSERT INTO … SELECT * FROM
 FILES(...)` statement.
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials used to authenticate with StarRocks.  `None` if no
@@ -6814,49 +6814,49 @@ credentials were provided (StarRocks `root` user, no password).
 
 </details>
 
-<details>
+<details open>
 <summary>`cx_dst_configs_starrocks`</summary>
 
 Destination-specific configuration parameters for the StarRocks connection.
 
 </details>
 
-<details>
+<details open>
 <summary>`cx_src_configs_starrocks`</summary>
 
 Source-specific configuration parameters for the StarRocks connection.
 
 </details>
 
-<details>
+<details open>
 <summary>`database`</summary>
 
 The target StarRocks database name.
 
 </details>
 
-<details>
+<details open>
 <summary>`enforce_connection_params`</summary>
 
 Whether to enforce connection parameters for the StarRocks connection.
 
 </details>
 
-<details>
+<details open>
 <summary>`host`</summary>
 
 The StarRocks FE hostname or IP address.
 
 </details>
 
-<details>
+<details open>
 <summary>`port`</summary>
 
 The MySQL protocol port of the StarRocks FE server.
 
 </details>
 
-<details>
+<details open>
 <summary>`staging`</summary>
 
 The cloud storage staging configuration (S3Config, AzureConfig, or
@@ -6866,7 +6866,7 @@ GCSConfig).
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`StarRocksDest(**kwargs)`**
@@ -6881,35 +6881,35 @@ Data is first written as Parquet files to the configured cloud storage staging a
 (S3, Azure Blob, or GCS) and then ingested into StarRocks via its `FILES()`
 table function in an `INSERT INTO … SELECT * FROM FILES(...)` statement.
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 The StarRocks connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`destination_tables`</summary>
 
 The table(s) to load data into.
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 The strategy to follow when the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>`schema_evolution`</summary>
 
 The schema evolution strategy.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results: list[LazyFrame | None])`**
@@ -6932,7 +6932,7 @@ in the same order as destination_tables.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`stream(working_dir: str, *results: list[LazyFrame | None])`**
@@ -6953,7 +6953,7 @@ in the same order as destination_tables.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`TableFrame(df: Mapping[str, Sequence[object] | Mapping[str, Sequence[object]]] | TableFrame | None = None, *, origin: TableFrameOrigin | None = TableFrameOrigin.INIT, properties: TableFrameProperties | None = None)`**
@@ -6964,7 +6964,7 @@ Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
 &gt; Private Functions
 
-<details>
+<details open>
 <summary>
 
 **`assert_has_cols(cols: str | list[str], exact: bool | None = False)`**
@@ -7003,7 +7003,7 @@ columns.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`cast(dtypes: Mapping[td_typing.ColumnNameOrSelector | td_typing.DataType, td_typing.DataType] | td_typing.DataType, *, strict: bool = True)`**
@@ -7064,7 +7064,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`clear(n: int = 0)`**
@@ -7108,7 +7108,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`columns(kind: Literal['all', 'user', 'system'] | None = 'user')`**
@@ -7117,7 +7117,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`drop(*columns: td_typing.ColumnNameOrSelector | Iterable[td_typing.ColumnNameOrSelector], strict: bool = True)`**
@@ -7172,7 +7172,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`drop_nans(subset: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector] | None = None)`**
@@ -7227,7 +7227,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`drop_nulls(subset: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector] | None = None)`**
@@ -7283,12 +7283,12 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>`dtypes`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`empty(schema: SimpleSchema = None)`**
@@ -7299,7 +7299,7 @@ Creates an empty (no column - no row) TableFrame.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`explain(**kwargs)`**
@@ -7310,7 +7310,7 @@ Provide private accessibility level wrapper.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`extract_as_columns(offset: int, length: int)`**
@@ -7363,7 +7363,7 @@ and its value is a list of values from the selected slice.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`extract_as_rows(offset: int, length: int)`**
@@ -7418,7 +7418,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`fill_nan(value: int | float | Expr | None)`**
@@ -7465,7 +7465,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`fill_null(value: Any | Expr | None = None)`**
@@ -7512,7 +7512,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`filter(*predicates: td_typing.IntoExprColumn | Iterable[td_typing.IntoExprColumn] | bool | list[bool] | np.ndarray[Any, Any])`**
@@ -7558,7 +7558,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`first`**
@@ -7599,7 +7599,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`first_row(named: bool = False)`**
@@ -7636,7 +7636,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`from_dict(data: Mapping[str, Sequence[object] | Mapping[str, Sequence[object]]] | None = None)`**
@@ -7648,7 +7648,7 @@ None produces as an empty (no column - no row) tableframe.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`from_pandas(data: pd.DataFrame | None = None)`**
@@ -7660,7 +7660,7 @@ None produces as an empty (no column - no row) tableframe.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`from_polars(data: LazyFrame | DataFrame | None = None)`**
@@ -7672,7 +7672,7 @@ None produces as an empty (no column - no row) tableframe.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`grok(expr: td_typing.IntoExpr, pattern: str, schema: dict[str, td_col.Column])`**
@@ -7743,7 +7743,7 @@ both the column name and its data type.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`group_by(*by: td_typing.IntoExpr | Iterable[td_typing.IntoExpr])`**
@@ -7790,7 +7790,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`has_cols(cols: str | list[str], exact: bool | None = False)`**
@@ -7851,7 +7851,7 @@ A set of columns in the TableFrame missing in cols.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`has_same_schema(tf: TableFrame)`**
@@ -7919,7 +7919,7 @@ False
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`head(n: int = 5)`**
@@ -7961,7 +7961,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`inspect(**kwargs)`**
@@ -7972,7 +7972,7 @@ Provide private accessibility level wrapper.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`is_empty`**
@@ -8016,7 +8016,7 @@ True
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`item`**
@@ -8052,7 +8052,7 @@ A
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`join(other: TableFrame, on: str | Expr | Sequence[str | Expr] | None = None, how: Literal['inner', 'left', 'right', 'full', 'semi', 'anti', 'cross', 'outer'] = 'inner', *, left_on: str | Expr | Sequence[str | Expr] | None = None, right_on: str | Expr | Sequence[str | Expr] | None = None, suffix: str = '_right', join_nulls: bool = False, coalesce: bool | None = None)`**
@@ -8237,7 +8237,7 @@ It cannot be used with the on parameter.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`last`**
@@ -8278,7 +8278,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`last_row(named: bool = False)`**
@@ -8315,7 +8315,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`limit(n: int = 5)`**
@@ -8358,7 +8358,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`rename(mapping: dict[str, str])`**
@@ -8405,12 +8405,12 @@ Examples:
 
 </details>
 
-<details>
+<details open>
 <summary>`schema`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`select(*exprs: td_typing.IntoExpr | Iterable[td_typing.IntoExpr], **named_exprs: td_typing.IntoExpr)`**
@@ -8467,7 +8467,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`show_graph(**kwargs)`**
@@ -8478,7 +8478,7 @@ Provide private accessibility level wrapper.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`slice(offset: int, length: int | None = None)`**
@@ -8528,7 +8528,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`sort(by: td_typing.IntoExpr | Iterable[td_typing.IntoExpr], *more_by: td_typing.IntoExpr, descending: bool | Sequence[bool] = False, nulls_last: bool | Sequence[bool] = False, maintain_order: bool = False)`**
@@ -8601,7 +8601,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`tail(n: int = 5)`**
@@ -8643,7 +8643,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`to_pandas`**
@@ -8654,7 +8654,7 @@ Creates a pandas dataframe from this tableframe.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`to_polars_df`**
@@ -8665,7 +8665,7 @@ Creates a polars dataframe from this tableframe.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`to_polars_lf`**
@@ -8676,7 +8676,7 @@ Creates a polars lazyframe from this tableframe.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`udf(on: td_typing.IntoExpr | list[td_typing.IntoExpr], function: td_udf.UDF)`**
@@ -8832,7 +8832,7 @@ defining on_batch or on_element to produce the output series.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`unique(subset: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector] | None = None, *, keep: td_typing.UniqueKeepStrategy = 'any', maintain_order: bool = False)`**
@@ -8897,7 +8897,7 @@ eliminate duplicate rows).
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`unnest(columns: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector], *more_columns: td_typing.ColumnNameOrSelector)`**
@@ -8959,12 +8959,12 @@ arguments.
 
 </details>
 
-<details>
+<details open>
 <summary>`width`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`with_columns(*exprs: td_typing.IntoExpr | Iterable[td_typing.IntoExpr], **named_exprs: td_typing.IntoExpr)`**
@@ -9021,7 +9021,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`assert_has_cols(cols: str | list[str], exact: bool | None = False)`**
@@ -9060,7 +9060,7 @@ columns.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`cast(dtypes: Mapping[td_typing.ColumnNameOrSelector | td_typing.DataType, td_typing.DataType] | td_typing.DataType, *, strict: bool = True)`**
@@ -9121,7 +9121,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`clear(n: int = 0)`**
@@ -9165,7 +9165,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`columns(kind: Literal['all', 'user', 'system'] | None = 'user')`**
@@ -9174,7 +9174,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`drop(*columns: td_typing.ColumnNameOrSelector | Iterable[td_typing.ColumnNameOrSelector], strict: bool = True)`**
@@ -9229,7 +9229,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`drop_nans(subset: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector] | None = None)`**
@@ -9284,7 +9284,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`drop_nulls(subset: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector] | None = None)`**
@@ -9340,7 +9340,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`empty(schema: SimpleSchema = None)`**
@@ -9351,7 +9351,7 @@ Creates an empty (no column - no row) TableFrame.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`extract_as_columns(offset: int, length: int)`**
@@ -9404,7 +9404,7 @@ and its value is a list of values from the selected slice.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`extract_as_rows(offset: int, length: int)`**
@@ -9459,7 +9459,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`fill_nan(value: int | float | Expr | None)`**
@@ -9506,7 +9506,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`fill_null(value: Any | Expr | None = None)`**
@@ -9553,7 +9553,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`filter(*predicates: td_typing.IntoExprColumn | Iterable[td_typing.IntoExprColumn] | bool | list[bool] | np.ndarray[Any, Any])`**
@@ -9599,7 +9599,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`first`**
@@ -9640,7 +9640,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`first_row(named: bool = False)`**
@@ -9677,7 +9677,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`from_dict(data: Mapping[str, Sequence[object] | Mapping[str, Sequence[object]]] | None = None)`**
@@ -9689,7 +9689,7 @@ None produces as an empty (no column - no row) tableframe.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`from_pandas(data: pd.DataFrame | None = None)`**
@@ -9701,7 +9701,7 @@ None produces as an empty (no column - no row) tableframe.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`from_polars(data: LazyFrame | DataFrame | None = None)`**
@@ -9713,7 +9713,7 @@ None produces as an empty (no column - no row) tableframe.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`grok(expr: td_typing.IntoExpr, pattern: str, schema: dict[str, td_col.Column])`**
@@ -9784,7 +9784,7 @@ both the column name and its data type.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`group_by(*by: td_typing.IntoExpr | Iterable[td_typing.IntoExpr])`**
@@ -9831,7 +9831,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`has_cols(cols: str | list[str], exact: bool | None = False)`**
@@ -9892,7 +9892,7 @@ A set of columns in the TableFrame missing in cols.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`has_same_schema(tf: TableFrame)`**
@@ -9960,7 +9960,7 @@ False
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`head(n: int = 5)`**
@@ -10002,7 +10002,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`is_empty`**
@@ -10046,7 +10046,7 @@ True
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`item`**
@@ -10082,7 +10082,7 @@ A
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`join(other: TableFrame, on: str | Expr | Sequence[str | Expr] | None = None, how: Literal['inner', 'left', 'right', 'full', 'semi', 'anti', 'cross', 'outer'] = 'inner', *, left_on: str | Expr | Sequence[str | Expr] | None = None, right_on: str | Expr | Sequence[str | Expr] | None = None, suffix: str = '_right', join_nulls: bool = False, coalesce: bool | None = None)`**
@@ -10267,7 +10267,7 @@ It cannot be used with the on parameter.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`last`**
@@ -10308,7 +10308,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`last_row(named: bool = False)`**
@@ -10345,7 +10345,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`limit(n: int = 5)`**
@@ -10388,7 +10388,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`rename(mapping: dict[str, str])`**
@@ -10435,7 +10435,7 @@ Examples:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`select(*exprs: td_typing.IntoExpr | Iterable[td_typing.IntoExpr], **named_exprs: td_typing.IntoExpr)`**
@@ -10492,7 +10492,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`slice(offset: int, length: int | None = None)`**
@@ -10542,7 +10542,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`sort(by: td_typing.IntoExpr | Iterable[td_typing.IntoExpr], *more_by: td_typing.IntoExpr, descending: bool | Sequence[bool] = False, nulls_last: bool | Sequence[bool] = False, maintain_order: bool = False)`**
@@ -10615,7 +10615,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`tail(n: int = 5)`**
@@ -10657,7 +10657,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`to_dict`**
@@ -10668,7 +10668,7 @@ Creates a dictionary from this tableframe.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`to_pandas`**
@@ -10679,7 +10679,7 @@ Creates a pandas dataframe from this tableframe.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`to_polars_df`**
@@ -10690,7 +10690,7 @@ Creates a polars dataframe from this tableframe.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`to_polars_lf`**
@@ -10701,7 +10701,7 @@ Creates a polars lazyframe from this tableframe.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`udf(on: td_typing.IntoExpr | list[td_typing.IntoExpr], function: td_udf.UDF)`**
@@ -10857,7 +10857,7 @@ defining on_batch or on_element to produce the output series.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`unique(subset: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector] | None = None, *, keep: td_typing.UniqueKeepStrategy = 'any', maintain_order: bool = False)`**
@@ -10922,7 +10922,7 @@ eliminate duplicate rows).
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`unnest(columns: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector], *more_columns: td_typing.ColumnNameOrSelector)`**
@@ -10984,7 +10984,7 @@ arguments.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`with_columns(*exprs: td_typing.IntoExpr | Iterable[td_typing.IntoExpr], **named_exprs: td_typing.IntoExpr)`**
@@ -11039,7 +11039,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`TableInput(table: str | List[str])`**
@@ -11050,7 +11050,7 @@ Bases: SourcePlugin
 
 Table-based data inputs.
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str)`**
@@ -11059,7 +11059,7 @@ Table-based data inputs.
 
 </details>
 
-<details>
+<details open>
 <summary>`table`</summary>
 
 The table(s) to load.
@@ -11070,7 +11070,7 @@ The table(s) to load.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`stream(working_dir: str)`**
@@ -11079,7 +11079,7 @@ The table(s) to load.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`TableOutput(table: str | list[str])`**
@@ -11090,7 +11090,7 @@ Bases: DestinationPlugin
 
 Table-based data outputs.
 
-<details>
+<details open>
 <summary>`table`</summary>
 
 The table(s) to create. If multiple tables are provided,
@@ -11102,7 +11102,7 @@ they must be provided as a list.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`TabsdataFunction(func: Callable, name: str | None, input: SourcePlugin = None, output: DestinationPlugin = None, trigger_by: str | list[str] | CronTrigger | StageTrigger | None = None, output_actions: DataQuality | list[DataQuality] | None = None)`**
@@ -11115,7 +11115,7 @@ Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
   Attributes:
 
-<details>
+<details open>
 <summary>`input`</summary>
 
 The data to be used when running the function.
@@ -11124,7 +11124,7 @@ The data to be used when running the function.
 
 </details>
 
-<details>
+<details open>
 <summary>`name`</summary>
 
 The name with which the function will be registered.
@@ -11133,7 +11133,7 @@ The name with which the function will be registered.
 
 </details>
 
-<details>
+<details open>
 <summary>`original_file`</summary>
 
 The file where the original function is defined in the user’s computer
@@ -11142,7 +11142,7 @@ The file where the original function is defined in the user’s computer
 
 </details>
 
-<details>
+<details open>
 <summary>`original_folder`</summary>
 
 The folder where the original function is defined, as a local path in the
@@ -11152,7 +11152,7 @@ user’s computer.
 
 </details>
 
-<details>
+<details open>
 <summary>`original_function`</summary>
 
 The original function that was decorated, without any behaviour
@@ -11162,7 +11162,7 @@ modifications.
 
 </details>
 
-<details>
+<details open>
 <summary>`output`</summary>
 
 The location where the function results will be saved when
@@ -11172,7 +11172,7 @@ run.
 
 </details>
 
-<details>
+<details open>
 <summary>`output_actions`</summary>
 
 Actions to perform on the output tables.
@@ -11181,7 +11181,7 @@ Actions to perform on the output tables.
 
 </details>
 
-<details>
+<details open>
 <summary>`trigger_by`</summary>
 
 The trigger(s) that will cause the function to execute. It must be
@@ -11192,7 +11192,7 @@ the case of a publisher.
 
 </details>
 
-<details>
+<details open>
 <summary>`type`</summary>
 
 The type of the function. It can be “publisher”, “transformer” or
@@ -11204,7 +11204,7 @@ The type of the function. It can be “publisher”, “transformer” or
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`UserPasswordCredentials(user: str | Secret, password: str | Secret)`**
@@ -11220,7 +11220,7 @@ credentials. It includes functionalities to set user and password
 details, convert them into a dictionary representation, and provide
 a string representation for debugging purposes.
 
-<details>
+<details open>
 <summary>`password`</summary>
 
 The password.
@@ -11229,7 +11229,7 @@ The password.
 
 </details>
 
-<details>
+<details open>
 <summary>`user`</summary>
 
 The user.
@@ -11240,7 +11240,7 @@ The user.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`concat(items: Iterable[TdType] | None, how: Literal['vertical', 'vertical_relaxed', 'diagonal', 'diagonal_relaxed'] = 'vertical')`**
@@ -11331,7 +11331,7 @@ different data types, they are converted to a common type
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`publisher(source: AzureSource | LocalFileSource | MariaDBSource | MySQLSource | OracleSource | PostgresSource | S3Source | SourcePlugin, tables: TableOutput | str | List[str], name: str = None, trigger_by: PublisherTriggerBySpec = None, on_tables: OnTablesSpec = None)`**
@@ -11374,7 +11374,7 @@ Defaults to None.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`subscriber(tables: TableInput | str | List[str], destination: AzureDestination | LocalFileDestination | MariaDBDestination | MySQLDestination | OracleDestination | PostgresDestination | S3Destination | DestinationPlugin, name: str = None, trigger_by: SubscriberTriggerBySpec = '*')`**
@@ -11410,7 +11410,7 @@ or a CronTrigger. Defaults to all dependencies.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`transformer(input_tables: TableInput | str | List[str], output_tables: TableOutput | str | List[str], name: str = None, trigger_by: TransformerTriggerBySpec = '*', on_output_tables: OnTablesSpec = None)`**

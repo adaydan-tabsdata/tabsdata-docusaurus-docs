@@ -6,7 +6,7 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # Manipulation
 
- <details>
+ <details open>
 <summary>
 
 **`cast(dtypes: Mapping[td_typing.ColumnNameOrSelector | td_typing.DataType, td_typing.DataType] | td_typing.DataType, *, strict: bool = True)`**
@@ -67,7 +67,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`drop_nans(subset: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector] | None = None)`**
@@ -122,7 +122,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`drop_nulls(subset: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector] | None = None)`**
@@ -178,7 +178,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`fill_nan(value: int | float | Expr | None)`**
@@ -225,7 +225,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`fill_null(value: Any | Expr | None = None)`**
@@ -272,7 +272,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`alias(name: str)`**
@@ -307,7 +307,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`fill_nan(value: int | float | Expr | None)`**
@@ -341,7 +341,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`fill_null(value: Any | Expr | None = None, strategy: Literal['forward', 'backward', 'min', 'max', 'mean', 'zero', 'one'] | None = None, limit: int | None = None)`**

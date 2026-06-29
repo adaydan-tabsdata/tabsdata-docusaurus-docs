@@ -4,7 +4,7 @@ title: "Classifiers"
 
 # Classifiers
 
- <details>
+ <details open>
 <summary>
 
 **`DoesNotMatch(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, pattern: str, tags: str | list[str] | None = None)`**
@@ -17,7 +17,7 @@ A boolean classifier that checks if a value does *not* match a regex pattern.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`ExponentialScale(min_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], max_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], base: Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])] | None = None, bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=1), Le(le=100)])] = 100, use_bin_zero: bool = False)`**
@@ -28,7 +28,7 @@ Bases: `NonIdentityScale`
 
 An exponential scale.
 
-<details>
+<details open>
 <summary>`base`</summary>
 
 Returns the base of the exponential scale.
@@ -37,7 +37,7 @@ Returns the base of the exponential scale.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`HasLength(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, min_len: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0)])] = 0, max_len: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0)])] = 9223372036854775807, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
@@ -48,21 +48,21 @@ Bases: [BoolClassifier](bymod-tabsdata.dataquality#tabsdata.dataquality.BoolClas
 
 A boolean classifier that checks if the length of a value is within a given range.
 
-<details>
+<details open>
 <summary>`max`</summary>
 
 Returns the maximum allowed length.
 
 </details>
 
-<details>
+<details open>
 <summary>`min`</summary>
 
 Returns the minimum allowed length.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`supported_dtypes`**
@@ -75,7 +75,7 @@ Returns the set of data types supported by HasLength classifier.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`IdentityScale(min_val: Annotated[int, Strict(strict=True)], max_val: Annotated[int, Strict(strict=True)], use_bin_zero: bool = False)`**
@@ -86,14 +86,14 @@ Bases: [Scale](bymod-tabsdata.dataquality#tabsdata.dataquality.Scale)
 
 An identity scale where each integer value corresponds to a bin.
 
-<details>
+<details open>
 <summary>`bins`</summary>
 
 Returns the number of bins in the scale.
 
 </details>
 
-<details>
+<details open>
 <summary>`scale_range`</summary>
 
 Returns the (min, max) range of the scale.
@@ -102,7 +102,7 @@ Returns the (min, max) range of the scale.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`IsBetween(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, min_val: int | float | bool | str | date | time | datetime | timedelta | bytes | Decimal | None = None, max_val: int | float | bool | str | date | time | datetime | timedelta | bytes | Decimal | None = None, closed_on: Literal['none', 'lower', 'upper', 'both'] = 'both', on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', on_wrong_value: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
@@ -115,7 +115,7 @@ A boolean classifier that checks if a value is *inside* a specified range.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`IsFalse(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
@@ -126,7 +126,7 @@ Bases: [BoolClassifier](bymod-tabsdata.dataquality#tabsdata.dataquality.BoolClas
 
 A boolean classifier that checks if a value is False.
 
-<details>
+<details open>
 <summary>
 
 **`supported_dtypes`**
@@ -139,7 +139,7 @@ Returns the set of data types supported by IsFalse classifier.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`IsIn(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_value: Literal['ignore', 'fail'] = 'ignore', *, values: Collection, tags: str | list[str] | None = None)`**
@@ -152,7 +152,7 @@ A boolean classifier that checks if a value is in a specified set of values.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`IsNan(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
@@ -163,7 +163,7 @@ Bases: [BoolClassifier](bymod-tabsdata.dataquality#tabsdata.dataquality.BoolClas
 
 A boolean classifier that checks if a value is NaN (Not a Number).
 
-<details>
+<details open>
 <summary>
 
 **`supported_dtypes`**
@@ -176,7 +176,7 @@ Returns the set of data types supported by IsNan classifier.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`IsNegative(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
@@ -187,7 +187,7 @@ Bases: [BoolClassifier](bymod-tabsdata.dataquality#tabsdata.dataquality.BoolClas
 
 A boolean classifier that checks if a numeric value is negative.
 
-<details>
+<details open>
 <summary>
 
 **`supported_dtypes`**
@@ -200,7 +200,7 @@ Returns the set of data types supported by IsNegative classifier.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`IsNegativeOrZero(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
@@ -211,7 +211,7 @@ Bases: [BoolClassifier](bymod-tabsdata.dataquality#tabsdata.dataquality.BoolClas
 
 A boolean classifier that checks if a numeric value is negative or zero.
 
-<details>
+<details open>
 <summary>
 
 **`supported_dtypes`**
@@ -224,7 +224,7 @@ Returns the set of data types supported by IsNegativeOrZero classifier.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`IsNotBetween(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, min_val: int | float | bool | str | date | time | datetime | timedelta | bytes | Decimal | None = None, max_val: int | float | bool | str | date | time | datetime | timedelta | bytes | Decimal | None = None, closed_on: Literal['none', 'lower', 'upper', 'both'] = 'both', on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', on_wrong_value: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
@@ -237,7 +237,7 @@ A boolean classifier that checks if a value is *outside* a specified range.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`IsNotIn(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_value: Literal['ignore', 'fail'] = 'ignore', *, values: Collection, tags: str | list[str] | None = None)`**
@@ -250,7 +250,7 @@ A boolean classifier that checks if a value is *not* in a specified set of value
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`IsNotNan(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
@@ -261,7 +261,7 @@ Bases: [BoolClassifier](bymod-tabsdata.dataquality#tabsdata.dataquality.BoolClas
 
 A boolean classifier that checks if a value is *not* NaN.
 
-<details>
+<details open>
 <summary>
 
 **`supported_dtypes`**
@@ -274,7 +274,7 @@ Returns the set of data types supported by IsNotNan classifier.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`IsNotNull(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
@@ -285,7 +285,7 @@ Bases: [BoolClassifier](bymod-tabsdata.dataquality#tabsdata.dataquality.BoolClas
 
 A boolean classifier that checks if a value is *not* NULL.
 
-<details>
+<details open>
 <summary>
 
 **`supported_dtypes`**
@@ -298,7 +298,7 @@ Returns the set of data types supported by IsNotNull classifier.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`IsNotNullNorNan(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
@@ -309,7 +309,7 @@ Bases: [BoolClassifier](bymod-tabsdata.dataquality#tabsdata.dataquality.BoolClas
 
 A boolean classifier that checks if a value is neither NULL nor NaN.
 
-<details>
+<details open>
 <summary>
 
 **`supported_dtypes`**
@@ -322,7 +322,7 @@ Returns the set of data types supported by IsNotNullNorNan classifier.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`IsNotZero(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
@@ -333,7 +333,7 @@ Bases: [BoolClassifier](bymod-tabsdata.dataquality#tabsdata.dataquality.BoolClas
 
 A boolean classifier that checks if a numeric value is not zero.
 
-<details>
+<details open>
 <summary>
 
 **`supported_dtypes`**
@@ -346,7 +346,7 @@ Returns the set of data types supported by IsNotZero classifier.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`IsNull(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
@@ -357,7 +357,7 @@ Bases: [BoolClassifier](bymod-tabsdata.dataquality#tabsdata.dataquality.BoolClas
 
 A boolean classifier that checks if a value is NULL.
 
-<details>
+<details open>
 <summary>
 
 **`supported_dtypes`**
@@ -370,7 +370,7 @@ Returns the set of data types supported by IsNull classifier.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`IsNullOrNan(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
@@ -381,7 +381,7 @@ Bases: [BoolClassifier](bymod-tabsdata.dataquality#tabsdata.dataquality.BoolClas
 
 A boolean classifier that checks if a value is either NULL or NaN.
 
-<details>
+<details open>
 <summary>
 
 **`supported_dtypes`**
@@ -394,7 +394,7 @@ Returns the set of data types supported by IsNullOrNan classifier.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`IsPositive(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
@@ -405,7 +405,7 @@ Bases: [BoolClassifier](bymod-tabsdata.dataquality#tabsdata.dataquality.BoolClas
 
 A boolean classifier that checks if a numeric value is positive.
 
-<details>
+<details open>
 <summary>
 
 **`supported_dtypes`**
@@ -418,7 +418,7 @@ Returns the set of data types supported by IsPositive classifier.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`IsPositiveOrZero(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
@@ -429,7 +429,7 @@ Bases: [BoolClassifier](bymod-tabsdata.dataquality#tabsdata.dataquality.BoolClas
 
 A boolean classifier that checks if a numeric value is positive or zero.
 
-<details>
+<details open>
 <summary>
 
 **`supported_dtypes`**
@@ -442,7 +442,7 @@ Returns the set of data types supported by IsPositiveOrZero classifier.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`IsTrue(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
@@ -453,7 +453,7 @@ Bases: [BoolClassifier](bymod-tabsdata.dataquality#tabsdata.dataquality.BoolClas
 
 A boolean classifier that checks if a value is True.
 
-<details>
+<details open>
 <summary>
 
 **`supported_dtypes`**
@@ -466,7 +466,7 @@ Returns the set of data types supported by IsTrue classifier.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`IsZero(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
@@ -477,7 +477,7 @@ Bases: [BoolClassifier](bymod-tabsdata.dataquality#tabsdata.dataquality.BoolClas
 
 A boolean classifier that checks if a numeric value is zero.
 
-<details>
+<details open>
 <summary>
 
 **`supported_dtypes`**
@@ -490,7 +490,7 @@ Returns the set of data types supported by IsZero classifier.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`LinearScale(min_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], max_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=1), Le(le=100)])] = 100, use_bin_zero: bool = False)`**
@@ -503,7 +503,7 @@ A linear scale.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`LogarithmicScale(min_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], max_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], base: Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])] | None = None, bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=1), Le(le=100)])] = 100, use_bin_zero: bool = False)`**
@@ -514,7 +514,7 @@ Bases: `NonIdentityScale`
 
 A logarithmic scale.
 
-<details>
+<details open>
 <summary>`base`</summary>
 
 Returns the base of the logarithmic scale.
@@ -523,7 +523,7 @@ Returns the base of the logarithmic scale.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`Matches(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, pattern: str, tags: str | list[str] | None = None)`**
@@ -536,7 +536,7 @@ A boolean classifier that checks if a value matches a regex pattern.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MonomialScale(min_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], max_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], power: Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])], bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=1), Le(le=100)])] = 100, use_bin_zero: bool = False)`**
@@ -547,7 +547,7 @@ Bases: `NonIdentityScale`
 
 A monomial (power-law) scale.
 
-<details>
+<details open>
 <summary>`power`</summary>
 
 Returns the power of the monomial scale.
@@ -556,7 +556,7 @@ Returns the power of the monomial scale.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`ScaleCategorizer(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', on_wrong_scale_value: Literal['ignore', 'fail'] = 'ignore', *, scale: Scale, tags: str | list[str] | None = None)`**
@@ -567,14 +567,14 @@ Bases: [Categorizer](bymod-tabsdata.dataquality#tabsdata.dataquality.Categorizer
 
 A classifier that bucketizes data into bins based on a given scale.
 
-<details>
+<details open>
 <summary>`scale`</summary>
 
 Returns the scale used for categorization.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`supported_dtypes`**

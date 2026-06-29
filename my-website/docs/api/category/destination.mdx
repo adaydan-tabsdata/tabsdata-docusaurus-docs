@@ -6,7 +6,7 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # Destinations
 
- <details>
+ <details open>
 <summary>
 
 **`AzureDestination(uri: str | list[str], credentials: AzureCredentials, format: str | FileFormat = None)`**
@@ -17,7 +17,7 @@ Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
 
 Azure-file-based data outputs.
 
-<details>
+<details open>
 <summary>
 
 **`SupportedFormats(*values)`**
@@ -28,29 +28,29 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
 Enum for the supported formats for the AzureDestination.
 
-<details>
+<details open>
 <summary>`avro`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`csv`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`ndjson`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`parquet`</summary>
 
 </details>
 
 </details>
 
-<details>
+<details open>
 <summary>`allow_fragments`</summary>
 
 Whether to allow fragments in the output.
@@ -59,7 +59,7 @@ Whether to allow fragments in the output.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str, *results)`**
@@ -86,7 +86,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access Azure.
@@ -95,7 +95,7 @@ The credentials required to access Azure.
 
 </details>
 
-<details>
+<details open>
 <summary>`format`</summary>
 
 The format of the file. If not provided, it will be inferred from
@@ -105,7 +105,7 @@ the file extension of the URI.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results)`**
@@ -132,7 +132,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 ‘az://path/to/files’.
@@ -145,7 +145,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`BigQueryDest(conn: BigQueryConn, tables: TableSpec | None = None, if_table_exists: IfTableExistStrategySpec = 'append', schema_strategy: SchemaStrategySpec = 'update')`**
@@ -158,12 +158,12 @@ BigQuery based data outputs.
 The data is first stored in parquet files in a GCS bucket, and then loaded into the
 BigQuery tables.
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 The strategy to follow when the table already exists.
@@ -172,7 +172,7 @@ The strategy to follow when the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>`schema_strategy`</summary>
 
 The strategy to follow when appending to a table with an existing schema.
@@ -181,7 +181,7 @@ The strategy to follow when appending to a table with an existing schema.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results: list[LazyFrame | None] | LazyFrame | None)`**
@@ -208,14 +208,14 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`tables`</summary>
 
 </details>
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`ClickHouseDest(**kwargs)`**
@@ -230,35 +230,35 @@ Data is first written as Parquet files to the configured cloud storage staging a
 (S3, Azure Blob, or GCS) and then ingested into ClickHouse via its native table
 functions (`s3()`, `azureBlobStorage()`).
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 The ClickHouse connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`destination_tables`</summary>
 
 The table(s) to load data into.
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 The strategy to follow when the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>`schema_evolution`</summary>
 
 The schema evolution strategy.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results: list[LazyFrame | None])`**
@@ -281,7 +281,7 @@ in the same order as destination_tables.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`DatabricksDestination(host_url: str, token: str | Secret, tables: list[str] | str, volume: str, catalog: str | None = None, schema: str | None = None, warehouse: str | None = None, warehouse_id: str | None = None, if_table_exists: Literal['append', 'replace'] = 'append', schema_strategy: Literal['update', 'strict'] = 'update', **kwargs)`**
@@ -292,7 +292,7 @@ Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
 
 Databricks based data outputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str, *results: LazyFrame | None)`**
@@ -319,12 +319,12 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`host_url`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 The strategy to follow when the table already exists.
@@ -333,7 +333,7 @@ The strategy to follow when the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>`schema_strategy`</summary>
 
 The strategy to follow when appending to a table with an existing schema.
@@ -342,7 +342,7 @@ The strategy to follow when appending to a table with an existing schema.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results: List[LazyFrame | None] | LazyFrame | None)`**
@@ -369,17 +369,17 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`tables`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`token`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`write(files)`**
@@ -393,7 +393,7 @@ from the stream method, and it is not intended to be called directly.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`DruidDest(**kwargs)`**
@@ -409,28 +409,28 @@ Data is first written as Parquet files to the configured cloud storage
 staging area (S3, Azure Blob, or GCS) and then ingested into Druid via
 a native batch `index_parallel` task submitted to the Overlord REST API.
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 The Druid connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`destination_tables`</summary>
 
 The datasource(s) to load data into.
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 The strategy to follow when the datasource already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results: list[LazyFrame | None])`**
@@ -453,7 +453,7 @@ datasource, in the same order as destination_tables.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`GCSDestination(uri: str | list[str], credentials: GCPCredentials, format: str | FileFormat = None)`**
@@ -464,7 +464,7 @@ Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
 
 GCS-file-based data outputs.
 
-<details>
+<details open>
 <summary>
 
 **`SupportedFormats(*values)`**
@@ -475,29 +475,29 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
 Enum for the supported formats for the GCSDestination.
 
-<details>
+<details open>
 <summary>`avro`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`csv`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`ndjson`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`parquet`</summary>
 
 </details>
 
 </details>
 
-<details>
+<details open>
 <summary>`allow_fragments`</summary>
 
 Whether to allow fragments in the output.
@@ -506,7 +506,7 @@ Whether to allow fragments in the output.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str, *results)`**
@@ -533,7 +533,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access GCS.
@@ -542,7 +542,7 @@ The credentials required to access GCS.
 
 </details>
 
-<details>
+<details open>
 <summary>`format`</summary>
 
 The format of the file. If not provided, it will be inferred from
@@ -552,7 +552,7 @@ the file extension of the URI.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results)`**
@@ -579,7 +579,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 ‘gs://path/to/files’.
@@ -592,7 +592,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`LocalFileDestination(path: str | list[str], format: str | FileFormat = None)`**
@@ -603,7 +603,7 @@ Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
 
 LocalFile-based data outputs.
 
-<details>
+<details open>
 <summary>
 
 **`SupportedFormats(*values)`**
@@ -614,29 +614,29 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
 Enum for the supported formats for the LocalFileDestination.
 
-<details>
+<details open>
 <summary>`avro`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`csv`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`ndjson`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`parquet`</summary>
 
 </details>
 
 </details>
 
-<details>
+<details open>
 <summary>`allow_fragments`</summary>
 
 Whether to allow fragments in the output.
@@ -645,7 +645,7 @@ Whether to allow fragments in the output.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str, *results)`**
@@ -672,7 +672,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`format`</summary>
 
 The format of the file or files. If not provided, it will be
@@ -682,7 +682,7 @@ inferred from the file extension in the path.
 
 </details>
 
-<details>
+<details open>
 <summary>`path`</summary>
 
 The path or paths to store the files.
@@ -691,7 +691,7 @@ The path or paths to store the files.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results)`**
@@ -720,7 +720,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MSSQLDestination(connection_string: str, destination_table: str | list[str], credentials: dict | UserPasswordCredentials | None = None, server: str | Secret = None, database: str | Secret = None, driver: str | Secret = None, if_table_exists: Literal['append', 'replace'] = 'append', chunk_size: int = 50000, **kwargs)`**
@@ -731,7 +731,7 @@ Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
 
 MSSQL-based data outputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str, *results: LazyFrame | None)`**
@@ -758,7 +758,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`connection_string`</summary>
 
 Get the connection string for the database.
@@ -769,7 +769,7 @@ Get the connection string for the database.
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access
@@ -779,7 +779,7 @@ Microsoft SQL Server. If no credentials were provided, it will return None.
 
 </details>
 
-<details>
+<details open>
 <summary>`destination_table`</summary>
 
 Get the destination table(s) where the data will be stored.
@@ -790,7 +790,7 @@ Get the destination table(s) where the data will be stored.
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 Returns the value of the if_table_exists property.
@@ -798,7 +798,7 @@ This property determines what to do if the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results: list[LazyFrame | None] | LazyFrame | None)`**
@@ -825,7 +825,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`write(files)`**
@@ -839,7 +839,7 @@ from the stream method, and it is not intended to be called directly.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MariaDBDest(conn: MariaDBConn, destination_tables: str | list[str], if_table_exists: Literal['append', 'replace'] = 'append', transactional: bool = True, chunk_size: Annotated[int, Gt(gt=0)] = 100000, loader: Literal['polars_sqlalchemy'] = 'polars_sqlalchemy')`**
@@ -850,21 +850,21 @@ Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
 
 Destination plugin for writing data to MySQL.
 
-<details>
+<details open>
 <summary>`chunk_size`</summary>
 
 The chunk size for writing large results in batches.
 
 </details>
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 The MariaDB connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`destination_tables`</summary>
 
 The table(s) to create. If multiple tables are provided,
@@ -872,21 +872,21 @@ they must be provided as a list.
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 The strategy to follow when the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>`loader`</summary>
 
 The data processing loader to use for executing DB write operation.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results: list[LazyFrame | None])`**
@@ -905,7 +905,7 @@ Store the results into the MariaDB database.
 
 </details>
 
-<details>
+<details open>
 <summary>`transactional`</summary>
 
 Whether to use transactions for writing data to ensure consistency.
@@ -914,7 +914,7 @@ Whether to use transactions for writing data to ensure consistency.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MariaDBDestination(**kwargs)`**
@@ -925,7 +925,7 @@ Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
 
 MariaDB-based data outputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str, *results: LazyFrame | None)`**
@@ -945,7 +945,7 @@ destination.
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access the MariaDB
@@ -955,7 +955,7 @@ database.
 
 </details>
 
-<details>
+<details open>
 <summary>`destination_table`</summary>
 
 The table(s) to create. If multiple tables are provided,
@@ -965,7 +965,7 @@ they must be provided as a list.
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 The strategy to follow when the table already exists.
@@ -974,7 +974,7 @@ The strategy to follow when the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 The URI of the database where the data is going to be stored.
@@ -983,7 +983,7 @@ The URI of the database where the data is going to be stored.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`write(files: list[str | None])`**
@@ -998,7 +998,7 @@ should be of an appropriate size.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MongoDBDestination(uri: str, collections_with_ids: tuple[str, str | None] | List[tuple[str, str | None]], credentials: UserPasswordCredentials = None, connection_options: dict = None, if_collection_exists: Literal['append', 'replace'] = 'append', use_trxs: bool = False, docs_per_trx: int = 1000, maintain_order: bool = False, update_existing: bool = True, fail_on_duplicate_key: bool = True, log_intermediate_files: bool = False, **kwargs)`**
@@ -1009,7 +1009,7 @@ Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
 
 MongoDB-based data outputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str, *results: LazyFrame | None)`**
@@ -1036,27 +1036,27 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`collections_with_ids`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`connection_options`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`if_collection_exists`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results: List[LazyFrame | None] | LazyFrame | None)`**
@@ -1083,12 +1083,12 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`write(files)`**
@@ -1102,7 +1102,7 @@ from the stream method, and it is not intended to be called directly.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MySQLDest(conn: MySQLConn, destination_tables: str | list[str], if_table_exists: Literal['append', 'replace'] = 'append', transactional: bool = True, chunk_size: Annotated[int, Gt(gt=0)] = 100000, loader: Literal['polars_sqlalchemy'] = 'polars_sqlalchemy')`**
@@ -1113,21 +1113,21 @@ Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
 
 Destination plugin for writing data to MySQL.
 
-<details>
+<details open>
 <summary>`chunk_size`</summary>
 
 The chunk size for writing large results in batches.
 
 </details>
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 The MySQL connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`destination_tables`</summary>
 
 The table(s) to create. If multiple tables are provided,
@@ -1135,21 +1135,21 @@ they must be provided as a list.
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 The strategy to follow when the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>`loader`</summary>
 
 The data processing loader to use for executing DB write operation.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results: list[LazyFrame | None])`**
@@ -1168,7 +1168,7 @@ Store the results into the MySQL database.
 
 </details>
 
-<details>
+<details open>
 <summary>`transactional`</summary>
 
 Whether to use transactions for writing data to ensure consistency.
@@ -1177,7 +1177,7 @@ Whether to use transactions for writing data to ensure consistency.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MySQLDestination(**kwargs)`**
@@ -1188,7 +1188,7 @@ Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
 
 MySQL-based data outputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str, *results: LazyFrame | None)`**
@@ -1208,7 +1208,7 @@ destination.
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access the MySQLDatabase.
@@ -1217,7 +1217,7 @@ The credentials required to access the MySQLDatabase.
 
 </details>
 
-<details>
+<details open>
 <summary>`destination_table`</summary>
 
 The table(s) to create. If multiple tables are provided,
@@ -1227,7 +1227,7 @@ they must be provided as a list.
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 The strategy to follow when the table already exists.
@@ -1236,7 +1236,7 @@ The strategy to follow when the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 The URI of the database where the data is going to be stored.
@@ -1245,7 +1245,7 @@ The URI of the database where the data is going to be stored.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`write(files: list[str | None])`**
@@ -1260,7 +1260,7 @@ should be of an appropriate size.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`OracleDestination(uri: str, destination_table: List[str] | str, credentials: UserPasswordCredentials = None, if_table_exists: Literal['append', 'replace'] = 'append')`**
@@ -1271,7 +1271,7 @@ Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
 
 Oracle-based data outputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str, *results: LazyFrame | None)`**
@@ -1291,7 +1291,7 @@ destination.
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access the Oracle
@@ -1301,7 +1301,7 @@ database.
 
 </details>
 
-<details>
+<details open>
 <summary>`destination_table`</summary>
 
 The table(s) to create. If multiple tables are provided,
@@ -1311,7 +1311,7 @@ they must be provided as a list.
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 The strategy to follow when the table already exists.
@@ -1320,7 +1320,7 @@ The strategy to follow when the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 The URI of the database where the data is going to be stored.
@@ -1329,7 +1329,7 @@ The URI of the database where the data is going to be stored.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`write(files: list[str | None])`**
@@ -1344,7 +1344,7 @@ should be of an appropriate size.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`PostgresDest(conn: PostgresConn, destination_tables: str | list[str], if_table_exists: Literal['append', 'replace'] = 'append', transactional: bool = True, chunk_size: Annotated[int, Gt(gt=0)] = 100000, loader: Literal['polars_sqlalchemy'] = 'polars_sqlalchemy')`**
@@ -1355,21 +1355,21 @@ Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
 
 Destination plugin for writing data to PostgreSQL.
 
-<details>
+<details open>
 <summary>`chunk_size`</summary>
 
 The chunk size for writing large results in batches.
 
 </details>
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 The Postgres connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`destination_tables`</summary>
 
 The table(s) to create. If multiple tables are provided,
@@ -1377,21 +1377,21 @@ they must be provided as a list.
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 The strategy to follow when the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>`loader`</summary>
 
 The data processing loader to use for executing DB write operation.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results: list[LazyFrame | None])`**
@@ -1410,7 +1410,7 @@ Store the results into the PostgreSQL database.
 
 </details>
 
-<details>
+<details open>
 <summary>`transactional`</summary>
 
 Whether to use transactions for writing data to ensure consistency.
@@ -1419,7 +1419,7 @@ Whether to use transactions for writing data to ensure consistency.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`PostgresDestination(**kwargs)`**
@@ -1430,7 +1430,7 @@ Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
 
 Postgres-based data outputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str, *results: LazyFrame | None)`**
@@ -1450,7 +1450,7 @@ destination.
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access the
@@ -1460,7 +1460,7 @@ Postgres database.
 
 </details>
 
-<details>
+<details open>
 <summary>`destination_table`</summary>
 
 The table(s) to create. If multiple tables are provided,
@@ -1470,7 +1470,7 @@ they must be provided as a list.
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 The strategy to follow when the table already exists.
@@ -1479,7 +1479,7 @@ The strategy to follow when the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 The URI of the database where the data is going to be stored.
@@ -1488,7 +1488,7 @@ The URI of the database where the data is going to be stored.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`write(files: list[str | None])`**
@@ -1503,7 +1503,7 @@ should be of an appropriate size.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`S3Destination(uri: str | list[str], credentials: S3Credentials, format: str | FileFormat = None, region: str = None, catalog: AWSGlue = None)`**
@@ -1514,7 +1514,7 @@ Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
 
 S3-file-based data outputs.
 
-<details>
+<details open>
 <summary>
 
 **`SupportedFormats(*values)`**
@@ -1525,29 +1525,29 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
 Enum for the supported formats for the S3Destination.
 
-<details>
+<details open>
 <summary>`avro`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`csv`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`ndjson`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`parquet`</summary>
 
 </details>
 
 </details>
 
-<details>
+<details open>
 <summary>`allow_fragments`</summary>
 
 Whether to allow fragments in the output.
@@ -1556,7 +1556,7 @@ Whether to allow fragments in the output.
 
 </details>
 
-<details>
+<details open>
 <summary>`catalog`</summary>
 
 The catalog to store the data in.
@@ -1565,7 +1565,7 @@ The catalog to store the data in.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str, *results)`**
@@ -1592,7 +1592,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access the S3 bucket.
@@ -1601,7 +1601,7 @@ The credentials required to access the S3 bucket.
 
 </details>
 
-<details>
+<details open>
 <summary>`format`</summary>
 
 The format of the file. If not provided, it will be inferred from
@@ -1611,7 +1611,7 @@ the file.
 
 </details>
 
-<details>
+<details open>
 <summary>`region`</summary>
 
 The region where the S3 bucket is located.
@@ -1620,7 +1620,7 @@ The region where the S3 bucket is located.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results)`**
@@ -1647,7 +1647,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 ‘s3://path/to/files’.
@@ -1660,7 +1660,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`SnowflakeDestination(connection_parameters: dict, destination_table: List[str] | str, if_table_exists: Literal['append', 'replace'] = 'append', stage: str | None = None, **kwargs)`**
@@ -1671,7 +1671,7 @@ Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
 
 Snowflake based data outputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str, *results: LazyFrame | None)`**
@@ -1698,7 +1698,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>`destination_table`</summary>
 
 Get the destination table(s) where the data will be stored.
@@ -1709,7 +1709,7 @@ Get the destination table(s) where the data will be stored.
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 Returns the value of the if_table_exists property.
@@ -1717,7 +1717,7 @@ This property determines what to do if the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results: List[LazyFrame | None] | LazyFrame | None)`**
@@ -1744,7 +1744,7 @@ the execution of the plugin, not the final destination of the data)
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`write(files)`**
@@ -1758,7 +1758,7 @@ from the stream method, and it is not intended to be called directly.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`StarRocksDest(**kwargs)`**
@@ -1773,35 +1773,35 @@ Data is first written as Parquet files to the configured cloud storage staging a
 (S3, Azure Blob, or GCS) and then ingested into StarRocks via its `FILES()`
 table function in an `INSERT INTO … SELECT * FROM FILES(...)` statement.
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 The StarRocks connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`destination_tables`</summary>
 
 The table(s) to load data into.
 
 </details>
 
-<details>
+<details open>
 <summary>`if_table_exists`</summary>
 
 The strategy to follow when the table already exists.
 
 </details>
 
-<details>
+<details open>
 <summary>`schema_evolution`</summary>
 
 The schema evolution strategy.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str, *results: list[LazyFrame | None])`**
@@ -1824,7 +1824,7 @@ in the same order as destination_tables.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`TableOutput(table: str | list[str])`**
@@ -1835,7 +1835,7 @@ Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
 
 Table-based data outputs.
 
-<details>
+<details open>
 <summary>`table`</summary>
 
 The table(s) to create. If multiple tables are provided,

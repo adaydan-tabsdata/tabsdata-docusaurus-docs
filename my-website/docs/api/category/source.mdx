@@ -4,7 +4,7 @@ title: "Sources"
 
 # Sources
 
- <details>
+ <details open>
 <summary>
 
 **`AzureSource(uri: str | list[str], credentials: AzureCredentials, format: str | FileFormat = None, initial_last_modified: str | datetime = None, file_info: str | FileInfo | None = None)`**
@@ -15,7 +15,7 @@ Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Azure-file-based data inputs.
 
-<details>
+<details open>
 <summary>
 
 **`SupportedFormats(*values)`**
@@ -26,34 +26,34 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
 Enum for the supported formats for the AzureSource.
 
-<details>
+<details open>
 <summary>`avro`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`csv`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`log`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`ndjson`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`parquet`</summary>
 
 </details>
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -77,7 +77,7 @@ single file and a second argument with two files:return
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access Azure.
@@ -86,7 +86,7 @@ The credentials required to access Azure.
 
 </details>
 
-<details>
+<details open>
 <summary>`file_info`</summary>
 
 The file information to add as system columns.
@@ -95,7 +95,7 @@ The file information to add as system columns.
 
 </details>
 
-<details>
+<details open>
 <summary>`format`</summary>
 
 The format of the file. If not provided, it will be inferred from
@@ -105,7 +105,7 @@ the file extension of the data.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_last_modified`</summary>
 
 The date and time after which the files were modified.
@@ -114,7 +114,7 @@ The date and time after which the files were modified.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 Return a dictionary with the initial values to be stored after execution of
@@ -128,7 +128,7 @@ as values, all the type string.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 ‘az://path/to/files’.
@@ -141,7 +141,7 @@ as values, all the type string.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`DatabricksSource(host_url: str, token: str | Secret, queries: list[str] | str, initial_values: dict | None = None, warehouse: str | None = None, warehouse_id: str | None = None, **kwargs)`**
@@ -152,7 +152,7 @@ Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Databricks based data inputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -176,31 +176,31 @@ single file and a second argument with two files:return
 
 </details>
 
-<details>
+<details open>
 <summary>`host_url`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 The initial values for the parameters in the SQL queries.
 
 </details>
 
-<details>
+<details open>
 <summary>`queries`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`token`</summary>
 
 </details>
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`Db2Src(**kwargs)`**
@@ -211,49 +211,49 @@ Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Source plugin for reading data from Db2.
 
-<details>
+<details open>
 <summary>`chunk_size`</summary>
 
 The chunk size in records for reading large queries in batches.
 
 </details>
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 The Db2 connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 The initial values for the parameters in the SQL queries.
 
 </details>
 
-<details>
+<details open>
 <summary>`loader`</summary>
 
 The data processing loader to use for executing SQL imports.
 
 </details>
 
-<details>
+<details open>
 <summary>`queries`</summary>
 
 The SQL queries to execute to read data.
 
 </details>
 
-<details>
+<details open>
 <summary>`schema_overrides`</summary>
 
 The schema overrides for the tables being read.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str)`**
@@ -266,7 +266,7 @@ Execute the query and load the results as a list of TableFrames.
 
 </details>
 
-<details>
+<details open>
 <summary>`transactional`</summary>
 
 Whether to use transactions for reading to ensure consistency.
@@ -275,7 +275,7 @@ Whether to use transactions for reading to ensure consistency.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`GCSSource(uri: str | list[str], credentials: GCPCredentials, format: str | FileFormat = None, initial_last_modified: str | datetime = None, file_info: str | FileInfo | None = None)`**
@@ -286,7 +286,7 @@ Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 GCS-file-based data inputs.
 
-<details>
+<details open>
 <summary>
 
 **`SupportedFormats(*values)`**
@@ -297,34 +297,34 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
 Enum for the supported formats for the GCSSource.
 
-<details>
+<details open>
 <summary>`avro`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`csv`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`log`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`ndjson`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`parquet`</summary>
 
 </details>
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -348,7 +348,7 @@ single file and a second argument with two files:return
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access GCS.
@@ -357,7 +357,7 @@ The credentials required to access GCS.
 
 </details>
 
-<details>
+<details open>
 <summary>`file_info`</summary>
 
 The file information to add as system columns.
@@ -366,7 +366,7 @@ The file information to add as system columns.
 
 </details>
 
-<details>
+<details open>
 <summary>`format`</summary>
 
 The format of the file. If not provided, it will be inferred from
@@ -376,7 +376,7 @@ the file extension of the data.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_last_modified`</summary>
 
 The date and time after which the files were modified.
@@ -385,7 +385,7 @@ The date and time after which the files were modified.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 Return a dictionary with the initial values to be stored after execution of
@@ -399,7 +399,7 @@ as values, all the type string.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 ‘gs://path/to/files’.
@@ -412,7 +412,7 @@ as values, all the type string.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`LocalFileSource(path: str | list[str], format: str | FileFormat = None, initial_last_modified: str | datetime = None, file_info: str | FileInfo | None = None)`**
@@ -423,7 +423,7 @@ Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Local-file-based data inputs.
 
-<details>
+<details open>
 <summary>
 
 **`SupportedFormats(*values)`**
@@ -434,34 +434,34 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
 Enum for the supported formats for the LocalFileSource.
 
-<details>
+<details open>
 <summary>`avro`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`csv`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`log`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`ndjson`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`parquet`</summary>
 
 </details>
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -485,7 +485,7 @@ single file and a second argument with two files:return
 
 </details>
 
-<details>
+<details open>
 <summary>`file_info`</summary>
 
 The file information to add as system columns.
@@ -494,7 +494,7 @@ The file information to add as system columns.
 
 </details>
 
-<details>
+<details open>
 <summary>`format`</summary>
 
 The format of the file or files. If not provided, it will be
@@ -504,7 +504,7 @@ inferred  from the file extension in the path.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_last_modified`</summary>
 
 The date and time after which the files were modified.
@@ -513,7 +513,7 @@ The date and time after which the files were modified.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 Return a dictionary with the initial values to be stored after execution of
@@ -527,7 +527,7 @@ as values, all the type string.
 
 </details>
 
-<details>
+<details open>
 <summary>`path`</summary>
 
 The path or paths to the files to load.
@@ -538,7 +538,7 @@ The path or paths to the files to load.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MSSQLSource(**kwargs)`**
@@ -549,7 +549,7 @@ Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Microsoft SQL Server based data inputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -562,7 +562,7 @@ Execute the query and yield chunks of data.
 
 </details>
 
-<details>
+<details open>
 <summary>`connection_string`</summary>
 
 Get the connection string for the database.
@@ -573,7 +573,7 @@ Get the connection string for the database.
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access
@@ -583,7 +583,7 @@ Microsoft SQL Server. If no credentials were provided, it will return None.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 The initial values for the parameters in the SQL queries.
@@ -592,7 +592,7 @@ The initial values for the parameters in the SQL queries.
 
 </details>
 
-<details>
+<details open>
 <summary>`query`</summary>
 
 Get the SQL query or queries to execute.
@@ -605,7 +605,7 @@ Get the SQL query or queries to execute.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MSSQLSrc(conn: MSSQLConn, queries: str | list[str], initial_values: dict[str, Any] | None = None, transactional: bool = True, chunk_size: Annotated[int, Gt(gt=0)] = 100000, loader: Literal['polars_sqlalchemy', 'pandas'] = 'polars_sqlalchemy', schema_overrides: dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64] | list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]] | None = None)`**
@@ -616,49 +616,49 @@ Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Source Plugin for reading data from a Microsoft SQL Server (MSSQL) database.
 
-<details>
+<details open>
 <summary>`chunk_size`</summary>
 
 The chunk size in records for reading large queries in batches.
 
 </details>
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 The MSSQL connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 The initial values for the parameters in the SQL queries.
 
 </details>
 
-<details>
+<details open>
 <summary>`loader`</summary>
 
 The data processing loader to use for executing SQL imports.
 
 </details>
 
-<details>
+<details open>
 <summary>`queries`</summary>
 
 The SQL queries to execute to read data.
 
 </details>
 
-<details>
+<details open>
 <summary>`schema_overrides`</summary>
 
 The schema overrides for the tables being read.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str)`**
@@ -671,7 +671,7 @@ Execute the query and load the results as a list of TableFrames.
 
 </details>
 
-<details>
+<details open>
 <summary>`transactional`</summary>
 
 Whether to use transactions for reading to ensure consistency.
@@ -680,7 +680,7 @@ Whether to use transactions for reading to ensure consistency.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MariaDBSource(**kwargs)`**
@@ -691,7 +691,7 @@ Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 MariaDB-based data inputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -715,7 +715,7 @@ single file and a second argument with two files:return
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access
@@ -725,7 +725,7 @@ MariaDB. If no credentials were provided, it will return None.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 The initial values for the parameters in the SQL queries.
@@ -734,7 +734,7 @@ The initial values for the parameters in the SQL queries.
 
 </details>
 
-<details>
+<details open>
 <summary>`query`</summary>
 
 The SQL query(s) to execute.
@@ -743,7 +743,7 @@ The SQL query(s) to execute.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 The URI of the database where the data is located.
@@ -754,7 +754,7 @@ The URI of the database where the data is located.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MariaDBSrc(conn: MariaDBConn, queries: str | list[str], initial_values: dict[str, Any] | None = None, transactional: bool = True, chunk_size: Annotated[int, Gt(gt=0)] = 100000, loader: Literal['polars_sqlalchemy', 'pandas'] = 'polars_sqlalchemy', schema_overrides: dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64] | list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]] | None = None)`**
@@ -765,47 +765,47 @@ Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Source plugin for reading data from MariaDB.
 
-<details>
+<details open>
 <summary>`chunk_size`</summary>
 
 The chunk size in records for reading large queries in batches.
 
 </details>
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 The MariaDB connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 The initial values for the parameters in the SQL queries.
 
 </details>
 
-<details>
+<details open>
 <summary>`loader`</summary>
 
 The data processing loader to use for executing SQL imports.
 
 </details>
 
-<details>
+<details open>
 <summary>`queries`</summary>
 
 The SQL queries to execute to read data.
 
 </details>
 
-<details>
+<details open>
 <summary>`schema_overrides`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str)`**
@@ -818,7 +818,7 @@ Execute the query and load the results as a list of TableFrames.
 
 </details>
 
-<details>
+<details open>
 <summary>`transactional`</summary>
 
 Whether to use transactions for reading to ensure consistency.
@@ -827,7 +827,7 @@ Whether to use transactions for reading to ensure consistency.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MySQLSource(**kwargs)`**
@@ -838,7 +838,7 @@ Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 MySQL-based data inputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -862,7 +862,7 @@ single file and a second argument with two files:return
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access the
@@ -872,7 +872,7 @@ MySQLDatabase. If no credentials were provided, it will return None.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 The initial values for the parameters in the SQL queries.
@@ -881,7 +881,7 @@ The initial values for the parameters in the SQL queries.
 
 </details>
 
-<details>
+<details open>
 <summary>`query`</summary>
 
 The SQL query(s) to execute.
@@ -890,7 +890,7 @@ The SQL query(s) to execute.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 The URI of the database where the data is located.
@@ -901,7 +901,7 @@ The URI of the database where the data is located.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MySQLSrc(conn: MySQLConn, queries: str | list[str], initial_values: dict[str, Any] | None = None, transactional: bool = True, chunk_size: Annotated[int, Gt(gt=0)] = 100000, loader: Literal['polars_sqlalchemy', 'pandas'] = 'polars_sqlalchemy', schema_overrides: dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64] | list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]] | None = None)`**
@@ -912,49 +912,49 @@ Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Source plugin for reading data from MySQL.
 
-<details>
+<details open>
 <summary>`chunk_size`</summary>
 
 The chunk size in records for reading large queries in batches.
 
 </details>
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 The MySQL connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 The initial values for the parameters in the SQL queries.
 
 </details>
 
-<details>
+<details open>
 <summary>`loader`</summary>
 
 The data processing loader to use for executing SQL imports.
 
 </details>
 
-<details>
+<details open>
 <summary>`queries`</summary>
 
 The SQL queries to execute to read data.
 
 </details>
 
-<details>
+<details open>
 <summary>`schema_overrides`</summary>
 
 The schema overrides for the tables being read.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str)`**
@@ -967,7 +967,7 @@ Execute the query and load the results as a list of TableFrames.
 
 </details>
 
-<details>
+<details open>
 <summary>`transactional`</summary>
 
 Whether to use transactions for reading to ensure consistency.
@@ -976,7 +976,7 @@ Whether to use transactions for reading to ensure consistency.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`OracleSource(**kwargs)`**
@@ -987,7 +987,7 @@ Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Oracle-based data inputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -1011,7 +1011,7 @@ single file and a second argument with two files:return
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access
@@ -1021,7 +1021,7 @@ Oracle. If no credentials were provided, it will return None.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 The initial values for the parameters in the SQL queries.
@@ -1030,7 +1030,7 @@ The initial values for the parameters in the SQL queries.
 
 </details>
 
-<details>
+<details open>
 <summary>`query`</summary>
 
 The SQL query(s) to execute.
@@ -1039,7 +1039,7 @@ The SQL query(s) to execute.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 The URI of the database where the data is located.
@@ -1050,7 +1050,7 @@ The URI of the database where the data is located.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`OracleSrc(conn: OracleConn, queries: str | list[str], initial_values: dict[str, Any] | None = None, transactional: bool = True, chunk_size: Annotated[int, Gt(gt=0)] = 100000, loader: Literal['polars_sqlalchemy', 'pandas'] = 'polars_sqlalchemy', schema_overrides: dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64] | list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]] | None = None)`**
@@ -1061,49 +1061,49 @@ Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Source plugin for reading data from Oracle.
 
-<details>
+<details open>
 <summary>`chunk_size`</summary>
 
 The chunk size in records for reading large queries in batches.
 
 </details>
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 The Oracle connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 The initial values for the parameters in the SQL queries.
 
 </details>
 
-<details>
+<details open>
 <summary>`loader`</summary>
 
 The data processing loader to use for executing SQL imports.
 
 </details>
 
-<details>
+<details open>
 <summary>`queries`</summary>
 
 The SQL queries to execute to read data.
 
 </details>
 
-<details>
+<details open>
 <summary>`schema_overrides`</summary>
 
 The schema overrides for the tables being read.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str)`**
@@ -1116,7 +1116,7 @@ Execute the query and load the results as a list of TableFrames.
 
 </details>
 
-<details>
+<details open>
 <summary>`transactional`</summary>
 
 Whether to use transactions for reading to ensure consistency.
@@ -1125,7 +1125,7 @@ Whether to use transactions for reading to ensure consistency.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`PostgresSource(**kwargs)`**
@@ -1136,7 +1136,7 @@ Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Postgres-based data inputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -1160,7 +1160,7 @@ single file and a second argument with two files:return
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access the
@@ -1170,7 +1170,7 @@ PostgresDatabase. If no credentials were provided, it will return None.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 The initial values for the parameters in the SQL queries.
@@ -1179,7 +1179,7 @@ The initial values for the parameters in the SQL queries.
 
 </details>
 
-<details>
+<details open>
 <summary>`query`</summary>
 
 The SQL query(s) to execute.
@@ -1188,7 +1188,7 @@ The SQL query(s) to execute.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 The URI of the database where the data is located.
@@ -1199,7 +1199,7 @@ The URI of the database where the data is located.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`PostgresSrc(conn: PostgresConn, queries: str | list[str], initial_values: dict[str, Any] | None = None, transactional: bool = True, chunk_size: Annotated[int, Gt(gt=0)] = 100000, loader: Literal['polars_sqlalchemy', 'pandas'] = 'polars_sqlalchemy', schema_overrides: dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64] | list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]] | None = None)`**
@@ -1210,49 +1210,49 @@ Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Source plugin for reading data from Postgres.
 
-<details>
+<details open>
 <summary>`chunk_size`</summary>
 
 The chunk size in records for reading large queries in batches.
 
 </details>
 
-<details>
+<details open>
 <summary>`conn`</summary>
 
 The Postgres connection configuration.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 The initial values for the parameters in the SQL queries.
 
 </details>
 
-<details>
+<details open>
 <summary>`loader`</summary>
 
 The data processing loader to use for executing SQL imports.
 
 </details>
 
-<details>
+<details open>
 <summary>`queries`</summary>
 
 The SQL queries to execute to read data.
 
 </details>
 
-<details>
+<details open>
 <summary>`schema_overrides`</summary>
 
 The schema overrides for the tables being read.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str)`**
@@ -1265,7 +1265,7 @@ Execute the query and load the results as a list of TableFrames.
 
 </details>
 
-<details>
+<details open>
 <summary>`transactional`</summary>
 
 Whether to use transactions for reading to ensure consistency.
@@ -1274,7 +1274,7 @@ Whether to use transactions for reading to ensure consistency.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`S3Source(uri: str | list[str], credentials: S3Credentials, format: str | FileFormat = None, initial_last_modified: str | datetime = None, region: str = None, file_info: str | FileInfo | None = None)`**
@@ -1285,7 +1285,7 @@ Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 S3-file-based data inputs.
 
-<details>
+<details open>
 <summary>
 
 **`SupportedFormats(*values)`**
@@ -1296,34 +1296,34 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
 Enum for the supported formats for the S3Source.
 
-<details>
+<details open>
 <summary>`avro`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`csv`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`log`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`ndjson`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`parquet`</summary>
 
 </details>
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -1347,7 +1347,7 @@ single file and a second argument with two files:return
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 The credentials required to access the S3 bucket.
@@ -1356,7 +1356,7 @@ The credentials required to access the S3 bucket.
 
 </details>
 
-<details>
+<details open>
 <summary>`file_info`</summary>
 
 The file information to add as system columns.
@@ -1365,7 +1365,7 @@ The file information to add as system columns.
 
 </details>
 
-<details>
+<details open>
 <summary>`format`</summary>
 
 The format of the file. If not provided, it will be inferred from
@@ -1375,7 +1375,7 @@ the file.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_last_modified`</summary>
 
 The date and time after which the files were modified.
@@ -1384,7 +1384,7 @@ The date and time after which the files were modified.
 
 </details>
 
-<details>
+<details open>
 <summary>`initial_values`</summary>
 
 Return a dictionary with the initial values to be stored after execution of
@@ -1398,7 +1398,7 @@ as values, all the type string.
 
 </details>
 
-<details>
+<details open>
 <summary>`region`</summary>
 
 The region where the S3 bucket is located.
@@ -1407,7 +1407,7 @@ The region where the S3 bucket is located.
 
 </details>
 
-<details>
+<details open>
 <summary>`uri`</summary>
 
 ‘s3://path/to/files’.
@@ -1420,7 +1420,7 @@ The region where the S3 bucket is located.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`SalesforceReportSource(credentials: SalesforceCredentials, report: str | list[str], column_name_strategy: Literal['columnName', 'label'], find_report_by: Literal['id', 'name'] = None, filter: tuple[str, str, str] | list[tuple[str, str, str]] = None, filter_logic: str = None, instance_url: str = None, last_modified_column: str = None, initial_last_modified: str = None, **kwargs)`**
@@ -1431,7 +1431,7 @@ Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Salesforce Reports based data inputs.
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -1455,39 +1455,39 @@ single file and a second argument with two files:return
 
 </details>
 
-<details>
+<details open>
 <summary>`column_name_strategy`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`filter`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`filter_logic`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`find_report_by`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`report`</summary>
 
 </details>
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`SalesforceSource(credentials: SalesforceCredentials, query: str | list[str], instance_url: str = None, include_deleted: bool = False, initial_last_modified: str = None, **kwargs)`**
@@ -1498,7 +1498,7 @@ Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Salesforce (SOQL query) based data inputs (not Salesforce Reports).
 
-<details>
+<details open>
 <summary>
 
 **`chunk(working_dir: str)`**
@@ -1522,19 +1522,19 @@ single file and a second argument with two files:return
 
 </details>
 
-<details>
+<details open>
 <summary>`credentials`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`query`</summary>
 
 </details>
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`Stage(use_existing_data: bool = True)`**
@@ -1545,7 +1545,7 @@ Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Inputs that have been placed in a stage, usually from a StageTrigger.
 
-<details>
+<details open>
 <summary>
 
 **`stream(working_dir: str)`**
@@ -1554,7 +1554,7 @@ Inputs that have been placed in a stage, usually from a StageTrigger.
 
 </details>
 
-<details>
+<details open>
 <summary>`use_existing_data`</summary>
 
 </details>

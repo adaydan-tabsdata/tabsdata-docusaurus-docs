@@ -6,7 +6,7 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # Filters
 
- <details>
+ <details open>
 <summary>
 
 **`extract_as_columns(offset: int, length: int)`**
@@ -59,7 +59,7 @@ and its value is a list of values from the selected slice.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`extract_as_rows(offset: int, length: int)`**
@@ -114,7 +114,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`filter(*predicates: td_typing.IntoExprColumn | Iterable[td_typing.IntoExprColumn] | bool | list[bool] | np.ndarray[Any, Any])`**
@@ -160,7 +160,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`first`**
@@ -201,7 +201,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`first_row(named: bool = False)`**
@@ -238,7 +238,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`head(n: int = 5)`**
@@ -280,7 +280,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`last`**
@@ -321,7 +321,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`last_row(named: bool = False)`**
@@ -358,7 +358,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`limit(n: int = 5)`**
@@ -401,7 +401,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`slice(offset: int, length: int | None = None)`**
@@ -451,7 +451,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`tail(n: int = 5)`**
@@ -493,7 +493,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`unique(subset: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector] | None = None, *, keep: td_typing.UniqueKeepStrategy = 'any', maintain_order: bool = False)`**
@@ -558,7 +558,7 @@ eliminate duplicate rows).
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`filter(*predicates: Expr | Series | str | Iterable[Expr | Series | str])`**
@@ -609,7 +609,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`slice(offset: int | Expr, length: int | Expr | None = None)`**

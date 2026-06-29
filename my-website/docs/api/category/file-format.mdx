@@ -6,7 +6,7 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # File Formats
 
- <details>
+ <details open>
 <summary>
 
 **`AvroFormat(chunk_size: int = 50000)`**
@@ -17,7 +17,7 @@ Bases: `FileFormat`
 
 Avro file format.
 
-<details>
+<details open>
 <summary>`chunk_size`</summary>
 
 Returns the chunk size for reading/writing AVRO files.
@@ -30,7 +30,7 @@ Returns the chunk size for reading/writing AVRO files.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`CSVFormat(separator: str | int = ',', quote_char: str | int = '"', eol_char: str | int = '\n', input_encoding: str = 'Utf8', input_null_values: list | None = None, input_missing_is_null: bool = True, input_truncate_ragged_lines: bool = False, input_comment_prefix: str | int | None = None, input_try_parse_dates: bool = False, input_decimal_comma: bool = False, input_has_header: bool = True, input_skip_rows: int = 0, input_skip_rows_after_header: int = 0, input_raise_if_empty: bool = True, input_ignore_errors: bool = False, output_include_header: bool = True, output_datetime_format: str | None = None, output_date_format: str | None = None, output_time_format: str | None = None, output_float_scientific: bool | None = None, output_float_precision: int | None = None, output_null_value: str | None = None, output_quote_style: str | None = None, output_maintain_order: bool = True)`**
@@ -178,7 +178,7 @@ when exporting data.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`LogFormat`**
@@ -191,7 +191,7 @@ Log file format.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`NDJSONFormat`**
@@ -204,7 +204,7 @@ JSON file format.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`ParquetFormat`**

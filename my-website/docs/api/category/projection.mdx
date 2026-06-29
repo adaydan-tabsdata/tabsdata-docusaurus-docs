@@ -6,7 +6,7 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # Projection
 
- <details>
+ <details open>
 <summary>
 
 **`drop(*columns: td_typing.ColumnNameOrSelector | Iterable[td_typing.ColumnNameOrSelector], strict: bool = True)`**
@@ -61,7 +61,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`item`**
@@ -97,7 +97,7 @@ A
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`rename(mapping: dict[str, str])`**
@@ -144,7 +144,7 @@ Examples:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`select(*exprs: td_typing.IntoExpr | Iterable[td_typing.IntoExpr], **named_exprs: td_typing.IntoExpr)`**
@@ -201,7 +201,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`udf(on: td_typing.IntoExpr | list[td_typing.IntoExpr], function: td_udf.UDF)`**
@@ -357,7 +357,7 @@ defining on_batch or on_element to produce the output series.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`unnest(columns: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector], *more_columns: td_typing.ColumnNameOrSelector)`**
@@ -419,7 +419,7 @@ arguments.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`with_columns(*exprs: td_typing.IntoExpr | Iterable[td_typing.IntoExpr], **named_exprs: td_typing.IntoExpr)`**
@@ -474,7 +474,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`all`**
@@ -532,7 +532,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`alpha(ascii_only: bool = False, *, ignore_spaces: bool = False)`**
@@ -599,7 +599,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`alphanumeric(ascii_only: bool = False, *, ignore_spaces: bool = False)`**
@@ -667,7 +667,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`binary`**
@@ -725,7 +725,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`boolean`**
@@ -783,7 +783,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`by_dtype(*dtypes: td_typing.DataType | PythonDataType | Iterable[td_typing.DataType] | Iterable[PythonDataType])`**
@@ -843,7 +843,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`by_index(*indices: int | range | Sequence[int | range])`**
@@ -923,7 +923,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`by_name(*names: str | Collection[str], require_all: bool = True)`**
@@ -991,7 +991,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`categorical`**
@@ -1052,7 +1052,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`contains(*substring: str)`**
@@ -1108,7 +1108,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`date`**
@@ -1184,7 +1184,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`datetime(time_unit: Literal['ns', 'us', 'ms'] | Collection[Literal['ns', 'us', 'ms']] | None = None, time_zone: str | timezone | Collection[str | timezone | None] | None = ('*', None))`**
@@ -1291,7 +1291,7 @@ Use "*" to match any column with any time zone.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`decimal`**
@@ -1354,7 +1354,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`digit(ascii_only: bool = False)`**
@@ -1414,7 +1414,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`duration(time_unit: Literal['ns', 'us', 'ms'] | Collection[Literal['ns', 'us', 'ms']] | None = None)`**
@@ -1482,7 +1482,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`ends_with(*suffix: str)`**
@@ -1542,7 +1542,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`exclude(columns: str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr | Collection[str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr], *more_columns: str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr)`**
@@ -1614,7 +1614,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`first`**
@@ -1673,7 +1673,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`float`**
@@ -1732,7 +1732,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`integer`**
@@ -1792,7 +1792,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`last`**
@@ -1854,7 +1854,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`matches(pattern: str)`**
@@ -1914,7 +1914,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`numeric`**
@@ -1976,7 +1976,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`object`**
@@ -2039,7 +2039,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`signed_integer`**
@@ -2099,7 +2099,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`starts_with(*prefix: str)`**
@@ -2159,7 +2159,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`string(*, include_categorical: bool = False)`**
@@ -2218,7 +2218,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`temporal`**
@@ -2318,7 +2318,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`time`**
@@ -2380,7 +2380,7 @@ Selected:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`unsigned_integer`**

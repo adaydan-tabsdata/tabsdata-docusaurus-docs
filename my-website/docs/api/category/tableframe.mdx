@@ -6,7 +6,7 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # Tableframe
 
- <details>
+ <details open>
 <summary>
 
 **`assert_has_cols(cols: str | list[str], exact: bool | None = False)`**
@@ -45,7 +45,7 @@ columns.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`clear(n: int = 0)`**
@@ -89,7 +89,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`empty(schema: SimpleSchema = None)`**
@@ -100,7 +100,7 @@ Creates an empty (no column - no row) TableFrame.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`from_dict(data: Mapping[str, Sequence[object] | Mapping[str, Sequence[object]]] | None = None)`**
@@ -112,7 +112,7 @@ None produces as an empty (no column - no row) tableframe.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`from_pandas(data: pd.DataFrame | None = None)`**
@@ -124,7 +124,7 @@ None produces as an empty (no column - no row) tableframe.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`from_polars(data: LazyFrame | DataFrame | None = None)`**
@@ -136,7 +136,7 @@ None produces as an empty (no column - no row) tableframe.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`has_cols(cols: str | list[str], exact: bool | None = False)`**
@@ -197,7 +197,7 @@ A set of columns in the TableFrame missing in cols.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`has_same_schema(tf: TableFrame)`**
@@ -265,7 +265,7 @@ False
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`is_empty`**
@@ -309,7 +309,7 @@ True
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`sort(by: td_typing.IntoExpr | Iterable[td_typing.IntoExpr], *more_by: td_typing.IntoExpr, descending: bool | Sequence[bool] = False, nulls_last: bool | Sequence[bool] = False, maintain_order: bool = False)`**
@@ -382,7 +382,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`to_dict`**
@@ -393,7 +393,7 @@ Creates a dictionary from this tableframe.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`to_pandas`**
@@ -404,7 +404,7 @@ Creates a pandas dataframe from this tableframe.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`to_polars_df`**
@@ -415,7 +415,7 @@ Creates a polars dataframe from this tableframe.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`to_polars_lf`**

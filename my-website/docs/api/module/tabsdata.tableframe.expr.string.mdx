@@ -6,7 +6,7 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # tabsdata.tableframe.expr.string
 
- <details>
+ <details open>
 <summary>
 
 **`ExprStringNameSpace(expr: ExprStringNameSpace)`**
@@ -15,7 +15,7 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
-<details>
+<details open>
 <summary>
 
 **`contains(pattern: str | Expr, *, literal: bool = False, strict: bool = True)`**
@@ -60,7 +60,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`contains_any(patterns: td_typing.IntoExpr, *, ascii_case_insensitive: bool = False)`**
@@ -102,7 +102,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`count_matches(pattern: str | Expr, *, literal: bool = False)`**
@@ -145,7 +145,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`ends_with(suffix: str | Expr)`**
@@ -178,7 +178,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`extract(pattern: td_typing.IntoExprColumn, group_index: int = 1)`**
@@ -218,7 +218,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`find(pattern: str | Expr, *, literal: bool = False, strict: bool = True)`**
@@ -263,7 +263,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`grok(pattern: str, schema: dict[str, Column])`**
@@ -327,7 +327,7 @@ both the column name and its data type.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`head(n: int | td_typing.IntoExprColumn)`**
@@ -358,7 +358,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`len_bytes`**
@@ -389,7 +389,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`len_chars`**
@@ -420,7 +420,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`pad_end(length: int, fill_char: str = ' ')`**
@@ -460,7 +460,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`pad_start(length: int, fill_char: str = ' ')`**
@@ -500,7 +500,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`replace(pattern: str | Expr, value: str | Expr, *, literal: bool = False, n: int = 1)`**
@@ -550,7 +550,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`replace_all(pattern: str | Expr, value: str | Expr, *, literal: bool = False)`**
@@ -596,7 +596,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`replace_many(patterns: td_typing.IntoExpr | Mapping[str, str], replace_with: td_typing.IntoExpr | NoDefault = <no_default>, *, ascii_case_insensitive: bool = False)`**
@@ -642,7 +642,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`reverse`**
@@ -673,7 +673,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`slice(offset: int | td_typing.IntoExprColumn, length: int | td_typing.IntoExprColumn | None = None)`**
@@ -712,7 +712,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`starts_with(prefix: str | Expr)`**
@@ -746,7 +746,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`strip_chars(characters: td_typing.IntoExpr = None)`**
@@ -778,7 +778,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`strip_chars_end(characters: td_typing.IntoExpr = None)`**
@@ -810,7 +810,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`strip_chars_start(characters: td_typing.IntoExpr = None)`**
@@ -842,7 +842,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`strip_prefix(prefix: td_typing.IntoExpr)`**
@@ -874,7 +874,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`strip_suffix(suffix: td_typing.IntoExpr)`**
@@ -906,7 +906,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`tail(n: int | td_typing.IntoExprColumn)`**
@@ -937,7 +937,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`to_date(fmt: str | None = None, *, strict: bool = True)`**
@@ -977,7 +977,7 @@ See formats.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`to_datetime(format: str | None = None, *, time_unit: Literal['ns', 'us', 'ms'] | None = None, time_zone: str | None = None, strict: bool = True, ambiguous: Literal['earliest', 'latest', 'raise', 'null'] | Expr = 'raise')`**
@@ -1032,7 +1032,7 @@ If None (default), it inferred from the format string
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`to_integer(*, base: int | td_typing.IntoExprColumn = 10, strict: bool = True)`**
@@ -1073,7 +1073,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`to_lowercase`**
@@ -1103,7 +1103,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`to_time(fmt: str | None = None, *, strict: bool = True, cache: bool = True)`**
@@ -1147,7 +1147,7 @@ See formats.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`to_titlecase`**
@@ -1180,7 +1180,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`to_uppercase`**
@@ -1210,7 +1210,7 @@ Example:
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`zfill(length: int | td_typing.IntoExprColumn)`**
@@ -1244,7 +1244,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`contains(pattern: str | Expr, *, literal: bool = False, strict: bool = True)`**
@@ -1289,7 +1289,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`contains_any(patterns: td_typing.IntoExpr, *, ascii_case_insensitive: bool = False)`**
@@ -1331,7 +1331,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`count_matches(pattern: str | Expr, *, literal: bool = False)`**
@@ -1374,7 +1374,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`ends_with(suffix: str | Expr)`**
@@ -1407,7 +1407,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`extract(pattern: td_typing.IntoExprColumn, group_index: int = 1)`**
@@ -1447,7 +1447,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`find(pattern: str | Expr, *, literal: bool = False, strict: bool = True)`**
@@ -1492,7 +1492,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`grok(pattern: str, schema: dict[str, Column])`**
@@ -1556,7 +1556,7 @@ both the column name and its data type.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`head(n: int | td_typing.IntoExprColumn)`**
@@ -1587,7 +1587,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`len_bytes`**
@@ -1618,7 +1618,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`len_chars`**
@@ -1649,7 +1649,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`pad_end(length: int, fill_char: str = ' ')`**
@@ -1689,7 +1689,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`pad_start(length: int, fill_char: str = ' ')`**
@@ -1729,7 +1729,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`replace(pattern: str | Expr, value: str | Expr, *, literal: bool = False, n: int = 1)`**
@@ -1779,7 +1779,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`replace_all(pattern: str | Expr, value: str | Expr, *, literal: bool = False)`**
@@ -1825,7 +1825,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`replace_many(patterns: td_typing.IntoExpr | Mapping[str, str], replace_with: td_typing.IntoExpr | NoDefault = <no_default>, *, ascii_case_insensitive: bool = False)`**
@@ -1871,7 +1871,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`reverse`**
@@ -1902,7 +1902,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`slice(offset: int | td_typing.IntoExprColumn, length: int | td_typing.IntoExprColumn | None = None)`**
@@ -1941,7 +1941,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`starts_with(prefix: str | Expr)`**
@@ -1975,7 +1975,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`strip_chars(characters: td_typing.IntoExpr = None)`**
@@ -2007,7 +2007,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`strip_chars_end(characters: td_typing.IntoExpr = None)`**
@@ -2039,7 +2039,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`strip_chars_start(characters: td_typing.IntoExpr = None)`**
@@ -2071,7 +2071,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`strip_prefix(prefix: td_typing.IntoExpr)`**
@@ -2103,7 +2103,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`strip_suffix(suffix: td_typing.IntoExpr)`**
@@ -2135,7 +2135,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`tail(n: int | td_typing.IntoExprColumn)`**
@@ -2166,7 +2166,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`to_date(fmt: str | None = None, *, strict: bool = True)`**
@@ -2206,7 +2206,7 @@ See formats.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`to_datetime(format: str | None = None, *, time_unit: Literal['ns', 'us', 'ms'] | None = None, time_zone: str | None = None, strict: bool = True, ambiguous: Literal['earliest', 'latest', 'raise', 'null'] | Expr = 'raise')`**
@@ -2261,7 +2261,7 @@ If None (default), it inferred from the format string
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`to_integer(*, base: int | td_typing.IntoExprColumn = 10, strict: bool = True)`**
@@ -2302,7 +2302,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`to_lowercase`**
@@ -2332,7 +2332,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`to_time(fmt: str | None = None, *, strict: bool = True, cache: bool = True)`**
@@ -2376,7 +2376,7 @@ See formats.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`to_titlecase`**
@@ -2409,7 +2409,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`to_uppercase`**
@@ -2439,7 +2439,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`zfill(length: int | td_typing.IntoExprColumn)`**
@@ -2471,7 +2471,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`GrokParser(pattern: 'str', schema: 'dict[str, td_col.Column]')`**
@@ -2480,17 +2480,17 @@ Example:
 
 Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
-<details>
+<details open>
 <summary>`index`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`pattern`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`rust(expression: IntoExpr)`**
@@ -2499,19 +2499,19 @@ Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
 </details>
 
-<details>
+<details open>
 <summary>`schema`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`temp_column`</summary>
 
 </details>
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`rust(expression: IntoExpr)`**

@@ -4,7 +4,7 @@ title: "tabsdata.exceptions"
 
 # tabsdata.exceptions
 
- <details>
+ <details open>
 <summary>
 
 **`CdcError(error_code: ErrorCode, *args)`**
@@ -17,7 +17,7 @@ Exception raised for generic CDC errors.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`ConnectionConfigurationError(error_code: ErrorCode, *args)`**
@@ -30,7 +30,7 @@ Exception raised when the creation or modification of a Connection object fails.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`ConstructorError(error_code: ErrorCode, *args)`**
@@ -44,7 +44,7 @@ constructor.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`CredentialsConfigurationError(error_code: ErrorCode, *args)`**
@@ -57,7 +57,7 @@ Exception raised when the creation or modification of a Credentials object fails
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`DataQualityConfigurationError(error_code: ErrorCode, *args)`**
@@ -71,7 +71,7 @@ its auxiliary objects fails.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`DataQualityProcessingError(error_code: ErrorCode, *args)`**
@@ -85,7 +85,7 @@ function registration or execution.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`Db2CdcError(error_code: ErrorCode, *args)`**
@@ -98,7 +98,7 @@ Exception raised for DB2 CDC errors.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`DecoratorConfigurationError(error_code: ErrorCode, *args)`**
@@ -111,7 +111,7 @@ Exception raised when the creation or modification of a decorator object fails.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`DestinationConfigurationError(error_code: ErrorCode, *args)`**
@@ -124,7 +124,7 @@ Exception raised when the creation or modification of a destination object fails
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`ErrorCode(*values)`**
@@ -133,7 +133,7 @@ Exception raised when the creation or modification of a destination object fails
 
 Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
-<details>
+<details open>
 <summary>
 
 **`code`**
@@ -142,7 +142,7 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`message`**
@@ -153,7 +153,7 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`FormatConfigurationError(error_code: ErrorCode, *args)`**
@@ -166,7 +166,7 @@ Exception raised when the creation or modification of a Format object fails.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`FunctionConfigurationError(error_code: ErrorCode, *args)`**
@@ -179,7 +179,7 @@ Exception raised when a function is not properly configured to be registered.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`MySQLCdcError(error_code: ErrorCode, *args)`**
@@ -192,7 +192,7 @@ Exception raised for MySQL CDC errors.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`ParameterError(name, type, value, msg)`**
@@ -201,28 +201,28 @@ Exception raised for MySQL CDC errors.
 
 Bases: [NamedTuple](https://docs.python.org/3/library/typing.html#typing.NamedTuple)
 
-<details>
+<details open>
 <summary>`msg`</summary>
 
 Alias for field number 3
 
 </details>
 
-<details>
+<details open>
 <summary>`name`</summary>
 
 Alias for field number 0
 
 </details>
 
-<details>
+<details open>
 <summary>`type`</summary>
 
 Alias for field number 1
 
 </details>
 
-<details>
+<details open>
 <summary>`value`</summary>
 
 Alias for field number 2
@@ -231,7 +231,7 @@ Alias for field number 2
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`ParameterValidationError(function: LambdaType | MethodType, error_code: ErrorCode, pyd_validation_error: ValidationError)`**
@@ -242,29 +242,29 @@ Bases: TabsDataException
 
 Exception raised when public API parameter validation fails.
 
-<details>
+<details open>
 <summary>`cls`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`errors`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`fn`</summary>
 
 </details>
 
-<details>
+<details open>
 <summary>`mod`</summary>
 
 </details>
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`ParameterValueError(error_code: ErrorCode, fn_name: str, param_names: str | list[str], msg: str)`**
@@ -275,7 +275,7 @@ Bases: TabsDataException
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`PostgresCdcError(error_code: ErrorCode, *args)`**
@@ -288,7 +288,7 @@ Exception raised for PostgreSQL CDC errors.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`RegistrationError(error_code: ErrorCode, *args)`**
@@ -301,7 +301,7 @@ Exception raised when registration of a function in the server fails.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`SDKError(error_code: ErrorCode, *args)`**
@@ -312,7 +312,7 @@ Bases: TabsDataException
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`SecretConfigurationError(error_code: ErrorCode, *args)`**
@@ -325,7 +325,7 @@ Exception raised when the creation or modification of a Secret object fails.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`SourceConfigurationError(error_code: ErrorCode, *args)`**
@@ -338,7 +338,7 @@ Exception raised when the creation or modification of a source object fails.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`StageTriggerConfigurationError(error_code: ErrorCode, *args)`**
@@ -352,7 +352,7 @@ of its auxiliary objects fails.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`StageTriggerExecutionError(error_code: ErrorCode, *args)`**
@@ -365,7 +365,7 @@ Exception raised when a StageTrigger execution fails during runtime.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`TableFrameError(error_code: ErrorCode, *args)`**
@@ -378,7 +378,7 @@ Exception raised when handling a TableFrame.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`TableURIConfigurationError(error_code: ErrorCode, *args)`**
@@ -392,7 +392,7 @@ its auxiliary objects fails.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`TabsDataException(error_code: ErrorCode, *args)`**
@@ -403,14 +403,14 @@ Bases: [Exception](https://docs.python.org/3/library/exceptions.html#Exception)
 
 Base exception for all exceptions in the Tabs Data SDK.
 
-<details>
+<details open>
 <summary>`error_code`</summary>
 
 </details>
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`TabsdataServerError(error_code: ErrorCode, *args)`**

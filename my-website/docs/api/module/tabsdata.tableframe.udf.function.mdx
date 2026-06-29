@@ -4,7 +4,7 @@ title: "tabsdata.tableframe.udf.function"
 
 # tabsdata.tableframe.udf.function
 
- <details>
+ <details open>
 <summary>
 
 **`UDF(output_columns: list[tuple[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]] | tuple[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64])`**
@@ -13,7 +13,7 @@ title: "tabsdata.tableframe.udf.function"
 
 Bases: [ABC](https://docs.python.org/3/library/abc.html#abc.ABC)
 
-<details>
+<details open>
 <summary>
 
 **`columns`**
@@ -22,7 +22,7 @@ Bases: [ABC](https://docs.python.org/3/library/abc.html#abc.ABC)
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`on_batch(series: list[Series])`**
@@ -60,7 +60,7 @@ separate argument instead.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`on_element(values: list[Any])`**
@@ -98,7 +98,7 @@ separate argument instead.
 
 </details>
 
-<details>
+<details open>
 <summary>`signature`</summary>
 
 Defines how parameters are passed to on_batch and on_element methods.
@@ -112,7 +112,7 @@ Defines how parameters are passed to on_batch and on_element methods.
 
 </details>
 
-<details>
+<details open>
 <summary>
 
 **`with_columns(output_columns: tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None] | list[tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None]] | dict[int, tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None]])`**
@@ -123,7 +123,7 @@ Defines how parameters are passed to on_batch and on_element methods.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`columns`**
@@ -132,7 +132,7 @@ Defines how parameters are passed to on_batch and on_element methods.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`on_batch(series: list[Series])`**
@@ -170,7 +170,7 @@ separate argument instead.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`on_element(values: list[Any])`**
@@ -208,7 +208,7 @@ separate argument instead.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`with_columns(output_columns: tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None] | list[tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None]] | dict[int, tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None]])`**
@@ -217,7 +217,7 @@ separate argument instead.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`UDFList(output_columns)`**
@@ -234,7 +234,7 @@ with list signature:
 - `on_batch(self, series: list[Series]) -> list[Series]`
 - `on_element(self, values: list[Any]) -> list[Any]`
 
-<details>
+<details open>
 <summary>`signature`</summary>
 
 Defines how parameters are passed to on_batch and on_element methods.
@@ -250,7 +250,7 @@ Defines how parameters are passed to on_batch and on_element methods.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`columns`**
@@ -259,7 +259,7 @@ Defines how parameters are passed to on_batch and on_element methods.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`on_batch(*args)`**
@@ -297,7 +297,7 @@ separate argument instead.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`on_element(*args)`**
@@ -335,7 +335,7 @@ separate argument instead.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`with_columns(output_columns: tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None] | list[tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None]] | dict[int, tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None]])`**
@@ -344,7 +344,7 @@ separate argument instead.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`UDFUnpacked(output_columns)`**
@@ -361,7 +361,7 @@ with unpacked signature:
 - `on_batch(self, col1: Series, col2: Series, ...) -> list[Series]`
 - `on_element(self, val1: Any, val2: Any, ...) -> list[Any]`
 
-<details>
+<details open>
 <summary>`signature`</summary>
 
 Defines how parameters are passed to on_batch and on_element methods.
@@ -377,7 +377,7 @@ Defines how parameters are passed to on_batch and on_element methods.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`columns`**
@@ -386,7 +386,7 @@ Defines how parameters are passed to on_batch and on_element methods.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`on_batch(*args)`**
@@ -424,7 +424,7 @@ separate argument instead.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`on_element(*args)`**
@@ -462,7 +462,7 @@ separate argument instead.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`with_columns(output_columns: tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None] | list[tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None]] | dict[int, tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None]])`**

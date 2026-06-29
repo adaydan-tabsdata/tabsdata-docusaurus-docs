@@ -6,7 +6,7 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # String
 
- <details>
+ <details open>
 <summary>
 
 **`grok(expr: td_typing.IntoExpr, pattern: str, schema: dict[str, td_col.Column])`**
@@ -77,7 +77,7 @@ both the column name and its data type.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`contains(pattern: str | Expr, *, literal: bool = False, strict: bool = True)`**
@@ -122,7 +122,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`contains_any(patterns: td_typing.IntoExpr, *, ascii_case_insensitive: bool = False)`**
@@ -164,7 +164,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`count_matches(pattern: str | Expr, *, literal: bool = False)`**
@@ -207,7 +207,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`ends_with(suffix: str | Expr)`**
@@ -240,7 +240,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`extract(pattern: td_typing.IntoExprColumn, group_index: int = 1)`**
@@ -280,7 +280,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`find(pattern: str | Expr, *, literal: bool = False, strict: bool = True)`**
@@ -325,7 +325,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`grok(pattern: str, schema: dict[str, Column])`**
@@ -389,7 +389,7 @@ both the column name and its data type.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`head(n: int | td_typing.IntoExprColumn)`**
@@ -420,7 +420,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`len_bytes`**
@@ -451,7 +451,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`len_chars`**
@@ -482,7 +482,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`pad_end(length: int, fill_char: str = ' ')`**
@@ -522,7 +522,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`pad_start(length: int, fill_char: str = ' ')`**
@@ -562,7 +562,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`replace(pattern: str | Expr, value: str | Expr, *, literal: bool = False, n: int = 1)`**
@@ -612,7 +612,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`replace_all(pattern: str | Expr, value: str | Expr, *, literal: bool = False)`**
@@ -658,7 +658,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`replace_many(patterns: td_typing.IntoExpr | Mapping[str, str], replace_with: td_typing.IntoExpr | NoDefault = <no_default>, *, ascii_case_insensitive: bool = False)`**
@@ -704,7 +704,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`reverse`**
@@ -735,7 +735,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`slice(offset: int | td_typing.IntoExprColumn, length: int | td_typing.IntoExprColumn | None = None)`**
@@ -774,7 +774,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`starts_with(prefix: str | Expr)`**
@@ -808,7 +808,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`strip_chars(characters: td_typing.IntoExpr = None)`**
@@ -840,7 +840,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`strip_chars_end(characters: td_typing.IntoExpr = None)`**
@@ -872,7 +872,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`strip_chars_start(characters: td_typing.IntoExpr = None)`**
@@ -904,7 +904,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`strip_prefix(prefix: td_typing.IntoExpr)`**
@@ -936,7 +936,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`strip_suffix(suffix: td_typing.IntoExpr)`**
@@ -968,7 +968,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`tail(n: int | td_typing.IntoExprColumn)`**
@@ -999,7 +999,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`to_lowercase`**
@@ -1029,7 +1029,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`to_titlecase`**
@@ -1062,7 +1062,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`to_uppercase`**
@@ -1092,7 +1092,7 @@ Example:
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`zfill(length: int | td_typing.IntoExprColumn)`**

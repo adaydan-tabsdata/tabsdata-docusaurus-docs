@@ -4,7 +4,7 @@ title: "Operations"
 
 # Operations
 
- <details>
+ <details open>
 <summary>
 
 **`AllOk(none_is_ok: bool = False, nan_is_ok: bool = False, *, tags: str | list[str] | None = None)`**
@@ -18,7 +18,7 @@ pass (True).
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`AnyFailed(none_is_ok: bool = False, nan_is_ok: bool = False, *, tags: str | list[str] | None = None)`**
@@ -32,7 +32,7 @@ classifier fails (False).
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`Enrich(to_table: str | None = None, *, tags: str | list[str] | None = None)`**
@@ -44,7 +44,7 @@ Bases: `TagOperator`
 An operator that adds the data quality classifier columns to the original
 table frame. It does not remove any row from the original table.
 
-<details>
+<details open>
 <summary>`to_table`</summary>
 
 Returns the destination table with the enriched data quality classifier
@@ -54,7 +54,7 @@ columns. If None, the original table is used.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`Fail(criteria: Criteria, threshold: Threshold)`**
@@ -66,7 +66,7 @@ Bases: `CriteriaOperator`
 An operator that fails the current transaction if a data quality threshold
 is met.
 
-<details>
+<details open>
 <summary>`threshold`</summary>
 
 Returns the threshold for this Fail operation.
@@ -75,7 +75,7 @@ Returns the threshold for this Fail operation.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`Filter(criteria: Criteria, to_table: str | None = None, include_quality_columns: Literal['none', 'criteria', 'all'] = 'none')`**
@@ -89,7 +89,7 @@ An operator that filters rows from a table based on data quality criteria.
 The filtered rows are removed from the table being processed. They can
 either be discarded or redirected to another table.
 
-<details>
+<details open>
 <summary>`include_quality_columns`</summary>
 
 Returns the data quality columns to included in the table with
@@ -97,7 +97,7 @@ filtered out data.
 
 </details>
 
-<details>
+<details open>
 <summary>`to_table`</summary>
 
 Returns the destination table for filtered rows, or None if they are
@@ -107,7 +107,7 @@ discarded.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`InBins(column_name: str, bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow'] | Annotated[list[Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow']], Strict])`**
@@ -121,7 +121,7 @@ columns falls into one of the given bins.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`NotInBins(column_name: str, bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow'] | Annotated[list[Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow']], Strict])`**
@@ -135,7 +135,7 @@ columns does not fall into any of the given bins.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`PercentThreshold(percent: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])])`**
@@ -146,7 +146,7 @@ Bases: [Threshold](bymod-tabsdata.dataquality#tabsdata.dataquality.Threshold)
 
 A threshold based on a percentage of total rows.
 
-<details>
+<details open>
 <summary>`percent`</summary>
 
 Returns the percentage for the threshold.
@@ -155,7 +155,7 @@ Returns the percentage for the threshold.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`Select(criteria: Criteria, to_table: str, include_quality_columns: Literal['none', 'criteria', 'all'] = 'none')`**
@@ -169,7 +169,7 @@ them to another table.
 
 This operation does not modify the original table.
 
-<details>
+<details open>
 <summary>`include_quality_columns`</summary>
 
 Returns the data quality columns to included in the table with
@@ -177,7 +177,7 @@ selected data.
 
 </details>
 
-<details>
+<details open>
 <summary>`to_table`</summary>
 
 Returns the destination table for the selected rows.
@@ -186,7 +186,7 @@ Returns the destination table for the selected rows.
 
 </details>
 
- <details>
+ <details open>
 <summary>
 
 **`Summary(table: str | None = None, *, tags: str | list[str] | None = None)`**
@@ -197,7 +197,7 @@ Bases: `TagOperator`
 
 An operator that generates a data quality summary report for a table.
 
-<details>
+<details open>
 <summary>`table`</summary>
 
 Returns the name of the data quality summary table.

@@ -292,7 +292,7 @@ def api_entry_to_mdx(dl):
     # For properties/attributes: simple inline entry
     if 'property' in classes or 'attribute' in classes:
         content = element_to_mdx(dd).strip() if dd else ''
-        return f'<details>\n<summary>`{sig}`</summary>\n\n{content}\n\n</details>\n\n'
+        return f'<details open>\n<summary>`{sig}`</summary>\n\n{content}\n\n</details>\n\n'
 
     # For classes/functions/methods: full block with params
     if dd:
@@ -324,7 +324,7 @@ def api_entry_to_mdx(dl):
         if params:
             inner += params
 
-        result = f'<details>\n<summary>\n\n**`{sig}`**\n\n</summary>\n\n{inner}</details>\n\n'
+        result = f'<details open>\n<summary>\n\n**`{sig}`**\n\n</summary>\n\n{inner}</details>\n\n'
         if needs_param_import:
             result = "import { ParamField, ResponseField } from '@site/src/components/ApiField';\n\n" + result
         return result
