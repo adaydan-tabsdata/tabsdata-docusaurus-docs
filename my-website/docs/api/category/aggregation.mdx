@@ -7,11 +7,9 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 # Aggregation
 
  <details open>
-<summary>
+<summary>**`group_by`**</summary>
 
 **`group_by(*by: td_typing.IntoExpr | Iterable[td_typing.IntoExpr])`**
-
-</summary>
 
 Perform a group by on the TableFrame.
 
@@ -54,11 +52,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`count`**</summary>
 
 **`count`**
-
-</summary>
 
 Aggregation operation that counts the non null values of the given column in
 the group.
@@ -101,11 +97,9 @@ Examples:
 </details>
 
  <details open>
-<summary>
+<summary>**`first`**</summary>
 
 **`first`**
-
-</summary>
 
 Get the first element.
 
@@ -134,11 +128,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`last`**</summary>
 
 **`last`**
-
-</summary>
 
 Get the last element.
 
@@ -167,11 +159,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`len`**</summary>
 
 **`len`**
-
-</summary>
 
 Aggregation operation that counts the rows in the group.
 
@@ -213,11 +203,9 @@ Examples:
 </details>
 
  <details open>
-<summary>
+<summary>**`max`**</summary>
 
 **`max`**
-
-</summary>
 
 Aggregation operation that finds the maximum value in the group.
 
@@ -265,11 +253,9 @@ Examples:
 </details>
 
  <details open>
-<summary>
+<summary>**`mean`**</summary>
 
 **`mean`**
-
-</summary>
 
 Aggregation operation that finds the mean of the values in the group.
 
@@ -317,11 +303,9 @@ Examples:
 </details>
 
  <details open>
-<summary>
+<summary>**`median`**</summary>
 
 **`median`**
-
-</summary>
 
 Aggregation operation that finds the median of the values in the group.
 
@@ -369,11 +353,9 @@ Examples:
 </details>
 
  <details open>
-<summary>
+<summary>**`min`**</summary>
 
 **`min`**
-
-</summary>
 
 Aggregation operation that finds the minimum value in the group.
 
@@ -421,11 +403,9 @@ Examples:
 </details>
 
  <details open>
-<summary>
+<summary>**`n_unique`**</summary>
 
 **`n_unique`**
-
-</summary>
 
 Aggregation operation that counts the unique values of the given column
 in the group.
@@ -474,11 +454,9 @@ Examples:
 </details>
 
  <details open>
-<summary>
+<summary>**`rank`**</summary>
 
 **`rank(method: Literal['average', 'min', 'max', 'dense', 'ordinal', 'random'] = 'average', *, descending: bool = False, seed: int | None = None)`**
-
-</summary>
 
 Compute the rank of the element values. Multiple rank types are available.
 
@@ -522,11 +500,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`sum`**</summary>
 
 **`sum`**
-
-</summary>
 
 Aggregation operation that sums the values in the group.
 

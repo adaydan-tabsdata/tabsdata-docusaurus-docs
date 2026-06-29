@@ -7,11 +7,9 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 # Type Casting
 
  <details open>
-<summary>
+<summary>**`cast`**</summary>
 
 **`cast(dtype: Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | type[Any], *, strict: bool = True, wrap_numerical: bool = False)`**
-
-</summary>
 
 Cast a value to d different type.
 
@@ -57,11 +55,9 @@ if false, an excetion is raised.
 </details>
 
  <details open>
-<summary>
+<summary>**`to_date`**</summary>
 
 **`to_date(fmt: str | None = None, *, strict: bool = True)`**
-
-</summary>
 
 Convert the string to a date.
 
@@ -97,11 +93,9 @@ See formats.
 </details>
 
  <details open>
-<summary>
+<summary>**`to_datetime`**</summary>
 
 **`to_datetime(format: str | None = None, *, time_unit: Literal['ns', 'us', 'ms'] | None = None, time_zone: str | None = None, strict: bool = True, ambiguous: Literal['earliest', 'latest', 'raise', 'null'] | Expr = 'raise')`**
-
-</summary>
 
 Convert the string to a datetime.
 
@@ -152,11 +146,9 @@ If None (default), it inferred from the format string
 </details>
 
  <details open>
-<summary>
+<summary>**`to_integer`**</summary>
 
 **`to_integer(*, base: int | td_typing.IntoExprColumn = 10, strict: bool = True)`**
-
-</summary>
 
 Covert a string to integer.
 
@@ -193,11 +185,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`to_time`**</summary>
 
 **`to_time(fmt: str | None = None, *, strict: bool = True, cache: bool = True)`**
-
-</summary>
 
 Convert the string to a time.
 
@@ -237,10 +227,8 @@ See formats.
 </details>
 
  <details open>
-<summary>
+<summary>**`to_string`**</summary>
 
 **`to_string(fmt: str | None = None)`**
-
-</summary>
 
 </details>

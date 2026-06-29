@@ -5,29 +5,23 @@ title: "tabsdata.tableframe.udf.function"
 # tabsdata.tableframe.udf.function
 
  <details open>
-<summary>
+<summary>**`UDF`**</summary>
 
 **`UDF(output_columns: list[tuple[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]] | tuple[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64])`**
-
-</summary>
 
 Bases: [ABC](https://docs.python.org/3/library/abc.html#abc.ABC)
 
 <details open>
-<summary>
+<summary>**`columns`**</summary>
 
 **`columns`**
-
-</summary>
 
 </details>
 
 <details open>
-<summary>
+<summary>**`on_batch`**</summary>
 
 **`on_batch(series: list[Series])`**
-
-</summary>
 
 Creating UDFs:
 
@@ -61,11 +55,9 @@ separate argument instead.
 </details>
 
 <details open>
-<summary>
+<summary>**`on_element`**</summary>
 
 **`on_element(values: list[Any])`**
-
-</summary>
 
 Creating UDFs:
 
@@ -99,7 +91,9 @@ separate argument instead.
 </details>
 
 <details open>
-<summary>`signature`</summary>
+<summary>**`signature`**</summary>
+
+`signature`
 
 Defines how parameters are passed to on_batch and on_element methods.
 
@@ -113,31 +107,25 @@ Defines how parameters are passed to on_batch and on_element methods.
 </details>
 
 <details open>
-<summary>
+<summary>**`with_columns`**</summary>
 
 **`with_columns(output_columns: tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None] | list[tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None]] | dict[int, tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None]])`**
 
-</summary>
-
 </details>
 
 </details>
 
  <details open>
-<summary>
+<summary>**`columns`**</summary>
 
 **`columns`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`on_batch`**</summary>
 
 **`on_batch(series: list[Series])`**
-
-</summary>
 
 Creating UDFs:
 
@@ -171,11 +159,9 @@ separate argument instead.
 </details>
 
  <details open>
-<summary>
+<summary>**`on_element`**</summary>
 
 **`on_element(values: list[Any])`**
-
-</summary>
 
 Creating UDFs:
 
@@ -209,20 +195,16 @@ separate argument instead.
 </details>
 
  <details open>
-<summary>
+<summary>**`with_columns`**</summary>
 
 **`with_columns(output_columns: tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None] | list[tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None]] | dict[int, tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None]])`**
-
-</summary>
 
 </details>
 
  <details open>
-<summary>
+<summary>**`UDFList`**</summary>
 
 **`UDFList(output_columns)`**
-
-</summary>
 
 Bases: UDF, [ABC](https://docs.python.org/3/library/abc.html#abc.ABC)
 
@@ -235,7 +217,9 @@ with list signature:
 - `on_element(self, values: list[Any]) -> list[Any]`
 
 <details open>
-<summary>`signature`</summary>
+<summary>**`signature`**</summary>
+
+`signature`
 
 Defines how parameters are passed to on_batch and on_element methods.
 
@@ -251,20 +235,16 @@ Defines how parameters are passed to on_batch and on_element methods.
 </details>
 
  <details open>
-<summary>
+<summary>**`columns`**</summary>
 
 **`columns`**
-
-</summary>
 
 </details>
 
  <details open>
-<summary>
+<summary>**`on_batch`**</summary>
 
 **`on_batch(*args)`**
-
-</summary>
 
 Creating UDFs:
 
@@ -298,11 +278,9 @@ separate argument instead.
 </details>
 
  <details open>
-<summary>
+<summary>**`on_element`**</summary>
 
 **`on_element(*args)`**
-
-</summary>
 
 Creating UDFs:
 
@@ -336,20 +314,16 @@ separate argument instead.
 </details>
 
  <details open>
-<summary>
+<summary>**`with_columns`**</summary>
 
 **`with_columns(output_columns: tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None] | list[tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None]] | dict[int, tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None]])`**
-
-</summary>
 
 </details>
 
  <details open>
-<summary>
+<summary>**`UDFUnpacked`**</summary>
 
 **`UDFUnpacked(output_columns)`**
-
-</summary>
 
 Bases: UDF, [ABC](https://docs.python.org/3/library/abc.html#abc.ABC)
 
@@ -362,7 +336,9 @@ with unpacked signature:
 - `on_element(self, val1: Any, val2: Any, ...) -> list[Any]`
 
 <details open>
-<summary>`signature`</summary>
+<summary>**`signature`**</summary>
+
+`signature`
 
 Defines how parameters are passed to on_batch and on_element methods.
 
@@ -378,20 +354,16 @@ Defines how parameters are passed to on_batch and on_element methods.
 </details>
 
  <details open>
-<summary>
+<summary>**`columns`**</summary>
 
 **`columns`**
-
-</summary>
 
 </details>
 
  <details open>
-<summary>
+<summary>**`on_batch`**</summary>
 
 **`on_batch(*args)`**
-
-</summary>
 
 Creating UDFs:
 
@@ -425,11 +397,9 @@ separate argument instead.
 </details>
 
  <details open>
-<summary>
+<summary>**`on_element`**</summary>
 
 **`on_element(*args)`**
-
-</summary>
 
 Creating UDFs:
 
@@ -463,10 +433,8 @@ separate argument instead.
 </details>
 
  <details open>
-<summary>
+<summary>**`with_columns`**</summary>
 
 **`with_columns(output_columns: tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None] | list[tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None]] | dict[int, tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None]])`**
-
-</summary>
 
 </details>

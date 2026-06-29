@@ -5,11 +5,9 @@ title: "Triggers"
 # Triggers
 
  <details open>
-<summary>
+<summary>**`CronTrigger`**</summary>
 
 **`CronTrigger(mask: str, start: datetime | None = None, end: datetime | None = None)`**
-
-</summary>
 
 Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
@@ -21,7 +19,9 @@ start and end times to constrain its activation period. It validates the
 cron mask and time boundaries to ensure the trigger is well-formed.
 
 <details open>
-<summary>`end`</summary>
+<summary>**`end`**</summary>
+
+`end`
 
 Gets the end time of the trigger as a timezone-aware ISO 8601 string
 with ‘Z’ timezone.
@@ -31,7 +31,9 @@ with ‘Z’ timezone.
 </details>
 
 <details open>
-<summary>`mask`</summary>
+<summary>**`mask`**</summary>
+
+`mask`
 
 Gets the cron expression mask.
 
@@ -40,7 +42,9 @@ Gets the cron expression mask.
 </details>
 
 <details open>
-<summary>`start`</summary>
+<summary>**`start`**</summary>
+
+`start`
 
 Gets the start time of the trigger as a timezone-aware ISO 8601 string
 with ‘Z’ timezone.
@@ -52,11 +56,9 @@ with ‘Z’ timezone.
 </details>
 
  <details open>
-<summary>
+<summary>**`Db2CdcTrigger`**</summary>
 
 **`Db2CdcTrigger(**kwargs)`**
-
-</summary>
 
 Bases: [CdcTrigger](bymod-tabsdata#tabsdata.CdcTrigger)
 
@@ -66,32 +68,32 @@ This trigger connects to a Db2 server, reads change data capture events (inserts
 updates, deletes) on specified tables via SQL Replication, and stages them.
 
 <details open>
-<summary>`blocking_timeout_seconds`</summary>
+<summary>**`blocking_timeout_seconds`**</summary>
+
+`blocking_timeout_seconds`
 
 Timeout in seconds for blocking reads from the replication stream.
 
 </details>
 
 <details open>
-<summary>
+<summary>**`collect_tables`**</summary>
 
 **`collect_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`harvest_tables`**</summary>
 
 **`harvest_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>`start_from`</summary>
+<summary>**`start_from`**</summary>
+
+`start_from`
 
 Position to start reading changes from.
 
@@ -100,11 +102,9 @@ Position to start reading changes from.
 </details>
 
  <details open>
-<summary>
+<summary>**`KafkaTrigger`**</summary>
 
 **`KafkaTrigger(**kwargs)`**
-
-</summary>
 
 Bases: [StageTrigger](bymod-tabsdata#tabsdata.StageTrigger)
 
@@ -115,46 +115,54 @@ topic, and uses rollover conditions (time, size, and message count) to
 buffer and stage the data.
 
 <details open>
-<summary>`conn`</summary>
+<summary>**`conn`**</summary>
+
+`conn`
 
 Kafka consumer connection configuration.
 
 </details>
 
 <details open>
-<summary>`data_format`</summary>
+<summary>**`data_format`**</summary>
+
+`data_format`
 
 Data format of the messages (“avro”, “json”, “protobuf”).
 
 </details>
 
 <details open>
-<summary>`dlq_topic`</summary>
+<summary>**`dlq_topic`**</summary>
+
+`dlq_topic`
 
 Dead-letter queue topic.
 
 </details>
 
 <details open>
-<summary>`group_id`</summary>
+<summary>**`group_id`**</summary>
+
+`group_id`
 
 Kafka consumer group ID.
 
 </details>
 
 <details open>
-<summary>`messages_rollover`</summary>
+<summary>**`messages_rollover`**</summary>
+
+`messages_rollover`
 
 Message count-based rollover configuration.
 
 </details>
 
 <details open>
-<summary>
+<summary>**`run`**</summary>
 
 **`run(context: StageTriggerContext)`**
-
-</summary>
 
 Run the Kafka stage trigger to consume messages, buffer them, and stage them
 based on rollover conditions.
@@ -162,28 +170,36 @@ based on rollover conditions.
 </details>
 
 <details open>
-<summary>`schema`</summary>
+<summary>**`schema`**</summary>
+
+`schema`
 
 Schema string for deserializing messages.
 
 </details>
 
 <details open>
-<summary>`size_rollover_mb`</summary>
+<summary>**`size_rollover_mb`**</summary>
+
+`size_rollover_mb`
 
 Size-based rollover configuration. Size is specified in megabytes.
 
 </details>
 
 <details open>
-<summary>`time_rollover_secs`</summary>
+<summary>**`time_rollover_secs`**</summary>
+
+`time_rollover_secs`
 
 Timeout in seconds for consuming each message.
 
 </details>
 
 <details open>
-<summary>`topic`</summary>
+<summary>**`topic`**</summary>
+
+`topic`
 
 Kafka topic to consume from.
 
@@ -192,11 +208,9 @@ Kafka topic to consume from.
 </details>
 
  <details open>
-<summary>
+<summary>**`MySQLCdcTrigger`**</summary>
 
 **`MySQLCdcTrigger(**kwargs)`**
-
-</summary>
 
 Bases: [CdcTrigger](bymod-tabsdata#tabsdata.CdcTrigger)
 
@@ -206,39 +220,41 @@ This trigger connects to a MySQL server, reads the binary log for change data
 capture events (inserts, updates, deletes) on specified tables, and stages them.
 
 <details open>
-<summary>`blocking_timeout_seconds`</summary>
+<summary>**`blocking_timeout_seconds`**</summary>
+
+`blocking_timeout_seconds`
 
 Timeout in seconds for blocking reads from the binlog stream.
 
 </details>
 
 <details open>
-<summary>
+<summary>**`collect_tables`**</summary>
 
 **`collect_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`harvest_tables`**</summary>
 
 **`harvest_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>`server_id`</summary>
+<summary>**`server_id`**</summary>
+
+`server_id`
 
 MySQL server ID for binlog replication.
 
 </details>
 
 <details open>
-<summary>`start_from`</summary>
+<summary>**`start_from`**</summary>
+
+`start_from`
 
 Position to start reading changes from.
 
@@ -247,11 +263,9 @@ Position to start reading changes from.
 </details>
 
  <details open>
-<summary>
+<summary>**`PostgresCdcTrigger`**</summary>
 
 **`PostgresCdcTrigger(**kwargs)`**
-
-</summary>
 
 Bases: [CdcTrigger](bymod-tabsdata#tabsdata.CdcTrigger)
 
@@ -263,53 +277,59 @@ the wal2json output plugin for change data capture events (inserts, updates,
 deletes) on specified tables, and stages them.
 
 <details open>
-<summary>`blocking_timeout_seconds`</summary>
+<summary>**`blocking_timeout_seconds`**</summary>
+
+`blocking_timeout_seconds`
 
 Timeout in seconds for blocking reads from the replication stream.
 
 </details>
 
 <details open>
-<summary>
+<summary>**`collect_tables`**</summary>
 
 **`collect_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`harvest_tables`**</summary>
 
 **`harvest_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>`publication_name`</summary>
+<summary>**`publication_name`**</summary>
+
+`publication_name`
 
 Name of the PostgreSQL publication to subscribe to.
 
 </details>
 
 <details open>
-<summary>`replication_slot`</summary>
+<summary>**`replication_slot`**</summary>
+
+`replication_slot`
 
 Name of the logical replication slot.
 
 </details>
 
 <details open>
-<summary>`slot_behavior`</summary>
+<summary>**`slot_behavior`**</summary>
+
+`slot_behavior`
 
 Whether to create a new replication slot or reuse an existing one.
 
 </details>
 
 <details open>
-<summary>`start_from`</summary>
+<summary>**`start_from`**</summary>
+
+`start_from`
 
 Position to start reading changes from.
 

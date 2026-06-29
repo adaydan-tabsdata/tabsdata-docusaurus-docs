@@ -7,20 +7,16 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 # tabsdata.tableframe.expr.string
 
  <details open>
-<summary>
+<summary>**`ExprStringNameSpace`**</summary>
 
 **`ExprStringNameSpace(expr: ExprStringNameSpace)`**
 
-</summary>
-
 Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
 <details open>
-<summary>
+<summary>**`contains`**</summary>
 
 **`contains(pattern: str | Expr, *, literal: bool = False, strict: bool = True)`**
-
-</summary>
 
 Evaluate if the string contains a pattern.
 
@@ -61,11 +57,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`contains_any`**</summary>
 
 **`contains_any(patterns: td_typing.IntoExpr, *, ascii_case_insensitive: bool = False)`**
-
-</summary>
 
 Evaluate if the string contains any of the given patterns.
 
@@ -103,11 +97,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`count_matches`**</summary>
 
 **`count_matches(pattern: str | Expr, *, literal: bool = False)`**
-
-</summary>
 
 Counts the ocurrrences of the given pattern in the string.
 
@@ -146,11 +138,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`ends_with`**</summary>
 
 **`ends_with(suffix: str | Expr)`**
-
-</summary>
 
 Evaluate if the string ends with.
 
@@ -179,11 +169,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`extract`**</summary>
 
 **`extract(pattern: td_typing.IntoExprColumn, group_index: int = 1)`**
-
-</summary>
 
 Extract a pattern from the string.
 
@@ -219,11 +207,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`find`**</summary>
 
 **`find(pattern: str | Expr, *, literal: bool = False, strict: bool = True)`**
-
-</summary>
 
 Find the position of the first occurrence of the given pattern.
 
@@ -264,11 +250,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`grok`**</summary>
 
 **`grok(pattern: str, schema: dict[str, Column])`**
-
-</summary>
 
 Parse log text into structured fields using a Grok pattern.
 
@@ -328,11 +312,9 @@ both the column name and its data type.
 </details>
 
 <details open>
-<summary>
+<summary>**`head`**</summary>
 
 **`head(n: int | td_typing.IntoExprColumn)`**
-
-</summary>
 
 Extract the start of the string up to the given length.
 
@@ -359,11 +341,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`len_bytes`**</summary>
 
 **`len_bytes`**
-
-</summary>
 
 Return number of bytes (not chars) of a string.
 
@@ -390,11 +370,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`len_chars`**</summary>
 
 **`len_chars`**
-
-</summary>
 
 Return number of chars (not bytes) of a string.
 
@@ -421,11 +399,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`pad_end`**</summary>
 
 **`pad_end(length: int, fill_char: str = ' ')`**
-
-</summary>
 
 Pad string values at the end to the given length using the given
 fill character.
@@ -461,11 +437,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`pad_start`**</summary>
 
 **`pad_start(length: int, fill_char: str = ' ')`**
-
-</summary>
 
 Pad string values at the front to the given length using the given
 fill character.
@@ -501,11 +475,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`replace`**</summary>
 
 **`replace(pattern: str | Expr, value: str | Expr, *, literal: bool = False, n: int = 1)`**
-
-</summary>
 
 Replace the first occurence of a pattern with the given string.
 
@@ -551,11 +523,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`replace_all`**</summary>
 
 **`replace_all(pattern: str | Expr, value: str | Expr, *, literal: bool = False)`**
-
-</summary>
 
 Replace the all occurences of a pattern with the given string.
 
@@ -597,11 +567,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`replace_many`**</summary>
 
 **`replace_many(patterns: td_typing.IntoExpr | Mapping[str, str], replace_with: td_typing.IntoExpr | NoDefault = <no_default>, *, ascii_case_insensitive: bool = False)`**
-
-</summary>
 
 Replace the all occurences of any the given patterns with the given string.
 
@@ -643,11 +611,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`reverse`**</summary>
 
 **`reverse`**
-
-</summary>
 
 Reverse the string.
 
@@ -674,11 +640,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`slice`**</summary>
 
 **`slice(offset: int | td_typing.IntoExprColumn, length: int | td_typing.IntoExprColumn | None = None)`**
-
-</summary>
 
 Extract the substring at the given offset for the given length.
 
@@ -713,11 +677,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`starts_with`**</summary>
 
 **`starts_with(prefix: str | Expr)`**
-
-</summary>
 
 Evaluate if the string start with.
 
@@ -747,11 +709,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`strip_chars`**</summary>
 
 **`strip_chars(characters: td_typing.IntoExpr = None)`**
-
-</summary>
 
 Trim string values.
 
@@ -779,11 +739,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`strip_chars_end`**</summary>
 
 **`strip_chars_end(characters: td_typing.IntoExpr = None)`**
-
-</summary>
 
 Trim string values from the end of the string.
 
@@ -811,11 +769,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`strip_chars_start`**</summary>
 
 **`strip_chars_start(characters: td_typing.IntoExpr = None)`**
-
-</summary>
 
 Trim string values from the start of the string.
 
@@ -843,11 +799,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`strip_prefix`**</summary>
 
 **`strip_prefix(prefix: td_typing.IntoExpr)`**
-
-</summary>
 
 Trim string values removing the given prefix
 
@@ -875,11 +829,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`strip_suffix`**</summary>
 
 **`strip_suffix(suffix: td_typing.IntoExpr)`**
-
-</summary>
 
 Trim string values removing the given suffix
 
@@ -907,11 +859,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`tail`**</summary>
 
 **`tail(n: int | td_typing.IntoExprColumn)`**
-
-</summary>
 
 Extract the end of the string up to the given length.
 
@@ -938,11 +888,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`to_date`**</summary>
 
 **`to_date(fmt: str | None = None, *, strict: bool = True)`**
-
-</summary>
 
 Convert the string to a date.
 
@@ -978,11 +926,9 @@ See formats.
 </details>
 
 <details open>
-<summary>
+<summary>**`to_datetime`**</summary>
 
 **`to_datetime(format: str | None = None, *, time_unit: Literal['ns', 'us', 'ms'] | None = None, time_zone: str | None = None, strict: bool = True, ambiguous: Literal['earliest', 'latest', 'raise', 'null'] | Expr = 'raise')`**
-
-</summary>
 
 Convert the string to a datetime.
 
@@ -1033,11 +979,9 @@ If None (default), it inferred from the format string
 </details>
 
 <details open>
-<summary>
+<summary>**`to_integer`**</summary>
 
 **`to_integer(*, base: int | td_typing.IntoExprColumn = 10, strict: bool = True)`**
-
-</summary>
 
 Covert a string to integer.
 
@@ -1074,11 +1018,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`to_lowercase`**</summary>
 
 **`to_lowercase`**
-
-</summary>
 
 Return the lowercase of a string.
 
@@ -1104,11 +1046,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`to_time`**</summary>
 
 **`to_time(fmt: str | None = None, *, strict: bool = True, cache: bool = True)`**
-
-</summary>
 
 Convert the string to a time.
 
@@ -1148,11 +1088,9 @@ See formats.
 </details>
 
 <details open>
-<summary>
+<summary>**`to_titlecase`**</summary>
 
 **`to_titlecase`**
-
-</summary>
 
 Uppercase the first character and lowercase all the others ones of a string.
 
@@ -1181,11 +1119,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`to_uppercase`**</summary>
 
 **`to_uppercase`**
-
-</summary>
 
 Return the uppercase of a string.
 
@@ -1211,11 +1147,9 @@ Example:
 </details>
 
 <details open>
-<summary>
+<summary>**`zfill`**</summary>
 
 **`zfill(length: int | td_typing.IntoExprColumn)`**
-
-</summary>
 
 Pad numeric string values at the start to the given length using zeros.
 
@@ -1245,11 +1179,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`contains`**</summary>
 
 **`contains(pattern: str | Expr, *, literal: bool = False, strict: bool = True)`**
-
-</summary>
 
 Evaluate if the string contains a pattern.
 
@@ -1290,11 +1222,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`contains_any`**</summary>
 
 **`contains_any(patterns: td_typing.IntoExpr, *, ascii_case_insensitive: bool = False)`**
-
-</summary>
 
 Evaluate if the string contains any of the given patterns.
 
@@ -1332,11 +1262,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`count_matches`**</summary>
 
 **`count_matches(pattern: str | Expr, *, literal: bool = False)`**
-
-</summary>
 
 Counts the ocurrrences of the given pattern in the string.
 
@@ -1375,11 +1303,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`ends_with`**</summary>
 
 **`ends_with(suffix: str | Expr)`**
-
-</summary>
 
 Evaluate if the string ends with.
 
@@ -1408,11 +1334,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`extract`**</summary>
 
 **`extract(pattern: td_typing.IntoExprColumn, group_index: int = 1)`**
-
-</summary>
 
 Extract a pattern from the string.
 
@@ -1448,11 +1372,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`find`**</summary>
 
 **`find(pattern: str | Expr, *, literal: bool = False, strict: bool = True)`**
-
-</summary>
 
 Find the position of the first occurrence of the given pattern.
 
@@ -1493,11 +1415,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`grok`**</summary>
 
 **`grok(pattern: str, schema: dict[str, Column])`**
-
-</summary>
 
 Parse log text into structured fields using a Grok pattern.
 
@@ -1557,11 +1477,9 @@ both the column name and its data type.
 </details>
 
  <details open>
-<summary>
+<summary>**`head`**</summary>
 
 **`head(n: int | td_typing.IntoExprColumn)`**
-
-</summary>
 
 Extract the start of the string up to the given length.
 
@@ -1588,11 +1506,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`len_bytes`**</summary>
 
 **`len_bytes`**
-
-</summary>
 
 Return number of bytes (not chars) of a string.
 
@@ -1619,11 +1535,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`len_chars`**</summary>
 
 **`len_chars`**
-
-</summary>
 
 Return number of chars (not bytes) of a string.
 
@@ -1650,11 +1564,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`pad_end`**</summary>
 
 **`pad_end(length: int, fill_char: str = ' ')`**
-
-</summary>
 
 Pad string values at the end to the given length using the given
 fill character.
@@ -1690,11 +1602,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`pad_start`**</summary>
 
 **`pad_start(length: int, fill_char: str = ' ')`**
-
-</summary>
 
 Pad string values at the front to the given length using the given
 fill character.
@@ -1730,11 +1640,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`replace`**</summary>
 
 **`replace(pattern: str | Expr, value: str | Expr, *, literal: bool = False, n: int = 1)`**
-
-</summary>
 
 Replace the first occurence of a pattern with the given string.
 
@@ -1780,11 +1688,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`replace_all`**</summary>
 
 **`replace_all(pattern: str | Expr, value: str | Expr, *, literal: bool = False)`**
-
-</summary>
 
 Replace the all occurences of a pattern with the given string.
 
@@ -1826,11 +1732,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`replace_many`**</summary>
 
 **`replace_many(patterns: td_typing.IntoExpr | Mapping[str, str], replace_with: td_typing.IntoExpr | NoDefault = <no_default>, *, ascii_case_insensitive: bool = False)`**
-
-</summary>
 
 Replace the all occurences of any the given patterns with the given string.
 
@@ -1872,11 +1776,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`reverse`**</summary>
 
 **`reverse`**
-
-</summary>
 
 Reverse the string.
 
@@ -1903,11 +1805,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`slice`**</summary>
 
 **`slice(offset: int | td_typing.IntoExprColumn, length: int | td_typing.IntoExprColumn | None = None)`**
-
-</summary>
 
 Extract the substring at the given offset for the given length.
 
@@ -1942,11 +1842,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`starts_with`**</summary>
 
 **`starts_with(prefix: str | Expr)`**
-
-</summary>
 
 Evaluate if the string start with.
 
@@ -1976,11 +1874,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`strip_chars`**</summary>
 
 **`strip_chars(characters: td_typing.IntoExpr = None)`**
-
-</summary>
 
 Trim string values.
 
@@ -2008,11 +1904,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`strip_chars_end`**</summary>
 
 **`strip_chars_end(characters: td_typing.IntoExpr = None)`**
-
-</summary>
 
 Trim string values from the end of the string.
 
@@ -2040,11 +1934,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`strip_chars_start`**</summary>
 
 **`strip_chars_start(characters: td_typing.IntoExpr = None)`**
-
-</summary>
 
 Trim string values from the start of the string.
 
@@ -2072,11 +1964,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`strip_prefix`**</summary>
 
 **`strip_prefix(prefix: td_typing.IntoExpr)`**
-
-</summary>
 
 Trim string values removing the given prefix
 
@@ -2104,11 +1994,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`strip_suffix`**</summary>
 
 **`strip_suffix(suffix: td_typing.IntoExpr)`**
-
-</summary>
 
 Trim string values removing the given suffix
 
@@ -2136,11 +2024,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`tail`**</summary>
 
 **`tail(n: int | td_typing.IntoExprColumn)`**
-
-</summary>
 
 Extract the end of the string up to the given length.
 
@@ -2167,11 +2053,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`to_date`**</summary>
 
 **`to_date(fmt: str | None = None, *, strict: bool = True)`**
-
-</summary>
 
 Convert the string to a date.
 
@@ -2207,11 +2091,9 @@ See formats.
 </details>
 
  <details open>
-<summary>
+<summary>**`to_datetime`**</summary>
 
 **`to_datetime(format: str | None = None, *, time_unit: Literal['ns', 'us', 'ms'] | None = None, time_zone: str | None = None, strict: bool = True, ambiguous: Literal['earliest', 'latest', 'raise', 'null'] | Expr = 'raise')`**
-
-</summary>
 
 Convert the string to a datetime.
 
@@ -2262,11 +2144,9 @@ If None (default), it inferred from the format string
 </details>
 
  <details open>
-<summary>
+<summary>**`to_integer`**</summary>
 
 **`to_integer(*, base: int | td_typing.IntoExprColumn = 10, strict: bool = True)`**
-
-</summary>
 
 Covert a string to integer.
 
@@ -2303,11 +2183,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`to_lowercase`**</summary>
 
 **`to_lowercase`**
-
-</summary>
 
 Return the lowercase of a string.
 
@@ -2333,11 +2211,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`to_time`**</summary>
 
 **`to_time(fmt: str | None = None, *, strict: bool = True, cache: bool = True)`**
-
-</summary>
 
 Convert the string to a time.
 
@@ -2377,11 +2253,9 @@ See formats.
 </details>
 
  <details open>
-<summary>
+<summary>**`to_titlecase`**</summary>
 
 **`to_titlecase`**
-
-</summary>
 
 Uppercase the first character and lowercase all the others ones of a string.
 
@@ -2410,11 +2284,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`to_uppercase`**</summary>
 
 **`to_uppercase`**
-
-</summary>
 
 Return the uppercase of a string.
 
@@ -2440,11 +2312,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`zfill`**</summary>
 
 **`zfill(length: int | td_typing.IntoExprColumn)`**
-
-</summary>
 
 Pad numeric string values at the start to the given length using zeros.
 
@@ -2472,50 +2342,52 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`GrokParser`**</summary>
 
 **`GrokParser(pattern: 'str', schema: 'dict[str, td_col.Column]')`**
 
-</summary>
-
 Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
 <details open>
-<summary>`index`</summary>
+<summary>**`index`**</summary>
+
+`index`
 
 </details>
 
 <details open>
-<summary>`pattern`</summary>
+<summary>**`pattern`**</summary>
+
+`pattern`
 
 </details>
 
 <details open>
-<summary>
+<summary>**`rust`**</summary>
 
 **`rust(expression: IntoExpr)`**
 
-</summary>
+</details>
+
+<details open>
+<summary>**`schema`**</summary>
+
+`schema`
 
 </details>
 
 <details open>
-<summary>`schema`</summary>
+<summary>**`temp_column`**</summary>
 
-</details>
-
-<details open>
-<summary>`temp_column`</summary>
+`temp_column`
 
 </details>
 
 </details>
 
  <details open>
-<summary>
+<summary>**`rust`**</summary>
 
 **`rust(expression: IntoExpr)`**
-
-</summary>
 
 </details>

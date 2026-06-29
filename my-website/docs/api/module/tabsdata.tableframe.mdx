@@ -5,33 +5,27 @@ title: "tabsdata.tableframe"
 # tabsdata.tableframe
 
  <details open>
-<summary>
+<summary>**`SysCol`**</summary>
 
 **`SysCol(*values)`**
-
-</summary>
 
 Bases: [StrEnum](https://docs.python.org/3/library/enum.html#enum.StrEnum)
 
 </details>
 
  <details open>
-<summary>
+<summary>**`empty`**</summary>
 
 **`empty`**
-
-</summary>
 
 Creates an empty (no column - no row) TableFrame.
 
 </details>
 
  <details open>
-<summary>
+<summary>**`from_dict`**</summary>
 
 **`from_dict(data: Mapping[str, Sequence[object] | Mapping[str, Sequence[object]]] | None = None)`**
-
-</summary>
 
 Creates tableframe from a dictionary, or None.
 None produces as an empty (no column - no row) tableframe.
@@ -39,11 +33,9 @@ None produces as an empty (no column - no row) tableframe.
 </details>
 
  <details open>
-<summary>
+<summary>**`from_pandas`**</summary>
 
 **`from_pandas(data: pd.DataFrame | None = None)`**
-
-</summary>
 
 Creates tableframe from a pandas dataframe, or None.
 None produces as an empty (no column - no row) tableframe.
@@ -51,11 +43,9 @@ None produces as an empty (no column - no row) tableframe.
 </details>
 
  <details open>
-<summary>
+<summary>**`from_polars`**</summary>
 
 **`from_polars(data: LazyFrame | DataFrame | None = None)`**
-
-</summary>
 
 Creates tableframe from a polars dataframe or lazyframe, or None.
 None produces as an empty (no column - no row) tableframe.
@@ -63,11 +53,9 @@ None produces as an empty (no column - no row) tableframe.
 </details>
 
  <details open>
-<summary>
+<summary>**`to_dict`**</summary>
 
 **`to_dict(data: TableFrame)`**
-
-</summary>
 
 Creates dictionary from a tableframe, or None.
 None produces and empty (no key) dictionary.
@@ -75,11 +63,9 @@ None produces and empty (no key) dictionary.
 </details>
 
  <details open>
-<summary>
+<summary>**`to_pandas`**</summary>
 
 **`to_pandas(data: td_frame.TableFrame)`**
-
-</summary>
 
 Creates pandas dataframe from a tableframe, or None.
 None produces and empty (no column - no row) pandas dataframe.
@@ -87,11 +73,9 @@ None produces and empty (no column - no row) pandas dataframe.
 </details>
 
  <details open>
-<summary>
+<summary>**`to_polars_df`**</summary>
 
 **`to_polars_df(data: TableFrame)`**
-
-</summary>
 
 Creates polars dataframe from a tableframe, or None.
 None produces and empty (no column - no row) polars dataframe.
@@ -99,11 +83,9 @@ None produces and empty (no column - no row) polars dataframe.
 </details>
 
  <details open>
-<summary>
+<summary>**`to_polars_lf`**</summary>
 
 **`to_polars_lf(data: TableFrame)`**
-
-</summary>
 
 Creates polars lazyframe from a tableframe, or None.
 None produces and empty (no column - no row) polars lazyframe.

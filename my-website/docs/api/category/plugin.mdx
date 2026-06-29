@@ -7,11 +7,9 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 # Plugins
 
  <details open>
-<summary>
+<summary>**`DestinationPlugin`**</summary>
 
 **`DestinationPlugin`**
-
-</summary>
 
 Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
@@ -22,11 +20,9 @@ receive the resulting data from the dataset function
 and must store it in the desired location.
 
    <details open>
-<summary>
+<summary>**`chunk`**</summary>
 
 **`chunk(working_dir: str, *results: VALID_PLUGIN_RESULT)`**
-
-</summary>
 
 Trigger the exporting of the data to local parquet chunks. This method will
 receive the resulting data from the user function and must store it in
@@ -49,11 +45,9 @@ the execution of the plugin, not the final destination of the data)
 </details>
 
 <details open>
-<summary>
+<summary>**`stream`**</summary>
 
 **`stream(working_dir: str, *results: VALID_PLUGIN_RESULT)`**
-
-</summary>
 
 Trigger the exporting of the data. This method will receive the resulting data
 from the user function and must store it in the desired location.
@@ -76,11 +70,9 @@ the execution of the plugin, not the final destination of the data)
 </details>
 
 <details open>
-<summary>
+<summary>**`write`**</summary>
 
 **`write(files: List[str | List[str] | List[List[str]]])`**
-
-</summary>
 
 Given a file or a list of files, write to the desired destination. Note: this
 method *might* materialize the data in the files it receives, so chunks
@@ -91,11 +83,9 @@ should be of an appropriate size.
 </details>
 
  <details open>
-<summary>
+<summary>**`SourcePlugin`**</summary>
 
 **`SourcePlugin`**
-
-</summary>
 
 Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
@@ -112,11 +102,9 @@ with a single file and a second argument with two files:
 return [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
 
    <details open>
-<summary>
+<summary>**`chunk`**</summary>
 
 **`chunk(working_dir: str)`**
-
-</summary>
 
 Trigger the import of the data. This must be implemented in any class that
 inherits from this class unless directly implementing streaming. The method will
@@ -136,7 +124,9 @@ single file and a second argument with two files:return
 </details>
 
 <details open>
-<summary>`initial_values`</summary>
+<summary>**`initial_values`**</summary>
+
+`initial_values`
 
 Return a dictionary with the initial values to be stored after execution of
 the plugin. They will be accessible in the next execution of the plugin.
@@ -150,11 +140,9 @@ as values, all the type string.
 </details>
 
 <details open>
-<summary>
+<summary>**`stream`**</summary>
 
 **`stream(working_dir: str)`**
-
-</summary>
 
 </details>
 

@@ -5,11 +5,9 @@ title: "Data Quality Action"
 # Data Quality Action
 
  <details open>
-<summary>
+<summary>**`DataQuality`**</summary>
 
 **`DataQuality(table: str, classifiers: Classifier | list[Classifier], operators: Operator | list[Operator])`**
-
-</summary>
 
 Bases: `OnTablesAction`
 
@@ -20,14 +18,18 @@ and operators, that are applied to a specified table. It serves as a container
 for a complete data quality workflow.
 
 <details open>
-<summary>`classifiers`</summary>
+<summary>**`classifiers`**</summary>
+
+`classifiers`
 
 Returns the list of classifiers used in this data quality action.
 
 </details>
 
 <details open>
-<summary>`operators`</summary>
+<summary>**`operators`**</summary>
+
+`operators`
 
 Returns the list of operators that will be executed based on the
 classifier results.
@@ -35,7 +37,9 @@ classifier results.
 </details>
 
 <details open>
-<summary>`table`</summary>
+<summary>**`table`**</summary>
+
+`table`
 
 Returns the name of the table targeted by this data quality action.
 

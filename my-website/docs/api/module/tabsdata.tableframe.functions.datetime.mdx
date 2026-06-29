@@ -5,804 +5,626 @@ title: "tabsdata.tableframe.functions.datetime"
 # tabsdata.tableframe.functions.datetime
 
  <details open>
-<summary>
+<summary>**`ExprDateTimeNameSpace`**</summary>
 
 **`ExprDateTimeNameSpace(expr: ExprDateTimeNameSpace)`**
-
-</summary>
 
 Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
 <details open>
-<summary>
+<summary>**`add_business_days`**</summary>
 
 **`add_business_days(n: int | td_typing.IntoExpr, week_mask: Iterable[bool] = (True, True, True, True, True, False, False), holidays: Iterable[dt.date] = (), roll: td_typing.Roll = 'raise')`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`base_utc_offset`**</summary>
 
 **`base_utc_offset`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`cast_time_unit`**</summary>
 
 **`cast_time_unit(time_unit: Literal['ns', 'us', 'ms'])`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`century`**</summary>
 
 **`century`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`combine`**</summary>
 
 **`combine(time: time | Expr, time_unit: Literal['ns', 'us', 'ms'] = 'us')`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`convert_time_zone`**</summary>
 
 **`convert_time_zone(time_zone: str)`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`date`**</summary>
 
 **`date`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`datetime`**</summary>
 
 **`datetime`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`day`**</summary>
 
 **`day`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`dst_offset`**</summary>
 
 **`dst_offset`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`epoch`**</summary>
 
 **`epoch(time_unit: Literal['ns', 'us', 'ms', 's', 'd'] = 'us')`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`hour`**</summary>
 
 **`hour`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`is_leap_year`**</summary>
 
 **`is_leap_year`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`iso_year`**</summary>
 
 **`iso_year`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`microsecond`**</summary>
 
 **`microsecond`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`millennium`**</summary>
 
 **`millennium`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`millisecond`**</summary>
 
 **`millisecond`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`minute`**</summary>
 
 **`minute`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`month`**</summary>
 
 **`month`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`month_end`**</summary>
 
 **`month_end`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`month_start`**</summary>
 
 **`month_start`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`nanosecond`**</summary>
 
 **`nanosecond`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`offset_by`**</summary>
 
 **`offset_by(by: str | Expr)`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`ordinal_day`**</summary>
 
 **`ordinal_day`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`quarter`**</summary>
 
 **`quarter`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`replace`**</summary>
 
 **`replace(*, year: int | td_typing.IntoExpr | None = None, month: int | td_typing.IntoExpr | None = None, day: int | td_typing.IntoExpr | None = None, hour: int | td_typing.IntoExpr | None = None, minute: int | td_typing.IntoExpr | None = None, second: int | td_typing.IntoExpr | None = None, microsecond: int | td_typing.IntoExpr | None = None, ambiguous: td_typing.Ambiguous | td_expr.Expr = 'raise')`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`replace_time_zone`**</summary>
 
 **`replace_time_zone(time_zone: str | None, *, ambiguous: Literal['earliest', 'latest', 'raise', 'null'] | Expr = 'raise', non_existent: Literal['raise', 'null'] = 'raise')`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`second`**</summary>
 
 **`second(*, fractional: bool = False)`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`strftime`**</summary>
 
 **`strftime(fmt: str)`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`time`**</summary>
 
 **`time`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`timestamp`**</summary>
 
 **`timestamp(time_unit: Literal['ns', 'us', 'ms'] = 'us')`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`to_string`**</summary>
 
 **`to_string(fmt: str | None = None)`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`total_days`**</summary>
 
 **`total_days`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`total_hours`**</summary>
 
 **`total_hours`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`total_microseconds`**</summary>
 
 **`total_microseconds`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`total_milliseconds`**</summary>
 
 **`total_milliseconds`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`total_minutes`**</summary>
 
 **`total_minutes`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`total_nanoseconds`**</summary>
 
 **`total_nanoseconds`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`total_seconds`**</summary>
 
 **`total_seconds`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`truncate`**</summary>
 
 **`truncate(every: str | timedelta | Expr)`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`week`**</summary>
 
 **`week`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`weekday`**</summary>
 
 **`weekday`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`with_time_unit`**</summary>
 
 **`with_time_unit(time_unit: Literal['ns', 'us', 'ms'])`**
 
-</summary>
-
 </details>
 
 <details open>
-<summary>
+<summary>**`year`**</summary>
 
 **`year`**
-
-</summary>
 
 </details>
 
 </details>
 
  <details open>
-<summary>
+<summary>**`add_business_days`**</summary>
 
 **`add_business_days(n: int | td_typing.IntoExpr, week_mask: Iterable[bool] = (True, True, True, True, True, False, False), holidays: Iterable[dt.date] = (), roll: td_typing.Roll = 'raise')`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`base_utc_offset`**</summary>
 
 **`base_utc_offset`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`cast_time_unit`**</summary>
 
 **`cast_time_unit(time_unit: Literal['ns', 'us', 'ms'])`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`century`**</summary>
 
 **`century`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`combine`**</summary>
 
 **`combine(time: time | Expr, time_unit: Literal['ns', 'us', 'ms'] = 'us')`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`convert_time_zone`**</summary>
 
 **`convert_time_zone(time_zone: str)`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`date`**</summary>
 
 **`date`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`datetime`**</summary>
 
 **`datetime`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`day`**</summary>
 
 **`day`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`dst_offset`**</summary>
 
 **`dst_offset`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`epoch`**</summary>
 
 **`epoch(time_unit: Literal['ns', 'us', 'ms', 's', 'd'] = 'us')`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`hour`**</summary>
 
 **`hour`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`is_leap_year`**</summary>
 
 **`is_leap_year`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`iso_year`**</summary>
 
 **`iso_year`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`microsecond`**</summary>
 
 **`microsecond`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`millennium`**</summary>
 
 **`millennium`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`millisecond`**</summary>
 
 **`millisecond`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`minute`**</summary>
 
 **`minute`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`month`**</summary>
 
 **`month`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`month_end`**</summary>
 
 **`month_end`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`month_start`**</summary>
 
 **`month_start`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`nanosecond`**</summary>
 
 **`nanosecond`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`offset_by`**</summary>
 
 **`offset_by(by: str | Expr)`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`ordinal_day`**</summary>
 
 **`ordinal_day`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`quarter`**</summary>
 
 **`quarter`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`replace`**</summary>
 
 **`replace(*, year: int | td_typing.IntoExpr | None = None, month: int | td_typing.IntoExpr | None = None, day: int | td_typing.IntoExpr | None = None, hour: int | td_typing.IntoExpr | None = None, minute: int | td_typing.IntoExpr | None = None, second: int | td_typing.IntoExpr | None = None, microsecond: int | td_typing.IntoExpr | None = None, ambiguous: td_typing.Ambiguous | td_expr.Expr = 'raise')`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`replace_time_zone`**</summary>
 
 **`replace_time_zone(time_zone: str | None, *, ambiguous: Literal['earliest', 'latest', 'raise', 'null'] | Expr = 'raise', non_existent: Literal['raise', 'null'] = 'raise')`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`second`**</summary>
 
 **`second(*, fractional: bool = False)`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`strftime`**</summary>
 
 **`strftime(fmt: str)`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`time`**</summary>
 
 **`time`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`timestamp`**</summary>
 
 **`timestamp(time_unit: Literal['ns', 'us', 'ms'] = 'us')`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`to_string`**</summary>
 
 **`to_string(fmt: str | None = None)`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`total_days`**</summary>
 
 **`total_days`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`total_hours`**</summary>
 
 **`total_hours`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`total_microseconds`**</summary>
 
 **`total_microseconds`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`total_milliseconds`**</summary>
 
 **`total_milliseconds`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`total_minutes`**</summary>
 
 **`total_minutes`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`total_nanoseconds`**</summary>
 
 **`total_nanoseconds`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`total_seconds`**</summary>
 
 **`total_seconds`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`truncate`**</summary>
 
 **`truncate(every: str | timedelta | Expr)`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`week`**</summary>
 
 **`week`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`weekday`**</summary>
 
 **`weekday`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`with_time_unit`**</summary>
 
 **`with_time_unit(time_unit: Literal['ns', 'us', 'ms'])`**
 
-</summary>
-
 </details>
 
  <details open>
-<summary>
+<summary>**`year`**</summary>
 
 **`year`**
-
-</summary>
 
 </details>

@@ -7,11 +7,9 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 # Manipulation
 
  <details open>
-<summary>
+<summary>**`cast`**</summary>
 
 **`cast(dtypes: Mapping[td_typing.ColumnNameOrSelector | td_typing.DataType, td_typing.DataType] | td_typing.DataType, *, strict: bool = True)`**
-
-</summary>
 
 Cast columns to a new data type.
 
@@ -68,11 +66,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`drop_nans`**</summary>
 
 **`drop_nans(subset: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector] | None = None)`**
-
-</summary>
 
 Drop rows with NaN values.
 
@@ -123,11 +119,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`drop_nulls`**</summary>
 
 **`drop_nulls(subset: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector] | None = None)`**
-
-</summary>
 
 Drop rows with null values.
 
@@ -179,11 +173,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`fill_nan`**</summary>
 
 **`fill_nan(value: int | float | Expr | None)`**
-
-</summary>
 
 Replace all NaN values in the TableFrame with the given value.
 
@@ -226,11 +218,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`fill_null`**</summary>
 
 **`fill_null(value: Any | Expr | None = None)`**
-
-</summary>
 
 Replace all null values in the TableFrame with the given value.
 
@@ -273,11 +263,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`alias`**</summary>
 
 **`alias(name: str)`**
-
-</summary>
 
 Set the name for a column or expression.
 
@@ -308,11 +296,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`fill_nan`**</summary>
 
 **`fill_nan(value: int | float | Expr | None)`**
-
-</summary>
 
 Replace NaN values with the given value.
 
@@ -342,11 +328,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`fill_null`**</summary>
 
 **`fill_null(value: Any | Expr | None = None, strategy: Literal['forward', 'backward', 'min', 'max', 'mean', 'zero', 'one'] | None = None, limit: int | None = None)`**
-
-</summary>
 
 Replace null values with the given value.
 

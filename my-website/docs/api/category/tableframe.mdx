@@ -7,11 +7,9 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 # Tableframe
 
  <details open>
-<summary>
+<summary>**`assert_has_cols`**</summary>
 
 **`assert_has_cols(cols: str | list[str], exact: bool | None = False)`**
-
-</summary>
 
 Ensures that the (non-system) columns in the TableFrame match the expected
 columns.
@@ -46,11 +44,9 @@ columns.
 </details>
 
  <details open>
-<summary>
+<summary>**`clear`**</summary>
 
 **`clear(n: int = 0)`**
-
-</summary>
 
 Clears all rows of the TableFrame preserving the schema.
 
@@ -90,22 +86,18 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`empty`**</summary>
 
 **`empty(schema: SimpleSchema = None)`**
-
-</summary>
 
 Creates an empty (no column - no row) TableFrame.
 
 </details>
 
  <details open>
-<summary>
+<summary>**`from_dict`**</summary>
 
 **`from_dict(data: Mapping[str, Sequence[object] | Mapping[str, Sequence[object]]] | None = None)`**
-
-</summary>
 
 Creates tableframe from a dictionary, or None.
 None produces as an empty (no column - no row) tableframe.
@@ -113,11 +105,9 @@ None produces as an empty (no column - no row) tableframe.
 </details>
 
  <details open>
-<summary>
+<summary>**`from_pandas`**</summary>
 
 **`from_pandas(data: pd.DataFrame | None = None)`**
-
-</summary>
 
 Creates tableframe from a pandas dataframe, or None.
 None produces as an empty (no column - no row) tableframe.
@@ -125,11 +115,9 @@ None produces as an empty (no column - no row) tableframe.
 </details>
 
  <details open>
-<summary>
+<summary>**`from_polars`**</summary>
 
 **`from_polars(data: LazyFrame | DataFrame | None = None)`**
-
-</summary>
 
 Creates tableframe from a polars dataframe or lazyframe, or None.
 None produces as an empty (no column - no row) tableframe.
@@ -137,11 +125,9 @@ None produces as an empty (no column - no row) tableframe.
 </details>
 
  <details open>
-<summary>
+<summary>**`has_cols`**</summary>
 
 **`has_cols(cols: str | list[str], exact: bool | None = False)`**
-
-</summary>
 
 Verifies the presence of (non-system) columns in the TableFrame.
 
@@ -198,11 +184,9 @@ A set of columns in the TableFrame missing in cols.
 </details>
 
  <details open>
-<summary>
+<summary>**`has_same_schema`**</summary>
 
 **`has_same_schema(tf: TableFrame)`**
-
-</summary>
 
 Verifies if the schema of the current TableFrame is same than the provided
 TableFrame.
@@ -266,11 +250,9 @@ False
 </details>
 
  <details open>
-<summary>
+<summary>**`is_empty`**</summary>
 
 **`is_empty`**
-
-</summary>
 
 Checks if a TableFrame has no rows.
 
@@ -310,11 +292,9 @@ True
 </details>
 
  <details open>
-<summary>
+<summary>**`sort`**</summary>
 
 **`sort(by: td_typing.IntoExpr | Iterable[td_typing.IntoExpr], *more_by: td_typing.IntoExpr, descending: bool | Sequence[bool] = False, nulls_last: bool | Sequence[bool] = False, maintain_order: bool = False)`**
-
-</summary>
 
 Sort the TableFrame by the given column(s) or expression(s).
 
@@ -383,44 +363,36 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`to_dict`**</summary>
 
 **`to_dict`**
-
-</summary>
 
 Creates a dictionary from this tableframe.
 
 </details>
 
  <details open>
-<summary>
+<summary>**`to_pandas`**</summary>
 
 **`to_pandas`**
-
-</summary>
 
 Creates a pandas dataframe from this tableframe.
 
 </details>
 
  <details open>
-<summary>
+<summary>**`to_polars_df`**</summary>
 
 **`to_polars_df`**
-
-</summary>
 
 Creates a polars dataframe from this tableframe.
 
 </details>
 
  <details open>
-<summary>
+<summary>**`to_polars_lf`**</summary>
 
 **`to_polars_lf`**
-
-</summary>
 
 Creates a polars lazyframe from this tableframe.
 

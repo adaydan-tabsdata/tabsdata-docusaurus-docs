@@ -7,11 +7,9 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 # Filters
 
  <details open>
-<summary>
+<summary>**`extract_as_columns`**</summary>
 
 **`extract_as_columns(offset: int, length: int)`**
-
-</summary>
 
 Extract a slice of rows from the table as a column-oriented dictionary.
 
@@ -60,11 +58,9 @@ and its value is a list of values from the selected slice.
 </details>
 
  <details open>
-<summary>
+<summary>**`extract_as_rows`**</summary>
 
 **`extract_as_rows(offset: int, length: int)`**
-
-</summary>
 
 Extract a slice of rows from the TableFrame as a list of dictionaries.
 
@@ -115,11 +111,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`filter`**</summary>
 
 **`filter(*predicates: td_typing.IntoExprColumn | Iterable[td_typing.IntoExprColumn] | bool | list[bool] | np.ndarray[Any, Any])`**
-
-</summary>
 
 Filter the TableFrame based on the given predicates.
 
@@ -161,11 +155,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`first`**</summary>
 
 **`first`**
-
-</summary>
 
 Return a TableFrame with the first row.
 
@@ -202,11 +194,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`first_row`**</summary>
 
 **`first_row(named: bool = False)`**
-
-</summary>
 
 Return a tuple or dictionary with the first row, or None if no row.
 
@@ -239,11 +229,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`head`**</summary>
 
 **`head(n: int = 5)`**
-
-</summary>
 
 Return a TableFrame with the first n rows.
 
@@ -281,11 +269,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`last`**</summary>
 
 **`last`**
-
-</summary>
 
 Return a TableFrame with the last row.
 
@@ -322,11 +308,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`last_row`**</summary>
 
 **`last_row(named: bool = False)`**
-
-</summary>
 
 Return a tuple or dictionary with the last row, or None if no row.
 
@@ -359,11 +343,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`limit`**</summary>
 
 **`limit(n: int = 5)`**
-
-</summary>
 
 Return a TableFrame with the first n rows.
 This is equivalent to head.
@@ -402,11 +384,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`slice`**</summary>
 
 **`slice(offset: int, length: int | None = None)`**
-
-</summary>
 
 Return a TableFrame with a slice of the original TableFrame
 
@@ -452,11 +432,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`tail`**</summary>
 
 **`tail(n: int = 5)`**
-
-</summary>
 
 Return a TableFrame with the last n rows.
 
@@ -494,11 +472,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`unique`**</summary>
 
 **`unique(subset: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector] | None = None, *, keep: td_typing.UniqueKeepStrategy = 'any', maintain_order: bool = False)`**
-
-</summary>
 
 Deduplicate rows from the TableFrame.
 
@@ -559,11 +535,9 @@ eliminate duplicate rows).
 </details>
 
  <details open>
-<summary>
+<summary>**`filter`**</summary>
 
 **`filter(*predicates: Expr | Series | str | Iterable[Expr | Series | str])`**
-
-</summary>
 
 Apply a filter predicate to an expression.
 
@@ -610,11 +584,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`slice`**</summary>
 
 **`slice(offset: int | Expr, length: int | Expr | None = None)`**
-
-</summary>
 
 Compute a slice of the TableFrame for the specified columns.
 

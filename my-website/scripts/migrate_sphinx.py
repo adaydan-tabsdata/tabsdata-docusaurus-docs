@@ -287,16 +287,17 @@ def api_entry_to_mdx(dl):
         return ''
 
     sig = sig_to_text(dt)
+    name_only = sig.split('(')[0].strip()
     classes = dl.get('class', [])
 
-    # For properties/attributes: simple inline entry
+    # For properties/attributes: name in summary, sig + content inside
     if 'property' in classes or 'attribute' in classes:
         content = element_to_mdx(dd).strip() if dd else ''
-        return f'<details open>\n<summary>`{sig}`</summary>\n\n{content}\n\n</details>\n\n'
+        inner = f'`{sig}`\n\n{content}\n\n' if content else f'`{sig}`\n\n'
+        return f'<details open>\n<summary>**`{name_only}`**</summary>\n\n{inner}</details>\n\n'
 
-    # For classes/functions/methods: full block with params
+    # For classes/functions/methods: name in summary, sig + body inside
     if dd:
-        # Separate field-lists from prose
         body_parts = []
         param_parts = []
         needs_param_import = False
@@ -304,13 +305,17 @@ def api_entry_to_mdx(dl):
         for child in dd.children:
             if not isinstance(child, Tag):
                 continue
+            # Skip "view source" links
+            if child.name == 'p' and child.find('a', class_='reference'):
+                text = child.get_text().strip().lower()
+                if 'view source' in text or 'source' == text:
+                    continue
             if child.name == 'dl' and 'field-list' in child.get('class', []):
                 fp = field_list_to_mdx(child)
                 if '<ParamField' in fp:
                     needs_param_import = True
                 param_parts.append(fp)
             elif child.name == 'dl' and 'py' in child.get('class', []):
-                # Nested method/property — recurse
                 body_parts.append(api_entry_to_mdx(child))
             else:
                 body_parts.append(element_to_mdx(child))
@@ -318,13 +323,13 @@ def api_entry_to_mdx(dl):
         body = ''.join(body_parts).strip()
         params = ''.join(param_parts)
 
-        inner = ''
+        inner = f'**`{sig}`**\n\n'
         if body:
             inner += body + '\n\n'
         if params:
             inner += params
 
-        result = f'<details open>\n<summary>\n\n**`{sig}`**\n\n</summary>\n\n{inner}</details>\n\n'
+        result = f'<details open>\n<summary>**`{name_only}`**</summary>\n\n{inner}</details>\n\n'
         if needs_param_import:
             result = "import { ParamField, ResponseField } from '@site/src/components/ApiField';\n\n" + result
         return result

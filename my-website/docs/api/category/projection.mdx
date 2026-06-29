@@ -7,11 +7,9 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 # Projection
 
  <details open>
-<summary>
+<summary>**`drop`**</summary>
 
 **`drop(*columns: td_typing.ColumnNameOrSelector | Iterable[td_typing.ColumnNameOrSelector], strict: bool = True)`**
-
-</summary>
 
 Discard columns from the TableFrame.
 
@@ -62,11 +60,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`item`**</summary>
 
 **`item`**
-
-</summary>
 
 Returns a scalar value if the TableFrame contains exactly one user column and
 one row.
@@ -98,11 +94,9 @@ A
 </details>
 
  <details open>
-<summary>
+<summary>**`rename`**</summary>
 
 **`rename(mapping: dict[str, str])`**
-
-</summary>
 
 Rename columns from the TableFrame.
 
@@ -145,11 +139,9 @@ Examples:
 </details>
 
  <details open>
-<summary>
+<summary>**`select`**</summary>
 
 **`select(*exprs: td_typing.IntoExpr | Iterable[td_typing.IntoExpr], **named_exprs: td_typing.IntoExpr)`**
-
-</summary>
 
 Select column(s) from the TableFrame.
 
@@ -202,11 +194,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`udf`**</summary>
 
 **`udf(on: td_typing.IntoExpr | list[td_typing.IntoExpr], function: td_udf.UDF)`**
-
-</summary>
 
 Apply a user-defined function (UDF) to the columns resolved by expr.
 
@@ -358,11 +348,9 @@ defining on_batch or on_element to produce the output series.
 </details>
 
  <details open>
-<summary>
+<summary>**`unnest`**</summary>
 
 **`unnest(columns: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector], *more_columns: td_typing.ColumnNameOrSelector)`**
-
-</summary>
 
 Expand one or more struct columns so that each field within the struct becomes
 a separate column in the TableFrame.
@@ -420,11 +408,9 @@ arguments.
 </details>
 
  <details open>
-<summary>
+<summary>**`with_columns`**</summary>
 
 **`with_columns(*exprs: td_typing.IntoExpr | Iterable[td_typing.IntoExpr], **named_exprs: td_typing.IntoExpr)`**
-
-</summary>
 
 Add columns to the TableFrame.
 
@@ -475,11 +461,9 @@ Example:
 </details>
 
  <details open>
-<summary>
+<summary>**`all`**</summary>
 
 **`all`**
-
-</summary>
 
 Select all columns in a TableFrame.
 
@@ -533,11 +517,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`alpha`**</summary>
 
 **`alpha(ascii_only: bool = False, *, ignore_spaces: bool = False)`**
-
-</summary>
 
 Select all columns with names made up of only alphabetic characters.
 
@@ -600,11 +582,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`alphanumeric`**</summary>
 
 **`alphanumeric(ascii_only: bool = False, *, ignore_spaces: bool = False)`**
-
-</summary>
 
 Select all columns whose names contain only letters and digits.
 
@@ -668,11 +648,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`binary`**</summary>
 
 **`binary`**
-
-</summary>
 
 Select all columns of binary (bytes) data type.
 
@@ -726,11 +704,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`boolean`**</summary>
 
 **`boolean`**
-
-</summary>
 
 Select all columns of boolean data type.
 
@@ -784,11 +760,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`by_dtype`**</summary>
 
 **`by_dtype(*dtypes: td_typing.DataType | PythonDataType | Iterable[td_typing.DataType] | Iterable[PythonDataType])`**
-
-</summary>
 
 Select all columns of the specified data type.
 
@@ -844,11 +818,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`by_index`**</summary>
 
 **`by_index(*indices: int | range | Sequence[int | range])`**
-
-</summary>
 
 Select columns by their position in the TableFrame.
 
@@ -924,11 +896,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`by_name`**</summary>
 
 **`by_name(*names: str | Collection[str], require_all: bool = True)`**
-
-</summary>
 
 Select all columns whose names match any given names.
 
@@ -992,11 +962,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`categorical`**</summary>
 
 **`categorical`**
-
-</summary>
 
 Select all columns with categorical data type.
 
@@ -1053,11 +1021,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`contains`**</summary>
 
 **`contains(*substring: str)`**
-
-</summary>
 
 Select all columns whose names contain one or more of the given substrings.
 
@@ -1109,11 +1075,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`date`**</summary>
 
 **`date`**
-
-</summary>
 
 Select all columns of date data type.
 
@@ -1185,11 +1149,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`datetime`**</summary>
 
 **`datetime(time_unit: Literal['ns', 'us', 'ms'] | Collection[Literal['ns', 'us', 'ms']] | None = None, time_zone: str | timezone | Collection[str | timezone | None] | None = ('*', None))`**
-
-</summary>
 
 Select all columns of datetime data type.
 
@@ -1292,11 +1254,9 @@ Use "*" to match any column with any time zone.
 </details>
 
  <details open>
-<summary>
+<summary>**`decimal`**</summary>
 
 **`decimal`**
-
-</summary>
 
 Select all columns of decimal data type.
 
@@ -1355,11 +1315,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`digit`**</summary>
 
 **`digit(ascii_only: bool = False)`**
-
-</summary>
 
 Select all columns whose names consist only of digit characters.
 
@@ -1415,11 +1373,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`duration`**</summary>
 
 **`duration(time_unit: Literal['ns', 'us', 'ms'] | Collection[Literal['ns', 'us', 'ms']] | None = None)`**
-
-</summary>
 
 Select all columns of duration data type.
 
@@ -1483,11 +1439,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`ends_with`**</summary>
 
 **`ends_with(*suffix: str)`**
-
-</summary>
 
 Select all columns whose names end with any of the given suffixes.
 
@@ -1543,11 +1497,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`exclude`**</summary>
 
 **`exclude(columns: str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr | Collection[str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr], *more_columns: str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr)`**
-
-</summary>
 
 Exclude specific columns from selection by name, data type, expression, or selector.
 
@@ -1615,11 +1567,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`first`**</summary>
 
 **`first`**
-
-</summary>
 
 Select the first column in the TableFrame.
 
@@ -1674,11 +1624,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`float`**</summary>
 
 **`float`**
-
-</summary>
 
 Select all columns of float data types.
 
@@ -1733,11 +1681,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`integer`**</summary>
 
 **`integer`**
-
-</summary>
 
 Select all columns with integer data types.
 
@@ -1793,11 +1739,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`last`**</summary>
 
 **`last`**
-
-</summary>
 
 Select the last column in the TableFrame.
 
@@ -1855,11 +1799,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`matches`**</summary>
 
 **`matches(pattern: str)`**
-
-</summary>
 
 Select all columns whose names match a regular expression pattern.
 
@@ -1915,11 +1857,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`numeric`**</summary>
 
 **`numeric`**
-
-</summary>
 
 Select all columns of numeric data types.
 
@@ -1977,11 +1917,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`object`**</summary>
 
 **`object`**
-
-</summary>
 
 Select all columns of object data type.
 
@@ -2040,11 +1978,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`signed_integer`**</summary>
 
 **`signed_integer`**
-
-</summary>
 
 Select all columns of signed integer data types.
 
@@ -2100,11 +2036,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`starts_with`**</summary>
 
 **`starts_with(*prefix: str)`**
-
-</summary>
 
 Select all columns whose names start with any of the given prefixes.
 
@@ -2160,11 +2094,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`string`**</summary>
 
 **`string(*, include_categorical: bool = False)`**
-
-</summary>
 
 Select all columns of string or categorical data type.
 
@@ -2219,11 +2151,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`temporal`**</summary>
 
 **`temporal`**
-
-</summary>
 
 Select all columns of temporal data types.
 
@@ -2319,11 +2249,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`time`**</summary>
 
 **`time`**
-
-</summary>
 
 Select columns of Python time values.
 
@@ -2381,11 +2309,9 @@ Selected:
 </details>
 
  <details open>
-<summary>
+<summary>**`unsigned_integer`**</summary>
 
 **`unsigned_integer`**
-
-</summary>
 
 Select all columns of unsigned integer data types.
 
