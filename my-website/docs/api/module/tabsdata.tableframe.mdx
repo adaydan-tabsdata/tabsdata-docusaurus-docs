@@ -2,92 +2,179 @@
 title: "tabsdata.tableframe"
 ---
 
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
 # tabsdata.tableframe
 
- <details open>
-<summary>**`SysCol`**</summary>
+ <a id="tabsdata.tableframe.SysCol"></a>
+<details open>
+<summary>SysCol</summary>
 
-**`SysCol(*values)`**
+```python
+class SysCol(
+    *values,
+)
+```
 
 Bases: [StrEnum](https://docs.python.org/3/library/enum.html#enum.StrEnum)
 
 </details>
 
- <details open>
-<summary>**`empty`**</summary>
+ <a id="tabsdata.tableframe.empty"></a>
+<details open>
+<summary>empty</summary>
 
-**`empty`**
+```python
+def empty()
+```
 
 Creates an empty (no column - no row) TableFrame.
 
 </details>
 
- <details open>
-<summary>**`from_dict`**</summary>
+ <a id="tabsdata.tableframe.from_dict"></a>
+<details open>
+<summary>from_dict</summary>
 
-**`from_dict(data: Mapping[str, Sequence[object] | Mapping[str, Sequence[object]]] | None = None)`**
+```python
+def from_dict(
+    data: Mapping[str, Sequence[object] | Mapping[str, Sequence[object]]] | None = None,
+)
+```
 
 Creates tableframe from a dictionary, or None.
 None produces as an empty (no column - no row) tableframe.
 
+**Parameters:**
+
+<ParamField path="data">
+  Input data.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`from_pandas`**</summary>
+ <a id="tabsdata.tableframe.from_pandas"></a>
+<details open>
+<summary>from_pandas</summary>
 
-**`from_pandas(data: pd.DataFrame | None = None)`**
+```python
+def from_pandas(
+    data: pd.DataFrame | None = None,
+)
+```
 
 Creates tableframe from a pandas dataframe, or None.
 None produces as an empty (no column - no row) tableframe.
 
+**Parameters:**
+
+<ParamField path="data">
+  Input data.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`from_polars`**</summary>
+ <a id="tabsdata.tableframe.from_polars"></a>
+<details open>
+<summary>from_polars</summary>
 
-**`from_polars(data: LazyFrame | DataFrame | None = None)`**
+```python
+def from_polars(
+    data: LazyFrame | DataFrame | None = None,
+)
+```
 
 Creates tableframe from a polars dataframe or lazyframe, or None.
 None produces as an empty (no column - no row) tableframe.
 
+**Parameters:**
+
+<ParamField path="data">
+  Input data.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`to_dict`**</summary>
+ <a id="tabsdata.tableframe.to_dict"></a>
+<details open>
+<summary>to_dict</summary>
 
-**`to_dict(data: TableFrame)`**
+```python
+def to_dict(
+    data: TableFrame,
+)
+```
 
 Creates dictionary from a tableframe, or None.
 None produces and empty (no key) dictionary.
 
+**Parameters:**
+
+<ParamField path="data">
+  Input data.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`to_pandas`**</summary>
+ <a id="tabsdata.tableframe.to_pandas"></a>
+<details open>
+<summary>to_pandas</summary>
 
-**`to_pandas(data: td_frame.TableFrame)`**
+```python
+def to_pandas(
+    data: td_frame.TableFrame,
+)
+```
 
 Creates pandas dataframe from a tableframe, or None.
 None produces and empty (no column - no row) pandas dataframe.
 
+**Parameters:**
+
+<ParamField path="data">
+  Input data.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`to_polars_df`**</summary>
+ <a id="tabsdata.tableframe.to_polars_df"></a>
+<details open>
+<summary>to_polars_df</summary>
 
-**`to_polars_df(data: TableFrame)`**
+```python
+def to_polars_df(
+    data: TableFrame,
+)
+```
 
 Creates polars dataframe from a tableframe, or None.
 None produces and empty (no column - no row) polars dataframe.
 
+**Parameters:**
+
+<ParamField path="data">
+  Input data.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`to_polars_lf`**</summary>
+ <a id="tabsdata.tableframe.to_polars_lf"></a>
+<details open>
+<summary>to_polars_lf</summary>
 
-**`to_polars_lf(data: TableFrame)`**
+```python
+def to_polars_lf(
+    data: TableFrame,
+)
+```
 
 Creates polars lazyframe from a tableframe, or None.
 None produces and empty (no column - no row) polars lazyframe.
+
+**Parameters:**
+
+<ParamField path="data">
+  Input data.
+</ParamField>
 
 </details>

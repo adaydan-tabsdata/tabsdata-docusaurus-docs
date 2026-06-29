@@ -6,17 +6,29 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # tabsdata.tableframe.expr.string
 
- <details open>
-<summary>**`ExprStringNameSpace`**</summary>
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace"></a>
+<details open>
+<summary>ExprStringNameSpace</summary>
 
-**`ExprStringNameSpace(expr: ExprStringNameSpace)`**
+```python
+class ExprStringNameSpace(
+    expr: ExprStringNameSpace,
+)
+```
 
 Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
-<details open>
-<summary>**`contains`**</summary>
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.contains"></a>
+#### `contains`
 
-**`contains(pattern: str | Expr, *, literal: bool = False, strict: bool = True)`**
+```python
+def contains(
+    pattern: str | Expr,
+    *,
+    literal: bool = False,
+    strict: bool = True,
+)
+```
 
 Evaluate if the string contains a pattern.
 
@@ -42,6 +54,10 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
 <ParamField path="pattern">
   The pattern to search for.
 </ParamField>
@@ -54,12 +70,16 @@ Example:
   if the given pattern is not valid regex, raise an error.
 </ParamField>
 
-</details>
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.contains_any"></a>
+#### `contains_any`
 
-<details open>
-<summary>**`contains_any`**</summary>
-
-**`contains_any(patterns: td_typing.IntoExpr, *, ascii_case_insensitive: bool = False)`**
+```python
+def contains_any(
+    patterns: td_typing.IntoExpr,
+    *,
+    ascii_case_insensitive: bool = False,
+)
+```
 
 Evaluate if the string contains any of the given patterns.
 
@@ -86,6 +106,10 @@ Example:
 └──────┴──────────────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
 <ParamField path="patterns">
   The patterns to search for.
 </ParamField>
@@ -94,12 +118,16 @@ Example:
   If true, the search is case-insensitive.
 </ParamField>
 
-</details>
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.count_matches"></a>
+#### `count_matches`
 
-<details open>
-<summary>**`count_matches`**</summary>
-
-**`count_matches(pattern: str | Expr, *, literal: bool = False)`**
+```python
+def count_matches(
+    pattern: str | Expr,
+    *,
+    literal: bool = False,
+)
+```
 
 Counts the ocurrrences of the given pattern in the string.
 
@@ -127,6 +155,10 @@ Example:
 └───────────┴───────────────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
 <ParamField path="pattern">
   The pattern to extract.
 </ParamField>
@@ -135,12 +167,14 @@ Example:
   Take the pattern as a literal string (not a regex).
 </ParamField>
 
-</details>
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.ends_with"></a>
+#### `ends_with`
 
-<details open>
-<summary>**`ends_with`**</summary>
-
-**`ends_with(suffix: str | Expr)`**
+```python
+def ends_with(
+    suffix: str | Expr,
+)
+```
 
 Evaluate if the string ends with.
 
@@ -166,12 +200,23 @@ Example:
 └──────┴───────────┘
 ```
 
-</details>
+**Categories:** string
 
-<details open>
-<summary>**`extract`**</summary>
+**Parameters:**
 
-**`extract(pattern: td_typing.IntoExprColumn, group_index: int = 1)`**
+<ParamField path="suffix">
+  The suffix to search for.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.extract"></a>
+#### `extract`
+
+```python
+def extract(
+    pattern: td_typing.IntoExprColumn,
+    group_index: int = 1,
+)
+```
 
 Extract a pattern from the string.
 
@@ -196,6 +241,10 @@ Example:
 └───────────┴─────────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
 <ParamField path="pattern">
   The pattern to extract.
 </ParamField>
@@ -204,12 +253,17 @@ Example:
   The group index to extract.
 </ParamField>
 
-</details>
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.find"></a>
+#### `find`
 
-<details open>
-<summary>**`find`**</summary>
-
-**`find(pattern: str | Expr, *, literal: bool = False, strict: bool = True)`**
+```python
+def find(
+    pattern: str | Expr,
+    *,
+    literal: bool = False,
+    strict: bool = True,
+)
+```
 
 Find the position of the first occurrence of the given pattern.
 
@@ -235,6 +289,10 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
 <ParamField path="pattern">
   The pattern to search for.
 </ParamField>
@@ -247,12 +305,15 @@ Example:
   if the given pattern is not valid regex, raise an error.
 </ParamField>
 
-</details>
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.grok"></a>
+#### `grok`
 
-<details open>
-<summary>**`grok`**</summary>
-
-**`grok(pattern: str, schema: dict[str, Column])`**
+```python
+def grok(
+    pattern: str,
+    schema: dict[str, Column],
+)
+```
 
 Parse log text into structured fields using a Grok pattern.
 
@@ -299,6 +360,10 @@ columns.
 - If a pattern defines duplicate capture names, numeric suffixes like
 field, field[1] will be used to disambiguate them.
 
+**Categories:** string
+
+**Parameters:**
+
 <ParamField path="pattern" type="str">
   Grok pattern with named captures (e.g., %&#123;WORD:user&#125;).
 </ParamField>
@@ -309,12 +374,14 @@ is associated with its corresponding column definition, specifying
 both the column name and its data type.
 </ParamField>
 
-</details>
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.head"></a>
+#### `head`
 
-<details open>
-<summary>**`head`**</summary>
-
-**`head(n: int | td_typing.IntoExprColumn)`**
+```python
+def head(
+    n: int | td_typing.IntoExprColumn,
+)
+```
 
 Extract the start of the string up to the given length.
 
@@ -338,12 +405,20 @@ Example:
 └──────┴──────┘
 ```
 
-</details>
+**Categories:** string
 
-<details open>
-<summary>**`len_bytes`**</summary>
+**Parameters:**
 
-**`len_bytes`**
+<ParamField path="n">
+  The length of the head.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.len_bytes"></a>
+#### `len_bytes`
+
+```python
+def len_bytes()
+```
 
 Return number of bytes (not chars) of a string.
 
@@ -367,12 +442,14 @@ Example:
 └──────┴────────────┘
 ```
 
-</details>
+**Categories:** string
 
-<details open>
-<summary>**`len_chars`**</summary>
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.len_chars"></a>
+#### `len_chars`
 
-**`len_chars`**
+```python
+def len_chars()
+```
 
 Return number of chars (not bytes) of a string.
 
@@ -396,12 +473,17 @@ Example:
 └──────┴────────────┘
 ```
 
-</details>
+**Categories:** string
 
-<details open>
-<summary>**`pad_end`**</summary>
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.pad_end"></a>
+#### `pad_end`
 
-**`pad_end(length: int, fill_char: str = ' ')`**
+```python
+def pad_end(
+    length: int,
+    fill_char: str = ' ',
+)
+```
 
 Pad string values at the end to the given length using the given
 fill character.
@@ -426,6 +508,10 @@ Example:
 └────────┴─────────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
 <ParamField path="length">
   The length to end pad the string to.
 </ParamField>
@@ -434,12 +520,15 @@ Example:
   The character to use for padding.
 </ParamField>
 
-</details>
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.pad_start"></a>
+#### `pad_start`
 
-<details open>
-<summary>**`pad_start`**</summary>
-
-**`pad_start(length: int, fill_char: str = ' ')`**
+```python
+def pad_start(
+    length: int,
+    fill_char: str = ' ',
+)
+```
 
 Pad string values at the front to the given length using the given
 fill character.
@@ -464,6 +553,10 @@ Example:
 └────────┴───────────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
 <ParamField path="length">
   The length to front pad the string to.
 </ParamField>
@@ -472,12 +565,18 @@ Example:
   The character to use for padding.
 </ParamField>
 
-</details>
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.replace"></a>
+#### `replace`
 
-<details open>
-<summary>**`replace`**</summary>
-
-**`replace(pattern: str | Expr, value: str | Expr, *, literal: bool = False, n: int = 1)`**
+```python
+def replace(
+    pattern: str | Expr,
+    value: str | Expr,
+    *,
+    literal: bool = False,
+    n: int = 1,
+)
+```
 
 Replace the first occurence of a pattern with the given string.
 
@@ -504,6 +603,10 @@ Example:
 └───────────┴───────────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
 <ParamField path="pattern">
   The pattern to replace.
 </ParamField>
@@ -520,12 +623,17 @@ Example:
   Number of matches to replace.
 </ParamField>
 
-</details>
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.replace_all"></a>
+#### `replace_all`
 
-<details open>
-<summary>**`replace_all`**</summary>
-
-**`replace_all(pattern: str | Expr, value: str | Expr, *, literal: bool = False)`**
+```python
+def replace_all(
+    pattern: str | Expr,
+    value: str | Expr,
+    *,
+    literal: bool = False,
+)
+```
 
 Replace the all occurences of a pattern with the given string.
 
@@ -552,6 +660,10 @@ Example:
 └───────────┴─────────────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
 <ParamField path="pattern">
   The pattern to replace.
 </ParamField>
@@ -564,12 +676,14 @@ Example:
   Take the pattern as a literal string (not a regex).
 </ParamField>
 
-</details>
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.replace_many"></a>
+#### `replace_many`
 
-<details open>
-<summary>**`replace_many`**</summary>
-
-**`replace_many(patterns: td_typing.IntoExpr | Mapping[str, str], replace_with: td_typing.IntoExpr | NoDefault = <no_default>, *, ascii_case_insensitive: bool = False)`**
+```python
+def replace_many(
+    patterns: td_typing.IntoExpr | Mapping[str, str], replace_with: td_typing.IntoExpr | NoDefault = <no_default>, *, ascii_case_insensitive: bool = False,
+)
+```
 
 Replace the all occurences of any the given patterns with the given string.
 
@@ -596,6 +710,10 @@ Example:
 └──────┴──────────────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
 <ParamField path="patterns">
   The patterns to replace.
 </ParamField>
@@ -608,12 +726,12 @@ Example:
   If true, the search is case-insensitive.
 </ParamField>
 
-</details>
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.reverse"></a>
+#### `reverse`
 
-<details open>
-<summary>**`reverse`**</summary>
-
-**`reverse`**
+```python
+def reverse()
+```
 
 Reverse the string.
 
@@ -637,12 +755,17 @@ Example:
 └──────┴─────────┘
 ```
 
-</details>
+**Categories:** string
 
-<details open>
-<summary>**`slice`**</summary>
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.slice"></a>
+#### `slice`
 
-**`slice(offset: int | td_typing.IntoExprColumn, length: int | td_typing.IntoExprColumn | None = None)`**
+```python
+def slice(
+    offset: int | td_typing.IntoExprColumn,
+    length: int | td_typing.IntoExprColumn | None = None,
+)
+```
 
 Extract the substring at the given offset for the given length.
 
@@ -666,6 +789,10 @@ Example:
 └──────┴───────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
 <ParamField path="offset">
   The offset to start the slice.
 </ParamField>
@@ -674,12 +801,14 @@ Example:
   The length of the slice. If None, slice until the end of the string.
 </ParamField>
 
-</details>
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.starts_with"></a>
+#### `starts_with`
 
-<details open>
-<summary>**`starts_with`**</summary>
-
-**`starts_with(prefix: str | Expr)`**
+```python
+def starts_with(
+    prefix: str | Expr,
+)
+```
 
 Evaluate if the string start with.
 
@@ -706,12 +835,22 @@ Example:
 └──────┴────────────┘
 ```
 
-</details>
+**Categories:** string
 
-<details open>
-<summary>**`strip_chars`**</summary>
+**Parameters:**
 
-**`strip_chars(characters: td_typing.IntoExpr = None)`**
+<ParamField path="prefix">
+  The suffix to search for.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.strip_chars"></a>
+#### `strip_chars`
+
+```python
+def strip_chars(
+    characters: td_typing.IntoExpr = None,
+)
+```
 
 Trim string values.
 
@@ -736,12 +875,30 @@ Example:
 └─────────────────────────────────┴─────────────┘
 ```
 
-</details>
+**Categories:** string
 
-<details open>
-<summary>**`strip_chars_end`**</summary>
+**Parameters:**
 
-**`strip_chars_end(characters: td_typing.IntoExpr = None)`**
+<ParamField path="characters">
+  Characters to trim from start and end of the string.
+</ParamField>
+
+<ParamField path="All characteres in the given string are removed,">
+  
+</ParamField>
+
+<ParamField path="regardless the order. Default is whitespace.">
+  
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.strip_chars_end"></a>
+#### `strip_chars_end`
+
+```python
+def strip_chars_end(
+    characters: td_typing.IntoExpr = None,
+)
+```
 
 Trim string values from the end of the string.
 
@@ -766,12 +923,30 @@ Example:
 └───────────────────────────────┴─────────────────┘
 ```
 
-</details>
+**Categories:** string
 
-<details open>
-<summary>**`strip_chars_start`**</summary>
+**Parameters:**
 
-**`strip_chars_start(characters: td_typing.IntoExpr = None)`**
+<ParamField path="characters">
+  Characters to trim from start of the string.
+</ParamField>
+
+<ParamField path="All ending characteres in the given string are removed,">
+  
+</ParamField>
+
+<ParamField path="regardless the order. Default is whitespace.">
+  
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.strip_chars_start"></a>
+#### `strip_chars_start`
+
+```python
+def strip_chars_start(
+    characters: td_typing.IntoExpr = None,
+)
+```
 
 Trim string values from the start of the string.
 
@@ -796,12 +971,30 @@ Example:
 └───────────────────────────────┴────────────────────────────┘
 ```
 
-</details>
+**Categories:** string
 
-<details open>
-<summary>**`strip_prefix`**</summary>
+**Parameters:**
 
-**`strip_prefix(prefix: td_typing.IntoExpr)`**
+<ParamField path="characters">
+  Characters to trim from start of the string.
+</ParamField>
+
+<ParamField path="All starting characteres in the given string are removed,">
+  
+</ParamField>
+
+<ParamField path="regardless the order. Default is whitespace.">
+  
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.strip_prefix"></a>
+#### `strip_prefix`
+
+```python
+def strip_prefix(
+    prefix: td_typing.IntoExpr,
+)
+```
 
 Trim string values removing the given prefix
 
@@ -826,12 +1019,22 @@ Example:
 └───────────────────────────────┴─────────────────┘
 ```
 
-</details>
+**Categories:** string
 
-<details open>
-<summary>**`strip_suffix`**</summary>
+**Parameters:**
 
-**`strip_suffix(suffix: td_typing.IntoExpr)`**
+<ParamField path="prefix">
+  Prefix to remove from the string.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.strip_suffix"></a>
+#### `strip_suffix`
+
+```python
+def strip_suffix(
+    suffix: td_typing.IntoExpr,
+)
+```
 
 Trim string values removing the given suffix
 
@@ -856,12 +1059,22 @@ Example:
 └───────────────────────────────┴─────────────────┘
 ```
 
-</details>
+**Categories:** string
 
-<details open>
-<summary>**`tail`**</summary>
+**Parameters:**
 
-**`tail(n: int | td_typing.IntoExprColumn)`**
+<ParamField path="suffix">
+  Suffix to remove from the string.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.tail"></a>
+#### `tail`
+
+```python
+def tail(
+    n: int | td_typing.IntoExprColumn,
+)
+```
 
 Extract the end of the string up to the given length.
 
@@ -885,12 +1098,24 @@ Example:
 └──────┴──────┘
 ```
 
-</details>
+**Categories:** string
 
-<details open>
-<summary>**`to_date`**</summary>
+**Parameters:**
 
-**`to_date(fmt: str | None = None, *, strict: bool = True)`**
+<ParamField path="n">
+  The length of the tail.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_date"></a>
+#### `to_date`
+
+```python
+def to_date(
+    fmt: str | None = None,
+    *,
+    strict: bool = True,
+)
+```
 
 Convert the string to a date.
 
@@ -914,6 +1139,10 @@ Example:
 └────────────┴────────────┘
 ```
 
+**Categories:** type_casting
+
+**Parameters:**
+
 <ParamField path="fmt">
   The date format string (default %Y-%m-%d).
 See formats.
@@ -923,12 +1152,19 @@ See formats.
   Whether to parse the date strictly.
 </ParamField>
 
-</details>
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_datetime"></a>
+#### `to_datetime`
 
-<details open>
-<summary>**`to_datetime`**</summary>
-
-**`to_datetime(format: str | None = None, *, time_unit: Literal['ns', 'us', 'ms'] | None = None, time_zone: str | None = None, strict: bool = True, ambiguous: Literal['earliest', 'latest', 'raise', 'null'] | Expr = 'raise')`**
+```python
+def to_datetime(
+    format: str | None = None,
+    *,
+    time_unit: Literal['ns', 'us', 'ms'] | None = None,
+    time_zone: str | None = None,
+    strict: bool = True,
+    ambiguous: Literal['earliest', 'latest', 'raise', 'null'] | Expr = 'raise',
+)
+```
 
 Convert the string to a datetime.
 
@@ -949,6 +1185,10 @@ Convert the string to a datetime.
 │ null                ┆ null                │
 └─────────────────────┴─────────────────────┘
 ```
+
+**Categories:** type_casting
+
+**Parameters:**
 
 <ParamField path="format">
   The datetime format string (default %Y-%m-%d %H:%M:%S).
@@ -976,12 +1216,16 @@ If None (default), it inferred from the format string
 ‘null’: set to null
 </ParamField>
 
-</details>
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_integer"></a>
+#### `to_integer`
 
-<details open>
-<summary>**`to_integer`**</summary>
-
-**`to_integer(*, base: int | td_typing.IntoExprColumn = 10, strict: bool = True)`**
+```python
+def to_integer(
+    *,
+    base: int | td_typing.IntoExprColumn = 10,
+    strict: bool = True,
+)
+```
 
 Covert a string to integer.
 
@@ -1007,6 +1251,10 @@ Example:
 └──────┴────────────┘
 ```
 
+**Categories:** type_casting
+
+**Parameters:**
+
 <ParamField path="base">
   The base of the integer.
 </ParamField>
@@ -1015,12 +1263,12 @@ Example:
   If true, raise an error if the string is not a valid integer.
 </ParamField>
 
-</details>
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_lowercase"></a>
+#### `to_lowercase`
 
-<details open>
-<summary>**`to_lowercase`**</summary>
-
-**`to_lowercase`**
+```python
+def to_lowercase()
+```
 
 Return the lowercase of a string.
 
@@ -1043,12 +1291,19 @@ Example:
 └──────┴───────────────┘
 ```
 
-</details>
+**Categories:** string
 
-<details open>
-<summary>**`to_time`**</summary>
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_time"></a>
+#### `to_time`
 
-**`to_time(fmt: str | None = None, *, strict: bool = True, cache: bool = True)`**
+```python
+def to_time(
+    fmt: str | None = None,
+    *,
+    strict: bool = True,
+    cache: bool = True,
+)
+```
 
 Convert the string to a time.
 
@@ -1072,6 +1327,10 @@ Example:
 └─────────────────────┴─────────────────────┘
 ```
 
+**Categories:** type_casting
+
+**Parameters:**
+
 <ParamField path="fmt">
   The time format string (default %H:%M:%S).
 See formats.
@@ -1085,12 +1344,12 @@ See formats.
   Whether to cache the date.
 </ParamField>
 
-</details>
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_titlecase"></a>
+#### `to_titlecase`
 
-<details open>
-<summary>**`to_titlecase`**</summary>
-
-**`to_titlecase`**
+```python
+def to_titlecase()
+```
 
 Uppercase the first character and lowercase all the others ones of a string.
 
@@ -1116,12 +1375,14 @@ Example:
 └──────┴───────────┘
 ```
 
-</details>
+**Categories:** string
 
-<details open>
-<summary>**`to_uppercase`**</summary>
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_uppercase"></a>
+#### `to_uppercase`
 
-**`to_uppercase`**
+```python
+def to_uppercase()
+```
 
 Return the uppercase of a string.
 
@@ -1144,12 +1405,16 @@ Example:
 └──────┴──────────────┘
 ```
 
-</details>
+**Categories:** string
 
-<details open>
-<summary>**`zfill`**</summary>
+<a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.zfill"></a>
+#### `zfill`
 
-**`zfill(length: int | td_typing.IntoExprColumn)`**
+```python
+def zfill(
+    length: int | td_typing.IntoExprColumn,
+)
+```
 
 Pad numeric string values at the start to the given length using zeros.
 
@@ -1174,14 +1439,28 @@ Example:
 └──────┴───────┘
 ```
 
-</details>
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="length">
+  The length to end pad the string to.
+</ParamField>
 
 </details>
 
- <details open>
-<summary>**`contains`**</summary>
+ <a id="id0"></a>
+<details open>
+<summary>contains</summary>
 
-**`contains(pattern: str | Expr, *, literal: bool = False, strict: bool = True)`**
+```python
+def contains(
+    pattern: str | Expr,
+    *,
+    literal: bool = False,
+    strict: bool = True,
+)
+```
 
 Evaluate if the string contains a pattern.
 
@@ -1207,6 +1486,10 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
 <ParamField path="pattern">
   The pattern to search for.
 </ParamField>
@@ -1221,10 +1504,17 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`contains_any`**</summary>
+ <a id="id4"></a>
+<details open>
+<summary>contains_any</summary>
 
-**`contains_any(patterns: td_typing.IntoExpr, *, ascii_case_insensitive: bool = False)`**
+```python
+def contains_any(
+    patterns: td_typing.IntoExpr,
+    *,
+    ascii_case_insensitive: bool = False,
+)
+```
 
 Evaluate if the string contains any of the given patterns.
 
@@ -1251,6 +1541,10 @@ Example:
 └──────┴──────────────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
 <ParamField path="patterns">
   The patterns to search for.
 </ParamField>
@@ -1261,10 +1555,17 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`count_matches`**</summary>
+ <a id="id5"></a>
+<details open>
+<summary>count_matches</summary>
 
-**`count_matches(pattern: str | Expr, *, literal: bool = False)`**
+```python
+def count_matches(
+    pattern: str | Expr,
+    *,
+    literal: bool = False,
+)
+```
 
 Counts the ocurrrences of the given pattern in the string.
 
@@ -1292,6 +1593,10 @@ Example:
 └───────────┴───────────────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
 <ParamField path="pattern">
   The pattern to extract.
 </ParamField>
@@ -1302,10 +1607,15 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`ends_with`**</summary>
+ <a id="id6"></a>
+<details open>
+<summary>ends_with</summary>
 
-**`ends_with(suffix: str | Expr)`**
+```python
+def ends_with(
+    suffix: str | Expr,
+)
+```
 
 Evaluate if the string ends with.
 
@@ -1331,12 +1641,26 @@ Example:
 └──────┴───────────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="suffix">
+  The suffix to search for.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`extract`**</summary>
+ <a id="id7"></a>
+<details open>
+<summary>extract</summary>
 
-**`extract(pattern: td_typing.IntoExprColumn, group_index: int = 1)`**
+```python
+def extract(
+    pattern: td_typing.IntoExprColumn,
+    group_index: int = 1,
+)
+```
 
 Extract a pattern from the string.
 
@@ -1361,6 +1685,10 @@ Example:
 └───────────┴─────────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
 <ParamField path="pattern">
   The pattern to extract.
 </ParamField>
@@ -1371,10 +1699,18 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`find`**</summary>
+ <a id="id8"></a>
+<details open>
+<summary>find</summary>
 
-**`find(pattern: str | Expr, *, literal: bool = False, strict: bool = True)`**
+```python
+def find(
+    pattern: str | Expr,
+    *,
+    literal: bool = False,
+    strict: bool = True,
+)
+```
 
 Find the position of the first occurrence of the given pattern.
 
@@ -1400,6 +1736,10 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
 <ParamField path="pattern">
   The pattern to search for.
 </ParamField>
@@ -1414,10 +1754,16 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`grok`**</summary>
+ <a id="id9"></a>
+<details open>
+<summary>grok</summary>
 
-**`grok(pattern: str, schema: dict[str, Column])`**
+```python
+def grok(
+    pattern: str,
+    schema: dict[str, Column],
+)
+```
 
 Parse log text into structured fields using a Grok pattern.
 
@@ -1464,6 +1810,10 @@ columns.
 - If a pattern defines duplicate capture names, numeric suffixes like
 field, field[1] will be used to disambiguate them.
 
+**Categories:** string
+
+**Parameters:**
+
 <ParamField path="pattern" type="str">
   Grok pattern with named captures (e.g., %&#123;WORD:user&#125;).
 </ParamField>
@@ -1476,10 +1826,15 @@ both the column name and its data type.
 
 </details>
 
- <details open>
-<summary>**`head`**</summary>
+ <a id="id10"></a>
+<details open>
+<summary>head</summary>
 
-**`head(n: int | td_typing.IntoExprColumn)`**
+```python
+def head(
+    n: int | td_typing.IntoExprColumn,
+)
+```
 
 Extract the start of the string up to the given length.
 
@@ -1503,12 +1858,23 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="n">
+  The length of the head.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`len_bytes`**</summary>
+ <a id="id11"></a>
+<details open>
+<summary>len_bytes</summary>
 
-**`len_bytes`**
+```python
+def len_bytes()
+```
 
 Return number of bytes (not chars) of a string.
 
@@ -1532,12 +1898,17 @@ Example:
 └──────┴────────────┘
 ```
 
+**Categories:** string
+
 </details>
 
- <details open>
-<summary>**`len_chars`**</summary>
+ <a id="id12"></a>
+<details open>
+<summary>len_chars</summary>
 
-**`len_chars`**
+```python
+def len_chars()
+```
 
 Return number of chars (not bytes) of a string.
 
@@ -1561,12 +1932,20 @@ Example:
 └──────┴────────────┘
 ```
 
+**Categories:** string
+
 </details>
 
- <details open>
-<summary>**`pad_end`**</summary>
+ <a id="id13"></a>
+<details open>
+<summary>pad_end</summary>
 
-**`pad_end(length: int, fill_char: str = ' ')`**
+```python
+def pad_end(
+    length: int,
+    fill_char: str = ' ',
+)
+```
 
 Pad string values at the end to the given length using the given
 fill character.
@@ -1591,6 +1970,10 @@ Example:
 └────────┴─────────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
 <ParamField path="length">
   The length to end pad the string to.
 </ParamField>
@@ -1601,10 +1984,16 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`pad_start`**</summary>
+ <a id="id14"></a>
+<details open>
+<summary>pad_start</summary>
 
-**`pad_start(length: int, fill_char: str = ' ')`**
+```python
+def pad_start(
+    length: int,
+    fill_char: str = ' ',
+)
+```
 
 Pad string values at the front to the given length using the given
 fill character.
@@ -1629,6 +2018,10 @@ Example:
 └────────┴───────────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
 <ParamField path="length">
   The length to front pad the string to.
 </ParamField>
@@ -1639,10 +2032,19 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`replace`**</summary>
+ <a id="id15"></a>
+<details open>
+<summary>replace</summary>
 
-**`replace(pattern: str | Expr, value: str | Expr, *, literal: bool = False, n: int = 1)`**
+```python
+def replace(
+    pattern: str | Expr,
+    value: str | Expr,
+    *,
+    literal: bool = False,
+    n: int = 1,
+)
+```
 
 Replace the first occurence of a pattern with the given string.
 
@@ -1669,6 +2071,10 @@ Example:
 └───────────┴───────────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
 <ParamField path="pattern">
   The pattern to replace.
 </ParamField>
@@ -1687,10 +2093,18 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`replace_all`**</summary>
+ <a id="id16"></a>
+<details open>
+<summary>replace_all</summary>
 
-**`replace_all(pattern: str | Expr, value: str | Expr, *, literal: bool = False)`**
+```python
+def replace_all(
+    pattern: str | Expr,
+    value: str | Expr,
+    *,
+    literal: bool = False,
+)
+```
 
 Replace the all occurences of a pattern with the given string.
 
@@ -1717,6 +2131,10 @@ Example:
 └───────────┴─────────────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
 <ParamField path="pattern">
   The pattern to replace.
 </ParamField>
@@ -1731,10 +2149,15 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`replace_many`**</summary>
+ <a id="id17"></a>
+<details open>
+<summary>replace_many</summary>
 
-**`replace_many(patterns: td_typing.IntoExpr | Mapping[str, str], replace_with: td_typing.IntoExpr | NoDefault = <no_default>, *, ascii_case_insensitive: bool = False)`**
+```python
+def replace_many(
+    patterns: td_typing.IntoExpr | Mapping[str, str], replace_with: td_typing.IntoExpr | NoDefault = <no_default>, *, ascii_case_insensitive: bool = False,
+)
+```
 
 Replace the all occurences of any the given patterns with the given string.
 
@@ -1761,6 +2184,10 @@ Example:
 └──────┴──────────────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
 <ParamField path="patterns">
   The patterns to replace.
 </ParamField>
@@ -1775,10 +2202,13 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`reverse`**</summary>
+ <a id="id18"></a>
+<details open>
+<summary>reverse</summary>
 
-**`reverse`**
+```python
+def reverse()
+```
 
 Reverse the string.
 
@@ -1802,12 +2232,20 @@ Example:
 └──────┴─────────┘
 ```
 
+**Categories:** string
+
 </details>
 
- <details open>
-<summary>**`slice`**</summary>
+ <a id="id19"></a>
+<details open>
+<summary>slice</summary>
 
-**`slice(offset: int | td_typing.IntoExprColumn, length: int | td_typing.IntoExprColumn | None = None)`**
+```python
+def slice(
+    offset: int | td_typing.IntoExprColumn,
+    length: int | td_typing.IntoExprColumn | None = None,
+)
+```
 
 Extract the substring at the given offset for the given length.
 
@@ -1831,6 +2269,10 @@ Example:
 └──────┴───────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
 <ParamField path="offset">
   The offset to start the slice.
 </ParamField>
@@ -1841,10 +2283,15 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`starts_with`**</summary>
+ <a id="id20"></a>
+<details open>
+<summary>starts_with</summary>
 
-**`starts_with(prefix: str | Expr)`**
+```python
+def starts_with(
+    prefix: str | Expr,
+)
+```
 
 Evaluate if the string start with.
 
@@ -1871,12 +2318,25 @@ Example:
 └──────┴────────────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="prefix">
+  The suffix to search for.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`strip_chars`**</summary>
+ <a id="id21"></a>
+<details open>
+<summary>strip_chars</summary>
 
-**`strip_chars(characters: td_typing.IntoExpr = None)`**
+```python
+def strip_chars(
+    characters: td_typing.IntoExpr = None,
+)
+```
 
 Trim string values.
 
@@ -1901,12 +2361,33 @@ Example:
 └─────────────────────────────────┴─────────────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="characters">
+  Characters to trim from start and end of the string.
+</ParamField>
+
+<ParamField path="All characteres in the given string are removed,">
+  
+</ParamField>
+
+<ParamField path="regardless the order. Default is whitespace.">
+  
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`strip_chars_end`**</summary>
+ <a id="id22"></a>
+<details open>
+<summary>strip_chars_end</summary>
 
-**`strip_chars_end(characters: td_typing.IntoExpr = None)`**
+```python
+def strip_chars_end(
+    characters: td_typing.IntoExpr = None,
+)
+```
 
 Trim string values from the end of the string.
 
@@ -1931,12 +2412,33 @@ Example:
 └───────────────────────────────┴─────────────────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="characters">
+  Characters to trim from start of the string.
+</ParamField>
+
+<ParamField path="All ending characteres in the given string are removed,">
+  
+</ParamField>
+
+<ParamField path="regardless the order. Default is whitespace.">
+  
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`strip_chars_start`**</summary>
+ <a id="id23"></a>
+<details open>
+<summary>strip_chars_start</summary>
 
-**`strip_chars_start(characters: td_typing.IntoExpr = None)`**
+```python
+def strip_chars_start(
+    characters: td_typing.IntoExpr = None,
+)
+```
 
 Trim string values from the start of the string.
 
@@ -1961,12 +2463,33 @@ Example:
 └───────────────────────────────┴────────────────────────────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="characters">
+  Characters to trim from start of the string.
+</ParamField>
+
+<ParamField path="All starting characteres in the given string are removed,">
+  
+</ParamField>
+
+<ParamField path="regardless the order. Default is whitespace.">
+  
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`strip_prefix`**</summary>
+ <a id="id24"></a>
+<details open>
+<summary>strip_prefix</summary>
 
-**`strip_prefix(prefix: td_typing.IntoExpr)`**
+```python
+def strip_prefix(
+    prefix: td_typing.IntoExpr,
+)
+```
 
 Trim string values removing the given prefix
 
@@ -1991,12 +2514,25 @@ Example:
 └───────────────────────────────┴─────────────────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="prefix">
+  Prefix to remove from the string.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`strip_suffix`**</summary>
+ <a id="id25"></a>
+<details open>
+<summary>strip_suffix</summary>
 
-**`strip_suffix(suffix: td_typing.IntoExpr)`**
+```python
+def strip_suffix(
+    suffix: td_typing.IntoExpr,
+)
+```
 
 Trim string values removing the given suffix
 
@@ -2021,12 +2557,25 @@ Example:
 └───────────────────────────────┴─────────────────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="suffix">
+  Suffix to remove from the string.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`tail`**</summary>
+ <a id="id26"></a>
+<details open>
+<summary>tail</summary>
 
-**`tail(n: int | td_typing.IntoExprColumn)`**
+```python
+def tail(
+    n: int | td_typing.IntoExprColumn,
+)
+```
 
 Extract the end of the string up to the given length.
 
@@ -2050,12 +2599,27 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="n">
+  The length of the tail.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`to_date`**</summary>
+ <a id="id27"></a>
+<details open>
+<summary>to_date</summary>
 
-**`to_date(fmt: str | None = None, *, strict: bool = True)`**
+```python
+def to_date(
+    fmt: str | None = None,
+    *,
+    strict: bool = True,
+)
+```
 
 Convert the string to a date.
 
@@ -2079,6 +2643,10 @@ Example:
 └────────────┴────────────┘
 ```
 
+**Categories:** type_casting
+
+**Parameters:**
+
 <ParamField path="fmt">
   The date format string (default %Y-%m-%d).
 See formats.
@@ -2090,10 +2658,20 @@ See formats.
 
 </details>
 
- <details open>
-<summary>**`to_datetime`**</summary>
+ <a id="id29"></a>
+<details open>
+<summary>to_datetime</summary>
 
-**`to_datetime(format: str | None = None, *, time_unit: Literal['ns', 'us', 'ms'] | None = None, time_zone: str | None = None, strict: bool = True, ambiguous: Literal['earliest', 'latest', 'raise', 'null'] | Expr = 'raise')`**
+```python
+def to_datetime(
+    format: str | None = None,
+    *,
+    time_unit: Literal['ns', 'us', 'ms'] | None = None,
+    time_zone: str | None = None,
+    strict: bool = True,
+    ambiguous: Literal['earliest', 'latest', 'raise', 'null'] | Expr = 'raise',
+)
+```
 
 Convert the string to a datetime.
 
@@ -2114,6 +2692,10 @@ Convert the string to a datetime.
 │ null                ┆ null                │
 └─────────────────────┴─────────────────────┘
 ```
+
+**Categories:** type_casting
+
+**Parameters:**
 
 <ParamField path="format">
   The datetime format string (default %Y-%m-%d %H:%M:%S).
@@ -2143,10 +2725,17 @@ If None (default), it inferred from the format string
 
 </details>
 
- <details open>
-<summary>**`to_integer`**</summary>
+ <a id="id31"></a>
+<details open>
+<summary>to_integer</summary>
 
-**`to_integer(*, base: int | td_typing.IntoExprColumn = 10, strict: bool = True)`**
+```python
+def to_integer(
+    *,
+    base: int | td_typing.IntoExprColumn = 10,
+    strict: bool = True,
+)
+```
 
 Covert a string to integer.
 
@@ -2172,6 +2761,10 @@ Example:
 └──────┴────────────┘
 ```
 
+**Categories:** type_casting
+
+**Parameters:**
+
 <ParamField path="base">
   The base of the integer.
 </ParamField>
@@ -2182,10 +2775,13 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`to_lowercase`**</summary>
+ <a id="id32"></a>
+<details open>
+<summary>to_lowercase</summary>
 
-**`to_lowercase`**
+```python
+def to_lowercase()
+```
 
 Return the lowercase of a string.
 
@@ -2208,12 +2804,22 @@ Example:
 └──────┴───────────────┘
 ```
 
+**Categories:** string
+
 </details>
 
- <details open>
-<summary>**`to_time`**</summary>
+ <a id="id33"></a>
+<details open>
+<summary>to_time</summary>
 
-**`to_time(fmt: str | None = None, *, strict: bool = True, cache: bool = True)`**
+```python
+def to_time(
+    fmt: str | None = None,
+    *,
+    strict: bool = True,
+    cache: bool = True,
+)
+```
 
 Convert the string to a time.
 
@@ -2237,6 +2843,10 @@ Example:
 └─────────────────────┴─────────────────────┘
 ```
 
+**Categories:** type_casting
+
+**Parameters:**
+
 <ParamField path="fmt">
   The time format string (default %H:%M:%S).
 See formats.
@@ -2252,10 +2862,13 @@ See formats.
 
 </details>
 
- <details open>
-<summary>**`to_titlecase`**</summary>
+ <a id="id35"></a>
+<details open>
+<summary>to_titlecase</summary>
 
-**`to_titlecase`**
+```python
+def to_titlecase()
+```
 
 Uppercase the first character and lowercase all the others ones of a string.
 
@@ -2281,12 +2894,17 @@ Example:
 └──────┴───────────┘
 ```
 
+**Categories:** string
+
 </details>
 
- <details open>
-<summary>**`to_uppercase`**</summary>
+ <a id="id36"></a>
+<details open>
+<summary>to_uppercase</summary>
 
-**`to_uppercase`**
+```python
+def to_uppercase()
+```
 
 Return the uppercase of a string.
 
@@ -2309,12 +2927,19 @@ Example:
 └──────┴──────────────┘
 ```
 
+**Categories:** string
+
 </details>
 
- <details open>
-<summary>**`zfill`**</summary>
+ <a id="id37"></a>
+<details open>
+<summary>zfill</summary>
 
-**`zfill(length: int | td_typing.IntoExprColumn)`**
+```python
+def zfill(
+    length: int | td_typing.IntoExprColumn,
+)
+```
 
 Pad numeric string values at the start to the given length using zeros.
 
@@ -2339,55 +2964,68 @@ Example:
 └──────┴───────┘
 ```
 
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="length">
+  The length to end pad the string to.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`GrokParser`**</summary>
+ <a id="tabsdata.tableframe.expr.string.GrokParser"></a>
+<details open>
+<summary>GrokParser</summary>
 
-**`GrokParser(pattern: 'str', schema: 'dict[str, td_col.Column]')`**
+```python
+class GrokParser(
+    pattern: 'str',
+    schema: 'dict[str, td_col.Column]',
+)
+```
 
 Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
+<a id="tabsdata.tableframe.expr.string.GrokParser.index"></a>
+<ResponseField name="index">
+
+</ResponseField>
+
+<a id="tabsdata.tableframe.expr.string.GrokParser.pattern"></a>
+<ResponseField name="pattern">
+
+</ResponseField>
+
+<a id="tabsdata.tableframe.expr.string.GrokParser.rust"></a>
+#### `rust`
+
+```python
+def rust(
+    expression: IntoExpr,
+)
+```
+
+<a id="tabsdata.tableframe.expr.string.GrokParser.schema"></a>
+<ResponseField name="schema">
+
+</ResponseField>
+
+<a id="tabsdata.tableframe.expr.string.GrokParser.temp_column"></a>
+<ResponseField name="temp_column">
+
+</ResponseField>
+
+</details>
+
+ <a id="id38"></a>
 <details open>
-<summary>**`index`**</summary>
+<summary>rust</summary>
 
-`index`
-
-</details>
-
-<details open>
-<summary>**`pattern`**</summary>
-
-`pattern`
-
-</details>
-
-<details open>
-<summary>**`rust`**</summary>
-
-**`rust(expression: IntoExpr)`**
-
-</details>
-
-<details open>
-<summary>**`schema`**</summary>
-
-`schema`
-
-</details>
-
-<details open>
-<summary>**`temp_column`**</summary>
-
-`temp_column`
-
-</details>
-
-</details>
-
- <details open>
-<summary>**`rust`**</summary>
-
-**`rust(expression: IntoExpr)`**
+```python
+def rust(
+    expression: IntoExpr,
+)
+```
 
 </details>

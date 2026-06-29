@@ -6,10 +6,17 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # Manipulation
 
- <details open>
-<summary>**`cast`**</summary>
+ <a id="tabsdata.TableFrame.cast"></a>
+<details open>
+<summary>cast</summary>
 
-**`cast(dtypes: Mapping[td_typing.ColumnNameOrSelector | td_typing.DataType, td_typing.DataType] | td_typing.DataType, *, strict: bool = True)`**
+```python
+def cast(
+    dtypes: Mapping[td_typing.ColumnNameOrSelector | td_typing.DataType, td_typing.DataType] | td_typing.DataType,
+    *,
+    strict: bool = True,
+)
+```
 
 Cast columns to a new data type.
 
@@ -55,6 +62,10 @@ Example:
 └──────┴───────┘
 ```
 
+**Categories:** manipulation
+
+**Parameters:**
+
 <ParamField path="dtypes">
   Mapping of the column name(s) to the new data type(s).
 </ParamField>
@@ -65,10 +76,15 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`drop_nans`**</summary>
+ <a id="tabsdata.TableFrame.drop_nans"></a>
+<details open>
+<summary>drop_nans</summary>
 
-**`drop_nans(subset: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector] | None = None)`**
+```python
+def drop_nans(
+    subset: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector] | None = None,
+)
+```
 
 Drop rows with NaN values.
 
@@ -116,12 +132,29 @@ Example:
 >>>
 ```
 
+**Categories:** manipulation
+
+**Parameters:**
+
+<ParamField path="subset">
+  Columns to look for Nan values. If None, all columns are
+</ParamField>
+
+<ParamField path="considered.">
+  
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`drop_nulls`**</summary>
+ <a id="tabsdata.TableFrame.drop_nulls"></a>
+<details open>
+<summary>drop_nulls</summary>
 
-**`drop_nulls(subset: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector] | None = None)`**
+```python
+def drop_nulls(
+    subset: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector] | None = None,
+)
+```
 
 Drop rows with null values.
 
@@ -170,12 +203,29 @@ Example:
 └─────┴─────┴──────┘
 ```
 
+**Categories:** manipulation
+
+**Parameters:**
+
+<ParamField path="subset">
+  Columns to evaluate for null values. If None, all columns are
+</ParamField>
+
+<ParamField path="considered.">
+  
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`fill_nan`**</summary>
+ <a id="tabsdata.TableFrame.fill_nan"></a>
+<details open>
+<summary>fill_nan</summary>
 
-**`fill_nan(value: int | float | Expr | None)`**
+```python
+def fill_nan(
+    value: int | float | Expr | None,
+)
+```
 
 Replace all NaN values in the TableFrame with the given value.
 
@@ -215,12 +265,25 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** manipulation
+
+**Parameters:**
+
+<ParamField path="value">
+  The value to replace NaN with.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`fill_null`**</summary>
+ <a id="tabsdata.TableFrame.fill_null"></a>
+<details open>
+<summary>fill_null</summary>
 
-**`fill_null(value: Any | Expr | None = None)`**
+```python
+def fill_null(
+    value: Any | Expr | None = None,
+)
+```
 
 Replace all null values in the TableFrame with the given value.
 
@@ -260,12 +323,25 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** manipulation
+
+**Parameters:**
+
+<ParamField path="value">
+  The value to replace null with.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`alias`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.alias"></a>
+<details open>
+<summary>alias</summary>
 
-**`alias(name: str)`**
+```python
+def alias(
+    name: str,
+)
+```
 
 Set the name for a column or expression.
 
@@ -293,12 +369,29 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** manipulation
+
+**Parameters:**
+
+<ParamField path="name">
+  Column or expression new name. The name must be a word
+</ParamField>
+
+<ParamField path="([A-Za-z_][A-Za-z0-9_]*) of up to 100 characters.">
+  
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`fill_nan`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.fill_nan"></a>
+<details open>
+<summary>fill_nan</summary>
 
-**`fill_nan(value: int | float | Expr | None)`**
+```python
+def fill_nan(
+    value: int | float | Expr | None,
+)
+```
 
 Replace NaN values with the given value.
 
@@ -325,12 +418,27 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** manipulation
+
+**Parameters:**
+
+<ParamField path="value">
+  The value to replace NaN values with.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`fill_null`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.fill_null"></a>
+<details open>
+<summary>fill_null</summary>
 
-**`fill_null(value: Any | Expr | None = None, strategy: Literal['forward', 'backward', 'min', 'max', 'mean', 'zero', 'one'] | None = None, limit: int | None = None)`**
+```python
+def fill_null(
+    value: Any | Expr | None = None,
+    strategy: Literal['forward', 'backward', 'min', 'max', 'mean', 'zero', 'one'] | None = None,
+    limit: int | None = None,
+)
+```
 
 Replace null values with the given value.
 
@@ -358,6 +466,10 @@ Example:
 │ NaN  ┆ NaN       │
 └──────┴───────────┘
 ```
+
+**Categories:** manipulation
+
+**Parameters:**
 
 <ParamField path="value">
   The value to replace null values with.

@@ -6,12 +6,25 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # Transformer
 
- <details open>
-<summary>**`transformer`**</summary>
+ <a id="tabsdata.transformer"></a>
+<details open>
+<summary>transformer</summary>
 
-**`transformer(input_tables: TableInput | str | List[str], output_tables: TableOutput | str | List[str], name: str = None, trigger_by: TransformerTriggerBySpec = '*', on_output_tables: OnTablesSpec = None)`**
+```python
+def transformer(
+    input_tables: TableInput | str | List[str],
+    output_tables: TableOutput | str | List[str],
+    name: str = None,
+    trigger_by: TransformerTriggerBySpec = '*',
+    on_output_tables: OnTablesSpec = None,
+)
+```
 
 Decorator to define a function to transform data present in Tabsdata.
+
+**Categories:** transformer
+
+**Parameters:**
 
 <ParamField path="input_tables" type="TableInput">
   Where to obtain the data that
@@ -43,6 +56,6 @@ Defaults to None.
 
 **Returns:** The function converted to a Tabsdata Function.
 
-**Return type:** callable
+**Returns:** callable
 
 </details>

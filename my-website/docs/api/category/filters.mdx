@@ -6,10 +6,16 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # Filters
 
- <details open>
-<summary>**`extract_as_columns`**</summary>
+ <a id="tabsdata.TableFrame.extract_as_columns"></a>
+<details open>
+<summary>extract_as_columns</summary>
 
-**`extract_as_columns(offset: int, length: int)`**
+```python
+def extract_as_columns(
+    offset: int,
+    length: int,
+)
+```
 
 Extract a slice of rows from the table as a column-oriented dictionary.
 
@@ -42,6 +48,10 @@ Example:
     }
 ```
 
+**Categories:** filters
+
+**Parameters:**
+
 <ParamField path="offset" type="int">
   The starting row index of the slice.
 </ParamField>
@@ -53,14 +63,20 @@ Example:
 **Returns:** A dictionary where each key is a column name,
 and its value is a list of values from the selected slice.
 
-**Return type:** dict[str, list[Any]]
+**Returns:** dict[str, list[Any]]
 
 </details>
 
- <details open>
-<summary>**`extract_as_rows`**</summary>
+ <a id="tabsdata.TableFrame.extract_as_rows"></a>
+<details open>
+<summary>extract_as_rows</summary>
 
-**`extract_as_rows(offset: int, length: int)`**
+```python
+def extract_as_rows(
+    offset: int,
+    length: int,
+)
+```
 
 Extract a slice of rows from the TableFrame as a list of dictionaries.
 
@@ -96,6 +112,10 @@ Example:
     ]
 ```
 
+**Categories:** filters
+
+**Parameters:**
+
 <ParamField path="offset" type="int">
   The starting row index of the slice.
 </ParamField>
@@ -106,14 +126,19 @@ Example:
 
 **Returns:** A list of row dictionaries.
 
-**Return type:** list[dict[str, Any]]
+**Returns:** list[dict[str, Any]]
 
 </details>
 
- <details open>
-<summary>**`filter`**</summary>
+ <a id="tabsdata.TableFrame.filter"></a>
+<details open>
+<summary>filter</summary>
 
-**`filter(*predicates: td_typing.IntoExprColumn | Iterable[td_typing.IntoExprColumn] | bool | list[bool] | np.ndarray[Any, Any])`**
+```python
+def filter(
+    *predicates: td_typing.IntoExprColumn | Iterable[td_typing.IntoExprColumn] | bool | list[bool] | np.ndarray[Any, Any],
+)
+```
 
 Filter the TableFrame based on the given predicates.
 
@@ -152,12 +177,17 @@ Example:
 └─────┴─────┘
 ```
 
+**Categories:** filters
+
 </details>
 
- <details open>
-<summary>**`first`**</summary>
+ <a id="tabsdata.TableFrame.first"></a>
+<details open>
+<summary>first</summary>
 
-**`first`**
+```python
+def first()
+```
 
 Return a TableFrame with the first row.
 
@@ -191,12 +221,19 @@ Example:
 └─────┴─────┘
 ```
 
+**Categories:** filters
+
 </details>
 
- <details open>
-<summary>**`first_row`**</summary>
+ <a id="tabsdata.TableFrame.first_row"></a>
+<details open>
+<summary>first_row</summary>
 
-**`first_row(named: bool = False)`**
+```python
+def first_row(
+    named: bool = False,
+)
+```
 
 Return a tuple or dictionary with the first row, or None if no row.
 
@@ -226,12 +263,19 @@ Example:
 {'A': 'a', 'B': '1'}
 ```
 
+**Categories:** filters
+
 </details>
 
- <details open>
-<summary>**`head`**</summary>
+ <a id="tabsdata.TableFrame.head"></a>
+<details open>
+<summary>head</summary>
 
-**`head(n: int = 5)`**
+```python
+def head(
+    n: int = 5,
+)
+```
 
 Return a TableFrame with the first n rows.
 
@@ -266,12 +310,23 @@ Example:
 └─────┴─────┘
 ```
 
+**Categories:** filters
+
+**Parameters:**
+
+<ParamField path="n">
+  The number of rows to return.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`last`**</summary>
+ <a id="tabsdata.TableFrame.last"></a>
+<details open>
+<summary>last</summary>
 
-**`last`**
+```python
+def last()
+```
 
 Return a TableFrame with the last row.
 
@@ -305,12 +360,19 @@ Example:
 └─────┴─────┘
 ```
 
+**Categories:** filters
+
 </details>
 
- <details open>
-<summary>**`last_row`**</summary>
+ <a id="tabsdata.TableFrame.last_row"></a>
+<details open>
+<summary>last_row</summary>
 
-**`last_row(named: bool = False)`**
+```python
+def last_row(
+    named: bool = False,
+)
+```
 
 Return a tuple or dictionary with the last row, or None if no row.
 
@@ -340,12 +402,19 @@ Example:
 {'A': 'c', 'B': 3}
 ```
 
+**Categories:** filters
+
 </details>
 
- <details open>
-<summary>**`limit`**</summary>
+ <a id="tabsdata.TableFrame.limit"></a>
+<details open>
+<summary>limit</summary>
 
-**`limit(n: int = 5)`**
+```python
+def limit(
+    n: int = 5,
+)
+```
 
 Return a TableFrame with the first n rows.
 This is equivalent to head.
@@ -381,12 +450,26 @@ Example:
 └─────┴─────┘
 ```
 
+**Categories:** filters
+
+**Parameters:**
+
+<ParamField path="n">
+  The number of rows to return.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`slice`**</summary>
+ <a id="tabsdata.TableFrame.slice"></a>
+<details open>
+<summary>slice</summary>
 
-**`slice(offset: int, length: int | None = None)`**
+```python
+def slice(
+    offset: int,
+    length: int | None = None,
+)
+```
 
 Return a TableFrame with a slice of the original TableFrame
 
@@ -421,6 +504,10 @@ Example:
 └─────┴─────┘
 ```
 
+**Categories:** filters
+
+**Parameters:**
+
 <ParamField path="offset">
   Slice starting index.
 </ParamField>
@@ -431,10 +518,15 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`tail`**</summary>
+ <a id="tabsdata.TableFrame.tail"></a>
+<details open>
+<summary>tail</summary>
 
-**`tail(n: int = 5)`**
+```python
+def tail(
+    n: int = 5,
+)
+```
 
 Return a TableFrame with the last n rows.
 
@@ -469,12 +561,28 @@ Example:
 └─────┴─────┘
 ```
 
+**Categories:** filters
+
+**Parameters:**
+
+<ParamField path="n">
+  The number of rows to return.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`unique`**</summary>
+ <a id="tabsdata.TableFrame.unique"></a>
+<details open>
+<summary>unique</summary>
 
-**`unique(subset: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector] | None = None, *, keep: td_typing.UniqueKeepStrategy = 'any', maintain_order: bool = False)`**
+```python
+def unique(
+    subset: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector] | None = None,
+    *,
+    keep: td_typing.UniqueKeepStrategy = 'any',
+    maintain_order: bool = False,
+)
+```
 
 Deduplicate rows from the TableFrame.
 
@@ -518,6 +626,10 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** filters
+
+**Parameters:**
+
 <ParamField path="subset">
   Columns to evaluate for duplicate values. If None, all columns are
 considered.
@@ -534,10 +646,15 @@ eliminate duplicate rows).
 
 </details>
 
- <details open>
-<summary>**`filter`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.filter"></a>
+<details open>
+<summary>filter</summary>
 
-**`filter(*predicates: Expr | Series | str | Iterable[Expr | Series | str])`**
+```python
+def filter(
+    *predicates: Expr | Series | str | Iterable[Expr | Series | str],
+)
+```
 
 Apply a filter predicate to an expression.
 
@@ -581,12 +698,26 @@ Example:
 └───────┴─────────────┘
 ```
 
+**Categories:** filters
+
+**Parameters:**
+
+<ParamField path="predicates">
+  Expression(s) that evaluates to a boolean.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`slice`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.slice"></a>
+<details open>
+<summary>slice</summary>
 
-**`slice(offset: int | Expr, length: int | Expr | None = None)`**
+```python
+def slice(
+    offset: int | Expr,
+    length: int | Expr | None = None,
+)
+```
 
 Compute a slice of the TableFrame for the specified columns.
 
@@ -621,6 +752,10 @@ Example:
 │ NaN ┆ NaN │
 └─────┴─────┘
 ```
+
+**Categories:** filters
+
+**Parameters:**
 
 <ParamField path="offset">
   the offset to start the slice.

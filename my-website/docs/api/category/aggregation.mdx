@@ -6,10 +6,15 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # Aggregation
 
- <details open>
-<summary>**`group_by`**</summary>
+ <a id="tabsdata.TableFrame.group_by"></a>
+<details open>
+<summary>group_by</summary>
 
-**`group_by(*by: td_typing.IntoExpr | Iterable[td_typing.IntoExpr])`**
+```python
+def group_by(
+    *by: td_typing.IntoExpr | Iterable[td_typing.IntoExpr],
+)
+```
 
 Perform a group by on the TableFrame.
 
@@ -49,12 +54,23 @@ Example:
 └─────┴─────┘
 ```
 
+**Categories:** aggregation
+
+**Parameters:**
+
+<ParamField path="by">
+  Columns or expressions to group by.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`count`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.count"></a>
+<details open>
+<summary>count</summary>
 
-**`count`**
+```python
+def count()
+```
 
 Aggregation operation that counts the non null values of the given column in
 the group.
@@ -94,12 +110,17 @@ Examples:
 └──────┴───────┘
 ```
 
+**Categories:** aggregation
+
 </details>
 
- <details open>
-<summary>**`first`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.first"></a>
+<details open>
+<summary>first</summary>
 
-**`first`**
+```python
+def first()
+```
 
 Get the first element.
 
@@ -125,12 +146,17 @@ Example:
 └──────┴─────────┘
 ```
 
+**Categories:** aggregation
+
 </details>
 
- <details open>
-<summary>**`last`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.last"></a>
+<details open>
+<summary>last</summary>
 
-**`last`**
+```python
+def last()
+```
 
 Get the last element.
 
@@ -156,12 +182,17 @@ Example:
 └──────┴─────────┘
 ```
 
+**Categories:** aggregation
+
 </details>
 
- <details open>
-<summary>**`len`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.len"></a>
+<details open>
+<summary>len</summary>
 
-**`len`**
+```python
+def len()
+```
 
 Aggregation operation that counts the rows in the group.
 
@@ -200,12 +231,17 @@ Examples:
 └──────┴─────┘
 ```
 
+**Categories:** aggregation
+
 </details>
 
- <details open>
-<summary>**`max`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.max"></a>
+<details open>
+<summary>max</summary>
 
-**`max`**
+```python
+def max()
+```
 
 Aggregation operation that finds the maximum value in the group.
 
@@ -250,12 +286,17 @@ Examples:
 └──────┴──────┘
 ```
 
+**Categories:** aggregation
+
 </details>
 
- <details open>
-<summary>**`mean`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.mean"></a>
+<details open>
+<summary>mean</summary>
 
-**`mean`**
+```python
+def mean()
+```
 
 Aggregation operation that finds the mean of the values in the group.
 
@@ -300,12 +341,17 @@ Examples:
 └──────┴──────────┘
 ```
 
+**Categories:** aggregation
+
 </details>
 
- <details open>
-<summary>**`median`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.median"></a>
+<details open>
+<summary>median</summary>
 
-**`median`**
+```python
+def median()
+```
 
 Aggregation operation that finds the median of the values in the group.
 
@@ -350,12 +396,17 @@ Examples:
 └──────┴──────┘
 ```
 
+**Categories:** aggregation
+
 </details>
 
- <details open>
-<summary>**`min`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.min"></a>
+<details open>
+<summary>min</summary>
 
-**`min`**
+```python
+def min()
+```
 
 Aggregation operation that finds the minimum value in the group.
 
@@ -400,12 +451,17 @@ Examples:
 └──────┴──────┘
 ```
 
+**Categories:** aggregation
+
 </details>
 
- <details open>
-<summary>**`n_unique`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.n_unique"></a>
+<details open>
+<summary>n_unique</summary>
 
-**`n_unique`**
+```python
+def n_unique()
+```
 
 Aggregation operation that counts the unique values of the given column
 in the group.
@@ -451,12 +507,22 @@ Examples:
 └──────┴─────┘
 ```
 
+**Categories:** aggregation
+
 </details>
 
- <details open>
-<summary>**`rank`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.rank"></a>
+<details open>
+<summary>rank</summary>
 
-**`rank(method: Literal['average', 'min', 'max', 'dense', 'ordinal', 'random'] = 'average', *, descending: bool = False, seed: int | None = None)`**
+```python
+def rank(
+    method: Literal['average', 'min', 'max', 'dense', 'ordinal', 'random'] = 'average',
+    *,
+    descending: bool = False,
+    seed: int | None = None,
+)
+```
 
 Compute the rank of the element values. Multiple rank types are available.
 
@@ -484,6 +550,10 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** aggregation
+
+**Parameters:**
+
 <ParamField path="method">
   the ranking type: ‘average’ (default), ‘dense’, ‘max’, ‘min’,
 ‘ordinal’ or ‘random’.
@@ -499,10 +569,13 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`sum`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.sum"></a>
+<details open>
+<summary>sum</summary>
 
-**`sum`**
+```python
+def sum()
+```
 
 Aggregation operation that sums the values in the group.
 
@@ -546,5 +619,7 @@ Examples:
 │ F    ┆ -5  │
 └──────┴─────┘
 ```
+
+**Categories:** aggregation
 
 </details>

@@ -6,10 +6,15 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # Logic
 
- <details open>
-<summary>**`and_`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.and_"></a>
+<details open>
+<summary>and_</summary>
 
-**`and_(*others: Any)`**
+```python
+def and_(
+    *others: Any,
+)
+```
 
 Bitwise and operator with the given expressions.
 It can be used with integer and bool types.
@@ -38,12 +43,25 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="others">
+  expressions to peform the bitwise and with.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`eq`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.eq"></a>
+<details open>
+<summary>eq</summary>
 
-**`eq(other: Any)`**
+```python
+def eq(
+    other: Any,
+)
+```
 
 Compare if 2 expressions are equal, equivalent to expr == other. If one
 of the expressions is null (None) it returns null.
@@ -71,12 +89,25 @@ Example:
 └─────┴──────┴───────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other">
+  The value to compare with.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`eq_missing`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.eq_missing"></a>
+<details open>
+<summary>eq_missing</summary>
 
-**`eq_missing(other: Any)`**
+```python
+def eq_missing(
+    other: Any,
+)
+```
 
 Compare if 2 expressions are equal an, equivalent to expr == other. If one
 of the expressions is null (None) it returns false.
@@ -104,12 +135,25 @@ Example:
 └─────┴──────┴───────────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other">
+  The value to compare with.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`ge`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.ge"></a>
+<details open>
+<summary>ge</summary>
 
-**`ge(other: Any)`**
+```python
+def ge(
+    other: Any,
+)
+```
 
 Greater or equal operator.
 
@@ -132,12 +176,25 @@ Example:
 └──────┴─────────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other">
+  The value to compare with.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`gt`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.gt"></a>
+<details open>
+<summary>gt</summary>
 
-**`gt(other: Any)`**
+```python
+def gt(
+    other: Any,
+)
+```
 
 Greater than operator.
 
@@ -160,12 +217,27 @@ Example:
 └──────┴─────────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other">
+  The value to compare with.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`is_between`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.is_between"></a>
+<details open>
+<summary>is_between</summary>
 
-**`is_between(lower_bound: td_typing.IntoExpr, upper_bound: td_typing.IntoExpr, closed: td_typing.ClosedInterval = 'both')`**
+```python
+def is_between(
+    lower_bound: td_typing.IntoExpr,
+    upper_bound: td_typing.IntoExpr,
+    closed: td_typing.ClosedInterval = 'both',
+)
+```
 
 If an expression is between the given bounds.
 
@@ -192,6 +264,10 @@ Example:
 └──────┴─────────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
 <ParamField path="lower_bound">
   The lower bound value.
 </ParamField>
@@ -206,10 +282,13 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`is_finite`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.is_finite"></a>
+<details open>
+<summary>is_finite</summary>
 
-**`is_finite`**
+```python
+def is_finite()
+```
 
 If an element value is finite.
 
@@ -234,12 +313,19 @@ Example:
 └──────┴────────┘
 ```
 
+**Categories:** logic
+
 </details>
 
- <details open>
-<summary>**`is_in`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.is_in"></a>
+<details open>
+<summary>is_in</summary>
 
-**`is_in(other: Expr | Collection[Any])`**
+```python
+def is_in(
+    other: Expr | Collection[Any],
+)
+```
 
 If an element value is in the given collection.
 
@@ -264,12 +350,23 @@ Example:
 └──────┴────────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other">
+  The collection to check if the element value is in.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`is_infinite`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.is_infinite"></a>
+<details open>
+<summary>is_infinite</summary>
 
-**`is_infinite`**
+```python
+def is_infinite()
+```
 
 If an element value is infinite.
 
@@ -294,12 +391,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** logic
+
 </details>
 
- <details open>
-<summary>**`is_nan`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.is_nan"></a>
+<details open>
+<summary>is_nan</summary>
 
-**`is_nan`**
+```python
+def is_nan()
+```
 
 If an element value is NaN.
 
@@ -324,12 +426,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** logic
+
 </details>
 
- <details open>
-<summary>**`is_not_nan`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.is_not_nan"></a>
+<details open>
+<summary>is_not_nan</summary>
 
-**`is_not_nan`**
+```python
+def is_not_nan()
+```
 
 If an element value is not NaN.
 
@@ -355,12 +462,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** logic
+
 </details>
 
- <details open>
-<summary>**`is_not_null`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.is_not_null"></a>
+<details open>
+<summary>is_not_null</summary>
 
-**`is_not_null`**
+```python
+def is_not_null()
+```
 
 If an element value is not null (None).
 
@@ -386,12 +498,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** logic
+
 </details>
 
- <details open>
-<summary>**`is_null`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.is_null"></a>
+<details open>
+<summary>is_null</summary>
 
-**`is_null`**
+```python
+def is_null()
+```
 
 If an element value is null (None).
 
@@ -417,12 +534,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** logic
+
 </details>
 
- <details open>
-<summary>**`is_unique`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.is_unique"></a>
+<details open>
+<summary>is_unique</summary>
 
-**`is_unique`**
+```python
+def is_unique()
+```
 
 If an element value is unique for all values in the column.
 
@@ -448,12 +570,19 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** logic
+
 </details>
 
- <details open>
-<summary>**`le`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.le"></a>
+<details open>
+<summary>le</summary>
 
-**`le(other: Any)`**
+```python
+def le(
+    other: Any,
+)
+```
 
 Less or equal operator.
 
@@ -476,12 +605,25 @@ Example:
 └──────┴─────────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other">
+  The value to compare with.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`lt`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.lt"></a>
+<details open>
+<summary>lt</summary>
 
-**`lt(other: Any)`**
+```python
+def lt(
+    other: Any,
+)
+```
 
 Less than operator.
 
@@ -504,12 +646,25 @@ Example:
 └──────┴─────────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other">
+  The value to compare with.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`ne`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.ne"></a>
+<details open>
+<summary>ne</summary>
 
-**`ne(other: Any)`**
+```python
+def ne(
+    other: Any,
+)
+```
 
 Compare if 2 expressions are not equal, equivalent to expr != other. If one
 of the expressions is null (None) it returns null.
@@ -537,12 +692,25 @@ Example:
 └─────┴──────┴───────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other">
+  The value to compare with.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`ne_missing`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.ne_missing"></a>
+<details open>
+<summary>ne_missing</summary>
 
-**`ne_missing(other: Any)`**
+```python
+def ne_missing(
+    other: Any,
+)
+```
 
 Compare if 2 expressions are not equal an, equivalent to expr != other. If one
 of the expressions is null (None) it returns false.
@@ -570,12 +738,23 @@ Example:
 └─────┴──────┴───────────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other">
+  The value to compare with.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`not_`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.not_"></a>
+<details open>
+<summary>not_</summary>
 
-**`not_`**
+```python
+def not_()
+```
 
 Negate a boolean expression.
 
@@ -599,12 +778,19 @@ Example:
 └───────┴───────┘
 ```
 
+**Categories:** logic
+
 </details>
 
- <details open>
-<summary>**`or_`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.or_"></a>
+<details open>
+<summary>or_</summary>
 
-**`or_(*others: Any)`**
+```python
+def or_(
+    *others: Any,
+)
+```
 
 Bitwise or operator with the given expressions.
 It can be used with integer and bool types.
@@ -631,12 +817,25 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="others">
+  expressions to peform the bitwise or with.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`xor`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.xor"></a>
+<details open>
+<summary>xor</summary>
 
-**`xor(other: Any)`**
+```python
+def xor(
+    other: Any,
+)
+```
 
 Bitwise xor operator with the given expression.
 It can be used with integer and bool types.
@@ -661,5 +860,13 @@ Example:
 │ 90  ┆ 82  │
 └─────┴─────┘
 ```
+
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other">
+  expression to peform the bitwise xor with.
+</ParamField>
 
 </details>

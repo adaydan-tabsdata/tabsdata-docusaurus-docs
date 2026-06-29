@@ -6,19 +6,29 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # Numeric
 
- <details open>
-<summary>**`abs`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.abs"></a>
+<details open>
+<summary>abs</summary>
 
-**`abs`**
+```python
+def abs()
+```
 
 Return the abso lute value of the expression.
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`add`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.add"></a>
+<details open>
+<summary>add</summary>
 
-**`add(other: Any)`**
+```python
+def add(
+    other: Any,
+)
+```
 
 Equivalent to the + operator.
 
@@ -49,12 +59,23 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="other">
+  The value to add or concatenate.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`arccos`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.arccos"></a>
+<details open>
+<summary>arccos</summary>
 
-**`arccos`**
+```python
+def arccos()
+```
 
 Calculate the inverse cosine of the element value.
 
@@ -82,12 +103,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`arccosh`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.arccosh"></a>
+<details open>
+<summary>arccosh</summary>
 
-**`arccosh`**
+```python
+def arccosh()
+```
 
 Calculate the inverse hyperbolic cosine of the element value.
 
@@ -115,12 +141,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`arcsin`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.arcsin"></a>
+<details open>
+<summary>arcsin</summary>
 
-**`arcsin`**
+```python
+def arcsin()
+```
 
 Calculate the inverse sine of the element value.
 
@@ -148,12 +179,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`arcsinh`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.arcsinh"></a>
+<details open>
+<summary>arcsinh</summary>
 
-**`arcsinh`**
+```python
+def arcsinh()
+```
 
 Calculate the inverse hyperbolic sine of the element value.
 
@@ -181,12 +217,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`arctan`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.arctan"></a>
+<details open>
+<summary>arctan</summary>
 
-**`arctan`**
+```python
+def arctan()
+```
 
 Calculate the inverse tangent of the element value.
 
@@ -214,12 +255,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`arctanh`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.arctanh"></a>
+<details open>
+<summary>arctanh</summary>
 
-**`arctanh`**
+```python
+def arctanh()
+```
 
 Calculate the inverse hyperbolic tangent of the element value.
 
@@ -247,12 +293,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`cbrt`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.cbrt"></a>
+<details open>
+<summary>cbrt</summary>
 
-**`cbrt`**
+```python
+def cbrt()
+```
 
 Calculate the cub root of the element value.
 
@@ -280,12 +331,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`ceil`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.ceil"></a>
+<details open>
+<summary>ceil</summary>
 
-**`ceil`**
+```python
+def ceil()
+```
 
 Round up the expression to the next integer value.
 
@@ -308,12 +364,20 @@ Example:
 └──────┴─────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`clip`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.clip"></a>
+<details open>
+<summary>clip</summary>
 
-**`clip(lower_bound: int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None = None, upper_bound: int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None = None)`**
+```python
+def clip(
+    lower_bound: int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None = None,
+    upper_bound: int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None = None,
+)
+```
 
 For element values outside the lower and upper bounds, lower values are
 replaced with the lower bound
@@ -342,6 +406,10 @@ Example:
 └──────┴─────────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
 <ParamField path="lower_bound">
   The lower bound value. If None, the lower bound is not set.
 </ParamField>
@@ -352,10 +420,13 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`cos`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.cos"></a>
+<details open>
+<summary>cos</summary>
 
-**`cos`**
+```python
+def cos()
+```
 
 Calculate the cosine of the element value.
 
@@ -383,12 +454,17 @@ Example:
 └──────┴───────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`cosh`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.cosh"></a>
+<details open>
+<summary>cosh</summary>
 
-**`cosh`**
+```python
+def cosh()
+```
 
 Calculate the hyperbolic cosine of the element value.
 
@@ -416,12 +492,17 @@ Example:
 └──────┴────────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`cot`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.cot"></a>
+<details open>
+<summary>cot</summary>
 
-**`cot`**
+```python
+def cot()
+```
 
 Calculate the cotangent of the element value.
 
@@ -449,12 +530,17 @@ Example:
 └──────┴───────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`degrees`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.degrees"></a>
+<details open>
+<summary>degrees</summary>
 
-**`degrees`**
+```python
+def degrees()
+```
 
 Convert a radian value to degrees
 
@@ -482,12 +568,19 @@ Example:
 └──────┴────────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`diff`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.diff"></a>
+<details open>
+<summary>diff</summary>
 
-**`diff(n: int = 1)`**
+```python
+def diff(
+    n: int = 1,
+)
+```
 
 Compute the difference between an element value and the element value
 of the specified relative row.
@@ -522,12 +615,27 @@ Examples:
 └──────┴──────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="n">
+  The relative row to compute the difference with.
+</ParamField>
+
+<ParamField path="Defaults to 1 (previous). Use a negative number to get a next row.">
+  
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`exp`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.exp"></a>
+<details open>
+<summary>exp</summary>
 
-**`exp`**
+```python
+def exp()
+```
 
 Calculate the exponential of the element value.
 
@@ -553,12 +661,17 @@ Example:
 └──────┴─────────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`floor`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.floor"></a>
+<details open>
+<summary>floor</summary>
 
-**`floor`**
+```python
+def floor()
+```
 
 Round down the expression to the previous integer value.
 
@@ -581,12 +694,22 @@ Example:
 └──────┴─────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`hash`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.hash"></a>
+<details open>
+<summary>hash</summary>
 
-**`hash(seed: int = 0, seed_1: int | None = None, seed_2: int | None = None, seed_3: int | None = None)`**
+```python
+def hash(
+    seed: int = 0,
+    seed_1: int | None = None,
+    seed_2: int | None = None,
+    seed_3: int | None = None,
+)
+```
 
 Compute the hash of an element value.
 
@@ -609,6 +732,10 @@ Example:
 └──────┴─────────────────────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
 <ParamField path="seed">
   The seed for the hash function.
 </ParamField>
@@ -627,10 +754,15 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`log`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.log"></a>
+<details open>
+<summary>log</summary>
 
-**`log(base: float = 2.718281828459045)`**
+```python
+def log(
+    base: float = 2.718281828459045,
+)
+```
 
 Calculate the logarithm to the given base.
 
@@ -658,12 +790,23 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="base">
+  logarithm base, defaults to e.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`log10`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.log10"></a>
+<details open>
+<summary>log10</summary>
 
-**`log10`**
+```python
+def log10()
+```
 
 Calculate the logarithm base 10.
 
@@ -691,12 +834,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`log1p`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.log1p"></a>
+<details open>
+<summary>log1p</summary>
 
-**`log1p`**
+```python
+def log1p()
+```
 
 Calculate the natural logarithm plus one.
 
@@ -724,12 +872,19 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`mod`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.mod"></a>
+<details open>
+<summary>mod</summary>
 
-**`mod(other: Any)`**
+```python
+def mod(
+    other: Any,
+)
+```
 
 Modulus operator.
 
@@ -754,12 +909,25 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="other">
+  The value to divide by.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`mul`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.mul"></a>
+<details open>
+<summary>mul</summary>
 
-**`mul(other: Any)`**
+```python
+def mul(
+    other: Any,
+)
+```
 
 Multiplication operator.
 
@@ -785,12 +953,23 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="other">
+  The value to multiply by.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`neg`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.neg"></a>
+<details open>
+<summary>neg</summary>
 
-**`neg`**
+```python
+def neg()
+```
 
 Unary minus operator.
 
@@ -818,12 +997,19 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`pow`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.pow"></a>
+<details open>
+<summary>pow</summary>
 
-**`pow(exponent: Expr | Series | str | int | float)`**
+```python
+def pow(
+    exponent: Expr | Series | str | int | float,
+)
+```
 
 Exponentiation operator.
 
@@ -849,12 +1035,23 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="exponent">
+  exponent value.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`radians`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.radians"></a>
+<details open>
+<summary>radians</summary>
 
-**`radians`**
+```python
+def radians()
+```
 
 Convert a degree value to radians
 
@@ -880,12 +1077,20 @@ Example:
 └─────────┴──────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`reinterpret`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.reinterpret"></a>
+<details open>
+<summary>reinterpret</summary>
 
-**`reinterpret(*, signed: bool = True)`**
+```python
+def reinterpret(
+    *,
+    signed: bool = True,
+)
+```
 
 Reinterpret the 64bit element values (i64 or u64) as a signed/unsigned integers.
 Only valid for 64bit integers, for other types use cast.
@@ -915,12 +1120,29 @@ Example:
 └──────┴─────────────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="signed">
+  true to convert to i64, false to convert to u64.
+</ParamField>
+
+<ParamField path="This named argument must be specified.">
+  
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`round`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.round"></a>
+<details open>
+<summary>round</summary>
 
-**`round(decimals: int = 0)`**
+```python
+def round(
+    decimals: int = 0,
+)
+```
 
 Round floating point element values.
 
@@ -948,12 +1170,25 @@ Example:
 └──────┴───────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="decimals">
+  number of decimal places to round to.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`round_sig_figs`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.round_sig_figs"></a>
+<details open>
+<summary>round_sig_figs</summary>
 
-**`round_sig_figs(digits: int)`**
+```python
+def round_sig_figs(
+    digits: int,
+)
+```
 
 Round floating point element values to the specified significant figures.
 
@@ -985,12 +1220,23 @@ Example:
 └────────┴────────────────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="digits">
+  number of digits to round up.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`shrink_dtype`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.shrink_dtype"></a>
+<details open>
+<summary>shrink_dtype</summary>
 
-**`shrink_dtype`**
+```python
+def shrink_dtype()
+```
 
 Cast down a column to the smallest type that can hold the element values.
 
@@ -1015,12 +1261,17 @@ Example:
 └───────┴──────────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`sign`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.sign"></a>
+<details open>
+<summary>sign</summary>
 
-**`sign`**
+```python
+def sign()
+```
 
 Calculate the sign of element values.
 
@@ -1051,12 +1302,17 @@ Example:
 └────────┴──────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`sin`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.sin"></a>
+<details open>
+<summary>sin</summary>
 
-**`sin`**
+```python
+def sin()
+```
 
 Calculate the sine of the element value.
 
@@ -1081,12 +1337,17 @@ Example:
 └─────┴───────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`sinh`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.sinh"></a>
+<details open>
+<summary>sinh</summary>
 
-**`sinh`**
+```python
+def sinh()
+```
 
 Calculate the hyperbolic sine of the element value.
 
@@ -1111,12 +1372,17 @@ Example:
 └─────┴───────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`sqrt`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.sqrt"></a>
+<details open>
+<summary>sqrt</summary>
 
-**`sqrt`**
+```python
+def sqrt()
+```
 
 Calculate the square root of the element value.
 
@@ -1143,12 +1409,19 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`sub`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.sub"></a>
+<details open>
+<summary>sub</summary>
 
-**`sub(other: Any)`**
+```python
+def sub(
+    other: Any,
+)
+```
 
 Equivalent to the - operator.
 
@@ -1176,12 +1449,23 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="other">
+  value to subtract.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`tan`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.tan"></a>
+<details open>
+<summary>tan</summary>
 
-**`tan`**
+```python
+def tan()
+```
 
 Calculate the tangent of the element value.
 
@@ -1206,12 +1490,17 @@ Example:
 └─────┴───────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`tanh`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.tanh"></a>
+<details open>
+<summary>tanh</summary>
 
-**`tanh`**
+```python
+def tanh()
+```
 
 Calculate the hyperbolic tangent of the element value.
 
@@ -1236,12 +1525,19 @@ Example:
 └─────┴──────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`truediv`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.truediv"></a>
+<details open>
+<summary>truediv</summary>
 
-**`truediv(other: Any)`**
+```python
+def truediv(
+    other: Any,
+)
+```
 
 Equivalent to the float / operator.
 
@@ -1271,5 +1567,13 @@ Example:
 │ 2142.0 ┆ 714.0      │
 └────────┴────────────┘
 ```
+
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="other">
+  value to divide by.
+</ParamField>
 
 </details>

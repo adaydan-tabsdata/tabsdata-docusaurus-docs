@@ -6,38 +6,73 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # File Formats
 
- <details open>
-<summary>**`AvroFormat`**</summary>
+ <a id="tabsdata.AvroFormat"></a>
+<details open>
+<summary>AvroFormat</summary>
 
-**`AvroFormat(chunk_size: int = 50000)`**
+```python
+class AvroFormat(
+    chunk_size: int = 50000,
+)
+```
 
 Bases: `FileFormat`
 
 Avro file format.
 
-<details open>
-<summary>**`chunk_size`**</summary>
-
-`chunk_size`
-
+<a id="tabsdata.AvroFormat.chunk_size"></a>
+<ResponseField name="chunk_size">
 Returns the chunk size for reading/writing AVRO files.
 
  **Returns:** The chunk size.
 
-**Return type:** int
+**Returns:** int
+</ResponseField>
+
+**Categories:** file-format
 
 </details>
 
-</details>
+ <a id="tabsdata.CSVFormat"></a>
+<details open>
+<summary>CSVFormat</summary>
 
- <details open>
-<summary>**`CSVFormat`**</summary>
-
-**`CSVFormat(separator: str | int = ',', quote_char: str | int = '"', eol_char: str | int = '\n', input_encoding: str = 'Utf8', input_null_values: list | None = None, input_missing_is_null: bool = True, input_truncate_ragged_lines: bool = False, input_comment_prefix: str | int | None = None, input_try_parse_dates: bool = False, input_decimal_comma: bool = False, input_has_header: bool = True, input_skip_rows: int = 0, input_skip_rows_after_header: int = 0, input_raise_if_empty: bool = True, input_ignore_errors: bool = False, output_include_header: bool = True, output_datetime_format: str | None = None, output_date_format: str | None = None, output_time_format: str | None = None, output_float_scientific: bool | None = None, output_float_precision: int | None = None, output_null_value: str | None = None, output_quote_style: str | None = None, output_maintain_order: bool = True)`**
+```python
+class CSVFormat(
+    separator: str | int = ',',
+    quote_char: str | int = '"',
+    eol_char: str | int = '\n',
+    input_encoding: str = 'Utf8',
+    input_null_values: list | None = None,
+    input_missing_is_null: bool = True,
+    input_truncate_ragged_lines: bool = False,
+    input_comment_prefix: str | int | None = None,
+    input_try_parse_dates: bool = False,
+    input_decimal_comma: bool = False,
+    input_has_header: bool = True,
+    input_skip_rows: int = 0,
+    input_skip_rows_after_header: int = 0,
+    input_raise_if_empty: bool = True,
+    input_ignore_errors: bool = False,
+    output_include_header: bool = True,
+    output_datetime_format: str | None = None,
+    output_date_format: str | None = None,
+    output_time_format: str | None = None,
+    output_float_scientific: bool | None = None,
+    output_float_precision: int | None = None,
+    output_null_value: str | None = None,
+    output_quote_style: str | None = None,
+    output_maintain_order: bool = True,
+)
+```
 
 Bases: `FileFormat`
 
 CSV file format.
+
+**Categories:** file-format
+
+**Parameters:**
 
 <ParamField path="separator" type="str">
   The separator of the CSV file.
@@ -176,35 +211,50 @@ when exporting data.
 
 </details>
 
- <details open>
-<summary>**`LogFormat`**</summary>
+ <a id="tabsdata.LogFormat"></a>
+<details open>
+<summary>LogFormat</summary>
 
-**`LogFormat`**
+```python
+class LogFormat()
+```
 
 Bases: `FileFormat`
 
 Log file format.
 
+**Categories:** file-format
+
 </details>
 
- <details open>
-<summary>**`NDJSONFormat`**</summary>
+ <a id="tabsdata.NDJSONFormat"></a>
+<details open>
+<summary>NDJSONFormat</summary>
 
-**`NDJSONFormat`**
+```python
+class NDJSONFormat()
+```
 
 Bases: `FileFormat`
 
 JSON file format.
 
+**Categories:** file-format
+
 </details>
 
- <details open>
-<summary>**`ParquetFormat`**</summary>
+ <a id="tabsdata.ParquetFormat"></a>
+<details open>
+<summary>ParquetFormat</summary>
 
-**`ParquetFormat`**
+```python
+class ParquetFormat()
+```
 
 Bases: `FileFormat`
 
 Parquet file format.
+
+**Categories:** file-format
 
 </details>

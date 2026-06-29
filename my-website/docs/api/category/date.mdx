@@ -4,296 +4,538 @@ title: "Date"
 
 # Date
 
- <details open>
-<summary>**`add_business_days`**</summary>
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.add_business_days"></a>
+<details open>
+<summary>add_business_days</summary>
 
-**`add_business_days(n: int | td_typing.IntoExpr, week_mask: Iterable[bool] = (True, True, True, True, True, False, False), holidays: Iterable[dt.date] = (), roll: td_typing.Roll = 'raise')`**
+```python
+def add_business_days(
+    n: int | td_typing.IntoExpr,
+    week_mask: Iterable[bool] = (True, True, True, True, True, False, False),
+    holidays: Iterable[dt.date] = (),
+    roll: td_typing.Roll = 'raise',
+)
+```
 
-</details>
-
- <details open>
-<summary>**`base_utc_offset`**</summary>
-
-**`base_utc_offset`**
-
-</details>
-
- <details open>
-<summary>**`cast_time_unit`**</summary>
-
-**`cast_time_unit(time_unit: Literal['ns', 'us', 'ms'])`**
+**Categories:** date
 
 </details>
 
- <details open>
-<summary>**`century`**</summary>
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.base_utc_offset"></a>
+<details open>
+<summary>base_utc_offset</summary>
 
-**`century`**
+```python
+def base_utc_offset()
+```
 
-</details>
-
- <details open>
-<summary>**`combine`**</summary>
-
-**`combine(time: time | Expr, time_unit: Literal['ns', 'us', 'ms'] = 'us')`**
+**Categories:** date
 
 </details>
 
- <details open>
-<summary>**`convert_time_zone`**</summary>
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.cast_time_unit"></a>
+<details open>
+<summary>cast_time_unit</summary>
 
-**`convert_time_zone(time_zone: str)`**
+```python
+def cast_time_unit(
+    time_unit: Literal['ns', 'us', 'ms'],
+)
+```
 
-</details>
-
- <details open>
-<summary>**`date`**</summary>
-
-**`date`**
-
-</details>
-
- <details open>
-<summary>**`datetime`**</summary>
-
-**`datetime`**
+**Categories:** date
 
 </details>
 
- <details open>
-<summary>**`day`**</summary>
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.century"></a>
+<details open>
+<summary>century</summary>
 
-**`day`**
+```python
+def century()
+```
 
-</details>
-
- <details open>
-<summary>**`dst_offset`**</summary>
-
-**`dst_offset`**
+**Categories:** date
 
 </details>
 
- <details open>
-<summary>**`epoch`**</summary>
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.combine"></a>
+<details open>
+<summary>combine</summary>
 
-**`epoch(time_unit: Literal['ns', 'us', 'ms', 's', 'd'] = 'us')`**
+```python
+def combine(
+    time: time | Expr,
+    time_unit: Literal['ns', 'us', 'ms'] = 'us',
+)
+```
 
-</details>
-
- <details open>
-<summary>**`hour`**</summary>
-
-**`hour`**
-
-</details>
-
- <details open>
-<summary>**`is_leap_year`**</summary>
-
-**`is_leap_year`**
+**Categories:** date
 
 </details>
 
- <details open>
-<summary>**`iso_year`**</summary>
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.convert_time_zone"></a>
+<details open>
+<summary>convert_time_zone</summary>
 
-**`iso_year`**
+```python
+def convert_time_zone(
+    time_zone: str,
+)
+```
 
-</details>
-
- <details open>
-<summary>**`microsecond`**</summary>
-
-**`microsecond`**
-
-</details>
-
- <details open>
-<summary>**`millennium`**</summary>
-
-**`millennium`**
+**Categories:** date
 
 </details>
 
- <details open>
-<summary>**`millisecond`**</summary>
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.date"></a>
+<details open>
+<summary>date</summary>
 
-**`millisecond`**
+```python
+def date()
+```
 
-</details>
-
- <details open>
-<summary>**`minute`**</summary>
-
-**`minute`**
+**Categories:** date
 
 </details>
 
- <details open>
-<summary>**`month`**</summary>
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.datetime"></a>
+<details open>
+<summary>datetime</summary>
 
-**`month`**
+```python
+def datetime()
+```
 
-</details>
-
- <details open>
-<summary>**`month_end`**</summary>
-
-**`month_end`**
+**Categories:** date
 
 </details>
 
- <details open>
-<summary>**`month_start`**</summary>
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.day"></a>
+<details open>
+<summary>day</summary>
 
-**`month_start`**
+```python
+def day()
+```
 
-</details>
-
- <details open>
-<summary>**`nanosecond`**</summary>
-
-**`nanosecond`**
+**Categories:** date
 
 </details>
 
- <details open>
-<summary>**`offset_by`**</summary>
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.dst_offset"></a>
+<details open>
+<summary>dst_offset</summary>
 
-**`offset_by(by: str | Expr)`**
+```python
+def dst_offset()
+```
 
-</details>
-
- <details open>
-<summary>**`ordinal_day`**</summary>
-
-**`ordinal_day`**
+**Categories:** date
 
 </details>
 
- <details open>
-<summary>**`quarter`**</summary>
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.epoch"></a>
+<details open>
+<summary>epoch</summary>
 
-**`quarter`**
+```python
+def epoch(
+    time_unit: Literal['ns', 'us', 'ms', 's', 'd'] = 'us',
+)
+```
 
-</details>
-
- <details open>
-<summary>**`replace_time_zone`**</summary>
-
-**`replace_time_zone(time_zone: str | None, *, ambiguous: Literal['earliest', 'latest', 'raise', 'null'] | Expr = 'raise', non_existent: Literal['raise', 'null'] = 'raise')`**
-
-</details>
-
- <details open>
-<summary>**`second`**</summary>
-
-**`second(*, fractional: bool = False)`**
+**Categories:** date
 
 </details>
 
- <details open>
-<summary>**`strftime`**</summary>
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.hour"></a>
+<details open>
+<summary>hour</summary>
 
-**`strftime(fmt: str)`**
+```python
+def hour()
+```
 
-</details>
-
- <details open>
-<summary>**`time`**</summary>
-
-**`time`**
+**Categories:** date
 
 </details>
 
- <details open>
-<summary>**`timestamp`**</summary>
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.is_leap_year"></a>
+<details open>
+<summary>is_leap_year</summary>
 
-**`timestamp(time_unit: Literal['ns', 'us', 'ms'] = 'us')`**
+```python
+def is_leap_year()
+```
 
-</details>
-
- <details open>
-<summary>**`total_days`**</summary>
-
-**`total_days`**
+**Categories:** date
 
 </details>
 
- <details open>
-<summary>**`total_hours`**</summary>
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.iso_year"></a>
+<details open>
+<summary>iso_year</summary>
 
-**`total_hours`**
+```python
+def iso_year()
+```
 
-</details>
-
- <details open>
-<summary>**`total_microseconds`**</summary>
-
-**`total_microseconds`**
+**Categories:** date
 
 </details>
 
- <details open>
-<summary>**`total_milliseconds`**</summary>
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.microsecond"></a>
+<details open>
+<summary>microsecond</summary>
 
-**`total_milliseconds`**
+```python
+def microsecond()
+```
 
-</details>
-
- <details open>
-<summary>**`total_minutes`**</summary>
-
-**`total_minutes`**
+**Categories:** date
 
 </details>
 
- <details open>
-<summary>**`total_nanoseconds`**</summary>
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.millennium"></a>
+<details open>
+<summary>millennium</summary>
 
-**`total_nanoseconds`**
+```python
+def millennium()
+```
 
-</details>
-
- <details open>
-<summary>**`total_seconds`**</summary>
-
-**`total_seconds`**
+**Categories:** date
 
 </details>
 
- <details open>
-<summary>**`truncate`**</summary>
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.millisecond"></a>
+<details open>
+<summary>millisecond</summary>
 
-**`truncate(every: str | timedelta | Expr)`**
+```python
+def millisecond()
+```
 
-</details>
-
- <details open>
-<summary>**`week`**</summary>
-
-**`week`**
+**Categories:** date
 
 </details>
 
- <details open>
-<summary>**`weekday`**</summary>
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.minute"></a>
+<details open>
+<summary>minute</summary>
 
-**`weekday`**
+```python
+def minute()
+```
 
-</details>
-
- <details open>
-<summary>**`with_time_unit`**</summary>
-
-**`with_time_unit(time_unit: Literal['ns', 'us', 'ms'])`**
+**Categories:** date
 
 </details>
 
- <details open>
-<summary>**`year`**</summary>
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.month"></a>
+<details open>
+<summary>month</summary>
 
-**`year`**
+```python
+def month()
+```
+
+**Categories:** date
+
+</details>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.month_end"></a>
+<details open>
+<summary>month_end</summary>
+
+```python
+def month_end()
+```
+
+**Categories:** date
+
+</details>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.month_start"></a>
+<details open>
+<summary>month_start</summary>
+
+```python
+def month_start()
+```
+
+**Categories:** date
+
+</details>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.nanosecond"></a>
+<details open>
+<summary>nanosecond</summary>
+
+```python
+def nanosecond()
+```
+
+**Categories:** date
+
+</details>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.offset_by"></a>
+<details open>
+<summary>offset_by</summary>
+
+```python
+def offset_by(
+    by: str | Expr,
+)
+```
+
+**Categories:** date
+
+</details>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.ordinal_day"></a>
+<details open>
+<summary>ordinal_day</summary>
+
+```python
+def ordinal_day()
+```
+
+**Categories:** date
+
+</details>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.quarter"></a>
+<details open>
+<summary>quarter</summary>
+
+```python
+def quarter()
+```
+
+**Categories:** date
+
+</details>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.replace_time_zone"></a>
+<details open>
+<summary>replace_time_zone</summary>
+
+```python
+def replace_time_zone(
+    time_zone: str | None,
+    *,
+    ambiguous: Literal['earliest', 'latest', 'raise', 'null'] | Expr = 'raise',
+    non_existent: Literal['raise', 'null'] = 'raise',
+)
+```
+
+**Categories:** date
+
+</details>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.second"></a>
+<details open>
+<summary>second</summary>
+
+```python
+def second(
+    *,
+    fractional: bool = False,
+)
+```
+
+**Categories:** date
+
+</details>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.strftime"></a>
+<details open>
+<summary>strftime</summary>
+
+```python
+def strftime(
+    fmt: str,
+)
+```
+
+**Categories:** date
+
+</details>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.time"></a>
+<details open>
+<summary>time</summary>
+
+```python
+def time()
+```
+
+**Categories:** date
+
+</details>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.timestamp"></a>
+<details open>
+<summary>timestamp</summary>
+
+```python
+def timestamp(
+    time_unit: Literal['ns', 'us', 'ms'] = 'us',
+)
+```
+
+**Categories:** date
+
+</details>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_days"></a>
+<details open>
+<summary>total_days</summary>
+
+```python
+def total_days()
+```
+
+**Categories:** date
+
+</details>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_hours"></a>
+<details open>
+<summary>total_hours</summary>
+
+```python
+def total_hours()
+```
+
+**Categories:** date
+
+</details>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_microseconds"></a>
+<details open>
+<summary>total_microseconds</summary>
+
+```python
+def total_microseconds()
+```
+
+**Categories:** date
+
+</details>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_milliseconds"></a>
+<details open>
+<summary>total_milliseconds</summary>
+
+```python
+def total_milliseconds()
+```
+
+**Categories:** date
+
+</details>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_minutes"></a>
+<details open>
+<summary>total_minutes</summary>
+
+```python
+def total_minutes()
+```
+
+**Categories:** date
+
+</details>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_nanoseconds"></a>
+<details open>
+<summary>total_nanoseconds</summary>
+
+```python
+def total_nanoseconds()
+```
+
+**Categories:** date
+
+</details>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_seconds"></a>
+<details open>
+<summary>total_seconds</summary>
+
+```python
+def total_seconds()
+```
+
+**Categories:** date
+
+</details>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.truncate"></a>
+<details open>
+<summary>truncate</summary>
+
+```python
+def truncate(
+    every: str | timedelta | Expr,
+)
+```
+
+**Categories:** date
+
+</details>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.week"></a>
+<details open>
+<summary>week</summary>
+
+```python
+def week()
+```
+
+**Categories:** date
+
+</details>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.weekday"></a>
+<details open>
+<summary>weekday</summary>
+
+```python
+def weekday()
+```
+
+**Categories:** date
+
+</details>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.with_time_unit"></a>
+<details open>
+<summary>with_time_unit</summary>
+
+```python
+def with_time_unit(
+    time_unit: Literal['ns', 'us', 'ms'],
+)
+```
+
+**Categories:** date
+
+</details>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.year"></a>
+<details open>
+<summary>year</summary>
+
+```python
+def year()
+```
+
+**Categories:** date
 
 </details>

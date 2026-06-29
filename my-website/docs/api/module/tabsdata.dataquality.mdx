@@ -2,104 +2,145 @@
 title: "tabsdata.dataquality"
 ---
 
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
 # tabsdata.dataquality
 
- <details open>
-<summary>**`AllOk`**</summary>
+ <a id="tabsdata.dataquality.AllOk"></a>
+<details open>
+<summary>AllOk</summary>
 
-**`AllOk(none_is_ok: bool = False, nan_is_ok: bool = False, *, tags: str | list[str] | None = None)`**
+```python
+class AllOk(
+    none_is_ok: bool = False,
+    nan_is_ok: bool = False,
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: BoolCriteria
 
 A boolean criteria that selects records where all boolean classifiers
 pass (True).
 
+**Categories:** dq-operator
+
 </details>
 
- <details open>
-<summary>**`AnyFailed`**</summary>
+ <a id="tabsdata.dataquality.AnyFailed"></a>
+<details open>
+<summary>AnyFailed</summary>
 
-**`AnyFailed(none_is_ok: bool = False, nan_is_ok: bool = False, *, tags: str | list[str] | None = None)`**
+```python
+class AnyFailed(
+    none_is_ok: bool = False,
+    nan_is_ok: bool = False,
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: BoolCriteria
 
 A boolean criteria that selects records where at least one boolean
 classifier fails (False).
 
+**Categories:** dq-operator
+
 </details>
 
- <details open>
-<summary>**`BoolClassifier`**</summary>
+ <a id="tabsdata.dataquality.BoolClassifier"></a>
+<details open>
+<summary>BoolClassifier</summary>
 
-**`BoolClassifier(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', on_wrong_value: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
+```python
+class BoolClassifier(
+    column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None,
+    on_missing_column: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_type: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_value: Literal['ignore', 'fail'] = 'ignore',
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: Classifier, [ABC](https://docs.python.org/3/library/abc.html#abc.ABC)
 
 Abstract base class for classifiers that produce a boolean result
 (True or False).
 
+<a id="tabsdata.dataquality.BoolClassifier.supported_dtypes"></a>
+#### `supported_dtypes`
+
+```python
+def supported_dtypes()
+```
+
+Returns the set of data types supported by boolean classifiers.
+
+</details>
+
+ <a id="id0"></a>
 <details open>
-<summary>**`supported_dtypes`**</summary>
+<summary>supported_dtypes</summary>
 
-**`supported_dtypes`**
-
-Returns the set of data types supported by boolean classifiers.
-
-</details>
-
-</details>
-
- <details open>
-<summary>**`supported_dtypes`**</summary>
-
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by boolean classifiers.
 
 </details>
 
- <details open>
-<summary>**`BoolCriteria`**</summary>
+ <a id="tabsdata.dataquality.BoolCriteria"></a>
+<details open>
+<summary>BoolCriteria</summary>
 
-**`BoolCriteria(none_is_ok: bool, nan_is_ok: bool, *, tags: str | list[str] | None = None)`**
+```python
+class BoolCriteria(
+    none_is_ok: bool,
+    nan_is_ok: bool,
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: Criteria, [ABC](https://docs.python.org/3/library/abc.html#abc.ABC)
 
 A boolean criteria to select records based on classifier results.
 
-<details open>
-<summary>**`nan_is_ok`**</summary>
-
-`nan_is_ok`
-
+<a id="tabsdata.dataquality.BoolCriteria.nan_is_ok"></a>
+<ResponseField name="nan_is_ok">
 Returns if NaN values should be considered OK.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`none_is_ok`**</summary>
-
-`none_is_ok`
-
+<a id="tabsdata.dataquality.BoolCriteria.none_is_ok"></a>
+<ResponseField name="none_is_ok">
 Returns if None values should be considered OK.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`tags`**</summary>
-
-`tags`
-
+<a id="tabsdata.dataquality.BoolCriteria.tags"></a>
+<ResponseField name="tags">
 Returns the list of tags associated with this criteria.
+</ResponseField>
 
 </details>
 
-</details>
+ <a id="tabsdata.dataquality.Categorizer"></a>
+<details open>
+<summary>Categorizer</summary>
 
- <details open>
-<summary>**`Categorizer`**</summary>
-
-**`Categorizer(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', on_wrong_value: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
+```python
+class Categorizer(
+    column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None,
+    on_missing_column: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_type: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_value: Literal['ignore', 'fail'] = 'ignore',
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: Classifier, [ABC](https://docs.python.org/3/library/abc.html#abc.ABC)
 
@@ -107,48 +148,59 @@ A base class for categorizers.
 
 </details>
 
- <details open>
-<summary>**`supported_dtypes`**</summary>
+ <a id="tabsdata.dataquality.Categorizer.supported_dtypes"></a>
+<details open>
+<summary>supported_dtypes</summary>
 
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by this classifier.
 
 </details>
 
- <details open>
-<summary>**`CategoryCriteria`**</summary>
+ <a id="tabsdata.dataquality.CategoryCriteria"></a>
+<details open>
+<summary>CategoryCriteria</summary>
 
-**`CategoryCriteria(column_name: str, bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow'] | Annotated[list[Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow']], Strict])`**
+```python
+class CategoryCriteria(
+    column_name: str,
+    bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow'] | Annotated[list[Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow']], Strict],
+)
+```
 
 Bases: Criteria, [ABC](https://docs.python.org/3/library/abc.html#abc.ABC)
 
 A category criteria to select records based on classifier results.
 
-<details open>
-<summary>**`bins`**</summary>
-
-`bins`
-
+<a id="tabsdata.dataquality.CategoryCriteria.bins"></a>
+<ResponseField name="bins">
 Returns a set of bins.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`column_name`**</summary>
-
-`column_name`
-
+<a id="tabsdata.dataquality.CategoryCriteria.column_name"></a>
+<ResponseField name="column_name">
 Returns the column name to check for values.
+</ResponseField>
 
 </details>
 
-</details>
+ <a id="tabsdata.dataquality.Classifier"></a>
+<details open>
+<summary>Classifier</summary>
 
- <details open>
-<summary>**`Classifier`**</summary>
-
-**`Classifier(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', on_wrong_value: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
+```python
+class Classifier(
+    column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None,
+    on_missing_column: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_type: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_value: Literal['ignore', 'fail'] = 'ignore',
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: [ABC](https://docs.python.org/3/library/abc.html#abc.ABC)
 
@@ -158,76 +210,62 @@ A classifier is applied to one or more columns to produce a classification
 result, which is stored in a new column. It supports tags to allow data quality
 operations to selectively act on specific classifiers.
 
-<details open>
-<summary>**`column_names`**</summary>
-
-`column_names`
-
+<a id="tabsdata.dataquality.Classifier.column_names"></a>
+<ResponseField name="column_names">
 Returns the list of columns the classifier applies to, including optional
 destination column names.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`on_missing_column`**</summary>
-
-`on_missing_column`
-
+<a id="tabsdata.dataquality.Classifier.on_missing_column"></a>
+<ResponseField name="on_missing_column">
 Returns what do if the column is missing.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`on_wrong_type`**</summary>
-
-`on_wrong_type`
-
+<a id="tabsdata.dataquality.Classifier.on_wrong_type"></a>
+<ResponseField name="on_wrong_type">
 Returns what do if the column type is incompatible with the classifier.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`on_wrong_value`**</summary>
-
-`on_wrong_value`
-
+<a id="tabsdata.dataquality.Classifier.on_wrong_value"></a>
+<ResponseField name="on_wrong_value">
 Returns what do if the column type is incompatible with the classifier.
+</ResponseField>
 
-</details>
+<a id="tabsdata.dataquality.Classifier.supported_dtypes"></a>
+#### `supported_dtypes`
 
-<details open>
-<summary>**`supported_dtypes`**</summary>
-
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by this classifier.
 
-</details>
-
-<details open>
-<summary>**`tags`**</summary>
-
-`tags`
-
+<a id="tabsdata.dataquality.Classifier.tags"></a>
+<ResponseField name="tags">
 Returns the list of tags associated with the classifier.
+</ResponseField>
 
 </details>
 
-</details>
+ <a id="id2"></a>
+<details open>
+<summary>supported_dtypes</summary>
 
- <details open>
-<summary>**`supported_dtypes`**</summary>
-
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by this classifier.
 
 </details>
 
- <details open>
-<summary>**`Criteria`**</summary>
+ <a id="tabsdata.dataquality.Criteria"></a>
+<details open>
+<summary>Criteria</summary>
 
-**`Criteria`**
+```python
+class Criteria()
+```
 
 Bases: [ABC](https://docs.python.org/3/library/abc.html#abc.ABC)
 
@@ -239,10 +277,17 @@ or the binning results of categorical classifiers.
 
 </details>
 
- <details open>
-<summary>**`DataQuality`**</summary>
+ <a id="tabsdata.dataquality.DataQuality"></a>
+<details open>
+<summary>DataQuality</summary>
 
-**`DataQuality(table: str, classifiers: Classifier | list[Classifier], operators: Operator | list[Operator])`**
+```python
+class DataQuality(
+    table: str,
+    classifiers: Classifier | list[Classifier],
+    operators: Operator | list[Operator],
+)
+```
 
 Bases: `OnTablesAction`
 
@@ -252,123 +297,151 @@ This class encapsulates a set of data quality rules, defined by classifiers
 and operators, that are applied to a specified table. It serves as a container
 for a complete data quality workflow.
 
-<details open>
-<summary>**`classifiers`**</summary>
-
-`classifiers`
-
+<a id="tabsdata.dataquality.DataQuality.classifiers"></a>
+<ResponseField name="classifiers">
 Returns the list of classifiers used in this data quality action.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`operators`**</summary>
-
-`operators`
-
+<a id="tabsdata.dataquality.DataQuality.operators"></a>
+<ResponseField name="operators">
 Returns the list of operators that will be executed based on the
 classifier results.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`table`**</summary>
-
-`table`
-
+<a id="tabsdata.dataquality.DataQuality.table"></a>
+<ResponseField name="table">
 Returns the name of the table targeted by this data quality action.
+</ResponseField>
+
+**Categories:** dq-action
 
 </details>
 
-</details>
+ <a id="tabsdata.dataquality.DoesNotMatch"></a>
+<details open>
+<summary>DoesNotMatch</summary>
 
- <details open>
-<summary>**`DoesNotMatch`**</summary>
-
-**`DoesNotMatch(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, pattern: str, tags: str | list[str] | None = None)`**
+```python
+class DoesNotMatch(
+    column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None,
+    on_missing_column: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_type: Literal['ignore', 'fail'] = 'ignore',
+    *,
+    pattern: str,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: `MatchClassifier`
 
 A boolean classifier that checks if a value does *not* match a regex pattern.
 
+**Categories:** dq-classifier
+
 </details>
 
- <details open>
-<summary>**`supported_dtypes`**</summary>
+ <a id="tabsdata.dataquality.DoesNotMatch.supported_dtypes"></a>
+<details open>
+<summary>supported_dtypes</summary>
 
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by Matches classifier.
 
 </details>
 
- <details open>
-<summary>**`Enrich`**</summary>
+ <a id="tabsdata.dataquality.Enrich"></a>
+<details open>
+<summary>Enrich</summary>
 
-**`Enrich(to_table: str | None = None, *, tags: str | list[str] | None = None)`**
+```python
+class Enrich(
+    to_table: str | None = None,
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: `TagOperator`
 
 An operator that adds the data quality classifier columns to the original
 table frame. It does not remove any row from the original table.
 
-<details open>
-<summary>**`to_table`**</summary>
-
-`to_table`
-
+<a id="tabsdata.dataquality.Enrich.to_table"></a>
+<ResponseField name="to_table">
 Returns the destination table with the enriched data quality classifier
 columns. If None, the original table is used.
+</ResponseField>
+
+**Categories:** dq-operator
 
 </details>
 
-</details>
+ <a id="tabsdata.dataquality.ExponentialScale"></a>
+<details open>
+<summary>ExponentialScale</summary>
 
- <details open>
-<summary>**`ExponentialScale`**</summary>
-
-**`ExponentialScale(min_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], max_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], base: Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])] | None = None, bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=1), Le(le=100)])] = 100, use_bin_zero: bool = False)`**
+```python
+class ExponentialScale(
+    min_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)],
+    max_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)],
+    base: Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])] | None = None,
+    bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=1), Le(le=100)])] = 100,
+    use_bin_zero: bool = False,
+)
+```
 
 Bases: `NonIdentityScale`
 
 An exponential scale.
 
-<details open>
-<summary>**`base`**</summary>
-
-`base`
-
+<a id="tabsdata.dataquality.ExponentialScale.base"></a>
+<ResponseField name="base">
 Returns the base of the exponential scale.
+</ResponseField>
+
+**Categories:** dq-classifier
 
 </details>
 
-</details>
+ <a id="tabsdata.dataquality.Fail"></a>
+<details open>
+<summary>Fail</summary>
 
- <details open>
-<summary>**`Fail`**</summary>
-
-**`Fail(criteria: Criteria, threshold: Threshold)`**
+```python
+class Fail(
+    criteria: Criteria,
+    threshold: Threshold,
+)
+```
 
 Bases: `CriteriaOperator`
 
 An operator that fails the current transaction if a data quality threshold
 is met.
 
-<details open>
-<summary>**`threshold`**</summary>
-
-`threshold`
-
+<a id="tabsdata.dataquality.Fail.threshold"></a>
+<ResponseField name="threshold">
 Returns the threshold for this Fail operation.
+</ResponseField>
+
+**Categories:** dq-operator
 
 </details>
 
-</details>
+ <a id="tabsdata.dataquality.Filter"></a>
+<details open>
+<summary>Filter</summary>
 
- <details open>
-<summary>**`Filter`**</summary>
-
-**`Filter(criteria: Criteria, to_table: str | None = None, include_quality_columns: Literal['none', 'criteria', 'all'] = 'none')`**
+```python
+class Filter(
+    criteria: Criteria,
+    to_table: str | None = None,
+    include_quality_columns: Literal['none', 'criteria', 'all'] = 'none',
+)
+```
 
 Bases: `CriteriaOperator`
 
@@ -377,689 +450,1010 @@ An operator that filters rows from a table based on data quality criteria.
 The filtered rows are removed from the table being processed. They can
 either be discarded or redirected to another table.
 
-<details open>
-<summary>**`include_quality_columns`**</summary>
-
-`include_quality_columns`
-
+<a id="tabsdata.dataquality.Filter.include_quality_columns"></a>
+<ResponseField name="include_quality_columns">
 Returns the data quality columns to included in the table with
 filtered out data.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`to_table`**</summary>
-
-`to_table`
-
+<a id="tabsdata.dataquality.Filter.to_table"></a>
+<ResponseField name="to_table">
 Returns the destination table for filtered rows, or None if they are
 discarded.
+</ResponseField>
+
+**Categories:** dq-operator
 
 </details>
 
-</details>
+ <a id="tabsdata.dataquality.HasLength"></a>
+<details open>
+<summary>HasLength</summary>
 
- <details open>
-<summary>**`HasLength`**</summary>
-
-**`HasLength(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, min_len: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0)])] = 0, max_len: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0)])] = 9223372036854775807, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
+```python
+class HasLength(
+    column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None,
+    min_len: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0)])] = 0,
+    max_len: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0)])] = 9223372036854775807,
+    on_missing_column: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_type: Literal['ignore', 'fail'] = 'ignore',
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: BoolClassifier
 
 A boolean classifier that checks if the length of a value is within a given range.
 
-<details open>
-<summary>**`max`**</summary>
-
-`max`
-
+<a id="tabsdata.dataquality.HasLength.max"></a>
+<ResponseField name="max">
 Returns the maximum allowed length.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`min`**</summary>
-
-`min`
-
+<a id="tabsdata.dataquality.HasLength.min"></a>
+<ResponseField name="min">
 Returns the minimum allowed length.
+</ResponseField>
+
+<a id="tabsdata.dataquality.HasLength.supported_dtypes"></a>
+#### `supported_dtypes`
+
+```python
+def supported_dtypes()
+```
+
+Returns the set of data types supported by HasLength classifier.
+
+**Categories:** dq-classifier
 
 </details>
 
+ <a id="id3"></a>
 <details open>
-<summary>**`supported_dtypes`**</summary>
+<summary>supported_dtypes</summary>
 
-**`supported_dtypes`**
-
-Returns the set of data types supported by HasLength classifier.
-
-</details>
-
-</details>
-
- <details open>
-<summary>**`supported_dtypes`**</summary>
-
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by HasLength classifier.
 
 </details>
 
- <details open>
-<summary>**`IdentityScale`**</summary>
+ <a id="tabsdata.dataquality.IdentityScale"></a>
+<details open>
+<summary>IdentityScale</summary>
 
-**`IdentityScale(min_val: Annotated[int, Strict(strict=True)], max_val: Annotated[int, Strict(strict=True)], use_bin_zero: bool = False)`**
+```python
+class IdentityScale(
+    min_val: Annotated[int, Strict(strict=True)],
+    max_val: Annotated[int, Strict(strict=True)],
+    use_bin_zero: bool = False,
+)
+```
 
 Bases: Scale
 
 An identity scale where each integer value corresponds to a bin.
 
-<details open>
-<summary>**`bins`**</summary>
-
-`bins`
-
+<a id="tabsdata.dataquality.IdentityScale.bins"></a>
+<ResponseField name="bins">
 Returns the number of bins in the scale.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`scale_range`**</summary>
-
-`scale_range`
-
+<a id="tabsdata.dataquality.IdentityScale.scale_range"></a>
+<ResponseField name="scale_range">
 Returns the (min, max) range of the scale.
+</ResponseField>
+
+**Categories:** dq-classifier
 
 </details>
 
-</details>
+ <a id="tabsdata.dataquality.InBins"></a>
+<details open>
+<summary>InBins</summary>
 
- <details open>
-<summary>**`InBins`**</summary>
-
-**`InBins(column_name: str, bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow'] | Annotated[list[Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow']], Strict])`**
+```python
+class InBins(
+    column_name: str,
+    bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow'] | Annotated[list[Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow']], Strict],
+)
+```
 
 Bases: CategoryCriteria
 
 A category criteria that selects records where the value in the specified
 columns falls into one of the given bins.
 
+**Categories:** dq-operator
+
 </details>
 
- <details open>
-<summary>**`IsBetween`**</summary>
+ <a id="tabsdata.dataquality.IsBetween"></a>
+<details open>
+<summary>IsBetween</summary>
 
-**`IsBetween(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, min_val: int | float | bool | str | date | time | datetime | timedelta | bytes | Decimal | None = None, max_val: int | float | bool | str | date | time | datetime | timedelta | bytes | Decimal | None = None, closed_on: Literal['none', 'lower', 'upper', 'both'] = 'both', on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', on_wrong_value: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
+```python
+class IsBetween(
+    column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None,
+    min_val: int | float | bool | str | date | time | datetime | timedelta | bytes | Decimal | None = None,
+    max_val: int | float | bool | str | date | time | datetime | timedelta | bytes | Decimal | None = None,
+    closed_on: Literal['none', 'lower', 'upper', 'both'] = 'both',
+    on_missing_column: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_type: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_value: Literal['ignore', 'fail'] = 'ignore',
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: `BetweenClassifier`
 
 A boolean classifier that checks if a value is *inside* a specified range.
 
+**Categories:** dq-classifier
+
 </details>
 
- <details open>
-<summary>**`supported_dtypes`**</summary>
+ <a id="tabsdata.dataquality.IsBetween.supported_dtypes"></a>
+<details open>
+<summary>supported_dtypes</summary>
 
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by IsBetween classifier.
 
 </details>
 
- <details open>
-<summary>**`IsFalse`**</summary>
+ <a id="tabsdata.dataquality.IsFalse"></a>
+<details open>
+<summary>IsFalse</summary>
 
-**`IsFalse(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
+```python
+class IsFalse(
+    column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None,
+    on_missing_column: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_type: Literal['ignore', 'fail'] = 'ignore',
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: BoolClassifier
 
 A boolean classifier that checks if a value is False.
 
+<a id="tabsdata.dataquality.IsFalse.supported_dtypes"></a>
+#### `supported_dtypes`
+
+```python
+def supported_dtypes()
+```
+
+Returns the set of data types supported by IsFalse classifier.
+
+**Categories:** dq-classifier
+
+</details>
+
+ <a id="id4"></a>
 <details open>
-<summary>**`supported_dtypes`**</summary>
+<summary>supported_dtypes</summary>
 
-**`supported_dtypes`**
-
-Returns the set of data types supported by IsFalse classifier.
-
-</details>
-
-</details>
-
- <details open>
-<summary>**`supported_dtypes`**</summary>
-
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by IsFalse classifier.
 
 </details>
 
- <details open>
-<summary>**`IsIn`**</summary>
+ <a id="tabsdata.dataquality.IsIn"></a>
+<details open>
+<summary>IsIn</summary>
 
-**`IsIn(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_value: Literal['ignore', 'fail'] = 'ignore', *, values: Collection, tags: str | list[str] | None = None)`**
+```python
+class IsIn(
+    column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None,
+    on_missing_column: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_value: Literal['ignore', 'fail'] = 'ignore',
+    *,
+    values: Collection,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: `InClassifier`
 
 A boolean classifier that checks if a value is in a specified set of values.
 
+**Categories:** dq-classifier
+
 </details>
 
- <details open>
-<summary>**`supported_dtypes`**</summary>
+ <a id="tabsdata.dataquality.IsIn.supported_dtypes"></a>
+<details open>
+<summary>supported_dtypes</summary>
 
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by IsIn classifier.
 
 </details>
 
- <details open>
-<summary>**`IsNan`**</summary>
+ <a id="tabsdata.dataquality.IsNan"></a>
+<details open>
+<summary>IsNan</summary>
 
-**`IsNan(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
+```python
+class IsNan(
+    column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None,
+    on_missing_column: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_type: Literal['ignore', 'fail'] = 'ignore',
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: BoolClassifier
 
 A boolean classifier that checks if a value is NaN (Not a Number).
 
+<a id="tabsdata.dataquality.IsNan.supported_dtypes"></a>
+#### `supported_dtypes`
+
+```python
+def supported_dtypes()
+```
+
+Returns the set of data types supported by IsNan classifier.
+
+**Categories:** dq-classifier
+
+</details>
+
+ <a id="id5"></a>
 <details open>
-<summary>**`supported_dtypes`**</summary>
+<summary>supported_dtypes</summary>
 
-**`supported_dtypes`**
-
-Returns the set of data types supported by IsNan classifier.
-
-</details>
-
-</details>
-
- <details open>
-<summary>**`supported_dtypes`**</summary>
-
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by IsNan classifier.
 
 </details>
 
- <details open>
-<summary>**`IsNegative`**</summary>
+ <a id="tabsdata.dataquality.IsNegative"></a>
+<details open>
+<summary>IsNegative</summary>
 
-**`IsNegative(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
+```python
+class IsNegative(
+    column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None,
+    on_missing_column: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_type: Literal['ignore', 'fail'] = 'ignore',
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: BoolClassifier
 
 A boolean classifier that checks if a numeric value is negative.
 
+<a id="tabsdata.dataquality.IsNegative.supported_dtypes"></a>
+#### `supported_dtypes`
+
+```python
+def supported_dtypes()
+```
+
+Returns the set of data types supported by IsNegative classifier.
+
+**Categories:** dq-classifier
+
+</details>
+
+ <a id="id6"></a>
 <details open>
-<summary>**`supported_dtypes`**</summary>
+<summary>supported_dtypes</summary>
 
-**`supported_dtypes`**
-
-Returns the set of data types supported by IsNegative classifier.
-
-</details>
-
-</details>
-
- <details open>
-<summary>**`supported_dtypes`**</summary>
-
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by IsNegative classifier.
 
 </details>
 
- <details open>
-<summary>**`IsNegativeOrZero`**</summary>
+ <a id="tabsdata.dataquality.IsNegativeOrZero"></a>
+<details open>
+<summary>IsNegativeOrZero</summary>
 
-**`IsNegativeOrZero(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
+```python
+class IsNegativeOrZero(
+    column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None,
+    on_missing_column: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_type: Literal['ignore', 'fail'] = 'ignore',
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: BoolClassifier
 
 A boolean classifier that checks if a numeric value is negative or zero.
 
+<a id="tabsdata.dataquality.IsNegativeOrZero.supported_dtypes"></a>
+#### `supported_dtypes`
+
+```python
+def supported_dtypes()
+```
+
+Returns the set of data types supported by IsNegativeOrZero classifier.
+
+**Categories:** dq-classifier
+
+</details>
+
+ <a id="id7"></a>
 <details open>
-<summary>**`supported_dtypes`**</summary>
+<summary>supported_dtypes</summary>
 
-**`supported_dtypes`**
-
-Returns the set of data types supported by IsNegativeOrZero classifier.
-
-</details>
-
-</details>
-
- <details open>
-<summary>**`supported_dtypes`**</summary>
-
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by IsNegativeOrZero classifier.
 
 </details>
 
- <details open>
-<summary>**`IsNotBetween`**</summary>
+ <a id="tabsdata.dataquality.IsNotBetween"></a>
+<details open>
+<summary>IsNotBetween</summary>
 
-**`IsNotBetween(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, min_val: int | float | bool | str | date | time | datetime | timedelta | bytes | Decimal | None = None, max_val: int | float | bool | str | date | time | datetime | timedelta | bytes | Decimal | None = None, closed_on: Literal['none', 'lower', 'upper', 'both'] = 'both', on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', on_wrong_value: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
+```python
+class IsNotBetween(
+    column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None,
+    min_val: int | float | bool | str | date | time | datetime | timedelta | bytes | Decimal | None = None,
+    max_val: int | float | bool | str | date | time | datetime | timedelta | bytes | Decimal | None = None,
+    closed_on: Literal['none', 'lower', 'upper', 'both'] = 'both',
+    on_missing_column: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_type: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_value: Literal['ignore', 'fail'] = 'ignore',
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: `BetweenClassifier`
 
 A boolean classifier that checks if a value is *outside* a specified range.
 
+**Categories:** dq-classifier
+
 </details>
 
- <details open>
-<summary>**`supported_dtypes`**</summary>
+ <a id="tabsdata.dataquality.IsNotBetween.supported_dtypes"></a>
+<details open>
+<summary>supported_dtypes</summary>
 
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by IsBetween classifier.
 
 </details>
 
- <details open>
-<summary>**`IsNotIn`**</summary>
+ <a id="tabsdata.dataquality.IsNotIn"></a>
+<details open>
+<summary>IsNotIn</summary>
 
-**`IsNotIn(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_value: Literal['ignore', 'fail'] = 'ignore', *, values: Collection, tags: str | list[str] | None = None)`**
+```python
+class IsNotIn(
+    column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None,
+    on_missing_column: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_value: Literal['ignore', 'fail'] = 'ignore',
+    *,
+    values: Collection,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: `InClassifier`
 
 A boolean classifier that checks if a value is *not* in a specified set of values.
 
+**Categories:** dq-classifier
+
 </details>
 
- <details open>
-<summary>**`supported_dtypes`**</summary>
+ <a id="tabsdata.dataquality.IsNotIn.supported_dtypes"></a>
+<details open>
+<summary>supported_dtypes</summary>
 
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by IsIn classifier.
 
 </details>
 
- <details open>
-<summary>**`IsNotNan`**</summary>
+ <a id="tabsdata.dataquality.IsNotNan"></a>
+<details open>
+<summary>IsNotNan</summary>
 
-**`IsNotNan(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
+```python
+class IsNotNan(
+    column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None,
+    on_missing_column: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_type: Literal['ignore', 'fail'] = 'ignore',
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: BoolClassifier
 
 A boolean classifier that checks if a value is *not* NaN.
 
+<a id="tabsdata.dataquality.IsNotNan.supported_dtypes"></a>
+#### `supported_dtypes`
+
+```python
+def supported_dtypes()
+```
+
+Returns the set of data types supported by IsNotNan classifier.
+
+**Categories:** dq-classifier
+
+</details>
+
+ <a id="id8"></a>
 <details open>
-<summary>**`supported_dtypes`**</summary>
+<summary>supported_dtypes</summary>
 
-**`supported_dtypes`**
-
-Returns the set of data types supported by IsNotNan classifier.
-
-</details>
-
-</details>
-
- <details open>
-<summary>**`supported_dtypes`**</summary>
-
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by IsNotNan classifier.
 
 </details>
 
- <details open>
-<summary>**`IsNotNull`**</summary>
+ <a id="tabsdata.dataquality.IsNotNull"></a>
+<details open>
+<summary>IsNotNull</summary>
 
-**`IsNotNull(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
+```python
+class IsNotNull(
+    column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None,
+    on_missing_column: Literal['ignore', 'fail'] = 'ignore',
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: BoolClassifier
 
 A boolean classifier that checks if a value is *not* NULL.
 
+<a id="tabsdata.dataquality.IsNotNull.supported_dtypes"></a>
+#### `supported_dtypes`
+
+```python
+def supported_dtypes()
+```
+
+Returns the set of data types supported by IsNotNull classifier.
+
+**Categories:** dq-classifier
+
+</details>
+
+ <a id="id9"></a>
 <details open>
-<summary>**`supported_dtypes`**</summary>
+<summary>supported_dtypes</summary>
 
-**`supported_dtypes`**
-
-Returns the set of data types supported by IsNotNull classifier.
-
-</details>
-
-</details>
-
- <details open>
-<summary>**`supported_dtypes`**</summary>
-
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by IsNotNull classifier.
 
 </details>
 
- <details open>
-<summary>**`IsNotNullNorNan`**</summary>
+ <a id="tabsdata.dataquality.IsNotNullNorNan"></a>
+<details open>
+<summary>IsNotNullNorNan</summary>
 
-**`IsNotNullNorNan(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
+```python
+class IsNotNullNorNan(
+    column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None,
+    on_missing_column: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_type: Literal['ignore', 'fail'] = 'ignore',
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: BoolClassifier
 
 A boolean classifier that checks if a value is neither NULL nor NaN.
 
+<a id="tabsdata.dataquality.IsNotNullNorNan.supported_dtypes"></a>
+#### `supported_dtypes`
+
+```python
+def supported_dtypes()
+```
+
+Returns the set of data types supported by IsNotNullNorNan classifier.
+
+**Categories:** dq-classifier
+
+</details>
+
+ <a id="id10"></a>
 <details open>
-<summary>**`supported_dtypes`**</summary>
+<summary>supported_dtypes</summary>
 
-**`supported_dtypes`**
-
-Returns the set of data types supported by IsNotNullNorNan classifier.
-
-</details>
-
-</details>
-
- <details open>
-<summary>**`supported_dtypes`**</summary>
-
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by IsNotNullNorNan classifier.
 
 </details>
 
- <details open>
-<summary>**`IsNotZero`**</summary>
+ <a id="tabsdata.dataquality.IsNotZero"></a>
+<details open>
+<summary>IsNotZero</summary>
 
-**`IsNotZero(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
+```python
+class IsNotZero(
+    column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None,
+    on_missing_column: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_type: Literal['ignore', 'fail'] = 'ignore',
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: BoolClassifier
 
 A boolean classifier that checks if a numeric value is not zero.
 
+<a id="tabsdata.dataquality.IsNotZero.supported_dtypes"></a>
+#### `supported_dtypes`
+
+```python
+def supported_dtypes()
+```
+
+Returns the set of data types supported by IsNotZero classifier.
+
+**Categories:** dq-classifier
+
+</details>
+
+ <a id="id11"></a>
 <details open>
-<summary>**`supported_dtypes`**</summary>
+<summary>supported_dtypes</summary>
 
-**`supported_dtypes`**
-
-Returns the set of data types supported by IsNotZero classifier.
-
-</details>
-
-</details>
-
- <details open>
-<summary>**`supported_dtypes`**</summary>
-
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by IsNotZero classifier.
 
 </details>
 
- <details open>
-<summary>**`IsNull`**</summary>
+ <a id="tabsdata.dataquality.IsNull"></a>
+<details open>
+<summary>IsNull</summary>
 
-**`IsNull(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
+```python
+class IsNull(
+    column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None,
+    on_missing_column: Literal['ignore', 'fail'] = 'ignore',
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: BoolClassifier
 
 A boolean classifier that checks if a value is NULL.
 
+<a id="tabsdata.dataquality.IsNull.supported_dtypes"></a>
+#### `supported_dtypes`
+
+```python
+def supported_dtypes()
+```
+
+Returns the set of data types supported by IsNull classifier.
+
+**Categories:** dq-classifier
+
+</details>
+
+ <a id="id12"></a>
 <details open>
-<summary>**`supported_dtypes`**</summary>
+<summary>supported_dtypes</summary>
 
-**`supported_dtypes`**
-
-Returns the set of data types supported by IsNull classifier.
-
-</details>
-
-</details>
-
- <details open>
-<summary>**`supported_dtypes`**</summary>
-
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by IsNull classifier.
 
 </details>
 
- <details open>
-<summary>**`IsNullOrNan`**</summary>
+ <a id="tabsdata.dataquality.IsNullOrNan"></a>
+<details open>
+<summary>IsNullOrNan</summary>
 
-**`IsNullOrNan(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
+```python
+class IsNullOrNan(
+    column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None,
+    on_missing_column: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_type: Literal['ignore', 'fail'] = 'ignore',
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: BoolClassifier
 
 A boolean classifier that checks if a value is either NULL or NaN.
 
+<a id="tabsdata.dataquality.IsNullOrNan.supported_dtypes"></a>
+#### `supported_dtypes`
+
+```python
+def supported_dtypes()
+```
+
+Returns the set of data types supported by IsNullOrNan classifier.
+
+**Categories:** dq-classifier
+
+</details>
+
+ <a id="id13"></a>
 <details open>
-<summary>**`supported_dtypes`**</summary>
+<summary>supported_dtypes</summary>
 
-**`supported_dtypes`**
-
-Returns the set of data types supported by IsNullOrNan classifier.
-
-</details>
-
-</details>
-
- <details open>
-<summary>**`supported_dtypes`**</summary>
-
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by IsNullOrNan classifier.
 
 </details>
 
- <details open>
-<summary>**`IsPositive`**</summary>
+ <a id="tabsdata.dataquality.IsPositive"></a>
+<details open>
+<summary>IsPositive</summary>
 
-**`IsPositive(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
+```python
+class IsPositive(
+    column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None,
+    on_missing_column: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_type: Literal['ignore', 'fail'] = 'ignore',
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: BoolClassifier
 
 A boolean classifier that checks if a numeric value is positive.
 
+<a id="tabsdata.dataquality.IsPositive.supported_dtypes"></a>
+#### `supported_dtypes`
+
+```python
+def supported_dtypes()
+```
+
+Returns the set of data types supported by IsPositive classifier.
+
+**Categories:** dq-classifier
+
+</details>
+
+ <a id="id14"></a>
 <details open>
-<summary>**`supported_dtypes`**</summary>
+<summary>supported_dtypes</summary>
 
-**`supported_dtypes`**
-
-Returns the set of data types supported by IsPositive classifier.
-
-</details>
-
-</details>
-
- <details open>
-<summary>**`supported_dtypes`**</summary>
-
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by IsPositive classifier.
 
 </details>
 
- <details open>
-<summary>**`IsPositiveOrZero`**</summary>
+ <a id="tabsdata.dataquality.IsPositiveOrZero"></a>
+<details open>
+<summary>IsPositiveOrZero</summary>
 
-**`IsPositiveOrZero(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
+```python
+class IsPositiveOrZero(
+    column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None,
+    on_missing_column: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_type: Literal['ignore', 'fail'] = 'ignore',
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: BoolClassifier
 
 A boolean classifier that checks if a numeric value is positive or zero.
 
+<a id="tabsdata.dataquality.IsPositiveOrZero.supported_dtypes"></a>
+#### `supported_dtypes`
+
+```python
+def supported_dtypes()
+```
+
+Returns the set of data types supported by IsPositiveOrZero classifier.
+
+**Categories:** dq-classifier
+
+</details>
+
+ <a id="id15"></a>
 <details open>
-<summary>**`supported_dtypes`**</summary>
+<summary>supported_dtypes</summary>
 
-**`supported_dtypes`**
-
-Returns the set of data types supported by IsPositiveOrZero classifier.
-
-</details>
-
-</details>
-
- <details open>
-<summary>**`supported_dtypes`**</summary>
-
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by IsPositiveOrZero classifier.
 
 </details>
 
- <details open>
-<summary>**`IsTrue`**</summary>
+ <a id="tabsdata.dataquality.IsTrue"></a>
+<details open>
+<summary>IsTrue</summary>
 
-**`IsTrue(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
+```python
+class IsTrue(
+    column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None,
+    on_missing_column: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_type: Literal['ignore', 'fail'] = 'ignore',
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: BoolClassifier
 
 A boolean classifier that checks if a value is True.
 
+<a id="tabsdata.dataquality.IsTrue.supported_dtypes"></a>
+#### `supported_dtypes`
+
+```python
+def supported_dtypes()
+```
+
+Returns the set of data types supported by IsTrue classifier.
+
+**Categories:** dq-classifier
+
+</details>
+
+ <a id="id16"></a>
 <details open>
-<summary>**`supported_dtypes`**</summary>
+<summary>supported_dtypes</summary>
 
-**`supported_dtypes`**
-
-Returns the set of data types supported by IsTrue classifier.
-
-</details>
-
-</details>
-
- <details open>
-<summary>**`supported_dtypes`**</summary>
-
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by IsTrue classifier.
 
 </details>
 
- <details open>
-<summary>**`IsZero`**</summary>
+ <a id="tabsdata.dataquality.IsZero"></a>
+<details open>
+<summary>IsZero</summary>
 
-**`IsZero(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, tags: str | list[str] | None = None)`**
+```python
+class IsZero(
+    column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None,
+    on_missing_column: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_type: Literal['ignore', 'fail'] = 'ignore',
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: BoolClassifier
 
 A boolean classifier that checks if a numeric value is zero.
 
+<a id="tabsdata.dataquality.IsZero.supported_dtypes"></a>
+#### `supported_dtypes`
+
+```python
+def supported_dtypes()
+```
+
+Returns the set of data types supported by IsZero classifier.
+
+**Categories:** dq-classifier
+
+</details>
+
+ <a id="id17"></a>
 <details open>
-<summary>**`supported_dtypes`**</summary>
+<summary>supported_dtypes</summary>
 
-**`supported_dtypes`**
-
-Returns the set of data types supported by IsZero classifier.
-
-</details>
-
-</details>
-
- <details open>
-<summary>**`supported_dtypes`**</summary>
-
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by IsZero classifier.
 
 </details>
 
- <details open>
-<summary>**`LinearScale`**</summary>
+ <a id="tabsdata.dataquality.LinearScale"></a>
+<details open>
+<summary>LinearScale</summary>
 
-**`LinearScale(min_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], max_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=1), Le(le=100)])] = 100, use_bin_zero: bool = False)`**
+```python
+class LinearScale(
+    min_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)],
+    max_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)],
+    bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=1), Le(le=100)])] = 100,
+    use_bin_zero: bool = False,
+)
+```
 
 Bases: `NonIdentityScale`
 
 A linear scale.
 
+**Categories:** dq-classifier
+
 </details>
 
- <details open>
-<summary>**`LogarithmicScale`**</summary>
+ <a id="tabsdata.dataquality.LogarithmicScale"></a>
+<details open>
+<summary>LogarithmicScale</summary>
 
-**`LogarithmicScale(min_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], max_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], base: Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])] | None = None, bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=1), Le(le=100)])] = 100, use_bin_zero: bool = False)`**
+```python
+class LogarithmicScale(
+    min_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)],
+    max_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)],
+    base: Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])] | None = None,
+    bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=1), Le(le=100)])] = 100,
+    use_bin_zero: bool = False,
+)
+```
 
 Bases: `NonIdentityScale`
 
 A logarithmic scale.
 
-<details open>
-<summary>**`base`**</summary>
-
-`base`
-
+<a id="tabsdata.dataquality.LogarithmicScale.base"></a>
+<ResponseField name="base">
 Returns the base of the logarithmic scale.
+</ResponseField>
+
+**Categories:** dq-classifier
 
 </details>
 
-</details>
+ <a id="tabsdata.dataquality.Matches"></a>
+<details open>
+<summary>Matches</summary>
 
- <details open>
-<summary>**`Matches`**</summary>
-
-**`Matches(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', *, pattern: str, tags: str | list[str] | None = None)`**
+```python
+class Matches(
+    column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None,
+    on_missing_column: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_type: Literal['ignore', 'fail'] = 'ignore',
+    *,
+    pattern: str,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: `MatchClassifier`
 
 A boolean classifier that checks if a value matches a regex pattern.
 
+**Categories:** dq-classifier
+
 </details>
 
- <details open>
-<summary>**`supported_dtypes`**</summary>
+ <a id="tabsdata.dataquality.Matches.supported_dtypes"></a>
+<details open>
+<summary>supported_dtypes</summary>
 
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by Matches classifier.
 
 </details>
 
- <details open>
-<summary>**`MonomialScale`**</summary>
+ <a id="tabsdata.dataquality.MonomialScale"></a>
+<details open>
+<summary>MonomialScale</summary>
 
-**`MonomialScale(min_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], max_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], power: Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])], bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=1), Le(le=100)])] = 100, use_bin_zero: bool = False)`**
+```python
+class MonomialScale(
+    min_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)],
+    max_val: Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)],
+    power: Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])],
+    bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=1), Le(le=100)])] = 100,
+    use_bin_zero: bool = False,
+)
+```
 
 Bases: `NonIdentityScale`
 
 A monomial (power-law) scale.
 
-<details open>
-<summary>**`power`**</summary>
-
-`power`
-
+<a id="tabsdata.dataquality.MonomialScale.power"></a>
+<ResponseField name="power">
 Returns the power of the monomial scale.
+</ResponseField>
+
+**Categories:** dq-classifier
 
 </details>
 
-</details>
+ <a id="tabsdata.dataquality.NotInBins"></a>
+<details open>
+<summary>NotInBins</summary>
 
- <details open>
-<summary>**`NotInBins`**</summary>
-
-**`NotInBins(column_name: str, bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow'] | Annotated[list[Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow']], Strict])`**
+```python
+class NotInBins(
+    column_name: str,
+    bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow'] | Annotated[list[Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow']], Strict],
+)
+```
 
 Bases: CategoryCriteria
 
 A category criteria that selects records where the value in the specified
 columns does not fall into any of the given bins.
 
+**Categories:** dq-operator
+
 </details>
 
- <details open>
-<summary>**`Operator`**</summary>
+ <a id="tabsdata.dataquality.Operator"></a>
+<details open>
+<summary>Operator</summary>
 
-**`Operator`**
+```python
+class Operator()
+```
 
 Bases: [ABC](https://docs.python.org/3/library/abc.html#abc.ABC)
 
@@ -1070,50 +1464,61 @@ which allow for selective application of classifiers.
 
 </details>
 
- <details open>
-<summary>**`PercentThreshold`**</summary>
+ <a id="tabsdata.dataquality.PercentThreshold"></a>
+<details open>
+<summary>PercentThreshold</summary>
 
-**`PercentThreshold(percent: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])])`**
+```python
+class PercentThreshold(
+    percent: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])],
+)
+```
 
 Bases: Threshold
 
 A threshold based on a percentage of total rows.
 
-<details open>
-<summary>**`percent`**</summary>
-
-`percent`
-
+<a id="tabsdata.dataquality.PercentThreshold.percent"></a>
+<ResponseField name="percent">
 Returns the percentage for the threshold.
+</ResponseField>
+
+**Categories:** dq-operator
 
 </details>
 
-</details>
+ <a id="tabsdata.dataquality.RowCountThreshold"></a>
+<details open>
+<summary>RowCountThreshold</summary>
 
- <details open>
-<summary>**`RowCountThreshold`**</summary>
-
-**`RowCountThreshold(row_count: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0)])])`**
+```python
+class RowCountThreshold(
+    row_count: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0)])],
+)
+```
 
 Bases: Threshold
 
 A threshold based on a specific number of rows.
 
-<details open>
-<summary>**`row_count`**</summary>
-
-`row_count`
-
+<a id="tabsdata.dataquality.RowCountThreshold.row_count"></a>
+<ResponseField name="row_count">
 Returns the row count for the threshold.
+</ResponseField>
 
 </details>
 
-</details>
+ <a id="tabsdata.dataquality.Scale"></a>
+<details open>
+<summary>Scale</summary>
 
- <details open>
-<summary>**`Scale`**</summary>
-
-**`Scale(scale_range: tuple[Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)]], bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=1), Le(le=100)])], use_bin_zero: bool)`**
+```python
+class Scale(
+    scale_range: tuple[Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)], Annotated[int, Strict(strict=True)] | Annotated[float, Strict(strict=True)]],
+    bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=1), Le(le=100)])],
+    use_bin_zero: bool,
+)
+```
 
 Bases: [ABC](https://docs.python.org/3/library/abc.html#abc.ABC)
 
@@ -1121,59 +1526,74 @@ Abstract base class for scales used in categorization.
 
 A scale defines how numerical data is divided into bins.
 
-<details open>
-<summary>**`use_bin_zero`**</summary>
-
-`use_bin_zero`
-
+<a id="tabsdata.dataquality.Scale.use_bin_zero"></a>
+<ResponseField name="use_bin_zero">
 Returns whether the minimum value is in bin zero or in bin one.
+</ResponseField>
 
 </details>
 
-</details>
+ <a id="tabsdata.dataquality.ScaleCategorizer"></a>
+<details open>
+<summary>ScaleCategorizer</summary>
 
- <details open>
-<summary>**`ScaleCategorizer`**</summary>
-
-**`ScaleCategorizer(column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None, on_missing_column: Literal['ignore', 'fail'] = 'ignore', on_wrong_type: Literal['ignore', 'fail'] = 'ignore', on_wrong_scale_value: Literal['ignore', 'fail'] = 'ignore', *, scale: Scale, tags: str | list[str] | None = None)`**
+```python
+class ScaleCategorizer(
+    column_names: str | tuple[str, str | None] | Annotated[list[str], Strict] | Annotated[list[tuple[str, str | None]], Strict] | None = None,
+    on_missing_column: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_type: Literal['ignore', 'fail'] = 'ignore',
+    on_wrong_scale_value: Literal['ignore', 'fail'] = 'ignore',
+    *,
+    scale: Scale,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: Categorizer
 
 A classifier that bucketizes data into bins based on a given scale.
 
-<details open>
-<summary>**`scale`**</summary>
-
-`scale`
-
+<a id="tabsdata.dataquality.ScaleCategorizer.scale"></a>
+<ResponseField name="scale">
 Returns the scale used for categorization.
+</ResponseField>
+
+<a id="tabsdata.dataquality.ScaleCategorizer.supported_dtypes"></a>
+#### `supported_dtypes`
+
+```python
+def supported_dtypes()
+```
+
+Returns the set of data types supported by categorizers.
+
+**Categories:** dq-classifier
 
 </details>
 
+ <a id="id18"></a>
 <details open>
-<summary>**`supported_dtypes`**</summary>
+<summary>supported_dtypes</summary>
 
-**`supported_dtypes`**
-
-Returns the set of data types supported by categorizers.
-
-</details>
-
-</details>
-
- <details open>
-<summary>**`supported_dtypes`**</summary>
-
-**`supported_dtypes`**
+```python
+def supported_dtypes()
+```
 
 Returns the set of data types supported by categorizers.
 
 </details>
 
- <details open>
-<summary>**`Select`**</summary>
+ <a id="tabsdata.dataquality.Select"></a>
+<details open>
+<summary>Select</summary>
 
-**`Select(criteria: Criteria, to_table: str, include_quality_columns: Literal['none', 'criteria', 'all'] = 'none')`**
+```python
+class Select(
+    criteria: Criteria,
+    to_table: str,
+    include_quality_columns: Literal['none', 'criteria', 'all'] = 'none',
+)
+```
 
 Bases: `CriteriaOperator`
 
@@ -1182,51 +1602,53 @@ them to another table.
 
 This operation does not modify the original table.
 
-<details open>
-<summary>**`include_quality_columns`**</summary>
-
-`include_quality_columns`
-
+<a id="tabsdata.dataquality.Select.include_quality_columns"></a>
+<ResponseField name="include_quality_columns">
 Returns the data quality columns to included in the table with
 selected data.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`to_table`**</summary>
-
-`to_table`
-
+<a id="tabsdata.dataquality.Select.to_table"></a>
+<ResponseField name="to_table">
 Returns the destination table for the selected rows.
+</ResponseField>
+
+**Categories:** dq-operator
 
 </details>
 
-</details>
+ <a id="tabsdata.dataquality.Summary"></a>
+<details open>
+<summary>Summary</summary>
 
- <details open>
-<summary>**`Summary`**</summary>
-
-**`Summary(table: str | None = None, *, tags: str | list[str] | None = None)`**
+```python
+class Summary(
+    table: str | None = None,
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: `TagOperator`
 
 An operator that generates a data quality summary report for a table.
 
-<details open>
-<summary>**`table`**</summary>
-
-`table`
-
+<a id="tabsdata.dataquality.Summary.table"></a>
+<ResponseField name="table">
 Returns the name of the data quality summary table.
+</ResponseField>
+
+**Categories:** dq-operator
 
 </details>
 
-</details>
+ <a id="tabsdata.dataquality.Threshold"></a>
+<details open>
+<summary>Threshold</summary>
 
- <details open>
-<summary>**`Threshold`**</summary>
-
-**`Threshold`**
+```python
+class Threshold()
+```
 
 Bases: [ABC](https://docs.python.org/3/library/abc.html#abc.ABC)
 

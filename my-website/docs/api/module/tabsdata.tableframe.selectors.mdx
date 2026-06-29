@@ -6,28 +6,42 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # tabsdata.tableframe.selectors
 
- <details open>
-<summary>**`DeferredSelectorProxy`**</summary>
+ <a id="tabsdata.tableframe.selectors.DeferredSelectorProxy"></a>
+<details open>
+<summary>DeferredSelectorProxy</summary>
 
-**`DeferredSelectorProxy(indices: list[int], invert: bool = False)`**
+```python
+class DeferredSelectorProxy(
+    indices: list[int],
+    invert: bool = False,
+)
+```
 
 Bases: SelectorProxy
 
 </details>
 
- <details open>
-<summary>**`SelectorProxy`**</summary>
+ <a id="tabsdata.tableframe.selectors.SelectorProxy"></a>
+<details open>
+<summary>SelectorProxy</summary>
 
-**`SelectorProxy(expr: Expr | Expr)`**
+```python
+class SelectorProxy(
+    expr: Expr | Expr,
+)
+```
 
 Bases: [Expr](bymod-tabsdata.tableframe.expr.expr#tabsdata.tableframe.expr.expr.Expr)
 
 </details>
 
- <details open>
-<summary>**`all`**</summary>
+ <a id="tabsdata.tableframe.selectors.all"></a>
+<details open>
+<summary>all</summary>
 
-**`all`**
+```python
+def all()
+```
 
 Select all columns in a TableFrame.
 
@@ -78,12 +92,21 @@ Selected:
 │ 8   ┆ “h”  │
 └─────┴──────┘
 
+**Categories:** projection
+
 </details>
 
- <details open>
-<summary>**`alpha`**</summary>
+ <a id="tabsdata.tableframe.selectors.alpha"></a>
+<details open>
+<summary>alpha</summary>
 
-**`alpha(ascii_only: bool = False, *, ignore_spaces: bool = False)`**
+```python
+def alpha(
+    ascii_only: bool = False,
+    *,
+    ignore_spaces: bool = False,
+)
+```
 
 Select all columns with names made up of only alphabetic characters.
 
@@ -135,6 +158,10 @@ Selected:
 │ “Hana”  ┆  84   │
 └─────────┴───────┘
 
+**Categories:** projection
+
+**Parameters:**
+
 <ParamField path="ascii_only">
   Only consider alphabetic the ASCII letters.
 </ParamField>
@@ -145,10 +172,17 @@ Selected:
 
 </details>
 
- <details open>
-<summary>**`alphanumeric`**</summary>
+ <a id="tabsdata.tableframe.selectors.alphanumeric"></a>
+<details open>
+<summary>alphanumeric</summary>
 
-**`alphanumeric(ascii_only: bool = False, *, ignore_spaces: bool = False)`**
+```python
+def alphanumeric(
+    ascii_only: bool = False,
+    *,
+    ignore_spaces: bool = False,
+)
+```
 
 Select all columns whose names contain only letters and digits.
 
@@ -201,6 +235,10 @@ Selected:
 │  108   ┆  80   ┆ “h”   │
 └────────┴───────┴───────┘
 
+**Categories:** projection
+
+**Parameters:**
+
 <ParamField path="ascii_only">
   Only consider alphabetic the ASCII letters.
 </ParamField>
@@ -211,10 +249,13 @@ Selected:
 
 </details>
 
- <details open>
-<summary>**`binary`**</summary>
+ <a id="tabsdata.tableframe.selectors.binary"></a>
+<details open>
+<summary>binary</summary>
 
-**`binary`**
+```python
+def binary()
+```
 
 Select all columns of binary (bytes) data type.
 
@@ -265,12 +306,17 @@ Selected:
 │ b”H8”  │
 └────────┘
 
+**Categories:** projection
+
 </details>
 
- <details open>
-<summary>**`boolean`**</summary>
+ <a id="tabsdata.tableframe.selectors.boolean"></a>
+<details open>
+<summary>boolean</summary>
 
-**`boolean`**
+```python
+def boolean()
+```
 
 Select all columns of boolean data type.
 
@@ -321,12 +367,19 @@ Selected:
 │ false   │
 └─────────┘
 
+**Categories:** projection
+
 </details>
 
- <details open>
-<summary>**`by_dtype`**</summary>
+ <a id="tabsdata.tableframe.selectors.by_dtype"></a>
+<details open>
+<summary>by_dtype</summary>
 
-**`by_dtype(*dtypes: td_typing.DataType | PythonDataType | Iterable[td_typing.DataType] | Iterable[PythonDataType])`**
+```python
+def by_dtype(
+    *dtypes: td_typing.DataType | PythonDataType | Iterable[td_typing.DataType] | Iterable[PythonDataType],
+)
+```
 
 Select all columns of the specified data type.
 
@@ -379,12 +432,19 @@ Selected:
 │ 89.0  │
 └───────┘
 
+**Categories:** projection
+
 </details>
 
- <details open>
-<summary>**`by_index`**</summary>
+ <a id="tabsdata.tableframe.selectors.by_index"></a>
+<details open>
+<summary>by_index</summary>
 
-**`by_index(*indices: int | range | Sequence[int | range])`**
+```python
+def by_index(
+    *indices: int | range | Sequence[int | range],
+)
+```
 
 Select columns by their position in the TableFrame.
 
@@ -437,6 +497,10 @@ Selected:
 │ “H”  ┆ 89.5  │
 └──────┴───────┘
 
+**Categories:** projection
+
+**Parameters:**
+
 <ParamField path="indices">
   One or more integer positions or ranges. Negative indexes are
 </ParamField>
@@ -459,10 +523,16 @@ Selected:
 
 </details>
 
- <details open>
-<summary>**`by_name`**</summary>
+ <a id="tabsdata.tableframe.selectors.by_name"></a>
+<details open>
+<summary>by_name</summary>
 
-**`by_name(*names: str | Collection[str], require_all: bool = True)`**
+```python
+def by_name(
+    *names: str | Collection[str],
+    require_all: bool = True,
+)
+```
 
 Select all columns whose names match any given names.
 
@@ -515,6 +585,10 @@ Selected:
 │ “Hugo” ┆ 89.5  │
 └────────┴───────┘
 
+**Categories:** projection
+
+**Parameters:**
+
 <ParamField path="names">
   One or more column names to include.
 </ParamField>
@@ -525,10 +599,13 @@ Selected:
 
 </details>
 
- <details open>
-<summary>**`categorical`**</summary>
+ <a id="tabsdata.tableframe.selectors.categorical"></a>
+<details open>
+<summary>categorical</summary>
 
-**`categorical`**
+```python
+def categorical()
+```
 
 Select all columns with categorical data type.
 
@@ -582,12 +659,19 @@ Selected:
 │ “B”      │
 └──────────┘
 
+**Categories:** projection
+
 </details>
 
- <details open>
-<summary>**`contains`**</summary>
+ <a id="tabsdata.tableframe.selectors.contains"></a>
+<details open>
+<summary>contains</summary>
 
-**`contains(*substring: str)`**
+```python
+def contains(
+    *substring: str,
+)
+```
 
 Select all columns whose names contain one or more of the given substrings.
 
@@ -636,12 +720,23 @@ Selected:
 │ 8      ┆ “H”      │
 └────────┴──────────┘
 
+**Categories:** projection
+
+**Parameters:**
+
+<ParamField path="substring">
+  One or more substrings to search for in column names.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`date`**</summary>
+ <a id="tabsdata.tableframe.selectors.date"></a>
+<details open>
+<summary>date</summary>
 
-**`date`**
+```python
+def date()
+```
 
 Select all columns of date data type.
 
@@ -710,12 +805,20 @@ Selected:
 │ 2023-01-08 │
 └────────────┘
 
+**Categories:** projection
+
 </details>
 
- <details open>
-<summary>**`datetime`**</summary>
+ <a id="tabsdata.tableframe.selectors.datetime"></a>
+<details open>
+<summary>datetime</summary>
 
-**`datetime(time_unit: Literal['ns', 'us', 'ms'] | Collection[Literal['ns', 'us', 'ms']] | None = None, time_zone: str | timezone | Collection[str | timezone | None] | None = ('*', None))`**
+```python
+def datetime(
+    time_unit: Literal['ns', 'us', 'ms'] | Collection[Literal['ns', 'us', 'ms']] | None = None,
+    time_zone: str | timezone | Collection[str | timezone | None] | None = ('*', None),
+)
+```
 
 Select all columns of datetime data type.
 
@@ -786,6 +889,10 @@ Selected:
 │ 2024-01-08 16:00:00+00:00 │
 └───────────────────────────┘
 
+**Categories:** projection
+
+**Parameters:**
+
 <ParamField path="time_unit">
   One or more of the supported time precision units:
 “ms”, “us”, or “ns”.
@@ -817,10 +924,13 @@ Use "*" to match any column with any time zone.
 
 </details>
 
- <details open>
-<summary>**`decimal`**</summary>
+ <a id="tabsdata.tableframe.selectors.decimal"></a>
+<details open>
+<summary>decimal</summary>
 
-**`decimal`**
+```python
+def decimal()
+```
 
 Select all columns of decimal data type.
 
@@ -876,12 +986,19 @@ Selected:
 │ 11.45  │
 └────────┘
 
+**Categories:** projection
+
 </details>
 
- <details open>
-<summary>**`digit`**</summary>
+ <a id="tabsdata.tableframe.selectors.digit"></a>
+<details open>
+<summary>digit</summary>
 
-**`digit(ascii_only: bool = False)`**
+```python
+def digit(
+    ascii_only: bool = False,
+)
+```
 
 Select all columns whose names consist only of digit characters.
 
@@ -934,12 +1051,29 @@ Selected:
 │ 800  ┆ 8   │
 └──────┴─────┘
 
+**Categories:** projection
+
+**Parameters:**
+
+<ParamField path="ascii_only">
+  Restrict matching to ASCII digits (“0”–“9”) only, instead of
+</ParamField>
+
+<ParamField path="all Unicode digits (\d).">
+  
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`duration`**</summary>
+ <a id="tabsdata.tableframe.selectors.duration"></a>
+<details open>
+<summary>duration</summary>
 
-**`duration(time_unit: Literal['ns', 'us', 'ms'] | Collection[Literal['ns', 'us', 'ms']] | None = None)`**
+```python
+def duration(
+    time_unit: Literal['ns', 'us', 'ms'] | Collection[Literal['ns', 'us', 'ms']] | None = None,
+)
+```
 
 Select all columns of duration data type.
 
@@ -1000,12 +1134,33 @@ Selected:
 │ 40s      │
 └──────────┘
 
+**Categories:** projection
+
+**Parameters:**
+
+<ParamField path="time_unit">
+  One or more of the supported time precision units:
+</ParamField>
+
+<ParamField path="“ms”, “us”, or “ns”.">
+  
+</ParamField>
+
+<ParamField path="If omitted, selects datetime columns with any time unit.">
+  
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`ends_with`**</summary>
+ <a id="tabsdata.tableframe.selectors.ends_with"></a>
+<details open>
+<summary>ends_with</summary>
 
-**`ends_with(*suffix: str)`**
+```python
+def ends_with(
+    *suffix: str,
+)
+```
 
 Select all columns whose names end with any of the given suffixes.
 
@@ -1058,12 +1213,26 @@ Selected:
 │ 8    ┆ 107    ┆ 208       │
 └──────┴────────┴───────────┘
 
+**Categories:** projection
+
+**Parameters:**
+
+<ParamField path="suffix">
+  One or more string suffixes to match at the end of column names.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`exclude`**</summary>
+ <a id="tabsdata.tableframe.selectors.exclude"></a>
+<details open>
+<summary>exclude</summary>
 
-**`exclude(columns: str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr | Collection[str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr], *more_columns: str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr)`**
+```python
+def exclude(
+    columns: str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr | Collection[str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr],
+    *more_columns: str | Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | Expr,
+)
+```
 
 Exclude specific columns from selection by name, data type, expression, or selector.
 
@@ -1116,6 +1285,10 @@ Selected:
 │ 8   ┆ “H”  │
 └───═─┴──────┘
 
+**Categories:** projection
+
+**Parameters:**
+
 <ParamField path="columns">
   A single column identifier or a collection of them. This can include:
 - Column names as strings
@@ -1130,10 +1303,13 @@ Selected:
 
 </details>
 
- <details open>
-<summary>**`first`**</summary>
+ <a id="tabsdata.tableframe.selectors.first"></a>
+<details open>
+<summary>first</summary>
 
-**`first`**
+```python
+def first()
+```
 
 Select the first column in the TableFrame.
 
@@ -1185,12 +1361,17 @@ Selected:
 │ 108 │
 └─────┘
 
+**Categories:** projection
+
 </details>
 
- <details open>
-<summary>**`float`**</summary>
+ <a id="tabsdata.tableframe.selectors.float"></a>
+<details open>
+<summary>float</summary>
 
-**`float`**
+```python
+def float()
+```
 
 Select all columns of float data types.
 
@@ -1242,12 +1423,17 @@ Selected:
 │ 86.5  │
 └───────┘
 
+**Categories:** projection
+
 </details>
 
- <details open>
-<summary>**`integer`**</summary>
+ <a id="tabsdata.tableframe.selectors.integer"></a>
+<details open>
+<summary>integer</summary>
 
-**`integer`**
+```python
+def integer()
+```
 
 Select all columns with integer data types.
 
@@ -1300,12 +1486,17 @@ Selected:
 │ 8  ┆ 2     │
 └────┴───────┘
 
+**Categories:** projection
+
 </details>
 
- <details open>
-<summary>**`last`**</summary>
+ <a id="tabsdata.tableframe.selectors.last"></a>
+<details open>
+<summary>last</summary>
 
-**`last`**
+```python
+def last()
+```
 
 Select the last column in the TableFrame.
 
@@ -1360,12 +1551,19 @@ Selected:
 │ 87.5  │
 └───────┘
 
+**Categories:** projection
+
 </details>
 
- <details open>
-<summary>**`matches`**</summary>
+ <a id="tabsdata.tableframe.selectors.matches"></a>
+<details open>
+<summary>matches</summary>
 
-**`matches(pattern: str)`**
+```python
+def matches(
+    pattern: str,
+)
+```
 
 Select all columns whose names match a regular expression pattern.
 
@@ -1418,12 +1616,23 @@ Selected:
 │ 8    ┆ 1    │
 └──────┴──────┘
 
+**Categories:** projection
+
+**Parameters:**
+
+<ParamField path="pattern">
+  A regular expression pattern to match against column names.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`numeric`**</summary>
+ <a id="tabsdata.tableframe.selectors.numeric"></a>
+<details open>
+<summary>numeric</summary>
 
-**`numeric`**
+```python
+def numeric()
+```
 
 Select all columns of numeric data types.
 
@@ -1478,12 +1687,17 @@ Selected:
 │ 8  ┆ 89.0   │
 └────┴────────┘
 
+**Categories:** projection
+
 </details>
 
- <details open>
-<summary>**`object`**</summary>
+ <a id="tabsdata.tableframe.selectors.object"></a>
+<details open>
+<summary>object</summary>
 
-**`object`**
+```python
+def object()
+```
 
 Select all columns of object data type.
 
@@ -1539,12 +1753,17 @@ Selected:
 │ &#123;“h”: 8&#125;   │
 └────────────┘
 
+**Categories:** projection
+
 </details>
 
- <details open>
-<summary>**`signed_integer`**</summary>
+ <a id="tabsdata.tableframe.selectors.signed_integer"></a>
+<details open>
+<summary>signed_integer</summary>
 
-**`signed_integer`**
+```python
+def signed_integer()
+```
 
 Select all columns of signed integer data types.
 
@@ -1597,12 +1816,19 @@ Selected:
 │ 17     ┆ 1      │
 └────────┴────────┘
 
+**Categories:** projection
+
 </details>
 
- <details open>
-<summary>**`starts_with`**</summary>
+ <a id="tabsdata.tableframe.selectors.starts_with"></a>
+<details open>
+<summary>starts_with</summary>
 
-**`starts_with(*prefix: str)`**
+```python
+def starts_with(
+    *prefix: str,
+)
+```
 
 Select all columns whose names start with any of the given prefixes.
 
@@ -1655,12 +1881,26 @@ Selected:
 │ “Hana”   ┆ 89       │
 └──────────┴──────────┘
 
+**Categories:** projection
+
+**Parameters:**
+
+<ParamField path="prefix">
+  One or more string prefixes to match at the beginning of column names.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`string`**</summary>
+ <a id="tabsdata.tableframe.selectors.string"></a>
+<details open>
+<summary>string</summary>
 
-**`string(*, include_categorical: bool = False)`**
+```python
+def string(
+    *,
+    include_categorical: bool = False,
+)
+```
 
 Select all columns of string or categorical data type.
 
@@ -1712,12 +1952,23 @@ Selected:
 │ “Hugo” ┆ “SE”    │
 └────────┴─────────┘
 
+**Categories:** projection
+
+**Parameters:**
+
+<ParamField path="include_categorical">
+  If True, also include categorical columns in the selection.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`temporal`**</summary>
+ <a id="tabsdata.tableframe.selectors.temporal"></a>
+<details open>
+<summary>temporal</summary>
 
-**`temporal`**
+```python
+def temporal()
+```
 
 Select all columns of temporal data types.
 
@@ -1810,12 +2061,17 @@ Selected:
 │ 2024-01-08 16:00:00+00:00 ┆ 2024-01-08  ┆ 0:35:00  ┆ 16:00:00  │
 └───────────────────────────┴─────────────┴──────────┴───────────┘
 
+**Categories:** projection
+
 </details>
 
- <details open>
-<summary>**`time`**</summary>
+ <a id="tabsdata.tableframe.selectors.time"></a>
+<details open>
+<summary>time</summary>
 
-**`time`**
+```python
+def time()
+```
 
 Select columns of Python time values.
 
@@ -1870,12 +2126,17 @@ Selected:
 │ 16:55:00  │
 └───────────┘
 
+**Categories:** projection
+
 </details>
 
- <details open>
-<summary>**`unsigned_integer`**</summary>
+ <a id="tabsdata.tableframe.selectors.unsigned_integer"></a>
+<details open>
+<summary>unsigned_integer</summary>
 
-**`unsigned_integer`**
+```python
+def unsigned_integer()
+```
 
 Select all columns of unsigned integer data types.
 
@@ -1929,5 +2190,7 @@ Selected:
 │ 16     ┆ 88    ┆ 1      │
 │ 17     ┆ 96    ┆ 0      │
 └────────┴───────┴────────┘
+
+**Categories:** projection
 
 </details>

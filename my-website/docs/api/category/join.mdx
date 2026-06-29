@@ -6,10 +6,23 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # Join
 
- <details open>
-<summary>**`join`**</summary>
+ <a id="tabsdata.TableFrame.join"></a>
+<details open>
+<summary>join</summary>
 
-**`join(other: TableFrame, on: str | Expr | Sequence[str | Expr] | None = None, how: Literal['inner', 'left', 'right', 'full', 'semi', 'anti', 'cross', 'outer'] = 'inner', *, left_on: str | Expr | Sequence[str | Expr] | None = None, right_on: str | Expr | Sequence[str | Expr] | None = None, suffix: str = '_right', join_nulls: bool = False, coalesce: bool | None = None)`**
+```python
+def join(
+    other: TableFrame,
+    on: str | Expr | Sequence[str | Expr] | None = None,
+    how: Literal['inner', 'left', 'right', 'full', 'semi', 'anti', 'cross', 'outer'] = 'inner',
+    *,
+    left_on: str | Expr | Sequence[str | Expr] | None = None,
+    right_on: str | Expr | Sequence[str | Expr] | None = None,
+    suffix: str = '_right',
+    join_nulls: bool = False,
+    coalesce: bool | None = None,
+)
+```
 
 Join the TableFrame with another TableFrame.
 
@@ -110,6 +123,10 @@ Turning off column coalesce:
 │ F   ┆ null ┆ F       ┆ null    │
 └─────┴──────┴─────────┴─────────┘
 ```
+
+**Categories:** join
+
+**Parameters:**
 
 <ParamField path="other">
   The TableFrame to join.

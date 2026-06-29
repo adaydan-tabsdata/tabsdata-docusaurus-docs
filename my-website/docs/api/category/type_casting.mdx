@@ -6,10 +6,18 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # Type Casting
 
- <details open>
-<summary>**`cast`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr.cast"></a>
+<details open>
+<summary>cast</summary>
 
-**`cast(dtype: Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | type[Any], *, strict: bool = True, wrap_numerical: bool = False)`**
+```python
+def cast(
+    dtype: Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | type[Any],
+    *,
+    strict: bool = True,
+    wrap_numerical: bool = False,
+)
+```
 
 Cast a value to d different type.
 
@@ -38,6 +46,10 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** type_casting
+
+**Parameters:**
+
 <ParamField path="dtype">
   The data type to cast to.
 </ParamField>
@@ -54,10 +66,17 @@ if false, an excetion is raised.
 
 </details>
 
- <details open>
-<summary>**`to_date`**</summary>
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_date"></a>
+<details open>
+<summary>to_date</summary>
 
-**`to_date(fmt: str | None = None, *, strict: bool = True)`**
+```python
+def to_date(
+    fmt: str | None = None,
+    *,
+    strict: bool = True,
+)
+```
 
 Convert the string to a date.
 
@@ -81,6 +100,10 @@ Example:
 └────────────┴────────────┘
 ```
 
+**Categories:** type_casting
+
+**Parameters:**
+
 <ParamField path="fmt">
   The date format string (default %Y-%m-%d).
 See formats.
@@ -92,10 +115,20 @@ See formats.
 
 </details>
 
- <details open>
-<summary>**`to_datetime`**</summary>
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_datetime"></a>
+<details open>
+<summary>to_datetime</summary>
 
-**`to_datetime(format: str | None = None, *, time_unit: Literal['ns', 'us', 'ms'] | None = None, time_zone: str | None = None, strict: bool = True, ambiguous: Literal['earliest', 'latest', 'raise', 'null'] | Expr = 'raise')`**
+```python
+def to_datetime(
+    format: str | None = None,
+    *,
+    time_unit: Literal['ns', 'us', 'ms'] | None = None,
+    time_zone: str | None = None,
+    strict: bool = True,
+    ambiguous: Literal['earliest', 'latest', 'raise', 'null'] | Expr = 'raise',
+)
+```
 
 Convert the string to a datetime.
 
@@ -116,6 +149,10 @@ Convert the string to a datetime.
 │ null                ┆ null                │
 └─────────────────────┴─────────────────────┘
 ```
+
+**Categories:** type_casting
+
+**Parameters:**
 
 <ParamField path="format">
   The datetime format string (default %Y-%m-%d %H:%M:%S).
@@ -145,10 +182,17 @@ If None (default), it inferred from the format string
 
 </details>
 
- <details open>
-<summary>**`to_integer`**</summary>
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_integer"></a>
+<details open>
+<summary>to_integer</summary>
 
-**`to_integer(*, base: int | td_typing.IntoExprColumn = 10, strict: bool = True)`**
+```python
+def to_integer(
+    *,
+    base: int | td_typing.IntoExprColumn = 10,
+    strict: bool = True,
+)
+```
 
 Covert a string to integer.
 
@@ -174,6 +218,10 @@ Example:
 └──────┴────────────┘
 ```
 
+**Categories:** type_casting
+
+**Parameters:**
+
 <ParamField path="base">
   The base of the integer.
 </ParamField>
@@ -184,10 +232,18 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`to_time`**</summary>
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_time"></a>
+<details open>
+<summary>to_time</summary>
 
-**`to_time(fmt: str | None = None, *, strict: bool = True, cache: bool = True)`**
+```python
+def to_time(
+    fmt: str | None = None,
+    *,
+    strict: bool = True,
+    cache: bool = True,
+)
+```
 
 Convert the string to a time.
 
@@ -211,6 +267,10 @@ Example:
 └─────────────────────┴─────────────────────┘
 ```
 
+**Categories:** type_casting
+
+**Parameters:**
+
 <ParamField path="fmt">
   The time format string (default %H:%M:%S).
 See formats.
@@ -226,9 +286,16 @@ See formats.
 
 </details>
 
- <details open>
-<summary>**`to_string`**</summary>
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.to_string"></a>
+<details open>
+<summary>to_string</summary>
 
-**`to_string(fmt: str | None = None)`**
+```python
+def to_string(
+    fmt: str | None = None,
+)
+```
+
+**Categories:** type_casting
 
 </details>

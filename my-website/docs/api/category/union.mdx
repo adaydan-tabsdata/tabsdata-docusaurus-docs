@@ -6,10 +6,16 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # Union
 
- <details open>
-<summary>**`concat`**</summary>
+ <a id="tabsdata.concat"></a>
+<details open>
+<summary>concat</summary>
 
-**`concat(items: Iterable[TdType] | None, how: Literal['vertical', 'vertical_relaxed', 'diagonal', 'diagonal_relaxed'] = 'vertical')`**
+```python
+def concat(
+    items: Iterable[TdType] | None,
+    how: Literal['vertical', 'vertical_relaxed', 'diagonal', 'diagonal_relaxed'] = 'vertical',
+)
+```
 
 Combine multiple TableFrames by stacking their rows.
 
@@ -53,6 +59,10 @@ Example:
 │ y    ┆ 20   │
 └──────┴──────┘
 ```
+
+**Categories:** union
+
+**Parameters:**
 
 <ParamField path="items">
   The TableFrames to concatenate. If None or empty, returns None.

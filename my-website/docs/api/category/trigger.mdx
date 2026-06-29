@@ -2,12 +2,21 @@
 title: "Triggers"
 ---
 
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
 # Triggers
 
- <details open>
-<summary>**`CronTrigger`**</summary>
+ <a id="tabsdata.CronTrigger"></a>
+<details open>
+<summary>CronTrigger</summary>
 
-**`CronTrigger(mask: str, start: datetime | None = None, end: datetime | None = None)`**
+```python
+class CronTrigger(
+    mask: str,
+    start: datetime | None = None,
+    end: datetime | None = None,
+)
+```
 
 Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
@@ -18,47 +27,42 @@ This class defines a trigger based on a cron expression, with optional
 start and end times to constrain its activation period. It validates the
 cron mask and time boundaries to ensure the trigger is well-formed.
 
-<details open>
-<summary>**`end`**</summary>
-
-`end`
-
+<a id="tabsdata.CronTrigger.end"></a>
+<ResponseField name="end">
 Gets the end time of the trigger as a timezone-aware ISO 8601 string
 with ‘Z’ timezone.
 
  **Returns:** The end time in ISO format, or None if not set.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`mask`**</summary>
-
-`mask`
-
+<a id="tabsdata.CronTrigger.mask"></a>
+<ResponseField name="mask">
 Gets the cron expression mask.
 
  **Returns:** The cron expression string.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`start`**</summary>
-
-`start`
-
+<a id="tabsdata.CronTrigger.start"></a>
+<ResponseField name="start">
 Gets the start time of the trigger as a timezone-aware ISO 8601 string
 with ‘Z’ timezone.
 
  **Returns:** The start time in ISO format, or None if not set.
+</ResponseField>
+
+**Categories:** trigger
 
 </details>
 
-</details>
+ <a id="tabsdata.Db2CdcTrigger"></a>
+<details open>
+<summary>Db2CdcTrigger</summary>
 
- <details open>
-<summary>**`Db2CdcTrigger`**</summary>
-
-**`Db2CdcTrigger(**kwargs)`**
+```python
+class Db2CdcTrigger(
+    **kwargs,
+)
+```
 
 Bases: [CdcTrigger](bymod-tabsdata#tabsdata.CdcTrigger)
 
@@ -67,44 +71,49 @@ A CdcTrigger that captures changes from a Db2 database using SQL Replication.
 This trigger connects to a Db2 server, reads change data capture events (inserts,
 updates, deletes) on specified tables via SQL Replication, and stages them.
 
-<details open>
-<summary>**`blocking_timeout_seconds`**</summary>
-
-`blocking_timeout_seconds`
-
+<a id="tabsdata.Db2CdcTrigger.blocking_timeout_seconds"></a>
+<ResponseField name="blocking_timeout_seconds">
 Timeout in seconds for blocking reads from the replication stream.
+</ResponseField>
 
-</details>
+<a id="tabsdata.Db2CdcTrigger.collect_tables"></a>
+#### `collect_tables`
 
-<details open>
-<summary>**`collect_tables`**</summary>
+```python
+def collect_tables(
+    session: Any,
+    cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True),
+)
+```
 
-**`collect_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
+<a id="tabsdata.Db2CdcTrigger.harvest_tables"></a>
+#### `harvest_tables`
 
-</details>
+```python
+def harvest_tables(
+    session: Any,
+    cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True),
+)
+```
 
-<details open>
-<summary>**`harvest_tables`**</summary>
-
-**`harvest_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
-
-</details>
-
-<details open>
-<summary>**`start_from`**</summary>
-
-`start_from`
-
+<a id="tabsdata.Db2CdcTrigger.start_from"></a>
+<ResponseField name="start_from">
 Position to start reading changes from.
+</ResponseField>
+
+**Categories:** trigger
 
 </details>
 
-</details>
+ <a id="tabsdata.KafkaTrigger"></a>
+<details open>
+<summary>KafkaTrigger</summary>
 
- <details open>
-<summary>**`KafkaTrigger`**</summary>
-
-**`KafkaTrigger(**kwargs)`**
+```python
+class KafkaTrigger(
+    **kwargs,
+)
+```
 
 Bases: [StageTrigger](bymod-tabsdata#tabsdata.StageTrigger)
 
@@ -114,103 +123,82 @@ This trigger connects to a Kafka cluster, consumes messages from a specified
 topic, and uses rollover conditions (time, size, and message count) to
 buffer and stage the data.
 
-<details open>
-<summary>**`conn`**</summary>
-
-`conn`
-
+<a id="tabsdata.KafkaTrigger.conn"></a>
+<ResponseField name="conn">
 Kafka consumer connection configuration.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`data_format`**</summary>
-
-`data_format`
-
+<a id="tabsdata.KafkaTrigger.data_format"></a>
+<ResponseField name="data_format">
 Data format of the messages (“avro”, “json”, “protobuf”).
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`dlq_topic`**</summary>
-
-`dlq_topic`
-
+<a id="tabsdata.KafkaTrigger.dlq_topic"></a>
+<ResponseField name="dlq_topic">
 Dead-letter queue topic.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`group_id`**</summary>
-
-`group_id`
-
+<a id="tabsdata.KafkaTrigger.group_id"></a>
+<ResponseField name="group_id">
 Kafka consumer group ID.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`messages_rollover`**</summary>
-
-`messages_rollover`
-
+<a id="tabsdata.KafkaTrigger.messages_rollover"></a>
+<ResponseField name="messages_rollover">
 Message count-based rollover configuration.
+</ResponseField>
 
-</details>
+<a id="tabsdata.KafkaTrigger.run"></a>
+#### `run`
 
-<details open>
-<summary>**`run`**</summary>
-
-**`run(context: StageTriggerContext)`**
+```python
+def run(
+    context: StageTriggerContext,
+)
+```
 
 Run the Kafka stage trigger to consume messages, buffer them, and stage them
 based on rollover conditions.
 
-</details>
+**Parameters:**
 
-<details open>
-<summary>**`schema`**</summary>
+<ParamField path="context">
+  The StageTriggerContext instance.
+</ParamField>
 
-`schema`
-
+<a id="tabsdata.KafkaTrigger.schema"></a>
+<ResponseField name="schema">
 Schema string for deserializing messages.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`size_rollover_mb`**</summary>
-
-`size_rollover_mb`
-
+<a id="tabsdata.KafkaTrigger.size_rollover_mb"></a>
+<ResponseField name="size_rollover_mb">
 Size-based rollover configuration. Size is specified in megabytes.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`time_rollover_secs`**</summary>
-
-`time_rollover_secs`
-
+<a id="tabsdata.KafkaTrigger.time_rollover_secs"></a>
+<ResponseField name="time_rollover_secs">
 Timeout in seconds for consuming each message.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`topic`**</summary>
-
-`topic`
-
+<a id="tabsdata.KafkaTrigger.topic"></a>
+<ResponseField name="topic">
 Kafka topic to consume from.
+</ResponseField>
+
+**Categories:** trigger
 
 </details>
 
-</details>
+ <a id="tabsdata.MySQLCdcTrigger"></a>
+<details open>
+<summary>MySQLCdcTrigger</summary>
 
- <details open>
-<summary>**`MySQLCdcTrigger`**</summary>
-
-**`MySQLCdcTrigger(**kwargs)`**
+```python
+class MySQLCdcTrigger(
+    **kwargs,
+)
+```
 
 Bases: [CdcTrigger](bymod-tabsdata#tabsdata.CdcTrigger)
 
@@ -219,53 +207,54 @@ A CdcTrigger that captures changes from a MySQL database using binlog replicatio
 This trigger connects to a MySQL server, reads the binary log for change data
 capture events (inserts, updates, deletes) on specified tables, and stages them.
 
-<details open>
-<summary>**`blocking_timeout_seconds`**</summary>
-
-`blocking_timeout_seconds`
-
+<a id="tabsdata.MySQLCdcTrigger.blocking_timeout_seconds"></a>
+<ResponseField name="blocking_timeout_seconds">
 Timeout in seconds for blocking reads from the binlog stream.
+</ResponseField>
 
-</details>
+<a id="tabsdata.MySQLCdcTrigger.collect_tables"></a>
+#### `collect_tables`
 
-<details open>
-<summary>**`collect_tables`**</summary>
+```python
+def collect_tables(
+    session: Any,
+    cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True),
+)
+```
 
-**`collect_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
+<a id="tabsdata.MySQLCdcTrigger.harvest_tables"></a>
+#### `harvest_tables`
 
-</details>
+```python
+def harvest_tables(
+    session: Any,
+    cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True),
+)
+```
 
-<details open>
-<summary>**`harvest_tables`**</summary>
-
-**`harvest_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
-
-</details>
-
-<details open>
-<summary>**`server_id`**</summary>
-
-`server_id`
-
+<a id="tabsdata.MySQLCdcTrigger.server_id"></a>
+<ResponseField name="server_id">
 MySQL server ID for binlog replication.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`start_from`**</summary>
-
-`start_from`
-
+<a id="tabsdata.MySQLCdcTrigger.start_from"></a>
+<ResponseField name="start_from">
 Position to start reading changes from.
+</ResponseField>
+
+**Categories:** trigger
 
 </details>
 
-</details>
+ <a id="tabsdata.PostgresCdcTrigger"></a>
+<details open>
+<summary>PostgresCdcTrigger</summary>
 
- <details open>
-<summary>**`PostgresCdcTrigger`**</summary>
-
-**`PostgresCdcTrigger(**kwargs)`**
+```python
+class PostgresCdcTrigger(
+    **kwargs,
+)
+```
 
 Bases: [CdcTrigger](bymod-tabsdata#tabsdata.CdcTrigger)
 
@@ -276,63 +265,51 @@ This trigger connects to a PostgreSQL server, reads the write-ahead log via
 the wal2json output plugin for change data capture events (inserts, updates,
 deletes) on specified tables, and stages them.
 
-<details open>
-<summary>**`blocking_timeout_seconds`**</summary>
-
-`blocking_timeout_seconds`
-
+<a id="tabsdata.PostgresCdcTrigger.blocking_timeout_seconds"></a>
+<ResponseField name="blocking_timeout_seconds">
 Timeout in seconds for blocking reads from the replication stream.
+</ResponseField>
 
-</details>
+<a id="tabsdata.PostgresCdcTrigger.collect_tables"></a>
+#### `collect_tables`
 
-<details open>
-<summary>**`collect_tables`**</summary>
+```python
+def collect_tables(
+    session: Any,
+    cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True),
+)
+```
 
-**`collect_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
+<a id="tabsdata.PostgresCdcTrigger.harvest_tables"></a>
+#### `harvest_tables`
 
-</details>
+```python
+def harvest_tables(
+    session: Any,
+    cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True),
+)
+```
 
-<details open>
-<summary>**`harvest_tables`**</summary>
-
-**`harvest_tables(session: Any, cdc_format: CdcFormat = CdcFormat(values_format='columns', flatten_values=True))`**
-
-</details>
-
-<details open>
-<summary>**`publication_name`**</summary>
-
-`publication_name`
-
+<a id="tabsdata.PostgresCdcTrigger.publication_name"></a>
+<ResponseField name="publication_name">
 Name of the PostgreSQL publication to subscribe to.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`replication_slot`**</summary>
-
-`replication_slot`
-
+<a id="tabsdata.PostgresCdcTrigger.replication_slot"></a>
+<ResponseField name="replication_slot">
 Name of the logical replication slot.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`slot_behavior`**</summary>
-
-`slot_behavior`
-
+<a id="tabsdata.PostgresCdcTrigger.slot_behavior"></a>
+<ResponseField name="slot_behavior">
 Whether to create a new replication slot or reuse an existing one.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`start_from`**</summary>
-
-`start_from`
-
+<a id="tabsdata.PostgresCdcTrigger.start_from"></a>
+<ResponseField name="start_from">
 Position to start reading changes from.
+</ResponseField>
 
-</details>
+**Categories:** trigger
 
 </details>

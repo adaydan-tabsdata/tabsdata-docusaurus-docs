@@ -2,67 +2,74 @@
 title: "Sources"
 ---
 
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
 # Sources
 
- <details open>
-<summary>**`AzureSource`**</summary>
+ <a id="tabsdata.AzureSource"></a>
+<details open>
+<summary>AzureSource</summary>
 
-**`AzureSource(uri: str | list[str], credentials: AzureCredentials, format: str | FileFormat = None, initial_last_modified: str | datetime = None, file_info: str | FileInfo | None = None)`**
+```python
+class AzureSource(
+    uri: str | list[str],
+    credentials: AzureCredentials,
+    format: str | FileFormat = None,
+    initial_last_modified: str | datetime = None,
+    file_info: str | FileInfo | None = None,
+)
+```
 
 Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Azure-file-based data inputs.
 
-<details open>
-<summary>**`SupportedFormats`**</summary>
+<a id="tabsdata.AzureSource.SupportedFormats"></a>
+### `SupportedFormats`
 
-**`SupportedFormats(*values)`**
+```python
+class SupportedFormats(
+    *values,
+)
+```
 
 Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
 Enum for the supported formats for the AzureSource.
 
-<details open>
-<summary>**`avro`**</summary>
+<a id="tabsdata.AzureSource.SupportedFormats.avro"></a>
+<ResponseField name="avro">
 
-`avro`
+</ResponseField>
 
-</details>
+<a id="tabsdata.AzureSource.SupportedFormats.csv"></a>
+<ResponseField name="csv">
 
-<details open>
-<summary>**`csv`**</summary>
+</ResponseField>
 
-`csv`
+<a id="tabsdata.AzureSource.SupportedFormats.log"></a>
+<ResponseField name="log">
 
-</details>
+</ResponseField>
 
-<details open>
-<summary>**`log`**</summary>
+<a id="tabsdata.AzureSource.SupportedFormats.ndjson"></a>
+<ResponseField name="ndjson">
 
-`log`
+</ResponseField>
 
-</details>
+<a id="tabsdata.AzureSource.SupportedFormats.parquet"></a>
+<ResponseField name="parquet">
 
-<details open>
-<summary>**`ndjson`**</summary>
+</ResponseField>
 
-`ndjson`
+<a id="tabsdata.AzureSource.chunk"></a>
+#### `chunk`
 
-</details>
-
-<details open>
-<summary>**`parquet`**</summary>
-
-`parquet`
-
-</details>
-
-</details>
-
-<details open>
-<summary>**`chunk`**</summary>
-
-**`chunk(working_dir: str)`**
+```python
+def chunk(
+    working_dir: str,
+)
+```
 
 Trigger the import of the data. This must be implemented in any class that
 inherits from this class unless directly implementing streaming. The method will
@@ -75,62 +82,47 @@ example, you would give the following return to provide a first argument with a
 single file and a second argument with two files:return
 [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
 
+**Parameters:**
+
+<ParamField path="working_dir (str)">
+  The folder where the files must be stored
+</ParamField>
+
 **Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
 
-**Return type:** Union[str, Tuple[str, …], List[str]]
+**Returns:** Union[str, Tuple[str, …], List[str]]
 
-</details>
-
-<details open>
-<summary>**`credentials`**</summary>
-
-`credentials`
-
+<a id="tabsdata.AzureSource.credentials"></a>
+<ResponseField name="credentials">
 The credentials required to access Azure.
 
  **Type:** AzureCredentials
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`file_info`**</summary>
-
-`file_info`
-
+<a id="tabsdata.AzureSource.file_info"></a>
+<ResponseField name="file_info">
 The file information to add as system columns.
 
  **Type:** FileInfo | None
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`format`**</summary>
-
-`format`
-
+<a id="tabsdata.AzureSource.format"></a>
+<ResponseField name="format">
 The format of the file. If not provided, it will be inferred from
 the file extension of the data.
 
  **Type:** FileFormat
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`initial_last_modified`**</summary>
-
-`initial_last_modified`
-
+<a id="tabsdata.AzureSource.initial_last_modified"></a>
+<ResponseField name="initial_last_modified">
 The date and time after which the files were modified.
 
  **Type:** str
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`initial_values`**</summary>
-
-`initial_values`
-
+<a id="tabsdata.AzureSource.initial_values"></a>
+<ResponseField name="initial_values">
 Return a dictionary with the initial values to be stored after execution of
 the plugin. They will be accessible in the next execution of the plugin.
 The dictionary must have the parameter names as keys and the initial values
@@ -138,38 +130,50 @@ as values, all the type string.
 
  **Returns:** A dictionary with the initial values of the parameters of the plugin.
 
-**Return type:** dict
+**Returns:** dict
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`uri`**</summary>
-
-`uri`
-
+<a id="tabsdata.AzureSource.uri"></a>
+<ResponseField name="uri">
 ‘az://path/to/files’.
 
  **Type:** str | list[str]
 
 **Type:** The URI of the files with format
+</ResponseField>
+
+**Categories:** source
 
 </details>
 
-</details>
+ <a id="tabsdata.DatabricksSource"></a>
+<details open>
+<summary>DatabricksSource</summary>
 
- <details open>
-<summary>**`DatabricksSource`**</summary>
-
-**`DatabricksSource(host_url: str, token: str | Secret, queries: list[str] | str, initial_values: dict | None = None, warehouse: str | None = None, warehouse_id: str | None = None, **kwargs)`**
+```python
+class DatabricksSource(
+    host_url: str,
+    token: str | Secret,
+    queries: list[str] | str,
+    initial_values: dict | None = None,
+    warehouse: str | None = None,
+    warehouse_id: str | None = None,
+    **kwargs,
+)
+```
 
 Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Databricks based data inputs.
 
-<details open>
-<summary>**`chunk`**</summary>
+<a id="tabsdata.DatabricksSource.chunk"></a>
+#### `chunk`
 
-**`chunk(working_dir: str)`**
+```python
+def chunk(
+    working_dir: str,
+)
+```
 
 Trigger the import of the data. This must be implemented in any class that
 inherits from this class unless directly implementing streaming. The method will
@@ -182,188 +186,176 @@ example, you would give the following return to provide a first argument with a
 single file and a second argument with two files:return
 [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
 
+**Parameters:**
+
+<ParamField path="working_dir (str)">
+  The folder where the files must be stored
+</ParamField>
+
 **Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
 
-**Return type:** Union[str, Tuple[str, …], List[str]]
+**Returns:** Union[str, Tuple[str, …], List[str]]
 
-</details>
+<a id="tabsdata.DatabricksSource.host_url"></a>
+<ResponseField name="host_url">
 
-<details open>
-<summary>**`host_url`**</summary>
+</ResponseField>
 
-`host_url`
-
-</details>
-
-<details open>
-<summary>**`initial_values`**</summary>
-
-`initial_values`
-
+<a id="tabsdata.DatabricksSource.initial_values"></a>
+<ResponseField name="initial_values">
 The initial values for the parameters in the SQL queries.
+</ResponseField>
+
+<a id="tabsdata.DatabricksSource.queries"></a>
+<ResponseField name="queries">
+
+</ResponseField>
+
+<a id="tabsdata.DatabricksSource.token"></a>
+<ResponseField name="token">
+
+</ResponseField>
+
+**Categories:** source
 
 </details>
 
+ <a id="tabsdata.Db2Src"></a>
 <details open>
-<summary>**`queries`**</summary>
+<summary>Db2Src</summary>
 
-`queries`
-
-</details>
-
-<details open>
-<summary>**`token`**</summary>
-
-`token`
-
-</details>
-
-</details>
-
- <details open>
-<summary>**`Db2Src`**</summary>
-
-**`Db2Src(**kwargs)`**
+```python
+class Db2Src(
+    **kwargs,
+)
+```
 
 Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Source plugin for reading data from Db2.
 
-<details open>
-<summary>**`chunk_size`**</summary>
-
-`chunk_size`
-
+<a id="tabsdata.Db2Src.chunk_size"></a>
+<ResponseField name="chunk_size">
 The chunk size in records for reading large queries in batches.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`conn`**</summary>
-
-`conn`
-
+<a id="tabsdata.Db2Src.conn"></a>
+<ResponseField name="conn">
 The Db2 connection configuration.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`initial_values`**</summary>
-
-`initial_values`
-
+<a id="tabsdata.Db2Src.initial_values"></a>
+<ResponseField name="initial_values">
 The initial values for the parameters in the SQL queries.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`loader`**</summary>
-
-`loader`
-
+<a id="tabsdata.Db2Src.loader"></a>
+<ResponseField name="loader">
 The data processing loader to use for executing SQL imports.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`queries`**</summary>
-
-`queries`
-
+<a id="tabsdata.Db2Src.queries"></a>
+<ResponseField name="queries">
 The SQL queries to execute to read data.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`schema_overrides`**</summary>
-
-`schema_overrides`
-
+<a id="tabsdata.Db2Src.schema_overrides"></a>
+<ResponseField name="schema_overrides">
 The schema overrides for the tables being read.
+</ResponseField>
 
-</details>
+<a id="tabsdata.Db2Src.stream"></a>
+#### `stream`
 
-<details open>
-<summary>**`stream`**</summary>
-
-**`stream(working_dir: str)`**
+```python
+def stream(
+    working_dir: str,
+)
+```
 
 Execute the query and load the results as a list of TableFrames.
 
+**Parameters:**
+
+<ParamField path="working_dir">
+  The directory where the Parquet files will be saved.
+</ParamField>
+
 **Returns:** A list of TableFrames containing the query results.
 
-</details>
-
-<details open>
-<summary>**`transactional`**</summary>
-
-`transactional`
-
+<a id="tabsdata.Db2Src.transactional"></a>
+<ResponseField name="transactional">
 Whether to use transactions for reading to ensure consistency.
+</ResponseField>
+
+**Categories:** source
 
 </details>
 
-</details>
+ <a id="tabsdata.GCSSource"></a>
+<details open>
+<summary>GCSSource</summary>
 
- <details open>
-<summary>**`GCSSource`**</summary>
-
-**`GCSSource(uri: str | list[str], credentials: GCPCredentials, format: str | FileFormat = None, initial_last_modified: str | datetime = None, file_info: str | FileInfo | None = None)`**
+```python
+class GCSSource(
+    uri: str | list[str],
+    credentials: GCPCredentials,
+    format: str | FileFormat = None,
+    initial_last_modified: str | datetime = None,
+    file_info: str | FileInfo | None = None,
+)
+```
 
 Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 GCS-file-based data inputs.
 
-<details open>
-<summary>**`SupportedFormats`**</summary>
+<a id="tabsdata.GCSSource.SupportedFormats"></a>
+### `SupportedFormats`
 
-**`SupportedFormats(*values)`**
+```python
+class SupportedFormats(
+    *values,
+)
+```
 
 Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
 Enum for the supported formats for the GCSSource.
 
-<details open>
-<summary>**`avro`**</summary>
+<a id="tabsdata.GCSSource.SupportedFormats.avro"></a>
+<ResponseField name="avro">
 
-`avro`
+</ResponseField>
 
-</details>
+<a id="tabsdata.GCSSource.SupportedFormats.csv"></a>
+<ResponseField name="csv">
 
-<details open>
-<summary>**`csv`**</summary>
+</ResponseField>
 
-`csv`
+<a id="tabsdata.GCSSource.SupportedFormats.log"></a>
+<ResponseField name="log">
 
-</details>
+</ResponseField>
 
-<details open>
-<summary>**`log`**</summary>
+<a id="tabsdata.GCSSource.SupportedFormats.ndjson"></a>
+<ResponseField name="ndjson">
 
-`log`
+</ResponseField>
 
-</details>
+<a id="tabsdata.GCSSource.SupportedFormats.parquet"></a>
+<ResponseField name="parquet">
 
-<details open>
-<summary>**`ndjson`**</summary>
+</ResponseField>
 
-`ndjson`
+<a id="tabsdata.GCSSource.chunk"></a>
+#### `chunk`
 
-</details>
-
-<details open>
-<summary>**`parquet`**</summary>
-
-`parquet`
-
-</details>
-
-</details>
-
-<details open>
-<summary>**`chunk`**</summary>
-
-**`chunk(working_dir: str)`**
+```python
+def chunk(
+    working_dir: str,
+)
+```
 
 Trigger the import of the data. This must be implemented in any class that
 inherits from this class unless directly implementing streaming. The method will
@@ -376,62 +368,47 @@ example, you would give the following return to provide a first argument with a
 single file and a second argument with two files:return
 [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
 
+**Parameters:**
+
+<ParamField path="working_dir (str)">
+  The folder where the files must be stored
+</ParamField>
+
 **Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
 
-**Return type:** Union[str, Tuple[str, …], List[str]]
+**Returns:** Union[str, Tuple[str, …], List[str]]
 
-</details>
-
-<details open>
-<summary>**`credentials`**</summary>
-
-`credentials`
-
+<a id="tabsdata.GCSSource.credentials"></a>
+<ResponseField name="credentials">
 The credentials required to access GCS.
 
  **Type:** GCPCredentials
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`file_info`**</summary>
-
-`file_info`
-
+<a id="tabsdata.GCSSource.file_info"></a>
+<ResponseField name="file_info">
 The file information to add as system columns.
 
  **Type:** FileInfo | None
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`format`**</summary>
-
-`format`
-
+<a id="tabsdata.GCSSource.format"></a>
+<ResponseField name="format">
 The format of the file. If not provided, it will be inferred from
 the file extension of the data.
 
  **Type:** FileFormat
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`initial_last_modified`**</summary>
-
-`initial_last_modified`
-
+<a id="tabsdata.GCSSource.initial_last_modified"></a>
+<ResponseField name="initial_last_modified">
 The date and time after which the files were modified.
 
  **Type:** str
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`initial_values`**</summary>
-
-`initial_values`
-
+<a id="tabsdata.GCSSource.initial_values"></a>
+<ResponseField name="initial_values">
 Return a dictionary with the initial values to be stored after execution of
 the plugin. They will be accessible in the next execution of the plugin.
 The dictionary must have the parameter names as keys and the initial values
@@ -439,84 +416,85 @@ as values, all the type string.
 
  **Returns:** A dictionary with the initial values of the parameters of the plugin.
 
-**Return type:** dict
+**Returns:** dict
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`uri`**</summary>
-
-`uri`
-
+<a id="tabsdata.GCSSource.uri"></a>
+<ResponseField name="uri">
 ‘gs://path/to/files’.
 
  **Type:** str | list[str]
 
 **Type:** The URI of the files with format
+</ResponseField>
+
+**Categories:** source
 
 </details>
 
-</details>
+ <a id="tabsdata.LocalFileSource"></a>
+<details open>
+<summary>LocalFileSource</summary>
 
- <details open>
-<summary>**`LocalFileSource`**</summary>
-
-**`LocalFileSource(path: str | list[str], format: str | FileFormat = None, initial_last_modified: str | datetime = None, file_info: str | FileInfo | None = None)`**
+```python
+class LocalFileSource(
+    path: str | list[str],
+    format: str | FileFormat = None,
+    initial_last_modified: str | datetime = None,
+    file_info: str | FileInfo | None = None,
+)
+```
 
 Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Local-file-based data inputs.
 
-<details open>
-<summary>**`SupportedFormats`**</summary>
+<a id="tabsdata.LocalFileSource.SupportedFormats"></a>
+### `SupportedFormats`
 
-**`SupportedFormats(*values)`**
+```python
+class SupportedFormats(
+    *values,
+)
+```
 
 Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
 Enum for the supported formats for the LocalFileSource.
 
-<details open>
-<summary>**`avro`**</summary>
+<a id="tabsdata.LocalFileSource.SupportedFormats.avro"></a>
+<ResponseField name="avro">
 
-`avro`
+</ResponseField>
 
-</details>
+<a id="tabsdata.LocalFileSource.SupportedFormats.csv"></a>
+<ResponseField name="csv">
 
-<details open>
-<summary>**`csv`**</summary>
+</ResponseField>
 
-`csv`
+<a id="tabsdata.LocalFileSource.SupportedFormats.log"></a>
+<ResponseField name="log">
 
-</details>
+</ResponseField>
 
-<details open>
-<summary>**`log`**</summary>
+<a id="tabsdata.LocalFileSource.SupportedFormats.ndjson"></a>
+<ResponseField name="ndjson">
 
-`log`
+</ResponseField>
 
-</details>
+<a id="tabsdata.LocalFileSource.SupportedFormats.parquet"></a>
+<ResponseField name="parquet">
 
-<details open>
-<summary>**`ndjson`**</summary>
+</ResponseField>
 
-`ndjson`
+<a id="tabsdata.LocalFileSource.chunk"></a>
+#### `chunk`
 
-</details>
-
-<details open>
-<summary>**`parquet`**</summary>
-
-`parquet`
-
-</details>
-
-</details>
-
-<details open>
-<summary>**`chunk`**</summary>
-
-**`chunk(working_dir: str)`**
+```python
+def chunk(
+    working_dir: str,
+)
+```
 
 Trigger the import of the data. This must be implemented in any class that
 inherits from this class unless directly implementing streaming. The method will
@@ -529,51 +507,40 @@ example, you would give the following return to provide a first argument with a
 single file and a second argument with two files:return
 [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
 
+**Parameters:**
+
+<ParamField path="working_dir (str)">
+  The folder where the files must be stored
+</ParamField>
+
 **Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
 
-**Return type:** Union[str, Tuple[str, …], List[str]]
+**Returns:** Union[str, Tuple[str, …], List[str]]
 
-</details>
-
-<details open>
-<summary>**`file_info`**</summary>
-
-`file_info`
-
+<a id="tabsdata.LocalFileSource.file_info"></a>
+<ResponseField name="file_info">
 The file information to add as system columns.
 
  **Type:** FileInfo | None
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`format`**</summary>
-
-`format`
-
+<a id="tabsdata.LocalFileSource.format"></a>
+<ResponseField name="format">
 The format of the file or files. If not provided, it will be
 inferred  from the file extension in the path.
 
  **Type:** FileFormat
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`initial_last_modified`**</summary>
-
-`initial_last_modified`
-
+<a id="tabsdata.LocalFileSource.initial_last_modified"></a>
+<ResponseField name="initial_last_modified">
 The date and time after which the files were modified.
 
  **Type:** str
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`initial_values`**</summary>
-
-`initial_values`
-
+<a id="tabsdata.LocalFileSource.initial_values"></a>
+<ResponseField name="initial_values">
 Return a dictionary with the initial values to be stored after execution of
 the plugin. They will be accessible in the next execution of the plugin.
 The dictionary must have the parameter names as keys and the initial values
@@ -581,192 +548,190 @@ as values, all the type string.
 
  **Returns:** A dictionary with the initial values of the parameters of the plugin.
 
-**Return type:** dict
+**Returns:** dict
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`path`**</summary>
-
-`path`
-
+<a id="tabsdata.LocalFileSource.path"></a>
+<ResponseField name="path">
 The path or paths to the files to load.
 
  **Type:** str | list[str]
+</ResponseField>
+
+**Categories:** source
 
 </details>
 
-</details>
+ <a id="tabsdata.MSSQLSource"></a>
+<details open>
+<summary>MSSQLSource</summary>
 
- <details open>
-<summary>**`MSSQLSource`**</summary>
-
-**`MSSQLSource(**kwargs)`**
+```python
+class MSSQLSource(
+    **kwargs,
+)
+```
 
 Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Microsoft SQL Server based data inputs.
 
-<details open>
-<summary>**`chunk`**</summary>
+<a id="tabsdata.MSSQLSource.chunk"></a>
+#### `chunk`
 
-**`chunk(working_dir: str)`**
+```python
+def chunk(
+    working_dir: str,
+)
+```
 
 Execute the query and yield chunks of data.
 
+**Parameters:**
+
+<ParamField path="working_dir (str)">
+  The working directory for temporary files.
+</ParamField>
+
 **Yields:** pd.DataFrame – A chunk of data from the query result.
 
-</details>
-
-<details open>
-<summary>**`connection_string`**</summary>
-
-`connection_string`
-
+<a id="tabsdata.MSSQLSource.connection_string"></a>
+<ResponseField name="connection_string">
 Get the connection string for the database.
 
  **Returns:** The connection string.
 
-**Return type:** str
+**Returns:** str
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`credentials`**</summary>
-
-`credentials`
-
+<a id="tabsdata.MSSQLSource.credentials"></a>
+<ResponseField name="credentials">
 The credentials required to access
 Microsoft SQL Server. If no credentials were provided, it will return None.
 
  **Type:** UserPasswordCredentials | None
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`initial_values`**</summary>
-
-`initial_values`
-
+<a id="tabsdata.MSSQLSource.initial_values"></a>
+<ResponseField name="initial_values">
 The initial values for the parameters in the SQL queries.
 
  **Type:** dict
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`query`**</summary>
-
-`query`
-
+<a id="tabsdata.MSSQLSource.query"></a>
+<ResponseField name="query">
 Get the SQL query or queries to execute.
 
  **Returns:** The SQL query or queries.
 
-**Return type:** str | list[str]
+**Returns:** str | list[str]
+</ResponseField>
+
+**Categories:** source
 
 </details>
 
-</details>
+ <a id="tabsdata.MSSQLSrc"></a>
+<details open>
+<summary>MSSQLSrc</summary>
 
- <details open>
-<summary>**`MSSQLSrc`**</summary>
-
-**`MSSQLSrc(conn: MSSQLConn, queries: str | list[str], initial_values: dict[str, Any] | None = None, transactional: bool = True, chunk_size: Annotated[int, Gt(gt=0)] = 100000, loader: Literal['polars_sqlalchemy', 'pandas'] = 'polars_sqlalchemy', schema_overrides: dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64] | list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]] | None = None)`**
+```python
+class MSSQLSrc(
+    conn: MSSQLConn,
+    queries: str | list[str],
+    initial_values: dict[str, Any] | None = None,
+    transactional: bool = True,
+    chunk_size: Annotated[int, Gt(gt=0)] = 100000,
+    loader: Literal['polars_sqlalchemy', 'pandas'] = 'polars_sqlalchemy',
+    schema_overrides: dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64] | list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]] | None = None,
+)
+```
 
 Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Source Plugin for reading data from a Microsoft SQL Server (MSSQL) database.
 
-<details open>
-<summary>**`chunk_size`**</summary>
-
-`chunk_size`
-
+<a id="tabsdata.MSSQLSrc.chunk_size"></a>
+<ResponseField name="chunk_size">
 The chunk size in records for reading large queries in batches.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`conn`**</summary>
-
-`conn`
-
+<a id="tabsdata.MSSQLSrc.conn"></a>
+<ResponseField name="conn">
 The MSSQL connection configuration.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`initial_values`**</summary>
-
-`initial_values`
-
+<a id="tabsdata.MSSQLSrc.initial_values"></a>
+<ResponseField name="initial_values">
 The initial values for the parameters in the SQL queries.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`loader`**</summary>
-
-`loader`
-
+<a id="tabsdata.MSSQLSrc.loader"></a>
+<ResponseField name="loader">
 The data processing loader to use for executing SQL imports.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`queries`**</summary>
-
-`queries`
-
+<a id="tabsdata.MSSQLSrc.queries"></a>
+<ResponseField name="queries">
 The SQL queries to execute to read data.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`schema_overrides`**</summary>
-
-`schema_overrides`
-
+<a id="tabsdata.MSSQLSrc.schema_overrides"></a>
+<ResponseField name="schema_overrides">
 The schema overrides for the tables being read.
+</ResponseField>
 
-</details>
+<a id="tabsdata.MSSQLSrc.stream"></a>
+#### `stream`
 
-<details open>
-<summary>**`stream`**</summary>
-
-**`stream(working_dir: str)`**
+```python
+def stream(
+    working_dir: str,
+)
+```
 
 Execute the query and load the results as a list of TableFrames.
 
+**Parameters:**
+
+<ParamField path="working_dir">
+  The directory where the Parquet files will be saved.
+</ParamField>
+
 **Returns:** A list of TableFrames containing the query results.
 
-</details>
-
-<details open>
-<summary>**`transactional`**</summary>
-
-`transactional`
-
+<a id="tabsdata.MSSQLSrc.transactional"></a>
+<ResponseField name="transactional">
 Whether to use transactions for reading to ensure consistency.
+</ResponseField>
+
+**Categories:** source
 
 </details>
 
-</details>
+ <a id="tabsdata.MariaDBSource"></a>
+<details open>
+<summary>MariaDBSource</summary>
 
- <details open>
-<summary>**`MariaDBSource`**</summary>
-
-**`MariaDBSource(**kwargs)`**
+```python
+class MariaDBSource(
+    **kwargs,
+)
+```
 
 Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 MariaDB-based data inputs.
 
-<details open>
-<summary>**`chunk`**</summary>
+<a id="tabsdata.MariaDBSource.chunk"></a>
+#### `chunk`
 
-**`chunk(working_dir: str)`**
+```python
+def chunk(
+    working_dir: str,
+)
+```
 
 Trigger the import of the data. This must be implemented in any class that
 inherits from this class unless directly implementing streaming. The method will
@@ -779,155 +744,149 @@ example, you would give the following return to provide a first argument with a
 single file and a second argument with two files:return
 [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
 
+**Parameters:**
+
+<ParamField path="working_dir (str)">
+  The folder where the files must be stored
+</ParamField>
+
 **Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
 
-**Return type:** Union[str, Tuple[str, …], List[str]]
+**Returns:** Union[str, Tuple[str, …], List[str]]
 
-</details>
-
-<details open>
-<summary>**`credentials`**</summary>
-
-`credentials`
-
+<a id="tabsdata.MariaDBSource.credentials"></a>
+<ResponseField name="credentials">
 The credentials required to access
 MariaDB. If no credentials were provided, it will return None.
 
  **Type:** UserPasswordCredentials | None
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`initial_values`**</summary>
-
-`initial_values`
-
+<a id="tabsdata.MariaDBSource.initial_values"></a>
+<ResponseField name="initial_values">
 The initial values for the parameters in the SQL queries.
 
  **Type:** dict
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`query`**</summary>
-
-`query`
-
+<a id="tabsdata.MariaDBSource.query"></a>
+<ResponseField name="query">
 The SQL query(s) to execute.
 
  **Type:** str | List[str]
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`uri`**</summary>
-
-`uri`
-
+<a id="tabsdata.MariaDBSource.uri"></a>
+<ResponseField name="uri">
 The URI of the database where the data is located.
 
  **Type:** str
+</ResponseField>
+
+**Categories:** source
 
 </details>
 
-</details>
+ <a id="tabsdata.MariaDBSrc"></a>
+<details open>
+<summary>MariaDBSrc</summary>
 
- <details open>
-<summary>**`MariaDBSrc`**</summary>
-
-**`MariaDBSrc(conn: MariaDBConn, queries: str | list[str], initial_values: dict[str, Any] | None = None, transactional: bool = True, chunk_size: Annotated[int, Gt(gt=0)] = 100000, loader: Literal['polars_sqlalchemy', 'pandas'] = 'polars_sqlalchemy', schema_overrides: dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64] | list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]] | None = None)`**
+```python
+class MariaDBSrc(
+    conn: MariaDBConn,
+    queries: str | list[str],
+    initial_values: dict[str, Any] | None = None,
+    transactional: bool = True,
+    chunk_size: Annotated[int, Gt(gt=0)] = 100000,
+    loader: Literal['polars_sqlalchemy', 'pandas'] = 'polars_sqlalchemy',
+    schema_overrides: dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64] | list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]] | None = None,
+)
+```
 
 Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Source plugin for reading data from MariaDB.
 
-<details open>
-<summary>**`chunk_size`**</summary>
-
-`chunk_size`
-
+<a id="tabsdata.MariaDBSrc.chunk_size"></a>
+<ResponseField name="chunk_size">
 The chunk size in records for reading large queries in batches.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`conn`**</summary>
-
-`conn`
-
+<a id="tabsdata.MariaDBSrc.conn"></a>
+<ResponseField name="conn">
 The MariaDB connection configuration.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`initial_values`**</summary>
-
-`initial_values`
-
+<a id="tabsdata.MariaDBSrc.initial_values"></a>
+<ResponseField name="initial_values">
 The initial values for the parameters in the SQL queries.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`loader`**</summary>
-
-`loader`
-
+<a id="tabsdata.MariaDBSrc.loader"></a>
+<ResponseField name="loader">
 The data processing loader to use for executing SQL imports.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`queries`**</summary>
-
-`queries`
-
+<a id="tabsdata.MariaDBSrc.queries"></a>
+<ResponseField name="queries">
 The SQL queries to execute to read data.
+</ResponseField>
 
-</details>
+<a id="tabsdata.MariaDBSrc.schema_overrides"></a>
+<ResponseField name="schema_overrides">
 
-<details open>
-<summary>**`schema_overrides`**</summary>
+</ResponseField>
 
-`schema_overrides`
+<a id="tabsdata.MariaDBSrc.stream"></a>
+#### `stream`
 
-</details>
-
-<details open>
-<summary>**`stream`**</summary>
-
-**`stream(working_dir: str)`**
+```python
+def stream(
+    working_dir: str,
+)
+```
 
 Execute the query and load the results as a list of TableFrames.
 
+**Parameters:**
+
+<ParamField path="working_dir">
+  The directory where the Parquet files will be saved.
+</ParamField>
+
 **Returns:** A list of TableFrames containing the query results.
 
-</details>
-
-<details open>
-<summary>**`transactional`**</summary>
-
-`transactional`
-
+<a id="tabsdata.MariaDBSrc.transactional"></a>
+<ResponseField name="transactional">
 Whether to use transactions for reading to ensure consistency.
+</ResponseField>
+
+**Categories:** source
 
 </details>
 
-</details>
+ <a id="tabsdata.MySQLSource"></a>
+<details open>
+<summary>MySQLSource</summary>
 
- <details open>
-<summary>**`MySQLSource`**</summary>
-
-**`MySQLSource(**kwargs)`**
+```python
+class MySQLSource(
+    **kwargs,
+)
+```
 
 Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 MySQL-based data inputs.
 
-<details open>
-<summary>**`chunk`**</summary>
+<a id="tabsdata.MySQLSource.chunk"></a>
+#### `chunk`
 
-**`chunk(working_dir: str)`**
+```python
+def chunk(
+    working_dir: str,
+)
+```
 
 Trigger the import of the data. This must be implemented in any class that
 inherits from this class unless directly implementing streaming. The method will
@@ -940,157 +899,149 @@ example, you would give the following return to provide a first argument with a
 single file and a second argument with two files:return
 [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
 
+**Parameters:**
+
+<ParamField path="working_dir (str)">
+  The folder where the files must be stored
+</ParamField>
+
 **Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
 
-**Return type:** Union[str, Tuple[str, …], List[str]]
+**Returns:** Union[str, Tuple[str, …], List[str]]
 
-</details>
-
-<details open>
-<summary>**`credentials`**</summary>
-
-`credentials`
-
+<a id="tabsdata.MySQLSource.credentials"></a>
+<ResponseField name="credentials">
 The credentials required to access the
 MySQLDatabase. If no credentials were provided, it will return None.
 
  **Type:** UserPasswordCredentials | None
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`initial_values`**</summary>
-
-`initial_values`
-
+<a id="tabsdata.MySQLSource.initial_values"></a>
+<ResponseField name="initial_values">
 The initial values for the parameters in the SQL queries.
 
  **Type:** dict
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`query`**</summary>
-
-`query`
-
+<a id="tabsdata.MySQLSource.query"></a>
+<ResponseField name="query">
 The SQL query(s) to execute.
 
  **Type:** str | List[str]
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`uri`**</summary>
-
-`uri`
-
+<a id="tabsdata.MySQLSource.uri"></a>
+<ResponseField name="uri">
 The URI of the database where the data is located.
 
  **Type:** str
+</ResponseField>
+
+**Categories:** source
 
 </details>
 
-</details>
+ <a id="tabsdata.MySQLSrc"></a>
+<details open>
+<summary>MySQLSrc</summary>
 
- <details open>
-<summary>**`MySQLSrc`**</summary>
-
-**`MySQLSrc(conn: MySQLConn, queries: str | list[str], initial_values: dict[str, Any] | None = None, transactional: bool = True, chunk_size: Annotated[int, Gt(gt=0)] = 100000, loader: Literal['polars_sqlalchemy', 'pandas'] = 'polars_sqlalchemy', schema_overrides: dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64] | list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]] | None = None)`**
+```python
+class MySQLSrc(
+    conn: MySQLConn,
+    queries: str | list[str],
+    initial_values: dict[str, Any] | None = None,
+    transactional: bool = True,
+    chunk_size: Annotated[int, Gt(gt=0)] = 100000,
+    loader: Literal['polars_sqlalchemy', 'pandas'] = 'polars_sqlalchemy',
+    schema_overrides: dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64] | list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]] | None = None,
+)
+```
 
 Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Source plugin for reading data from MySQL.
 
-<details open>
-<summary>**`chunk_size`**</summary>
-
-`chunk_size`
-
+<a id="tabsdata.MySQLSrc.chunk_size"></a>
+<ResponseField name="chunk_size">
 The chunk size in records for reading large queries in batches.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`conn`**</summary>
-
-`conn`
-
+<a id="tabsdata.MySQLSrc.conn"></a>
+<ResponseField name="conn">
 The MySQL connection configuration.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`initial_values`**</summary>
-
-`initial_values`
-
+<a id="tabsdata.MySQLSrc.initial_values"></a>
+<ResponseField name="initial_values">
 The initial values for the parameters in the SQL queries.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`loader`**</summary>
-
-`loader`
-
+<a id="tabsdata.MySQLSrc.loader"></a>
+<ResponseField name="loader">
 The data processing loader to use for executing SQL imports.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`queries`**</summary>
-
-`queries`
-
+<a id="tabsdata.MySQLSrc.queries"></a>
+<ResponseField name="queries">
 The SQL queries to execute to read data.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`schema_overrides`**</summary>
-
-`schema_overrides`
-
+<a id="tabsdata.MySQLSrc.schema_overrides"></a>
+<ResponseField name="schema_overrides">
 The schema overrides for the tables being read.
+</ResponseField>
 
-</details>
+<a id="tabsdata.MySQLSrc.stream"></a>
+#### `stream`
 
-<details open>
-<summary>**`stream`**</summary>
-
-**`stream(working_dir: str)`**
+```python
+def stream(
+    working_dir: str,
+)
+```
 
 Execute the query and load the results as a list of TableFrames.
 
+**Parameters:**
+
+<ParamField path="working_dir">
+  The directory where the Parquet files will be saved.
+</ParamField>
+
 **Returns:** A list of TableFrames containing the query results.
 
-</details>
-
-<details open>
-<summary>**`transactional`**</summary>
-
-`transactional`
-
+<a id="tabsdata.MySQLSrc.transactional"></a>
+<ResponseField name="transactional">
 Whether to use transactions for reading to ensure consistency.
+</ResponseField>
+
+**Categories:** source
 
 </details>
 
-</details>
+ <a id="tabsdata.OracleSource"></a>
+<details open>
+<summary>OracleSource</summary>
 
- <details open>
-<summary>**`OracleSource`**</summary>
-
-**`OracleSource(**kwargs)`**
+```python
+class OracleSource(
+    **kwargs,
+)
+```
 
 Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Oracle-based data inputs.
 
-<details open>
-<summary>**`chunk`**</summary>
+<a id="tabsdata.OracleSource.chunk"></a>
+#### `chunk`
 
-**`chunk(working_dir: str)`**
+```python
+def chunk(
+    working_dir: str,
+)
+```
 
 Trigger the import of the data. This must be implemented in any class that
 inherits from this class unless directly implementing streaming. The method will
@@ -1103,157 +1054,149 @@ example, you would give the following return to provide a first argument with a
 single file and a second argument with two files:return
 [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
 
+**Parameters:**
+
+<ParamField path="working_dir (str)">
+  The folder where the files must be stored
+</ParamField>
+
 **Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
 
-**Return type:** Union[str, Tuple[str, …], List[str]]
+**Returns:** Union[str, Tuple[str, …], List[str]]
 
-</details>
-
-<details open>
-<summary>**`credentials`**</summary>
-
-`credentials`
-
+<a id="tabsdata.OracleSource.credentials"></a>
+<ResponseField name="credentials">
 The credentials required to access
 Oracle. If no credentials were provided, it will return None.
 
  **Type:** UserPasswordCredentials | None
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`initial_values`**</summary>
-
-`initial_values`
-
+<a id="tabsdata.OracleSource.initial_values"></a>
+<ResponseField name="initial_values">
 The initial values for the parameters in the SQL queries.
 
  **Type:** dict
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`query`**</summary>
-
-`query`
-
+<a id="tabsdata.OracleSource.query"></a>
+<ResponseField name="query">
 The SQL query(s) to execute.
 
  **Type:** str | List[str]
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`uri`**</summary>
-
-`uri`
-
+<a id="tabsdata.OracleSource.uri"></a>
+<ResponseField name="uri">
 The URI of the database where the data is located.
 
  **Type:** str
+</ResponseField>
+
+**Categories:** source
 
 </details>
 
-</details>
+ <a id="tabsdata.OracleSrc"></a>
+<details open>
+<summary>OracleSrc</summary>
 
- <details open>
-<summary>**`OracleSrc`**</summary>
-
-**`OracleSrc(conn: OracleConn, queries: str | list[str], initial_values: dict[str, Any] | None = None, transactional: bool = True, chunk_size: Annotated[int, Gt(gt=0)] = 100000, loader: Literal['polars_sqlalchemy', 'pandas'] = 'polars_sqlalchemy', schema_overrides: dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64] | list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]] | None = None)`**
+```python
+class OracleSrc(
+    conn: OracleConn,
+    queries: str | list[str],
+    initial_values: dict[str, Any] | None = None,
+    transactional: bool = True,
+    chunk_size: Annotated[int, Gt(gt=0)] = 100000,
+    loader: Literal['polars_sqlalchemy', 'pandas'] = 'polars_sqlalchemy',
+    schema_overrides: dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64] | list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]] | None = None,
+)
+```
 
 Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Source plugin for reading data from Oracle.
 
-<details open>
-<summary>**`chunk_size`**</summary>
-
-`chunk_size`
-
+<a id="tabsdata.OracleSrc.chunk_size"></a>
+<ResponseField name="chunk_size">
 The chunk size in records for reading large queries in batches.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`conn`**</summary>
-
-`conn`
-
+<a id="tabsdata.OracleSrc.conn"></a>
+<ResponseField name="conn">
 The Oracle connection configuration.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`initial_values`**</summary>
-
-`initial_values`
-
+<a id="tabsdata.OracleSrc.initial_values"></a>
+<ResponseField name="initial_values">
 The initial values for the parameters in the SQL queries.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`loader`**</summary>
-
-`loader`
-
+<a id="tabsdata.OracleSrc.loader"></a>
+<ResponseField name="loader">
 The data processing loader to use for executing SQL imports.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`queries`**</summary>
-
-`queries`
-
+<a id="tabsdata.OracleSrc.queries"></a>
+<ResponseField name="queries">
 The SQL queries to execute to read data.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`schema_overrides`**</summary>
-
-`schema_overrides`
-
+<a id="tabsdata.OracleSrc.schema_overrides"></a>
+<ResponseField name="schema_overrides">
 The schema overrides for the tables being read.
+</ResponseField>
 
-</details>
+<a id="tabsdata.OracleSrc.stream"></a>
+#### `stream`
 
-<details open>
-<summary>**`stream`**</summary>
-
-**`stream(working_dir: str)`**
+```python
+def stream(
+    working_dir: str,
+)
+```
 
 Execute the query and load the results as a list of TableFrames.
 
+**Parameters:**
+
+<ParamField path="working_dir">
+  The directory where the Parquet files will be saved.
+</ParamField>
+
 **Returns:** A list of TableFrames containing the query results.
 
-</details>
-
-<details open>
-<summary>**`transactional`**</summary>
-
-`transactional`
-
+<a id="tabsdata.OracleSrc.transactional"></a>
+<ResponseField name="transactional">
 Whether to use transactions for reading to ensure consistency.
+</ResponseField>
+
+**Categories:** source
 
 </details>
 
-</details>
+ <a id="tabsdata.PostgresSource"></a>
+<details open>
+<summary>PostgresSource</summary>
 
- <details open>
-<summary>**`PostgresSource`**</summary>
-
-**`PostgresSource(**kwargs)`**
+```python
+class PostgresSource(
+    **kwargs,
+)
+```
 
 Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Postgres-based data inputs.
 
-<details open>
-<summary>**`chunk`**</summary>
+<a id="tabsdata.PostgresSource.chunk"></a>
+#### `chunk`
 
-**`chunk(working_dir: str)`**
+```python
+def chunk(
+    working_dir: str,
+)
+```
 
 Trigger the import of the data. This must be implemented in any class that
 inherits from this class unless directly implementing streaming. The method will
@@ -1266,203 +1209,192 @@ example, you would give the following return to provide a first argument with a
 single file and a second argument with two files:return
 [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
 
+**Parameters:**
+
+<ParamField path="working_dir (str)">
+  The folder where the files must be stored
+</ParamField>
+
 **Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
 
-**Return type:** Union[str, Tuple[str, …], List[str]]
+**Returns:** Union[str, Tuple[str, …], List[str]]
 
-</details>
-
-<details open>
-<summary>**`credentials`**</summary>
-
-`credentials`
-
+<a id="tabsdata.PostgresSource.credentials"></a>
+<ResponseField name="credentials">
 The credentials required to access the
 PostgresDatabase. If no credentials were provided, it will return None.
 
  **Type:** UserPasswordCredentials | None
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`initial_values`**</summary>
-
-`initial_values`
-
+<a id="tabsdata.PostgresSource.initial_values"></a>
+<ResponseField name="initial_values">
 The initial values for the parameters in the SQL queries.
 
  **Type:** dict
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`query`**</summary>
-
-`query`
-
+<a id="tabsdata.PostgresSource.query"></a>
+<ResponseField name="query">
 The SQL query(s) to execute.
 
  **Type:** str | List[str]
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`uri`**</summary>
-
-`uri`
-
+<a id="tabsdata.PostgresSource.uri"></a>
+<ResponseField name="uri">
 The URI of the database where the data is located.
 
  **Type:** str
+</ResponseField>
+
+**Categories:** source
 
 </details>
 
-</details>
+ <a id="tabsdata.PostgresSrc"></a>
+<details open>
+<summary>PostgresSrc</summary>
 
- <details open>
-<summary>**`PostgresSrc`**</summary>
-
-**`PostgresSrc(conn: PostgresConn, queries: str | list[str], initial_values: dict[str, Any] | None = None, transactional: bool = True, chunk_size: Annotated[int, Gt(gt=0)] = 100000, loader: Literal['polars_sqlalchemy', 'pandas'] = 'polars_sqlalchemy', schema_overrides: dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64] | list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]] | None = None)`**
+```python
+class PostgresSrc(
+    conn: PostgresConn,
+    queries: str | list[str],
+    initial_values: dict[str, Any] | None = None,
+    transactional: bool = True,
+    chunk_size: Annotated[int, Gt(gt=0)] = 100000,
+    loader: Literal['polars_sqlalchemy', 'pandas'] = 'polars_sqlalchemy',
+    schema_overrides: dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64] | list[dict[str, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64]] | None = None,
+)
+```
 
 Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Source plugin for reading data from Postgres.
 
-<details open>
-<summary>**`chunk_size`**</summary>
-
-`chunk_size`
-
+<a id="tabsdata.PostgresSrc.chunk_size"></a>
+<ResponseField name="chunk_size">
 The chunk size in records for reading large queries in batches.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`conn`**</summary>
-
-`conn`
-
+<a id="tabsdata.PostgresSrc.conn"></a>
+<ResponseField name="conn">
 The Postgres connection configuration.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`initial_values`**</summary>
-
-`initial_values`
-
+<a id="tabsdata.PostgresSrc.initial_values"></a>
+<ResponseField name="initial_values">
 The initial values for the parameters in the SQL queries.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`loader`**</summary>
-
-`loader`
-
+<a id="tabsdata.PostgresSrc.loader"></a>
+<ResponseField name="loader">
 The data processing loader to use for executing SQL imports.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`queries`**</summary>
-
-`queries`
-
+<a id="tabsdata.PostgresSrc.queries"></a>
+<ResponseField name="queries">
 The SQL queries to execute to read data.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`schema_overrides`**</summary>
-
-`schema_overrides`
-
+<a id="tabsdata.PostgresSrc.schema_overrides"></a>
+<ResponseField name="schema_overrides">
 The schema overrides for the tables being read.
+</ResponseField>
 
-</details>
+<a id="tabsdata.PostgresSrc.stream"></a>
+#### `stream`
 
-<details open>
-<summary>**`stream`**</summary>
-
-**`stream(working_dir: str)`**
+```python
+def stream(
+    working_dir: str,
+)
+```
 
 Execute the query and load the results as a list of TableFrames.
 
+**Parameters:**
+
+<ParamField path="working_dir">
+  The directory where the Parquet files will be saved.
+</ParamField>
+
 **Returns:** A list of TableFrames containing the query results.
 
-</details>
-
-<details open>
-<summary>**`transactional`**</summary>
-
-`transactional`
-
+<a id="tabsdata.PostgresSrc.transactional"></a>
+<ResponseField name="transactional">
 Whether to use transactions for reading to ensure consistency.
+</ResponseField>
+
+**Categories:** source
 
 </details>
 
-</details>
+ <a id="tabsdata.S3Source"></a>
+<details open>
+<summary>S3Source</summary>
 
- <details open>
-<summary>**`S3Source`**</summary>
-
-**`S3Source(uri: str | list[str], credentials: S3Credentials, format: str | FileFormat = None, initial_last_modified: str | datetime = None, region: str = None, file_info: str | FileInfo | None = None)`**
+```python
+class S3Source(
+    uri: str | list[str],
+    credentials: S3Credentials,
+    format: str | FileFormat = None,
+    initial_last_modified: str | datetime = None,
+    region: str = None,
+    file_info: str | FileInfo | None = None,
+)
+```
 
 Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 S3-file-based data inputs.
 
-<details open>
-<summary>**`SupportedFormats`**</summary>
+<a id="tabsdata.S3Source.SupportedFormats"></a>
+### `SupportedFormats`
 
-**`SupportedFormats(*values)`**
+```python
+class SupportedFormats(
+    *values,
+)
+```
 
 Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
 Enum for the supported formats for the S3Source.
 
-<details open>
-<summary>**`avro`**</summary>
+<a id="tabsdata.S3Source.SupportedFormats.avro"></a>
+<ResponseField name="avro">
 
-`avro`
+</ResponseField>
 
-</details>
+<a id="tabsdata.S3Source.SupportedFormats.csv"></a>
+<ResponseField name="csv">
 
-<details open>
-<summary>**`csv`**</summary>
+</ResponseField>
 
-`csv`
+<a id="tabsdata.S3Source.SupportedFormats.log"></a>
+<ResponseField name="log">
 
-</details>
+</ResponseField>
 
-<details open>
-<summary>**`log`**</summary>
+<a id="tabsdata.S3Source.SupportedFormats.ndjson"></a>
+<ResponseField name="ndjson">
 
-`log`
+</ResponseField>
 
-</details>
+<a id="tabsdata.S3Source.SupportedFormats.parquet"></a>
+<ResponseField name="parquet">
 
-<details open>
-<summary>**`ndjson`**</summary>
+</ResponseField>
 
-`ndjson`
+<a id="tabsdata.S3Source.chunk"></a>
+#### `chunk`
 
-</details>
-
-<details open>
-<summary>**`parquet`**</summary>
-
-`parquet`
-
-</details>
-
-</details>
-
-<details open>
-<summary>**`chunk`**</summary>
-
-**`chunk(working_dir: str)`**
+```python
+def chunk(
+    working_dir: str,
+)
+```
 
 Trigger the import of the data. This must be implemented in any class that
 inherits from this class unless directly implementing streaming. The method will
@@ -1475,62 +1407,47 @@ example, you would give the following return to provide a first argument with a
 single file and a second argument with two files:return
 [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
 
+**Parameters:**
+
+<ParamField path="working_dir (str)">
+  The folder where the files must be stored
+</ParamField>
+
 **Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
 
-**Return type:** Union[str, Tuple[str, …], List[str]]
+**Returns:** Union[str, Tuple[str, …], List[str]]
 
-</details>
-
-<details open>
-<summary>**`credentials`**</summary>
-
-`credentials`
-
+<a id="tabsdata.S3Source.credentials"></a>
+<ResponseField name="credentials">
 The credentials required to access the S3 bucket.
 
  **Type:** S3Credentials
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`file_info`**</summary>
-
-`file_info`
-
+<a id="tabsdata.S3Source.file_info"></a>
+<ResponseField name="file_info">
 The file information to add as system columns.
 
  **Type:** FileInfo | None
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`format`**</summary>
-
-`format`
-
+<a id="tabsdata.S3Source.format"></a>
+<ResponseField name="format">
 The format of the file. If not provided, it will be inferred from
 the file.
 
  **Type:** FileFormat
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`initial_last_modified`**</summary>
-
-`initial_last_modified`
-
+<a id="tabsdata.S3Source.initial_last_modified"></a>
+<ResponseField name="initial_last_modified">
 The date and time after which the files were modified.
 
  **Type:** str
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`initial_values`**</summary>
-
-`initial_values`
-
+<a id="tabsdata.S3Source.initial_values"></a>
+<ResponseField name="initial_values">
 Return a dictionary with the initial values to be stored after execution of
 the plugin. They will be accessible in the next execution of the plugin.
 The dictionary must have the parameter names as keys and the initial values
@@ -1538,49 +1455,60 @@ as values, all the type string.
 
  **Returns:** A dictionary with the initial values of the parameters of the plugin.
 
-**Return type:** dict
+**Returns:** dict
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`region`**</summary>
-
-`region`
-
+<a id="tabsdata.S3Source.region"></a>
+<ResponseField name="region">
 The region where the S3 bucket is located.
 
  **Type:** str
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`uri`**</summary>
-
-`uri`
-
+<a id="tabsdata.S3Source.uri"></a>
+<ResponseField name="uri">
 ‘s3://path/to/files’.
 
  **Type:** str | list[str]
 
 **Type:** The URI of the files with format
+</ResponseField>
+
+**Categories:** source
 
 </details>
 
-</details>
+ <a id="tabsdata.SalesforceReportSource"></a>
+<details open>
+<summary>SalesforceReportSource</summary>
 
- <details open>
-<summary>**`SalesforceReportSource`**</summary>
-
-**`SalesforceReportSource(credentials: SalesforceCredentials, report: str | list[str], column_name_strategy: Literal['columnName', 'label'], find_report_by: Literal['id', 'name'] = None, filter: tuple[str, str, str] | list[tuple[str, str, str]] = None, filter_logic: str = None, instance_url: str = None, last_modified_column: str = None, initial_last_modified: str = None, **kwargs)`**
+```python
+class SalesforceReportSource(
+    credentials: SalesforceCredentials,
+    report: str | list[str],
+    column_name_strategy: Literal['columnName', 'label'],
+    find_report_by: Literal['id', 'name'] = None,
+    filter: tuple[str, str, str] | list[tuple[str, str, str]] = None,
+    filter_logic: str = None,
+    instance_url: str = None,
+    last_modified_column: str = None,
+    initial_last_modified: str = None,
+    **kwargs,
+)
+```
 
 Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Salesforce Reports based data inputs.
 
-<details open>
-<summary>**`chunk`**</summary>
+<a id="tabsdata.SalesforceReportSource.chunk"></a>
+#### `chunk`
 
-**`chunk(working_dir: str)`**
+```python
+def chunk(
+    working_dir: str,
+)
+```
 
 Trigger the import of the data. This must be implemented in any class that
 inherits from this class unless directly implementing streaming. The method will
@@ -1593,69 +1521,77 @@ example, you would give the following return to provide a first argument with a
 single file and a second argument with two files:return
 [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
 
+**Parameters:**
+
+<ParamField path="working_dir (str)">
+  The folder where the files must be stored
+</ParamField>
+
 **Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
 
-**Return type:** Union[str, Tuple[str, …], List[str]]
+**Returns:** Union[str, Tuple[str, …], List[str]]
+
+<a id="tabsdata.SalesforceReportSource.column_name_strategy"></a>
+<ResponseField name="column_name_strategy">
+
+</ResponseField>
+
+<a id="tabsdata.SalesforceReportSource.credentials"></a>
+<ResponseField name="credentials">
+
+</ResponseField>
+
+<a id="tabsdata.SalesforceReportSource.filter"></a>
+<ResponseField name="filter">
+
+</ResponseField>
+
+<a id="tabsdata.SalesforceReportSource.filter_logic"></a>
+<ResponseField name="filter_logic">
+
+</ResponseField>
+
+<a id="tabsdata.SalesforceReportSource.find_report_by"></a>
+<ResponseField name="find_report_by">
+
+</ResponseField>
+
+<a id="tabsdata.SalesforceReportSource.report"></a>
+<ResponseField name="report">
+
+</ResponseField>
+
+**Categories:** source
 
 </details>
 
+ <a id="tabsdata.SalesforceSource"></a>
 <details open>
-<summary>**`column_name_strategy`**</summary>
+<summary>SalesforceSource</summary>
 
-`column_name_strategy`
-
-</details>
-
-<details open>
-<summary>**`credentials`**</summary>
-
-`credentials`
-
-</details>
-
-<details open>
-<summary>**`filter`**</summary>
-
-`filter`
-
-</details>
-
-<details open>
-<summary>**`filter_logic`**</summary>
-
-`filter_logic`
-
-</details>
-
-<details open>
-<summary>**`find_report_by`**</summary>
-
-`find_report_by`
-
-</details>
-
-<details open>
-<summary>**`report`**</summary>
-
-`report`
-
-</details>
-
-</details>
-
- <details open>
-<summary>**`SalesforceSource`**</summary>
-
-**`SalesforceSource(credentials: SalesforceCredentials, query: str | list[str], instance_url: str = None, include_deleted: bool = False, initial_last_modified: str = None, **kwargs)`**
+```python
+class SalesforceSource(
+    credentials: SalesforceCredentials,
+    query: str | list[str],
+    instance_url: str = None,
+    include_deleted: bool = False,
+    initial_last_modified: str = None,
+    **kwargs,
+)
+```
 
 Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Salesforce (SOQL query) based data inputs (not Salesforce Reports).
 
-<details open>
-<summary>**`chunk`**</summary>
+<a id="tabsdata.SalesforceSource.chunk"></a>
+#### `chunk`
 
-**`chunk(working_dir: str)`**
+```python
+def chunk(
+    working_dir: str,
+)
+```
 
 Trigger the import of the data. This must be implemented in any class that
 inherits from this class unless directly implementing streaming. The method will
@@ -1668,49 +1604,58 @@ example, you would give the following return to provide a first argument with a
 single file and a second argument with two files:return
 [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
 
+**Parameters:**
+
+<ParamField path="working_dir (str)">
+  The folder where the files must be stored
+</ParamField>
+
 **Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
 
-**Return type:** Union[str, Tuple[str, …], List[str]]
+**Returns:** Union[str, Tuple[str, …], List[str]]
+
+<a id="tabsdata.SalesforceSource.credentials"></a>
+<ResponseField name="credentials">
+
+</ResponseField>
+
+<a id="tabsdata.SalesforceSource.query"></a>
+<ResponseField name="query">
+
+</ResponseField>
+
+**Categories:** source
 
 </details>
 
+ <a id="tabsdata.Stage"></a>
 <details open>
-<summary>**`credentials`**</summary>
+<summary>Stage</summary>
 
-`credentials`
-
-</details>
-
-<details open>
-<summary>**`query`**</summary>
-
-`query`
-
-</details>
-
-</details>
-
- <details open>
-<summary>**`Stage`**</summary>
-
-**`Stage(use_existing_data: bool = True)`**
+```python
+class Stage(
+    use_existing_data: bool = True,
+)
+```
 
 Bases: [SourcePlugin](bymod-tabsdata#tabsdata.SourcePlugin)
 
 Inputs that have been placed in a stage, usually from a StageTrigger.
 
-<details open>
-<summary>**`stream`**</summary>
+<a id="tabsdata.Stage.stream"></a>
+#### `stream`
 
-**`stream(working_dir: str)`**
+```python
+def stream(
+    working_dir: str,
+)
+```
 
-</details>
+<a id="tabsdata.Stage.use_existing_data"></a>
+<ResponseField name="use_existing_data">
 
-<details open>
-<summary>**`use_existing_data`**</summary>
+</ResponseField>
 
-`use_existing_data`
-
-</details>
+**Categories:** source
 
 </details>

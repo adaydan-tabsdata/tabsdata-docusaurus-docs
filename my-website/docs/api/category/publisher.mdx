@@ -6,12 +6,25 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # Publisher
 
- <details open>
-<summary>**`publisher`**</summary>
+ <a id="tabsdata.publisher"></a>
+<details open>
+<summary>publisher</summary>
 
-**`publisher(source: AzureSource | LocalFileSource | MariaDBSource | MySQLSource | OracleSource | PostgresSource | S3Source | SourcePlugin, tables: TableOutput | str | List[str], name: str = None, trigger_by: PublisherTriggerBySpec = None, on_tables: OnTablesSpec = None)`**
+```python
+def publisher(
+    source: AzureSource | LocalFileSource | MariaDBSource | MySQLSource | OracleSource | PostgresSource | S3Source | SourcePlugin,
+    tables: TableOutput | str | List[str],
+    name: str = None,
+    trigger_by: PublisherTriggerBySpec = None,
+    on_tables: OnTablesSpec = None,
+)
+```
 
 Decorator to define a function to publish data to Tabsdata.
+
+**Categories:** publisher
+
+**Parameters:**
 
 <ParamField path="source">
   Where to obtain the data that will be provided as an input to the
@@ -43,6 +56,6 @@ Defaults to None.
 
 **Returns:** The function converted to a Tabsdata Function.
 
-**Return type:** callable
+**Returns:** callable
 
 </details>

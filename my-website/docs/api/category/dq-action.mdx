@@ -2,12 +2,21 @@
 title: "Data Quality Action"
 ---
 
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
 # Data Quality Action
 
- <details open>
-<summary>**`DataQuality`**</summary>
+ <a id="tabsdata.dataquality.DataQuality"></a>
+<details open>
+<summary>DataQuality</summary>
 
-**`DataQuality(table: str, classifiers: Classifier | list[Classifier], operators: Operator | list[Operator])`**
+```python
+class DataQuality(
+    table: str,
+    classifiers: Classifier | list[Classifier],
+    operators: Operator | list[Operator],
+)
+```
 
 Bases: `OnTablesAction`
 
@@ -17,32 +26,22 @@ This class encapsulates a set of data quality rules, defined by classifiers
 and operators, that are applied to a specified table. It serves as a container
 for a complete data quality workflow.
 
-<details open>
-<summary>**`classifiers`**</summary>
-
-`classifiers`
-
+<a id="tabsdata.dataquality.DataQuality.classifiers"></a>
+<ResponseField name="classifiers">
 Returns the list of classifiers used in this data quality action.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`operators`**</summary>
-
-`operators`
-
+<a id="tabsdata.dataquality.DataQuality.operators"></a>
+<ResponseField name="operators">
 Returns the list of operators that will be executed based on the
 classifier results.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`table`**</summary>
-
-`table`
-
+<a id="tabsdata.dataquality.DataQuality.table"></a>
+<ResponseField name="table">
 Returns the name of the table targeted by this data quality action.
+</ResponseField>
 
-</details>
+**Categories:** dq-action
 
 </details>

@@ -6,10 +6,18 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # Generation
 
- <details open>
-<summary>**`lit`**</summary>
+ <a id="tabsdata.lit"></a>
+<details open>
+<summary>lit</summary>
 
-**`lit(value: Any, dtype: Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None = None, *, allow_object: bool = False)`**
+```python
+def lit(
+    value: Any,
+    dtype: Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None = None,
+    *,
+    allow_object: bool = False,
+)
+```
 
 Expression for the given literal value.
 
@@ -33,6 +41,10 @@ Example:
 │ Hi   ┆ null │
 └──────┴──────┘
 ```
+
+**Categories:** generation
+
+**Parameters:**
 
 <ParamField path="value">
   The literal value.

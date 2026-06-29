@@ -6,10 +6,16 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # Tableframe
 
- <details open>
-<summary>**`assert_has_cols`**</summary>
+ <a id="tabsdata.TableFrame.assert_has_cols"></a>
+<details open>
+<summary>assert_has_cols</summary>
 
-**`assert_has_cols(cols: str | list[str], exact: bool | None = False)`**
+```python
+def assert_has_cols(
+    cols: str | list[str],
+    exact: bool | None = False,
+)
+```
 
 Ensures that the (non-system) columns in the TableFrame match the expected
 columns.
@@ -29,6 +35,10 @@ Example:
 >>> tf.assert_has_cols(["a", "b"], exact=True)
 ```
 
+**Categories:** tableframe
+
+**Parameters:**
+
 <ParamField path="cols">
   The expected column name(s). Can be a string or a list of strings.
 </ParamField>
@@ -43,10 +53,15 @@ columns.
 
 </details>
 
- <details open>
-<summary>**`clear`**</summary>
+ <a id="tabsdata.TableFrame.clear"></a>
+<details open>
+<summary>clear</summary>
 
-**`clear(n: int = 0)`**
+```python
+def clear(
+    n: int = 0,
+)
+```
 
 Clears all rows of the TableFrame preserving the schema.
 
@@ -83,51 +98,105 @@ Example:
 └──────┴───────┘
 ```
 
+**Categories:** tableframe
+
 </details>
 
- <details open>
-<summary>**`empty`**</summary>
+ <a id="tabsdata.TableFrame.empty"></a>
+<details open>
+<summary>empty</summary>
 
-**`empty(schema: SimpleSchema = None)`**
+```python
+def empty(
+    schema: SimpleSchema = None,
+)
+```
 
 Creates an empty (no column - no row) TableFrame.
 
+**Categories:** tableframe
+
 </details>
 
- <details open>
-<summary>**`from_dict`**</summary>
+ <a id="tabsdata.TableFrame.from_dict"></a>
+<details open>
+<summary>from_dict</summary>
 
-**`from_dict(data: Mapping[str, Sequence[object] | Mapping[str, Sequence[object]]] | None = None)`**
+```python
+def from_dict(
+    data: Mapping[str, Sequence[object] | Mapping[str, Sequence[object]]] | None = None,
+)
+```
 
 Creates tableframe from a dictionary, or None.
 None produces as an empty (no column - no row) tableframe.
 
+**Categories:** tableframe
+
+**Parameters:**
+
+<ParamField path="data">
+  Input data.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`from_pandas`**</summary>
+ <a id="tabsdata.TableFrame.from_pandas"></a>
+<details open>
+<summary>from_pandas</summary>
 
-**`from_pandas(data: pd.DataFrame | None = None)`**
+```python
+def from_pandas(
+    data: pd.DataFrame | None = None,
+)
+```
 
 Creates tableframe from a pandas dataframe, or None.
 None produces as an empty (no column - no row) tableframe.
 
+**Categories:** tableframe
+
+**Parameters:**
+
+<ParamField path="data">
+  Input data.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`from_polars`**</summary>
+ <a id="tabsdata.TableFrame.from_polars"></a>
+<details open>
+<summary>from_polars</summary>
 
-**`from_polars(data: LazyFrame | DataFrame | None = None)`**
+```python
+def from_polars(
+    data: LazyFrame | DataFrame | None = None,
+)
+```
 
 Creates tableframe from a polars dataframe or lazyframe, or None.
 None produces as an empty (no column - no row) tableframe.
 
+**Categories:** tableframe
+
+**Parameters:**
+
+<ParamField path="data">
+  Input data.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`has_cols`**</summary>
+ <a id="tabsdata.TableFrame.has_cols"></a>
+<details open>
+<summary>has_cols</summary>
 
-**`has_cols(cols: str | list[str], exact: bool | None = False)`**
+```python
+def has_cols(
+    cols: str | list[str],
+    exact: bool | None = False,
+)
+```
 
 Verifies the presence of (non-system) columns in the TableFrame.
 
@@ -166,6 +235,10 @@ Example:
 (True, {}, {})
 ```
 
+**Categories:** tableframe
+
+**Parameters:**
+
 <ParamField path="cols">
   The column name(s) to verify. Can be a string or a list of strings.
 </ParamField>
@@ -179,14 +252,19 @@ columns.
 A set of columns in cols missing in the TableFrame.
 A set of columns in the TableFrame missing in cols.
 
-**Return type:** tuple[bool, set[str], set[str]]
+**Returns:** tuple[bool, set[str], set[str]]
 
 </details>
 
- <details open>
-<summary>**`has_same_schema`**</summary>
+ <a id="tabsdata.TableFrame.has_same_schema"></a>
+<details open>
+<summary>has_same_schema</summary>
 
-**`has_same_schema(tf: TableFrame)`**
+```python
+def has_same_schema(
+    tf: TableFrame,
+)
+```
 
 Verifies if the schema of the current TableFrame is same than the provided
 TableFrame.
@@ -243,16 +321,31 @@ False
 False
 ```
 
+**Categories:** tableframe
+
+**Categories:** description
+
+**Categories:** description
+
+**Parameters:**
+
+<ParamField path="tf">
+  The TableFrame to compare with.
+</ParamField>
+
 **Returns:** Whether the condition is met or not.
 
-**Return type:** bool
+**Returns:** bool
 
 </details>
 
- <details open>
-<summary>**`is_empty`**</summary>
+ <a id="tabsdata.TableFrame.is_empty"></a>
+<details open>
+<summary>is_empty</summary>
 
-**`is_empty`**
+```python
+def is_empty()
+```
 
 Checks if a TableFrame has no rows.
 
@@ -289,12 +382,23 @@ False
 True
 ```
 
+**Categories:** tableframe
+
 </details>
 
- <details open>
-<summary>**`sort`**</summary>
+ <a id="tabsdata.TableFrame.sort"></a>
+<details open>
+<summary>sort</summary>
 
-**`sort(by: td_typing.IntoExpr | Iterable[td_typing.IntoExpr], *more_by: td_typing.IntoExpr, descending: bool | Sequence[bool] = False, nulls_last: bool | Sequence[bool] = False, maintain_order: bool = False)`**
+```python
+def sort(
+    by: td_typing.IntoExpr | Iterable[td_typing.IntoExpr],
+    *more_by: td_typing.IntoExpr,
+    descending: bool | Sequence[bool] = False,
+    nulls_last: bool | Sequence[bool] = False,
+    maintain_order: bool = False,
+)
+```
 
 Sort the TableFrame by the given column(s) or expression(s).
 
@@ -340,6 +444,10 @@ Example:
 └──────┴───────┘
 ```
 
+**Categories:** tableframe
+
+**Parameters:**
+
 <ParamField path="by">
   Column(s) or expression(s) to sort by.
 </ParamField>
@@ -362,38 +470,58 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`to_dict`**</summary>
+ <a id="tabsdata.TableFrame.to_dict"></a>
+<details open>
+<summary>to_dict</summary>
 
-**`to_dict`**
+```python
+def to_dict()
+```
 
 Creates a dictionary from this tableframe.
 
+**Categories:** tableframe
+
 </details>
 
- <details open>
-<summary>**`to_pandas`**</summary>
+ <a id="tabsdata.TableFrame.to_pandas"></a>
+<details open>
+<summary>to_pandas</summary>
 
-**`to_pandas`**
+```python
+def to_pandas()
+```
 
 Creates a pandas dataframe from this tableframe.
 
+**Categories:** tableframe
+
 </details>
 
- <details open>
-<summary>**`to_polars_df`**</summary>
+ <a id="tabsdata.TableFrame.to_polars_df"></a>
+<details open>
+<summary>to_polars_df</summary>
 
-**`to_polars_df`**
+```python
+def to_polars_df()
+```
 
 Creates a polars dataframe from this tableframe.
 
+**Categories:** tableframe
+
 </details>
 
- <details open>
-<summary>**`to_polars_lf`**</summary>
+ <a id="tabsdata.TableFrame.to_polars_lf"></a>
+<details open>
+<summary>to_polars_lf</summary>
 
-**`to_polars_lf`**
+```python
+def to_polars_lf()
+```
 
 Creates a polars lazyframe from this tableframe.
+
+**Categories:** tableframe
 
 </details>

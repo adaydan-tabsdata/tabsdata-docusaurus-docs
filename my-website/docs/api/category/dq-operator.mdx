@@ -2,79 +2,117 @@
 title: "Operations"
 ---
 
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
 # Operations
 
- <details open>
-<summary>**`AllOk`**</summary>
+ <a id="tabsdata.dataquality.AllOk"></a>
+<details open>
+<summary>AllOk</summary>
 
-**`AllOk(none_is_ok: bool = False, nan_is_ok: bool = False, *, tags: str | list[str] | None = None)`**
+```python
+class AllOk(
+    none_is_ok: bool = False,
+    nan_is_ok: bool = False,
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: [BoolCriteria](bymod-tabsdata.dataquality#tabsdata.dataquality.BoolCriteria)
 
 A boolean criteria that selects records where all boolean classifiers
 pass (True).
 
+**Categories:** dq-operator
+
 </details>
 
- <details open>
-<summary>**`AnyFailed`**</summary>
+ <a id="tabsdata.dataquality.AnyFailed"></a>
+<details open>
+<summary>AnyFailed</summary>
 
-**`AnyFailed(none_is_ok: bool = False, nan_is_ok: bool = False, *, tags: str | list[str] | None = None)`**
+```python
+class AnyFailed(
+    none_is_ok: bool = False,
+    nan_is_ok: bool = False,
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: [BoolCriteria](bymod-tabsdata.dataquality#tabsdata.dataquality.BoolCriteria)
 
 A boolean criteria that selects records where at least one boolean
 classifier fails (False).
 
+**Categories:** dq-operator
+
 </details>
 
- <details open>
-<summary>**`Enrich`**</summary>
+ <a id="tabsdata.dataquality.Enrich"></a>
+<details open>
+<summary>Enrich</summary>
 
-**`Enrich(to_table: str | None = None, *, tags: str | list[str] | None = None)`**
+```python
+class Enrich(
+    to_table: str | None = None,
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: `TagOperator`
 
 An operator that adds the data quality classifier columns to the original
 table frame. It does not remove any row from the original table.
 
-<details open>
-<summary>**`to_table`**</summary>
-
-`to_table`
-
+<a id="tabsdata.dataquality.Enrich.to_table"></a>
+<ResponseField name="to_table">
 Returns the destination table with the enriched data quality classifier
 columns. If None, the original table is used.
+</ResponseField>
+
+**Categories:** dq-operator
 
 </details>
 
-</details>
+ <a id="tabsdata.dataquality.Fail"></a>
+<details open>
+<summary>Fail</summary>
 
- <details open>
-<summary>**`Fail`**</summary>
-
-**`Fail(criteria: Criteria, threshold: Threshold)`**
+```python
+class Fail(
+    criteria: Criteria,
+    threshold: Threshold,
+)
+```
 
 Bases: `CriteriaOperator`
 
 An operator that fails the current transaction if a data quality threshold
 is met.
 
-<details open>
-<summary>**`threshold`**</summary>
-
-`threshold`
-
+<a id="tabsdata.dataquality.Fail.threshold"></a>
+<ResponseField name="threshold">
 Returns the threshold for this Fail operation.
+</ResponseField>
+
+**Categories:** dq-operator
 
 </details>
 
-</details>
+ <a id="tabsdata.dataquality.Filter"></a>
+<details open>
+<summary>Filter</summary>
 
- <details open>
-<summary>**`Filter`**</summary>
-
-**`Filter(criteria: Criteria, to_table: str | None = None, include_quality_columns: Literal['none', 'criteria', 'all'] = 'none')`**
+```python
+class Filter(
+    criteria: Criteria,
+    to_table: str | None = None,
+    include_quality_columns: Literal['none', 'criteria', 'all'] = 'none',
+)
+```
 
 Bases: `CriteriaOperator`
 
@@ -83,76 +121,96 @@ An operator that filters rows from a table based on data quality criteria.
 The filtered rows are removed from the table being processed. They can
 either be discarded or redirected to another table.
 
-<details open>
-<summary>**`include_quality_columns`**</summary>
-
-`include_quality_columns`
-
+<a id="tabsdata.dataquality.Filter.include_quality_columns"></a>
+<ResponseField name="include_quality_columns">
 Returns the data quality columns to included in the table with
 filtered out data.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`to_table`**</summary>
-
-`to_table`
-
+<a id="tabsdata.dataquality.Filter.to_table"></a>
+<ResponseField name="to_table">
 Returns the destination table for filtered rows, or None if they are
 discarded.
+</ResponseField>
+
+**Categories:** dq-operator
 
 </details>
 
-</details>
+ <a id="tabsdata.dataquality.InBins"></a>
+<details open>
+<summary>InBins</summary>
 
- <details open>
-<summary>**`InBins`**</summary>
-
-**`InBins(column_name: str, bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow'] | Annotated[list[Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow']], Strict])`**
+```python
+class InBins(
+    column_name: str,
+    bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow'] | Annotated[list[Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow']], Strict],
+)
+```
 
 Bases: [CategoryCriteria](bymod-tabsdata.dataquality#tabsdata.dataquality.CategoryCriteria)
 
 A category criteria that selects records where the value in the specified
 columns falls into one of the given bins.
 
+**Categories:** dq-operator
+
 </details>
 
- <details open>
-<summary>**`NotInBins`**</summary>
+ <a id="tabsdata.dataquality.NotInBins"></a>
+<details open>
+<summary>NotInBins</summary>
 
-**`NotInBins(column_name: str, bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow'] | Annotated[list[Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow']], Strict])`**
+```python
+class NotInBins(
+    column_name: str,
+    bins: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow'] | Annotated[list[Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Literal['none', 'nan', 'underflow', 'overflow']], Strict],
+)
+```
 
 Bases: [CategoryCriteria](bymod-tabsdata.dataquality#tabsdata.dataquality.CategoryCriteria)
 
 A category criteria that selects records where the value in the specified
 columns does not fall into any of the given bins.
 
+**Categories:** dq-operator
+
 </details>
 
- <details open>
-<summary>**`PercentThreshold`**</summary>
+ <a id="tabsdata.dataquality.PercentThreshold"></a>
+<details open>
+<summary>PercentThreshold</summary>
 
-**`PercentThreshold(percent: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])])`**
+```python
+class PercentThreshold(
+    percent: Annotated[int, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])] | Annotated[float, Strict(strict=True), FieldInfo(annotation=NoneType, required=True, metadata=[Ge(ge=0), Le(le=100)])],
+)
+```
 
 Bases: [Threshold](bymod-tabsdata.dataquality#tabsdata.dataquality.Threshold)
 
 A threshold based on a percentage of total rows.
 
-<details open>
-<summary>**`percent`**</summary>
-
-`percent`
-
+<a id="tabsdata.dataquality.PercentThreshold.percent"></a>
+<ResponseField name="percent">
 Returns the percentage for the threshold.
+</ResponseField>
+
+**Categories:** dq-operator
 
 </details>
 
-</details>
+ <a id="tabsdata.dataquality.Select"></a>
+<details open>
+<summary>Select</summary>
 
- <details open>
-<summary>**`Select`**</summary>
-
-**`Select(criteria: Criteria, to_table: str, include_quality_columns: Literal['none', 'criteria', 'all'] = 'none')`**
+```python
+class Select(
+    criteria: Criteria,
+    to_table: str,
+    include_quality_columns: Literal['none', 'criteria', 'all'] = 'none',
+)
+```
 
 Bases: `CriteriaOperator`
 
@@ -161,43 +219,42 @@ them to another table.
 
 This operation does not modify the original table.
 
-<details open>
-<summary>**`include_quality_columns`**</summary>
-
-`include_quality_columns`
-
+<a id="tabsdata.dataquality.Select.include_quality_columns"></a>
+<ResponseField name="include_quality_columns">
 Returns the data quality columns to included in the table with
 selected data.
+</ResponseField>
 
-</details>
-
-<details open>
-<summary>**`to_table`**</summary>
-
-`to_table`
-
+<a id="tabsdata.dataquality.Select.to_table"></a>
+<ResponseField name="to_table">
 Returns the destination table for the selected rows.
+</ResponseField>
+
+**Categories:** dq-operator
 
 </details>
 
-</details>
+ <a id="tabsdata.dataquality.Summary"></a>
+<details open>
+<summary>Summary</summary>
 
- <details open>
-<summary>**`Summary`**</summary>
-
-**`Summary(table: str | None = None, *, tags: str | list[str] | None = None)`**
+```python
+class Summary(
+    table: str | None = None,
+    *,
+    tags: str | list[str] | None = None,
+)
+```
 
 Bases: `TagOperator`
 
 An operator that generates a data quality summary report for a table.
 
-<details open>
-<summary>**`table`**</summary>
-
-`table`
-
+<a id="tabsdata.dataquality.Summary.table"></a>
+<ResponseField name="table">
 Returns the name of the data quality summary table.
+</ResponseField>
 
-</details>
+**Categories:** dq-operator
 
 </details>

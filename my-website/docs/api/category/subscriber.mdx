@@ -6,12 +6,24 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # Subscriber
 
- <details open>
-<summary>**`subscriber`**</summary>
+ <a id="tabsdata.subscriber"></a>
+<details open>
+<summary>subscriber</summary>
 
-**`subscriber(tables: TableInput | str | List[str], destination: AzureDestination | LocalFileDestination | MariaDBDestination | MySQLDestination | OracleDestination | PostgresDestination | S3Destination | DestinationPlugin, name: str = None, trigger_by: SubscriberTriggerBySpec = '*')`**
+```python
+def subscriber(
+    tables: TableInput | str | List[str],
+    destination: AzureDestination | LocalFileDestination | MariaDBDestination | MySQLDestination | OracleDestination | PostgresDestination | S3Destination | DestinationPlugin,
+    name: str = None,
+    trigger_by: SubscriberTriggerBySpec = '*',
+)
+```
 
 Decorator to define a function to subscribe to data present in Tabsdata.
+
+**Categories:** subscriber
+
+**Parameters:**
 
 <ParamField path="tables">
   Where to obtain the data that will be provided as an input to the
@@ -36,6 +48,6 @@ or a CronTrigger. Defaults to all dependencies.
 
 **Returns:** The function converted to a Tabsdata Function.
 
-**Return type:** callable
+**Returns:** callable
 
 </details>

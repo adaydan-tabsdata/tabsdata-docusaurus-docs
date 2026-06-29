@@ -6,26 +6,37 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # tabsdata.tableframe.expr.expr
 
- <details open>
-<summary>**`Expr`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.Expr"></a>
+<details open>
+<summary>Expr</summary>
 
-**`Expr(expr: Expr | Expr)`**
+```python
+class Expr(
+    expr: Expr | Expr,
+)
+```
 
 Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
-<details open>
-<summary>**`abs`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.abs"></a>
+#### `abs`
 
-**`abs`**
+```python
+def abs()
+```
 
 Return the abso lute value of the expression.
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`add`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.add"></a>
+#### `add`
 
-**`add(other: Any)`**
+```python
+def add(
+    other: Any,
+)
+```
 
 Equivalent to the + operator.
 
@@ -56,12 +67,22 @@ Example:
 └──────┴──────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`alias`**</summary>
+**Parameters:**
 
-**`alias(name: str)`**
+<ParamField path="other">
+  The value to add or concatenate.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.alias"></a>
+#### `alias`
+
+```python
+def alias(
+    name: str,
+)
+```
 
 Set the name for a column or expression.
 
@@ -89,12 +110,26 @@ Example:
 └──────┴──────┘
 ```
 
-</details>
+**Categories:** manipulation
 
-<details open>
-<summary>**`and_`**</summary>
+**Parameters:**
 
-**`and_(*others: Any)`**
+<ParamField path="name">
+  Column or expression new name. The name must be a word
+</ParamField>
+
+<ParamField path="([A-Za-z_][A-Za-z0-9_]*) of up to 100 characters.">
+  
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.and_"></a>
+#### `and_`
+
+```python
+def and_(
+    *others: Any,
+)
+```
 
 Bitwise and operator with the given expressions.
 It can be used with integer and bool types.
@@ -123,12 +158,20 @@ Example:
 └──────┴──────┘
 ```
 
-</details>
+**Categories:** logic
 
-<details open>
-<summary>**`arccos`**</summary>
+**Parameters:**
 
-**`arccos`**
+<ParamField path="others">
+  expressions to peform the bitwise and with.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.arccos"></a>
+#### `arccos`
+
+```python
+def arccos()
+```
 
 Calculate the inverse cosine of the element value.
 
@@ -156,12 +199,14 @@ Example:
 └──────┴──────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`arccosh`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.arccosh"></a>
+#### `arccosh`
 
-**`arccosh`**
+```python
+def arccosh()
+```
 
 Calculate the inverse hyperbolic cosine of the element value.
 
@@ -189,12 +234,14 @@ Example:
 └──────┴──────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`arcsin`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.arcsin"></a>
+#### `arcsin`
 
-**`arcsin`**
+```python
+def arcsin()
+```
 
 Calculate the inverse sine of the element value.
 
@@ -222,12 +269,14 @@ Example:
 └──────┴──────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`arcsinh`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.arcsinh"></a>
+#### `arcsinh`
 
-**`arcsinh`**
+```python
+def arcsinh()
+```
 
 Calculate the inverse hyperbolic sine of the element value.
 
@@ -255,12 +304,14 @@ Example:
 └──────┴──────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`arctan`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.arctan"></a>
+#### `arctan`
 
-**`arctan`**
+```python
+def arctan()
+```
 
 Calculate the inverse tangent of the element value.
 
@@ -288,12 +339,14 @@ Example:
 └──────┴──────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`arctanh`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.arctanh"></a>
+#### `arctanh`
 
-**`arctanh`**
+```python
+def arctanh()
+```
 
 Calculate the inverse hyperbolic tangent of the element value.
 
@@ -321,12 +374,19 @@ Example:
 └──────┴──────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`cast`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.cast"></a>
+#### `cast`
 
-**`cast(dtype: Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | type[Any], *, strict: bool = True, wrap_numerical: bool = False)`**
+```python
+def cast(
+    dtype: Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | type[Any],
+    *,
+    strict: bool = True,
+    wrap_numerical: bool = False,
+)
+```
 
 Cast a value to d different type.
 
@@ -355,6 +415,10 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** type_casting
+
+**Parameters:**
+
 <ParamField path="dtype">
   The data type to cast to.
 </ParamField>
@@ -369,12 +433,12 @@ if true, an excetion is raised.
 if false, an excetion is raised.
 </ParamField>
 
-</details>
+<a id="tabsdata.tableframe.expr.expr.Expr.cbrt"></a>
+#### `cbrt`
 
-<details open>
-<summary>**`cbrt`**</summary>
-
-**`cbrt`**
+```python
+def cbrt()
+```
 
 Calculate the cub root of the element value.
 
@@ -402,12 +466,14 @@ Example:
 └──────┴──────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`ceil`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.ceil"></a>
+#### `ceil`
 
-**`ceil`**
+```python
+def ceil()
+```
 
 Round up the expression to the next integer value.
 
@@ -430,12 +496,17 @@ Example:
 └──────┴─────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`clip`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.clip"></a>
+#### `clip`
 
-**`clip(lower_bound: int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None = None, upper_bound: int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None = None)`**
+```python
+def clip(
+    lower_bound: int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None = None,
+    upper_bound: int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None = None,
+)
+```
 
 For element values outside the lower and upper bounds, lower values are
 replaced with the lower bound
@@ -464,6 +535,10 @@ Example:
 └──────┴─────────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
 <ParamField path="lower_bound">
   The lower bound value. If None, the lower bound is not set.
 </ParamField>
@@ -472,12 +547,12 @@ Example:
   The upper bound value. If None, the upper bound is
 </ParamField>
 
-</details>
+<a id="tabsdata.tableframe.expr.expr.Expr.cos"></a>
+#### `cos`
 
-<details open>
-<summary>**`cos`**</summary>
-
-**`cos`**
+```python
+def cos()
+```
 
 Calculate the cosine of the element value.
 
@@ -505,12 +580,14 @@ Example:
 └──────┴───────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`cosh`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.cosh"></a>
+#### `cosh`
 
-**`cosh`**
+```python
+def cosh()
+```
 
 Calculate the hyperbolic cosine of the element value.
 
@@ -538,12 +615,14 @@ Example:
 └──────┴────────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`cot`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.cot"></a>
+#### `cot`
 
-**`cot`**
+```python
+def cot()
+```
 
 Calculate the cotangent of the element value.
 
@@ -571,12 +650,14 @@ Example:
 └──────┴───────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`count`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.count"></a>
+#### `count`
 
-**`count`**
+```python
+def count()
+```
 
 Aggregation operation that counts the non null values of the given column in
 the group.
@@ -616,12 +697,14 @@ Examples:
 └──────┴───────┘
 ```
 
-</details>
+**Categories:** aggregation
 
-<details open>
-<summary>**`degrees`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.degrees"></a>
+#### `degrees`
 
-**`degrees`**
+```python
+def degrees()
+```
 
 Convert a radian value to degrees
 
@@ -649,12 +732,16 @@ Example:
 └──────┴────────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`diff`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.diff"></a>
+#### `diff`
 
-**`diff(n: int = 1)`**
+```python
+def diff(
+    n: int = 1,
+)
+```
 
 Compute the difference between an element value and the element value
 of the specified relative row.
@@ -689,25 +776,35 @@ Examples:
 └──────┴──────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`dt`**</summary>
+**Parameters:**
 
-`dt`
+<ParamField path="n">
+  The relative row to compute the difference with.
+</ParamField>
 
+<ParamField path="Defaults to 1 (previous). Use a negative number to get a next row.">
+  
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.dt"></a>
+<ResponseField name="dt">
 type_casting
 
  Return an object namespace with all date-time methods for a date-time value.
 
  **Type:** categories
+</ResponseField>
 
-</details>
+<a id="tabsdata.tableframe.expr.expr.Expr.eq"></a>
+#### `eq`
 
-<details open>
-<summary>**`eq`**</summary>
-
-**`eq(other: Any)`**
+```python
+def eq(
+    other: Any,
+)
+```
 
 Compare if 2 expressions are equal, equivalent to expr == other. If one
 of the expressions is null (None) it returns null.
@@ -735,12 +832,22 @@ Example:
 └─────┴──────┴───────┘
 ```
 
-</details>
+**Categories:** logic
 
-<details open>
-<summary>**`eq_missing`**</summary>
+**Parameters:**
 
-**`eq_missing(other: Any)`**
+<ParamField path="other">
+  The value to compare with.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.eq_missing"></a>
+#### `eq_missing`
+
+```python
+def eq_missing(
+    other: Any,
+)
+```
 
 Compare if 2 expressions are equal an, equivalent to expr == other. If one
 of the expressions is null (None) it returns false.
@@ -768,12 +875,20 @@ Example:
 └─────┴──────┴───────────┘
 ```
 
-</details>
+**Categories:** logic
 
-<details open>
-<summary>**`exp`**</summary>
+**Parameters:**
 
-**`exp`**
+<ParamField path="other">
+  The value to compare with.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.exp"></a>
+#### `exp`
+
+```python
+def exp()
+```
 
 Calculate the exponential of the element value.
 
@@ -799,12 +914,16 @@ Example:
 └──────┴─────────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`fill_nan`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.fill_nan"></a>
+#### `fill_nan`
 
-**`fill_nan(value: int | float | Expr | None)`**
+```python
+def fill_nan(
+    value: int | float | Expr | None,
+)
+```
 
 Replace NaN values with the given value.
 
@@ -831,12 +950,24 @@ Example:
 └──────┴──────────┘
 ```
 
-</details>
+**Categories:** manipulation
 
-<details open>
-<summary>**`fill_null`**</summary>
+**Parameters:**
 
-**`fill_null(value: Any | Expr | None = None, strategy: Literal['forward', 'backward', 'min', 'max', 'mean', 'zero', 'one'] | None = None, limit: int | None = None)`**
+<ParamField path="value">
+  The value to replace NaN values with.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.fill_null"></a>
+#### `fill_null`
+
+```python
+def fill_null(
+    value: Any | Expr | None = None,
+    strategy: Literal['forward', 'backward', 'min', 'max', 'mean', 'zero', 'one'] | None = None,
+    limit: int | None = None,
+)
+```
 
 Replace null values with the given value.
 
@@ -865,6 +996,10 @@ Example:
 └──────┴───────────┘
 ```
 
+**Categories:** manipulation
+
+**Parameters:**
+
 <ParamField path="value">
   The value to replace null values with.
 </ParamField>
@@ -877,12 +1012,14 @@ Example:
   The maximum number of null values to replace.
 </ParamField>
 
-</details>
+<a id="tabsdata.tableframe.expr.expr.Expr.filter"></a>
+#### `filter`
 
-<details open>
-<summary>**`filter`**</summary>
-
-**`filter(*predicates: Expr | Series | str | Iterable[Expr | Series | str])`**
+```python
+def filter(
+    *predicates: Expr | Series | str | Iterable[Expr | Series | str],
+)
+```
 
 Apply a filter predicate to an expression.
 
@@ -926,12 +1063,20 @@ Example:
 └───────┴─────────────┘
 ```
 
-</details>
+**Categories:** filters
 
-<details open>
-<summary>**`first`**</summary>
+**Parameters:**
 
-**`first`**
+<ParamField path="predicates">
+  Expression(s) that evaluates to a boolean.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.first"></a>
+#### `first`
+
+```python
+def first()
+```
 
 Get the first element.
 
@@ -957,12 +1102,14 @@ Example:
 └──────┴─────────┘
 ```
 
-</details>
+**Categories:** aggregation
 
-<details open>
-<summary>**`floor`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.floor"></a>
+#### `floor`
 
-**`floor`**
+```python
+def floor()
+```
 
 Round down the expression to the previous integer value.
 
@@ -985,12 +1132,16 @@ Example:
 └──────┴─────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`floordiv`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.floordiv"></a>
+#### `floordiv`
 
-**`floordiv(other: Any)`**
+```python
+def floordiv(
+    other: Any,
+)
+```
 
 Calculate the floor on the division.
 
@@ -1014,12 +1165,20 @@ Example:
 └──────┴──────────┘
 ```
 
-</details>
+**Parameters:**
 
-<details open>
-<summary>**`ge`**</summary>
+<ParamField path="other">
+  The value to divide by.
+</ParamField>
 
-**`ge(other: Any)`**
+<a id="tabsdata.tableframe.expr.expr.Expr.ge"></a>
+#### `ge`
+
+```python
+def ge(
+    other: Any,
+)
+```
 
 Greater or equal operator.
 
@@ -1042,12 +1201,22 @@ Example:
 └──────┴─────────┘
 ```
 
-</details>
+**Categories:** logic
 
-<details open>
-<summary>**`gt`**</summary>
+**Parameters:**
 
-**`gt(other: Any)`**
+<ParamField path="other">
+  The value to compare with.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.gt"></a>
+#### `gt`
+
+```python
+def gt(
+    other: Any,
+)
+```
 
 Greater than operator.
 
@@ -1070,12 +1239,25 @@ Example:
 └──────┴─────────┘
 ```
 
-</details>
+**Categories:** logic
 
-<details open>
-<summary>**`hash`**</summary>
+**Parameters:**
 
-**`hash(seed: int = 0, seed_1: int | None = None, seed_2: int | None = None, seed_3: int | None = None)`**
+<ParamField path="other">
+  The value to compare with.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.hash"></a>
+#### `hash`
+
+```python
+def hash(
+    seed: int = 0,
+    seed_1: int | None = None,
+    seed_2: int | None = None,
+    seed_3: int | None = None,
+)
+```
 
 Compute the hash of an element value.
 
@@ -1098,6 +1280,10 @@ Example:
 └──────┴─────────────────────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
 <ParamField path="seed">
   The seed for the hash function.
 </ParamField>
@@ -1114,12 +1300,16 @@ Example:
   The third seed for the hash function.
 </ParamField>
 
-</details>
+<a id="tabsdata.tableframe.expr.expr.Expr.is_between"></a>
+#### `is_between`
 
-<details open>
-<summary>**`is_between`**</summary>
-
-**`is_between(lower_bound: td_typing.IntoExpr, upper_bound: td_typing.IntoExpr, closed: td_typing.ClosedInterval = 'both')`**
+```python
+def is_between(
+    lower_bound: td_typing.IntoExpr,
+    upper_bound: td_typing.IntoExpr,
+    closed: td_typing.ClosedInterval = 'both',
+)
+```
 
 If an expression is between the given bounds.
 
@@ -1146,6 +1336,10 @@ Example:
 └──────┴─────────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
 <ParamField path="lower_bound">
   The lower bound value.
 </ParamField>
@@ -1158,12 +1352,12 @@ Example:
   The interval type, either “both”, “left”, “right”, or “neither”
 </ParamField>
 
-</details>
+<a id="tabsdata.tableframe.expr.expr.Expr.is_finite"></a>
+#### `is_finite`
 
-<details open>
-<summary>**`is_finite`**</summary>
-
-**`is_finite`**
+```python
+def is_finite()
+```
 
 If an element value is finite.
 
@@ -1188,12 +1382,16 @@ Example:
 └──────┴────────┘
 ```
 
-</details>
+**Categories:** logic
 
-<details open>
-<summary>**`is_in`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.is_in"></a>
+#### `is_in`
 
-**`is_in(other: Expr | Collection[Any])`**
+```python
+def is_in(
+    other: Expr | Collection[Any],
+)
+```
 
 If an element value is in the given collection.
 
@@ -1218,12 +1416,20 @@ Example:
 └──────┴────────┘
 ```
 
-</details>
+**Categories:** logic
 
-<details open>
-<summary>**`is_infinite`**</summary>
+**Parameters:**
 
-**`is_infinite`**
+<ParamField path="other">
+  The collection to check if the element value is in.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.is_infinite"></a>
+#### `is_infinite`
+
+```python
+def is_infinite()
+```
 
 If an element value is infinite.
 
@@ -1248,12 +1454,14 @@ Example:
 └──────┴──────────┘
 ```
 
-</details>
+**Categories:** logic
 
-<details open>
-<summary>**`is_nan`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.is_nan"></a>
+#### `is_nan`
 
-**`is_nan`**
+```python
+def is_nan()
+```
 
 If an element value is NaN.
 
@@ -1278,12 +1486,14 @@ Example:
 └──────┴──────────┘
 ```
 
-</details>
+**Categories:** logic
 
-<details open>
-<summary>**`is_not_nan`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.is_not_nan"></a>
+#### `is_not_nan`
 
-**`is_not_nan`**
+```python
+def is_not_nan()
+```
 
 If an element value is not NaN.
 
@@ -1309,12 +1519,14 @@ Example:
 └──────┴──────────┘
 ```
 
-</details>
+**Categories:** logic
 
-<details open>
-<summary>**`is_not_null`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.is_not_null"></a>
+#### `is_not_null`
 
-**`is_not_null`**
+```python
+def is_not_null()
+```
 
 If an element value is not null (None).
 
@@ -1340,12 +1552,14 @@ Example:
 └──────┴──────────┘
 ```
 
-</details>
+**Categories:** logic
 
-<details open>
-<summary>**`is_null`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.is_null"></a>
+#### `is_null`
 
-**`is_null`**
+```python
+def is_null()
+```
 
 If an element value is null (None).
 
@@ -1371,12 +1585,14 @@ Example:
 └──────┴──────────┘
 ```
 
-</details>
+**Categories:** logic
 
-<details open>
-<summary>**`is_unique`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.is_unique"></a>
+#### `is_unique`
 
-**`is_unique`**
+```python
+def is_unique()
+```
 
 If an element value is unique for all values in the column.
 
@@ -1402,12 +1618,14 @@ Example:
 └──────┴──────────┘
 ```
 
-</details>
+**Categories:** logic
 
-<details open>
-<summary>**`last`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.last"></a>
+#### `last`
 
-**`last`**
+```python
+def last()
+```
 
 Get the last element.
 
@@ -1433,12 +1651,16 @@ Example:
 └──────┴─────────┘
 ```
 
-</details>
+**Categories:** aggregation
 
-<details open>
-<summary>**`le`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.le"></a>
+#### `le`
 
-**`le(other: Any)`**
+```python
+def le(
+    other: Any,
+)
+```
 
 Less or equal operator.
 
@@ -1461,12 +1683,20 @@ Example:
 └──────┴─────────┘
 ```
 
-</details>
+**Categories:** logic
 
-<details open>
-<summary>**`len`**</summary>
+**Parameters:**
 
-**`len`**
+<ParamField path="other">
+  The value to compare with.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.len"></a>
+#### `len`
+
+```python
+def len()
+```
 
 Aggregation operation that counts the rows in the group.
 
@@ -1505,12 +1735,16 @@ Examples:
 └──────┴─────┘
 ```
 
-</details>
+**Categories:** aggregation
 
-<details open>
-<summary>**`log`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.log"></a>
+#### `log`
 
-**`log(base: float = 2.718281828459045)`**
+```python
+def log(
+    base: float = 2.718281828459045,
+)
+```
 
 Calculate the logarithm to the given base.
 
@@ -1538,12 +1772,20 @@ Example:
 └──────┴──────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`log10`**</summary>
+**Parameters:**
 
-**`log10`**
+<ParamField path="base">
+  logarithm base, defaults to e.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.log10"></a>
+#### `log10`
+
+```python
+def log10()
+```
 
 Calculate the logarithm base 10.
 
@@ -1571,12 +1813,14 @@ Example:
 └──────┴──────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`log1p`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.log1p"></a>
+#### `log1p`
 
-**`log1p`**
+```python
+def log1p()
+```
 
 Calculate the natural logarithm plus one.
 
@@ -1604,12 +1848,16 @@ Example:
 └──────┴──────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`lt`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.lt"></a>
+#### `lt`
 
-**`lt(other: Any)`**
+```python
+def lt(
+    other: Any,
+)
+```
 
 Less than operator.
 
@@ -1632,12 +1880,20 @@ Example:
 └──────┴─────────┘
 ```
 
-</details>
+**Categories:** logic
 
-<details open>
-<summary>**`max`**</summary>
+**Parameters:**
 
-**`max`**
+<ParamField path="other">
+  The value to compare with.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.max"></a>
+#### `max`
+
+```python
+def max()
+```
 
 Aggregation operation that finds the maximum value in the group.
 
@@ -1682,12 +1938,14 @@ Examples:
 └──────┴──────┘
 ```
 
-</details>
+**Categories:** aggregation
 
-<details open>
-<summary>**`mean`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.mean"></a>
+#### `mean`
 
-**`mean`**
+```python
+def mean()
+```
 
 Aggregation operation that finds the mean of the values in the group.
 
@@ -1732,12 +1990,14 @@ Examples:
 └──────┴──────────┘
 ```
 
-</details>
+**Categories:** aggregation
 
-<details open>
-<summary>**`median`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.median"></a>
+#### `median`
 
-**`median`**
+```python
+def median()
+```
 
 Aggregation operation that finds the median of the values in the group.
 
@@ -1782,12 +2042,14 @@ Examples:
 └──────┴──────┘
 ```
 
-</details>
+**Categories:** aggregation
 
-<details open>
-<summary>**`min`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.min"></a>
+#### `min`
 
-**`min`**
+```python
+def min()
+```
 
 Aggregation operation that finds the minimum value in the group.
 
@@ -1832,12 +2094,16 @@ Examples:
 └──────┴──────┘
 ```
 
-</details>
+**Categories:** aggregation
 
-<details open>
-<summary>**`mod`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.mod"></a>
+#### `mod`
 
-**`mod(other: Any)`**
+```python
+def mod(
+    other: Any,
+)
+```
 
 Modulus operator.
 
@@ -1862,12 +2128,22 @@ Example:
 └──────┴──────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`mul`**</summary>
+**Parameters:**
 
-**`mul(other: Any)`**
+<ParamField path="other">
+  The value to divide by.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.mul"></a>
+#### `mul`
+
+```python
+def mul(
+    other: Any,
+)
+```
 
 Multiplication operator.
 
@@ -1893,12 +2169,20 @@ Example:
 └──────┴──────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`n_unique`**</summary>
+**Parameters:**
 
-**`n_unique`**
+<ParamField path="other">
+  The value to multiply by.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.n_unique"></a>
+#### `n_unique`
+
+```python
+def n_unique()
+```
 
 Aggregation operation that counts the unique values of the given column
 in the group.
@@ -1944,12 +2228,16 @@ Examples:
 └──────┴─────┘
 ```
 
-</details>
+**Categories:** aggregation
 
-<details open>
-<summary>**`ne`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.ne"></a>
+#### `ne`
 
-**`ne(other: Any)`**
+```python
+def ne(
+    other: Any,
+)
+```
 
 Compare if 2 expressions are not equal, equivalent to expr != other. If one
 of the expressions is null (None) it returns null.
@@ -1977,12 +2265,22 @@ Example:
 └─────┴──────┴───────┘
 ```
 
-</details>
+**Categories:** logic
 
-<details open>
-<summary>**`ne_missing`**</summary>
+**Parameters:**
 
-**`ne_missing(other: Any)`**
+<ParamField path="other">
+  The value to compare with.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.ne_missing"></a>
+#### `ne_missing`
+
+```python
+def ne_missing(
+    other: Any,
+)
+```
 
 Compare if 2 expressions are not equal an, equivalent to expr != other. If one
 of the expressions is null (None) it returns false.
@@ -2010,12 +2308,20 @@ Example:
 └─────┴──────┴───────────┘
 ```
 
-</details>
+**Categories:** logic
 
-<details open>
-<summary>**`neg`**</summary>
+**Parameters:**
 
-**`neg`**
+<ParamField path="other">
+  The value to compare with.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.neg"></a>
+#### `neg`
+
+```python
+def neg()
+```
 
 Unary minus operator.
 
@@ -2043,12 +2349,14 @@ Example:
 └──────┴──────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`not_`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.not_"></a>
+#### `not_`
 
-**`not_`**
+```python
+def not_()
+```
 
 Negate a boolean expression.
 
@@ -2072,12 +2380,16 @@ Example:
 └───────┴───────┘
 ```
 
-</details>
+**Categories:** logic
 
-<details open>
-<summary>**`or_`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.or_"></a>
+#### `or_`
 
-**`or_(*others: Any)`**
+```python
+def or_(
+    *others: Any,
+)
+```
 
 Bitwise or operator with the given expressions.
 It can be used with integer and bool types.
@@ -2104,12 +2416,22 @@ Example:
 └──────┴──────┘
 ```
 
-</details>
+**Categories:** logic
 
-<details open>
-<summary>**`pow`**</summary>
+**Parameters:**
 
-**`pow(exponent: Expr | Series | str | int | float)`**
+<ParamField path="others">
+  expressions to peform the bitwise or with.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.pow"></a>
+#### `pow`
+
+```python
+def pow(
+    exponent: Expr | Series | str | int | float,
+)
+```
 
 Exponentiation operator.
 
@@ -2135,12 +2457,20 @@ Example:
 └──────┴──────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`radians`**</summary>
+**Parameters:**
 
-**`radians`**
+<ParamField path="exponent">
+  exponent value.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.radians"></a>
+#### `radians`
+
+```python
+def radians()
+```
 
 Convert a degree value to radians
 
@@ -2166,12 +2496,19 @@ Example:
 └─────────┴──────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`rank`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.rank"></a>
+#### `rank`
 
-**`rank(method: Literal['average', 'min', 'max', 'dense', 'ordinal', 'random'] = 'average', *, descending: bool = False, seed: int | None = None)`**
+```python
+def rank(
+    method: Literal['average', 'min', 'max', 'dense', 'ordinal', 'random'] = 'average',
+    *,
+    descending: bool = False,
+    seed: int | None = None,
+)
+```
 
 Compute the rank of the element values. Multiple rank types are available.
 
@@ -2199,6 +2536,10 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** aggregation
+
+**Parameters:**
+
 <ParamField path="method">
   the ranking type: ‘average’ (default), ‘dense’, ‘max’, ‘min’,
 ‘ordinal’ or ‘random’.
@@ -2212,12 +2553,15 @@ Example:
   random seed when using ‘random’ rank type.
 </ParamField>
 
-</details>
+<a id="tabsdata.tableframe.expr.expr.Expr.reinterpret"></a>
+#### `reinterpret`
 
-<details open>
-<summary>**`reinterpret`**</summary>
-
-**`reinterpret(*, signed: bool = True)`**
+```python
+def reinterpret(
+    *,
+    signed: bool = True,
+)
+```
 
 Reinterpret the 64bit element values (i64 or u64) as a signed/unsigned integers.
 Only valid for 64bit integers, for other types use cast.
@@ -2247,12 +2591,26 @@ Example:
 └──────┴─────────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`round`**</summary>
+**Parameters:**
 
-**`round(decimals: int = 0)`**
+<ParamField path="signed">
+  true to convert to i64, false to convert to u64.
+</ParamField>
+
+<ParamField path="This named argument must be specified.">
+  
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.round"></a>
+#### `round`
+
+```python
+def round(
+    decimals: int = 0,
+)
+```
 
 Round floating point element values.
 
@@ -2280,12 +2638,22 @@ Example:
 └──────┴───────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`round_sig_figs`**</summary>
+**Parameters:**
 
-**`round_sig_figs(digits: int)`**
+<ParamField path="decimals">
+  number of decimal places to round to.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.round_sig_figs"></a>
+#### `round_sig_figs`
+
+```python
+def round_sig_figs(
+    digits: int,
+)
+```
 
 Round floating point element values to the specified significant figures.
 
@@ -2317,12 +2685,20 @@ Example:
 └────────┴────────────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`shrink_dtype`**</summary>
+**Parameters:**
 
-**`shrink_dtype`**
+<ParamField path="digits">
+  number of digits to round up.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.shrink_dtype"></a>
+#### `shrink_dtype`
+
+```python
+def shrink_dtype()
+```
 
 Cast down a column to the smallest type that can hold the element values.
 
@@ -2347,12 +2723,14 @@ Example:
 └───────┴──────────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`sign`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.sign"></a>
+#### `sign`
 
-**`sign`**
+```python
+def sign()
+```
 
 Calculate the sign of element values.
 
@@ -2383,12 +2761,14 @@ Example:
 └────────┴──────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`sin`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.sin"></a>
+#### `sin`
 
-**`sin`**
+```python
+def sin()
+```
 
 Calculate the sine of the element value.
 
@@ -2413,12 +2793,14 @@ Example:
 └─────┴───────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`sinh`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.sinh"></a>
+#### `sinh`
 
-**`sinh`**
+```python
+def sinh()
+```
 
 Calculate the hyperbolic sine of the element value.
 
@@ -2443,12 +2825,17 @@ Example:
 └─────┴───────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`slice`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.slice"></a>
+#### `slice`
 
-**`slice(offset: int | Expr, length: int | Expr | None = None)`**
+```python
+def slice(
+    offset: int | Expr,
+    length: int | Expr | None = None,
+)
+```
 
 Compute a slice of the TableFrame for the specified columns.
 
@@ -2484,6 +2871,10 @@ Example:
 └─────┴─────┘
 ```
 
+**Categories:** filters
+
+**Parameters:**
+
 <ParamField path="offset">
   the offset to start the slice.
 </ParamField>
@@ -2492,12 +2883,12 @@ Example:
   the length of the slice.
 </ParamField>
 
-</details>
+<a id="tabsdata.tableframe.expr.expr.Expr.sqrt"></a>
+#### `sqrt`
 
-<details open>
-<summary>**`sqrt`**</summary>
-
-**`sqrt`**
+```python
+def sqrt()
+```
 
 Calculate the square root of the element value.
 
@@ -2524,25 +2915,25 @@ Example:
 └──────┴──────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`str`**</summary>
-
-`str`
-
+<a id="tabsdata.tableframe.expr.expr.Expr.str"></a>
+<ResponseField name="str">
 type_casting
 
  Return an object namespace with all string methods for a string value.
 
  **Type:** categories
+</ResponseField>
 
-</details>
+<a id="tabsdata.tableframe.expr.expr.Expr.sub"></a>
+#### `sub`
 
-<details open>
-<summary>**`sub`**</summary>
-
-**`sub(other: Any)`**
+```python
+def sub(
+    other: Any,
+)
+```
 
 Equivalent to the - operator.
 
@@ -2570,12 +2961,20 @@ Example:
 └──────┴──────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`sum`**</summary>
+**Parameters:**
 
-**`sum`**
+<ParamField path="other">
+  value to subtract.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.sum"></a>
+#### `sum`
+
+```python
+def sum()
+```
 
 Aggregation operation that sums the values in the group.
 
@@ -2620,12 +3019,14 @@ Examples:
 └──────┴─────┘
 ```
 
-</details>
+**Categories:** aggregation
 
-<details open>
-<summary>**`tan`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.tan"></a>
+#### `tan`
 
-**`tan`**
+```python
+def tan()
+```
 
 Calculate the tangent of the element value.
 
@@ -2650,12 +3051,14 @@ Example:
 └─────┴───────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`tanh`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.tanh"></a>
+#### `tanh`
 
-**`tanh`**
+```python
+def tanh()
+```
 
 Calculate the hyperbolic tangent of the element value.
 
@@ -2680,12 +3083,16 @@ Example:
 └─────┴──────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`truediv`**</summary>
+<a id="tabsdata.tableframe.expr.expr.Expr.truediv"></a>
+#### `truediv`
 
-**`truediv(other: Any)`**
+```python
+def truediv(
+    other: Any,
+)
+```
 
 Equivalent to the float / operator.
 
@@ -2716,12 +3123,22 @@ Example:
 └────────┴────────────┘
 ```
 
-</details>
+**Categories:** numeric
 
-<details open>
-<summary>**`xor`**</summary>
+**Parameters:**
 
-**`xor(other: Any)`**
+<ParamField path="other">
+  value to divide by.
+</ParamField>
+
+<a id="tabsdata.tableframe.expr.expr.Expr.xor"></a>
+#### `xor`
+
+```python
+def xor(
+    other: Any,
+)
+```
 
 Bitwise xor operator with the given expression.
 It can be used with integer and bool types.
@@ -2747,23 +3164,39 @@ Example:
 └─────┴─────┘
 ```
 
-</details>
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other">
+  expression to peform the bitwise xor with.
+</ParamField>
 
 </details>
 
- <details open>
-<summary>**`abs`**</summary>
+ <a id="id0"></a>
+<details open>
+<summary>abs</summary>
 
-**`abs`**
+```python
+def abs()
+```
 
 Return the abso lute value of the expression.
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`add`**</summary>
+ <a id="id2"></a>
+<details open>
+<summary>add</summary>
 
-**`add(other: Any)`**
+```python
+def add(
+    other: Any,
+)
+```
 
 Equivalent to the + operator.
 
@@ -2794,12 +3227,25 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="other">
+  The value to add or concatenate.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`alias`**</summary>
+ <a id="id3"></a>
+<details open>
+<summary>alias</summary>
 
-**`alias(name: str)`**
+```python
+def alias(
+    name: str,
+)
+```
 
 Set the name for a column or expression.
 
@@ -2827,12 +3273,29 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** manipulation
+
+**Parameters:**
+
+<ParamField path="name">
+  Column or expression new name. The name must be a word
+</ParamField>
+
+<ParamField path="([A-Za-z_][A-Za-z0-9_]*) of up to 100 characters.">
+  
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`and_`**</summary>
+ <a id="id4"></a>
+<details open>
+<summary>and_</summary>
 
-**`and_(*others: Any)`**
+```python
+def and_(
+    *others: Any,
+)
+```
 
 Bitwise and operator with the given expressions.
 It can be used with integer and bool types.
@@ -2861,12 +3324,23 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="others">
+  expressions to peform the bitwise and with.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`arccos`**</summary>
+ <a id="id5"></a>
+<details open>
+<summary>arccos</summary>
 
-**`arccos`**
+```python
+def arccos()
+```
 
 Calculate the inverse cosine of the element value.
 
@@ -2894,12 +3368,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`arccosh`**</summary>
+ <a id="id6"></a>
+<details open>
+<summary>arccosh</summary>
 
-**`arccosh`**
+```python
+def arccosh()
+```
 
 Calculate the inverse hyperbolic cosine of the element value.
 
@@ -2927,12 +3406,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`arcsin`**</summary>
+ <a id="id7"></a>
+<details open>
+<summary>arcsin</summary>
 
-**`arcsin`**
+```python
+def arcsin()
+```
 
 Calculate the inverse sine of the element value.
 
@@ -2960,12 +3444,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`arcsinh`**</summary>
+ <a id="id8"></a>
+<details open>
+<summary>arcsinh</summary>
 
-**`arcsinh`**
+```python
+def arcsinh()
+```
 
 Calculate the inverse hyperbolic sine of the element value.
 
@@ -2993,12 +3482,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`arctan`**</summary>
+ <a id="id9"></a>
+<details open>
+<summary>arctan</summary>
 
-**`arctan`**
+```python
+def arctan()
+```
 
 Calculate the inverse tangent of the element value.
 
@@ -3026,12 +3520,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`arctanh`**</summary>
+ <a id="id10"></a>
+<details open>
+<summary>arctanh</summary>
 
-**`arctanh`**
+```python
+def arctanh()
+```
 
 Calculate the inverse hyperbolic tangent of the element value.
 
@@ -3059,12 +3558,22 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`cast`**</summary>
+ <a id="id11"></a>
+<details open>
+<summary>cast</summary>
 
-**`cast(dtype: Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | type[Any], *, strict: bool = True, wrap_numerical: bool = False)`**
+```python
+def cast(
+    dtype: Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | type[Any],
+    *,
+    strict: bool = True,
+    wrap_numerical: bool = False,
+)
+```
 
 Cast a value to d different type.
 
@@ -3093,6 +3602,10 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** type_casting
+
+**Parameters:**
+
 <ParamField path="dtype">
   The data type to cast to.
 </ParamField>
@@ -3109,10 +3622,13 @@ if false, an excetion is raised.
 
 </details>
 
- <details open>
-<summary>**`cbrt`**</summary>
+ <a id="id12"></a>
+<details open>
+<summary>cbrt</summary>
 
-**`cbrt`**
+```python
+def cbrt()
+```
 
 Calculate the cub root of the element value.
 
@@ -3140,12 +3656,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`ceil`**</summary>
+ <a id="id13"></a>
+<details open>
+<summary>ceil</summary>
 
-**`ceil`**
+```python
+def ceil()
+```
 
 Round up the expression to the next integer value.
 
@@ -3168,12 +3689,20 @@ Example:
 └──────┴─────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`clip`**</summary>
+ <a id="id14"></a>
+<details open>
+<summary>clip</summary>
 
-**`clip(lower_bound: int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None = None, upper_bound: int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None = None)`**
+```python
+def clip(
+    lower_bound: int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None = None,
+    upper_bound: int | float | Decimal | date | time | datetime | timedelta | Expr | Series | str | None = None,
+)
+```
 
 For element values outside the lower and upper bounds, lower values are
 replaced with the lower bound
@@ -3202,6 +3731,10 @@ Example:
 └──────┴─────────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
 <ParamField path="lower_bound">
   The lower bound value. If None, the lower bound is not set.
 </ParamField>
@@ -3212,10 +3745,13 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`cos`**</summary>
+ <a id="id15"></a>
+<details open>
+<summary>cos</summary>
 
-**`cos`**
+```python
+def cos()
+```
 
 Calculate the cosine of the element value.
 
@@ -3243,12 +3779,17 @@ Example:
 └──────┴───────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`cosh`**</summary>
+ <a id="id16"></a>
+<details open>
+<summary>cosh</summary>
 
-**`cosh`**
+```python
+def cosh()
+```
 
 Calculate the hyperbolic cosine of the element value.
 
@@ -3276,12 +3817,17 @@ Example:
 └──────┴────────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`cot`**</summary>
+ <a id="id17"></a>
+<details open>
+<summary>cot</summary>
 
-**`cot`**
+```python
+def cot()
+```
 
 Calculate the cotangent of the element value.
 
@@ -3309,12 +3855,17 @@ Example:
 └──────┴───────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`count`**</summary>
+ <a id="id18"></a>
+<details open>
+<summary>count</summary>
 
-**`count`**
+```python
+def count()
+```
 
 Aggregation operation that counts the non null values of the given column in
 the group.
@@ -3354,12 +3905,17 @@ Examples:
 └──────┴───────┘
 ```
 
+**Categories:** aggregation
+
 </details>
 
- <details open>
-<summary>**`degrees`**</summary>
+ <a id="id19"></a>
+<details open>
+<summary>degrees</summary>
 
-**`degrees`**
+```python
+def degrees()
+```
 
 Convert a radian value to degrees
 
@@ -3387,12 +3943,19 @@ Example:
 └──────┴────────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`diff`**</summary>
+ <a id="id20"></a>
+<details open>
+<summary>diff</summary>
 
-**`diff(n: int = 1)`**
+```python
+def diff(
+    n: int = 1,
+)
+```
 
 Compute the difference between an element value and the element value
 of the specified relative row.
@@ -3427,12 +3990,29 @@ Examples:
 └──────┴──────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="n">
+  The relative row to compute the difference with.
+</ParamField>
+
+<ParamField path="Defaults to 1 (previous). Use a negative number to get a next row.">
+  
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`eq`**</summary>
+ <a id="id21"></a>
+<details open>
+<summary>eq</summary>
 
-**`eq(other: Any)`**
+```python
+def eq(
+    other: Any,
+)
+```
 
 Compare if 2 expressions are equal, equivalent to expr == other. If one
 of the expressions is null (None) it returns null.
@@ -3460,12 +4040,25 @@ Example:
 └─────┴──────┴───────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other">
+  The value to compare with.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`eq_missing`**</summary>
+ <a id="id22"></a>
+<details open>
+<summary>eq_missing</summary>
 
-**`eq_missing(other: Any)`**
+```python
+def eq_missing(
+    other: Any,
+)
+```
 
 Compare if 2 expressions are equal an, equivalent to expr == other. If one
 of the expressions is null (None) it returns false.
@@ -3493,12 +4086,23 @@ Example:
 └─────┴──────┴───────────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other">
+  The value to compare with.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`exp`**</summary>
+ <a id="id23"></a>
+<details open>
+<summary>exp</summary>
 
-**`exp`**
+```python
+def exp()
+```
 
 Calculate the exponential of the element value.
 
@@ -3524,12 +4128,19 @@ Example:
 └──────┴─────────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`fill_nan`**</summary>
+ <a id="id24"></a>
+<details open>
+<summary>fill_nan</summary>
 
-**`fill_nan(value: int | float | Expr | None)`**
+```python
+def fill_nan(
+    value: int | float | Expr | None,
+)
+```
 
 Replace NaN values with the given value.
 
@@ -3556,12 +4167,27 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** manipulation
+
+**Parameters:**
+
+<ParamField path="value">
+  The value to replace NaN values with.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`fill_null`**</summary>
+ <a id="id25"></a>
+<details open>
+<summary>fill_null</summary>
 
-**`fill_null(value: Any | Expr | None = None, strategy: Literal['forward', 'backward', 'min', 'max', 'mean', 'zero', 'one'] | None = None, limit: int | None = None)`**
+```python
+def fill_null(
+    value: Any | Expr | None = None,
+    strategy: Literal['forward', 'backward', 'min', 'max', 'mean', 'zero', 'one'] | None = None,
+    limit: int | None = None,
+)
+```
 
 Replace null values with the given value.
 
@@ -3590,6 +4216,10 @@ Example:
 └──────┴───────────┘
 ```
 
+**Categories:** manipulation
+
+**Parameters:**
+
 <ParamField path="value">
   The value to replace null values with.
 </ParamField>
@@ -3604,10 +4234,15 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`filter`**</summary>
+ <a id="id26"></a>
+<details open>
+<summary>filter</summary>
 
-**`filter(*predicates: Expr | Series | str | Iterable[Expr | Series | str])`**
+```python
+def filter(
+    *predicates: Expr | Series | str | Iterable[Expr | Series | str],
+)
+```
 
 Apply a filter predicate to an expression.
 
@@ -3651,12 +4286,23 @@ Example:
 └───────┴─────────────┘
 ```
 
+**Categories:** filters
+
+**Parameters:**
+
+<ParamField path="predicates">
+  Expression(s) that evaluates to a boolean.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`first`**</summary>
+ <a id="id27"></a>
+<details open>
+<summary>first</summary>
 
-**`first`**
+```python
+def first()
+```
 
 Get the first element.
 
@@ -3682,12 +4328,17 @@ Example:
 └──────┴─────────┘
 ```
 
+**Categories:** aggregation
+
 </details>
 
- <details open>
-<summary>**`floor`**</summary>
+ <a id="id28"></a>
+<details open>
+<summary>floor</summary>
 
-**`floor`**
+```python
+def floor()
+```
 
 Round down the expression to the previous integer value.
 
@@ -3710,12 +4361,19 @@ Example:
 └──────┴─────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`floordiv`**</summary>
+ <a id="id29"></a>
+<details open>
+<summary>floordiv</summary>
 
-**`floordiv(other: Any)`**
+```python
+def floordiv(
+    other: Any,
+)
+```
 
 Calculate the floor on the division.
 
@@ -3739,12 +4397,23 @@ Example:
 └──────┴──────────┘
 ```
 
+**Parameters:**
+
+<ParamField path="other">
+  The value to divide by.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`ge`**</summary>
+ <a id="id30"></a>
+<details open>
+<summary>ge</summary>
 
-**`ge(other: Any)`**
+```python
+def ge(
+    other: Any,
+)
+```
 
 Greater or equal operator.
 
@@ -3767,12 +4436,25 @@ Example:
 └──────┴─────────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other">
+  The value to compare with.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`gt`**</summary>
+ <a id="id31"></a>
+<details open>
+<summary>gt</summary>
 
-**`gt(other: Any)`**
+```python
+def gt(
+    other: Any,
+)
+```
 
 Greater than operator.
 
@@ -3795,12 +4477,28 @@ Example:
 └──────┴─────────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other">
+  The value to compare with.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`hash`**</summary>
+ <a id="id32"></a>
+<details open>
+<summary>hash</summary>
 
-**`hash(seed: int = 0, seed_1: int | None = None, seed_2: int | None = None, seed_3: int | None = None)`**
+```python
+def hash(
+    seed: int = 0,
+    seed_1: int | None = None,
+    seed_2: int | None = None,
+    seed_3: int | None = None,
+)
+```
 
 Compute the hash of an element value.
 
@@ -3823,6 +4521,10 @@ Example:
 └──────┴─────────────────────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
 <ParamField path="seed">
   The seed for the hash function.
 </ParamField>
@@ -3841,10 +4543,17 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`is_between`**</summary>
+ <a id="id33"></a>
+<details open>
+<summary>is_between</summary>
 
-**`is_between(lower_bound: td_typing.IntoExpr, upper_bound: td_typing.IntoExpr, closed: td_typing.ClosedInterval = 'both')`**
+```python
+def is_between(
+    lower_bound: td_typing.IntoExpr,
+    upper_bound: td_typing.IntoExpr,
+    closed: td_typing.ClosedInterval = 'both',
+)
+```
 
 If an expression is between the given bounds.
 
@@ -3871,6 +4580,10 @@ Example:
 └──────┴─────────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
 <ParamField path="lower_bound">
   The lower bound value.
 </ParamField>
@@ -3885,10 +4598,13 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`is_finite`**</summary>
+ <a id="id34"></a>
+<details open>
+<summary>is_finite</summary>
 
-**`is_finite`**
+```python
+def is_finite()
+```
 
 If an element value is finite.
 
@@ -3913,12 +4629,19 @@ Example:
 └──────┴────────┘
 ```
 
+**Categories:** logic
+
 </details>
 
- <details open>
-<summary>**`is_in`**</summary>
+ <a id="id35"></a>
+<details open>
+<summary>is_in</summary>
 
-**`is_in(other: Expr | Collection[Any])`**
+```python
+def is_in(
+    other: Expr | Collection[Any],
+)
+```
 
 If an element value is in the given collection.
 
@@ -3943,12 +4666,23 @@ Example:
 └──────┴────────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other">
+  The collection to check if the element value is in.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`is_infinite`**</summary>
+ <a id="id36"></a>
+<details open>
+<summary>is_infinite</summary>
 
-**`is_infinite`**
+```python
+def is_infinite()
+```
 
 If an element value is infinite.
 
@@ -3973,12 +4707,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** logic
+
 </details>
 
- <details open>
-<summary>**`is_nan`**</summary>
+ <a id="id37"></a>
+<details open>
+<summary>is_nan</summary>
 
-**`is_nan`**
+```python
+def is_nan()
+```
 
 If an element value is NaN.
 
@@ -4003,12 +4742,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** logic
+
 </details>
 
- <details open>
-<summary>**`is_not_nan`**</summary>
+ <a id="id38"></a>
+<details open>
+<summary>is_not_nan</summary>
 
-**`is_not_nan`**
+```python
+def is_not_nan()
+```
 
 If an element value is not NaN.
 
@@ -4034,12 +4778,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** logic
+
 </details>
 
- <details open>
-<summary>**`is_not_null`**</summary>
+ <a id="id39"></a>
+<details open>
+<summary>is_not_null</summary>
 
-**`is_not_null`**
+```python
+def is_not_null()
+```
 
 If an element value is not null (None).
 
@@ -4065,12 +4814,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** logic
+
 </details>
 
- <details open>
-<summary>**`is_null`**</summary>
+ <a id="id40"></a>
+<details open>
+<summary>is_null</summary>
 
-**`is_null`**
+```python
+def is_null()
+```
 
 If an element value is null (None).
 
@@ -4096,12 +4850,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** logic
+
 </details>
 
- <details open>
-<summary>**`is_unique`**</summary>
+ <a id="id41"></a>
+<details open>
+<summary>is_unique</summary>
 
-**`is_unique`**
+```python
+def is_unique()
+```
 
 If an element value is unique for all values in the column.
 
@@ -4127,12 +4886,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** logic
+
 </details>
 
- <details open>
-<summary>**`last`**</summary>
+ <a id="id42"></a>
+<details open>
+<summary>last</summary>
 
-**`last`**
+```python
+def last()
+```
 
 Get the last element.
 
@@ -4158,12 +4922,19 @@ Example:
 └──────┴─────────┘
 ```
 
+**Categories:** aggregation
+
 </details>
 
- <details open>
-<summary>**`le`**</summary>
+ <a id="id43"></a>
+<details open>
+<summary>le</summary>
 
-**`le(other: Any)`**
+```python
+def le(
+    other: Any,
+)
+```
 
 Less or equal operator.
 
@@ -4186,12 +4957,23 @@ Example:
 └──────┴─────────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other">
+  The value to compare with.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`len`**</summary>
+ <a id="id44"></a>
+<details open>
+<summary>len</summary>
 
-**`len`**
+```python
+def len()
+```
 
 Aggregation operation that counts the rows in the group.
 
@@ -4230,12 +5012,19 @@ Examples:
 └──────┴─────┘
 ```
 
+**Categories:** aggregation
+
 </details>
 
- <details open>
-<summary>**`log`**</summary>
+ <a id="id45"></a>
+<details open>
+<summary>log</summary>
 
-**`log(base: float = 2.718281828459045)`**
+```python
+def log(
+    base: float = 2.718281828459045,
+)
+```
 
 Calculate the logarithm to the given base.
 
@@ -4263,12 +5052,23 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="base">
+  logarithm base, defaults to e.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`log10`**</summary>
+ <a id="id46"></a>
+<details open>
+<summary>log10</summary>
 
-**`log10`**
+```python
+def log10()
+```
 
 Calculate the logarithm base 10.
 
@@ -4296,12 +5096,17 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`log1p`**</summary>
+ <a id="id47"></a>
+<details open>
+<summary>log1p</summary>
 
-**`log1p`**
+```python
+def log1p()
+```
 
 Calculate the natural logarithm plus one.
 
@@ -4329,12 +5134,19 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`lt`**</summary>
+ <a id="id48"></a>
+<details open>
+<summary>lt</summary>
 
-**`lt(other: Any)`**
+```python
+def lt(
+    other: Any,
+)
+```
 
 Less than operator.
 
@@ -4357,12 +5169,23 @@ Example:
 └──────┴─────────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other">
+  The value to compare with.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`max`**</summary>
+ <a id="id49"></a>
+<details open>
+<summary>max</summary>
 
-**`max`**
+```python
+def max()
+```
 
 Aggregation operation that finds the maximum value in the group.
 
@@ -4407,12 +5230,17 @@ Examples:
 └──────┴──────┘
 ```
 
+**Categories:** aggregation
+
 </details>
 
- <details open>
-<summary>**`mean`**</summary>
+ <a id="id50"></a>
+<details open>
+<summary>mean</summary>
 
-**`mean`**
+```python
+def mean()
+```
 
 Aggregation operation that finds the mean of the values in the group.
 
@@ -4457,12 +5285,17 @@ Examples:
 └──────┴──────────┘
 ```
 
+**Categories:** aggregation
+
 </details>
 
- <details open>
-<summary>**`median`**</summary>
+ <a id="id51"></a>
+<details open>
+<summary>median</summary>
 
-**`median`**
+```python
+def median()
+```
 
 Aggregation operation that finds the median of the values in the group.
 
@@ -4507,12 +5340,17 @@ Examples:
 └──────┴──────┘
 ```
 
+**Categories:** aggregation
+
 </details>
 
- <details open>
-<summary>**`min`**</summary>
+ <a id="id52"></a>
+<details open>
+<summary>min</summary>
 
-**`min`**
+```python
+def min()
+```
 
 Aggregation operation that finds the minimum value in the group.
 
@@ -4557,12 +5395,19 @@ Examples:
 └──────┴──────┘
 ```
 
+**Categories:** aggregation
+
 </details>
 
- <details open>
-<summary>**`mod`**</summary>
+ <a id="id53"></a>
+<details open>
+<summary>mod</summary>
 
-**`mod(other: Any)`**
+```python
+def mod(
+    other: Any,
+)
+```
 
 Modulus operator.
 
@@ -4587,12 +5432,25 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="other">
+  The value to divide by.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`mul`**</summary>
+ <a id="id54"></a>
+<details open>
+<summary>mul</summary>
 
-**`mul(other: Any)`**
+```python
+def mul(
+    other: Any,
+)
+```
 
 Multiplication operator.
 
@@ -4618,12 +5476,23 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="other">
+  The value to multiply by.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`n_unique`**</summary>
+ <a id="id55"></a>
+<details open>
+<summary>n_unique</summary>
 
-**`n_unique`**
+```python
+def n_unique()
+```
 
 Aggregation operation that counts the unique values of the given column
 in the group.
@@ -4669,12 +5538,19 @@ Examples:
 └──────┴─────┘
 ```
 
+**Categories:** aggregation
+
 </details>
 
- <details open>
-<summary>**`ne`**</summary>
+ <a id="id56"></a>
+<details open>
+<summary>ne</summary>
 
-**`ne(other: Any)`**
+```python
+def ne(
+    other: Any,
+)
+```
 
 Compare if 2 expressions are not equal, equivalent to expr != other. If one
 of the expressions is null (None) it returns null.
@@ -4702,12 +5578,25 @@ Example:
 └─────┴──────┴───────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other">
+  The value to compare with.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`ne_missing`**</summary>
+ <a id="id57"></a>
+<details open>
+<summary>ne_missing</summary>
 
-**`ne_missing(other: Any)`**
+```python
+def ne_missing(
+    other: Any,
+)
+```
 
 Compare if 2 expressions are not equal an, equivalent to expr != other. If one
 of the expressions is null (None) it returns false.
@@ -4735,12 +5624,23 @@ Example:
 └─────┴──────┴───────────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other">
+  The value to compare with.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`neg`**</summary>
+ <a id="id58"></a>
+<details open>
+<summary>neg</summary>
 
-**`neg`**
+```python
+def neg()
+```
 
 Unary minus operator.
 
@@ -4768,12 +5668,17 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`not_`**</summary>
+ <a id="id59"></a>
+<details open>
+<summary>not_</summary>
 
-**`not_`**
+```python
+def not_()
+```
 
 Negate a boolean expression.
 
@@ -4797,12 +5702,19 @@ Example:
 └───────┴───────┘
 ```
 
+**Categories:** logic
+
 </details>
 
- <details open>
-<summary>**`or_`**</summary>
+ <a id="id60"></a>
+<details open>
+<summary>or_</summary>
 
-**`or_(*others: Any)`**
+```python
+def or_(
+    *others: Any,
+)
+```
 
 Bitwise or operator with the given expressions.
 It can be used with integer and bool types.
@@ -4829,12 +5741,25 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="others">
+  expressions to peform the bitwise or with.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`pow`**</summary>
+ <a id="id61"></a>
+<details open>
+<summary>pow</summary>
 
-**`pow(exponent: Expr | Series | str | int | float)`**
+```python
+def pow(
+    exponent: Expr | Series | str | int | float,
+)
+```
 
 Exponentiation operator.
 
@@ -4860,12 +5785,23 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="exponent">
+  exponent value.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`radians`**</summary>
+ <a id="id62"></a>
+<details open>
+<summary>radians</summary>
 
-**`radians`**
+```python
+def radians()
+```
 
 Convert a degree value to radians
 
@@ -4891,12 +5827,22 @@ Example:
 └─────────┴──────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`rank`**</summary>
+ <a id="id63"></a>
+<details open>
+<summary>rank</summary>
 
-**`rank(method: Literal['average', 'min', 'max', 'dense', 'ordinal', 'random'] = 'average', *, descending: bool = False, seed: int | None = None)`**
+```python
+def rank(
+    method: Literal['average', 'min', 'max', 'dense', 'ordinal', 'random'] = 'average',
+    *,
+    descending: bool = False,
+    seed: int | None = None,
+)
+```
 
 Compute the rank of the element values. Multiple rank types are available.
 
@@ -4924,6 +5870,10 @@ Example:
 └──────┴──────┘
 ```
 
+**Categories:** aggregation
+
+**Parameters:**
+
 <ParamField path="method">
   the ranking type: ‘average’ (default), ‘dense’, ‘max’, ‘min’,
 ‘ordinal’ or ‘random’.
@@ -4939,10 +5889,16 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`reinterpret`**</summary>
+ <a id="id64"></a>
+<details open>
+<summary>reinterpret</summary>
 
-**`reinterpret(*, signed: bool = True)`**
+```python
+def reinterpret(
+    *,
+    signed: bool = True,
+)
+```
 
 Reinterpret the 64bit element values (i64 or u64) as a signed/unsigned integers.
 Only valid for 64bit integers, for other types use cast.
@@ -4972,12 +5928,29 @@ Example:
 └──────┴─────────────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="signed">
+  true to convert to i64, false to convert to u64.
+</ParamField>
+
+<ParamField path="This named argument must be specified.">
+  
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`round`**</summary>
+ <a id="id65"></a>
+<details open>
+<summary>round</summary>
 
-**`round(decimals: int = 0)`**
+```python
+def round(
+    decimals: int = 0,
+)
+```
 
 Round floating point element values.
 
@@ -5005,12 +5978,25 @@ Example:
 └──────┴───────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="decimals">
+  number of decimal places to round to.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`round_sig_figs`**</summary>
+ <a id="id66"></a>
+<details open>
+<summary>round_sig_figs</summary>
 
-**`round_sig_figs(digits: int)`**
+```python
+def round_sig_figs(
+    digits: int,
+)
+```
 
 Round floating point element values to the specified significant figures.
 
@@ -5042,12 +6028,23 @@ Example:
 └────────┴────────────────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="digits">
+  number of digits to round up.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`shrink_dtype`**</summary>
+ <a id="id67"></a>
+<details open>
+<summary>shrink_dtype</summary>
 
-**`shrink_dtype`**
+```python
+def shrink_dtype()
+```
 
 Cast down a column to the smallest type that can hold the element values.
 
@@ -5072,12 +6069,17 @@ Example:
 └───────┴──────────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`sign`**</summary>
+ <a id="id68"></a>
+<details open>
+<summary>sign</summary>
 
-**`sign`**
+```python
+def sign()
+```
 
 Calculate the sign of element values.
 
@@ -5108,12 +6110,17 @@ Example:
 └────────┴──────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`sin`**</summary>
+ <a id="id69"></a>
+<details open>
+<summary>sin</summary>
 
-**`sin`**
+```python
+def sin()
+```
 
 Calculate the sine of the element value.
 
@@ -5138,12 +6145,17 @@ Example:
 └─────┴───────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`sinh`**</summary>
+ <a id="id70"></a>
+<details open>
+<summary>sinh</summary>
 
-**`sinh`**
+```python
+def sinh()
+```
 
 Calculate the hyperbolic sine of the element value.
 
@@ -5168,12 +6180,20 @@ Example:
 └─────┴───────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`slice`**</summary>
+ <a id="id71"></a>
+<details open>
+<summary>slice</summary>
 
-**`slice(offset: int | Expr, length: int | Expr | None = None)`**
+```python
+def slice(
+    offset: int | Expr,
+    length: int | Expr | None = None,
+)
+```
 
 Compute a slice of the TableFrame for the specified columns.
 
@@ -5209,6 +6229,10 @@ Example:
 └─────┴─────┘
 ```
 
+**Categories:** filters
+
+**Parameters:**
+
 <ParamField path="offset">
   the offset to start the slice.
 </ParamField>
@@ -5219,10 +6243,13 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`sqrt`**</summary>
+ <a id="id72"></a>
+<details open>
+<summary>sqrt</summary>
 
-**`sqrt`**
+```python
+def sqrt()
+```
 
 Calculate the square root of the element value.
 
@@ -5249,12 +6276,19 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`sub`**</summary>
+ <a id="id73"></a>
+<details open>
+<summary>sub</summary>
 
-**`sub(other: Any)`**
+```python
+def sub(
+    other: Any,
+)
+```
 
 Equivalent to the - operator.
 
@@ -5282,12 +6316,23 @@ Example:
 └──────┴──────────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="other">
+  value to subtract.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`sum`**</summary>
+ <a id="id74"></a>
+<details open>
+<summary>sum</summary>
 
-**`sum`**
+```python
+def sum()
+```
 
 Aggregation operation that sums the values in the group.
 
@@ -5332,12 +6377,17 @@ Examples:
 └──────┴─────┘
 ```
 
+**Categories:** aggregation
+
 </details>
 
- <details open>
-<summary>**`tan`**</summary>
+ <a id="id75"></a>
+<details open>
+<summary>tan</summary>
 
-**`tan`**
+```python
+def tan()
+```
 
 Calculate the tangent of the element value.
 
@@ -5362,12 +6412,17 @@ Example:
 └─────┴───────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`tanh`**</summary>
+ <a id="id76"></a>
+<details open>
+<summary>tanh</summary>
 
-**`tanh`**
+```python
+def tanh()
+```
 
 Calculate the hyperbolic tangent of the element value.
 
@@ -5392,12 +6447,19 @@ Example:
 └─────┴──────────┘
 ```
 
+**Categories:** numeric
+
 </details>
 
- <details open>
-<summary>**`truediv`**</summary>
+ <a id="id77"></a>
+<details open>
+<summary>truediv</summary>
 
-**`truediv(other: Any)`**
+```python
+def truediv(
+    other: Any,
+)
+```
 
 Equivalent to the float / operator.
 
@@ -5428,12 +6490,25 @@ Example:
 └────────┴────────────┘
 ```
 
+**Categories:** numeric
+
+**Parameters:**
+
+<ParamField path="other">
+  value to divide by.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`xor`**</summary>
+ <a id="id78"></a>
+<details open>
+<summary>xor</summary>
 
-**`xor(other: Any)`**
+```python
+def xor(
+    other: Any,
+)
+```
 
 Bitwise xor operator with the given expression.
 It can be used with integer and bool types.
@@ -5459,12 +6534,23 @@ Example:
 └─────┴─────┘
 ```
 
+**Categories:** logic
+
+**Parameters:**
+
+<ParamField path="other">
+  expression to peform the bitwise xor with.
+</ParamField>
+
 </details>
 
- <details open>
-<summary>**`P`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.P"></a>
+<details open>
+<summary>P</summary>
 
-**`P`**
+```python
+P()
+```
 
 Parameter specification variable.
 
@@ -5520,10 +6606,13 @@ scope can be pickled.
 
 </details>
 
- <details open>
-<summary>**`T`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.T"></a>
+<details open>
+<summary>T</summary>
 
-**`T`**
+```python
+T()
+```
 
 Type variable.
 
@@ -5571,16 +6660,28 @@ details.
 
 </details>
 
- <details open>
-<summary>**`deprecated_category`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.deprecated_category"></a>
+<details open>
+<summary>deprecated_category</summary>
 
-**`deprecated_category(reason: str, replacement: str | None = None, since: str | None = None)`**
+```python
+def deprecated_category(
+    reason: str,
+    replacement: str | None = None,
+    since: str | None = None,
+)
+```
 
 </details>
 
- <details open>
-<summary>**`expr_resolves_to_multiple_outputs`**</summary>
+ <a id="tabsdata.tableframe.expr.expr.expr_resolves_to_multiple_outputs"></a>
+<details open>
+<summary>expr_resolves_to_multiple_outputs</summary>
 
-**`expr_resolves_to_multiple_outputs(expr: Expr)`**
+```python
+def expr_resolves_to_multiple_outputs(
+    expr: Expr,
+)
+```
 
 </details>

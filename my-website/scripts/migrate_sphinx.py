@@ -225,22 +225,43 @@ def admonition_to_mdx(el):
 
 def sig_to_text(dt):
     """Extract a clean function/class signature string from a <dt class="sig">."""
-    # Remove headerlink anchors
     for a in dt.find_all('a', class_='headerlink'):
         a.decompose()
-    # Get class/function name
     name_el = dt.find('span', class_='sig-name')
     name = name_el.get_text().strip() if name_el else ''
-    # Get params from sig-param elements
     params = []
     for param in dt.find_all('em', class_='sig-param'):
         params.append(param.get_text().strip().rstrip(','))
-    # property/class keyword
-    prop_el = dt.find('span', class_='property')
-    keyword = prop_el.get_text().strip() if prop_el else ''
     if params:
         return f'{name}({", ".join(params)})'
     return name
+
+
+def sig_to_code_block(dt, dl_classes):
+    """Format the full signature as a multi-line Python code block."""
+    for a in dt.find_all('a', class_='headerlink'):
+        a.decompose()
+    name_el = dt.find('span', class_='sig-name')
+    name = name_el.get_text().strip() if name_el else ''
+    params = [p.get_text().strip().rstrip(',') for p in dt.find_all('em', class_='sig-param')]
+    if 'class' in dl_classes:
+        kw = 'class '
+    elif 'function' in dl_classes or 'method' in dl_classes:
+        kw = 'def '
+    else:
+        kw = ''
+    if not params:
+        return f'```python\n{kw}{name}()\n```\n\n'
+    param_lines = ',\n'.join(f'    {p}' for p in params)
+    return f'```python\n{kw}{name}(\n{param_lines},\n)\n```\n\n'
+
+
+def sig_to_type(dt):
+    """Extract the type annotation from a property/attribute dt."""
+    prop_el = dt.find('em', class_='property')
+    if prop_el:
+        return prop_el.get_text().strip().lstrip(':').strip()
+    return ''
 
 
 def field_list_to_mdx(dl):
@@ -251,27 +272,47 @@ def field_list_to_mdx(dl):
     for dt, dd in zip(dts, dds):
         label = dt.get_text().replace(':', '').strip()
         if label.lower() in ('variables', 'parameters', 'args'):
-            # Convert each variable to a ParamField
-            for li in dd.find_all('li'):
-                name_el = li.find('strong')
-                type_el = li.find('em')
-                name = escape_mdx_text(name_el.get_text().strip()) if name_el else ''
-                type_str = escape_mdx_text(type_el.get_text().strip()) if type_el else ''
-                # Get description (text after the em dash –)
-                text = li.get_text()
-                desc = ''
-                if '–' in text:
-                    desc = escape_mdx_text(text.split('–', 1)[1].strip())
-                elif '-' in text and name in text:
-                    idx = text.index(name) + len(name)
-                    desc = escape_mdx_text(text[idx:].lstrip(' :-').strip())
-                type_attr = f' type="{type_str}"' if type_str else ''
-                parts.append(f'<ParamField path="{name}"{type_attr}>\n  {desc}\n</ParamField>\n\n')
+            items = dd.find_all('li')
+            param_parts = []
+            if items:
+                for li in items:
+                    name_el = li.find('strong')
+                    type_el = li.find('em')
+                    name = escape_mdx_text(name_el.get_text().strip()) if name_el else ''
+                    type_str = escape_mdx_text(type_el.get_text().strip()) if type_el else ''
+                    text = li.get_text()
+                    desc = ''
+                    if '–' in text:
+                        desc = escape_mdx_text(text.split('–', 1)[1].strip())
+                    elif '-' in text and name in text:
+                        idx = text.index(name) + len(name)
+                        desc = escape_mdx_text(text[idx:].lstrip(' :-').strip())
+                    type_attr = f' type="{type_str}"' if type_str else ''
+                    param_parts.append(f'<ParamField path="{name}"{type_attr}>\n  {desc}\n</ParamField>\n\n')
+            else:
+                # Plain text params: "name – description" per line
+                for line in dd.get_text().splitlines():
+                    line = line.strip()
+                    if not line:
+                        continue
+                    if '–' in line:
+                        name, desc = line.split('–', 1)
+                        name = escape_mdx_text(name.strip())
+                        desc = escape_mdx_text(desc.strip())
+                    else:
+                        name = escape_mdx_text(line)
+                        desc = ''
+                    if name:
+                        param_parts.append(f'<ParamField path="{name}">\n  {desc}\n</ParamField>\n\n')
+            if param_parts:
+                parts.append('**Parameters:**\n\n' + ''.join(param_parts))
         elif label.lower() in ('returns', 'return type'):
             value = escape_mdx_text(dd.get_text().strip())
-            parts.append(f'**{label}:** {value}\n\n')
+            parts.append(f'**Returns:** {value}\n\n')
         elif label.lower() in ('categories',):
-            pass  # skip internal metadata
+            value = dd.get_text().strip()
+            if value:
+                parts.append(f'**Categories:** {value}\n\n')
         else:
             value = escape_mdx_text(dd.get_text().strip())
             if value:
@@ -279,62 +320,67 @@ def field_list_to_mdx(dl):
     return ''.join(parts)
 
 
-def api_entry_to_mdx(dl):
+def api_entry_to_mdx(dl, depth=0):
     """Convert a <dl class="py class/function/method/property"> to MDX."""
     dt = dl.find('dt', recursive=False)
     dd = dl.find('dd', recursive=False)
     if not dt:
         return ''
 
-    sig = sig_to_text(dt)
-    name_only = sig.split('(')[0].strip()
     classes = dl.get('class', [])
+    anchor_id = dt.get('id', '')
+    anchor = f'<a id="{anchor_id}"></a>\n' if anchor_id else ''
+    name_only = sig_to_text(dt).split('(')[0].strip()
+    code_block = sig_to_code_block(dt, classes)
 
-    # For properties/attributes: name in summary, sig + content inside
-    if 'property' in classes or 'attribute' in classes:
+    # Properties / attributes nested inside a class → <ResponseField>
+    # Top-level module attributes (type aliases etc.) → accordion like any other entry
+    if ('property' in classes or 'attribute' in classes) and depth > 0:
+        type_str = sig_to_type(dt)
         content = element_to_mdx(dd).strip() if dd else ''
-        inner = f'`{sig}`\n\n{content}\n\n' if content else f'`{sig}`\n\n'
-        return f'<details open>\n<summary>**`{name_only}`**</summary>\n\n{inner}</details>\n\n'
+        type_attr = f' type="{type_str}"' if type_str else ''
+        return f'{anchor}<ResponseField name="{name_only}"{type_attr}>\n{content}\n</ResponseField>\n\n'
 
-    # For classes/functions/methods: name in summary, sig + body inside
+    # Build body for classes/functions/methods
+    body_parts = []
+    param_parts = []
+    needs_param_import = False
+
     if dd:
-        body_parts = []
-        param_parts = []
-        needs_param_import = False
-
         for child in dd.children:
             if not isinstance(child, Tag):
                 continue
-            # Skip "view source" links
-            if child.name == 'p' and child.find('a', class_='reference'):
-                text = child.get_text().strip().lower()
-                if 'view source' in text or 'source' == text:
-                    continue
             if child.name == 'dl' and 'field-list' in child.get('class', []):
                 fp = field_list_to_mdx(child)
                 if '<ParamField' in fp:
                     needs_param_import = True
                 param_parts.append(fp)
             elif child.name == 'dl' and 'py' in child.get('class', []):
-                body_parts.append(api_entry_to_mdx(child))
+                body_parts.append(api_entry_to_mdx(child, depth=depth + 1))
             else:
                 body_parts.append(element_to_mdx(child))
 
-        body = ''.join(body_parts).strip()
-        params = ''.join(param_parts)
+    body = ''.join(body_parts).strip()
+    params = ''.join(param_parts)
+    inner = code_block
+    if body:
+        inner += body + '\n\n'
+    if params:
+        inner += params
 
-        inner = f'**`{sig}`**\n\n'
-        if body:
-            inner += body + '\n\n'
-        if params:
-            inner += params
+    # Top-level entries → <details open>
+    if depth == 0:
+        result = f'{anchor}<details open>\n<summary>{name_only}</summary>\n\n{inner}</details>\n\n'
+    # Nested classes → ### heading
+    elif 'class' in classes:
+        result = f'{anchor}### `{name_only}`\n\n{inner}'
+    # Nested methods/functions → #### heading
+    else:
+        result = f'{anchor}#### `{name_only}`\n\n{inner}'
 
-        result = f'<details open>\n<summary>**`{name_only}`**</summary>\n\n{inner}</details>\n\n'
-        if needs_param_import:
-            result = "import { ParamField, ResponseField } from '@site/src/components/ApiField';\n\n" + result
-        return result
-
-    return f'**`{sig}`**\n\n'
+    if needs_param_import:
+        result = "import { ParamField, ResponseField } from '@site/src/components/ApiField';\n\n" + result
+    return result
 
 
 def sphinx_tabs_to_mdx(el):

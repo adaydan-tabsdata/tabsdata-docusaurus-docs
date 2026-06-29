@@ -6,10 +6,13 @@ import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 # tabsdata.tableframe.functions.col
 
- <details open>
-<summary>**`Col`**</summary>
+ <a id="tabsdata.tableframe.functions.col.Col"></a>
+<details open>
+<summary>Col</summary>
 
-**`Col`**
+```python
+class Col()
+```
 
 Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
@@ -33,10 +36,16 @@ Example:
 
 </details>
 
- <details open>
-<summary>**`Column`**</summary>
+ <a id="tabsdata.tableframe.functions.col.Column"></a>
+<details open>
+<summary>Column</summary>
 
-**`Column(name: str | None = None, dtype: Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 = String)`**
+```python
+class Column(
+    name: str | None = None,
+    dtype: Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 = String,
+)
+```
 
 Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
@@ -71,19 +80,17 @@ customer_id Int64
 signup_date Datetime
 ```
 
-<details open>
-<summary>**`dtype`**</summary>
+<a id="tabsdata.tableframe.functions.col.Column.dtype"></a>
+<ResponseField name="dtype">
 
-`dtype`
+</ResponseField>
 
-</details>
+<a id="tabsdata.tableframe.functions.col.Column.name"></a>
+<ResponseField name="name">
 
-<details open>
-<summary>**`name`**</summary>
+</ResponseField>
 
-`name`
-
-</details>
+**Parameters:**
 
 <ParamField path="name" type="str">
   The name of the column. Must be a valid string identifier for the
@@ -95,6 +102,8 @@ Defaults to None.
   The expected data type for the column. This determines how values
 in the column will be interpreted, validated, and serialized.
 </ParamField>
+
+**Parameters:**
 
 <ParamField path="name" type="str">
   The name of the column, or None if no name was provided.
