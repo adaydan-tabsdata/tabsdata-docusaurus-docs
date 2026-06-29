@@ -62,6 +62,7 @@ interface ResponseFieldProps {
   name?: string;
   type?: string;
   required?: boolean;
+  kind?: 'variable' | 'property' | 'parameter' | 'attribute';
   children?: React.ReactNode;
 }
 
@@ -69,12 +70,13 @@ export function ParamField({ path, query, body, header, type, required, default:
   const name = path ?? query ?? body ?? header ?? '';
   return (
     <div className={styles.field}>
+      <div className={`${styles.fieldKindBadge} ${styles.kindParameter}`}>parameter</div>
       <div className={styles.fieldHeader}>
         <code className={styles.fieldName}>{name}</code>
         {type && <span className={styles.fieldType}>{type}</span>}
-        {required && <span className={styles.badge + ' ' + styles.required}>required</span>}
+        {required && <span className={`${styles.badge} ${styles.required}`}>required</span>}
         {defaultVal !== undefined && (
-          <span className={styles.badge + ' ' + styles.defaultBadge}>default: {defaultVal}</span>
+          <span className={`${styles.badge} ${styles.defaultBadge}`}>default: {defaultVal}</span>
         )}
       </div>
       {children && <div className={styles.fieldDesc}>{children}</div>}
@@ -82,13 +84,15 @@ export function ParamField({ path, query, body, header, type, required, default:
   );
 }
 
-export function ResponseField({ name, type, required, children }: ResponseFieldProps) {
+export function ResponseField({ name, type, required, kind = 'property', children }: ResponseFieldProps) {
+  const kindClass = styles[`kind${kind.charAt(0).toUpperCase()}${kind.slice(1)}`] ?? styles.kindProperty;
   return (
     <div className={styles.field}>
+      <div className={`${styles.fieldKindBadge} ${kindClass}`}>{kind}</div>
       <div className={styles.fieldHeader}>
         <code className={styles.fieldName}>{name}</code>
         {type && <span className={styles.fieldType}>{type}</span>}
-        {required && <span className={styles.badge + ' ' + styles.required}>required</span>}
+        {required && <span className={`${styles.badge} ${styles.required}`}>required</span>}
       </div>
       {children && <div className={styles.fieldDesc}>{children}</div>}
     </div>

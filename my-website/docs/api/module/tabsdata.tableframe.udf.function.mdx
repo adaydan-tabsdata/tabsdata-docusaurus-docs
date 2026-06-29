@@ -102,7 +102,7 @@ signature property to return “unpacked” to receive each value as a
 separate argument instead.
 
 <a id="tabsdata.tableframe.udf.function.UDF.signature"></a>
-<ResponseField name="signature">
+<ResponseField name="signature" kind="property">
 Defines how parameters are passed to on_batch and on_element methods.
 
  **Returns:** Parameters are passed as a single list (default).
@@ -249,7 +249,7 @@ with list signature:
 - `on_element(self, values: list[Any]) -> list[Any]`
 
 <a id="tabsdata.tableframe.udf.function.UDFList.signature"></a>
-<ResponseField name="signature">
+<ResponseField name="signature" kind="property">
 Defines how parameters are passed to on_batch and on_element methods.
 
  **Returns:** Parameters are passed as a single list (default).
@@ -387,7 +387,7 @@ with unpacked signature:
 - `on_element(self, val1: Any, val2: Any, ...) -> list[Any]`
 
 <a id="tabsdata.tableframe.udf.function.UDFUnpacked.signature"></a>
-<ResponseField name="signature">
+<ResponseField name="signature" kind="property">
 Defines how parameters are passed to on_batch and on_element methods.
 
  **Returns:** Parameters are passed as a single list (default).

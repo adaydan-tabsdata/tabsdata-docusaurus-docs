@@ -19,7 +19,7 @@ class AllOk(
 )
 ```
 
-Bases: [BoolCriteria](bymod-tabsdata.dataquality#tabsdata.dataquality.BoolCriteria)
+Bases: [BoolCriteria](/docs/api/module/tabsdata.dataquality#tabsdata.dataquality.BoolCriteria)
 
 A boolean criteria that selects records where all boolean classifiers
 pass (True).
@@ -41,7 +41,7 @@ class AnyFailed(
 )
 ```
 
-Bases: [BoolCriteria](bymod-tabsdata.dataquality#tabsdata.dataquality.BoolCriteria)
+Bases: [BoolCriteria](/docs/api/module/tabsdata.dataquality#tabsdata.dataquality.BoolCriteria)
 
 A boolean criteria that selects records where at least one boolean
 classifier fails (False).
@@ -67,13 +67,13 @@ Bases: `TagOperator`
 An operator that adds the data quality classifier columns to the original
 table frame. It does not remove any row from the original table.
 
+**Categories:** dq-operator
+
 <a id="tabsdata.dataquality.Enrich.to_table"></a>
-<ResponseField name="to_table">
+<ResponseField name="to_table" kind="property">
 Returns the destination table with the enriched data quality classifier
 columns. If None, the original table is used.
 </ResponseField>
-
-**Categories:** dq-operator
 
 </details>
 
@@ -93,12 +93,12 @@ Bases: `CriteriaOperator`
 An operator that fails the current transaction if a data quality threshold
 is met.
 
+**Categories:** dq-operator
+
 <a id="tabsdata.dataquality.Fail.threshold"></a>
-<ResponseField name="threshold">
+<ResponseField name="threshold" kind="property">
 Returns the threshold for this Fail operation.
 </ResponseField>
-
-**Categories:** dq-operator
 
 </details>
 
@@ -121,19 +121,19 @@ An operator that filters rows from a table based on data quality criteria.
 The filtered rows are removed from the table being processed. They can
 either be discarded or redirected to another table.
 
+**Categories:** dq-operator
+
 <a id="tabsdata.dataquality.Filter.include_quality_columns"></a>
-<ResponseField name="include_quality_columns">
+<ResponseField name="include_quality_columns" kind="property">
 Returns the data quality columns to included in the table with
 filtered out data.
 </ResponseField>
 
 <a id="tabsdata.dataquality.Filter.to_table"></a>
-<ResponseField name="to_table">
+<ResponseField name="to_table" kind="property">
 Returns the destination table for filtered rows, or None if they are
 discarded.
 </ResponseField>
-
-**Categories:** dq-operator
 
 </details>
 
@@ -148,7 +148,7 @@ class InBins(
 )
 ```
 
-Bases: [CategoryCriteria](bymod-tabsdata.dataquality#tabsdata.dataquality.CategoryCriteria)
+Bases: [CategoryCriteria](/docs/api/module/tabsdata.dataquality#tabsdata.dataquality.CategoryCriteria)
 
 A category criteria that selects records where the value in the specified
 columns falls into one of the given bins.
@@ -168,7 +168,7 @@ class NotInBins(
 )
 ```
 
-Bases: [CategoryCriteria](bymod-tabsdata.dataquality#tabsdata.dataquality.CategoryCriteria)
+Bases: [CategoryCriteria](/docs/api/module/tabsdata.dataquality#tabsdata.dataquality.CategoryCriteria)
 
 A category criteria that selects records where the value in the specified
 columns does not fall into any of the given bins.
@@ -187,16 +187,16 @@ class PercentThreshold(
 )
 ```
 
-Bases: [Threshold](bymod-tabsdata.dataquality#tabsdata.dataquality.Threshold)
+Bases: [Threshold](/docs/api/module/tabsdata.dataquality#tabsdata.dataquality.Threshold)
 
 A threshold based on a percentage of total rows.
 
+**Categories:** dq-operator
+
 <a id="tabsdata.dataquality.PercentThreshold.percent"></a>
-<ResponseField name="percent">
+<ResponseField name="percent" kind="property">
 Returns the percentage for the threshold.
 </ResponseField>
-
-**Categories:** dq-operator
 
 </details>
 
@@ -219,18 +219,18 @@ them to another table.
 
 This operation does not modify the original table.
 
+**Categories:** dq-operator
+
 <a id="tabsdata.dataquality.Select.include_quality_columns"></a>
-<ResponseField name="include_quality_columns">
+<ResponseField name="include_quality_columns" kind="property">
 Returns the data quality columns to included in the table with
 selected data.
 </ResponseField>
 
 <a id="tabsdata.dataquality.Select.to_table"></a>
-<ResponseField name="to_table">
+<ResponseField name="to_table" kind="property">
 Returns the destination table for the selected rows.
 </ResponseField>
-
-**Categories:** dq-operator
 
 </details>
 
@@ -250,11 +250,11 @@ Bases: `TagOperator`
 
 An operator that generates a data quality summary report for a table.
 
+**Categories:** dq-operator
+
 <a id="tabsdata.dataquality.Summary.table"></a>
-<ResponseField name="table">
+<ResponseField name="table" kind="property">
 Returns the name of the data quality summary table.
 </ResponseField>
-
-**Categories:** dq-operator
 
 </details>

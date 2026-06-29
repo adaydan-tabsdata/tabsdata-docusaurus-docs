@@ -261,7 +261,7 @@ By default, both methods receive their inputs as a list. Override the
 signature property in your UDF class to return “unpacked” to have each column
 passed as a separate argument instead.
 
- Creating UDFs:1. Subclass [tabsdata.tableframe.udf.function.UDF](bymod-tabsdata.tableframe.udf.function#tabsdata.tableframe.udf.function.UDF).
+ Creating UDFs:1. Subclass [tabsdata.tableframe.udf.function.UDF](/docs/api/module/tabsdata.tableframe.udf.function#tabsdata.tableframe.udf.function.UDF).
 2. Implement `__init__` to call `super().__init__(output_columns)` where
 `output_columns` is a tuple or list of tuples `(name, data type)`
 specifying the UDF default output schema (column names and data types).

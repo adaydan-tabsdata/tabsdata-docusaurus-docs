@@ -20,16 +20,16 @@ Bases: `FileFormat`
 
 Avro file format.
 
+**Categories:** file-format
+
 <a id="tabsdata.AvroFormat.chunk_size"></a>
-<ResponseField name="chunk_size">
+<ResponseField name="chunk_size" kind="property">
 Returns the chunk size for reading/writing AVRO files.
 
  **Returns:** The chunk size.
 
 **Returns:** int
 </ResponseField>
-
-**Categories:** file-format
 
 </details>
 
@@ -72,120 +72,118 @@ CSV file format.
 
 **Categories:** file-format
 
-**Parameters:**
-
-<ParamField path="separator" type="str">
+<ResponseField name="separator" type="str" kind="variable">
   The separator of the CSV file.
-</ParamField>
+</ResponseField>
 
-<ParamField path="quote_char" type="str">
+<ResponseField name="quote_char" type="str" kind="variable">
   The quote character of the CSV file.
-</ParamField>
+</ResponseField>
 
-<ParamField path="eol_char" type="str">
+<ResponseField name="eol_char" type="str" kind="variable">
   The end of line character of the CSV file.
-</ParamField>
+</ResponseField>
 
-<ParamField path="input_encoding" type="str">
+<ResponseField name="input_encoding" type="str" kind="variable">
   The encoding of the CSV file. Only used when importing
 data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="input_null_values" type="list">
+<ResponseField name="input_null_values" type="list" kind="variable">
   The null values of the CSV file. Only used
 when importing data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="input_missing_is_null" type="bool">
+<ResponseField name="input_missing_is_null" type="bool" kind="variable">
   Whether missing values should be marked as null.
 Only used when importing data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="input_truncate_ragged_lines" type="bool">
+<ResponseField name="input_truncate_ragged_lines" type="bool" kind="variable">
   Whether to truncate ragged lines of the
 CSV file. Only used when importing data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="input_comment_prefix" type="str">
+<ResponseField name="input_comment_prefix" type="str" kind="variable">
   The comment prefix of the CSV file.
 Only used when importing data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="input_try_parse_dates" type="bool">
+<ResponseField name="input_try_parse_dates" type="bool" kind="variable">
   Whether to try parse dates of the CSV file. Only
 used when importing data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="input_decimal_comma" type="bool">
+<ResponseField name="input_decimal_comma" type="bool" kind="variable">
   Whether the CSV file uses decimal comma. Only used
 when importing data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="input_has_header" type="bool">
+<ResponseField name="input_has_header" type="bool" kind="variable">
   If the CSV file has header. Only used when importing
 data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="input_skip_rows" type="int">
+<ResponseField name="input_skip_rows" type="int" kind="variable">
   How many rows should be skipped in the CSV file. Only
 used when importing data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="input_skip_rows_after_header" type="int">
+<ResponseField name="input_skip_rows_after_header" type="int" kind="variable">
   How many rows should be skipped after the
 header in the CSV file. Only used when importing data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="input_raise_if_empty" type="bool">
+<ResponseField name="input_raise_if_empty" type="bool" kind="variable">
   If an error should be raised for an empty CSV. Only
 used when importing data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="input_ignore_errors" type="bool">
+<ResponseField name="input_ignore_errors" type="bool" kind="variable">
   If the errors loading the CSV must be ignored. Only
 used when importing data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="output_include_header" type="bool">
+<ResponseField name="output_include_header" type="bool" kind="variable">
   Whether to include header in the CSV
 output. Only used when exporting data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="output_datetime_format" type="str">
+<ResponseField name="output_datetime_format" type="str" kind="variable">
   A format string, with the
 specifiers defined by the chrono Rust crate. If no format specified,
 the default fractional-second precision is inferred from the maximum
 timeunit found in the frame’s Datetime cols (if any). Only used when
 exporting data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="output_date_format" type="str">
+<ResponseField name="output_date_format" type="str" kind="variable">
   A format string, with the specifiers
 defined by the chrono Rust crate. Only used when exporting data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="output_time_format" type="str">
+<ResponseField name="output_time_format" type="str" kind="variable">
   A format string, with the specifiers
 defined by the chrono Rust crate. Only used when exporting data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="output_float_scientific" type="bool">
+<ResponseField name="output_float_scientific" type="bool" kind="variable">
   Whether to use scientific form
 always (true), never (false), or automatically (None). Only used when
 exporting data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="output_float_precision" type="int">
+<ResponseField name="output_float_precision" type="int" kind="variable">
   Number of decimal places to write.
 Only used when exporting data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="output_null_value" type="str">
+<ResponseField name="output_null_value" type="str" kind="variable">
   A string representing null values
 (defaulting to the empty string). Only used when exporting data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="output_quote_style" type="str">
+<ResponseField name="output_quote_style" type="str" kind="variable">
   Determines the quoting strategy used.
 Only used when exporting data.
 * necessary (default): This puts quotes around fields only when
@@ -201,13 +199,13 @@ separator).
 non-numeric. Namely, when writing a field that does not parse as a
 valid float or integer, then quotes will be used even if they aren`t
 strictly necessary.
-</ParamField>
+</ResponseField>
 
-<ParamField path="output_maintain_order" type="bool">
+<ResponseField name="output_maintain_order" type="bool" kind="variable">
   Maintain the order in which data is
 processed. Setting this to False will be slightly faster. Only used
 when exporting data.
-</ParamField>
+</ResponseField>
 
 </details>
 

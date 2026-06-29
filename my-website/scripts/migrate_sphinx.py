@@ -147,10 +147,14 @@ def fix_sphinx_link(href):
     """Convert Sphinx relative HTML links to absolute or Docusaurus-style paths."""
     if not href or href.startswith('http') or href.startswith('mailto'):
         return href
-    # Strip relative path prefix and .html extension for internal links
     href = re.sub(r'\.\./+', '', href)
     href = re.sub(r'main\.html', '', href)
     href = re.sub(r'\.html', '', href)
+    # Convert bymod-X → /docs/api/module/X and bycat-X → /docs/api/category/X
+    href = re.sub(r'bymod-([^#]+)', r'/docs/api/module/\1', href)
+    href = re.sub(r'bycat-([^#]+)', r'/docs/api/category/\1', href)
+    # Strip versioned paths like /versions/1.9.1/
+    href = re.sub(r'/versions/[^/]+/', '/docs/', href)
     return href
 
 
@@ -271,7 +275,35 @@ def field_list_to_mdx(dl):
     dds = dl.find_all('dd', recursive=False)
     for dt, dd in zip(dts, dds):
         label = dt.get_text().replace(':', '').strip()
-        if label.lower() in ('variables', 'parameters', 'args'):
+        if label.lower() in ('variables',):
+            items = dd.find_all('li')
+            var_cards = []
+            if items:
+                for li in items:
+                    name_el = li.find('strong')
+                    type_el = li.find('em')
+                    raw_name = name_el.get_text().strip() if name_el else li.get_text().split('(')[0].strip()
+                    name = escape_mdx_text(raw_name)
+                    type_str = escape_mdx_text(type_el.get_text().strip()) if type_el else ''
+                    text = li.get_text()
+                    desc = escape_mdx_text(text.split('–', 1)[1].strip()) if '–' in text else ''
+                    type_attr = f' type="{type_str}"' if type_str else ''
+                    var_cards.append(f'<ResponseField name="{name}"{type_attr} kind="variable">\n  {desc}\n</ResponseField>\n\n')
+            else:
+                for line in dd.get_text().splitlines():
+                    line = line.strip()
+                    if not line:
+                        continue
+                    if '(' in line:
+                        raw_name = line.split('(')[0].strip()
+                    else:
+                        raw_name = line.split('–')[0].strip()
+                    name = escape_mdx_text(raw_name)
+                    desc = escape_mdx_text(line.split('–', 1)[1].strip()) if '–' in line else ''
+                    var_cards.append(f'<ResponseField name="{name}" kind="variable">\n  {desc}\n</ResponseField>\n\n')
+            if var_cards:
+                parts.append(''.join(var_cards))
+        elif label.lower() in ('parameters', 'args'):
             items = dd.find_all('li')
             param_parts = []
             if items:
@@ -339,11 +371,14 @@ def api_entry_to_mdx(dl, depth=0):
         type_str = sig_to_type(dt)
         content = element_to_mdx(dd).strip() if dd else ''
         type_attr = f' type="{type_str}"' if type_str else ''
-        return f'{anchor}<ResponseField name="{name_only}"{type_attr}>\n{content}\n</ResponseField>\n\n'
+        kind = 'property' if 'property' in classes else 'attribute'
+        return f'{anchor}<ResponseField name="{name_only}"{type_attr} kind="{kind}">\n{content}\n</ResponseField>\n\n'
 
     # Build body for classes/functions/methods
-    body_parts = []
-    param_parts = []
+    # Keep prose, field-lists, and nested py entries in document order
+    prose_parts = []
+    field_parts = []
+    nested_parts = []
     needs_param_import = False
 
     if dd:
@@ -354,19 +389,22 @@ def api_entry_to_mdx(dl, depth=0):
                 fp = field_list_to_mdx(child)
                 if '<ParamField' in fp:
                     needs_param_import = True
-                param_parts.append(fp)
+                field_parts.append(fp)
             elif child.name == 'dl' and 'py' in child.get('class', []):
-                body_parts.append(api_entry_to_mdx(child, depth=depth + 1))
+                nested_parts.append(api_entry_to_mdx(child, depth=depth + 1))
             else:
-                body_parts.append(element_to_mdx(child))
+                prose_parts.append(element_to_mdx(child))
 
-    body = ''.join(body_parts).strip()
-    params = ''.join(param_parts)
+    prose = ''.join(prose_parts).strip()
+    fields = ''.join(field_parts)
+    nested = ''.join(nested_parts)
     inner = code_block
-    if body:
-        inner += body + '\n\n'
-    if params:
-        inner += params
+    if prose:
+        inner += prose + '\n\n'
+    if fields:
+        inner += fields
+    if nested:
+        inner += nested
 
     # Top-level entries → <details open>
     if depth == 0:

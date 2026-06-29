@@ -111,17 +111,17 @@ Bases: Criteria, [ABC](https://docs.python.org/3/library/abc.html#abc.ABC)
 A boolean criteria to select records based on classifier results.
 
 <a id="tabsdata.dataquality.BoolCriteria.nan_is_ok"></a>
-<ResponseField name="nan_is_ok">
+<ResponseField name="nan_is_ok" kind="property">
 Returns if NaN values should be considered OK.
 </ResponseField>
 
 <a id="tabsdata.dataquality.BoolCriteria.none_is_ok"></a>
-<ResponseField name="none_is_ok">
+<ResponseField name="none_is_ok" kind="property">
 Returns if None values should be considered OK.
 </ResponseField>
 
 <a id="tabsdata.dataquality.BoolCriteria.tags"></a>
-<ResponseField name="tags">
+<ResponseField name="tags" kind="property">
 Returns the list of tags associated with this criteria.
 </ResponseField>
 
@@ -176,12 +176,12 @@ Bases: Criteria, [ABC](https://docs.python.org/3/library/abc.html#abc.ABC)
 A category criteria to select records based on classifier results.
 
 <a id="tabsdata.dataquality.CategoryCriteria.bins"></a>
-<ResponseField name="bins">
+<ResponseField name="bins" kind="property">
 Returns a set of bins.
 </ResponseField>
 
 <a id="tabsdata.dataquality.CategoryCriteria.column_name"></a>
-<ResponseField name="column_name">
+<ResponseField name="column_name" kind="property">
 Returns the column name to check for values.
 </ResponseField>
 
@@ -211,23 +211,23 @@ result, which is stored in a new column. It supports tags to allow data quality
 operations to selectively act on specific classifiers.
 
 <a id="tabsdata.dataquality.Classifier.column_names"></a>
-<ResponseField name="column_names">
+<ResponseField name="column_names" kind="property">
 Returns the list of columns the classifier applies to, including optional
 destination column names.
 </ResponseField>
 
 <a id="tabsdata.dataquality.Classifier.on_missing_column"></a>
-<ResponseField name="on_missing_column">
+<ResponseField name="on_missing_column" kind="property">
 Returns what do if the column is missing.
 </ResponseField>
 
 <a id="tabsdata.dataquality.Classifier.on_wrong_type"></a>
-<ResponseField name="on_wrong_type">
+<ResponseField name="on_wrong_type" kind="property">
 Returns what do if the column type is incompatible with the classifier.
 </ResponseField>
 
 <a id="tabsdata.dataquality.Classifier.on_wrong_value"></a>
-<ResponseField name="on_wrong_value">
+<ResponseField name="on_wrong_value" kind="property">
 Returns what do if the column type is incompatible with the classifier.
 </ResponseField>
 
@@ -241,7 +241,7 @@ def supported_dtypes()
 Returns the set of data types supported by this classifier.
 
 <a id="tabsdata.dataquality.Classifier.tags"></a>
-<ResponseField name="tags">
+<ResponseField name="tags" kind="property">
 Returns the list of tags associated with the classifier.
 </ResponseField>
 
@@ -297,23 +297,23 @@ This class encapsulates a set of data quality rules, defined by classifiers
 and operators, that are applied to a specified table. It serves as a container
 for a complete data quality workflow.
 
+**Categories:** dq-action
+
 <a id="tabsdata.dataquality.DataQuality.classifiers"></a>
-<ResponseField name="classifiers">
+<ResponseField name="classifiers" kind="property">
 Returns the list of classifiers used in this data quality action.
 </ResponseField>
 
 <a id="tabsdata.dataquality.DataQuality.operators"></a>
-<ResponseField name="operators">
+<ResponseField name="operators" kind="property">
 Returns the list of operators that will be executed based on the
 classifier results.
 </ResponseField>
 
 <a id="tabsdata.dataquality.DataQuality.table"></a>
-<ResponseField name="table">
+<ResponseField name="table" kind="property">
 Returns the name of the table targeted by this data quality action.
 </ResponseField>
-
-**Categories:** dq-action
 
 </details>
 
@@ -369,13 +369,13 @@ Bases: `TagOperator`
 An operator that adds the data quality classifier columns to the original
 table frame. It does not remove any row from the original table.
 
+**Categories:** dq-operator
+
 <a id="tabsdata.dataquality.Enrich.to_table"></a>
-<ResponseField name="to_table">
+<ResponseField name="to_table" kind="property">
 Returns the destination table with the enriched data quality classifier
 columns. If None, the original table is used.
 </ResponseField>
-
-**Categories:** dq-operator
 
 </details>
 
@@ -397,12 +397,12 @@ Bases: `NonIdentityScale`
 
 An exponential scale.
 
+**Categories:** dq-classifier
+
 <a id="tabsdata.dataquality.ExponentialScale.base"></a>
-<ResponseField name="base">
+<ResponseField name="base" kind="property">
 Returns the base of the exponential scale.
 </ResponseField>
-
-**Categories:** dq-classifier
 
 </details>
 
@@ -422,12 +422,12 @@ Bases: `CriteriaOperator`
 An operator that fails the current transaction if a data quality threshold
 is met.
 
+**Categories:** dq-operator
+
 <a id="tabsdata.dataquality.Fail.threshold"></a>
-<ResponseField name="threshold">
+<ResponseField name="threshold" kind="property">
 Returns the threshold for this Fail operation.
 </ResponseField>
-
-**Categories:** dq-operator
 
 </details>
 
@@ -450,19 +450,19 @@ An operator that filters rows from a table based on data quality criteria.
 The filtered rows are removed from the table being processed. They can
 either be discarded or redirected to another table.
 
+**Categories:** dq-operator
+
 <a id="tabsdata.dataquality.Filter.include_quality_columns"></a>
-<ResponseField name="include_quality_columns">
+<ResponseField name="include_quality_columns" kind="property">
 Returns the data quality columns to included in the table with
 filtered out data.
 </ResponseField>
 
 <a id="tabsdata.dataquality.Filter.to_table"></a>
-<ResponseField name="to_table">
+<ResponseField name="to_table" kind="property">
 Returns the destination table for filtered rows, or None if they are
 discarded.
 </ResponseField>
-
-**Categories:** dq-operator
 
 </details>
 
@@ -486,13 +486,15 @@ Bases: BoolClassifier
 
 A boolean classifier that checks if the length of a value is within a given range.
 
+**Categories:** dq-classifier
+
 <a id="tabsdata.dataquality.HasLength.max"></a>
-<ResponseField name="max">
+<ResponseField name="max" kind="property">
 Returns the maximum allowed length.
 </ResponseField>
 
 <a id="tabsdata.dataquality.HasLength.min"></a>
-<ResponseField name="min">
+<ResponseField name="min" kind="property">
 Returns the minimum allowed length.
 </ResponseField>
 
@@ -504,8 +506,6 @@ def supported_dtypes()
 ```
 
 Returns the set of data types supported by HasLength classifier.
-
-**Categories:** dq-classifier
 
 </details>
 
@@ -537,17 +537,17 @@ Bases: Scale
 
 An identity scale where each integer value corresponds to a bin.
 
+**Categories:** dq-classifier
+
 <a id="tabsdata.dataquality.IdentityScale.bins"></a>
-<ResponseField name="bins">
+<ResponseField name="bins" kind="property">
 Returns the number of bins in the scale.
 </ResponseField>
 
 <a id="tabsdata.dataquality.IdentityScale.scale_range"></a>
-<ResponseField name="scale_range">
+<ResponseField name="scale_range" kind="property">
 Returns the (min, max) range of the scale.
 </ResponseField>
-
-**Categories:** dq-classifier
 
 </details>
 
@@ -627,6 +627,8 @@ Bases: BoolClassifier
 
 A boolean classifier that checks if a value is False.
 
+**Categories:** dq-classifier
+
 <a id="tabsdata.dataquality.IsFalse.supported_dtypes"></a>
 #### `supported_dtypes`
 
@@ -635,8 +637,6 @@ def supported_dtypes()
 ```
 
 Returns the set of data types supported by IsFalse classifier.
-
-**Categories:** dq-classifier
 
 </details>
 
@@ -705,6 +705,8 @@ Bases: BoolClassifier
 
 A boolean classifier that checks if a value is NaN (Not a Number).
 
+**Categories:** dq-classifier
+
 <a id="tabsdata.dataquality.IsNan.supported_dtypes"></a>
 #### `supported_dtypes`
 
@@ -713,8 +715,6 @@ def supported_dtypes()
 ```
 
 Returns the set of data types supported by IsNan classifier.
-
-**Categories:** dq-classifier
 
 </details>
 
@@ -748,6 +748,8 @@ Bases: BoolClassifier
 
 A boolean classifier that checks if a numeric value is negative.
 
+**Categories:** dq-classifier
+
 <a id="tabsdata.dataquality.IsNegative.supported_dtypes"></a>
 #### `supported_dtypes`
 
@@ -756,8 +758,6 @@ def supported_dtypes()
 ```
 
 Returns the set of data types supported by IsNegative classifier.
-
-**Categories:** dq-classifier
 
 </details>
 
@@ -791,6 +791,8 @@ Bases: BoolClassifier
 
 A boolean classifier that checks if a numeric value is negative or zero.
 
+**Categories:** dq-classifier
+
 <a id="tabsdata.dataquality.IsNegativeOrZero.supported_dtypes"></a>
 #### `supported_dtypes`
 
@@ -799,8 +801,6 @@ def supported_dtypes()
 ```
 
 Returns the set of data types supported by IsNegativeOrZero classifier.
-
-**Categories:** dq-classifier
 
 </details>
 
@@ -907,6 +907,8 @@ Bases: BoolClassifier
 
 A boolean classifier that checks if a value is *not* NaN.
 
+**Categories:** dq-classifier
+
 <a id="tabsdata.dataquality.IsNotNan.supported_dtypes"></a>
 #### `supported_dtypes`
 
@@ -915,8 +917,6 @@ def supported_dtypes()
 ```
 
 Returns the set of data types supported by IsNotNan classifier.
-
-**Categories:** dq-classifier
 
 </details>
 
@@ -949,6 +949,8 @@ Bases: BoolClassifier
 
 A boolean classifier that checks if a value is *not* NULL.
 
+**Categories:** dq-classifier
+
 <a id="tabsdata.dataquality.IsNotNull.supported_dtypes"></a>
 #### `supported_dtypes`
 
@@ -957,8 +959,6 @@ def supported_dtypes()
 ```
 
 Returns the set of data types supported by IsNotNull classifier.
-
-**Categories:** dq-classifier
 
 </details>
 
@@ -992,6 +992,8 @@ Bases: BoolClassifier
 
 A boolean classifier that checks if a value is neither NULL nor NaN.
 
+**Categories:** dq-classifier
+
 <a id="tabsdata.dataquality.IsNotNullNorNan.supported_dtypes"></a>
 #### `supported_dtypes`
 
@@ -1000,8 +1002,6 @@ def supported_dtypes()
 ```
 
 Returns the set of data types supported by IsNotNullNorNan classifier.
-
-**Categories:** dq-classifier
 
 </details>
 
@@ -1035,6 +1035,8 @@ Bases: BoolClassifier
 
 A boolean classifier that checks if a numeric value is not zero.
 
+**Categories:** dq-classifier
+
 <a id="tabsdata.dataquality.IsNotZero.supported_dtypes"></a>
 #### `supported_dtypes`
 
@@ -1043,8 +1045,6 @@ def supported_dtypes()
 ```
 
 Returns the set of data types supported by IsNotZero classifier.
-
-**Categories:** dq-classifier
 
 </details>
 
@@ -1077,6 +1077,8 @@ Bases: BoolClassifier
 
 A boolean classifier that checks if a value is NULL.
 
+**Categories:** dq-classifier
+
 <a id="tabsdata.dataquality.IsNull.supported_dtypes"></a>
 #### `supported_dtypes`
 
@@ -1085,8 +1087,6 @@ def supported_dtypes()
 ```
 
 Returns the set of data types supported by IsNull classifier.
-
-**Categories:** dq-classifier
 
 </details>
 
@@ -1120,6 +1120,8 @@ Bases: BoolClassifier
 
 A boolean classifier that checks if a value is either NULL or NaN.
 
+**Categories:** dq-classifier
+
 <a id="tabsdata.dataquality.IsNullOrNan.supported_dtypes"></a>
 #### `supported_dtypes`
 
@@ -1128,8 +1130,6 @@ def supported_dtypes()
 ```
 
 Returns the set of data types supported by IsNullOrNan classifier.
-
-**Categories:** dq-classifier
 
 </details>
 
@@ -1163,6 +1163,8 @@ Bases: BoolClassifier
 
 A boolean classifier that checks if a numeric value is positive.
 
+**Categories:** dq-classifier
+
 <a id="tabsdata.dataquality.IsPositive.supported_dtypes"></a>
 #### `supported_dtypes`
 
@@ -1171,8 +1173,6 @@ def supported_dtypes()
 ```
 
 Returns the set of data types supported by IsPositive classifier.
-
-**Categories:** dq-classifier
 
 </details>
 
@@ -1206,6 +1206,8 @@ Bases: BoolClassifier
 
 A boolean classifier that checks if a numeric value is positive or zero.
 
+**Categories:** dq-classifier
+
 <a id="tabsdata.dataquality.IsPositiveOrZero.supported_dtypes"></a>
 #### `supported_dtypes`
 
@@ -1214,8 +1216,6 @@ def supported_dtypes()
 ```
 
 Returns the set of data types supported by IsPositiveOrZero classifier.
-
-**Categories:** dq-classifier
 
 </details>
 
@@ -1249,6 +1249,8 @@ Bases: BoolClassifier
 
 A boolean classifier that checks if a value is True.
 
+**Categories:** dq-classifier
+
 <a id="tabsdata.dataquality.IsTrue.supported_dtypes"></a>
 #### `supported_dtypes`
 
@@ -1257,8 +1259,6 @@ def supported_dtypes()
 ```
 
 Returns the set of data types supported by IsTrue classifier.
-
-**Categories:** dq-classifier
 
 </details>
 
@@ -1292,6 +1292,8 @@ Bases: BoolClassifier
 
 A boolean classifier that checks if a numeric value is zero.
 
+**Categories:** dq-classifier
+
 <a id="tabsdata.dataquality.IsZero.supported_dtypes"></a>
 #### `supported_dtypes`
 
@@ -1300,8 +1302,6 @@ def supported_dtypes()
 ```
 
 Returns the set of data types supported by IsZero classifier.
-
-**Categories:** dq-classifier
 
 </details>
 
@@ -1356,12 +1356,12 @@ Bases: `NonIdentityScale`
 
 A logarithmic scale.
 
+**Categories:** dq-classifier
+
 <a id="tabsdata.dataquality.LogarithmicScale.base"></a>
-<ResponseField name="base">
+<ResponseField name="base" kind="property">
 Returns the base of the logarithmic scale.
 </ResponseField>
-
-**Categories:** dq-classifier
 
 </details>
 
@@ -1418,12 +1418,12 @@ Bases: `NonIdentityScale`
 
 A monomial (power-law) scale.
 
+**Categories:** dq-classifier
+
 <a id="tabsdata.dataquality.MonomialScale.power"></a>
-<ResponseField name="power">
+<ResponseField name="power" kind="property">
 Returns the power of the monomial scale.
 </ResponseField>
-
-**Categories:** dq-classifier
 
 </details>
 
@@ -1478,12 +1478,12 @@ Bases: Threshold
 
 A threshold based on a percentage of total rows.
 
+**Categories:** dq-operator
+
 <a id="tabsdata.dataquality.PercentThreshold.percent"></a>
-<ResponseField name="percent">
+<ResponseField name="percent" kind="property">
 Returns the percentage for the threshold.
 </ResponseField>
-
-**Categories:** dq-operator
 
 </details>
 
@@ -1502,7 +1502,7 @@ Bases: Threshold
 A threshold based on a specific number of rows.
 
 <a id="tabsdata.dataquality.RowCountThreshold.row_count"></a>
-<ResponseField name="row_count">
+<ResponseField name="row_count" kind="property">
 Returns the row count for the threshold.
 </ResponseField>
 
@@ -1527,7 +1527,7 @@ Abstract base class for scales used in categorization.
 A scale defines how numerical data is divided into bins.
 
 <a id="tabsdata.dataquality.Scale.use_bin_zero"></a>
-<ResponseField name="use_bin_zero">
+<ResponseField name="use_bin_zero" kind="property">
 Returns whether the minimum value is in bin zero or in bin one.
 </ResponseField>
 
@@ -1553,8 +1553,10 @@ Bases: Categorizer
 
 A classifier that bucketizes data into bins based on a given scale.
 
+**Categories:** dq-classifier
+
 <a id="tabsdata.dataquality.ScaleCategorizer.scale"></a>
-<ResponseField name="scale">
+<ResponseField name="scale" kind="property">
 Returns the scale used for categorization.
 </ResponseField>
 
@@ -1566,8 +1568,6 @@ def supported_dtypes()
 ```
 
 Returns the set of data types supported by categorizers.
-
-**Categories:** dq-classifier
 
 </details>
 
@@ -1602,18 +1602,18 @@ them to another table.
 
 This operation does not modify the original table.
 
+**Categories:** dq-operator
+
 <a id="tabsdata.dataquality.Select.include_quality_columns"></a>
-<ResponseField name="include_quality_columns">
+<ResponseField name="include_quality_columns" kind="property">
 Returns the data quality columns to included in the table with
 selected data.
 </ResponseField>
 
 <a id="tabsdata.dataquality.Select.to_table"></a>
-<ResponseField name="to_table">
+<ResponseField name="to_table" kind="property">
 Returns the destination table for the selected rows.
 </ResponseField>
-
-**Categories:** dq-operator
 
 </details>
 
@@ -1633,12 +1633,12 @@ Bases: `TagOperator`
 
 An operator that generates a data quality summary report for a table.
 
+**Categories:** dq-operator
+
 <a id="tabsdata.dataquality.Summary.table"></a>
-<ResponseField name="table">
+<ResponseField name="table" kind="property">
 Returns the name of the data quality summary table.
 </ResponseField>
-
-**Categories:** dq-operator
 
 </details>
 

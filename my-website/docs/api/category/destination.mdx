@@ -18,9 +18,11 @@ class AzureDestination(
 )
 ```
 
-Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
+Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
 
 Azure-file-based data outputs.
+
+**Categories:** destination
 
 <a id="tabsdata.AzureDestination.SupportedFormats"></a>
 ### `SupportedFormats`
@@ -36,27 +38,27 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 Enum for the supported formats for the AzureDestination.
 
 <a id="tabsdata.AzureDestination.SupportedFormats.avro"></a>
-<ResponseField name="avro">
+<ResponseField name="avro" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.AzureDestination.SupportedFormats.csv"></a>
-<ResponseField name="csv">
+<ResponseField name="csv" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.AzureDestination.SupportedFormats.ndjson"></a>
-<ResponseField name="ndjson">
+<ResponseField name="ndjson" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.AzureDestination.SupportedFormats.parquet"></a>
-<ResponseField name="parquet">
+<ResponseField name="parquet" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.AzureDestination.allow_fragments"></a>
-<ResponseField name="allow_fragments">
+<ResponseField name="allow_fragments" kind="property">
 Whether to allow fragments in the output.
 
  **Type:** bool
@@ -93,14 +95,14 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** A list of the intermediate files created
 
 <a id="tabsdata.AzureDestination.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access Azure.
 
  **Type:** AzureCredentials
 </ResponseField>
 
 <a id="tabsdata.AzureDestination.format"></a>
-<ResponseField name="format">
+<ResponseField name="format" kind="property">
 The format of the file. If not provided, it will be inferred from
 the file extension of the URI.
 
@@ -138,15 +140,13 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** None
 
 <a id="tabsdata.AzureDestination.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 ‘az://path/to/files’.
 
  **Type:** str | list[str]
 
 **Type:** The URI of the files with format
 </ResponseField>
-
-**Categories:** destination
 
 </details>
 
@@ -163,26 +163,28 @@ class BigQueryDest(
 )
 ```
 
-Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
+Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
 
 BigQuery based data outputs.
 The data is first stored in parquet files in a GCS bucket, and then loaded into the
 BigQuery tables.
 
+**Categories:** destination
+
 <a id="tabsdata.BigQueryDest.conn"></a>
-<ResponseField name="conn">
+<ResponseField name="conn" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.BigQueryDest.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 The strategy to follow when the table already exists.
 
  **Type:** str
 </ResponseField>
 
 <a id="tabsdata.BigQueryDest.schema_strategy"></a>
-<ResponseField name="schema_strategy">
+<ResponseField name="schema_strategy" kind="property">
 The strategy to follow when appending to a table with an existing schema.
 
  **Type:** str
@@ -219,11 +221,9 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** None
 
 <a id="tabsdata.BigQueryDest.tables"></a>
-<ResponseField name="tables">
+<ResponseField name="tables" kind="property">
 
 </ResponseField>
-
-**Categories:** destination
 
 </details>
 
@@ -237,7 +237,7 @@ class ClickHouseDest(
 )
 ```
 
-Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
+Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
 
 Destination plugin for writing data to ClickHouse using cloud-staged bulk loading.
 
@@ -245,23 +245,25 @@ Data is first written as Parquet files to the configured cloud storage staging a
 (S3, Azure Blob, or GCS) and then ingested into ClickHouse via its native table
 functions (`s3()`, `azureBlobStorage()`).
 
+**Categories:** destination
+
 <a id="tabsdata.ClickHouseDest.conn"></a>
-<ResponseField name="conn">
+<ResponseField name="conn" kind="property">
 The ClickHouse connection configuration.
 </ResponseField>
 
 <a id="tabsdata.ClickHouseDest.destination_tables"></a>
-<ResponseField name="destination_tables">
+<ResponseField name="destination_tables" kind="property">
 The table(s) to load data into.
 </ResponseField>
 
 <a id="tabsdata.ClickHouseDest.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 The strategy to follow when the table already exists.
 </ResponseField>
 
 <a id="tabsdata.ClickHouseDest.schema_evolution"></a>
-<ResponseField name="schema_evolution">
+<ResponseField name="schema_evolution" kind="property">
 The schema evolution strategy.
 </ResponseField>
 
@@ -289,8 +291,6 @@ the cloud staging area.
 in the same order as destination_tables.
 </ParamField>
 
-**Categories:** destination
-
 </details>
 
  <a id="tabsdata.DatabricksDestination"></a>
@@ -313,9 +313,11 @@ class DatabricksDestination(
 )
 ```
 
-Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
+Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
 
 Databricks based data outputs.
+
+**Categories:** destination
 
 <a id="tabsdata.DatabricksDestination.chunk"></a>
 #### `chunk`
@@ -348,19 +350,19 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** A list of the intermediate files created
 
 <a id="tabsdata.DatabricksDestination.host_url"></a>
-<ResponseField name="host_url">
+<ResponseField name="host_url" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.DatabricksDestination.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 The strategy to follow when the table already exists.
 
  **Type:** str
 </ResponseField>
 
 <a id="tabsdata.DatabricksDestination.schema_strategy"></a>
-<ResponseField name="schema_strategy">
+<ResponseField name="schema_strategy" kind="property">
 The strategy to follow when appending to a table with an existing schema.
 
  **Type:** str
@@ -397,12 +399,12 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** None
 
 <a id="tabsdata.DatabricksDestination.tables"></a>
-<ResponseField name="tables">
+<ResponseField name="tables" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.DatabricksDestination.token"></a>
-<ResponseField name="token">
+<ResponseField name="token" kind="property">
 
 </ResponseField>
 
@@ -418,8 +420,6 @@ def write(
 This method is used to write the files to the databricks. It is called
 from the stream method, and it is not intended to be called directly.
 
-**Categories:** destination
-
 </details>
 
  <a id="tabsdata.DruidDest"></a>
@@ -432,7 +432,7 @@ class DruidDest(
 )
 ```
 
-Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
+Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
 
 Destination plugin for writing data to Apache Druid using cloud-staged
 bulk loading.
@@ -441,18 +441,20 @@ Data is first written as Parquet files to the configured cloud storage
 staging area (S3, Azure Blob, or GCS) and then ingested into Druid via
 a native batch `index_parallel` task submitted to the Overlord REST API.
 
+**Categories:** destination
+
 <a id="tabsdata.DruidDest.conn"></a>
-<ResponseField name="conn">
+<ResponseField name="conn" kind="property">
 The Druid connection configuration.
 </ResponseField>
 
 <a id="tabsdata.DruidDest.destination_tables"></a>
-<ResponseField name="destination_tables">
+<ResponseField name="destination_tables" kind="property">
 The datasource(s) to load data into.
 </ResponseField>
 
 <a id="tabsdata.DruidDest.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 The strategy to follow when the datasource already exists.
 </ResponseField>
 
@@ -480,8 +482,6 @@ the cloud staging area.
 datasource, in the same order as destination_tables.
 </ParamField>
 
-**Categories:** destination
-
 </details>
 
  <a id="tabsdata.GCSDestination"></a>
@@ -496,9 +496,11 @@ class GCSDestination(
 )
 ```
 
-Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
+Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
 
 GCS-file-based data outputs.
+
+**Categories:** destination
 
 <a id="tabsdata.GCSDestination.SupportedFormats"></a>
 ### `SupportedFormats`
@@ -514,27 +516,27 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 Enum for the supported formats for the GCSDestination.
 
 <a id="tabsdata.GCSDestination.SupportedFormats.avro"></a>
-<ResponseField name="avro">
+<ResponseField name="avro" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.GCSDestination.SupportedFormats.csv"></a>
-<ResponseField name="csv">
+<ResponseField name="csv" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.GCSDestination.SupportedFormats.ndjson"></a>
-<ResponseField name="ndjson">
+<ResponseField name="ndjson" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.GCSDestination.SupportedFormats.parquet"></a>
-<ResponseField name="parquet">
+<ResponseField name="parquet" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.GCSDestination.allow_fragments"></a>
-<ResponseField name="allow_fragments">
+<ResponseField name="allow_fragments" kind="property">
 Whether to allow fragments in the output.
 
  **Type:** bool
@@ -571,14 +573,14 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** A list of the intermediate files created
 
 <a id="tabsdata.GCSDestination.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access GCS.
 
  **Type:** GCPCredentials
 </ResponseField>
 
 <a id="tabsdata.GCSDestination.format"></a>
-<ResponseField name="format">
+<ResponseField name="format" kind="property">
 The format of the file. If not provided, it will be inferred from
 the file extension of the URI.
 
@@ -616,15 +618,13 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** None
 
 <a id="tabsdata.GCSDestination.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 ‘gs://path/to/files’.
 
  **Type:** str | list[str]
 
 **Type:** The URI of the files with format
 </ResponseField>
-
-**Categories:** destination
 
 </details>
 
@@ -639,9 +639,11 @@ class LocalFileDestination(
 )
 ```
 
-Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
+Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
 
 LocalFile-based data outputs.
+
+**Categories:** destination
 
 <a id="tabsdata.LocalFileDestination.SupportedFormats"></a>
 ### `SupportedFormats`
@@ -657,27 +659,27 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 Enum for the supported formats for the LocalFileDestination.
 
 <a id="tabsdata.LocalFileDestination.SupportedFormats.avro"></a>
-<ResponseField name="avro">
+<ResponseField name="avro" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.LocalFileDestination.SupportedFormats.csv"></a>
-<ResponseField name="csv">
+<ResponseField name="csv" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.LocalFileDestination.SupportedFormats.ndjson"></a>
-<ResponseField name="ndjson">
+<ResponseField name="ndjson" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.LocalFileDestination.SupportedFormats.parquet"></a>
-<ResponseField name="parquet">
+<ResponseField name="parquet" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.LocalFileDestination.allow_fragments"></a>
-<ResponseField name="allow_fragments">
+<ResponseField name="allow_fragments" kind="property">
 Whether to allow fragments in the output.
 
  **Type:** bool
@@ -714,7 +716,7 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** A list of the intermediate files created
 
 <a id="tabsdata.LocalFileDestination.format"></a>
-<ResponseField name="format">
+<ResponseField name="format" kind="property">
 The format of the file or files. If not provided, it will be
 inferred from the file extension in the path.
 
@@ -722,7 +724,7 @@ inferred from the file extension in the path.
 </ResponseField>
 
 <a id="tabsdata.LocalFileDestination.path"></a>
-<ResponseField name="path">
+<ResponseField name="path" kind="property">
 The path or paths to store the files.
 
  **Type:** str | list[str]
@@ -758,8 +760,6 @@ the execution of the plugin, not the final destination of the data)
 
 **Returns:** None
 
-**Categories:** destination
-
 </details>
 
  <a id="tabsdata.MSSQLDestination"></a>
@@ -780,9 +780,11 @@ class MSSQLDestination(
 )
 ```
 
-Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
+Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
 
 MSSQL-based data outputs.
+
+**Categories:** destination
 
 <a id="tabsdata.MSSQLDestination.chunk"></a>
 #### `chunk`
@@ -815,7 +817,7 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** A list of the intermediate files created
 
 <a id="tabsdata.MSSQLDestination.connection_string"></a>
-<ResponseField name="connection_string">
+<ResponseField name="connection_string" kind="property">
 Get the connection string for the database.
 
  **Returns:** The connection string.
@@ -824,7 +826,7 @@ Get the connection string for the database.
 </ResponseField>
 
 <a id="tabsdata.MSSQLDestination.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access
 Microsoft SQL Server. If no credentials were provided, it will return None.
 
@@ -832,7 +834,7 @@ Microsoft SQL Server. If no credentials were provided, it will return None.
 </ResponseField>
 
 <a id="tabsdata.MSSQLDestination.destination_table"></a>
-<ResponseField name="destination_table">
+<ResponseField name="destination_table" kind="property">
 Get the destination table(s) where the data will be stored.
 
  **Returns:** The destination table(s).
@@ -841,7 +843,7 @@ Get the destination table(s) where the data will be stored.
 </ResponseField>
 
 <a id="tabsdata.MSSQLDestination.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 Returns the value of the if_table_exists property.
 This property determines what to do if the table already exists.
 </ResponseField>
@@ -888,8 +890,6 @@ def write(
 This method is used to write the files to the database. It is called
 from the stream method, and it is not intended to be called directly.
 
-**Categories:** destination
-
 </details>
 
  <a id="tabsdata.MariaDBDest"></a>
@@ -907,33 +907,35 @@ class MariaDBDest(
 )
 ```
 
-Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
+Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
 
 Destination plugin for writing data to MySQL.
 
+**Categories:** destination
+
 <a id="tabsdata.MariaDBDest.chunk_size"></a>
-<ResponseField name="chunk_size">
+<ResponseField name="chunk_size" kind="property">
 The chunk size for writing large results in batches.
 </ResponseField>
 
 <a id="tabsdata.MariaDBDest.conn"></a>
-<ResponseField name="conn">
+<ResponseField name="conn" kind="property">
 The MariaDB connection configuration.
 </ResponseField>
 
 <a id="tabsdata.MariaDBDest.destination_tables"></a>
-<ResponseField name="destination_tables">
+<ResponseField name="destination_tables" kind="property">
 The table(s) to create. If multiple tables are provided,
 they must be provided as a list.
 </ResponseField>
 
 <a id="tabsdata.MariaDBDest.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 The strategy to follow when the table already exists.
 </ResponseField>
 
 <a id="tabsdata.MariaDBDest.loader"></a>
-<ResponseField name="loader">
+<ResponseField name="loader" kind="property">
 The data processing loader to use for executing DB write operation.
 </ResponseField>
 
@@ -960,11 +962,9 @@ Store the results into the MariaDB database.
 </ParamField>
 
 <a id="tabsdata.MariaDBDest.transactional"></a>
-<ResponseField name="transactional">
+<ResponseField name="transactional" kind="property">
 Whether to use transactions for writing data to ensure consistency.
 </ResponseField>
-
-**Categories:** destination
 
 </details>
 
@@ -978,9 +978,11 @@ class MariaDBDestination(
 )
 ```
 
-Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
+Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
 
 MariaDB-based data outputs.
+
+**Categories:** destination
 
 <a id="tabsdata.MariaDBDestination.chunk"></a>
 #### `chunk`
@@ -1006,7 +1008,7 @@ destination.
 </ParamField>
 
 <a id="tabsdata.MariaDBDestination.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access the MariaDB
 database.
 
@@ -1014,7 +1016,7 @@ database.
 </ResponseField>
 
 <a id="tabsdata.MariaDBDestination.destination_table"></a>
-<ResponseField name="destination_table">
+<ResponseField name="destination_table" kind="property">
 The table(s) to create. If multiple tables are provided,
 they must be provided as a list.
 
@@ -1022,14 +1024,14 @@ they must be provided as a list.
 </ResponseField>
 
 <a id="tabsdata.MariaDBDestination.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 The strategy to follow when the table already exists.
 
  **Type:** str
 </ResponseField>
 
 <a id="tabsdata.MariaDBDestination.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 The URI of the database where the data is going to be stored.
 
  **Type:** str
@@ -1054,8 +1056,6 @@ should be of an appropriate size.
   The file or files to be stored in the final destination.
 </ParamField>
 
-**Categories:** destination
-
 </details>
 
  <a id="tabsdata.MongoDBDestination"></a>
@@ -1079,9 +1079,11 @@ class MongoDBDestination(
 )
 ```
 
-Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
+Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
 
 MongoDB-based data outputs.
+
+**Categories:** destination
 
 <a id="tabsdata.MongoDBDestination.chunk"></a>
 #### `chunk`
@@ -1114,22 +1116,22 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** A list of the intermediate files created
 
 <a id="tabsdata.MongoDBDestination.collections_with_ids"></a>
-<ResponseField name="collections_with_ids">
+<ResponseField name="collections_with_ids" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.MongoDBDestination.connection_options"></a>
-<ResponseField name="connection_options">
+<ResponseField name="connection_options" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.MongoDBDestination.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.MongoDBDestination.if_collection_exists"></a>
-<ResponseField name="if_collection_exists">
+<ResponseField name="if_collection_exists" kind="property">
 
 </ResponseField>
 
@@ -1164,7 +1166,7 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** None
 
 <a id="tabsdata.MongoDBDestination.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 
 </ResponseField>
 
@@ -1179,8 +1181,6 @@ def write(
 
 This method is used to write the files to the database. It is called
 from the stream method, and it is not intended to be called directly.
-
-**Categories:** destination
 
 </details>
 
@@ -1199,33 +1199,35 @@ class MySQLDest(
 )
 ```
 
-Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
+Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
 
 Destination plugin for writing data to MySQL.
 
+**Categories:** destination
+
 <a id="tabsdata.MySQLDest.chunk_size"></a>
-<ResponseField name="chunk_size">
+<ResponseField name="chunk_size" kind="property">
 The chunk size for writing large results in batches.
 </ResponseField>
 
 <a id="tabsdata.MySQLDest.conn"></a>
-<ResponseField name="conn">
+<ResponseField name="conn" kind="property">
 The MySQL connection configuration.
 </ResponseField>
 
 <a id="tabsdata.MySQLDest.destination_tables"></a>
-<ResponseField name="destination_tables">
+<ResponseField name="destination_tables" kind="property">
 The table(s) to create. If multiple tables are provided,
 they must be provided as a list.
 </ResponseField>
 
 <a id="tabsdata.MySQLDest.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 The strategy to follow when the table already exists.
 </ResponseField>
 
 <a id="tabsdata.MySQLDest.loader"></a>
-<ResponseField name="loader">
+<ResponseField name="loader" kind="property">
 The data processing loader to use for executing DB write operation.
 </ResponseField>
 
@@ -1252,11 +1254,9 @@ Store the results into the MySQL database.
 </ParamField>
 
 <a id="tabsdata.MySQLDest.transactional"></a>
-<ResponseField name="transactional">
+<ResponseField name="transactional" kind="property">
 Whether to use transactions for writing data to ensure consistency.
 </ResponseField>
-
-**Categories:** destination
 
 </details>
 
@@ -1270,9 +1270,11 @@ class MySQLDestination(
 )
 ```
 
-Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
+Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
 
 MySQL-based data outputs.
+
+**Categories:** destination
 
 <a id="tabsdata.MySQLDestination.chunk"></a>
 #### `chunk`
@@ -1298,14 +1300,14 @@ destination.
 </ParamField>
 
 <a id="tabsdata.MySQLDestination.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access the MySQLDatabase.
 
  **Type:** UserPasswordCredentials
 </ResponseField>
 
 <a id="tabsdata.MySQLDestination.destination_table"></a>
-<ResponseField name="destination_table">
+<ResponseField name="destination_table" kind="property">
 The table(s) to create. If multiple tables are provided,
 they must be provided as a list.
 
@@ -1313,14 +1315,14 @@ they must be provided as a list.
 </ResponseField>
 
 <a id="tabsdata.MySQLDestination.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 The strategy to follow when the table already exists.
 
  **Type:** str
 </ResponseField>
 
 <a id="tabsdata.MySQLDestination.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 The URI of the database where the data is going to be stored.
 
  **Type:** str
@@ -1345,8 +1347,6 @@ should be of an appropriate size.
   The file or files to be stored in the final destination.
 </ParamField>
 
-**Categories:** destination
-
 </details>
 
  <a id="tabsdata.OracleDestination"></a>
@@ -1362,9 +1362,11 @@ class OracleDestination(
 )
 ```
 
-Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
+Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
 
 Oracle-based data outputs.
+
+**Categories:** destination
 
 <a id="tabsdata.OracleDestination.chunk"></a>
 #### `chunk`
@@ -1390,7 +1392,7 @@ destination.
 </ParamField>
 
 <a id="tabsdata.OracleDestination.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access the Oracle
 database.
 
@@ -1398,7 +1400,7 @@ database.
 </ResponseField>
 
 <a id="tabsdata.OracleDestination.destination_table"></a>
-<ResponseField name="destination_table">
+<ResponseField name="destination_table" kind="property">
 The table(s) to create. If multiple tables are provided,
 they must be provided as a list.
 
@@ -1406,14 +1408,14 @@ they must be provided as a list.
 </ResponseField>
 
 <a id="tabsdata.OracleDestination.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 The strategy to follow when the table already exists.
 
  **Type:** str
 </ResponseField>
 
 <a id="tabsdata.OracleDestination.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 The URI of the database where the data is going to be stored.
 
  **Type:** str
@@ -1438,8 +1440,6 @@ should be of an appropriate size.
   The file or files to be stored in the final destination.
 </ParamField>
 
-**Categories:** destination
-
 </details>
 
  <a id="tabsdata.PostgresDest"></a>
@@ -1457,33 +1457,35 @@ class PostgresDest(
 )
 ```
 
-Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
+Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
 
 Destination plugin for writing data to PostgreSQL.
 
+**Categories:** destination
+
 <a id="tabsdata.PostgresDest.chunk_size"></a>
-<ResponseField name="chunk_size">
+<ResponseField name="chunk_size" kind="property">
 The chunk size for writing large results in batches.
 </ResponseField>
 
 <a id="tabsdata.PostgresDest.conn"></a>
-<ResponseField name="conn">
+<ResponseField name="conn" kind="property">
 The Postgres connection configuration.
 </ResponseField>
 
 <a id="tabsdata.PostgresDest.destination_tables"></a>
-<ResponseField name="destination_tables">
+<ResponseField name="destination_tables" kind="property">
 The table(s) to create. If multiple tables are provided,
 they must be provided as a list.
 </ResponseField>
 
 <a id="tabsdata.PostgresDest.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 The strategy to follow when the table already exists.
 </ResponseField>
 
 <a id="tabsdata.PostgresDest.loader"></a>
-<ResponseField name="loader">
+<ResponseField name="loader" kind="property">
 The data processing loader to use for executing DB write operation.
 </ResponseField>
 
@@ -1510,11 +1512,9 @@ Store the results into the PostgreSQL database.
 </ParamField>
 
 <a id="tabsdata.PostgresDest.transactional"></a>
-<ResponseField name="transactional">
+<ResponseField name="transactional" kind="property">
 Whether to use transactions for writing data to ensure consistency.
 </ResponseField>
-
-**Categories:** destination
 
 </details>
 
@@ -1528,9 +1528,11 @@ class PostgresDestination(
 )
 ```
 
-Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
+Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
 
 Postgres-based data outputs.
+
+**Categories:** destination
 
 <a id="tabsdata.PostgresDestination.chunk"></a>
 #### `chunk`
@@ -1556,7 +1558,7 @@ destination.
 </ParamField>
 
 <a id="tabsdata.PostgresDestination.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access the
 Postgres database.
 
@@ -1564,7 +1566,7 @@ Postgres database.
 </ResponseField>
 
 <a id="tabsdata.PostgresDestination.destination_table"></a>
-<ResponseField name="destination_table">
+<ResponseField name="destination_table" kind="property">
 The table(s) to create. If multiple tables are provided,
 they must be provided as a list.
 
@@ -1572,14 +1574,14 @@ they must be provided as a list.
 </ResponseField>
 
 <a id="tabsdata.PostgresDestination.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 The strategy to follow when the table already exists.
 
  **Type:** str
 </ResponseField>
 
 <a id="tabsdata.PostgresDestination.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 The URI of the database where the data is going to be stored.
 
  **Type:** str
@@ -1604,8 +1606,6 @@ should be of an appropriate size.
   The file or files to be stored in the final destination.
 </ParamField>
 
-**Categories:** destination
-
 </details>
 
  <a id="tabsdata.S3Destination"></a>
@@ -1622,9 +1622,11 @@ class S3Destination(
 )
 ```
 
-Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
+Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
 
 S3-file-based data outputs.
+
+**Categories:** destination
 
 <a id="tabsdata.S3Destination.SupportedFormats"></a>
 ### `SupportedFormats`
@@ -1640,34 +1642,34 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 Enum for the supported formats for the S3Destination.
 
 <a id="tabsdata.S3Destination.SupportedFormats.avro"></a>
-<ResponseField name="avro">
+<ResponseField name="avro" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.S3Destination.SupportedFormats.csv"></a>
-<ResponseField name="csv">
+<ResponseField name="csv" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.S3Destination.SupportedFormats.ndjson"></a>
-<ResponseField name="ndjson">
+<ResponseField name="ndjson" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.S3Destination.SupportedFormats.parquet"></a>
-<ResponseField name="parquet">
+<ResponseField name="parquet" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.S3Destination.allow_fragments"></a>
-<ResponseField name="allow_fragments">
+<ResponseField name="allow_fragments" kind="property">
 Whether to allow fragments in the output.
 
  **Type:** bool
 </ResponseField>
 
 <a id="tabsdata.S3Destination.catalog"></a>
-<ResponseField name="catalog">
+<ResponseField name="catalog" kind="property">
 The catalog to store the data in.
 
  **Type:** Catalog
@@ -1704,14 +1706,14 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** A list of the intermediate files created
 
 <a id="tabsdata.S3Destination.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access the S3 bucket.
 
  **Type:** S3Credentials
 </ResponseField>
 
 <a id="tabsdata.S3Destination.format"></a>
-<ResponseField name="format">
+<ResponseField name="format" kind="property">
 The format of the file. If not provided, it will be inferred from
 the file.
 
@@ -1719,7 +1721,7 @@ the file.
 </ResponseField>
 
 <a id="tabsdata.S3Destination.region"></a>
-<ResponseField name="region">
+<ResponseField name="region" kind="property">
 The region where the S3 bucket is located.
 
  **Type:** str
@@ -1756,15 +1758,13 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** None
 
 <a id="tabsdata.S3Destination.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 ‘s3://path/to/files’.
 
  **Type:** str | list[str]
 
 **Type:** The URI of the files with format
 </ResponseField>
-
-**Categories:** destination
 
 </details>
 
@@ -1782,9 +1782,11 @@ class SnowflakeDestination(
 )
 ```
 
-Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
+Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
 
 Snowflake based data outputs.
+
+**Categories:** destination
 
 <a id="tabsdata.SnowflakeDestination.chunk"></a>
 #### `chunk`
@@ -1817,7 +1819,7 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** A list of the intermediate files created
 
 <a id="tabsdata.SnowflakeDestination.destination_table"></a>
-<ResponseField name="destination_table">
+<ResponseField name="destination_table" kind="property">
 Get the destination table(s) where the data will be stored.
 
  **Returns:** The destination table(s).
@@ -1826,7 +1828,7 @@ Get the destination table(s) where the data will be stored.
 </ResponseField>
 
 <a id="tabsdata.SnowflakeDestination.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 Returns the value of the if_table_exists property.
 This property determines what to do if the table already exists.
 </ResponseField>
@@ -1873,8 +1875,6 @@ def write(
 This method is used to write the files to the database. It is called
 from the stream method, and it is not intended to be called directly.
 
-**Categories:** destination
-
 </details>
 
  <a id="tabsdata.StarRocksDest"></a>
@@ -1887,7 +1887,7 @@ class StarRocksDest(
 )
 ```
 
-Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
+Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
 
 Destination plugin for writing data to StarRocks using cloud-staged bulk loading.
 
@@ -1895,23 +1895,25 @@ Data is first written as Parquet files to the configured cloud storage staging a
 (S3, Azure Blob, or GCS) and then ingested into StarRocks via its `FILES()`
 table function in an `INSERT INTO … SELECT * FROM FILES(...)` statement.
 
+**Categories:** destination
+
 <a id="tabsdata.StarRocksDest.conn"></a>
-<ResponseField name="conn">
+<ResponseField name="conn" kind="property">
 The StarRocks connection configuration.
 </ResponseField>
 
 <a id="tabsdata.StarRocksDest.destination_tables"></a>
-<ResponseField name="destination_tables">
+<ResponseField name="destination_tables" kind="property">
 The table(s) to load data into.
 </ResponseField>
 
 <a id="tabsdata.StarRocksDest.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 The strategy to follow when the table already exists.
 </ResponseField>
 
 <a id="tabsdata.StarRocksDest.schema_evolution"></a>
-<ResponseField name="schema_evolution">
+<ResponseField name="schema_evolution" kind="property">
 The schema evolution strategy.
 </ResponseField>
 
@@ -1939,8 +1941,6 @@ the cloud staging area.
 in the same order as destination_tables.
 </ParamField>
 
-**Categories:** destination
-
 </details>
 
  <a id="tabsdata.TableOutput"></a>
@@ -1953,18 +1953,18 @@ class TableOutput(
 )
 ```
 
-Bases: [DestinationPlugin](bymod-tabsdata#tabsdata.DestinationPlugin)
+Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
 
 Table-based data outputs.
 
+**Categories:** destination
+
 <a id="tabsdata.TableOutput.table"></a>
-<ResponseField name="table">
+<ResponseField name="table" kind="property">
 The table(s) to create. If multiple tables are provided,
 they must be provided as a list.
 
  **Type:** str | list[str]
 </ResponseField>
-
-**Categories:** destination
 
 </details>

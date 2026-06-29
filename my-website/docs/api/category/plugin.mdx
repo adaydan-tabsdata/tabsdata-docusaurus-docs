@@ -22,7 +22,9 @@ Parent class for subscriber connectors.
 receive the resulting data from the dataset function
 and must store it in the desired location.
 
-   <a id="tabsdata.DestinationPlugin.chunk"></a>
+**Categories:** plugin
+
+<a id="tabsdata.DestinationPlugin.chunk"></a>
 #### `chunk`
 
 ```python
@@ -101,8 +103,6 @@ should be of an appropriate size.
   The file or files to be stored in the final destination.
 </ParamField>
 
-**Categories:** plugin
-
 </details>
 
  <a id="tabsdata.SourcePlugin"></a>
@@ -127,7 +127,9 @@ For example, you would give the following return to provide a first argument
 with a single file and a second argument with two files:
 return [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
 
-   <a id="tabsdata.SourcePlugin.chunk"></a>
+**Categories:** plugin
+
+<a id="tabsdata.SourcePlugin.chunk"></a>
 #### `chunk`
 
 ```python
@@ -158,7 +160,7 @@ single file and a second argument with two files:return
 **Returns:** Union[str, Tuple[str, …], List[str]]
 
 <a id="tabsdata.SourcePlugin.initial_values"></a>
-<ResponseField name="initial_values">
+<ResponseField name="initial_values" kind="property">
 Return a dictionary with the initial values to be stored after execution of
 the plugin. They will be accessible in the next execution of the plugin.
 The dictionary must have the parameter names as keys and the initial values
@@ -177,7 +179,5 @@ def stream(
     working_dir: str,
 )
 ```
-
-**Categories:** plugin
 
 </details>

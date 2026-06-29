@@ -27,50 +27,50 @@ class AWSGlue(
 Bases: `Catalog`
 
 <a id="tabsdata.AWSGlue.auto_create_at"></a>
-<ResponseField name="auto_create_at">
+<ResponseField name="auto_create_at" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.AWSGlue.definition"></a>
-<ResponseField name="definition">
+<ResponseField name="definition" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.AWSGlue.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 The strategy to follow when the table already exists.
 
  **Type:** str
 </ResponseField>
 
 <a id="tabsdata.AWSGlue.partitioned_table"></a>
-<ResponseField name="partitioned_table">
+<ResponseField name="partitioned_table" kind="property">
 Whether the table is partitioned or not.
 
  **Type:** bool
 </ResponseField>
 
 <a id="tabsdata.AWSGlue.s3_credentials"></a>
-<ResponseField name="s3_credentials">
+<ResponseField name="s3_credentials" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.AWSGlue.s3_region"></a>
-<ResponseField name="s3_region">
+<ResponseField name="s3_region" kind="property">
 The region where the S3 bucket is located.
 
  **Type:** str
 </ResponseField>
 
 <a id="tabsdata.AWSGlue.schema_strategy"></a>
-<ResponseField name="schema_strategy">
+<ResponseField name="schema_strategy" kind="property">
 The strategy to follow when appending to a table with an existing schema.
 
  **Type:** str
 </ResponseField>
 
 <a id="tabsdata.AWSGlue.tables"></a>
-<ResponseField name="tables">
+<ResponseField name="tables" kind="property">
 
 </ResponseField>
 
@@ -90,16 +90,16 @@ Bases: `FileFormat`
 
 Avro file format.
 
+**Categories:** file-format
+
 <a id="tabsdata.AvroFormat.chunk_size"></a>
-<ResponseField name="chunk_size">
+<ResponseField name="chunk_size" kind="property">
 Returns the chunk size for reading/writing AVRO files.
 
  **Returns:** The chunk size.
 
 **Returns:** int
 </ResponseField>
-
-**Categories:** file-format
 
 </details>
 
@@ -118,27 +118,27 @@ Bases: `KafkaSchemaRegistry`
 Configuration for AWS Glue Schema Registry.
 
 <a id="tabsdata.AwsGlueSchemaRegistry.configs"></a>
-<ResponseField name="configs">
+<ResponseField name="configs" kind="property">
 Additional configuration properties for the AWS Glue client.
 </ResponseField>
 
 <a id="tabsdata.AwsGlueSchemaRegistry.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 Credentials for authenticating with AWS Glue.
 </ResponseField>
 
 <a id="tabsdata.AwsGlueSchemaRegistry.region_name"></a>
-<ResponseField name="region_name">
+<ResponseField name="region_name" kind="property">
 The AWS region of the Schema Registry.
 </ResponseField>
 
 <a id="tabsdata.AwsGlueSchemaRegistry.registry_name"></a>
-<ResponseField name="registry_name">
+<ResponseField name="registry_name" kind="property">
 Registry name for AWS Glue Schema Registry.
 </ResponseField>
 
 <a id="tabsdata.AwsGlueSchemaRegistry.schema_name"></a>
-<ResponseField name="schema_name">
+<ResponseField name="schema_name" kind="property">
 Schema name for AWS Glue Schema Registry.
 </ResponseField>
 
@@ -172,36 +172,34 @@ Bases: `AzureCredentials`
 Credentials class to access Azure using account key credentials (account name and
 account key).
 
+**Categories:** credentials
+
+<ResponseField name="account_name" type="Secret" kind="variable">
+  The Azure account name.
+</ResponseField>
+
+<ResponseField name="account_key" type="Secret" kind="variable">
+  The Azure account key.
+</ResponseField>
+
+<ResponseField name="dict" type="to_dict" kind="variable">
+  Convert the AzureAccountNameKeyCredentials object to a
+dictionary
+</ResponseField>
+
 <a id="tabsdata.AzureAccountKeyCredentials.account_key"></a>
-<ResponseField name="account_key">
+<ResponseField name="account_key" kind="property">
 The Azure account key.
 
  **Type:** Secret
 </ResponseField>
 
 <a id="tabsdata.AzureAccountKeyCredentials.account_name"></a>
-<ResponseField name="account_name">
+<ResponseField name="account_name" kind="property">
 The Azure account name.
 
  **Type:** Secret
 </ResponseField>
-
-**Categories:** credentials
-
-**Parameters:**
-
-<ParamField path="account_name" type="Secret">
-  The Azure account name.
-</ParamField>
-
-<ParamField path="account_key" type="Secret">
-  The Azure account key.
-</ParamField>
-
-<ParamField path="dict" type="to_dict">
-  Convert the AzureAccountNameKeyCredentials object to a
-dictionary
-</ParamField>
 
 </details>
 
@@ -221,21 +219,6 @@ Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
 Configuration for staging files in Azure Blob Storage.
 
-<a id="tabsdata.AzureConfig.base_path"></a>
-<ResponseField name="base_path">
-
-</ResponseField>
-
-<a id="tabsdata.AzureConfig.container"></a>
-<ResponseField name="container">
-
-</ResponseField>
-
-<a id="tabsdata.AzureConfig.credentials"></a>
-<ResponseField name="credentials">
-
-</ResponseField>
-
 **Parameters:**
 
 <ParamField path="container">
@@ -251,6 +234,21 @@ Configuration for staging files in Azure Blob Storage.
   Azure account-key credentials used for uploading
 staged files (via azure-storage-blob).
 </ParamField>
+
+<a id="tabsdata.AzureConfig.base_path"></a>
+<ResponseField name="base_path" kind="attribute">
+
+</ResponseField>
+
+<a id="tabsdata.AzureConfig.container"></a>
+<ResponseField name="container" kind="attribute">
+
+</ResponseField>
+
+<a id="tabsdata.AzureConfig.credentials"></a>
+<ResponseField name="credentials" kind="attribute">
+
+</ResponseField>
 
 </details>
 
@@ -270,6 +268,8 @@ Bases: DestinationPlugin
 
 Azure-file-based data outputs.
 
+**Categories:** destination
+
 <a id="tabsdata.AzureDestination.SupportedFormats"></a>
 ### `SupportedFormats`
 
@@ -284,27 +284,27 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 Enum for the supported formats for the AzureDestination.
 
 <a id="tabsdata.AzureDestination.SupportedFormats.avro"></a>
-<ResponseField name="avro">
+<ResponseField name="avro" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.AzureDestination.SupportedFormats.csv"></a>
-<ResponseField name="csv">
+<ResponseField name="csv" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.AzureDestination.SupportedFormats.ndjson"></a>
-<ResponseField name="ndjson">
+<ResponseField name="ndjson" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.AzureDestination.SupportedFormats.parquet"></a>
-<ResponseField name="parquet">
+<ResponseField name="parquet" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.AzureDestination.allow_fragments"></a>
-<ResponseField name="allow_fragments">
+<ResponseField name="allow_fragments" kind="property">
 Whether to allow fragments in the output.
 
  **Type:** bool
@@ -341,14 +341,14 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** A list of the intermediate files created
 
 <a id="tabsdata.AzureDestination.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access Azure.
 
  **Type:** AzureCredentials
 </ResponseField>
 
 <a id="tabsdata.AzureDestination.format"></a>
-<ResponseField name="format">
+<ResponseField name="format" kind="property">
 The format of the file. If not provided, it will be inferred from
 the file extension of the URI.
 
@@ -386,15 +386,13 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** None
 
 <a id="tabsdata.AzureDestination.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 ‘az://path/to/files’.
 
  **Type:** str | list[str]
 
 **Type:** The URI of the files with format
 </ResponseField>
-
-**Categories:** destination
 
 </details>
 
@@ -482,6 +480,8 @@ Bases: SourcePlugin
 
 Azure-file-based data inputs.
 
+**Categories:** source
+
 <a id="tabsdata.AzureSource.SupportedFormats"></a>
 ### `SupportedFormats`
 
@@ -496,27 +496,27 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 Enum for the supported formats for the AzureSource.
 
 <a id="tabsdata.AzureSource.SupportedFormats.avro"></a>
-<ResponseField name="avro">
+<ResponseField name="avro" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.AzureSource.SupportedFormats.csv"></a>
-<ResponseField name="csv">
+<ResponseField name="csv" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.AzureSource.SupportedFormats.log"></a>
-<ResponseField name="log">
+<ResponseField name="log" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.AzureSource.SupportedFormats.ndjson"></a>
-<ResponseField name="ndjson">
+<ResponseField name="ndjson" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.AzureSource.SupportedFormats.parquet"></a>
-<ResponseField name="parquet">
+<ResponseField name="parquet" kind="attribute">
 
 </ResponseField>
 
@@ -551,21 +551,21 @@ single file and a second argument with two files:return
 **Returns:** Union[str, Tuple[str, …], List[str]]
 
 <a id="tabsdata.AzureSource.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access Azure.
 
  **Type:** AzureCredentials
 </ResponseField>
 
 <a id="tabsdata.AzureSource.file_info"></a>
-<ResponseField name="file_info">
+<ResponseField name="file_info" kind="property">
 The file information to add as system columns.
 
  **Type:** FileInfo | None
 </ResponseField>
 
 <a id="tabsdata.AzureSource.format"></a>
-<ResponseField name="format">
+<ResponseField name="format" kind="property">
 The format of the file. If not provided, it will be inferred from
 the file extension of the data.
 
@@ -573,14 +573,14 @@ the file extension of the data.
 </ResponseField>
 
 <a id="tabsdata.AzureSource.initial_last_modified"></a>
-<ResponseField name="initial_last_modified">
+<ResponseField name="initial_last_modified" kind="property">
 The date and time after which the files were modified.
 
  **Type:** str
 </ResponseField>
 
 <a id="tabsdata.AzureSource.initial_values"></a>
-<ResponseField name="initial_values">
+<ResponseField name="initial_values" kind="property">
 Return a dictionary with the initial values to be stored after execution of
 the plugin. They will be accessible in the next execution of the plugin.
 The dictionary must have the parameter names as keys and the initial values
@@ -592,15 +592,13 @@ as values, all the type string.
 </ResponseField>
 
 <a id="tabsdata.AzureSource.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 ‘az://path/to/files’.
 
  **Type:** str | list[str]
 
 **Type:** The URI of the files with format
 </ResponseField>
-
-**Categories:** source
 
 </details>
 
@@ -658,37 +656,37 @@ Bases: Conn
 For connection configuration to BigQueryDest.
 
 <a id="tabsdata.BigQueryConn.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.BigQueryConn.cx_dst_configs_bigquery"></a>
-<ResponseField name="cx_dst_configs_bigquery">
+<ResponseField name="cx_dst_configs_bigquery" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.BigQueryConn.cx_dst_configs_gcs"></a>
-<ResponseField name="cx_dst_configs_gcs">
+<ResponseField name="cx_dst_configs_gcs" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.BigQueryConn.dataset"></a>
-<ResponseField name="dataset">
+<ResponseField name="dataset" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.BigQueryConn.enforce_connection_params"></a>
-<ResponseField name="enforce_connection_params">
+<ResponseField name="enforce_connection_params" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.BigQueryConn.gcs_folder"></a>
-<ResponseField name="gcs_folder">
+<ResponseField name="gcs_folder" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.BigQueryConn.project"></a>
-<ResponseField name="project">
+<ResponseField name="project" kind="property">
 
 </ResponseField>
 
@@ -713,20 +711,22 @@ BigQuery based data outputs.
 The data is first stored in parquet files in a GCS bucket, and then loaded into the
 BigQuery tables.
 
+**Categories:** destination
+
 <a id="tabsdata.BigQueryDest.conn"></a>
-<ResponseField name="conn">
+<ResponseField name="conn" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.BigQueryDest.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 The strategy to follow when the table already exists.
 
  **Type:** str
 </ResponseField>
 
 <a id="tabsdata.BigQueryDest.schema_strategy"></a>
-<ResponseField name="schema_strategy">
+<ResponseField name="schema_strategy" kind="property">
 The strategy to follow when appending to a table with an existing schema.
 
  **Type:** str
@@ -763,11 +763,9 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** None
 
 <a id="tabsdata.BigQueryDest.tables"></a>
-<ResponseField name="tables">
+<ResponseField name="tables" kind="property">
 
 </ResponseField>
-
-**Categories:** destination
 
 </details>
 
@@ -843,120 +841,118 @@ CSV file format.
 
 **Categories:** file-format
 
-**Parameters:**
-
-<ParamField path="separator" type="str">
+<ResponseField name="separator" type="str" kind="variable">
   The separator of the CSV file.
-</ParamField>
+</ResponseField>
 
-<ParamField path="quote_char" type="str">
+<ResponseField name="quote_char" type="str" kind="variable">
   The quote character of the CSV file.
-</ParamField>
+</ResponseField>
 
-<ParamField path="eol_char" type="str">
+<ResponseField name="eol_char" type="str" kind="variable">
   The end of line character of the CSV file.
-</ParamField>
+</ResponseField>
 
-<ParamField path="input_encoding" type="str">
+<ResponseField name="input_encoding" type="str" kind="variable">
   The encoding of the CSV file. Only used when importing
 data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="input_null_values" type="list">
+<ResponseField name="input_null_values" type="list" kind="variable">
   The null values of the CSV file. Only used
 when importing data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="input_missing_is_null" type="bool">
+<ResponseField name="input_missing_is_null" type="bool" kind="variable">
   Whether missing values should be marked as null.
 Only used when importing data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="input_truncate_ragged_lines" type="bool">
+<ResponseField name="input_truncate_ragged_lines" type="bool" kind="variable">
   Whether to truncate ragged lines of the
 CSV file. Only used when importing data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="input_comment_prefix" type="str">
+<ResponseField name="input_comment_prefix" type="str" kind="variable">
   The comment prefix of the CSV file.
 Only used when importing data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="input_try_parse_dates" type="bool">
+<ResponseField name="input_try_parse_dates" type="bool" kind="variable">
   Whether to try parse dates of the CSV file. Only
 used when importing data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="input_decimal_comma" type="bool">
+<ResponseField name="input_decimal_comma" type="bool" kind="variable">
   Whether the CSV file uses decimal comma. Only used
 when importing data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="input_has_header" type="bool">
+<ResponseField name="input_has_header" type="bool" kind="variable">
   If the CSV file has header. Only used when importing
 data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="input_skip_rows" type="int">
+<ResponseField name="input_skip_rows" type="int" kind="variable">
   How many rows should be skipped in the CSV file. Only
 used when importing data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="input_skip_rows_after_header" type="int">
+<ResponseField name="input_skip_rows_after_header" type="int" kind="variable">
   How many rows should be skipped after the
 header in the CSV file. Only used when importing data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="input_raise_if_empty" type="bool">
+<ResponseField name="input_raise_if_empty" type="bool" kind="variable">
   If an error should be raised for an empty CSV. Only
 used when importing data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="input_ignore_errors" type="bool">
+<ResponseField name="input_ignore_errors" type="bool" kind="variable">
   If the errors loading the CSV must be ignored. Only
 used when importing data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="output_include_header" type="bool">
+<ResponseField name="output_include_header" type="bool" kind="variable">
   Whether to include header in the CSV
 output. Only used when exporting data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="output_datetime_format" type="str">
+<ResponseField name="output_datetime_format" type="str" kind="variable">
   A format string, with the
 specifiers defined by the chrono Rust crate. If no format specified,
 the default fractional-second precision is inferred from the maximum
 timeunit found in the frame’s Datetime cols (if any). Only used when
 exporting data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="output_date_format" type="str">
+<ResponseField name="output_date_format" type="str" kind="variable">
   A format string, with the specifiers
 defined by the chrono Rust crate. Only used when exporting data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="output_time_format" type="str">
+<ResponseField name="output_time_format" type="str" kind="variable">
   A format string, with the specifiers
 defined by the chrono Rust crate. Only used when exporting data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="output_float_scientific" type="bool">
+<ResponseField name="output_float_scientific" type="bool" kind="variable">
   Whether to use scientific form
 always (true), never (false), or automatically (None). Only used when
 exporting data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="output_float_precision" type="int">
+<ResponseField name="output_float_precision" type="int" kind="variable">
   Number of decimal places to write.
 Only used when exporting data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="output_null_value" type="str">
+<ResponseField name="output_null_value" type="str" kind="variable">
   A string representing null values
 (defaulting to the empty string). Only used when exporting data.
-</ParamField>
+</ResponseField>
 
-<ParamField path="output_quote_style" type="str">
+<ResponseField name="output_quote_style" type="str" kind="variable">
   Determines the quoting strategy used.
 Only used when exporting data.
 * necessary (default): This puts quotes around fields only when
@@ -972,13 +968,13 @@ separator).
 non-numeric. Namely, when writing a field that does not parse as a
 valid float or integer, then quotes will be used even if they aren`t
 strictly necessary.
-</ParamField>
+</ResponseField>
 
-<ParamField path="output_maintain_order" type="bool">
+<ResponseField name="output_maintain_order" type="bool" kind="variable">
   Maintain the order in which data is
 processed. Setting this to False will be slightly faster. Only used
 when exporting data.
-</ParamField>
+</ResponseField>
 
 </details>
 
@@ -995,12 +991,12 @@ Bases: Conn, [ABC](https://docs.python.org/3/library/abc.html#abc.ABC)
 Base connection configuration for Change Data Capture (CDC) connectors.
 
 <a id="tabsdata.CdcConn.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.CdcConn.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="attribute">
 
 </ResponseField>
 
@@ -1025,22 +1021,22 @@ logic for all CDC connectors. Database-specific subclasses implement the
 ingestion details for their respective replication protocols.
 
 <a id="tabsdata.CdcTrigger.buffer_max_bytes"></a>
-<ResponseField name="buffer_max_bytes">
+<ResponseField name="buffer_max_bytes" kind="property">
 Maximum bytes in memory before flushing to the working directory.
 </ResponseField>
 
 <a id="tabsdata.CdcTrigger.buffer_max_rows"></a>
-<ResponseField name="buffer_max_rows">
+<ResponseField name="buffer_max_rows" kind="property">
 Maximum rows in memory before flushing to the working directory.
 </ResponseField>
 
 <a id="tabsdata.CdcTrigger.buffer_max_secs"></a>
-<ResponseField name="buffer_max_secs">
+<ResponseField name="buffer_max_secs" kind="property">
 Maximum seconds before flushing memory data to the working directory.
 </ResponseField>
 
 <a id="tabsdata.CdcTrigger.cdc_format"></a>
-<ResponseField name="cdc_format">
+<ResponseField name="cdc_format" kind="property">
 Output format specification for CDC data.
 </ResponseField>
 
@@ -1055,7 +1051,7 @@ def collect_tables(
 ```
 
 <a id="tabsdata.CdcTrigger.conn"></a>
-<ResponseField name="conn">
+<ResponseField name="conn" kind="property">
 CDC connection configuration.
 </ResponseField>
 
@@ -1070,12 +1066,12 @@ def harvest_tables(
 ```
 
 <a id="tabsdata.CdcTrigger.out"></a>
-<ResponseField name="out">
+<ResponseField name="out" kind="property">
 Mapping of table indices to qualified table names.
 </ResponseField>
 
 <a id="tabsdata.CdcTrigger.poll_interval_seconds"></a>
-<ResponseField name="poll_interval_seconds">
+<ResponseField name="poll_interval_seconds" kind="property">
 Interval in seconds between polling for new changes.
 </ResponseField>
 
@@ -1095,22 +1091,22 @@ ERROR if any issue stops it from working or recovering. exit with 1.
 STOPPED upon a signal. exit with 0.
 
 <a id="tabsdata.CdcTrigger.tables"></a>
-<ResponseField name="tables">
+<ResponseField name="tables" kind="property">
 Qualified table names being tracked for changes.
 </ResponseField>
 
 <a id="tabsdata.CdcTrigger.trigger_max_bytes"></a>
-<ResponseField name="trigger_max_bytes">
+<ResponseField name="trigger_max_bytes" kind="property">
 Maximum total bytes before staging from working directory to the stage location.
 </ResponseField>
 
 <a id="tabsdata.CdcTrigger.trigger_max_rows"></a>
-<ResponseField name="trigger_max_rows">
+<ResponseField name="trigger_max_rows" kind="property">
 Maximum total rows before staging from working directory to the stage location.
 </ResponseField>
 
 <a id="tabsdata.CdcTrigger.trigger_max_secs"></a>
-<ResponseField name="trigger_max_secs">
+<ResponseField name="trigger_max_secs" kind="property">
 Maximum seconds before staging from working directory to the stage location.
 </ResponseField>
 
@@ -1181,48 +1177,48 @@ using the matching table function (`s3()`, `azureBlobStorage()`, or
 `s3()` pointed at GCS).
 
 <a id="tabsdata.ClickHouseConn.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials used to authenticate with ClickHouse.  `None` if no
 credentials were provided (ClickHouse `default` user, no password).
 </ResponseField>
 
 <a id="tabsdata.ClickHouseConn.cx_dst_configs_clickhouse"></a>
-<ResponseField name="cx_dst_configs_clickhouse">
+<ResponseField name="cx_dst_configs_clickhouse" kind="property">
 Destination-specific configuration parameters for the ClickHouse connection.
 </ResponseField>
 
 <a id="tabsdata.ClickHouseConn.cx_src_configs_clickhouse"></a>
-<ResponseField name="cx_src_configs_clickhouse">
+<ResponseField name="cx_src_configs_clickhouse" kind="property">
 Source-specific configuration parameters for the ClickHouse connection.
 </ResponseField>
 
 <a id="tabsdata.ClickHouseConn.database"></a>
-<ResponseField name="database">
+<ResponseField name="database" kind="property">
 The target ClickHouse database name.
 </ResponseField>
 
 <a id="tabsdata.ClickHouseConn.enforce_connection_params"></a>
-<ResponseField name="enforce_connection_params">
+<ResponseField name="enforce_connection_params" kind="property">
 Whether to enforce connection parameters for the ClickHouse connection.
 </ResponseField>
 
 <a id="tabsdata.ClickHouseConn.host"></a>
-<ResponseField name="host">
+<ResponseField name="host" kind="property">
 The ClickHouse server hostname or IP address.
 </ResponseField>
 
 <a id="tabsdata.ClickHouseConn.port"></a>
-<ResponseField name="port">
+<ResponseField name="port" kind="property">
 The HTTP(S) port of the ClickHouse server.
 </ResponseField>
 
 <a id="tabsdata.ClickHouseConn.secure"></a>
-<ResponseField name="secure">
+<ResponseField name="secure" kind="property">
 Whether to connect to ClickHouse over HTTPS/TLS.
 </ResponseField>
 
 <a id="tabsdata.ClickHouseConn.staging"></a>
-<ResponseField name="staging">
+<ResponseField name="staging" kind="property">
 The cloud storage staging configuration (S3Config, AzureConfig, or
 GCSConfig).
 </ResponseField>
@@ -1247,23 +1243,25 @@ Data is first written as Parquet files to the configured cloud storage staging a
 (S3, Azure Blob, or GCS) and then ingested into ClickHouse via its native table
 functions (`s3()`, `azureBlobStorage()`).
 
+**Categories:** destination
+
 <a id="tabsdata.ClickHouseDest.conn"></a>
-<ResponseField name="conn">
+<ResponseField name="conn" kind="property">
 The ClickHouse connection configuration.
 </ResponseField>
 
 <a id="tabsdata.ClickHouseDest.destination_tables"></a>
-<ResponseField name="destination_tables">
+<ResponseField name="destination_tables" kind="property">
 The table(s) to load data into.
 </ResponseField>
 
 <a id="tabsdata.ClickHouseDest.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 The strategy to follow when the table already exists.
 </ResponseField>
 
 <a id="tabsdata.ClickHouseDest.schema_evolution"></a>
-<ResponseField name="schema_evolution">
+<ResponseField name="schema_evolution" kind="property">
 The schema evolution strategy.
 </ResponseField>
 
@@ -1290,8 +1288,6 @@ the cloud staging area.
   One polars LazyFrame (or None) per destination table,
 in the same order as destination_tables.
 </ParamField>
-
-**Categories:** destination
 
 </details>
 
@@ -1337,17 +1333,17 @@ Bases: `KafkaSchemaRegistry`
 Configuration for Confluent Schema Registry.
 
 <a id="tabsdata.ConfluentSchemaRegistry.configs"></a>
-<ResponseField name="configs">
+<ResponseField name="configs" kind="property">
 Additional configuration properties for the Schema Registry client.
 </ResponseField>
 
 <a id="tabsdata.ConfluentSchemaRegistry.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 Credentials for authenticating with the Schema Registry.
 </ResponseField>
 
 <a id="tabsdata.ConfluentSchemaRegistry.url"></a>
-<ResponseField name="url">
+<ResponseField name="url" kind="property">
 The URL of the Schema Registry.
 </ResponseField>
 
@@ -1400,8 +1396,10 @@ This class defines a trigger based on a cron expression, with optional
 start and end times to constrain its activation period. It validates the
 cron mask and time boundaries to ensure the trigger is well-formed.
 
+**Categories:** trigger
+
 <a id="tabsdata.CronTrigger.end"></a>
-<ResponseField name="end">
+<ResponseField name="end" kind="property">
 Gets the end time of the trigger as a timezone-aware ISO 8601 string
 with ‘Z’ timezone.
 
@@ -1409,21 +1407,19 @@ with ‘Z’ timezone.
 </ResponseField>
 
 <a id="tabsdata.CronTrigger.mask"></a>
-<ResponseField name="mask">
+<ResponseField name="mask" kind="property">
 Gets the cron expression mask.
 
  **Returns:** The cron expression string.
 </ResponseField>
 
 <a id="tabsdata.CronTrigger.start"></a>
-<ResponseField name="start">
+<ResponseField name="start" kind="property">
 Gets the start time of the trigger as a timezone-aware ISO 8601 string
 with ‘Z’ timezone.
 
  **Returns:** The start time in ISO format, or None if not set.
 </ResponseField>
-
-**Categories:** trigger
 
 </details>
 
@@ -1468,6 +1464,8 @@ Bases: DestinationPlugin
 
 Databricks based data outputs.
 
+**Categories:** destination
+
 <a id="tabsdata.DatabricksDestination.chunk"></a>
 #### `chunk`
 
@@ -1499,19 +1497,19 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** A list of the intermediate files created
 
 <a id="tabsdata.DatabricksDestination.host_url"></a>
-<ResponseField name="host_url">
+<ResponseField name="host_url" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.DatabricksDestination.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 The strategy to follow when the table already exists.
 
  **Type:** str
 </ResponseField>
 
 <a id="tabsdata.DatabricksDestination.schema_strategy"></a>
-<ResponseField name="schema_strategy">
+<ResponseField name="schema_strategy" kind="property">
 The strategy to follow when appending to a table with an existing schema.
 
  **Type:** str
@@ -1548,12 +1546,12 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** None
 
 <a id="tabsdata.DatabricksDestination.tables"></a>
-<ResponseField name="tables">
+<ResponseField name="tables" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.DatabricksDestination.token"></a>
-<ResponseField name="token">
+<ResponseField name="token" kind="property">
 
 </ResponseField>
 
@@ -1568,8 +1566,6 @@ def write(
 
 This method is used to write the files to the databricks. It is called
 from the stream method, and it is not intended to be called directly.
-
-**Categories:** destination
 
 </details>
 
@@ -1674,6 +1670,8 @@ Bases: SourcePlugin
 
 Databricks based data inputs.
 
+**Categories:** source
+
 <a id="tabsdata.DatabricksSource.chunk"></a>
 #### `chunk`
 
@@ -1705,26 +1703,24 @@ single file and a second argument with two files:return
 **Returns:** Union[str, Tuple[str, …], List[str]]
 
 <a id="tabsdata.DatabricksSource.host_url"></a>
-<ResponseField name="host_url">
+<ResponseField name="host_url" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.DatabricksSource.initial_values"></a>
-<ResponseField name="initial_values">
+<ResponseField name="initial_values" kind="property">
 The initial values for the parameters in the SQL queries.
 </ResponseField>
 
 <a id="tabsdata.DatabricksSource.queries"></a>
-<ResponseField name="queries">
+<ResponseField name="queries" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.DatabricksSource.token"></a>
-<ResponseField name="token">
+<ResponseField name="token" kind="property">
 
 </ResponseField>
-
-**Categories:** source
 
 </details>
 
@@ -1794,8 +1790,10 @@ A CdcTrigger that captures changes from a Db2 database using SQL Replication.
 This trigger connects to a Db2 server, reads change data capture events (inserts,
 updates, deletes) on specified tables via SQL Replication, and stages them.
 
+**Categories:** trigger
+
 <a id="tabsdata.Db2CdcTrigger.blocking_timeout_seconds"></a>
-<ResponseField name="blocking_timeout_seconds">
+<ResponseField name="blocking_timeout_seconds" kind="property">
 Timeout in seconds for blocking reads from the replication stream.
 </ResponseField>
 
@@ -1820,11 +1818,9 @@ def harvest_tables(
 ```
 
 <a id="tabsdata.Db2CdcTrigger.start_from"></a>
-<ResponseField name="start_from">
+<ResponseField name="start_from" kind="property">
 Position to start reading changes from.
 </ResponseField>
-
-**Categories:** trigger
 
 </details>
 
@@ -1869,28 +1865,28 @@ Bases: Conn
 Represents a connection configuration to Db2.
 
 <a id="tabsdata.Db2Conn.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access the Db2 database. If no credentials were
 provided, it will return None.
 </ResponseField>
 
 <a id="tabsdata.Db2Conn.cx_dst_configs_db2"></a>
-<ResponseField name="cx_dst_configs_db2">
+<ResponseField name="cx_dst_configs_db2" kind="property">
 Destination-specific configuration parameters for the Db2 connection.
 </ResponseField>
 
 <a id="tabsdata.Db2Conn.cx_src_configs_db2"></a>
-<ResponseField name="cx_src_configs_db2">
+<ResponseField name="cx_src_configs_db2" kind="property">
 Source-specific configuration parameters for the Db2 connection.
 </ResponseField>
 
 <a id="tabsdata.Db2Conn.enforce_connection_params"></a>
-<ResponseField name="enforce_connection_params">
+<ResponseField name="enforce_connection_params" kind="property">
 Whether to enforce connection parameters for the Db2 connection.
 </ResponseField>
 
 <a id="tabsdata.Db2Conn.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 The URI of the database where the data is located.
 </ResponseField>
 
@@ -1910,33 +1906,35 @@ Bases: SourcePlugin
 
 Source plugin for reading data from Db2.
 
+**Categories:** source
+
 <a id="tabsdata.Db2Src.chunk_size"></a>
-<ResponseField name="chunk_size">
+<ResponseField name="chunk_size" kind="property">
 The chunk size in records for reading large queries in batches.
 </ResponseField>
 
 <a id="tabsdata.Db2Src.conn"></a>
-<ResponseField name="conn">
+<ResponseField name="conn" kind="property">
 The Db2 connection configuration.
 </ResponseField>
 
 <a id="tabsdata.Db2Src.initial_values"></a>
-<ResponseField name="initial_values">
+<ResponseField name="initial_values" kind="property">
 The initial values for the parameters in the SQL queries.
 </ResponseField>
 
 <a id="tabsdata.Db2Src.loader"></a>
-<ResponseField name="loader">
+<ResponseField name="loader" kind="property">
 The data processing loader to use for executing SQL imports.
 </ResponseField>
 
 <a id="tabsdata.Db2Src.queries"></a>
-<ResponseField name="queries">
+<ResponseField name="queries" kind="property">
 The SQL queries to execute to read data.
 </ResponseField>
 
 <a id="tabsdata.Db2Src.schema_overrides"></a>
-<ResponseField name="schema_overrides">
+<ResponseField name="schema_overrides" kind="property">
 The schema overrides for the tables being read.
 </ResponseField>
 
@@ -1960,11 +1958,9 @@ Execute the query and load the results as a list of TableFrames.
 **Returns:** A list of TableFrames containing the query results.
 
 <a id="tabsdata.Db2Src.transactional"></a>
-<ResponseField name="transactional">
+<ResponseField name="transactional" kind="property">
 Whether to use transactions for reading to ensure consistency.
 </ResponseField>
-
-**Categories:** source
 
 </details>
 
@@ -2006,7 +2002,9 @@ Parent class for subscriber connectors.
 receive the resulting data from the dataset function
 and must store it in the desired location.
 
-   <a id="tabsdata.DestinationPlugin.chunk"></a>
+**Categories:** plugin
+
+<a id="tabsdata.DestinationPlugin.chunk"></a>
 #### `chunk`
 
 ```python
@@ -2084,8 +2082,6 @@ should be of an appropriate size.
 <ParamField path="files (str)">
   The file or files to be stored in the final destination.
 </ParamField>
-
-**Categories:** plugin
 
 </details>
 
@@ -2197,49 +2193,49 @@ Blob, or GCS) and then ingested into Druid via the Overlord REST API
 using a native batch `index_parallel` ingestion task.
 
 <a id="tabsdata.DruidConn.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials used for HTTP Basic authentication.  `None` if no
 credentials were provided.
 </ResponseField>
 
 <a id="tabsdata.DruidConn.http_timeout_sec"></a>
-<ResponseField name="http_timeout_sec">
+<ResponseField name="http_timeout_sec" kind="property">
 Timeout in seconds for HTTP requests to the Overlord API.
 </ResponseField>
 
 <a id="tabsdata.DruidConn.max_concurrent_subtasks"></a>
-<ResponseField name="max_concurrent_subtasks">
+<ResponseField name="max_concurrent_subtasks" kind="property">
 Maximum number of parallel sub-tasks inside the ingestion task.
 </ResponseField>
 
 <a id="tabsdata.DruidConn.max_rows_in_memory"></a>
-<ResponseField name="max_rows_in_memory">
+<ResponseField name="max_rows_in_memory" kind="property">
 In-memory buffer size during ingestion.
 </ResponseField>
 
 <a id="tabsdata.DruidConn.max_rows_per_segment"></a>
-<ResponseField name="max_rows_per_segment">
+<ResponseField name="max_rows_per_segment" kind="property">
 Maximum number of rows per segment (dynamic partitioning threshold).
 </ResponseField>
 
 <a id="tabsdata.DruidConn.overlord_url"></a>
-<ResponseField name="overlord_url">
+<ResponseField name="overlord_url" kind="property">
 The base URL of the Druid Overlord REST API.
 </ResponseField>
 
 <a id="tabsdata.DruidConn.segment_granularity"></a>
-<ResponseField name="segment_granularity">
+<ResponseField name="segment_granularity" kind="property">
 Time-based partitioning granularity for new segments.
 </ResponseField>
 
 <a id="tabsdata.DruidConn.staging"></a>
-<ResponseField name="staging">
+<ResponseField name="staging" kind="property">
 The cloud storage staging configuration (S3Config, AzureConfig, or
 GCSConfig).
 </ResponseField>
 
 <a id="tabsdata.DruidConn.time_column"></a>
-<ResponseField name="time_column">
+<ResponseField name="time_column" kind="property">
 The PyArrow column to use as Druid’s `__time` primary timestamp.
 `None` if a constant value should be used.
 </ResponseField>
@@ -2265,18 +2261,20 @@ Data is first written as Parquet files to the configured cloud storage
 staging area (S3, Azure Blob, or GCS) and then ingested into Druid via
 a native batch `index_parallel` task submitted to the Overlord REST API.
 
+**Categories:** destination
+
 <a id="tabsdata.DruidDest.conn"></a>
-<ResponseField name="conn">
+<ResponseField name="conn" kind="property">
 The Druid connection configuration.
 </ResponseField>
 
 <a id="tabsdata.DruidDest.destination_tables"></a>
-<ResponseField name="destination_tables">
+<ResponseField name="destination_tables" kind="property">
 The datasource(s) to load data into.
 </ResponseField>
 
 <a id="tabsdata.DruidDest.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 The strategy to follow when the datasource already exists.
 </ResponseField>
 
@@ -2303,8 +2301,6 @@ the cloud staging area.
   One polars LazyFrame (or None) per destination
 datasource, in the same order as destination_tables.
 </ParamField>
-
-**Categories:** destination
 
 </details>
 
@@ -2350,8 +2346,23 @@ Bases: `Secret`
 Secrets class representing a secret obtained from an environment variable in the
 server.
 
+**Categories:** secret
+
+<ResponseField name="environment_variable_name" type="str" kind="variable">
+  Name of the environment variable from which
+we will obtain the secret value.
+</ResponseField>
+
+<ResponseField name="dict" type="to_dict" kind="variable">
+  Convert the EnvironmentSecret object to a dictionary.
+</ResponseField>
+
+<ResponseField name="str" type="secret_value" kind="variable">
+  Get the secret value.
+</ResponseField>
+
 <a id="tabsdata.EnvironmentSecret.secret_value"></a>
-<ResponseField name="secret_value">
+<ResponseField name="secret_value" kind="property">
 Get the secret value pointed at by the secret. To be used only during execution
 in the backend.
 
@@ -2359,23 +2370,6 @@ in the backend.
 
 **Returns:** str
 </ResponseField>
-
-**Categories:** secret
-
-**Parameters:**
-
-<ParamField path="environment_variable_name" type="str">
-  Name of the environment variable from which
-we will obtain the secret value.
-</ParamField>
-
-<ParamField path="dict" type="to_dict">
-  Convert the EnvironmentSecret object to a dictionary.
-</ParamField>
-
-<ParamField path="str" type="secret_value">
-  Get the secret value.
-</ParamField>
 
 </details>
 
@@ -2408,25 +2402,23 @@ Bases: `GCPCredentials`
 Credentials class to store the credentials needed to access GCS
 using account key credentials (service account key).
 
+**Categories:** credentials
+
+<ResponseField name="service_account_key" type="Secret" kind="variable">
+  The GCS service account key.
+</ResponseField>
+
+<ResponseField name="dict" type="to_dict" kind="variable">
+  Convert the GCPServiceAccountKeyCredentials object to a
+dictionary
+</ResponseField>
+
 <a id="tabsdata.GCPServiceAccountKeyCredentials.service_account_key"></a>
-<ResponseField name="service_account_key">
+<ResponseField name="service_account_key" kind="property">
 The GCS service account key.
 
  **Type:** Secret
 </ResponseField>
-
-**Categories:** credentials
-
-**Parameters:**
-
-<ParamField path="service_account_key" type="Secret">
-  The GCS service account key.
-</ParamField>
-
-<ParamField path="dict" type="to_dict">
-  Convert the GCPServiceAccountKeyCredentials object to a
-dictionary
-</ParamField>
 
 </details>
 
@@ -2446,26 +2438,6 @@ class GCSConfig(
 Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
 Configuration for staging files in Google Cloud Storage.
-
-<a id="tabsdata.GCSConfig.base_path"></a>
-<ResponseField name="base_path">
-
-</ResponseField>
-
-<a id="tabsdata.GCSConfig.bucket"></a>
-<ResponseField name="bucket">
-
-</ResponseField>
-
-<a id="tabsdata.GCSConfig.hmac_credentials"></a>
-<ResponseField name="hmac_credentials">
-
-</ResponseField>
-
-<a id="tabsdata.GCSConfig.upload_credentials"></a>
-<ResponseField name="upload_credentials">
-
-</ResponseField>
 
 **Parameters:**
 
@@ -2491,6 +2463,26 @@ When None, the storage backend operates without explicit
 credentials (suitable for public buckets or server-side IAM).
 </ParamField>
 
+<a id="tabsdata.GCSConfig.base_path"></a>
+<ResponseField name="base_path" kind="attribute">
+
+</ResponseField>
+
+<a id="tabsdata.GCSConfig.bucket"></a>
+<ResponseField name="bucket" kind="attribute">
+
+</ResponseField>
+
+<a id="tabsdata.GCSConfig.hmac_credentials"></a>
+<ResponseField name="hmac_credentials" kind="attribute">
+
+</ResponseField>
+
+<a id="tabsdata.GCSConfig.upload_credentials"></a>
+<ResponseField name="upload_credentials" kind="attribute">
+
+</ResponseField>
+
 </details>
 
  <a id="tabsdata.GCSDestination"></a>
@@ -2509,6 +2501,8 @@ Bases: DestinationPlugin
 
 GCS-file-based data outputs.
 
+**Categories:** destination
+
 <a id="tabsdata.GCSDestination.SupportedFormats"></a>
 ### `SupportedFormats`
 
@@ -2523,27 +2517,27 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 Enum for the supported formats for the GCSDestination.
 
 <a id="tabsdata.GCSDestination.SupportedFormats.avro"></a>
-<ResponseField name="avro">
+<ResponseField name="avro" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.GCSDestination.SupportedFormats.csv"></a>
-<ResponseField name="csv">
+<ResponseField name="csv" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.GCSDestination.SupportedFormats.ndjson"></a>
-<ResponseField name="ndjson">
+<ResponseField name="ndjson" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.GCSDestination.SupportedFormats.parquet"></a>
-<ResponseField name="parquet">
+<ResponseField name="parquet" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.GCSDestination.allow_fragments"></a>
-<ResponseField name="allow_fragments">
+<ResponseField name="allow_fragments" kind="property">
 Whether to allow fragments in the output.
 
  **Type:** bool
@@ -2580,14 +2574,14 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** A list of the intermediate files created
 
 <a id="tabsdata.GCSDestination.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access GCS.
 
  **Type:** GCPCredentials
 </ResponseField>
 
 <a id="tabsdata.GCSDestination.format"></a>
-<ResponseField name="format">
+<ResponseField name="format" kind="property">
 The format of the file. If not provided, it will be inferred from
 the file extension of the URI.
 
@@ -2625,15 +2619,13 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** None
 
 <a id="tabsdata.GCSDestination.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 ‘gs://path/to/files’.
 
  **Type:** str | list[str]
 
 **Type:** The URI of the files with format
 </ResponseField>
-
-**Categories:** destination
 
 </details>
 
@@ -2721,6 +2713,8 @@ Bases: SourcePlugin
 
 GCS-file-based data inputs.
 
+**Categories:** source
+
 <a id="tabsdata.GCSSource.SupportedFormats"></a>
 ### `SupportedFormats`
 
@@ -2735,27 +2729,27 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 Enum for the supported formats for the GCSSource.
 
 <a id="tabsdata.GCSSource.SupportedFormats.avro"></a>
-<ResponseField name="avro">
+<ResponseField name="avro" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.GCSSource.SupportedFormats.csv"></a>
-<ResponseField name="csv">
+<ResponseField name="csv" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.GCSSource.SupportedFormats.log"></a>
-<ResponseField name="log">
+<ResponseField name="log" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.GCSSource.SupportedFormats.ndjson"></a>
-<ResponseField name="ndjson">
+<ResponseField name="ndjson" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.GCSSource.SupportedFormats.parquet"></a>
-<ResponseField name="parquet">
+<ResponseField name="parquet" kind="attribute">
 
 </ResponseField>
 
@@ -2790,21 +2784,21 @@ single file and a second argument with two files:return
 **Returns:** Union[str, Tuple[str, …], List[str]]
 
 <a id="tabsdata.GCSSource.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access GCS.
 
  **Type:** GCPCredentials
 </ResponseField>
 
 <a id="tabsdata.GCSSource.file_info"></a>
-<ResponseField name="file_info">
+<ResponseField name="file_info" kind="property">
 The file information to add as system columns.
 
  **Type:** FileInfo | None
 </ResponseField>
 
 <a id="tabsdata.GCSSource.format"></a>
-<ResponseField name="format">
+<ResponseField name="format" kind="property">
 The format of the file. If not provided, it will be inferred from
 the file extension of the data.
 
@@ -2812,14 +2806,14 @@ the file extension of the data.
 </ResponseField>
 
 <a id="tabsdata.GCSSource.initial_last_modified"></a>
-<ResponseField name="initial_last_modified">
+<ResponseField name="initial_last_modified" kind="property">
 The date and time after which the files were modified.
 
  **Type:** str
 </ResponseField>
 
 <a id="tabsdata.GCSSource.initial_values"></a>
-<ResponseField name="initial_values">
+<ResponseField name="initial_values" kind="property">
 Return a dictionary with the initial values to be stored after execution of
 the plugin. They will be accessible in the next execution of the plugin.
 The dictionary must have the parameter names as keys and the initial values
@@ -2831,15 +2825,13 @@ as values, all the type string.
 </ResponseField>
 
 <a id="tabsdata.GCSSource.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 ‘gs://path/to/files’.
 
  **Type:** str | list[str]
 
 **Type:** The URI of the files with format
 </ResponseField>
-
-**Categories:** source
 
 </details>
 
@@ -2895,35 +2887,33 @@ These credentials follow the same shape as AWS S3 access keys and are
 compatible with any service that uses HMAC-based authentication over the
 S3-compatible API, such as GCS HMAC keys or MinIO credentials.
 
+**Categories:** credentials
+
+<ResponseField name="access_key" type="Secret" kind="variable">
+  The HMAC access key id.
+</ResponseField>
+
+<ResponseField name="secret_key" type="Secret" kind="variable">
+  The HMAC secret key.
+</ResponseField>
+
+<ResponseField name="dict" type="to_dict" kind="variable">
+  Convert the HMACCredentials object to a dictionary.
+</ResponseField>
+
 <a id="tabsdata.HMACCredentials.access_key"></a>
-<ResponseField name="access_key">
+<ResponseField name="access_key" kind="property">
 The HMAC access key id.
 
  **Type:** Secret
 </ResponseField>
 
 <a id="tabsdata.HMACCredentials.secret_key"></a>
-<ResponseField name="secret_key">
+<ResponseField name="secret_key" kind="property">
 The HMAC secret key.
 
  **Type:** Secret
 </ResponseField>
-
-**Categories:** credentials
-
-**Parameters:**
-
-<ParamField path="access_key" type="Secret">
-  The HMAC access key id.
-</ParamField>
-
-<ParamField path="secret_key" type="Secret">
-  The HMAC secret key.
-</ParamField>
-
-<ParamField path="dict" type="to_dict">
-  Convert the HMACCredentials object to a dictionary.
-</ParamField>
 
 </details>
 
@@ -2943,8 +2933,34 @@ Bases: `Secret`
 
 Secrets class representing a secret stored in Hashicorp Vault.
 
+**Categories:** secret
+
+<ResponseField name="path" type="str" kind="variable">
+  The path to the secret in Hashicorp Vault.
+</ResponseField>
+
+<ResponseField name="name" type="str" kind="variable">
+  The name of the secret in Hashicorp Vault.
+</ResponseField>
+
+<ResponseField name="vault" type="str" kind="variable">
+  If multiple vaults exist in the system, the name of the vault to
+use. When executing in the server, the URL and token associated to that
+specific vault will be used. The name can only contain uppercase letters,
+numbers and underscores, and can’t begin with a number. Defaults to
+“HASHICORP”.
+</ResponseField>
+
+<ResponseField name="dict" type="to_dict" kind="variable">
+  Convert the HashiCorpSecret object to a dictionary.
+</ResponseField>
+
+<ResponseField name="str" type="secret_value" kind="variable">
+  Get the secret value.
+</ResponseField>
+
 <a id="tabsdata.HashiCorpSecret.secret_value"></a>
-<ResponseField name="secret_value">
+<ResponseField name="secret_value" kind="property">
 Get the secret value pointed at by the secret. To be used only during execution
 in the backend.
 
@@ -2954,37 +2970,9 @@ in the backend.
 </ResponseField>
 
 <a id="tabsdata.HashiCorpSecret.vault"></a>
-<ResponseField name="vault">
+<ResponseField name="vault" kind="property">
 
 </ResponseField>
-
-**Categories:** secret
-
-**Parameters:**
-
-<ParamField path="path" type="str">
-  The path to the secret in Hashicorp Vault.
-</ParamField>
-
-<ParamField path="name" type="str">
-  The name of the secret in Hashicorp Vault.
-</ParamField>
-
-<ParamField path="vault" type="str">
-  If multiple vaults exist in the system, the name of the vault to
-use. When executing in the server, the URL and token associated to that
-specific vault will be used. The name can only contain uppercase letters,
-numbers and underscores, and can’t begin with a number. Defaults to
-“HASHICORP”.
-</ParamField>
-
-<ParamField path="dict" type="to_dict">
-  Convert the HashiCorpSecret object to a dictionary.
-</ParamField>
-
-<ParamField path="str" type="secret_value">
-  Get the secret value.
-</ParamField>
 
 </details>
 
@@ -3003,32 +2991,32 @@ Bases: Conn
 Kafka Consumer Connection configuration.
 
 <a id="tabsdata.KafkaConn.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 Kafka credentials.
 </ResponseField>
 
 <a id="tabsdata.KafkaConn.cx_src_configs"></a>
-<ResponseField name="cx_src_configs">
+<ResponseField name="cx_src_configs" kind="property">
 Source-specific configuration parameters for the Kafka connection.
 </ResponseField>
 
 <a id="tabsdata.KafkaConn.enforce_connection_params"></a>
-<ResponseField name="enforce_connection_params">
+<ResponseField name="enforce_connection_params" kind="property">
 Whether to enforce connection parameters.
 </ResponseField>
 
 <a id="tabsdata.KafkaConn.group_id"></a>
-<ResponseField name="group_id">
+<ResponseField name="group_id" kind="property">
 Kafka consumer group ID.
 </ResponseField>
 
 <a id="tabsdata.KafkaConn.schema_registry"></a>
-<ResponseField name="schema_registry">
+<ResponseField name="schema_registry" kind="property">
 Kafka schema registry configuration.
 </ResponseField>
 
 <a id="tabsdata.KafkaConn.servers"></a>
-<ResponseField name="servers">
+<ResponseField name="servers" kind="property">
 Kafka bootstrap servers.
 </ResponseField>
 
@@ -3064,28 +3052,30 @@ This trigger connects to a Kafka cluster, consumes messages from a specified
 topic, and uses rollover conditions (time, size, and message count) to
 buffer and stage the data.
 
+**Categories:** trigger
+
 <a id="tabsdata.KafkaTrigger.conn"></a>
-<ResponseField name="conn">
+<ResponseField name="conn" kind="property">
 Kafka consumer connection configuration.
 </ResponseField>
 
 <a id="tabsdata.KafkaTrigger.data_format"></a>
-<ResponseField name="data_format">
+<ResponseField name="data_format" kind="property">
 Data format of the messages (“avro”, “json”, “protobuf”).
 </ResponseField>
 
 <a id="tabsdata.KafkaTrigger.dlq_topic"></a>
-<ResponseField name="dlq_topic">
+<ResponseField name="dlq_topic" kind="property">
 Dead-letter queue topic.
 </ResponseField>
 
 <a id="tabsdata.KafkaTrigger.group_id"></a>
-<ResponseField name="group_id">
+<ResponseField name="group_id" kind="property">
 Kafka consumer group ID.
 </ResponseField>
 
 <a id="tabsdata.KafkaTrigger.messages_rollover"></a>
-<ResponseField name="messages_rollover">
+<ResponseField name="messages_rollover" kind="property">
 Message count-based rollover configuration.
 </ResponseField>
 
@@ -3108,26 +3098,24 @@ based on rollover conditions.
 </ParamField>
 
 <a id="tabsdata.KafkaTrigger.schema"></a>
-<ResponseField name="schema">
+<ResponseField name="schema" kind="property">
 Schema string for deserializing messages.
 </ResponseField>
 
 <a id="tabsdata.KafkaTrigger.size_rollover_mb"></a>
-<ResponseField name="size_rollover_mb">
+<ResponseField name="size_rollover_mb" kind="property">
 Size-based rollover configuration. Size is specified in megabytes.
 </ResponseField>
 
 <a id="tabsdata.KafkaTrigger.time_rollover_secs"></a>
-<ResponseField name="time_rollover_secs">
+<ResponseField name="time_rollover_secs" kind="property">
 Timeout in seconds for consuming each message.
 </ResponseField>
 
 <a id="tabsdata.KafkaTrigger.topic"></a>
-<ResponseField name="topic">
+<ResponseField name="topic" kind="property">
 Kafka topic to consume from.
 </ResponseField>
-
-**Categories:** trigger
 
 </details>
 
@@ -3167,6 +3155,8 @@ Bases: DestinationPlugin
 
 LocalFile-based data outputs.
 
+**Categories:** destination
+
 <a id="tabsdata.LocalFileDestination.SupportedFormats"></a>
 ### `SupportedFormats`
 
@@ -3181,27 +3171,27 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 Enum for the supported formats for the LocalFileDestination.
 
 <a id="tabsdata.LocalFileDestination.SupportedFormats.avro"></a>
-<ResponseField name="avro">
+<ResponseField name="avro" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.LocalFileDestination.SupportedFormats.csv"></a>
-<ResponseField name="csv">
+<ResponseField name="csv" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.LocalFileDestination.SupportedFormats.ndjson"></a>
-<ResponseField name="ndjson">
+<ResponseField name="ndjson" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.LocalFileDestination.SupportedFormats.parquet"></a>
-<ResponseField name="parquet">
+<ResponseField name="parquet" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.LocalFileDestination.allow_fragments"></a>
-<ResponseField name="allow_fragments">
+<ResponseField name="allow_fragments" kind="property">
 Whether to allow fragments in the output.
 
  **Type:** bool
@@ -3238,7 +3228,7 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** A list of the intermediate files created
 
 <a id="tabsdata.LocalFileDestination.format"></a>
-<ResponseField name="format">
+<ResponseField name="format" kind="property">
 The format of the file or files. If not provided, it will be
 inferred from the file extension in the path.
 
@@ -3246,7 +3236,7 @@ inferred from the file extension in the path.
 </ResponseField>
 
 <a id="tabsdata.LocalFileDestination.path"></a>
-<ResponseField name="path">
+<ResponseField name="path" kind="property">
 The path or paths to store the files.
 
  **Type:** str | list[str]
@@ -3281,8 +3271,6 @@ the execution of the plugin, not the final destination of the data)
 </ParamField>
 
 **Returns:** None
-
-**Categories:** destination
 
 </details>
 
@@ -3369,6 +3357,8 @@ Bases: SourcePlugin
 
 Local-file-based data inputs.
 
+**Categories:** source
+
 <a id="tabsdata.LocalFileSource.SupportedFormats"></a>
 ### `SupportedFormats`
 
@@ -3383,27 +3373,27 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 Enum for the supported formats for the LocalFileSource.
 
 <a id="tabsdata.LocalFileSource.SupportedFormats.avro"></a>
-<ResponseField name="avro">
+<ResponseField name="avro" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.LocalFileSource.SupportedFormats.csv"></a>
-<ResponseField name="csv">
+<ResponseField name="csv" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.LocalFileSource.SupportedFormats.log"></a>
-<ResponseField name="log">
+<ResponseField name="log" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.LocalFileSource.SupportedFormats.ndjson"></a>
-<ResponseField name="ndjson">
+<ResponseField name="ndjson" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.LocalFileSource.SupportedFormats.parquet"></a>
-<ResponseField name="parquet">
+<ResponseField name="parquet" kind="attribute">
 
 </ResponseField>
 
@@ -3438,14 +3428,14 @@ single file and a second argument with two files:return
 **Returns:** Union[str, Tuple[str, …], List[str]]
 
 <a id="tabsdata.LocalFileSource.file_info"></a>
-<ResponseField name="file_info">
+<ResponseField name="file_info" kind="property">
 The file information to add as system columns.
 
  **Type:** FileInfo | None
 </ResponseField>
 
 <a id="tabsdata.LocalFileSource.format"></a>
-<ResponseField name="format">
+<ResponseField name="format" kind="property">
 The format of the file or files. If not provided, it will be
 inferred  from the file extension in the path.
 
@@ -3453,14 +3443,14 @@ inferred  from the file extension in the path.
 </ResponseField>
 
 <a id="tabsdata.LocalFileSource.initial_last_modified"></a>
-<ResponseField name="initial_last_modified">
+<ResponseField name="initial_last_modified" kind="property">
 The date and time after which the files were modified.
 
  **Type:** str
 </ResponseField>
 
 <a id="tabsdata.LocalFileSource.initial_values"></a>
-<ResponseField name="initial_values">
+<ResponseField name="initial_values" kind="property">
 Return a dictionary with the initial values to be stored after execution of
 the plugin. They will be accessible in the next execution of the plugin.
 The dictionary must have the parameter names as keys and the initial values
@@ -3472,13 +3462,11 @@ as values, all the type string.
 </ResponseField>
 
 <a id="tabsdata.LocalFileSource.path"></a>
-<ResponseField name="path">
+<ResponseField name="path" kind="property">
 The path or paths to the files to load.
 
  **Type:** str | list[str]
 </ResponseField>
-
-**Categories:** source
 
 </details>
 
@@ -3550,33 +3538,33 @@ Bases: Conn
 Represents a connection configuration to Microsoft SQL Server (MSSQL).
 
 <a id="tabsdata.MSSQLConn.connection_string_or_uri"></a>
-<ResponseField name="connection_string_or_uri">
+<ResponseField name="connection_string_or_uri" kind="property">
 The connection string or URI for the MSSQL database.
 </ResponseField>
 
 <a id="tabsdata.MSSQLConn.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials used to authenticate with the database.
 </ResponseField>
 
 <a id="tabsdata.MSSQLConn.cx_dst_configs_mssql"></a>
-<ResponseField name="cx_dst_configs_mssql">
+<ResponseField name="cx_dst_configs_mssql" kind="property">
 The destination configuration parameters for the MSSQL connection.
 </ResponseField>
 
 <a id="tabsdata.MSSQLConn.cx_src_configs_mssql"></a>
-<ResponseField name="cx_src_configs_mssql">
+<ResponseField name="cx_src_configs_mssql" kind="property">
 The source configuration parameters for the MSSQL connection.
 </ResponseField>
 
 <a id="tabsdata.MSSQLConn.enforce_connection_params"></a>
-<ResponseField name="enforce_connection_params">
+<ResponseField name="enforce_connection_params" kind="property">
 Whether to enforce connection parameters for the MSSQL connection.
 Applicable only for a connection to a MSSQL Destination.
 </ResponseField>
 
 <a id="tabsdata.MSSQLConn.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 The URI for the MSSQL database.
 </ResponseField>
 
@@ -3603,6 +3591,8 @@ class MSSQLDestination(
 Bases: DestinationPlugin
 
 MSSQL-based data outputs.
+
+**Categories:** destination
 
 <a id="tabsdata.MSSQLDestination.chunk"></a>
 #### `chunk`
@@ -3635,7 +3625,7 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** A list of the intermediate files created
 
 <a id="tabsdata.MSSQLDestination.connection_string"></a>
-<ResponseField name="connection_string">
+<ResponseField name="connection_string" kind="property">
 Get the connection string for the database.
 
  **Returns:** The connection string.
@@ -3644,7 +3634,7 @@ Get the connection string for the database.
 </ResponseField>
 
 <a id="tabsdata.MSSQLDestination.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access
 Microsoft SQL Server. If no credentials were provided, it will return None.
 
@@ -3652,7 +3642,7 @@ Microsoft SQL Server. If no credentials were provided, it will return None.
 </ResponseField>
 
 <a id="tabsdata.MSSQLDestination.destination_table"></a>
-<ResponseField name="destination_table">
+<ResponseField name="destination_table" kind="property">
 Get the destination table(s) where the data will be stored.
 
  **Returns:** The destination table(s).
@@ -3661,7 +3651,7 @@ Get the destination table(s) where the data will be stored.
 </ResponseField>
 
 <a id="tabsdata.MSSQLDestination.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 Returns the value of the if_table_exists property.
 This property determines what to do if the table already exists.
 </ResponseField>
@@ -3707,8 +3697,6 @@ def write(
 
 This method is used to write the files to the database. It is called
 from the stream method, and it is not intended to be called directly.
-
-**Categories:** destination
 
 </details>
 
@@ -3807,6 +3795,8 @@ Bases: SourcePlugin
 
 Microsoft SQL Server based data inputs.
 
+**Categories:** source
+
 <a id="tabsdata.MSSQLSource.chunk"></a>
 #### `chunk`
 
@@ -3827,7 +3817,7 @@ Execute the query and yield chunks of data.
 **Yields:** pd.DataFrame – A chunk of data from the query result.
 
 <a id="tabsdata.MSSQLSource.connection_string"></a>
-<ResponseField name="connection_string">
+<ResponseField name="connection_string" kind="property">
 Get the connection string for the database.
 
  **Returns:** The connection string.
@@ -3836,7 +3826,7 @@ Get the connection string for the database.
 </ResponseField>
 
 <a id="tabsdata.MSSQLSource.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access
 Microsoft SQL Server. If no credentials were provided, it will return None.
 
@@ -3844,22 +3834,20 @@ Microsoft SQL Server. If no credentials were provided, it will return None.
 </ResponseField>
 
 <a id="tabsdata.MSSQLSource.initial_values"></a>
-<ResponseField name="initial_values">
+<ResponseField name="initial_values" kind="property">
 The initial values for the parameters in the SQL queries.
 
  **Type:** dict
 </ResponseField>
 
 <a id="tabsdata.MSSQLSource.query"></a>
-<ResponseField name="query">
+<ResponseField name="query" kind="property">
 Get the SQL query or queries to execute.
 
  **Returns:** The SQL query or queries.
 
 **Returns:** str | list[str]
 </ResponseField>
-
-**Categories:** source
 
 </details>
 
@@ -3905,33 +3893,35 @@ Bases: SourcePlugin
 
 Source Plugin for reading data from a Microsoft SQL Server (MSSQL) database.
 
+**Categories:** source
+
 <a id="tabsdata.MSSQLSrc.chunk_size"></a>
-<ResponseField name="chunk_size">
+<ResponseField name="chunk_size" kind="property">
 The chunk size in records for reading large queries in batches.
 </ResponseField>
 
 <a id="tabsdata.MSSQLSrc.conn"></a>
-<ResponseField name="conn">
+<ResponseField name="conn" kind="property">
 The MSSQL connection configuration.
 </ResponseField>
 
 <a id="tabsdata.MSSQLSrc.initial_values"></a>
-<ResponseField name="initial_values">
+<ResponseField name="initial_values" kind="property">
 The initial values for the parameters in the SQL queries.
 </ResponseField>
 
 <a id="tabsdata.MSSQLSrc.loader"></a>
-<ResponseField name="loader">
+<ResponseField name="loader" kind="property">
 The data processing loader to use for executing SQL imports.
 </ResponseField>
 
 <a id="tabsdata.MSSQLSrc.queries"></a>
-<ResponseField name="queries">
+<ResponseField name="queries" kind="property">
 The SQL queries to execute to read data.
 </ResponseField>
 
 <a id="tabsdata.MSSQLSrc.schema_overrides"></a>
-<ResponseField name="schema_overrides">
+<ResponseField name="schema_overrides" kind="property">
 The schema overrides for the tables being read.
 </ResponseField>
 
@@ -3955,11 +3945,9 @@ Execute the query and load the results as a list of TableFrames.
 **Returns:** A list of TableFrames containing the query results.
 
 <a id="tabsdata.MSSQLSrc.transactional"></a>
-<ResponseField name="transactional">
+<ResponseField name="transactional" kind="property">
 Whether to use transactions for reading to ensure consistency.
 </ResponseField>
-
-**Categories:** source
 
 </details>
 
@@ -4004,28 +3992,28 @@ Bases: Conn
 Represents a connection configuration to MariaDB.
 
 <a id="tabsdata.MariaDBConn.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access the MariaDB database. If no credentials were
 provided, it will return None.
 </ResponseField>
 
 <a id="tabsdata.MariaDBConn.cx_dst_configs_mariadb"></a>
-<ResponseField name="cx_dst_configs_mariadb">
+<ResponseField name="cx_dst_configs_mariadb" kind="property">
 Destination-specific configuration parameters for the MariaDB connection.
 </ResponseField>
 
 <a id="tabsdata.MariaDBConn.cx_src_configs_mariadb"></a>
-<ResponseField name="cx_src_configs_mariadb">
+<ResponseField name="cx_src_configs_mariadb" kind="property">
 Source-specific configuration parameters for the MariaDB connection.
 </ResponseField>
 
 <a id="tabsdata.MariaDBConn.enforce_connection_params"></a>
-<ResponseField name="enforce_connection_params">
+<ResponseField name="enforce_connection_params" kind="property">
 Whether to enforce connection parameters for the MariaDB connection.
 </ResponseField>
 
 <a id="tabsdata.MariaDBConn.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 The URI of the database where the data is located.
 </ResponseField>
 
@@ -4050,29 +4038,31 @@ Bases: DestinationPlugin
 
 Destination plugin for writing data to MySQL.
 
+**Categories:** destination
+
 <a id="tabsdata.MariaDBDest.chunk_size"></a>
-<ResponseField name="chunk_size">
+<ResponseField name="chunk_size" kind="property">
 The chunk size for writing large results in batches.
 </ResponseField>
 
 <a id="tabsdata.MariaDBDest.conn"></a>
-<ResponseField name="conn">
+<ResponseField name="conn" kind="property">
 The MariaDB connection configuration.
 </ResponseField>
 
 <a id="tabsdata.MariaDBDest.destination_tables"></a>
-<ResponseField name="destination_tables">
+<ResponseField name="destination_tables" kind="property">
 The table(s) to create. If multiple tables are provided,
 they must be provided as a list.
 </ResponseField>
 
 <a id="tabsdata.MariaDBDest.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 The strategy to follow when the table already exists.
 </ResponseField>
 
 <a id="tabsdata.MariaDBDest.loader"></a>
-<ResponseField name="loader">
+<ResponseField name="loader" kind="property">
 The data processing loader to use for executing DB write operation.
 </ResponseField>
 
@@ -4099,11 +4089,9 @@ Store the results into the MariaDB database.
 </ParamField>
 
 <a id="tabsdata.MariaDBDest.transactional"></a>
-<ResponseField name="transactional">
+<ResponseField name="transactional" kind="property">
 Whether to use transactions for writing data to ensure consistency.
 </ResponseField>
-
-**Categories:** destination
 
 </details>
 
@@ -4146,6 +4134,8 @@ Bases: DestinationPlugin
 
 MariaDB-based data outputs.
 
+**Categories:** destination
+
 <a id="tabsdata.MariaDBDestination.chunk"></a>
 #### `chunk`
 
@@ -4170,7 +4160,7 @@ destination.
 </ParamField>
 
 <a id="tabsdata.MariaDBDestination.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access the MariaDB
 database.
 
@@ -4178,7 +4168,7 @@ database.
 </ResponseField>
 
 <a id="tabsdata.MariaDBDestination.destination_table"></a>
-<ResponseField name="destination_table">
+<ResponseField name="destination_table" kind="property">
 The table(s) to create. If multiple tables are provided,
 they must be provided as a list.
 
@@ -4186,14 +4176,14 @@ they must be provided as a list.
 </ResponseField>
 
 <a id="tabsdata.MariaDBDestination.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 The strategy to follow when the table already exists.
 
  **Type:** str
 </ResponseField>
 
 <a id="tabsdata.MariaDBDestination.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 The URI of the database where the data is going to be stored.
 
  **Type:** str
@@ -4217,8 +4207,6 @@ should be of an appropriate size.
 <ParamField path="files (str)">
   The file or files to be stored in the final destination.
 </ParamField>
-
-**Categories:** destination
 
 </details>
 
@@ -4284,6 +4272,8 @@ Bases: SourcePlugin
 
 MariaDB-based data inputs.
 
+**Categories:** source
+
 <a id="tabsdata.MariaDBSource.chunk"></a>
 #### `chunk`
 
@@ -4315,7 +4305,7 @@ single file and a second argument with two files:return
 **Returns:** Union[str, Tuple[str, …], List[str]]
 
 <a id="tabsdata.MariaDBSource.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access
 MariaDB. If no credentials were provided, it will return None.
 
@@ -4323,27 +4313,25 @@ MariaDB. If no credentials were provided, it will return None.
 </ResponseField>
 
 <a id="tabsdata.MariaDBSource.initial_values"></a>
-<ResponseField name="initial_values">
+<ResponseField name="initial_values" kind="property">
 The initial values for the parameters in the SQL queries.
 
  **Type:** dict
 </ResponseField>
 
 <a id="tabsdata.MariaDBSource.query"></a>
-<ResponseField name="query">
+<ResponseField name="query" kind="property">
 The SQL query(s) to execute.
 
  **Type:** str | List[str]
 </ResponseField>
 
 <a id="tabsdata.MariaDBSource.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 The URI of the database where the data is located.
 
  **Type:** str
 </ResponseField>
-
-**Categories:** source
 
 </details>
 
@@ -4400,33 +4388,35 @@ Bases: SourcePlugin
 
 Source plugin for reading data from MariaDB.
 
+**Categories:** source
+
 <a id="tabsdata.MariaDBSrc.chunk_size"></a>
-<ResponseField name="chunk_size">
+<ResponseField name="chunk_size" kind="property">
 The chunk size in records for reading large queries in batches.
 </ResponseField>
 
 <a id="tabsdata.MariaDBSrc.conn"></a>
-<ResponseField name="conn">
+<ResponseField name="conn" kind="property">
 The MariaDB connection configuration.
 </ResponseField>
 
 <a id="tabsdata.MariaDBSrc.initial_values"></a>
-<ResponseField name="initial_values">
+<ResponseField name="initial_values" kind="property">
 The initial values for the parameters in the SQL queries.
 </ResponseField>
 
 <a id="tabsdata.MariaDBSrc.loader"></a>
-<ResponseField name="loader">
+<ResponseField name="loader" kind="property">
 The data processing loader to use for executing SQL imports.
 </ResponseField>
 
 <a id="tabsdata.MariaDBSrc.queries"></a>
-<ResponseField name="queries">
+<ResponseField name="queries" kind="property">
 The SQL queries to execute to read data.
 </ResponseField>
 
 <a id="tabsdata.MariaDBSrc.schema_overrides"></a>
-<ResponseField name="schema_overrides">
+<ResponseField name="schema_overrides" kind="property">
 
 </ResponseField>
 
@@ -4450,11 +4440,9 @@ Execute the query and load the results as a list of TableFrames.
 **Returns:** A list of TableFrames containing the query results.
 
 <a id="tabsdata.MariaDBSrc.transactional"></a>
-<ResponseField name="transactional">
+<ResponseField name="transactional" kind="property">
 Whether to use transactions for reading to ensure consistency.
 </ResponseField>
-
-**Categories:** source
 
 </details>
 
@@ -4505,6 +4493,8 @@ Bases: DestinationPlugin
 
 MongoDB-based data outputs.
 
+**Categories:** destination
+
 <a id="tabsdata.MongoDBDestination.chunk"></a>
 #### `chunk`
 
@@ -4536,22 +4526,22 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** A list of the intermediate files created
 
 <a id="tabsdata.MongoDBDestination.collections_with_ids"></a>
-<ResponseField name="collections_with_ids">
+<ResponseField name="collections_with_ids" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.MongoDBDestination.connection_options"></a>
-<ResponseField name="connection_options">
+<ResponseField name="connection_options" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.MongoDBDestination.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.MongoDBDestination.if_collection_exists"></a>
-<ResponseField name="if_collection_exists">
+<ResponseField name="if_collection_exists" kind="property">
 
 </ResponseField>
 
@@ -4586,7 +4576,7 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** None
 
 <a id="tabsdata.MongoDBDestination.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 
 </ResponseField>
 
@@ -4601,8 +4591,6 @@ def write(
 
 This method is used to write the files to the database. It is called
 from the stream method, and it is not intended to be called directly.
-
-**Categories:** destination
 
 </details>
 
@@ -4720,8 +4708,10 @@ A CdcTrigger that captures changes from a MySQL database using binlog replicatio
 This trigger connects to a MySQL server, reads the binary log for change data
 capture events (inserts, updates, deletes) on specified tables, and stages them.
 
+**Categories:** trigger
+
 <a id="tabsdata.MySQLCdcTrigger.blocking_timeout_seconds"></a>
-<ResponseField name="blocking_timeout_seconds">
+<ResponseField name="blocking_timeout_seconds" kind="property">
 Timeout in seconds for blocking reads from the binlog stream.
 </ResponseField>
 
@@ -4746,16 +4736,14 @@ def harvest_tables(
 ```
 
 <a id="tabsdata.MySQLCdcTrigger.server_id"></a>
-<ResponseField name="server_id">
+<ResponseField name="server_id" kind="property">
 MySQL server ID for binlog replication.
 </ResponseField>
 
 <a id="tabsdata.MySQLCdcTrigger.start_from"></a>
-<ResponseField name="start_from">
+<ResponseField name="start_from" kind="property">
 Position to start reading changes from.
 </ResponseField>
-
-**Categories:** trigger
 
 </details>
 
@@ -4804,28 +4792,28 @@ Bases: Conn
 Represents a connection configuration to MySQL.
 
 <a id="tabsdata.MySQLConn.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access the MySQL database. If no credentials were
 provided, it will return None.
 </ResponseField>
 
 <a id="tabsdata.MySQLConn.cx_dst_configs_mysql"></a>
-<ResponseField name="cx_dst_configs_mysql">
+<ResponseField name="cx_dst_configs_mysql" kind="property">
 The destination configuration parameters for the MySQL connection.
 </ResponseField>
 
 <a id="tabsdata.MySQLConn.cx_src_configs_mysql"></a>
-<ResponseField name="cx_src_configs_mysql">
+<ResponseField name="cx_src_configs_mysql" kind="property">
 The source configuration parameters for the MySQL connection.
 </ResponseField>
 
 <a id="tabsdata.MySQLConn.enforce_connection_params"></a>
-<ResponseField name="enforce_connection_params">
+<ResponseField name="enforce_connection_params" kind="property">
 Whether to enforce connection parameters for the MySQL connection.
 </ResponseField>
 
 <a id="tabsdata.MySQLConn.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 The URI of the database where the data is located.
 </ResponseField>
 
@@ -4850,29 +4838,31 @@ Bases: DestinationPlugin
 
 Destination plugin for writing data to MySQL.
 
+**Categories:** destination
+
 <a id="tabsdata.MySQLDest.chunk_size"></a>
-<ResponseField name="chunk_size">
+<ResponseField name="chunk_size" kind="property">
 The chunk size for writing large results in batches.
 </ResponseField>
 
 <a id="tabsdata.MySQLDest.conn"></a>
-<ResponseField name="conn">
+<ResponseField name="conn" kind="property">
 The MySQL connection configuration.
 </ResponseField>
 
 <a id="tabsdata.MySQLDest.destination_tables"></a>
-<ResponseField name="destination_tables">
+<ResponseField name="destination_tables" kind="property">
 The table(s) to create. If multiple tables are provided,
 they must be provided as a list.
 </ResponseField>
 
 <a id="tabsdata.MySQLDest.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 The strategy to follow when the table already exists.
 </ResponseField>
 
 <a id="tabsdata.MySQLDest.loader"></a>
-<ResponseField name="loader">
+<ResponseField name="loader" kind="property">
 The data processing loader to use for executing DB write operation.
 </ResponseField>
 
@@ -4899,11 +4889,9 @@ Store the results into the MySQL database.
 </ParamField>
 
 <a id="tabsdata.MySQLDest.transactional"></a>
-<ResponseField name="transactional">
+<ResponseField name="transactional" kind="property">
 Whether to use transactions for writing data to ensure consistency.
 </ResponseField>
-
-**Categories:** destination
 
 </details>
 
@@ -4946,6 +4934,8 @@ Bases: DestinationPlugin
 
 MySQL-based data outputs.
 
+**Categories:** destination
+
 <a id="tabsdata.MySQLDestination.chunk"></a>
 #### `chunk`
 
@@ -4970,14 +4960,14 @@ destination.
 </ParamField>
 
 <a id="tabsdata.MySQLDestination.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access the MySQLDatabase.
 
  **Type:** UserPasswordCredentials
 </ResponseField>
 
 <a id="tabsdata.MySQLDestination.destination_table"></a>
-<ResponseField name="destination_table">
+<ResponseField name="destination_table" kind="property">
 The table(s) to create. If multiple tables are provided,
 they must be provided as a list.
 
@@ -4985,14 +4975,14 @@ they must be provided as a list.
 </ResponseField>
 
 <a id="tabsdata.MySQLDestination.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 The strategy to follow when the table already exists.
 
  **Type:** str
 </ResponseField>
 
 <a id="tabsdata.MySQLDestination.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 The URI of the database where the data is going to be stored.
 
  **Type:** str
@@ -5016,8 +5006,6 @@ should be of an appropriate size.
 <ParamField path="files (str)">
   The file or files to be stored in the final destination.
 </ParamField>
-
-**Categories:** destination
 
 </details>
 
@@ -5083,6 +5071,8 @@ Bases: SourcePlugin
 
 MySQL-based data inputs.
 
+**Categories:** source
+
 <a id="tabsdata.MySQLSource.chunk"></a>
 #### `chunk`
 
@@ -5114,7 +5104,7 @@ single file and a second argument with two files:return
 **Returns:** Union[str, Tuple[str, …], List[str]]
 
 <a id="tabsdata.MySQLSource.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access the
 MySQLDatabase. If no credentials were provided, it will return None.
 
@@ -5122,27 +5112,25 @@ MySQLDatabase. If no credentials were provided, it will return None.
 </ResponseField>
 
 <a id="tabsdata.MySQLSource.initial_values"></a>
-<ResponseField name="initial_values">
+<ResponseField name="initial_values" kind="property">
 The initial values for the parameters in the SQL queries.
 
  **Type:** dict
 </ResponseField>
 
 <a id="tabsdata.MySQLSource.query"></a>
-<ResponseField name="query">
+<ResponseField name="query" kind="property">
 The SQL query(s) to execute.
 
  **Type:** str | List[str]
 </ResponseField>
 
 <a id="tabsdata.MySQLSource.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 The URI of the database where the data is located.
 
  **Type:** str
 </ResponseField>
-
-**Categories:** source
 
 </details>
 
@@ -5199,33 +5187,35 @@ Bases: SourcePlugin
 
 Source plugin for reading data from MySQL.
 
+**Categories:** source
+
 <a id="tabsdata.MySQLSrc.chunk_size"></a>
-<ResponseField name="chunk_size">
+<ResponseField name="chunk_size" kind="property">
 The chunk size in records for reading large queries in batches.
 </ResponseField>
 
 <a id="tabsdata.MySQLSrc.conn"></a>
-<ResponseField name="conn">
+<ResponseField name="conn" kind="property">
 The MySQL connection configuration.
 </ResponseField>
 
 <a id="tabsdata.MySQLSrc.initial_values"></a>
-<ResponseField name="initial_values">
+<ResponseField name="initial_values" kind="property">
 The initial values for the parameters in the SQL queries.
 </ResponseField>
 
 <a id="tabsdata.MySQLSrc.loader"></a>
-<ResponseField name="loader">
+<ResponseField name="loader" kind="property">
 The data processing loader to use for executing SQL imports.
 </ResponseField>
 
 <a id="tabsdata.MySQLSrc.queries"></a>
-<ResponseField name="queries">
+<ResponseField name="queries" kind="property">
 The SQL queries to execute to read data.
 </ResponseField>
 
 <a id="tabsdata.MySQLSrc.schema_overrides"></a>
-<ResponseField name="schema_overrides">
+<ResponseField name="schema_overrides" kind="property">
 The schema overrides for the tables being read.
 </ResponseField>
 
@@ -5249,11 +5239,9 @@ Execute the query and load the results as a list of TableFrames.
 **Returns:** A list of TableFrames containing the query results.
 
 <a id="tabsdata.MySQLSrc.transactional"></a>
-<ResponseField name="transactional">
+<ResponseField name="transactional" kind="property">
 Whether to use transactions for reading to ensure consistency.
 </ResponseField>
-
-**Categories:** source
 
 </details>
 
@@ -5314,28 +5302,28 @@ Bases: Conn
 Represents a connection configuration to Oracle.
 
 <a id="tabsdata.OracleConn.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access the Oracle database. If no credentials were
 provided, it will return None.
 </ResponseField>
 
 <a id="tabsdata.OracleConn.cx_dst_configs_oracle"></a>
-<ResponseField name="cx_dst_configs_oracle">
+<ResponseField name="cx_dst_configs_oracle" kind="property">
 Destination-specific configuration parameters for the Oracle connection.
 </ResponseField>
 
 <a id="tabsdata.OracleConn.cx_src_configs_oracle"></a>
-<ResponseField name="cx_src_configs_oracle">
+<ResponseField name="cx_src_configs_oracle" kind="property">
 Source-specific configuration parameters for the Oracle connection.
 </ResponseField>
 
 <a id="tabsdata.OracleConn.enforce_connection_params"></a>
-<ResponseField name="enforce_connection_params">
+<ResponseField name="enforce_connection_params" kind="property">
 Whether to enforce connection parameters for the Oracle connection.
 </ResponseField>
 
 <a id="tabsdata.OracleConn.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 The URI of the database where the data is located.
 </ResponseField>
 
@@ -5357,6 +5345,8 @@ class OracleDestination(
 Bases: DestinationPlugin
 
 Oracle-based data outputs.
+
+**Categories:** destination
 
 <a id="tabsdata.OracleDestination.chunk"></a>
 #### `chunk`
@@ -5382,7 +5372,7 @@ destination.
 </ParamField>
 
 <a id="tabsdata.OracleDestination.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access the Oracle
 database.
 
@@ -5390,7 +5380,7 @@ database.
 </ResponseField>
 
 <a id="tabsdata.OracleDestination.destination_table"></a>
-<ResponseField name="destination_table">
+<ResponseField name="destination_table" kind="property">
 The table(s) to create. If multiple tables are provided,
 they must be provided as a list.
 
@@ -5398,14 +5388,14 @@ they must be provided as a list.
 </ResponseField>
 
 <a id="tabsdata.OracleDestination.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 The strategy to follow when the table already exists.
 
  **Type:** str
 </ResponseField>
 
 <a id="tabsdata.OracleDestination.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 The URI of the database where the data is going to be stored.
 
  **Type:** str
@@ -5429,8 +5419,6 @@ should be of an appropriate size.
 <ParamField path="files (str)">
   The file or files to be stored in the final destination.
 </ParamField>
-
-**Categories:** destination
 
 </details>
 
@@ -5496,6 +5484,8 @@ Bases: SourcePlugin
 
 Oracle-based data inputs.
 
+**Categories:** source
+
 <a id="tabsdata.OracleSource.chunk"></a>
 #### `chunk`
 
@@ -5527,7 +5517,7 @@ single file and a second argument with two files:return
 **Returns:** Union[str, Tuple[str, …], List[str]]
 
 <a id="tabsdata.OracleSource.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access
 Oracle. If no credentials were provided, it will return None.
 
@@ -5535,27 +5525,25 @@ Oracle. If no credentials were provided, it will return None.
 </ResponseField>
 
 <a id="tabsdata.OracleSource.initial_values"></a>
-<ResponseField name="initial_values">
+<ResponseField name="initial_values" kind="property">
 The initial values for the parameters in the SQL queries.
 
  **Type:** dict
 </ResponseField>
 
 <a id="tabsdata.OracleSource.query"></a>
-<ResponseField name="query">
+<ResponseField name="query" kind="property">
 The SQL query(s) to execute.
 
  **Type:** str | List[str]
 </ResponseField>
 
 <a id="tabsdata.OracleSource.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 The URI of the database where the data is located.
 
  **Type:** str
 </ResponseField>
-
-**Categories:** source
 
 </details>
 
@@ -5612,33 +5600,35 @@ Bases: SourcePlugin
 
 Source plugin for reading data from Oracle.
 
+**Categories:** source
+
 <a id="tabsdata.OracleSrc.chunk_size"></a>
-<ResponseField name="chunk_size">
+<ResponseField name="chunk_size" kind="property">
 The chunk size in records for reading large queries in batches.
 </ResponseField>
 
 <a id="tabsdata.OracleSrc.conn"></a>
-<ResponseField name="conn">
+<ResponseField name="conn" kind="property">
 The Oracle connection configuration.
 </ResponseField>
 
 <a id="tabsdata.OracleSrc.initial_values"></a>
-<ResponseField name="initial_values">
+<ResponseField name="initial_values" kind="property">
 The initial values for the parameters in the SQL queries.
 </ResponseField>
 
 <a id="tabsdata.OracleSrc.loader"></a>
-<ResponseField name="loader">
+<ResponseField name="loader" kind="property">
 The data processing loader to use for executing SQL imports.
 </ResponseField>
 
 <a id="tabsdata.OracleSrc.queries"></a>
-<ResponseField name="queries">
+<ResponseField name="queries" kind="property">
 The SQL queries to execute to read data.
 </ResponseField>
 
 <a id="tabsdata.OracleSrc.schema_overrides"></a>
-<ResponseField name="schema_overrides">
+<ResponseField name="schema_overrides" kind="property">
 The schema overrides for the tables being read.
 </ResponseField>
 
@@ -5662,11 +5652,9 @@ Execute the query and load the results as a list of TableFrames.
 **Returns:** A list of TableFrames containing the query results.
 
 <a id="tabsdata.OracleSrc.transactional"></a>
-<ResponseField name="transactional">
+<ResponseField name="transactional" kind="property">
 Whether to use transactions for reading to ensure consistency.
 </ResponseField>
-
-**Categories:** source
 
 </details>
 
@@ -5743,8 +5731,10 @@ This trigger connects to a PostgreSQL server, reads the write-ahead log via
 the wal2json output plugin for change data capture events (inserts, updates,
 deletes) on specified tables, and stages them.
 
+**Categories:** trigger
+
 <a id="tabsdata.PostgresCdcTrigger.blocking_timeout_seconds"></a>
-<ResponseField name="blocking_timeout_seconds">
+<ResponseField name="blocking_timeout_seconds" kind="property">
 Timeout in seconds for blocking reads from the replication stream.
 </ResponseField>
 
@@ -5769,26 +5759,24 @@ def harvest_tables(
 ```
 
 <a id="tabsdata.PostgresCdcTrigger.publication_name"></a>
-<ResponseField name="publication_name">
+<ResponseField name="publication_name" kind="property">
 Name of the PostgreSQL publication to subscribe to.
 </ResponseField>
 
 <a id="tabsdata.PostgresCdcTrigger.replication_slot"></a>
-<ResponseField name="replication_slot">
+<ResponseField name="replication_slot" kind="property">
 Name of the logical replication slot.
 </ResponseField>
 
 <a id="tabsdata.PostgresCdcTrigger.slot_behavior"></a>
-<ResponseField name="slot_behavior">
+<ResponseField name="slot_behavior" kind="property">
 Whether to create a new replication slot or reuse an existing one.
 </ResponseField>
 
 <a id="tabsdata.PostgresCdcTrigger.start_from"></a>
-<ResponseField name="start_from">
+<ResponseField name="start_from" kind="property">
 Position to start reading changes from.
 </ResponseField>
-
-**Categories:** trigger
 
 </details>
 
@@ -5837,28 +5825,28 @@ Bases: Conn
 Represents a connection configuration to Postgres.
 
 <a id="tabsdata.PostgresConn.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access the Postgres database. If no credentials were
 provided, it will return None.
 </ResponseField>
 
 <a id="tabsdata.PostgresConn.cx_dst_configs_postgres"></a>
-<ResponseField name="cx_dst_configs_postgres">
+<ResponseField name="cx_dst_configs_postgres" kind="property">
 Destination-specific configuration parameters for the Postgres connection.
 </ResponseField>
 
 <a id="tabsdata.PostgresConn.cx_src_configs_postgres"></a>
-<ResponseField name="cx_src_configs_postgres">
+<ResponseField name="cx_src_configs_postgres" kind="property">
 Source-specific configuration parameters for the Postgres connection.
 </ResponseField>
 
 <a id="tabsdata.PostgresConn.enforce_connection_params"></a>
-<ResponseField name="enforce_connection_params">
+<ResponseField name="enforce_connection_params" kind="property">
 Whether to enforce connection parameters for the Postgres connection.
 </ResponseField>
 
 <a id="tabsdata.PostgresConn.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 The URI of the database where the data is located.
 </ResponseField>
 
@@ -5883,29 +5871,31 @@ Bases: DestinationPlugin
 
 Destination plugin for writing data to PostgreSQL.
 
+**Categories:** destination
+
 <a id="tabsdata.PostgresDest.chunk_size"></a>
-<ResponseField name="chunk_size">
+<ResponseField name="chunk_size" kind="property">
 The chunk size for writing large results in batches.
 </ResponseField>
 
 <a id="tabsdata.PostgresDest.conn"></a>
-<ResponseField name="conn">
+<ResponseField name="conn" kind="property">
 The Postgres connection configuration.
 </ResponseField>
 
 <a id="tabsdata.PostgresDest.destination_tables"></a>
-<ResponseField name="destination_tables">
+<ResponseField name="destination_tables" kind="property">
 The table(s) to create. If multiple tables are provided,
 they must be provided as a list.
 </ResponseField>
 
 <a id="tabsdata.PostgresDest.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 The strategy to follow when the table already exists.
 </ResponseField>
 
 <a id="tabsdata.PostgresDest.loader"></a>
-<ResponseField name="loader">
+<ResponseField name="loader" kind="property">
 The data processing loader to use for executing DB write operation.
 </ResponseField>
 
@@ -5932,11 +5922,9 @@ Store the results into the PostgreSQL database.
 </ParamField>
 
 <a id="tabsdata.PostgresDest.transactional"></a>
-<ResponseField name="transactional">
+<ResponseField name="transactional" kind="property">
 Whether to use transactions for writing data to ensure consistency.
 </ResponseField>
-
-**Categories:** destination
 
 </details>
 
@@ -5979,6 +5967,8 @@ Bases: DestinationPlugin
 
 Postgres-based data outputs.
 
+**Categories:** destination
+
 <a id="tabsdata.PostgresDestination.chunk"></a>
 #### `chunk`
 
@@ -6003,7 +5993,7 @@ destination.
 </ParamField>
 
 <a id="tabsdata.PostgresDestination.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access the
 Postgres database.
 
@@ -6011,7 +6001,7 @@ Postgres database.
 </ResponseField>
 
 <a id="tabsdata.PostgresDestination.destination_table"></a>
-<ResponseField name="destination_table">
+<ResponseField name="destination_table" kind="property">
 The table(s) to create. If multiple tables are provided,
 they must be provided as a list.
 
@@ -6019,14 +6009,14 @@ they must be provided as a list.
 </ResponseField>
 
 <a id="tabsdata.PostgresDestination.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 The strategy to follow when the table already exists.
 
  **Type:** str
 </ResponseField>
 
 <a id="tabsdata.PostgresDestination.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 The URI of the database where the data is going to be stored.
 
  **Type:** str
@@ -6050,8 +6040,6 @@ should be of an appropriate size.
 <ParamField path="files (str)">
   The file or files to be stored in the final destination.
 </ParamField>
-
-**Categories:** destination
 
 </details>
 
@@ -6117,6 +6105,8 @@ Bases: SourcePlugin
 
 Postgres-based data inputs.
 
+**Categories:** source
+
 <a id="tabsdata.PostgresSource.chunk"></a>
 #### `chunk`
 
@@ -6148,7 +6138,7 @@ single file and a second argument with two files:return
 **Returns:** Union[str, Tuple[str, …], List[str]]
 
 <a id="tabsdata.PostgresSource.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access the
 PostgresDatabase. If no credentials were provided, it will return None.
 
@@ -6156,27 +6146,25 @@ PostgresDatabase. If no credentials were provided, it will return None.
 </ResponseField>
 
 <a id="tabsdata.PostgresSource.initial_values"></a>
-<ResponseField name="initial_values">
+<ResponseField name="initial_values" kind="property">
 The initial values for the parameters in the SQL queries.
 
  **Type:** dict
 </ResponseField>
 
 <a id="tabsdata.PostgresSource.query"></a>
-<ResponseField name="query">
+<ResponseField name="query" kind="property">
 The SQL query(s) to execute.
 
  **Type:** str | List[str]
 </ResponseField>
 
 <a id="tabsdata.PostgresSource.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 The URI of the database where the data is located.
 
  **Type:** str
 </ResponseField>
-
-**Categories:** source
 
 </details>
 
@@ -6233,33 +6221,35 @@ Bases: SourcePlugin
 
 Source plugin for reading data from Postgres.
 
+**Categories:** source
+
 <a id="tabsdata.PostgresSrc.chunk_size"></a>
-<ResponseField name="chunk_size">
+<ResponseField name="chunk_size" kind="property">
 The chunk size in records for reading large queries in batches.
 </ResponseField>
 
 <a id="tabsdata.PostgresSrc.conn"></a>
-<ResponseField name="conn">
+<ResponseField name="conn" kind="property">
 The Postgres connection configuration.
 </ResponseField>
 
 <a id="tabsdata.PostgresSrc.initial_values"></a>
-<ResponseField name="initial_values">
+<ResponseField name="initial_values" kind="property">
 The initial values for the parameters in the SQL queries.
 </ResponseField>
 
 <a id="tabsdata.PostgresSrc.loader"></a>
-<ResponseField name="loader">
+<ResponseField name="loader" kind="property">
 The data processing loader to use for executing SQL imports.
 </ResponseField>
 
 <a id="tabsdata.PostgresSrc.queries"></a>
-<ResponseField name="queries">
+<ResponseField name="queries" kind="property">
 The SQL queries to execute to read data.
 </ResponseField>
 
 <a id="tabsdata.PostgresSrc.schema_overrides"></a>
-<ResponseField name="schema_overrides">
+<ResponseField name="schema_overrides" kind="property">
 The schema overrides for the tables being read.
 </ResponseField>
 
@@ -6283,11 +6273,9 @@ Execute the query and load the results as a list of TableFrames.
 **Returns:** A list of TableFrames containing the query results.
 
 <a id="tabsdata.PostgresSrc.transactional"></a>
-<ResponseField name="transactional">
+<ResponseField name="transactional" kind="property">
 Whether to use transactions for reading to ensure consistency.
 </ResponseField>
-
-**Categories:** source
 
 </details>
 
@@ -6329,35 +6317,33 @@ Bases: `S3Credentials`
 Credentials class to access an S3 bucket using access key credentials (access key
 id and secret access key).
 
+**Categories:** credentials
+
+<ResponseField name="aws_access_key_id" type="Secret" kind="variable">
+  The AWS access key id.
+</ResponseField>
+
+<ResponseField name="aws_secret_access_key" type="Secret" kind="variable">
+  The AWS secret access key.
+</ResponseField>
+
+<ResponseField name="dict" type="to_dict" kind="variable">
+  Convert the S3AccessKeyCredentials object to a dictionary
+</ResponseField>
+
 <a id="tabsdata.S3AccessKeyCredentials.aws_access_key_id"></a>
-<ResponseField name="aws_access_key_id">
+<ResponseField name="aws_access_key_id" kind="property">
 The AWS access key id.
 
  **Type:** Secret
 </ResponseField>
 
 <a id="tabsdata.S3AccessKeyCredentials.aws_secret_access_key"></a>
-<ResponseField name="aws_secret_access_key">
+<ResponseField name="aws_secret_access_key" kind="property">
 The AWS secret access key.
 
  **Type:** Secret
 </ResponseField>
-
-**Categories:** credentials
-
-**Parameters:**
-
-<ParamField path="aws_access_key_id" type="Secret">
-  The AWS access key id.
-</ParamField>
-
-<ParamField path="aws_secret_access_key" type="Secret">
-  The AWS secret access key.
-</ParamField>
-
-<ParamField path="dict" type="to_dict">
-  Convert the S3AccessKeyCredentials object to a dictionary
-</ParamField>
 
 </details>
 
@@ -6377,26 +6363,6 @@ class S3Config(
 Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
 Configuration for staging files in Amazon S3.
-
-<a id="tabsdata.S3Config.base_path"></a>
-<ResponseField name="base_path">
-
-</ResponseField>
-
-<a id="tabsdata.S3Config.bucket"></a>
-<ResponseField name="bucket">
-
-</ResponseField>
-
-<a id="tabsdata.S3Config.credentials"></a>
-<ResponseField name="credentials">
-
-</ResponseField>
-
-<a id="tabsdata.S3Config.region"></a>
-<ResponseField name="region">
-
-</ResponseField>
 
 **Parameters:**
 
@@ -6418,6 +6384,26 @@ Configuration for staging files in Amazon S3.
 files (via boto3).
 </ParamField>
 
+<a id="tabsdata.S3Config.base_path"></a>
+<ResponseField name="base_path" kind="attribute">
+
+</ResponseField>
+
+<a id="tabsdata.S3Config.bucket"></a>
+<ResponseField name="bucket" kind="attribute">
+
+</ResponseField>
+
+<a id="tabsdata.S3Config.credentials"></a>
+<ResponseField name="credentials" kind="attribute">
+
+</ResponseField>
+
+<a id="tabsdata.S3Config.region"></a>
+<ResponseField name="region" kind="attribute">
+
+</ResponseField>
+
 </details>
 
  <a id="tabsdata.S3Destination"></a>
@@ -6438,6 +6424,8 @@ Bases: DestinationPlugin
 
 S3-file-based data outputs.
 
+**Categories:** destination
+
 <a id="tabsdata.S3Destination.SupportedFormats"></a>
 ### `SupportedFormats`
 
@@ -6452,34 +6440,34 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 Enum for the supported formats for the S3Destination.
 
 <a id="tabsdata.S3Destination.SupportedFormats.avro"></a>
-<ResponseField name="avro">
+<ResponseField name="avro" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.S3Destination.SupportedFormats.csv"></a>
-<ResponseField name="csv">
+<ResponseField name="csv" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.S3Destination.SupportedFormats.ndjson"></a>
-<ResponseField name="ndjson">
+<ResponseField name="ndjson" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.S3Destination.SupportedFormats.parquet"></a>
-<ResponseField name="parquet">
+<ResponseField name="parquet" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.S3Destination.allow_fragments"></a>
-<ResponseField name="allow_fragments">
+<ResponseField name="allow_fragments" kind="property">
 Whether to allow fragments in the output.
 
  **Type:** bool
 </ResponseField>
 
 <a id="tabsdata.S3Destination.catalog"></a>
-<ResponseField name="catalog">
+<ResponseField name="catalog" kind="property">
 The catalog to store the data in.
 
  **Type:** Catalog
@@ -6516,14 +6504,14 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** A list of the intermediate files created
 
 <a id="tabsdata.S3Destination.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access the S3 bucket.
 
  **Type:** S3Credentials
 </ResponseField>
 
 <a id="tabsdata.S3Destination.format"></a>
-<ResponseField name="format">
+<ResponseField name="format" kind="property">
 The format of the file. If not provided, it will be inferred from
 the file.
 
@@ -6531,7 +6519,7 @@ the file.
 </ResponseField>
 
 <a id="tabsdata.S3Destination.region"></a>
-<ResponseField name="region">
+<ResponseField name="region" kind="property">
 The region where the S3 bucket is located.
 
  **Type:** str
@@ -6568,15 +6556,13 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** None
 
 <a id="tabsdata.S3Destination.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 ‘s3://path/to/files’.
 
  **Type:** str | list[str]
 
 **Type:** The URI of the files with format
 </ResponseField>
-
-**Categories:** destination
 
 </details>
 
@@ -6665,6 +6651,8 @@ Bases: SourcePlugin
 
 S3-file-based data inputs.
 
+**Categories:** source
+
 <a id="tabsdata.S3Source.SupportedFormats"></a>
 ### `SupportedFormats`
 
@@ -6679,27 +6667,27 @@ Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 Enum for the supported formats for the S3Source.
 
 <a id="tabsdata.S3Source.SupportedFormats.avro"></a>
-<ResponseField name="avro">
+<ResponseField name="avro" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.S3Source.SupportedFormats.csv"></a>
-<ResponseField name="csv">
+<ResponseField name="csv" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.S3Source.SupportedFormats.log"></a>
-<ResponseField name="log">
+<ResponseField name="log" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.S3Source.SupportedFormats.ndjson"></a>
-<ResponseField name="ndjson">
+<ResponseField name="ndjson" kind="attribute">
 
 </ResponseField>
 
 <a id="tabsdata.S3Source.SupportedFormats.parquet"></a>
-<ResponseField name="parquet">
+<ResponseField name="parquet" kind="attribute">
 
 </ResponseField>
 
@@ -6734,21 +6722,21 @@ single file and a second argument with two files:return
 **Returns:** Union[str, Tuple[str, …], List[str]]
 
 <a id="tabsdata.S3Source.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials required to access the S3 bucket.
 
  **Type:** S3Credentials
 </ResponseField>
 
 <a id="tabsdata.S3Source.file_info"></a>
-<ResponseField name="file_info">
+<ResponseField name="file_info" kind="property">
 The file information to add as system columns.
 
  **Type:** FileInfo | None
 </ResponseField>
 
 <a id="tabsdata.S3Source.format"></a>
-<ResponseField name="format">
+<ResponseField name="format" kind="property">
 The format of the file. If not provided, it will be inferred from
 the file.
 
@@ -6756,14 +6744,14 @@ the file.
 </ResponseField>
 
 <a id="tabsdata.S3Source.initial_last_modified"></a>
-<ResponseField name="initial_last_modified">
+<ResponseField name="initial_last_modified" kind="property">
 The date and time after which the files were modified.
 
  **Type:** str
 </ResponseField>
 
 <a id="tabsdata.S3Source.initial_values"></a>
-<ResponseField name="initial_values">
+<ResponseField name="initial_values" kind="property">
 Return a dictionary with the initial values to be stored after execution of
 the plugin. They will be accessible in the next execution of the plugin.
 The dictionary must have the parameter names as keys and the initial values
@@ -6775,22 +6763,20 @@ as values, all the type string.
 </ResponseField>
 
 <a id="tabsdata.S3Source.region"></a>
-<ResponseField name="region">
+<ResponseField name="region" kind="property">
 The region where the S3 bucket is located.
 
  **Type:** str
 </ResponseField>
 
 <a id="tabsdata.S3Source.uri"></a>
-<ResponseField name="uri">
+<ResponseField name="uri" kind="property">
 ‘s3://path/to/files’.
 
  **Type:** str | list[str]
 
 **Type:** The URI of the files with format
 </ResponseField>
-
-**Categories:** source
 
 </details>
 
@@ -6850,6 +6836,8 @@ Bases: SourcePlugin
 
 Salesforce Reports based data inputs.
 
+**Categories:** source
+
 <a id="tabsdata.SalesforceReportSource.chunk"></a>
 #### `chunk`
 
@@ -6881,36 +6869,34 @@ single file and a second argument with two files:return
 **Returns:** Union[str, Tuple[str, …], List[str]]
 
 <a id="tabsdata.SalesforceReportSource.column_name_strategy"></a>
-<ResponseField name="column_name_strategy">
+<ResponseField name="column_name_strategy" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.SalesforceReportSource.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.SalesforceReportSource.filter"></a>
-<ResponseField name="filter">
+<ResponseField name="filter" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.SalesforceReportSource.filter_logic"></a>
-<ResponseField name="filter_logic">
+<ResponseField name="filter_logic" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.SalesforceReportSource.find_report_by"></a>
-<ResponseField name="find_report_by">
+<ResponseField name="find_report_by" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.SalesforceReportSource.report"></a>
-<ResponseField name="report">
+<ResponseField name="report" kind="property">
 
 </ResponseField>
-
-**Categories:** source
 
 </details>
 
@@ -6966,6 +6952,8 @@ Bases: SourcePlugin
 
 Salesforce (SOQL query) based data inputs (not Salesforce Reports).
 
+**Categories:** source
+
 <a id="tabsdata.SalesforceSource.chunk"></a>
 #### `chunk`
 
@@ -6997,16 +6985,14 @@ single file and a second argument with two files:return
 **Returns:** Union[str, Tuple[str, …], List[str]]
 
 <a id="tabsdata.SalesforceSource.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.SalesforceSource.query"></a>
-<ResponseField name="query">
+<ResponseField name="query" kind="property">
 
 </ResponseField>
-
-**Categories:** source
 
 </details>
 
@@ -7060,47 +7046,45 @@ Bases: `SalesforceCredentials`
 Credentials class to store the credentials needed to access a Salesforce
 using a username, a password and a token.
 
+**Categories:** credentials
+
+<ResponseField name="username" type="Secret" kind="variable">
+  The username to access Salesforce.
+</ResponseField>
+
+<ResponseField name="password" type="Secret" kind="variable">
+  The password to access Salesforce.
+</ResponseField>
+
+<ResponseField name="security_token" type="Secret" kind="variable">
+  The security token to access Salesforce.
+</ResponseField>
+
+<ResponseField name="dict" type="to_dict" kind="variable">
+  Convert the AzureAccountNameKeyCredentials object to a
+dictionary
+</ResponseField>
+
 <a id="tabsdata.SalesforceTokenCredentials.password"></a>
-<ResponseField name="password">
+<ResponseField name="password" kind="property">
 The password to access Salesforce.
 
  **Type:** Secret
 </ResponseField>
 
 <a id="tabsdata.SalesforceTokenCredentials.security_token"></a>
-<ResponseField name="security_token">
+<ResponseField name="security_token" kind="property">
 The security token to access Salesforce.
 
  **Type:** Secret
 </ResponseField>
 
 <a id="tabsdata.SalesforceTokenCredentials.username"></a>
-<ResponseField name="username">
+<ResponseField name="username" kind="property">
 The username to access Salesforce.
 
  **Type:** Secret
 </ResponseField>
-
-**Categories:** credentials
-
-**Parameters:**
-
-<ParamField path="username" type="Secret">
-  The username to access Salesforce.
-</ParamField>
-
-<ParamField path="password" type="Secret">
-  The password to access Salesforce.
-</ParamField>
-
-<ParamField path="security_token" type="Secret">
-  The security token to access Salesforce.
-</ParamField>
-
-<ParamField path="dict" type="to_dict">
-  Convert the AzureAccountNameKeyCredentials object to a
-dictionary
-</ParamField>
 
 </details>
 
@@ -7121,6 +7105,8 @@ class SnowflakeDestination(
 Bases: DestinationPlugin
 
 Snowflake based data outputs.
+
+**Categories:** destination
 
 <a id="tabsdata.SnowflakeDestination.chunk"></a>
 #### `chunk`
@@ -7153,7 +7139,7 @@ the execution of the plugin, not the final destination of the data)
 **Returns:** A list of the intermediate files created
 
 <a id="tabsdata.SnowflakeDestination.destination_table"></a>
-<ResponseField name="destination_table">
+<ResponseField name="destination_table" kind="property">
 Get the destination table(s) where the data will be stored.
 
  **Returns:** The destination table(s).
@@ -7162,7 +7148,7 @@ Get the destination table(s) where the data will be stored.
 </ResponseField>
 
 <a id="tabsdata.SnowflakeDestination.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 Returns the value of the if_table_exists property.
 This property determines what to do if the table already exists.
 </ResponseField>
@@ -7208,8 +7194,6 @@ def write(
 
 This method is used to write the files to the database. It is called
 from the stream method, and it is not intended to be called directly.
-
-**Categories:** destination
 
 </details>
 
@@ -7316,7 +7300,9 @@ For example, you would give the following return to provide a first argument
 with a single file and a second argument with two files:
 return [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
 
-   <a id="tabsdata.SourcePlugin.chunk"></a>
+**Categories:** plugin
+
+<a id="tabsdata.SourcePlugin.chunk"></a>
 #### `chunk`
 
 ```python
@@ -7347,7 +7333,7 @@ single file and a second argument with two files:return
 **Returns:** Union[str, Tuple[str, …], List[str]]
 
 <a id="tabsdata.SourcePlugin.initial_values"></a>
-<ResponseField name="initial_values">
+<ResponseField name="initial_values" kind="property">
 Return a dictionary with the initial values to be stored after execution of
 the plugin. They will be accessible in the next execution of the plugin.
 The dictionary must have the parameter names as keys and the initial values
@@ -7366,8 +7352,6 @@ def stream(
     working_dir: str,
 )
 ```
-
-**Categories:** plugin
 
 </details>
 
@@ -7430,6 +7414,8 @@ Bases: SourcePlugin
 
 Inputs that have been placed in a stage, usually from a StageTrigger.
 
+**Categories:** source
+
 <a id="tabsdata.Stage.stream"></a>
 #### `stream`
 
@@ -7440,11 +7426,9 @@ def stream(
 ```
 
 <a id="tabsdata.Stage.use_existing_data"></a>
-<ResponseField name="use_existing_data">
+<ResponseField name="use_existing_data" kind="property">
 
 </ResponseField>
-
-**Categories:** source
 
 </details>
 
@@ -7473,12 +7457,12 @@ class StageTrigger(
 Bases: [ABC](https://docs.python.org/3/library/abc.html#abc.ABC)
 
 <a id="tabsdata.StageTrigger.end"></a>
-<ResponseField name="end">
+<ResponseField name="end" kind="property">
 
 </ResponseField>
 
 <a id="tabsdata.StageTrigger.out"></a>
-<ResponseField name="out">
+<ResponseField name="out" kind="property">
 Returns a mapping of positional index to table name for the outputs
 produced by this trigger, or None when the StageTrigger implementation only
 supports generating a single table.
@@ -7500,7 +7484,7 @@ ERROR if any issue stops it from working or recovering. exit with 1.
 STOPPED upon a signal. exit with 0.
 
 <a id="tabsdata.StageTrigger.start"></a>
-<ResponseField name="start">
+<ResponseField name="start" kind="property">
 
 </ResponseField>
 
@@ -7545,43 +7529,43 @@ using the `FILES()` table function in an `INSERT INTO … SELECT * FROM
 FILES(...)` statement.
 
 <a id="tabsdata.StarRocksConn.credentials"></a>
-<ResponseField name="credentials">
+<ResponseField name="credentials" kind="property">
 The credentials used to authenticate with StarRocks.  `None` if no
 credentials were provided (StarRocks `root` user, no password).
 </ResponseField>
 
 <a id="tabsdata.StarRocksConn.cx_dst_configs_starrocks"></a>
-<ResponseField name="cx_dst_configs_starrocks">
+<ResponseField name="cx_dst_configs_starrocks" kind="property">
 Destination-specific configuration parameters for the StarRocks connection.
 </ResponseField>
 
 <a id="tabsdata.StarRocksConn.cx_src_configs_starrocks"></a>
-<ResponseField name="cx_src_configs_starrocks">
+<ResponseField name="cx_src_configs_starrocks" kind="property">
 Source-specific configuration parameters for the StarRocks connection.
 </ResponseField>
 
 <a id="tabsdata.StarRocksConn.database"></a>
-<ResponseField name="database">
+<ResponseField name="database" kind="property">
 The target StarRocks database name.
 </ResponseField>
 
 <a id="tabsdata.StarRocksConn.enforce_connection_params"></a>
-<ResponseField name="enforce_connection_params">
+<ResponseField name="enforce_connection_params" kind="property">
 Whether to enforce connection parameters for the StarRocks connection.
 </ResponseField>
 
 <a id="tabsdata.StarRocksConn.host"></a>
-<ResponseField name="host">
+<ResponseField name="host" kind="property">
 The StarRocks FE hostname or IP address.
 </ResponseField>
 
 <a id="tabsdata.StarRocksConn.port"></a>
-<ResponseField name="port">
+<ResponseField name="port" kind="property">
 The MySQL protocol port of the StarRocks FE server.
 </ResponseField>
 
 <a id="tabsdata.StarRocksConn.staging"></a>
-<ResponseField name="staging">
+<ResponseField name="staging" kind="property">
 The cloud storage staging configuration (S3Config, AzureConfig, or
 GCSConfig).
 </ResponseField>
@@ -7606,23 +7590,25 @@ Data is first written as Parquet files to the configured cloud storage staging a
 (S3, Azure Blob, or GCS) and then ingested into StarRocks via its `FILES()`
 table function in an `INSERT INTO … SELECT * FROM FILES(...)` statement.
 
+**Categories:** destination
+
 <a id="tabsdata.StarRocksDest.conn"></a>
-<ResponseField name="conn">
+<ResponseField name="conn" kind="property">
 The StarRocks connection configuration.
 </ResponseField>
 
 <a id="tabsdata.StarRocksDest.destination_tables"></a>
-<ResponseField name="destination_tables">
+<ResponseField name="destination_tables" kind="property">
 The table(s) to load data into.
 </ResponseField>
 
 <a id="tabsdata.StarRocksDest.if_table_exists"></a>
-<ResponseField name="if_table_exists">
+<ResponseField name="if_table_exists" kind="property">
 The strategy to follow when the table already exists.
 </ResponseField>
 
 <a id="tabsdata.StarRocksDest.schema_evolution"></a>
-<ResponseField name="schema_evolution">
+<ResponseField name="schema_evolution" kind="property">
 The schema evolution strategy.
 </ResponseField>
 
@@ -7649,8 +7635,6 @@ the cloud staging area.
   One polars LazyFrame (or None) per destination table,
 in the same order as destination_tables.
 </ParamField>
-
-**Categories:** destination
 
 </details>
 
@@ -8060,7 +8044,7 @@ Example:
 </ParamField>
 
 <a id="tabsdata.TableFrame.dtypes"></a>
-<ResponseField name="dtypes">
+<ResponseField name="dtypes" kind="property">
 
 </ResponseField>
 
@@ -9311,7 +9295,7 @@ Examples:
 </ParamField>
 
 <a id="tabsdata.TableFrame.schema"></a>
-<ResponseField name="schema">
+<ResponseField name="schema" kind="property">
 
 </ResponseField>
 
@@ -9632,7 +9616,7 @@ By default, both methods receive their inputs as a list. Override the
 signature property in your UDF class to return “unpacked” to have each column
 passed as a separate argument instead.
 
- Creating UDFs:1. Subclass [tabsdata.tableframe.udf.function.UDF](bymod-tabsdata.tableframe.udf.function#tabsdata.tableframe.udf.function.UDF).
+ Creating UDFs:1. Subclass [tabsdata.tableframe.udf.function.UDF](/docs/api/module/tabsdata.tableframe.udf.function#tabsdata.tableframe.udf.function.UDF).
 2. Implement `__init__` to call `super().__init__(output_columns)` where
 `output_columns` is a tuple or list of tuples `(name, data type)`
 specifying the UDF default output schema (column names and data types).
@@ -9908,7 +9892,7 @@ arguments.
 </ParamField>
 
 <a id="tabsdata.TableFrame.width"></a>
-<ResponseField name="width">
+<ResponseField name="width" kind="property">
 
 </ResponseField>
 
@@ -11991,7 +11975,7 @@ By default, both methods receive their inputs as a list. Override the
 signature property in your UDF class to return “unpacked” to have each column
 passed as a separate argument instead.
 
- Creating UDFs:1. Subclass [tabsdata.tableframe.udf.function.UDF](bymod-tabsdata.tableframe.udf.function#tabsdata.tableframe.udf.function.UDF).
+ Creating UDFs:1. Subclass [tabsdata.tableframe.udf.function.UDF](/docs/api/module/tabsdata.tableframe.udf.function#tabsdata.tableframe.udf.function.UDF).
 2. Implement `__init__` to call `super().__init__(output_columns)` where
 `output_columns` is a tuple or list of tuples `(name, data type)`
 specifying the UDF default output schema (column names and data types).
@@ -12361,7 +12345,7 @@ def stream(
 ```
 
 <a id="tabsdata.TableInput.table"></a>
-<ResponseField name="table">
+<ResponseField name="table" kind="property">
 The table(s) to load.
 
  **Type:** str | List[str]
@@ -12395,15 +12379,15 @@ Bases: DestinationPlugin
 
 Table-based data outputs.
 
+**Categories:** destination
+
 <a id="tabsdata.TableOutput.table"></a>
-<ResponseField name="table">
+<ResponseField name="table" kind="property">
 The table(s) to create. If multiple tables are provided,
 they must be provided as a list.
 
  **Type:** str | list[str]
 </ResponseField>
-
-**Categories:** destination
 
 </details>
 
@@ -12429,28 +12413,28 @@ Bases: [object](https://docs.python.org/3/library/functions.html#object)
   Attributes:
 
 <a id="tabsdata.TabsdataFunction.input"></a>
-<ResponseField name="input">
+<ResponseField name="input" kind="property">
 The data to be used when running the function.
 
  **Type:** SourcePlugin | None
 </ResponseField>
 
 <a id="tabsdata.TabsdataFunction.name"></a>
-<ResponseField name="name">
+<ResponseField name="name" kind="property">
 The name with which the function will be registered.
 
  **Type:** str
 </ResponseField>
 
 <a id="tabsdata.TabsdataFunction.original_file"></a>
-<ResponseField name="original_file">
+<ResponseField name="original_file" kind="property">
 The file where the original function is defined in the user’s computer
 
  **Type:** str
 </ResponseField>
 
 <a id="tabsdata.TabsdataFunction.original_folder"></a>
-<ResponseField name="original_folder">
+<ResponseField name="original_folder" kind="property">
 The folder where the original function is defined, as a local path in the
 user’s computer.
 
@@ -12458,7 +12442,7 @@ user’s computer.
 </ResponseField>
 
 <a id="tabsdata.TabsdataFunction.original_function"></a>
-<ResponseField name="original_function">
+<ResponseField name="original_function" kind="property">
 The original function that was decorated, without any behaviour
 modifications.
 
@@ -12466,7 +12450,7 @@ modifications.
 </ResponseField>
 
 <a id="tabsdata.TabsdataFunction.output"></a>
-<ResponseField name="output">
+<ResponseField name="output" kind="property">
 The location where the function results will be saved when
 run.
 
@@ -12474,14 +12458,14 @@ run.
 </ResponseField>
 
 <a id="tabsdata.TabsdataFunction.output_actions"></a>
-<ResponseField name="output_actions">
+<ResponseField name="output_actions" kind="property">
 Actions to perform on the output tables.
 
  **Type:** list[OnTablesAction]
 </ResponseField>
 
 <a id="tabsdata.TabsdataFunction.trigger_by"></a>
-<ResponseField name="trigger_by">
+<ResponseField name="trigger_by" kind="property">
 The trigger(s) that will cause the function to execute. It must be
 another table or tables in the system, a CronTrigger, or a StageTrigger in
 the case of a publisher.
@@ -12490,7 +12474,7 @@ the case of a publisher.
 </ResponseField>
 
 <a id="tabsdata.TabsdataFunction.type"></a>
-<ResponseField name="type">
+<ResponseField name="type" kind="property">
 The type of the function. It can be “publisher”, “transformer” or
 “subscriber”.
 
@@ -12519,21 +12503,21 @@ credentials. It includes functionalities to set user and password
 details, convert them into a dictionary representation, and provide
 a string representation for debugging purposes.
 
+**Categories:** credentials
+
 <a id="tabsdata.UserPasswordCredentials.password"></a>
-<ResponseField name="password">
+<ResponseField name="password" kind="property">
 The password.
 
  **Type:** Secret
 </ResponseField>
 
 <a id="tabsdata.UserPasswordCredentials.user"></a>
-<ResponseField name="user">
+<ResponseField name="user" kind="property">
 The user.
 
  **Type:** Secret
 </ResponseField>
-
-**Categories:** credentials
 
 </details>
 

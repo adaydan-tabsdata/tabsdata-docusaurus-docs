@@ -27,8 +27,10 @@ This class defines a trigger based on a cron expression, with optional
 start and end times to constrain its activation period. It validates the
 cron mask and time boundaries to ensure the trigger is well-formed.
 
+**Categories:** trigger
+
 <a id="tabsdata.CronTrigger.end"></a>
-<ResponseField name="end">
+<ResponseField name="end" kind="property">
 Gets the end time of the trigger as a timezone-aware ISO 8601 string
 with ‘Z’ timezone.
 
@@ -36,21 +38,19 @@ with ‘Z’ timezone.
 </ResponseField>
 
 <a id="tabsdata.CronTrigger.mask"></a>
-<ResponseField name="mask">
+<ResponseField name="mask" kind="property">
 Gets the cron expression mask.
 
  **Returns:** The cron expression string.
 </ResponseField>
 
 <a id="tabsdata.CronTrigger.start"></a>
-<ResponseField name="start">
+<ResponseField name="start" kind="property">
 Gets the start time of the trigger as a timezone-aware ISO 8601 string
 with ‘Z’ timezone.
 
  **Returns:** The start time in ISO format, or None if not set.
 </ResponseField>
-
-**Categories:** trigger
 
 </details>
 
@@ -64,15 +64,17 @@ class Db2CdcTrigger(
 )
 ```
 
-Bases: [CdcTrigger](bymod-tabsdata#tabsdata.CdcTrigger)
+Bases: [CdcTrigger](/docs/api/module/tabsdata#tabsdata.CdcTrigger)
 
 A CdcTrigger that captures changes from a Db2 database using SQL Replication.
 
 This trigger connects to a Db2 server, reads change data capture events (inserts,
 updates, deletes) on specified tables via SQL Replication, and stages them.
 
+**Categories:** trigger
+
 <a id="tabsdata.Db2CdcTrigger.blocking_timeout_seconds"></a>
-<ResponseField name="blocking_timeout_seconds">
+<ResponseField name="blocking_timeout_seconds" kind="property">
 Timeout in seconds for blocking reads from the replication stream.
 </ResponseField>
 
@@ -97,11 +99,9 @@ def harvest_tables(
 ```
 
 <a id="tabsdata.Db2CdcTrigger.start_from"></a>
-<ResponseField name="start_from">
+<ResponseField name="start_from" kind="property">
 Position to start reading changes from.
 </ResponseField>
-
-**Categories:** trigger
 
 </details>
 
@@ -115,7 +115,7 @@ class KafkaTrigger(
 )
 ```
 
-Bases: [StageTrigger](bymod-tabsdata#tabsdata.StageTrigger)
+Bases: [StageTrigger](/docs/api/module/tabsdata#tabsdata.StageTrigger)
 
 A StageTrigger that consumes messages from a Kafka topic and stages them.
 
@@ -123,28 +123,30 @@ This trigger connects to a Kafka cluster, consumes messages from a specified
 topic, and uses rollover conditions (time, size, and message count) to
 buffer and stage the data.
 
+**Categories:** trigger
+
 <a id="tabsdata.KafkaTrigger.conn"></a>
-<ResponseField name="conn">
+<ResponseField name="conn" kind="property">
 Kafka consumer connection configuration.
 </ResponseField>
 
 <a id="tabsdata.KafkaTrigger.data_format"></a>
-<ResponseField name="data_format">
+<ResponseField name="data_format" kind="property">
 Data format of the messages (“avro”, “json”, “protobuf”).
 </ResponseField>
 
 <a id="tabsdata.KafkaTrigger.dlq_topic"></a>
-<ResponseField name="dlq_topic">
+<ResponseField name="dlq_topic" kind="property">
 Dead-letter queue topic.
 </ResponseField>
 
 <a id="tabsdata.KafkaTrigger.group_id"></a>
-<ResponseField name="group_id">
+<ResponseField name="group_id" kind="property">
 Kafka consumer group ID.
 </ResponseField>
 
 <a id="tabsdata.KafkaTrigger.messages_rollover"></a>
-<ResponseField name="messages_rollover">
+<ResponseField name="messages_rollover" kind="property">
 Message count-based rollover configuration.
 </ResponseField>
 
@@ -167,26 +169,24 @@ based on rollover conditions.
 </ParamField>
 
 <a id="tabsdata.KafkaTrigger.schema"></a>
-<ResponseField name="schema">
+<ResponseField name="schema" kind="property">
 Schema string for deserializing messages.
 </ResponseField>
 
 <a id="tabsdata.KafkaTrigger.size_rollover_mb"></a>
-<ResponseField name="size_rollover_mb">
+<ResponseField name="size_rollover_mb" kind="property">
 Size-based rollover configuration. Size is specified in megabytes.
 </ResponseField>
 
 <a id="tabsdata.KafkaTrigger.time_rollover_secs"></a>
-<ResponseField name="time_rollover_secs">
+<ResponseField name="time_rollover_secs" kind="property">
 Timeout in seconds for consuming each message.
 </ResponseField>
 
 <a id="tabsdata.KafkaTrigger.topic"></a>
-<ResponseField name="topic">
+<ResponseField name="topic" kind="property">
 Kafka topic to consume from.
 </ResponseField>
-
-**Categories:** trigger
 
 </details>
 
@@ -200,15 +200,17 @@ class MySQLCdcTrigger(
 )
 ```
 
-Bases: [CdcTrigger](bymod-tabsdata#tabsdata.CdcTrigger)
+Bases: [CdcTrigger](/docs/api/module/tabsdata#tabsdata.CdcTrigger)
 
 A CdcTrigger that captures changes from a MySQL database using binlog replication.
 
 This trigger connects to a MySQL server, reads the binary log for change data
 capture events (inserts, updates, deletes) on specified tables, and stages them.
 
+**Categories:** trigger
+
 <a id="tabsdata.MySQLCdcTrigger.blocking_timeout_seconds"></a>
-<ResponseField name="blocking_timeout_seconds">
+<ResponseField name="blocking_timeout_seconds" kind="property">
 Timeout in seconds for blocking reads from the binlog stream.
 </ResponseField>
 
@@ -233,16 +235,14 @@ def harvest_tables(
 ```
 
 <a id="tabsdata.MySQLCdcTrigger.server_id"></a>
-<ResponseField name="server_id">
+<ResponseField name="server_id" kind="property">
 MySQL server ID for binlog replication.
 </ResponseField>
 
 <a id="tabsdata.MySQLCdcTrigger.start_from"></a>
-<ResponseField name="start_from">
+<ResponseField name="start_from" kind="property">
 Position to start reading changes from.
 </ResponseField>
-
-**Categories:** trigger
 
 </details>
 
@@ -256,7 +256,7 @@ class PostgresCdcTrigger(
 )
 ```
 
-Bases: [CdcTrigger](bymod-tabsdata#tabsdata.CdcTrigger)
+Bases: [CdcTrigger](/docs/api/module/tabsdata#tabsdata.CdcTrigger)
 
 A CdcTrigger that captures changes from a PostgreSQL database using WAL
 logical replication.
@@ -265,8 +265,10 @@ This trigger connects to a PostgreSQL server, reads the write-ahead log via
 the wal2json output plugin for change data capture events (inserts, updates,
 deletes) on specified tables, and stages them.
 
+**Categories:** trigger
+
 <a id="tabsdata.PostgresCdcTrigger.blocking_timeout_seconds"></a>
-<ResponseField name="blocking_timeout_seconds">
+<ResponseField name="blocking_timeout_seconds" kind="property">
 Timeout in seconds for blocking reads from the replication stream.
 </ResponseField>
 
@@ -291,25 +293,23 @@ def harvest_tables(
 ```
 
 <a id="tabsdata.PostgresCdcTrigger.publication_name"></a>
-<ResponseField name="publication_name">
+<ResponseField name="publication_name" kind="property">
 Name of the PostgreSQL publication to subscribe to.
 </ResponseField>
 
 <a id="tabsdata.PostgresCdcTrigger.replication_slot"></a>
-<ResponseField name="replication_slot">
+<ResponseField name="replication_slot" kind="property">
 Name of the logical replication slot.
 </ResponseField>
 
 <a id="tabsdata.PostgresCdcTrigger.slot_behavior"></a>
-<ResponseField name="slot_behavior">
+<ResponseField name="slot_behavior" kind="property">
 Whether to create a new replication slot or reuse an existing one.
 </ResponseField>
 
 <a id="tabsdata.PostgresCdcTrigger.start_from"></a>
-<ResponseField name="start_from">
+<ResponseField name="start_from" kind="property">
 Position to start reading changes from.
 </ResponseField>
-
-**Categories:** trigger
 
 </details>

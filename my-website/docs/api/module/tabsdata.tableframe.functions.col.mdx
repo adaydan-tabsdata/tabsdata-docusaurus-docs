@@ -80,16 +80,6 @@ customer_id Int64
 signup_date Datetime
 ```
 
-<a id="tabsdata.tableframe.functions.col.Column.dtype"></a>
-<ResponseField name="dtype">
-
-</ResponseField>
-
-<a id="tabsdata.tableframe.functions.col.Column.name"></a>
-<ResponseField name="name">
-
-</ResponseField>
-
 **Parameters:**
 
 <ParamField path="name" type="str">
@@ -103,14 +93,22 @@ Defaults to None.
 in the column will be interpreted, validated, and serialized.
 </ParamField>
 
-**Parameters:**
-
-<ParamField path="name" type="str">
+<ResponseField name="name" type="str" kind="variable">
   The name of the column, or None if no name was provided.
-</ParamField>
+</ResponseField>
 
-<ParamField path="dtype" type="td_typing.DataType">
+<ResponseField name="dtype" type="td_typing.DataType" kind="variable">
   The declared data type of the column.
-</ParamField>
+</ResponseField>
+
+<a id="tabsdata.tableframe.functions.col.Column.dtype"></a>
+<ResponseField name="dtype" kind="attribute">
+
+</ResponseField>
+
+<a id="tabsdata.tableframe.functions.col.Column.name"></a>
+<ResponseField name="name" kind="attribute">
+
+</ResponseField>
 
 </details>
