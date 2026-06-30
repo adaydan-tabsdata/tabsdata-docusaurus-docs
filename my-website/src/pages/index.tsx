@@ -48,37 +48,37 @@ const EXPLORE: CardItem[] = [
     title: 'Installation',
     description: 'Install Tabsdata on your machine or server.',
     to: '/docs/guide/intro/getting-started',
-    icon: '⬇️',
+    icon: '💻',
   },
   {
     title: 'Core concepts',
     description: 'Learn the pub/sub model, collections, tables, and functions.',
     to: '/docs/guide/intro/key-concepts',
-    icon: '🔵',
+    icon: '📖',
   },
   {
     title: 'Publishers',
     description: 'Read data from external systems into Tabsdata tables.',
-    to: '/docs/guide/publishers/index',
-    icon: '⬆️',
+    to: '/docs/guide/publishers',
+    icon: '📤',
   },
   {
     title: 'Transformers',
     description: 'Transform data with Python and the TableFrame API.',
     to: '/docs/guide/transformers/working-with-transformers',
-    icon: '→',
+    icon: '⚙️',
   },
   {
     title: 'Subscribers',
     description: 'Write data from tables to external destinations.',
-    to: '/docs/guide/subscribers/index',
-    icon: '⬇️',
+    to: '/docs/guide/subscribers',
+    icon: '📥',
   },
   {
     title: 'TableFrame API',
     description: 'Master data transformations with lazy evaluation.',
     to: '/docs/guide/tables/table-frame',
-    icon: '</>',
+    icon: '🧩',
   },
 ];
 
@@ -98,7 +98,7 @@ const ADVANCED: CardItem[] = [
   {
     title: 'Catalogs',
     description: 'Sync metadata to AWS Glue and Databricks Unity Catalog.',
-    to: '/docs/guide/catalogs/index',
+    to: '/docs/guide/catalogs',
     icon: '🗄️',
   },
   {
@@ -126,7 +126,7 @@ const OPERATIONS: CardItem[] = [
     title: 'CLI reference',
     description: 'Complete command reference for td and tdserver.',
     to: '/docs/guide/operations/cli-commands',
-    icon: '>_',
+    icon: '🖥️',
   },
   {
     title: 'User interface',
@@ -137,7 +137,7 @@ const OPERATIONS: CardItem[] = [
   {
     title: 'Secrets',
     description: 'Store credentials securely with environment variables or Vault.',
-    to: '/docs/guide/platform/secrets-management/index',
+    to: '/docs/guide/platform/secrets-management',
     icon: '🔑',
   },
   {
@@ -155,7 +155,7 @@ const OPERATIONS: CardItem[] = [
   {
     title: 'Connectors',
     description: '20+ supported data sources and destinations.',
-    to: '/docs/guide/publishers/index',
+    to: '/docs/guide/publishers',
     icon: '🌐',
   },
 ];
