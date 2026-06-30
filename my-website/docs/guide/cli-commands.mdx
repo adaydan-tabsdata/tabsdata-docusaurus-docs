@@ -44,7 +44,7 @@ title: "CLI Reference"
 
  ```python
 
-td login --server localhost:2457 --username <USER> --role <ROLE> --password <PASSWORD>
+td login --server localhost:2457 --username &lt;USER&gt; --role &lt;ROLE&gt; --password &lt;PASSWORD&gt;
 ```
 
  **Default:**
@@ -81,7 +81,7 @@ td logout
 
  ```python
 
-td user create <NAME> --password <PASSWORD> --full-name <FULL_NAME> --email <EMAIL>
+td user create &lt;NAME&gt; --password &lt;PASSWORD&gt; --full-name &lt;FULL_NAME&gt; --email &lt;EMAIL&gt;
 ```
 
  Password must be at least 8 characters long.
@@ -91,7 +91,7 @@ td user create <NAME> --password <PASSWORD> --full-name <FULL_NAME> --email <EMA
 
  ```python
 
-td user info <NAME>
+td user info &lt;NAME&gt;
 ```
 
    
@@ -107,7 +107,7 @@ td user list
 
  ```python
 
-td user update <NAME> -full-name <NEW_FULL_NAME> --email <NEW_EMAIL>
+td user update &lt;NAME&gt; -full-name &lt;NEW_FULL_NAME&gt; --email &lt;NEW_EMAIL&gt;
 ```
 
  Password must be at least 8 characters long.
@@ -117,7 +117,7 @@ td user update <NAME> -full-name <NEW_FULL_NAME> --email <NEW_EMAIL>
 
  ```python
 
-td user delete <NAME> -confirm delete
+td user delete &lt;NAME&gt; -confirm delete
 ```
 
     
@@ -128,7 +128,7 @@ td user delete <NAME> -confirm delete
 
  ```python
 
-td collection create --name <NAME> --description <DESCRIPTION>
+td collection create --name &lt;NAME&gt; --description &lt;DESCRIPTION&gt;
 ```
 
  Password must be at least 8 characters long.
@@ -138,7 +138,7 @@ td collection create --name <NAME> --description <DESCRIPTION>
 
  ```python
 
-td collection info --name <NAME>
+td collection info --name &lt;NAME&gt;
 ```
 
    
@@ -154,7 +154,7 @@ td collection list
 
  ```python
 
-td collection update --name <NAME> --new-name <NEW_NAME> --description <NEW_DESCRIPTION>
+td collection update --name &lt;NAME&gt; --new-name &lt;NEW_NAME&gt; --description &lt;NEW_DESCRIPTION&gt;
 ```
 
     
@@ -165,11 +165,11 @@ td collection update --name <NAME> --new-name <NEW_NAME> --description <NEW_DESC
 
  ```python
 
-td fn register --coll examples --path <PYTHON_FILE>::<PYTHON_FUNCTION>
+td fn register --coll examples --path &lt;PYTHON_FILE&gt;::&lt;PYTHON_FUNCTION&gt;
 
---description <DESCRIPTION> --local-pkg <LOCAL_PACKAGE_PATH>
+--description &lt;DESCRIPTION&gt; --local-pkg &lt;LOCAL_PACKAGE_PATH&gt;
 
---requirements <REQUIREMENTS_TXT_PATH>
+--requirements &lt;REQUIREMENTS_TXT_PATH&gt;
 ```
 
  Use the `--local-pkg` option to specify the path to local packages not available in PyPi.
@@ -183,13 +183,13 @@ td fn register --coll examples --path <PYTHON_FILE>::<PYTHON_FUNCTION>
 
  ```python
 
-td fn update --coll examples --name <FUNCTION> 
+td fn update --coll examples --name &lt;FUNCTION&gt; 
 
-               --path <PYTHON_FILE>::<PYTHON_FUNCTION>
+               --path &lt;PYTHON_FILE&gt;::&lt;PYTHON_FUNCTION&gt;
 
-               --description <DESCRIPTION> --local-pkg <LOCAL_PACKAGE_PATH>
+               --description &lt;DESCRIPTION&gt; --local-pkg &lt;LOCAL_PACKAGE_PATH&gt;
 
-               --requirements <REQUIREMENTS_TXT_PATH>
+               --requirements &lt;REQUIREMENTS_TXT_PATH&gt;
 ```
 
  Use the `--local-pkg` option to specify the path to local packages not available in PyPi.
@@ -203,7 +203,7 @@ td fn update --coll examples --name <FUNCTION>
 
  ```python
 
-td fn info --coll <COLLECTION> --name <FUNCTION> 
+td fn info --coll &lt;COLLECTION&gt; --name &lt;FUNCTION&gt; 
 ```
 
    
@@ -211,7 +211,7 @@ td fn info --coll <COLLECTION> --name <FUNCTION>
 
  ```python
 
-td fn info --coll <COLLECTION> --name <FUNCTION> --history
+td fn info --coll &lt;COLLECTION&gt; --name &lt;FUNCTION&gt; --history
 ```
 
    
@@ -219,7 +219,7 @@ td fn info --coll <COLLECTION> --name <FUNCTION> --history
 
  ```python
 
-td fn list --coll <COLLECTION> 
+td fn list --coll &lt;COLLECTION&gt; 
 ```
 
     
@@ -230,7 +230,7 @@ td fn list --coll <COLLECTION>
 
  ```python
 
-td fn trigger --coll <COLLECTION> --name <FUNCTION>
+td fn trigger --coll &lt;COLLECTION&gt; --name &lt;FUNCTION&gt;
 ```
 
    
@@ -254,10 +254,10 @@ td exe list-plan
 
  ```python
 
-td exe list-worker --<BY> <ID>
+td exe list-worker --&lt;BY&gt; &lt;ID&gt;
 ```
 
- Where option `<BY>` can be (only one can be used in a single command):
+ Where option `&lt;BY&gt;` can be (only one can be used in a single command):
 
  - `--data-ver`  must be the data version ID the worker generated.
 - `--plan`  must be the execution plan ID that runs the worker.
@@ -269,7 +269,7 @@ td exe list-worker --<BY> <ID>
 
  ```python
 
-td exe cancel --trx <TRX_ID>
+td exe cancel --trx &lt;TRX_ID&gt;
 ```
 
  It cancels a running or failed transaction. All workers of the transaction will be discarded,
@@ -283,7 +283,7 @@ td exe cancel --trx <TRX_ID>
 
  ```python
 
-td exe recover --trx <TRX_ID>
+td exe recover --trx &lt;TRX_ID&gt;
 ```
 
  It recovers a failed transaction. All workers in failed or hold state will be retried.
@@ -295,7 +295,7 @@ td exe recover --trx <TRX_ID>
 
  ```python
 
-td exe logs --worker <WORKER_ID>
+td exe logs --worker &lt;WORKER_ID&gt;
 ```
 
  Use the `td exe list-trx`, `td exe list-plan`, and `td exe list-worker` to find the  desired worker ID.
@@ -308,7 +308,7 @@ td exe logs --worker <WORKER_ID>
 
  ```python
 
-td table schema --coll <COLLECTION> --name <TABLE>
+td table schema --coll &lt;COLLECTION&gt; --name &lt;TABLE&gt;
 ```
 
    
@@ -316,7 +316,7 @@ td table schema --coll <COLLECTION> --name <TABLE>
 
  ```python
 
-td table sample --coll <COLLECTION> --name <TABLE>
+td table sample --coll &lt;COLLECTION&gt; --name &lt;TABLE&gt;
 ```
 
    
@@ -324,5 +324,5 @@ td table sample --coll <COLLECTION> --name <TABLE>
 
  ```python
 
-td table download --coll <COLLECTION> --name <TABLE> --file <FILE>
+td table download --coll &lt;COLLECTION&gt; --name &lt;TABLE&gt; --file &lt;FILE&gt;
 ```

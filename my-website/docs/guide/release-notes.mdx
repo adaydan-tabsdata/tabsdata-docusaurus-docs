@@ -22,11 +22,11 @@ title: "Release Notes"
 
  What is New:
 
- - [KafkaTrigger](working_with_kafka/), a Kafka topic consumer to load messages into Tabsdata tables.
-- [CronTrigger](05_working_with_triggers/#working-with-triggers), periodic triggering of publishers/subscribers/transformers.
-- Declarative [data quality](data_quality/#data-quality) API for validation, classification and quarantining data.
-- New SQL connectors supporting Database transactions both for [publishers](04_01_working_with_publishers/#working-with-publishers) and [subscribers](04_03_working_with_subscribers/#working-with-subscribers).
-- Revamped [UI](user_interface/#ui) navigation.
+ - [KafkaTrigger](../kafka), a Kafka topic consumer to load messages into Tabsdata tables.
+- [CronTrigger](../triggers#working-with-triggers), periodic triggering of publishers/subscribers/transformers.
+- Declarative [data quality](../data-quality#data-quality) API for validation, classification and quarantining data.
+- New SQL connectors supporting Database transactions both for [publishers](../publishers#working-with-publishers) and [subscribers](../subscribers#working-with-subscribers).
+- Revamped [UI](../user-interface#ui) navigation.
 
  Known issues:
 
@@ -52,8 +52,8 @@ dependency must be pinned to version 4.2.0. For example:
  **What’s New?**
 
  - **Version System Columns:** All TableFrames now have a set of system columns with version information (execution ID, transaction ID, version ID and timestamp). Having these system columns enable advanced multi-time query functionality.
-- [BigQuery Subscriber Connector](04_03_working_with_subscribers/bigquery/#bigquery-subscriber).
-- Several improvements and new functionality for Lineage/Execution graphs in the [UI](user_interface/#ui).
+- [BigQuery Subscriber Connector](../subscribers/bigquery#bigquery-subscriber).
+- Several improvements and new functionality for Lineage/Execution graphs in the [UI](../user-interface#ui).
 
    
 ## Tabsdata 1.4.0
@@ -64,9 +64,9 @@ dependency must be pinned to version 4.2.0. For example:
 
  **What’s New?**
 
- - [Tabsdata AI agent](ai_agent/#ai-agent) (Preview). Explore collections and tables, and create publishers and subscriber using a natural language interface.
-- [User Defined Functions](06_working_with_tables/user_defined_functions#user-defined-functions) support. Integrate custom logic or external functions with TableFrame’s processing.
-- Interactive Execution/Lineage graphs in the [UI](user_interface/#ui).
+ - [Tabsdata AI agent](../ai-agent#ai-agent) (Preview). Explore collections and tables, and create publishers and subscriber using a natural language interface.
+- [User Defined Functions](../tables/user-defined-functions#user-defined-functions) support. Integrate custom logic or external functions with TableFrame’s processing.
+- Interactive Execution/Lineage graphs in the [UI](../user-interface#ui).
 
    
 ## Tabsdata 1.3.0
@@ -77,16 +77,16 @@ dependency must be pinned to version 4.2.0. For example:
 
  **What’s New?**
 
- - [Google Cloud Storage](04_03_working_with_subscribers/gcp/#gcp-subscriber) publisher and subscriber connectors
+ - [Google Cloud Storage](../subscribers/gcp#gcp-subscriber) publisher and subscriber connectors
 - Avro Support for publishing and subscribing using file based connectors (File, S3, Azure storage, Google Cloud Storage)
-- [Salesforce](04_01_working_with_publishers/salesforce_reports/#salesforce-reports) reports publisher connector
-- [Grok parser](04_01_working_with_publishers/grok_for_log_files/#grok-for-log-files) support for TableFrames columns
-- [Permissions CLI](permissioning/#rbac)
+- [Salesforce](../publishers/salesforce-reports#salesforce-reports) reports publisher connector
+- [Grok parser](../publishers/grok-for-log-files#grok-for-log-files) support for TableFrames columns
+- [Permissions CLI](../permissioning#rbac)
 
  **Improvements:**
 
- - Minor [CLI](11_cli_commands/) usability improvements
-- Minor [UI](user_interface/#ui) usability improvements
+ - Minor [CLI](../cli-commands) usability improvements
+- Minor [UI](../user-interface#ui) usability improvements
 - Non functional improvements
 
    
@@ -98,8 +98,8 @@ dependency must be pinned to version 4.2.0. For example:
 
  **What’s New?**
 
- - New [publisher](04_01_working_with_publishers/mssql/#mssql) and [subscriber](04_03_working_with_subscribers/mssql/#mssql-subscriber) connectors for Microsoft SQL Server.
-- [UI](user_interface/#ui) usability improvements.
+ - New [publisher](../publishers/mssql#mssql) and [subscriber](../subscribers/mssql#mssql-subscriber) connectors for Microsoft SQL Server.
+- [UI](../user-interface#ui) usability improvements.
 
    
 ## Tabsdata 1.1.0
@@ -122,12 +122,12 @@ dependency must be pinned to version 4.2.0. For example:
 
  **What’s New?**
 
- - [Browser Interface](user_interface/#ui): You can now interact with various powerful functionalities of Tabsdata using the browser interface.
-- **New Connectors:** Built-in support for [Snowflake](04_03_working_with_subscribers/snowflake/#snowflake-subscriber) and [Databricks](04_03_working_with_subscribers/databricks/#databricks-subscriber) is now live. Seamless integrations, out of the box.
-- [Catalog Support](catalogs/#catalogs): Enhanced support for Unity Catalog, and AWS Glue Catalog, with Parquet format compatibility.
-- [CLI](11_cli_commands/) **Improvements:** We’ve reimagined the CLI experience with streamlined commands and contextual hints to make onboarding easier.
+ - [Browser Interface](../user-interface#ui): You can now interact with various powerful functionalities of Tabsdata using the browser interface.
+- **New Connectors:** Built-in support for [Snowflake](../subscribers/snowflake#snowflake-subscriber) and [Databricks](../subscribers/databricks#databricks-subscriber) is now live. Seamless integrations, out of the box.
+- [Catalog Support](../catalogs#catalogs): Enhanced support for Unity Catalog, and AWS Glue Catalog, with Parquet format compatibility.
+- [CLI](../cli-commands) **Improvements:** We’ve reimagined the CLI experience with streamlined commands and contextual hints to make onboarding easier.
 - **Richer Metadata:** We’re capturing and displaying more metadata to give users better visibility and control over their data.
-- **Backend Enhancements:** Under-the-hood upgrades to improve [security](security/#security), stability, and scalability in production environments.
+- **Backend Enhancements:** Under-the-hood upgrades to improve [security](../security#security), stability, and scalability in production environments.
 
    
 ## Tabsdata 0.9.6
@@ -152,9 +152,9 @@ dependency must be pinned to version 4.2.0. For example:
 
  **What’s New?**
 
- - [AWS Glue Iceberg](04_03_working_with_subscribers/aws_iceberg/#amazon-s3-subscriber-iceberg) connector to seamlessly subscribe data from Tabsdata to AWS as Iceberg Tables.
-- [MongoDB](04_03_working_with_subscribers/mongodb/#mongodb-subscriber) destination connector to seamlessly subscribe data from Tabsdata to MongoDB.
-- Richer support for [Hashicorp Vault](secrets_management/#credentials).
+ - [AWS Glue Iceberg](../subscribers/aws-iceberg#amazon-s3-subscriber-iceberg) connector to seamlessly subscribe data from Tabsdata to AWS as Iceberg Tables.
+- [MongoDB](../subscribers/mongodb#mongodb-subscriber) destination connector to seamlessly subscribe data from Tabsdata to MongoDB.
+- Richer support for [Hashicorp Vault](../secrets-management#credentials).
 - Corrections and restructuring in documentation.
 
    
@@ -166,8 +166,8 @@ dependency must be pinned to version 4.2.0. For example:
 
  **What’s New?**
 
- - [Salesforce](04_01_working_with_publishers/salesforce/#salesforce) connector to seamlessly publish data from Salesforce to Tabsdata.
-- Stronger [security](security/#security) protocols with support for [Hashicorp secrets](secrets_management/#credentials).
+ - [Salesforce](../publishers/salesforce#salesforce) connector to seamlessly publish data from Salesforce to Tabsdata.
+- Stronger [security](../security#security) protocols with support for [Hashicorp secrets](../secrets-management#credentials).
 - Isolation of the server’s python environment from that of the user for better controls.
 
    

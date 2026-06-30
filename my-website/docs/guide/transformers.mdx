@@ -9,7 +9,7 @@ title: "Transformers"
   
 ## Example (Transformer)
 
- Here is an example transformer named `process_sales`. It reads three tabsdata tables, sums the `sales_value` data by `sales_rep`, and writes the resultant tables back to the Tabsdata server. There is a data quality check on the `us_sales_by_sales_rep` table. It filters out rows where `rep_id` is NULL, routing them to a separate `clean_nulls` quarantine table. The main `us_sales_by_sales_rep` table output only contains rows with valid (non-NULL) rep IDs. This transformer executes automatically as soon as a [new commit](06_working_with_tables/table_frame#working-with-table-commits) occurs on any of its input tables:
+ Here is an example transformer named `process_sales`. It reads three tabsdata tables, sums the `sales_value` data by `sales_rep`, and writes the resultant tables back to the Tabsdata server. There is a data quality check on the `us_sales_by_sales_rep` table. It filters out rows where `rep_id` is NULL, routing them to a separate `clean_nulls` quarantine table. The main `us_sales_by_sales_rep` table output only contains rows with valid (non-NULL) rep IDs. This transformer executes automatically as soon as a [new commit](../tables/table-frame#working-with-table-commits) occurs on any of its input tables:
 
  ```python
 import tabsdata as td
@@ -44,17 +44,17 @@ def process_sales(tf1: td.TableFrame, tf2: td.TableFrame, tf3: td.TableFrame):
     return tf1, tf2, tf3
 ```
 
- **Note:** After defining the function, you need to register it with a Tabsdata collection and execute it. For more information, see [Register a Function](04_working_with_functions/#register-a-function) and [Execute a Function](04_working_with_functions/#execute-a-function).
+ **Note:** After defining the function, you need to register it with a Tabsdata collection and execute it. For more information, see [Register a Function](../04-working-with-functions#register-a-function) and [Execute a Function](../04-working-with-functions#execute-a-function).
 
- When you define a transformer, you specify the name of the transformer, the Tabsdata tables to read, and the names of the Tabsdata tables to write to. By default a transformer is triggered by a [new commit](06_working_with_tables/table_frame#working-with-table-commits) to any of its input tables.
+ When you define a transformer, you specify the name of the transformer, the Tabsdata tables to read, and the names of the Tabsdata tables to write to. By default a transformer is triggered by a [new commit](../tables/table-frame#working-with-table-commits) to any of its input tables.
 
  To create and run a transformer, complete the following tasks:
 
  **Define a transformer** - Define a transformer to configure the parameters that govern the transformations of tables in the Tabsdata server.
 
- **Register the transformer** - Register the transformer with a Tabsdata collection. A transformer can read from tables in any Tabsdata collection, but can only write output tables to the collection that it is registered with. For information about registering functions, see [here](04_working_with_functions/#register-a-function).
+ **Register the transformer** - Register the transformer with a Tabsdata collection. A transformer can read from tables in any Tabsdata collection, but can only write output tables to the collection that it is registered with. For information about registering functions, see [here](../04-working-with-functions#register-a-function).
 
- **Execute the transformer** - Execute the transformer by initiating a trigger. Once executed, the transformer processes data from the specified input tables as defined in the function logic, then writes the results to tables in the Tabsdata server. By default, a commit on any of the input tables triggers a transformer. However, you can use any Tabsdata table as a trigger. For more information about executing a function, see [here](04_working_with_functions/#execute-a-function).
+ **Execute the transformer** - Execute the transformer by initiating a trigger. Once executed, the transformer processes data from the specified input tables as defined in the function logic, then writes the results to tables in the Tabsdata server. By default, a commit on any of the input tables triggers a transformer. However, you can use any Tabsdata table as a trigger. For more information about executing a function, see [here](../04-working-with-functions#execute-a-function).
 
    
 ## Setup (Transformer)
@@ -65,14 +65,14 @@ def process_sales(tf1: td.TableFrame, tf2: td.TableFrame, tf3: td.TableFrame):
 import tabsdata as td
 
 @td.transformer(
-    input_tables=["<input_table1>", "<collection_name>/<input_table2>"],
-    output_tables=["<output_table1>", "<output_table2>"],
+    input_tables=["&lt;input_table1&gt;", "&lt;collection_name&gt;/&lt;input_table2&gt;"],
+    output_tables=["&lt;output_table1&gt;", "&lt;output_table2&gt;"],
     on_output_tables=[
         dq.DataQuality(
-            table="<output_table1>",
+            table="&lt;output_table1&gt;",
             classifiers=[
-                dq.IsNull("<table1_column1>", tags="nulls"),
-                dq.IsPositive("<table1_column2>", tags="positive"),
+                dq.IsNull("&lt;table1_column1&gt;", tags="nulls"),
+                dq.IsPositive("&lt;table1_column2&gt;", tags="positive"),
             ],
             operators=[
                 dq.Enrich(),           # add dq columns to `output_table1`
@@ -85,29 +85,29 @@ import tabsdata as td
             ],
         )
     ],
-    trigger_by=["<trigger_table1>", "<trigger_table2>"],
+    trigger_by=["&lt;trigger_table1&gt;", "&lt;trigger_table2&gt;"],
 )
-def <transformer_name>("<table_frame1>": td.TableFrame, "<table_frame2>"": td.TableFrame):
-    <function_logic>
-    return <table_frame_output1>, <table_frame_output2>
+def &lt;transformer_name&gt;("&lt;table_frame1&gt;": td.TableFrame, "&lt;table_frame2&gt;"": td.TableFrame):
+    &lt;function_logic&gt;
+    return &lt;table_frame_output1&gt;, &lt;table_frame_output2&gt;
 ```
 
- **Note:** After defining the function, you need to register it with a Tabsdata collection and execute it. For more information, see [Register a Function](04_working_with_functions/#register-a-function) and [Execute a Function](04_working_with_functions/#execute-a-function).
+ **Note:** After defining the function, you need to register it with a Tabsdata collection and execute it. For more information, see [Register a Function](../04-working-with-functions#register-a-function) and [Execute a Function](../04-working-with-functions#execute-a-function).
 
  Following properties are defined in the setup code above:
 
   
 ### Input Tables
 
- `<input_table_1>` is the name of an input table in the collection that the function is registered with.
-`<collection_name>/<input_table_2>` is an input table from a collection that the transformer is not registered with.
+ `&lt;input_table_1&gt;` is the name of an input table in the collection that the function is registered with.
+`&lt;collection_name&gt;/&lt;input_table_2&gt;` is an input table from a collection that the transformer is not registered with.
 
- Tabsdata stores all the commits of a table in the Tabsdata server. Hence, you can have multiple commits of the same table in the input. You can read more about it [here](06_working_with_tables/table_frame#working-with-table-commits).
+ Tabsdata stores all the commits of a table in the Tabsdata server. Hence, you can have multiple commits of the same table in the input. You can read more about it [here](../tables/table-frame#working-with-table-commits).
 
    
 ### Output Tables
 
- `<output_table1>`, `<output_table2>`… are the names of the Tabsdata tables to publish to.
+ `&lt;output_table1&gt;`, `&lt;output_table2&gt;`… are the names of the Tabsdata tables to publish to.
 
    
 ### None as an input and output
@@ -123,22 +123,22 @@ def <transformer_name>("<table_frame1>": td.TableFrame, "<table_frame2>"": td.Ta
    
 ### Triggers
 
- `<trigger_table1>`, `<trigger_table2>`… are the names of the tables in the Tabsdata server. A new commit to any of these tables triggers the publisher. All listed trigger tables must exist in the server before registering the publisher.
+ `&lt;trigger_table1&gt;`, `&lt;trigger_table2&gt;`… are the names of the tables in the Tabsdata server. A new commit to any of these tables triggers the publisher. All listed trigger tables must exist in the server before registering the publisher.
 
  Defining trigger tables is optional. If you don’t define the `trigger_by` property, the transformer will get triggered by any of its input tables. If you define the `trigger_by` property, then only those tables listed in the property can automatically trigger the transformer.
 
- For more information, see [Working with Triggers](05_working_with_triggers/#working-with-triggers).
+ For more information, see [Working with Triggers](../triggers#working-with-triggers).
 
    
 ### Name
 
- `<transformer_name>` is the name for the transformer that you are configuring. It has be unique within all functions registered in a collection.
+ `&lt;transformer_name&gt;` is the name for the transformer that you are configuring. It has be unique within all functions registered in a collection.
 
    
 ### Function Logic
 
- `<function_logic>` governs the processing performed by the publisher. You can specify function logic to be a simple write or to perform additional processing, such as dropping nulls, before writing data to output tables. For more information about the function logic that you can include, see [Working with Tables](06_working_with_tables/table_frame#working-with-tables).
+ `&lt;function_logic&gt;` governs the processing performed by the publisher. You can specify function logic to be a simple write or to perform additional processing, such as dropping nulls, before writing data to output tables. For more information about the function logic that you can include, see [Working with Tables](../tables/table-frame#working-with-tables).
 
- `<table_frame1>`, `<table_frame2>`… are the names for the variables that temporarily store source data for processing.
+ `&lt;table_frame1&gt;`, `&lt;table_frame2&gt;`… are the names for the variables that temporarily store source data for processing.
 
- `<table_frame_output1>`, `<table_frame_output2>`… are the output from the function that are stored as Tabsdata tables with names as defined in the `tables` property. Consequently, the number of tables returned from the function have to exactly match the number of tables defined in the `tables` property.
+ `&lt;table_frame_output1&gt;`, `&lt;table_frame_output2&gt;`… are the output from the function that are stored as Tabsdata tables with names as defined in the `tables` property. Consequently, the number of tables returned from the function have to exactly match the number of tables defined in the `tables` property.

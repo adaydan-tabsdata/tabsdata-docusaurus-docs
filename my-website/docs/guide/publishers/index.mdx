@@ -1,15 +1,15 @@
 ---
 title: "Publishers"
+sidebarTitle: "Publishers"
 ---
 
-# Publishers
+A publisher is a Tabsdata function that reads data from an external source, such as file system or database, and writes the data to one or more tables in the Tabsdata server.
 
- A publisher is a Tabsdata [function](04_working_with_functions/#working-with-functions) that reads data from an external source, such as file system or database, and writes the data to one or more tables in the Tabsdata server.
+Here is an example publisher named `read_sales`. It reads three sales csv files, checks if their last modified date is after 1st Jan 2021, and writes them to the Tabsdata tables of the same name. This publisher executes automatically as soon as a new commit occurs on the `new_customer` table:
 
- Here is an example publisher named `read_sales`. It reads three sales csv files, checks if their last modified date is after 1st Jan 2021, and writes them to the Tabsdata tables of the same name. This publisher executes automatically as soon as a [new commit](06_working_with_tables/table_frame#working-with-table-commits) occurs on the `new_customer` table:
-
- ```python
+```python
 import tabsdata as td
+
 
 @td.publisher(
     source=td.LocalFileSource(
@@ -27,33 +27,31 @@ def read_sales(tf1: td.TableFrame, tf2: td.TableFrame, tf3: td.TableFrame):
     return tf1, tf2, tf3
 ```
 
- When you define a publisher, you specify the name of the publisher, the data to read, and the names of the Tabsdata tables to write to. If you want the publisher to execute automatically, you need to specify the Tabsdata tables that will trigger the publisher when a commit occurs for one of those tables in the `trigger_by` parameter.
+When you define a publisher, you specify the name of the publisher, the data to read, and the names of the Tabsdata tables to write to. If you want the publisher to execute automatically, you need to specify the Tabsdata tables that will trigger the publisher when a commit occurs for one of those tables in the `trigger_by` parameter.
 
- To create and run a Tabsdata publisher, complete the following tasks:
+To create and run a Tabsdata publisher, complete the following tasks:
 
- - **Define a publisher** - Define a publisher to configure the parameters that govern the reading of data into the Tabsdata server. The syntax for defining a publisher differs depending on the system that the publisher reads from. For details, see File Storage and Database and Other Sources.
-- **Register the publisher** - Register the publisher with a Tabsdata collection. A publisher can only write output tables to the collection that it is registered with. For information about registering functions, see [here](04_working_with_functions/#register-a-function).
-- **Execute the publisher** - Execute the publisher by initiating a trigger. Once executed, the publisher takes the input data, processes it as defined in the function logic, and writes the output tables in the Tabsdata server. By default, publishers do not have any triggers. For more information about executing a function, see [here](04_working_with_functions/#execute-a-function).
+- **Define a publisher** - Define a publisher to configure the parameters that govern the reading of data into the Tabsdata server. The syntax for defining a publisher differs depending on the system that the publisher reads from. For details, see the supported source connectors below.
+- **Register the publisher** - Register the publisher with a Tabsdata collection. A publisher can only write output tables to the collection that it is registered with. For information about registering functions, see here.
+- **Execute the publisher** - Execute the publisher by initiating a trigger. Once executed, the publisher takes the input data, processes it as defined in the function logic, and writes the output tables in the Tabsdata server. By default, publishers do not have any triggers. For more information about executing a function, see here.
 
- Below is the list of sources connectors that are currently supported natively in Tabsdata. Beyond these, you can connect with other external systems as per your need using [connector plugins](07_working_with_connector_plugins/#working-with-connector-plugins).
+Below is the list of sources connectors that are currently supported natively in Tabsdata. Beyond these, you can connect with other external systems as per your need using connector plugins.
 
-  
-## File Storage
-
-  - [Local File System](local_file_system/)
-- [Amazon S3](amazon_s3/)
-- [Azure Blob Storage](azure/)
-- [Google Cloud Storage](gcp/)
-- [Grok for Log Files](grok_for_log_files/)
-
-    
-## Database and Other Sources
-
-  - [Kafka](working_with_kafka/)
-- [MariaDB](mariadb/)
-- [Microsoft SQL Server](mssql/)
-- [MySQL](mysql/)
-- [Oracle](oracle/)
-- [Postgres](postgres/)
-- [Salesforce SOQL Query](salesforce/)
-- [Salesforce Reports](salesforce_reports/)
+- [Local File System](local_file_system/main.html)
+- [Amazon S3](amazon_s3/main.html)
+- [Azure Blob Storage](azure/main.html)
+- [Databricks](databricks/main.html)
+- [Db2](db2/main.html)
+- [Db2 CDC](db2_cdc/main.html)
+- [Google Cloud Storage](gcp/main.html)
+- [Kafka](../working_with_kafka/main.html)
+- [MariaDB](mariadb/main.html)
+- [Microsoft SQL Server](mssql/main.html)
+- [MySQL CDC](mysql_cdc/main.html)
+- [MySQL](mysql/main.html)
+- [Oracle](oracle/main.html)
+- [Postgres](postgres/main.html)
+- [PostgreSQL CDC](postgres_cdc/main.html)
+- [Salesforce SOQL Query](salesforce/main.html)
+- [Salesforce Reports](salesforce_reports/main.html)
+- [Grok for Log Files](grok_for_log_files/main.html)

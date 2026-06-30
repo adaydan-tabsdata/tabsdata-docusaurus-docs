@@ -10,15 +10,15 @@ title: "Working with Functions"
 
  **Publishers**
 
- A publisher function reads data from an external system and writes the data to one or more tables in the Tabsdata server. For information on creating and running publishers, see [Publishers](04_01_working_with_publishers/#working-with-publishers).
+ A publisher function reads data from an external system and writes the data to one or more tables in the Tabsdata server. For information on creating and running publishers, see [Publishers](../publishers#working-with-publishers).
 
  **Transformers**
 
- A transformer function reads data from one or more tables in the Tabsdata server, transforms the data, then writes the transformed data to tables in the server. For information on creating and running transformers, see [Transformers](04_02_working_with_transformers/#working-with-transformers).
+ A transformer function reads data from one or more tables in the Tabsdata server, transforms the data, then writes the transformed data to tables in the server. For information on creating and running transformers, see [Transformers](../transformers#working-with-transformers).
 
  **Subscribers**
 
- A subscriber function reads data from tables in the Tabsdata server and writes the data to an external system. For information on creating and running subscribers, see [Subscribers](04_03_working_with_subscribers/#working-with-subscribers).
+ A subscriber function reads data from tables in the Tabsdata server and writes the data to an external system. For information on creating and running subscribers, see [Subscribers](../subscribers#working-with-subscribers).
 
   To create and run a Tabsdata function, you complete the following tasks:
 
@@ -33,7 +33,7 @@ title: "Working with Functions"
 
  **Name**
 
- The name of the function. It must be unique within the [collection](03_key_concepts/#collections) that it is registered with.
+ The name of the function. It must be unique within the [collection](../key-concepts#collections) that it is registered with.
 
  **Input**
 
@@ -53,24 +53,24 @@ title: "Working with Functions"
 
  The triggers cause the function to execute. By default, transformers and subscribers are triggered by their input tables, and publishers don’t have any triggers. Additionally, when you configure a function, you can specify the tables to act as trigger to the function. When a commit occurs to one or more of the specified trigger tables, the function executes.
 
- For more information, see [Working with Triggers](05_working_with_triggers/#working-with-triggers).
+ For more information, see [Working with Triggers](../triggers#working-with-triggers).
 
    
 ## Register a Function
 
- After you define a Tabsdata function, you register it with a collection in the Tabsdata server. A [collection](03_key_concepts/#collections) is the logical container where the Tabsdata server organizes tables and functions.
+ After you define a Tabsdata function, you register it with a collection in the Tabsdata server. A [collection](../key-concepts#collections) is the logical container where the Tabsdata server organizes tables and functions.
 
  To register a function, use the following command in a CLI:
 
  ```bash
-$ td fn register --coll <collection_name> --path <path_to_python_file>::<function_name> --update
+$ td fn register --coll &lt;collection_name&gt; --path &lt;path_to_python_file&gt;::&lt;function_name&gt; --update
 ```
 
  Where:
 
- - `<collection_name>` is the name of the collection in the Tabsdata server to register the function with.
-- `<path_to_python_file>` is the path to the Python file containing the function. It can be absolute system path or relative to the CLI directory from which the comannd is run.
-- `<function_name>` is the name of the function as defined in the Python file.
+ - `&lt;collection_name&gt;` is the name of the collection in the Tabsdata server to register the function with.
+- `&lt;path_to_python_file&gt;` is the path to the Python file containing the function. It can be absolute system path or relative to the CLI directory from which the comannd is run.
+- `&lt;function_name&gt;` is the name of the function as defined in the Python file.
 - `--update` flag enables updation of the function if the function with the same name already exists.
 
    
@@ -81,14 +81,14 @@ $ td fn register --coll <collection_name> --path <path_to_python_file>::<functio
  To execute a function manually, use the following command in a CLI:
 
  ```bash
-$ td fn trigger --coll <collection_name> --name <function_name>
+$ td fn trigger --coll &lt;collection_name&gt; --name &lt;function_name&gt;
 ```
 
  Where:
 
- - `<collection_name>` is the name of the collection in the Tabsdata server that the function is registered with.
-- `<function_name>` is the name of the function to be executed. This name is defined when the function is registered.
+ - `&lt;collection_name&gt;` is the name of the collection in the Tabsdata server that the function is registered with.
+- `&lt;function_name&gt;` is the name of the function to be executed. This name is defined when the function is registered.
 
  The function execution happens by initiating a trigger. A trigger can be manual or automated. Manual triggers are initiated by a CLI command from a user. Automated triggers are initiated by the creation of a new table commit on a trigger table associated with the function. Regardless of the trigger defined in a function, you can always manually execute a function from CLI.
 
- For more information on triggers, see [Working with Triggers](05_working_with_triggers/#working-with-triggers).
+ For more information on triggers, see [Working with Triggers](../triggers#working-with-triggers).

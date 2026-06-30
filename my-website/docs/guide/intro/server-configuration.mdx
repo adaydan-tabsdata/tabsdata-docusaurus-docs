@@ -1,69 +1,62 @@
 ---
 title: "Server Configuration"
+sidebarTitle: "Server Configuration"
 ---
 
-# Server Configuration
+This section describes how to configure Tabsdata server components through various configuration files.
 
- This section describes how to configure Tabsdata server components through various configuration files.
-
-  
 ## Overview
 
- Tabsdata configuration is managed through YAML files located in the Tabsdata instance directory. These configuration files control critical aspects of the Tabsdata server including API server settings, security, database connections, storage mounts, and AI agent integration.
+Tabsdata configuration is managed through YAML files located in the Tabsdata instance directory. These configuration files control critical aspects of the Tabsdata server including API server settings, security, database connections, storage mounts, and AI agent integration.
 
- Proper configuration ensures optimal performance, security, and reliability of your Tabsdata deployment. This guide covers the main configuration files and their available options.
+Proper configuration ensures optimal performance, security, and reliability of your Tabsdata deployment. This guide covers the main configuration files and their available options.
 
-  
 ### Instance Directory
 
- The default instance directory location is:
+The default instance directory location is:
 
- - **Windows:** `%USERPROFILE%/.tabsdata/instances/tabsdata`
+- **Windows:** `%USERPROFILE%/.tabsdata/instances/tabsdata`
 - **Linux and MacOS:** `${HOME}/.tabsdata/instances/tabsdata`
 
-   
 ### Configuration Files
 
- The following configuration files are available within the instance directory:
+The following configuration files are available within the instance directory:
 
- | Configuration File | Purpose |
+| Configuration File | Purpose |
 | --- | --- |
 | workspace/config/proc/regular/apiserver/config/config.yaml | API server settings: addresses, authentication, database, storage, and transactions |
 | workspace/config/proc/regular/aiagent/config/config.yaml | AI agent settings: port, read-only mode, and AI provider credentials |
-| workspace/config/ssl/ | SSL certificates (key.pem and cert.pem) for HTTPS |
+| workspace/config/ssl/ | SSL certificates ( key.pem and cert.pem ) for HTTPS |
 | workspace/config/proc/regular/apiserver/config/log.yaml | Logging configuration for the API server |
 
-    
 ### Environment Variables
 
- Configuration files support environment variable substitution using the `${}` syntax. Tabsdata provides the following built-in variables:
+Configuration files support environment variable substitution using the `${}` syntax. Tabsdata provides the following built-in variables:
 
- | Variable | Description |
+| Variable | Description |
 | --- | --- |
 | TD_PATH_INSTANCE | Full path to the Tabsdata instance directory |
-| TD_PATH_REPOSITORY | Full path to the repository directory (default: $&#123;TD_PATH_INSTANCE&#125;/repository) |
-| TD_PATH_CONFIG | Full path to the configuration directory (default: $&#123;TD_PATH_INSTANCE&#125;/workspace/config) |
-| TD_PATH_WORK | Full path to the working directory (default: $&#123;TD_PATH_INSTANCE&#125;/workspace/work) |
+| TD_PATH_REPOSITORY | Full path to the repository directory (default: $\{TD_PATH_INSTANCE}/repository ) |
+| TD_PATH_CONFIG | Full path to the configuration directory (default: $\{TD_PATH_INSTANCE}/workspace/config ) |
+| TD_PATH_WORK | Full path to the working directory (default: $\{TD_PATH_INSTANCE}/workspace/work ) |
 | TD_URI_INSTANCE | Same as TD_PATH_INSTANCE but URI-friendly (no scheme) |
 | TD_URI_REPOSITORY | Same as TD_PATH_REPOSITORY but URI-friendly (no scheme) |
 | TD_URI_CONFIG | Same as TD_PATH_CONFIG but URI-friendly (no scheme) |
 
-  Example:
+Example:
 
- ```yaml
+```yaml
 database:
   url: file://${TD_URI_REPOSITORY}/database/tabsdata.db
 ```
 
-    
 ## API Server Configuration
 
- The API server configuration file is located at `workspace/config/proc/regular/apiserver/config/config.yaml` within your instance directory.
+The API server configuration file is located at `workspace/config/proc/regular/apiserver/config/config.yaml` within your instance directory.
 
-  
 ### Complete Configuration Example
 
- ```yaml
+```yaml
 # storage_url: null    # Default: file://${TD_URI_REPOSITORY}/storage
 addresses:
   - 127.0.0.1:2457     # Public IP/PORT
@@ -104,28 +97,25 @@ storage:               # It also supports 'url' instead of 'mounts'
       uri: file://${TD_URI_REPOSITORY}/storage/bundles/
 ```
 
- :::tip
+:::tip
 **Important Configuration Decision:** The `transaction_by` setting determines how Tabsdata manages transaction boundaries for execution plans. This is a critical configuration choice that affects performance and data consistency. See Transaction Mode for detailed guidance on choosing between collection-based (C) and function-based (F) transactions.
 :::
 
-   
 ### Configuration Options
 
- The API server configuration in `config.yaml` controls the core Tabsdata server behavior.
+The API server configuration in `config.yaml` controls the core Tabsdata server behavior.
 
-  
 #### Storage Configuration
 
- ```yaml
+```yaml
 # storage_url: null    # Default: file://${TD_URI_REPOSITORY}/storage
 ```
 
- The URL to the location to store the Tabsdata data. The storage URL can be configured globally or through mount points (see Storage Mounts below).
+The URL to the location to store the Tabsdata data. The storage URL can be configured globally or through mount points (see Storage Mounts below).
 
-   
 #### Server Addresses
 
- ```yaml
+```yaml
 addresses:
   - 127.0.0.1:2457     # Public IP/PORT
 internal_addresses:
@@ -134,13 +124,12 @@ agent_addresses:
   - 127.0.0.1:2459
 ```
 
- - **addresses**: List of IP:PORT combinations for the API server to listen on
+- **addresses**: List of IP:PORT combinations for the API server to listen on
 - **agent_addresses**: List of IP:PORT combinations for agent communication
 
-   
 #### Password Hashing
 
- ```yaml
+```yaml
 password:              # Password Hashing Configuration
   algorithm: argon2id
   version: 19
@@ -149,9 +138,9 @@ password:              # Password Hashing Configuration
   parallelism_cost: 1
 ```
 
- Configures password hashing using Argon2id algorithm:
+Configures password hashing using Argon2id algorithm:
 
- | Parameter | Description |
+| Parameter | Description |
 | --- | --- |
 | algorithm | Password hashing algorithm - argon2id |
 | version | Argon2 version number |
@@ -159,31 +148,28 @@ password:              # Password Hashing Configuration
 | time_cost | Number of iterations |
 | parallelism_cost | Number of parallel threads |
 
-    
 #### JWT Configuration
 
- ```yaml
+```yaml
 jwt:
   #secret: null                     # By default a generated UUID
   access_token_expiration: 3600     # Max inactivity period for a user session
 ```
 
- - **secret**: JWT signing secret (auto-generated UUID if not specified)
+- **secret**: JWT signing secret (auto-generated UUID if not specified)
 - **access_token_expiration**: Maximum inactivity period in seconds before session expires
 
-   
 #### Request Timeout
 
- ```yaml
+```yaml
 request_timeout: 60                 # HTTP (API and UI) requests timeout
 ```
 
- HTTP request timeout in seconds for both API and UI requests.
+HTTP request timeout in seconds for both API and UI requests.
 
-   
 #### Database Configuration
 
- ```yaml
+```yaml
 database:
   #  url: null         # Default: file://${TD_URI_REPOSITORY}/database/tabsdata.db
   # Connection pool configurations
@@ -196,9 +182,9 @@ database:
   log_level: off
 ```
 
- Database connection and pool settings:
+Database connection and pool settings:
 
- | Parameter | Description |
+| Parameter | Description |
 | --- | --- |
 | url | Database connection URL (defaults to SQLite in repository) |
 | min_connections | Minimum number of connections in the pool |
@@ -209,54 +195,50 @@ database:
 | test_before_acquire | Test connection health before use |
 | log_level | Database logging level (off, trace, debug, info, warn, error) |
 
-    
 #### Transaction Mode
 
- ```yaml
+```yaml
 transaction_by: C      # C or F if transactions are by collection or by function
 ```
 
- - **C**: Transactions are managed by collection
+- **C**: Transactions are managed by collection
 - **F**: Transactions are managed by function
 
-  
 ##### Execution Plan Transaction Boundaries
 
- Tabsdata supports two transaction strategies for execution plans: **per function** or **per collection**. The instance is configured with a particular strategy using the `transaction_by` parameter above.
+Tabsdata supports two transaction strategies for execution plans: **per function** or **per collection**. The instance is configured with a particular strategy using the `transaction_by` parameter above.
 
- **Per Function Transactions (transaction_by: F)**
+**Per Function Transactions (transaction_by: F)**
 
- Every function of the execution plan runs in its own separate transaction. The tables produced by the function are immediately committed and available after the function execution finishes. This provides:
+Every function of the execution plan runs in its own separate transaction. The tables produced by the function are immediately committed and available after the function execution finishes. This provides:
 
- - Maximum isolation between functions
+- Maximum isolation between functions
 - Independent function execution boundaries
 - Ability to handle failures at the function level
 - Better for independent function executions with minimal shared state
 
- **Per Collection Transactions (transaction_by: C)**
+**Per Collection Transactions (transaction_by: C)**
 
- The functions of the execution plan are grouped per collection, and a single transaction is used for each collection to execute all its functions. All the tables produced by all the functions of a collection are committed and available when the transaction finishes. This provides:
+The functions of the execution plan are grouped per collection, and a single transaction is used for each collection to execute all its functions. All the tables produced by all the functions of a collection are committed and available when the transaction finishes. This provides:
 
- - Shared transaction context across collection functions
+- Shared transaction context across collection functions
 - Reduced transaction overhead for collection operations
 
-    
 #### SSL Configuration
 
- ```yaml
+```yaml
 ssl_folder:            # Path for SSL configuration
 ```
 
- Path to directory containing SSL certificates. If not specified, defaults to:
+Path to directory containing SSL certificates. If not specified, defaults to:
 
- ```text
+```
 ${INSTANCE_PATH}/workspace/config/ssl/
 ```
 
-   
 #### Storage Mounts
 
- ```yaml
+```yaml
 storage:               # It also supports 'url' instead of 'mounts'
   mounts:
     - id: ROOT
@@ -275,32 +257,30 @@ storage:               # It also supports 'url' instead of 'mounts'
 #          AwsSecretKey: ...
 ```
 
- Storage mount configuration:
+Storage mount configuration:
 
- | Parameter | Description |
+| Parameter | Description |
 | --- | --- |
 | id | Unique identifier for the mount |
 | path | Virtual path in Tabsdata |
-| uri | Physical storage location (supports file://, s3://, etc.) |
+| uri | Physical storage location (supports file:// , s3://, etc.) |
 | options | Mount-specific options (e.g., AWS credentials for S3) |
 
-  :::info
+:::warning
 The `/bundles` path must always be a local file system mount.
 :::
 
- :::note
+:::note
 Storage can be configured using either `url` (single storage location) or `mounts` (multiple mount points), but not both.
 :::
 
-     
 ## AI Agent Configuration
 
- The AI agent configuration file is located at `workspace/config/proc/regular/aiagent/config/config.yaml` within your instance directory.
+The AI agent configuration file is located at `workspace/config/proc/regular/aiagent/config/config.yaml` within your instance directory.
 
-  
 ### Configuration Options
 
- ```yaml
+```yaml
 port: 2459
 read_only: false
 ai_providers:
@@ -308,68 +288,62 @@ ai_providers:
     api_key: ${OPENAI_API_KEY}    # If set the AI agent will start
 ```
 
- AI Agent settings:
+AI Agent settings:
 
- | Parameter | Description |
+| Parameter | Description |
 | --- | --- |
 | port | Port number for the AI agent to listen on |
 | read_only | When true, AI agent can only read data, not modify |
 | ai_providers | Configuration for AI provider integrations |
 
-    
 ### AI Provider Configuration
 
-  
 #### OpenAI Provider
 
- ```yaml
+```yaml
 ai_providers:
   openai:
     api_key: ${OPENAI_API_KEY}
 ```
 
- - **api_key**: OpenAI API key (use environment variable for security)
+- **api_key**: OpenAI API key (use environment variable for security)
 
- :::note
+:::note
 The AI agent will only start if at least one AI provider is properly configured with valid credentials.
 :::
 
- :::tip
+:::tip
 Use environment variables (e.g., `${OPENAI_API_KEY}`) for sensitive values like API keys instead of hardcoding them in configuration files.
 :::
 
-     
 ## SSL Certificate Configuration
 
- SSL certificate files are located at `workspace/config/ssl/` within your instance directory.
+SSL certificate files are located at `workspace/config/ssl/` within your instance directory.
 
-  
 ### Required Files
 
- The SSL folder should contain:
+The SSL folder should contain:
 
- - **key.pem**: Private key file
+- **key.pem**: Private key file
 - **cert.pem**: Certificate file
 
- To enable HTTPS:
+To enable HTTPS:
 
- 1. Place your SSL certificate files in the SSL folder
+1. Place your SSL certificate files in the SSL folder
 2. Configure the `ssl_folder` path in the API server configuration
 3. Restart the Tabsdata server
 
- ```bash
+```bash
 $ tdserver restart
 ```
 
-    
 ## Log Configuration
 
- The log configuration file is located at `workspace/config/proc/regular/apiserver/config/log.yaml` within your instance directory. This file controls logging behavior for the API server and other components.
+The log configuration file is located at `workspace/config/proc/regular/apiserver/config/log.yaml` within your instance directory. This file controls logging behavior for the API server and other components.
 
-  
 ### Configuration Example
 
- ```yaml
+```yaml
 profile: production
 
 profiles:
@@ -389,113 +363,94 @@ profiles:
           - sqlx::query=trace
 ```
 
-   
 ### Configuration Options
 
- | Parameter | Description |
+| Parameter | Description |
 | --- | --- |
-| profile | Active logging profile (development or production) |
+| profile | Active logging profile ( development or production ) |
 | output | Log output destination: stdout (console) or file |
-| level | Default log level: trace, debug, info, warn, error |
-| directives | Module-specific log level overrides (e.g., tower::buffer::worker=info) |
+| level | Default log level: trace , debug , info , warn , error |
+| directives | Module-specific log level overrides (e.g., tower::buffer::worker=info ) |
 | sinks | Additional log file destinations with specific directives |
 
-  **Profiles:**
+**Profiles:**
 
- - **development**: Outputs logs to stdout (console) for easy debugging during development
+- **development**: Outputs logs to stdout (console) for easy debugging during development
 - **production**: Outputs logs to files, with additional sinks for SQL query logging
 
-    
 ## Configuration Best Practices
 
- 1. **Use Environment Variables for Secrets**
-Always use environment variables for sensitive data like API keys, passwords, and tokens:
+1. **Use Environment Variables for Secrets** Always use environment variables for sensitive data like API keys, passwords, and tokens:
+```yaml
 ai_providers:
   openai:
-    api_key: $&#123;OPENAI_API_KEY&#125;
-2. **Backup Before Modifications**
-Always backup configuration files before making changes:
+    api_key: ${OPENAI_API_KEY}
+```
+2. **Backup Before Modifications** Always backup configuration files before making changes:
+```bash
 $ cp config.yaml config.yaml.backup
-3. **Restart After Changes**
-Configuration changes require a server restart:
+```
+3. **Restart After Changes** Configuration changes require a server restart:
+```bash
 $ tdserver restart
-4. **Monitor Resource Usage**
-Adjust database connection pool settings based on your workload:
-  - Increase `max_connections` for high-traffic environments
+```
+4. **Monitor Resource Usage** Adjust database connection pool settings based on your workload: - Increase `max_connections` for high-traffic environments
   - Adjust `acquire_timeout` and `idle_timeout` based on query patterns
-
-5. **Storage Planning**
-  - Keep `/bundles` as a local mount for optimal performance
+5. **Storage Planning** - Keep `/bundles` as a local mount for optimal performance
   - Use S3 or cloud storage for data mounts when appropriate
   - Configure appropriate credentials for cloud storage mounts
-
-6. **Security Considerations**
-  - Use strong JWT secrets in production
+6. **Security Considerations** - Use strong JWT secrets in production
   - Configure appropriate `access_token_expiration` values
   - Enable SSL/TLS for production deployments
   - Use Argon2id for password hashing with appropriate cost parameters
+7. **Transaction Mode Selection** Choose transaction mode based on your use case: - **Collection-based (C)**: Better for scenarios with multiple operations per collection. Requires acyclic trigger graph at collection level.
+  - **Function-based (F)**: Better for independent function executions with maximum isolation. See Transaction Mode for detailed information about transaction boundaries and important constraints.
 
-7. **Transaction Mode Selection**
-Choose transaction mode based on your use case:
-
-See Transaction Mode for detailed information about transaction boundaries and important constraints.
-  - **Collection-based (C)**: Better for scenarios with multiple operations per collection. Requires acyclic trigger graph at collection level.
-  - **Function-based (F)**: Better for independent function executions with maximum isolation.
-
-   
 ## Troubleshooting
 
-  
 ### Configuration Not Taking Effect
 
- If configuration changes don’t take effect:
+If configuration changes don’t take effect:
 
- 1. Verify YAML syntax is correct
+1. Verify YAML syntax is correct
 2. Check for typos in parameter names
 3. Restart the server: `tdserver restart`
 4. Check server logs for configuration errors
 
-   
 ### Environment Variables Not Resolving
 
- If environment variables aren’t resolving:
+If environment variables aren’t resolving:
 
- 1. Verify the environment variable is set: `echo $VARIABLE_NAME`
+1. Verify the environment variable is set: `echo $VARIABLE_NAME`
 2. Ensure the variable is exported in the shell
 3. Check the syntax uses `${VARIABLE_NAME}` format
 4. Restart the server after setting environment variables
 
-   
 ### Connection Pool Issues
 
- If experiencing database connection issues:
+If experiencing database connection issues:
 
- 1. Check `max_connections` isn’t set too low
+1. Check `max_connections` isn’t set too low
 2. Increase `acquire_timeout` if seeing timeout errors
 3. Review `max_lifetime` and `idle_timeout` settings
 4. Enable `log_level: debug` for detailed connection information
 
-   
 ### Transaction Mode Issues
 
- If experiencing execution plan or trigger issues:
+If experiencing execution plan or trigger issues:
 
- 1. **Collection Transaction Constraint Violation**: If using `transaction_by: C` and encountering errors about circular dependencies or trigger paths, verify that your trigger graph does not have arc trigger paths that exit and reenter the same collection.
-Solution: Either restructure your triggers to avoid collection reentry, or switch to `transaction_by: F` (per-function transactions).
-2. **Performance Issues**: If function execution is slower than expected, consider switching transaction modes:
-  - For many independent functions: Use `transaction_by: F`
+1. **Collection Transaction Constraint Violation**: If using `transaction_by: C` and encountering errors about circular dependencies or trigger paths, verify that your trigger graph does not have arc trigger paths that exit and reenter the same collection. Solution: Either restructure your triggers to avoid collection reentry, or switch to `transaction_by: F` (per-function transactions).
+2. **Performance Issues**: If function execution is slower than expected, consider switching transaction modes: - For many independent functions: Use `transaction_by: F`
   - For related functions in collections: Use `transaction_by: C`
-
 3. **Transaction Rollback Issues**: Remember that at the end of each transaction, the system is in a pristine state. If you need state to persist across function boundaries, ensure your transaction mode aligns with your data flow.
 
- See Transaction Mode for more details on transaction strategies.
+See Transaction Mode for more details on transaction strategies.
 
- For additional help, see [Troubleshooting](10_troubleshooting/#troubleshooting) or [Contact Us](09_contact_support/#contact-support).
+For additional help, see Troubleshooting or Contact Us.
 
-    
 ## Related Topics
 
- - [Setting up Tabsdata over HTTPS](security/#security) - Security configuration and best practices
-- [Secrets Management](secrets_management/#secrets-management) - Managing secrets with HashiCorp Vault
-- [Tabsdata AI Agent (Tabby)](ai_agent/#ai-agent) - Detailed AI agent setup and usage
-- [Getting Started](02_getting_started/#getting-started) - Initial server setup
+- Setting up Tabsdata over HTTPS - Security configuration and best practices
+- Secrets Management - Managing secrets with HashiCorp Vault
+- Tabsdata AI Agent (Tabby) - Detailed AI agent setup and usage
+- Getting Started - Initial server setup

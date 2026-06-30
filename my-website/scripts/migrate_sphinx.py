@@ -278,7 +278,7 @@ def sig_to_source(dt):
 
 
 def field_list_to_mdx(dl):
-    """Convert <dl class="field-list"> to ParamField components or plain text."""
+    """Convert <dl class="field-list"> to ParamField/ResponseField components or plain text."""
     parts = []
     dts = dl.find_all('dt', recursive=False)
     dds = dl.find_all('dd', recursive=False)
@@ -331,7 +331,6 @@ def field_list_to_mdx(dl):
                     type_attr = f' type="{type_str}"' if type_str else ''
                     param_parts.append(f'<ParamField path="{name}"{type_attr}>\n  {desc}\n</ParamField>\n\n')
             else:
-                # Plain text params: "name – description" per line
                 for line in dd.get_text().splitlines():
                     line = line.strip()
                     if not line:

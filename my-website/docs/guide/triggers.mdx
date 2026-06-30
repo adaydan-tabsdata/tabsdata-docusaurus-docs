@@ -21,13 +21,13 @@ title: "Working with Triggers"
  To trigger a function, use the following command in a command line interface:
 
  ```bash
-$ td fn trigger --coll <collection_name> --name <function_name>
+$ td fn trigger --coll &lt;collection_name&gt; --name &lt;function_name&gt;
 ```
 
  Where:
 
- - `<collection_name>` is the name of the collection in the Tabsdata server that the function is registered with.
-- `<function_name>` is the name of the function to be executed. This name is defined when the function is registered.
+ - `&lt;collection_name&gt;` is the name of the collection in the Tabsdata server that the function is registered with.
+- `&lt;function_name&gt;` is the name of the function to be executed. This name is defined when the function is registered.
 
    
 ### Using UI
@@ -51,7 +51,7 @@ $ td fn trigger --coll <collection_name> --name <function_name>
     
 ## Automated Triggers
 
- Automated triggers are initiated by a new [commit](06_working_with_tables/table_frame#working-with-table-commits) to one of the tables associated with the function. For example, you might define an inventory subscriber function that exports data from a Tabsdata inventory table to AWS S3 every time the inventory table receives a commit.
+ Automated triggers are initiated by a new [commit](../tables/table-frame#working-with-table-commits) to one of the tables associated with the function. For example, you might define an inventory subscriber function that exports data from a Tabsdata inventory table to AWS S3 every time the inventory table receives a commit.
 
  Note that a commit does not always include changes in the table data. For example, a publisher that writes to three tables performs a commit to all three tables with each execution, irrespective of whether there is a change in data for any of the tables.
 
@@ -91,10 +91,10 @@ trigger_by = []
 #### Defining a Non-Empty Array
 
  ```python
-trigger_by = ["<table_name>", "<collection_name>/<table_name>"]
+trigger_by = ["&lt;table_name&gt;", "&lt;collection_name&gt;/&lt;table_name&gt;"]
 ```
 
- Setting `trigger_by` to a non-empty array explicitly defines which tables can trigger the function. If you want the functions to be triggered by a subset of their input tables or by external tables, list them in the array. To reference tables outside the function’s collection, use the format `<collection_name>/<table_name>`.
+ Setting `trigger_by` to a non-empty array explicitly defines which tables can trigger the function. If you want the functions to be triggered by a subset of their input tables or by external tables, list them in the array. To reference tables outside the function’s collection, use the format `&lt;collection_name&gt;/&lt;table_name&gt;`.
 
  Only those tables listed in the `trigger_by` array will trigger the function. List as many as needed.
 

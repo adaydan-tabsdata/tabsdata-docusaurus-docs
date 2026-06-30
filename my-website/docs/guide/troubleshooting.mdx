@@ -36,9 +36,9 @@ complete successfully yet are either in `Failed` status or on
 To find the workers of the stalled transaction, use the `td exe list-worker` command with one of the following 3
 options:
 
- - `--trx <TRX_ID>` to list workers of a specific transaction.
-- `--plan <PLAN_ID>` to list workers of a specific execution plan.
-- `--fn <FN_ID>` to list workers of a specific function.
+ - `--trx &lt;TRX_ID&gt;` to list workers of a specific transaction.
+- `--plan &lt;PLAN_ID&gt;` to list workers of a specific execution plan.
+- `--fn &lt;FN_ID&gt;` to list workers of a specific function.
 
  ![../../_images/image8_2.png](/img/image8_2.png)
 
@@ -46,7 +46,7 @@ options:
 #### Fetch the logs of a Worker
 
  To fetch the logs of a worker, use the
-`td exe logs --worker <WORKER_ID>` command.
+`td exe logs --worker &lt;WORKER_ID&gt;` command.
 
  ```console
 $ td exe logs --worker 06ACHMC505VC10HMF7NI1D9RUG
@@ -95,7 +95,7 @@ cancel it.
     
 #### Cancel the Transaction
 
- To cancel the transaction use the `td exe cancel --trx <TRX_ID>`
+ To cancel the transaction use the `td exe cancel --trx &lt;TRX_ID&gt;`
 command. It will cancel all workers of the transaction, including the
 ones that finished successfully. The cancel also applies to all the
 dependent transactions.
@@ -112,7 +112,7 @@ Execution plan canceled successfully
   
 ##### Recover the Transaction
 
- To recover the transaction use the `td exe recover --trx <TRX_ID>`
+ To recover the transaction use the `td exe recover --trx &lt;TRX_ID&gt;`
 command. It will retry all workers that failed and reschedule all
 workers that were on hold. The recover also applies to all the dependent
 transactions.
@@ -132,13 +132,13 @@ Execution plan recovered successfully
  The function changes you made are still in your local and need to be moved to the Tabsdata server. To do that, use the below command and modify as needed.
 
  ```console
-$ td fn update --coll examples --name <FUNCTION>
+$ td fn update --coll examples --name &lt;FUNCTION&gt;
 
-            --path <PYTHON_FILE>::<PYTHON_FUNCTION>
+            --path &lt;PYTHON_FILE&gt;::&lt;PYTHON_FUNCTION&gt;
 
-            --description <DESCRIPTION> --local-pkg <LOCAL_PACKAGE_PATH>
+            --description &lt;DESCRIPTION&gt; --local-pkg &lt;LOCAL_PACKAGE_PATH&gt;
 
-            --requirements <REQUIREMENTS_TXT_PATH>
+            --requirements &lt;REQUIREMENTS_TXT_PATH&gt;
 ```
 
      
@@ -152,7 +152,7 @@ $ td fn update --coll examples --name <FUNCTION>
  If authentication is failing, try logging back in.
 
  ```python
-td login --server localhost --user <USERNAME> --role <ROLE> --password <PASSWORD>
+td login --server localhost --user &lt;USERNAME&gt; --role &lt;ROLE&gt; --password &lt;PASSWORD&gt;
 ```
 
  **Default:**
@@ -275,7 +275,7 @@ $ tdserver clean
 
  ```console
 $ ps -ef | grep tabsdata
-$ kill <PID>
+$ kill &lt;PID&gt;
 ```
 
    

@@ -1,15 +1,15 @@
 ---
 title: "Subscribers"
+sidebarTitle: "Subscribers"
 ---
 
-# Subscribers
+A subscriber is a Tabsdata function that reads tables in the Tabsdata server and writes them to external destinations such as file systems or databases. For example, you can create a subscriber to write the Tabsdata tables that it is subscribed to and write them to an AWS S3 instance.
 
- A subscriber is a Tabsdata [function](04_working_with_functions/#working-with-functions) that reads tables in the Tabsdata server and writes them to external destinations such as file systems or databases. For example, you can create a subscriber to write the Tabsdata tables that it is subscribed to and write them to an AWS S3 instance.
+Here is an example subscriber named `write_sales`. It reads three tables from the Tabsdata server, and writes them to the local file system with the same file names. This subscriber executes automatically as soon as a new commit occurs on any of its input tables.
 
- Here is an example subscriber named `write_sales`. It reads three tables from the Tabsdata server, and writes them to the local file system with the same file names. This subscriber executes automatically as soon as a [new commit](06_working_with_tables/table_frame#working-with-table-commits) occurs on any of its input tables.
-
- ```python
+```python
 import tabsdata as td
+
 
 @td.subscriber(
     tables=[
@@ -29,36 +29,32 @@ def write_sales(tf1: td.TableFrame, tf2: td.TableFrame, tf3: td.TableFrame):
     return tf1, tf2, tf3
 ```
 
- When you define a subscriber, you specify the name of the subscriber, the Tabsdata tables to write, and destination properties to write to. By default a subscriber is triggered by a [new commit](06_working_with_tables/table_frame#working-with-table-commits) to any of its input tables.
+When you define a subscriber, you specify the name of the subscriber, the Tabsdata tables to write, and destination properties to write to. By default a subscriber is triggered by a new commit to any of its input tables.
 
- To create and run a Tabsdata subscriber, complete the following tasks:
+To create and run a Tabsdata subscriber, complete the following tasks:
 
- **Define a subscriber** - Define a subscriber to configure the parameters that govern the writing of data from the Tabsdata server. The syntax for defining a subscriber differs depending on the system that the subscriber writes to. For details, see File Storage or Database and Other Destinations.
+**Define a subscriber** - Define a subscriber to configure the parameters that govern the writing of data from the Tabsdata server. The syntax for defining a subscriber differs depending on the system that the subscriber writes to. For details, see the supported destination connectors below.
 
- **Register the subscriber** - Register the subscriber with a Tabsdata collection. A subscriber can read from tables outside the collection it is registered with. For information about registering functions, see [here](04_working_with_functions/#register-a-function).
+**Register the subscriber** - Register the subscriber with a Tabsdata collection. A subscriber can read from tables outside the collection it is registered with. For information about registering functions, see here.
 
- **Execute the subscriber** - Execute the subscriber by initiating its trigger. Once executed, the subscriber reads the Tabsdata tables, and writes the output data to the external systems. By default, subscribers are triggered when any of the input tables receive a new commit. However, you can define any Tabsdata table to act as a trigger for a subscriber. For more information, see [here](04_working_with_functions/#execute-a-function).
+**Execute the subscriber** - Execute the subscriber by initiating its trigger. Once executed, the subscriber reads the Tabsdata tables, and writes the output data to the external systems. By default, subscribers are triggered when any of the input tables receive a new commit. However, you can define any Tabsdata table to act as a trigger for a subscriber. For more information, see here.
 
- Below is the list of destination connectors that are currently supported natively in Tabsdata. Beyond these, you can connect with other external systems as per your need using [connector plugins](07_working_with_connector_plugins/#working-with-connector-plugins).
+Below is the list of destination connectors that are currently supported natively in Tabsdata. Beyond these, you can connect with other external systems as per your need using connector plugins.
 
-  
-## File Storage
-
-  - [Local File System](local_file_system/)
-- [Amazon S3](amazon_s3/)
-- [Azure Blob Storage](azure/)
-- [Google Cloud Storage](gcp/)
-
-    
-## Database and Other Destinations
-
-  - [AWS Glue - Iceberg tables](aws_iceberg/)
-- [Big Query](bigquery/)
-- [Databricks](databricks/)
-- [MariaDB](mariadb/)
-- [MongoDB](mongodb/)
-- [Microsoft SQL Server](mssql/)
-- [MySQL](mysql/)
-- [Oracle](oracle/)
-- [Postgres](postgres/)
-- [Snowflake](snowflake/)
+- [Local File System](local_file_system/main.html)
+- [Amazon S3](amazon_s3/main.html)
+- [AWS Glue - Iceberg tables](aws_iceberg/main.html)
+- [Azure Blob Storage](azure/main.html)
+- [Big Query](bigquery/main.html)
+- [ClickHouse](clickhouse/main.html)
+- [Databricks](databricks/main.html)
+- [Apache Druid](druid/main.html)
+- [Google Cloud Storage](gcp/main.html)
+- [MariaDB](mariadb/main.html)
+- [MongoDB](mongodb/main.html)
+- [Microsoft SQL Server](mssql/main.html)
+- [MySQL](mysql/main.html)
+- [Oracle](oracle/main.html)
+- [Postgres](postgres/main.html)
+- [Snowflake](snowflake/main.html)
+- [StarRocks](starrocks/main.html)
