@@ -23,14 +23,12 @@
     "clsx": "^2.0.0",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "tinacms": "^3.9.3"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.10.1",
     "@docusaurus/tsconfig": "3.10.1",
     "@docusaurus/types": "3.10.1",
-    "@tinacms/cli": "^2.5.1",
     "@types/node": "^26.0.1",
     "@types/react": "^19.0.0",
     "typescript": "~6.0.2"
