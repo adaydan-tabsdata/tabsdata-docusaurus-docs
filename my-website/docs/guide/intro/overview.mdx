@@ -5,6 +5,10 @@ sidebarTitle: "Overview"
 import { Card, CardGroup } from '@site/src/components/Card';
 import PipelineDiagram from '@site/src/components/PipelineDiagram';
 
+:::tip[Interactive diagram]
+Click any node to inspect its Python code, table schema, or sample data. On mobile, scroll sideways to see the full pipeline.
+:::
+
 <PipelineDiagram />
 
 
@@ -20,8 +24,7 @@ Tabsdata acts as a staging server between data storage systems. You interact wit
 
 The three primary components of Tabsdata – publishers, transformers and subscribers – enable the exchange of information at the level of a table, which is the fundamental unit of operation. These components are written as Python functions. Each function is tailored for specific data integration tasks.
 
-The following diagram shows the fundamental Tabsdata architecture. Click any node to inspect its Python code or table schema:
-
+The following diagram shows the fundamental Tabsdata architecture:
 
 <CardGroup cols={1}>
   <Card title="Publishers">
