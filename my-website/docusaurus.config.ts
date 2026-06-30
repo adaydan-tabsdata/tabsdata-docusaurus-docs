@@ -29,6 +29,7 @@ const config: Config = {
   organizationName: 'adaydan-tabsdata',
   projectName: 'tabsdata-docusaurus-docs',
 
+  trailingSlash: false,
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
