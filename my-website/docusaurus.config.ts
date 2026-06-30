@@ -14,6 +14,16 @@ const config: Config = {
     v4: true,
   },
 
+  headTags: [
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'algolia-site-verification',
+        content: '1EF64E9978A0E01C',
+      },
+    },
+  ],
+
   url: 'https://adaydan-tabsdata.github.io',
   baseUrl,
   organizationName: 'adaydan-tabsdata',
