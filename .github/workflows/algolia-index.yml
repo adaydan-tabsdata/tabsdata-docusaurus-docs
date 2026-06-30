@@ -1,0 +1,51 @@
+name: Algolia Index
+
+on:
+  workflow_run:
+    workflows: ["Deploy to GitHub Pages"]
+    types:
+      - completed
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Write docsearch config
+        run: |
+          cat > docsearch-config.json << 'EOF'
+          {
+            "index_name": "tabsdata-docs",
+            "start_urls": ["https://adaydan-tabsdata.github.io/tabsdata-docusaurus-docs/"],
+            "sitemap_urls": ["https://adaydan-tabsdata.github.io/tabsdata-docusaurus-docs/sitemap.xml"],
+            "stop_urls": [],
+            "selectors": {
+              "lvl0": {
+                "selector": ".menu__link--sublist.menu__link--active",
+                "global": true,
+                "default_value": "Documentation"
+              },
+              "lvl1": "header h1",
+              "lvl2": "article h2",
+              "lvl3": "article h3",
+              "lvl4": "article h4",
+              "text": "article p, article li"
+            },
+            "custom_settings": {
+              "attributesForFaceting": ["language", "version"]
+            }
+          }
+          EOF
+
+      - name: Run docsearch scraper
+        env:
+          APPLICATION_ID: ${{ secrets.ALGOLIA_APP_ID }}
+          API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
+        run: |
+          docker run --rm \
+            -e APPLICATION_ID=$APPLICATION_ID \
+            -e API_KEY=$API_KEY \
+            -e CONFIG="$(cat docsearch-config.json)" \
+            algolia/docsearch-scraper

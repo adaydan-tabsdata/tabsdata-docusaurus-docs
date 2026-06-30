@@ -27,22 +27,7 @@ const config: Config = {
     locales: ['en'],
   },
 
-  plugins: [
-    [
-      require.resolve('@easyops-cn/docusaurus-search-local'),
-      {
-        hashed: true,
-        language: ['en'],
-        indexDocs: true,
-        indexBlog: false,
-        indexPages: false,
-        docsRouteBasePath: '/docs',
-        searchResultLimits: 8,
-        searchBarShortcutHint: true,
-        highlightSearchTermsOnTargetPage: true,
-      },
-    ],
-  ],
+  plugins: [],
 
   presets: [
     [
@@ -131,6 +116,13 @@ const config: Config = {
         },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Tabsdata. Built with Docusaurus.`,
+    },
+    algolia: {
+      appId: 'SF873M3M93',
+      apiKey: '9afd402972dd3d32333d6454fb8c8c66',
+      indexName: 'tabsdata-docs',
+      contextualSearch: true,
+      searchPagePath: 'search',
     },
     prism: {
       theme: prismThemes.github,
