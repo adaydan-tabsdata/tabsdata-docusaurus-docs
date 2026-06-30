@@ -3,6 +3,9 @@ title: "Overview"
 sidebarTitle: "Overview"
 ---
 import { Card, CardGroup } from '@site/src/components/Card';
+import PipelineDiagram from '@site/src/components/PipelineDiagram';
+
+<PipelineDiagram />
 
 
 Tabsdata is a data integration platform that leverages the publish-subscribe (pub/sub) model to enable seamless and decoupled access to data. Inspired by the success of pub/sub architectures in messaging systems, Tabsdata decouples data producer and consumer teams, eliminating integration complexity.
@@ -17,9 +20,8 @@ Tabsdata acts as a staging server between data storage systems. You interact wit
 
 The three primary components of Tabsdata – publishers, transformers and subscribers – enable the exchange of information at the level of a table, which is the fundamental unit of operation. These components are written as Python functions. Each function is tailored for specific data integration tasks.
 
-The following image shows the fundamental Tabsdata architecture:
+The following diagram shows the fundamental Tabsdata architecture. Click any node to inspect its Python code or table schema:
 
-![../../_images/td-graph-function-tags.png](/img/td-graph-function-tags.png)
 
 <CardGroup cols={1}>
   <Card title="Publishers">
