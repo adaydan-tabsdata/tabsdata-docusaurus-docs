@@ -92,7 +92,6 @@
 }
 
 .cardIcon {
-  font-size: 1.1rem;
   width: 2rem;
   height: 2rem;
   display: flex;
@@ -102,7 +101,12 @@
   border: 1px solid var(--ifm-color-emphasis-200);
   border-radius: 6px;
   background: var(--ifm-color-emphasis-100);
-  font-style: normal;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.cardIcon svg {
+  width: 1rem;
+  height: 1rem;
 }
 
 .cardBody {
