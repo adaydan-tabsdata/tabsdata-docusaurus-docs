@@ -4,9 +4,23 @@ title: "tabsdata.tableframe.udf.function"
 
 import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
+export const toc = [
+  {value: 'UDF', id: 'tabsdata.tableframe.udf.function.UDF', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>signature', id: 'tabsdata.tableframe.udf.function.UDF.signature', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>columns()', id: 'tabsdata.tableframe.udf.function.UDF.columns', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>on_batch()', id: 'tabsdata.tableframe.udf.function.UDF.on_batch', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>on_element()', id: 'tabsdata.tableframe.udf.function.UDF.on_element', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>with_columns()', id: 'tabsdata.tableframe.udf.function.UDF.with_columns', level: 3},
+  {value: 'UDFList', id: 'tabsdata.tableframe.udf.function.UDFList', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>signature', id: 'tabsdata.tableframe.udf.function.UDFList.signature', level: 3},
+  {value: 'UDFUnpacked', id: 'tabsdata.tableframe.udf.function.UDFUnpacked', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>signature', id: 'tabsdata.tableframe.udf.function.UDFUnpacked.signature', level: 3},
+];
+
 # tabsdata.tableframe.udf.function
 
  <a id="tabsdata.tableframe.udf.function.UDF"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>UDF</summary>
 
@@ -17,89 +31,6 @@ class UDF(
 ```
 
 Bases: [ABC](https://docs.python.org/3/library/abc.html#abc.ABC)
-
-<a id="tabsdata.tableframe.udf.function.UDF.columns"></a>
-#### `columns`
-
-```python
-def columns()
-```
-
-<a id="tabsdata.tableframe.udf.function.UDF.on_batch"></a>
-#### `on_batch`
-
-```python
-def on_batch(
-    series: list[Series],
-)
-```
-
-Creating UDFs:
-
- 1. Subclass tabsdata.tableframe.udf.function.UDF.
-2. Implement `__init__` to call `super().__init__(output_columns)` where
-`output_columns` is a tuple or list of tuples `(name, data type)`
-specifying the UDF default output schema (column names and data types).
-Each tuple must contain a column name (string) and a data type
-(DataType).
-3. Override exactly one of on_batch or on_element, to implement the UDF
-function logic.
-4. Return a list of TabsData Series (for on_batch) or TabsData supported
-scalars (for on_element) with the same length as specified in the
-output schema.
-5. If overriding the on_batch method, the return type must be a list of
-TabsData Series. If overriding the on_element method, the return type
-must be a list of supported TabsData scalar values. For both cases, the
-number of elements in the returned lists must match the number of
-elements in the output_columns list provided to the UDF constructor.
-
- Using UDFs:
-
- 1. Instantiate a function created as above.
-2. Pass it to TableFrame method udf().
-3. Optionally use `UDF.output_columns()` to override output column names
-or data types after instantiation.
-4. By default, on_batch receives a list of series. Override the
-signature property to return “unpacked” to receive each series as a
-separate argument instead.
-
-<a id="tabsdata.tableframe.udf.function.UDF.on_element"></a>
-#### `on_element`
-
-```python
-def on_element(
-    values: list[Any],
-)
-```
-
-Creating UDFs:
-
- 1. Subclass tabsdata.tableframe.udf.function.UDF.
-2. Implement `__init__` to call `super().__init__(output_columns)` where
-`output_columns` is a tuple or list of tuples `(name, data type)`
-specifying the UDF default output schema (column names and data types).
-Each tuple must contain a column name (string) and a data type
-(DataType).
-3. Override exactly one of on_batch or on_element, to implement the UDF
-function logic.
-4. Return a list of TabsData Series (for on_batch) or TabsData supported
-scalars (for on_element) with the same length as specified in the
-output schema.
-5. If overriding the on_batch method, the return type must be a list of
-TabsData Series. If overriding the on_element method, the return type
-must be a list of supported TabsData scalar values. For both cases, the
-number of elements in the returned lists must match the number of
-elements in the output_columns list provided to the UDF constructor.
-
- Using UDFs:
-
- 1. Instantiate a function created as above.
-2. Pass it to TableFrame method udf().
-3. Optionally use `UDF.output_columns()` to override output column names
-or data types after instantiation.
-4. By default, on_element receives a list of values. Override the
-signature property to return “unpacked” to receive each value as a
-separate argument instead.
 
 <a id="tabsdata.tableframe.udf.function.UDF.signature"></a>
 <ResponseField name="signature" kind="property">
@@ -113,30 +44,17 @@ Defines how parameters are passed to on_batch and on_element methods.
  Override this property in your UDF subclass to change the parameter style.
 </ResponseField>
 
-<a id="tabsdata.tableframe.udf.function.UDF.with_columns"></a>
-#### `with_columns`
-
-```python
-def with_columns(
-    output_columns: tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None] | list[tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None]] | dict[int, tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None]],
-)
-```
-
-</details>
-
- <a id="id0"></a>
-<details open>
-<summary>columns</summary>
+<a id="tabsdata.tableframe.udf.function.UDF.columns"></a>
+<ResponseField name="columns" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L261">
 
 ```python
 def columns()
 ```
 
-</details>
+</ResponseField>
 
- <a id="id2"></a>
-<details open>
-<summary>on_batch</summary>
+<a id="tabsdata.tableframe.udf.function.UDF.on_batch"></a>
+<ResponseField name="on_batch" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L180">
 
 ```python
 def on_batch(
@@ -173,11 +91,10 @@ or data types after instantiation.
 signature property to return “unpacked” to receive each series as a
 separate argument instead.
 
-</details>
+</ResponseField>
 
- <a id="id3"></a>
-<details open>
-<summary>on_element</summary>
+<a id="tabsdata.tableframe.udf.function.UDF.on_element"></a>
+<ResponseField name="on_element" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L227">
 
 ```python
 def on_element(
@@ -214,11 +131,10 @@ or data types after instantiation.
 signature property to return “unpacked” to receive each value as a
 separate argument instead.
 
-</details>
+</ResponseField>
 
- <a id="id4"></a>
-<details open>
-<summary>with_columns</summary>
+<a id="tabsdata.tableframe.udf.function.UDF.with_columns"></a>
+<ResponseField name="with_columns" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L285">
 
 ```python
 def with_columns(
@@ -226,9 +142,14 @@ def with_columns(
 )
 ```
 
-</details>
+</ResponseField>
 
- <a id="tabsdata.tableframe.udf.function.UDFList"></a>
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L68" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+     <a id="tabsdata.tableframe.udf.function.UDFList"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>UDFList</summary>
 
@@ -261,112 +182,11 @@ Defines how parameters are passed to on_batch and on_element methods.
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L490" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
- <a id="tabsdata.tableframe.udf.function.UDFList.columns"></a>
-<details open>
-<summary>columns</summary>
-
-```python
-def columns()
-```
-
-</details>
-
- <a id="tabsdata.tableframe.udf.function.UDFList.on_batch"></a>
-<details open>
-<summary>on_batch</summary>
-
-```python
-def on_batch(
-    *args,
-)
-```
-
-Creating UDFs:
-
- 1. Subclass tabsdata.tableframe.udf.function.UDF.
-2. Implement `__init__` to call `super().__init__(output_columns)` where
-`output_columns` is a tuple or list of tuples `(name, data type)`
-specifying the UDF default output schema (column names and data types).
-Each tuple must contain a column name (string) and a data type
-(DataType).
-3. Override exactly one of on_batch or on_element, to implement the UDF
-function logic.
-4. Return a list of TabsData Series (for on_batch) or TabsData supported
-scalars (for on_element) with the same length as specified in the
-output schema.
-5. If overriding the on_batch method, the return type must be a list of
-TabsData Series. If overriding the on_element method, the return type
-must be a list of supported TabsData scalar values. For both cases, the
-number of elements in the returned lists must match the number of
-elements in the output_columns list provided to the UDF constructor.
-
- Using UDFs:
-
- 1. Instantiate a function created as above.
-2. Pass it to TableFrame method udf().
-3. Optionally use `UDF.output_columns()` to override output column names
-or data types after instantiation.
-4. By default, on_batch receives a list of series. Override the
-signature property to return “unpacked” to receive each series as a
-separate argument instead.
-
-</details>
-
- <a id="tabsdata.tableframe.udf.function.UDFList.on_element"></a>
-<details open>
-<summary>on_element</summary>
-
-```python
-def on_element(
-    *args,
-)
-```
-
-Creating UDFs:
-
- 1. Subclass tabsdata.tableframe.udf.function.UDF.
-2. Implement `__init__` to call `super().__init__(output_columns)` where
-`output_columns` is a tuple or list of tuples `(name, data type)`
-specifying the UDF default output schema (column names and data types).
-Each tuple must contain a column name (string) and a data type
-(DataType).
-3. Override exactly one of on_batch or on_element, to implement the UDF
-function logic.
-4. Return a list of TabsData Series (for on_batch) or TabsData supported
-scalars (for on_element) with the same length as specified in the
-output schema.
-5. If overriding the on_batch method, the return type must be a list of
-TabsData Series. If overriding the on_element method, the return type
-must be a list of supported TabsData scalar values. For both cases, the
-number of elements in the returned lists must match the number of
-elements in the output_columns list provided to the UDF constructor.
-
- Using UDFs:
-
- 1. Instantiate a function created as above.
-2. Pass it to TableFrame method udf().
-3. Optionally use `UDF.output_columns()` to override output column names
-or data types after instantiation.
-4. By default, on_element receives a list of values. Override the
-signature property to return “unpacked” to receive each value as a
-separate argument instead.
-
-</details>
-
- <a id="tabsdata.tableframe.udf.function.UDFList.with_columns"></a>
-<details open>
-<summary>with_columns</summary>
-
-```python
-def with_columns(
-    output_columns: tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None] | list[tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None]] | dict[int, tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None]],
-)
-```
-
-</details>
-
- <a id="tabsdata.tableframe.udf.function.UDFUnpacked"></a>
+     <a id="tabsdata.tableframe.udf.function.UDFUnpacked"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>UDFUnpacked</summary>
 
@@ -399,107 +219,5 @@ Defines how parameters are passed to on_batch and on_element methods.
 </ResponseField>
 
 </details>
-
- <a id="tabsdata.tableframe.udf.function.UDFUnpacked.columns"></a>
-<details open>
-<summary>columns</summary>
-
-```python
-def columns()
-```
-
-</details>
-
- <a id="tabsdata.tableframe.udf.function.UDFUnpacked.on_batch"></a>
-<details open>
-<summary>on_batch</summary>
-
-```python
-def on_batch(
-    *args,
-)
-```
-
-Creating UDFs:
-
- 1. Subclass tabsdata.tableframe.udf.function.UDF.
-2. Implement `__init__` to call `super().__init__(output_columns)` where
-`output_columns` is a tuple or list of tuples `(name, data type)`
-specifying the UDF default output schema (column names and data types).
-Each tuple must contain a column name (string) and a data type
-(DataType).
-3. Override exactly one of on_batch or on_element, to implement the UDF
-function logic.
-4. Return a list of TabsData Series (for on_batch) or TabsData supported
-scalars (for on_element) with the same length as specified in the
-output schema.
-5. If overriding the on_batch method, the return type must be a list of
-TabsData Series. If overriding the on_element method, the return type
-must be a list of supported TabsData scalar values. For both cases, the
-number of elements in the returned lists must match the number of
-elements in the output_columns list provided to the UDF constructor.
-
- Using UDFs:
-
- 1. Instantiate a function created as above.
-2. Pass it to TableFrame method udf().
-3. Optionally use `UDF.output_columns()` to override output column names
-or data types after instantiation.
-4. By default, on_batch receives a list of series. Override the
-signature property to return “unpacked” to receive each series as a
-separate argument instead.
-
-</details>
-
- <a id="tabsdata.tableframe.udf.function.UDFUnpacked.on_element"></a>
-<details open>
-<summary>on_element</summary>
-
-```python
-def on_element(
-    *args,
-)
-```
-
-Creating UDFs:
-
- 1. Subclass tabsdata.tableframe.udf.function.UDF.
-2. Implement `__init__` to call `super().__init__(output_columns)` where
-`output_columns` is a tuple or list of tuples `(name, data type)`
-specifying the UDF default output schema (column names and data types).
-Each tuple must contain a column name (string) and a data type
-(DataType).
-3. Override exactly one of on_batch or on_element, to implement the UDF
-function logic.
-4. Return a list of TabsData Series (for on_batch) or TabsData supported
-scalars (for on_element) with the same length as specified in the
-output schema.
-5. If overriding the on_batch method, the return type must be a list of
-TabsData Series. If overriding the on_element method, the return type
-must be a list of supported TabsData scalar values. For both cases, the
-number of elements in the returned lists must match the number of
-elements in the output_columns list provided to the UDF constructor.
-
- Using UDFs:
-
- 1. Instantiate a function created as above.
-2. Pass it to TableFrame method udf().
-3. Optionally use `UDF.output_columns()` to override output column names
-or data types after instantiation.
-4. By default, on_element receives a list of values. Override the
-signature property to return “unpacked” to receive each value as a
-separate argument instead.
-
-</details>
-
- <a id="tabsdata.tableframe.udf.function.UDFUnpacked.with_columns"></a>
-<details open>
-<summary>with_columns</summary>
-
-```python
-def with_columns(
-    output_columns: tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None] | list[tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None]] | dict[int, tuple[str | None, Boolean | Categorical | Date | Datetime | Decimal | Duration | Enum | Float16 | Float32 | Float64 | Int8 | Int16 | Int64 | Int32 | Int128 | Null | String | Time | UInt8 | UInt16 | UInt32 | UInt64 | None]],
-)
-```
-
-</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/udf/function.py#L513" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>

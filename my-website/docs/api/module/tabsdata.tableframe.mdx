@@ -4,9 +4,22 @@ title: "tabsdata.tableframe"
 
 import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
+export const toc = [
+  {value: 'SysCol', id: 'tabsdata.tableframe.SysCol', level: 2},
+  {value: 'empty()', id: 'tabsdata.tableframe.empty', level: 2},
+  {value: 'from_dict()', id: 'tabsdata.tableframe.from_dict', level: 2},
+  {value: 'from_pandas()', id: 'tabsdata.tableframe.from_pandas', level: 2},
+  {value: 'from_polars()', id: 'tabsdata.tableframe.from_polars', level: 2},
+  {value: 'to_dict()', id: 'tabsdata.tableframe.to_dict', level: 2},
+  {value: 'to_pandas()', id: 'tabsdata.tableframe.to_pandas', level: 2},
+  {value: 'to_polars_df()', id: 'tabsdata.tableframe.to_polars_df', level: 2},
+  {value: 'to_polars_lf()', id: 'tabsdata.tableframe.to_polars_lf', level: 2},
+];
+
 # tabsdata.tableframe
 
  <a id="tabsdata.tableframe.SysCol"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>SysCol</summary>
 
@@ -19,8 +32,11 @@ class SysCol(
 Bases: [StrEnum](https://docs.python.org/3/library/enum.html#enum.StrEnum)
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/_constants.py#L189" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.tableframe.empty"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>empty</summary>
 
@@ -31,8 +47,11 @@ def empty()
 Creates an empty (no column - no row) TableFrame.
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/builders.py#L20" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.tableframe.from_dict"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>from_dict</summary>
 
@@ -52,8 +71,11 @@ None produces as an empty (no column - no row) tableframe.
 </ParamField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/builders.py#L54" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.tableframe.from_pandas"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>from_pandas</summary>
 
@@ -73,8 +95,11 @@ None produces as an empty (no column - no row) tableframe.
 </ParamField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/builders.py#L43" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.tableframe.from_polars"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>from_polars</summary>
 
@@ -94,8 +119,11 @@ None produces as an empty (no column - no row) tableframe.
 </ParamField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/builders.py#L32" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.tableframe.to_dict"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>to_dict</summary>
 
@@ -115,8 +143,11 @@ None produces and empty (no key) dictionary.
 </ParamField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/builders.py#L98" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.tableframe.to_pandas"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>to_pandas</summary>
 
@@ -136,8 +167,11 @@ None produces and empty (no column - no row) pandas dataframe.
 </ParamField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/builders.py#L87" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.tableframe.to_polars_df"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>to_polars_df</summary>
 
@@ -157,8 +191,11 @@ None produces and empty (no column - no row) polars dataframe.
 </ParamField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/builders.py#L76" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.tableframe.to_polars_lf"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>to_polars_lf</summary>
 
@@ -178,3 +215,5 @@ None produces and empty (no column - no row) polars lazyframe.
 </ParamField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_utils/tableframe/builders.py#L65" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>

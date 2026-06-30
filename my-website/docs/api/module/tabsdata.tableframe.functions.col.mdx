@@ -4,9 +4,17 @@ title: "tabsdata.tableframe.functions.col"
 
 import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
+export const toc = [
+  {value: 'Col', id: 'tabsdata.tableframe.functions.col.Col', level: 2},
+  {value: 'Column', id: 'tabsdata.tableframe.functions.col.Column', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-attribute">attribute</span>dtype', id: 'tabsdata.tableframe.functions.col.Column.dtype', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-attribute">attribute</span>name', id: 'tabsdata.tableframe.functions.col.Column.name', level: 3},
+];
+
 # tabsdata.tableframe.functions.col
 
  <a id="tabsdata.tableframe.functions.col.Col"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>Col</summary>
 
@@ -35,8 +43,11 @@ Example:
 &gt;&gt;&gt; tf = tf.with_columns(full_name=(td.col(“last_name”) + “, “ +     &gt;&gt;&gt;     td.col(“first_name”))
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/col.py#L56" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.tableframe.functions.col.Column"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>Column</summary>
 
@@ -112,3 +123,5 @@ in the column will be interpreted, validated, and serialized.
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/col.py#L131" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>

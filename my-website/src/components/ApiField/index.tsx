@@ -62,7 +62,8 @@ interface ResponseFieldProps {
   name?: string;
   type?: string;
   required?: boolean;
-  kind?: 'variable' | 'property' | 'parameter' | 'attribute';
+  kind?: 'variable' | 'property' | 'parameter' | 'attribute' | 'method' | 'class';
+  source?: string;
   children?: React.ReactNode;
 }
 
@@ -84,11 +85,18 @@ export function ParamField({ path, query, body, header, type, required, default:
   );
 }
 
-export function ResponseField({ name, type, required, kind = 'property', children }: ResponseFieldProps) {
+export function ResponseField({ name, type, required, kind = 'property', source, children }: ResponseFieldProps) {
   const kindClass = styles[`kind${kind.charAt(0).toUpperCase()}${kind.slice(1)}`] ?? styles.kindProperty;
   return (
     <div className={styles.field}>
-      <div className={`${styles.fieldKindBadge} ${kindClass}`}>{kind}</div>
+      <div className={styles.fieldTop}>
+        <div className={`${styles.fieldKindBadge} ${kindClass}`}>{kind}</div>
+        {source && (
+          <a className={styles.sourceLink} href={source} target="_blank" rel="noopener noreferrer">
+            View source ↗
+          </a>
+        )}
+      </div>
       <div className={styles.fieldHeader}>
         <code className={styles.fieldName}>{name}</code>
         {type && <span className={styles.fieldType}>{type}</span>}

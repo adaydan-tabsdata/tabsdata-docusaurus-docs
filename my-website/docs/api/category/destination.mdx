@@ -4,9 +4,155 @@ title: "Destinations"
 
 import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
+export const toc = [
+  {value: 'AzureDestination', id: 'tabsdata.AzureDestination', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>allow_fragments', id: 'tabsdata.AzureDestination.allow_fragments', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>credentials', id: 'tabsdata.AzureDestination.credentials', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>format', id: 'tabsdata.AzureDestination.format', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>uri', id: 'tabsdata.AzureDestination.uri', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-class">class</span>SupportedFormats', id: 'tabsdata.AzureDestination.SupportedFormats', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.AzureDestination.chunk', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>stream()', id: 'tabsdata.AzureDestination.stream', level: 3},
+  {value: 'BigQueryDest', id: 'tabsdata.BigQueryDest', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>conn', id: 'tabsdata.BigQueryDest.conn', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>if_table_exists', id: 'tabsdata.BigQueryDest.if_table_exists', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>schema_strategy', id: 'tabsdata.BigQueryDest.schema_strategy', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>tables', id: 'tabsdata.BigQueryDest.tables', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>stream()', id: 'tabsdata.BigQueryDest.stream', level: 3},
+  {value: 'ClickHouseDest', id: 'tabsdata.ClickHouseDest', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>conn', id: 'tabsdata.ClickHouseDest.conn', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>destination_tables', id: 'tabsdata.ClickHouseDest.destination_tables', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>if_table_exists', id: 'tabsdata.ClickHouseDest.if_table_exists', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>schema_evolution', id: 'tabsdata.ClickHouseDest.schema_evolution', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>stream()', id: 'tabsdata.ClickHouseDest.stream', level: 3},
+  {value: 'DatabricksDestination', id: 'tabsdata.DatabricksDestination', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>host_url', id: 'tabsdata.DatabricksDestination.host_url', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>if_table_exists', id: 'tabsdata.DatabricksDestination.if_table_exists', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>schema_strategy', id: 'tabsdata.DatabricksDestination.schema_strategy', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>tables', id: 'tabsdata.DatabricksDestination.tables', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>token', id: 'tabsdata.DatabricksDestination.token', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.DatabricksDestination.chunk', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>stream()', id: 'tabsdata.DatabricksDestination.stream', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>write()', id: 'tabsdata.DatabricksDestination.write', level: 3},
+  {value: 'DruidDest', id: 'tabsdata.DruidDest', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>conn', id: 'tabsdata.DruidDest.conn', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>destination_tables', id: 'tabsdata.DruidDest.destination_tables', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>if_table_exists', id: 'tabsdata.DruidDest.if_table_exists', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>stream()', id: 'tabsdata.DruidDest.stream', level: 3},
+  {value: 'GCSDestination', id: 'tabsdata.GCSDestination', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>allow_fragments', id: 'tabsdata.GCSDestination.allow_fragments', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>credentials', id: 'tabsdata.GCSDestination.credentials', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>format', id: 'tabsdata.GCSDestination.format', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>uri', id: 'tabsdata.GCSDestination.uri', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-class">class</span>SupportedFormats', id: 'tabsdata.GCSDestination.SupportedFormats', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.GCSDestination.chunk', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>stream()', id: 'tabsdata.GCSDestination.stream', level: 3},
+  {value: 'LocalFileDestination', id: 'tabsdata.LocalFileDestination', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>allow_fragments', id: 'tabsdata.LocalFileDestination.allow_fragments', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>format', id: 'tabsdata.LocalFileDestination.format', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>path', id: 'tabsdata.LocalFileDestination.path', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-class">class</span>SupportedFormats', id: 'tabsdata.LocalFileDestination.SupportedFormats', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.LocalFileDestination.chunk', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>stream()', id: 'tabsdata.LocalFileDestination.stream', level: 3},
+  {value: 'MSSQLDestination', id: 'tabsdata.MSSQLDestination', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>connection_string', id: 'tabsdata.MSSQLDestination.connection_string', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>credentials', id: 'tabsdata.MSSQLDestination.credentials', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>destination_table', id: 'tabsdata.MSSQLDestination.destination_table', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>if_table_exists', id: 'tabsdata.MSSQLDestination.if_table_exists', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.MSSQLDestination.chunk', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>stream()', id: 'tabsdata.MSSQLDestination.stream', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>write()', id: 'tabsdata.MSSQLDestination.write', level: 3},
+  {value: 'MariaDBDest', id: 'tabsdata.MariaDBDest', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>chunk_size', id: 'tabsdata.MariaDBDest.chunk_size', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>conn', id: 'tabsdata.MariaDBDest.conn', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>destination_tables', id: 'tabsdata.MariaDBDest.destination_tables', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>if_table_exists', id: 'tabsdata.MariaDBDest.if_table_exists', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>loader', id: 'tabsdata.MariaDBDest.loader', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>transactional', id: 'tabsdata.MariaDBDest.transactional', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>stream()', id: 'tabsdata.MariaDBDest.stream', level: 3},
+  {value: 'MariaDBDestination', id: 'tabsdata.MariaDBDestination', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>credentials', id: 'tabsdata.MariaDBDestination.credentials', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>destination_table', id: 'tabsdata.MariaDBDestination.destination_table', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>if_table_exists', id: 'tabsdata.MariaDBDestination.if_table_exists', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>uri', id: 'tabsdata.MariaDBDestination.uri', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.MariaDBDestination.chunk', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>write()', id: 'tabsdata.MariaDBDestination.write', level: 3},
+  {value: 'MongoDBDestination', id: 'tabsdata.MongoDBDestination', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>collections_with_ids', id: 'tabsdata.MongoDBDestination.collections_with_ids', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>connection_options', id: 'tabsdata.MongoDBDestination.connection_options', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>credentials', id: 'tabsdata.MongoDBDestination.credentials', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>if_collection_exists', id: 'tabsdata.MongoDBDestination.if_collection_exists', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>uri', id: 'tabsdata.MongoDBDestination.uri', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.MongoDBDestination.chunk', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>stream()', id: 'tabsdata.MongoDBDestination.stream', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>write()', id: 'tabsdata.MongoDBDestination.write', level: 3},
+  {value: 'MySQLDest', id: 'tabsdata.MySQLDest', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>chunk_size', id: 'tabsdata.MySQLDest.chunk_size', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>conn', id: 'tabsdata.MySQLDest.conn', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>destination_tables', id: 'tabsdata.MySQLDest.destination_tables', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>if_table_exists', id: 'tabsdata.MySQLDest.if_table_exists', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>loader', id: 'tabsdata.MySQLDest.loader', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>transactional', id: 'tabsdata.MySQLDest.transactional', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>stream()', id: 'tabsdata.MySQLDest.stream', level: 3},
+  {value: 'MySQLDestination', id: 'tabsdata.MySQLDestination', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>credentials', id: 'tabsdata.MySQLDestination.credentials', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>destination_table', id: 'tabsdata.MySQLDestination.destination_table', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>if_table_exists', id: 'tabsdata.MySQLDestination.if_table_exists', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>uri', id: 'tabsdata.MySQLDestination.uri', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.MySQLDestination.chunk', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>write()', id: 'tabsdata.MySQLDestination.write', level: 3},
+  {value: 'OracleDestination', id: 'tabsdata.OracleDestination', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>credentials', id: 'tabsdata.OracleDestination.credentials', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>destination_table', id: 'tabsdata.OracleDestination.destination_table', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>if_table_exists', id: 'tabsdata.OracleDestination.if_table_exists', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>uri', id: 'tabsdata.OracleDestination.uri', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.OracleDestination.chunk', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>write()', id: 'tabsdata.OracleDestination.write', level: 3},
+  {value: 'PostgresDest', id: 'tabsdata.PostgresDest', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>chunk_size', id: 'tabsdata.PostgresDest.chunk_size', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>conn', id: 'tabsdata.PostgresDest.conn', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>destination_tables', id: 'tabsdata.PostgresDest.destination_tables', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>if_table_exists', id: 'tabsdata.PostgresDest.if_table_exists', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>loader', id: 'tabsdata.PostgresDest.loader', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>transactional', id: 'tabsdata.PostgresDest.transactional', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>stream()', id: 'tabsdata.PostgresDest.stream', level: 3},
+  {value: 'PostgresDestination', id: 'tabsdata.PostgresDestination', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>credentials', id: 'tabsdata.PostgresDestination.credentials', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>destination_table', id: 'tabsdata.PostgresDestination.destination_table', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>if_table_exists', id: 'tabsdata.PostgresDestination.if_table_exists', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>uri', id: 'tabsdata.PostgresDestination.uri', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.PostgresDestination.chunk', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>write()', id: 'tabsdata.PostgresDestination.write', level: 3},
+  {value: 'S3Destination', id: 'tabsdata.S3Destination', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>allow_fragments', id: 'tabsdata.S3Destination.allow_fragments', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>catalog', id: 'tabsdata.S3Destination.catalog', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>credentials', id: 'tabsdata.S3Destination.credentials', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>format', id: 'tabsdata.S3Destination.format', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>region', id: 'tabsdata.S3Destination.region', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>uri', id: 'tabsdata.S3Destination.uri', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-class">class</span>SupportedFormats', id: 'tabsdata.S3Destination.SupportedFormats', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.S3Destination.chunk', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>stream()', id: 'tabsdata.S3Destination.stream', level: 3},
+  {value: 'SnowflakeDestination', id: 'tabsdata.SnowflakeDestination', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>destination_table', id: 'tabsdata.SnowflakeDestination.destination_table', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>if_table_exists', id: 'tabsdata.SnowflakeDestination.if_table_exists', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.SnowflakeDestination.chunk', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>stream()', id: 'tabsdata.SnowflakeDestination.stream', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>write()', id: 'tabsdata.SnowflakeDestination.write', level: 3},
+  {value: 'StarRocksDest', id: 'tabsdata.StarRocksDest', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>conn', id: 'tabsdata.StarRocksDest.conn', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>destination_tables', id: 'tabsdata.StarRocksDest.destination_tables', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>if_table_exists', id: 'tabsdata.StarRocksDest.if_table_exists', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>schema_evolution', id: 'tabsdata.StarRocksDest.schema_evolution', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>stream()', id: 'tabsdata.StarRocksDest.stream', level: 3},
+  {value: 'TableOutput', id: 'tabsdata.TableOutput', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>table', id: 'tabsdata.TableOutput.table', level: 3},
+];
+
 # Destinations
 
  <a id="tabsdata.AzureDestination"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>AzureDestination</summary>
 
@@ -24,8 +170,39 @@ Azure-file-based data outputs.
 
 **Categories:** destination
 
+<a id="tabsdata.AzureDestination.allow_fragments"></a>
+<ResponseField name="allow_fragments" kind="property">
+Whether to allow fragments in the output.
+
+ **Type:** bool
+</ResponseField>
+
+<a id="tabsdata.AzureDestination.credentials"></a>
+<ResponseField name="credentials" kind="property">
+The credentials required to access Azure.
+
+ **Type:** AzureCredentials
+</ResponseField>
+
+<a id="tabsdata.AzureDestination.format"></a>
+<ResponseField name="format" kind="property">
+The format of the file. If not provided, it will be inferred from
+the file extension of the URI.
+
+ **Type:** FileFormat
+</ResponseField>
+
+<a id="tabsdata.AzureDestination.uri"></a>
+<ResponseField name="uri" kind="property">
+‘az://path/to/files’.
+
+ **Type:** str | list[str]
+
+**Type:** The URI of the files with format
+</ResponseField>
+
 <a id="tabsdata.AzureDestination.SupportedFormats"></a>
-### `SupportedFormats`
+<ResponseField name="SupportedFormats" kind="class" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/file_outputs.py#L427">
 
 ```python
 class SupportedFormats(
@@ -57,15 +234,10 @@ Enum for the supported formats for the AzureDestination.
 
 </ResponseField>
 
-<a id="tabsdata.AzureDestination.allow_fragments"></a>
-<ResponseField name="allow_fragments" kind="property">
-Whether to allow fragments in the output.
-
- **Type:** bool
 </ResponseField>
 
 <a id="tabsdata.AzureDestination.chunk"></a>
-#### `chunk`
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/file_outputs.py#L610">
 
 ```python
 def chunk(
@@ -94,23 +266,10 @@ the execution of the plugin, not the final destination of the data)
 
 **Returns:** A list of the intermediate files created
 
-<a id="tabsdata.AzureDestination.credentials"></a>
-<ResponseField name="credentials" kind="property">
-The credentials required to access Azure.
-
- **Type:** AzureCredentials
-</ResponseField>
-
-<a id="tabsdata.AzureDestination.format"></a>
-<ResponseField name="format" kind="property">
-The format of the file. If not provided, it will be inferred from
-the file extension of the URI.
-
- **Type:** FileFormat
 </ResponseField>
 
 <a id="tabsdata.AzureDestination.stream"></a>
-#### `stream`
+<ResponseField name="stream" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/file_outputs.py#L596">
 
 ```python
 def stream(
@@ -139,18 +298,14 @@ the execution of the plugin, not the final destination of the data)
 
 **Returns:** None
 
-<a id="tabsdata.AzureDestination.uri"></a>
-<ResponseField name="uri" kind="property">
-‘az://path/to/files’.
-
- **Type:** str | list[str]
-
-**Type:** The URI of the files with format
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/file_outputs.py#L420" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.BigQueryDest"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>BigQueryDest</summary>
 
@@ -190,8 +345,13 @@ The strategy to follow when appending to a table with an existing schema.
  **Type:** str
 </ResponseField>
 
+<a id="tabsdata.BigQueryDest.tables"></a>
+<ResponseField name="tables" kind="property">
+
+</ResponseField>
+
 <a id="tabsdata.BigQueryDest.stream"></a>
-#### `stream`
+<ResponseField name="stream" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-bigquery/src/main/python/tabsdata/connector/bigquery/_connector.py#L390">
 
 ```python
 def stream(
@@ -220,14 +380,14 @@ the execution of the plugin, not the final destination of the data)
 
 **Returns:** None
 
-<a id="tabsdata.BigQueryDest.tables"></a>
-<ResponseField name="tables" kind="property">
-
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-bigquery/src/main/python/tabsdata/connector/bigquery/_connector.py#L198" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.ClickHouseDest"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>ClickHouseDest</summary>
 
@@ -268,7 +428,7 @@ The schema evolution strategy.
 </ResponseField>
 
 <a id="tabsdata.ClickHouseDest.stream"></a>
-#### `stream`
+<ResponseField name="stream" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/sql/clickhouse_output.py#L171">
 
 ```python
 def stream(
@@ -291,9 +451,14 @@ the cloud staging area.
 in the same order as destination_tables.
 </ParamField>
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/sql/clickhouse_output.py#L41" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.DatabricksDestination"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>DatabricksDestination</summary>
 
@@ -319,8 +484,37 @@ Databricks based data outputs.
 
 **Categories:** destination
 
+<a id="tabsdata.DatabricksDestination.host_url"></a>
+<ResponseField name="host_url" kind="property">
+
+</ResponseField>
+
+<a id="tabsdata.DatabricksDestination.if_table_exists"></a>
+<ResponseField name="if_table_exists" kind="property">
+The strategy to follow when the table already exists.
+
+ **Type:** str
+</ResponseField>
+
+<a id="tabsdata.DatabricksDestination.schema_strategy"></a>
+<ResponseField name="schema_strategy" kind="property">
+The strategy to follow when appending to a table with an existing schema.
+
+ **Type:** str
+</ResponseField>
+
+<a id="tabsdata.DatabricksDestination.tables"></a>
+<ResponseField name="tables" kind="property">
+
+</ResponseField>
+
+<a id="tabsdata.DatabricksDestination.token"></a>
+<ResponseField name="token" kind="property">
+
+</ResponseField>
+
 <a id="tabsdata.DatabricksDestination.chunk"></a>
-#### `chunk`
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-databricks/src/main/python/tabsdata/connector/databricks/_connector.py#L750">
 
 ```python
 def chunk(
@@ -349,27 +543,10 @@ the execution of the plugin, not the final destination of the data)
 
 **Returns:** A list of the intermediate files created
 
-<a id="tabsdata.DatabricksDestination.host_url"></a>
-<ResponseField name="host_url" kind="property">
-
-</ResponseField>
-
-<a id="tabsdata.DatabricksDestination.if_table_exists"></a>
-<ResponseField name="if_table_exists" kind="property">
-The strategy to follow when the table already exists.
-
- **Type:** str
-</ResponseField>
-
-<a id="tabsdata.DatabricksDestination.schema_strategy"></a>
-<ResponseField name="schema_strategy" kind="property">
-The strategy to follow when appending to a table with an existing schema.
-
- **Type:** str
 </ResponseField>
 
 <a id="tabsdata.DatabricksDestination.stream"></a>
-#### `stream`
+<ResponseField name="stream" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-databricks/src/main/python/tabsdata/connector/databricks/_connector.py#L734">
 
 ```python
 def stream(
@@ -398,18 +575,10 @@ the execution of the plugin, not the final destination of the data)
 
 **Returns:** None
 
-<a id="tabsdata.DatabricksDestination.tables"></a>
-<ResponseField name="tables" kind="property">
-
-</ResponseField>
-
-<a id="tabsdata.DatabricksDestination.token"></a>
-<ResponseField name="token" kind="property">
-
 </ResponseField>
 
 <a id="tabsdata.DatabricksDestination.write"></a>
-#### `write`
+<ResponseField name="write" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-databricks/src/main/python/tabsdata/connector/databricks/_connector.py#L777">
 
 ```python
 def write(
@@ -420,9 +589,14 @@ def write(
 This method is used to write the files to the databricks. It is called
 from the stream method, and it is not intended to be called directly.
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-databricks/src/main/python/tabsdata/connector/databricks/_connector.py#L486" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.DruidDest"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>DruidDest</summary>
 
@@ -459,7 +633,7 @@ The strategy to follow when the datasource already exists.
 </ResponseField>
 
 <a id="tabsdata.DruidDest.stream"></a>
-#### `stream`
+<ResponseField name="stream" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/sql/druid_output.py#L165">
 
 ```python
 def stream(
@@ -482,9 +656,14 @@ the cloud staging area.
 datasource, in the same order as destination_tables.
 </ParamField>
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/sql/druid_output.py#L39" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.GCSDestination"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>GCSDestination</summary>
 
@@ -502,8 +681,39 @@ GCS-file-based data outputs.
 
 **Categories:** destination
 
+<a id="tabsdata.GCSDestination.allow_fragments"></a>
+<ResponseField name="allow_fragments" kind="property">
+Whether to allow fragments in the output.
+
+ **Type:** bool
+</ResponseField>
+
+<a id="tabsdata.GCSDestination.credentials"></a>
+<ResponseField name="credentials" kind="property">
+The credentials required to access GCS.
+
+ **Type:** GCPCredentials
+</ResponseField>
+
+<a id="tabsdata.GCSDestination.format"></a>
+<ResponseField name="format" kind="property">
+The format of the file. If not provided, it will be inferred from
+the file extension of the URI.
+
+ **Type:** FileFormat
+</ResponseField>
+
+<a id="tabsdata.GCSDestination.uri"></a>
+<ResponseField name="uri" kind="property">
+‘gs://path/to/files’.
+
+ **Type:** str | list[str]
+
+**Type:** The URI of the files with format
+</ResponseField>
+
 <a id="tabsdata.GCSDestination.SupportedFormats"></a>
-### `SupportedFormats`
+<ResponseField name="SupportedFormats" kind="class" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/file_outputs.py#L634">
 
 ```python
 class SupportedFormats(
@@ -535,15 +745,10 @@ Enum for the supported formats for the GCSDestination.
 
 </ResponseField>
 
-<a id="tabsdata.GCSDestination.allow_fragments"></a>
-<ResponseField name="allow_fragments" kind="property">
-Whether to allow fragments in the output.
-
- **Type:** bool
 </ResponseField>
 
 <a id="tabsdata.GCSDestination.chunk"></a>
-#### `chunk`
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/file_outputs.py#L813">
 
 ```python
 def chunk(
@@ -572,23 +777,10 @@ the execution of the plugin, not the final destination of the data)
 
 **Returns:** A list of the intermediate files created
 
-<a id="tabsdata.GCSDestination.credentials"></a>
-<ResponseField name="credentials" kind="property">
-The credentials required to access GCS.
-
- **Type:** GCPCredentials
-</ResponseField>
-
-<a id="tabsdata.GCSDestination.format"></a>
-<ResponseField name="format" kind="property">
-The format of the file. If not provided, it will be inferred from
-the file extension of the URI.
-
- **Type:** FileFormat
 </ResponseField>
 
 <a id="tabsdata.GCSDestination.stream"></a>
-#### `stream`
+<ResponseField name="stream" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/file_outputs.py#L802">
 
 ```python
 def stream(
@@ -617,18 +809,14 @@ the execution of the plugin, not the final destination of the data)
 
 **Returns:** None
 
-<a id="tabsdata.GCSDestination.uri"></a>
-<ResponseField name="uri" kind="property">
-‘gs://path/to/files’.
-
- **Type:** str | list[str]
-
-**Type:** The URI of the files with format
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/file_outputs.py#L627" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.LocalFileDestination"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>LocalFileDestination</summary>
 
@@ -645,8 +833,30 @@ LocalFile-based data outputs.
 
 **Categories:** destination
 
+<a id="tabsdata.LocalFileDestination.allow_fragments"></a>
+<ResponseField name="allow_fragments" kind="property">
+Whether to allow fragments in the output.
+
+ **Type:** bool
+</ResponseField>
+
+<a id="tabsdata.LocalFileDestination.format"></a>
+<ResponseField name="format" kind="property">
+The format of the file or files. If not provided, it will be
+inferred from the file extension in the path.
+
+ **Type:** FileFormat
+</ResponseField>
+
+<a id="tabsdata.LocalFileDestination.path"></a>
+<ResponseField name="path" kind="property">
+The path or paths to store the files.
+
+ **Type:** str | list[str]
+</ResponseField>
+
 <a id="tabsdata.LocalFileDestination.SupportedFormats"></a>
-### `SupportedFormats`
+<ResponseField name="SupportedFormats" kind="class" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/file_outputs.py#L837">
 
 ```python
 class SupportedFormats(
@@ -678,15 +888,10 @@ Enum for the supported formats for the LocalFileDestination.
 
 </ResponseField>
 
-<a id="tabsdata.LocalFileDestination.allow_fragments"></a>
-<ResponseField name="allow_fragments" kind="property">
-Whether to allow fragments in the output.
-
- **Type:** bool
 </ResponseField>
 
 <a id="tabsdata.LocalFileDestination.chunk"></a>
-#### `chunk`
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/file_outputs.py#L988">
 
 ```python
 def chunk(
@@ -715,23 +920,10 @@ the execution of the plugin, not the final destination of the data)
 
 **Returns:** A list of the intermediate files created
 
-<a id="tabsdata.LocalFileDestination.format"></a>
-<ResponseField name="format" kind="property">
-The format of the file or files. If not provided, it will be
-inferred from the file extension in the path.
-
- **Type:** FileFormat
-</ResponseField>
-
-<a id="tabsdata.LocalFileDestination.path"></a>
-<ResponseField name="path" kind="property">
-The path or paths to store the files.
-
- **Type:** str | list[str]
 </ResponseField>
 
 <a id="tabsdata.LocalFileDestination.stream"></a>
-#### `stream`
+<ResponseField name="stream" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/file_outputs.py#L975">
 
 ```python
 def stream(
@@ -760,9 +952,14 @@ the execution of the plugin, not the final destination of the data)
 
 **Returns:** None
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/file_outputs.py#L830" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.MSSQLDestination"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>MSSQLDestination</summary>
 
@@ -785,36 +982,6 @@ Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
 MSSQL-based data outputs.
 
 **Categories:** destination
-
-<a id="tabsdata.MSSQLDestination.chunk"></a>
-#### `chunk`
-
-```python
-def chunk(
-    working_dir: str,
-    *results: LazyFrame | None,
-)
-```
-
-Trigger the exporting of the data to local parquet chunks. This method will
-receive the resulting data from the user function and must store it in
-the local system as parquet files, using the working_dir. Note: This
-method should *not* materialize the data, it should only store it in the
-local system.
-
-**Parameters:**
-
-<ParamField path="working_dir" type="str">
-  The folder where any files generated must
-be stored (this refers to temporary files that will be deleted after
-the execution of the plugin, not the final destination of the data)
-</ParamField>
-
-<ParamField path="results">
-  The data to be exported. It is a list of polars LazyFrames or None.
-</ParamField>
-
-**Returns:** A list of the intermediate files created
 
 <a id="tabsdata.MSSQLDestination.connection_string"></a>
 <ResponseField name="connection_string" kind="property">
@@ -848,8 +1015,40 @@ Returns the value of the if_table_exists property.
 This property determines what to do if the table already exists.
 </ResponseField>
 
+<a id="tabsdata.MSSQLDestination.chunk"></a>
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-mssql/src/main/python/tabsdata/connector/mssql/_connector.py#L478">
+
+```python
+def chunk(
+    working_dir: str,
+    *results: LazyFrame | None,
+)
+```
+
+Trigger the exporting of the data to local parquet chunks. This method will
+receive the resulting data from the user function and must store it in
+the local system as parquet files, using the working_dir. Note: This
+method should *not* materialize the data, it should only store it in the
+local system.
+
+**Parameters:**
+
+<ParamField path="working_dir" type="str">
+  The folder where any files generated must
+be stored (this refers to temporary files that will be deleted after
+the execution of the plugin, not the final destination of the data)
+</ParamField>
+
+<ParamField path="results">
+  The data to be exported. It is a list of polars LazyFrames or None.
+</ParamField>
+
+**Returns:** A list of the intermediate files created
+
+</ResponseField>
+
 <a id="tabsdata.MSSQLDestination.stream"></a>
-#### `stream`
+<ResponseField name="stream" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-mssql/src/main/python/tabsdata/connector/mssql/_connector.py#L459">
 
 ```python
 def stream(
@@ -878,8 +1077,10 @@ the execution of the plugin, not the final destination of the data)
 
 **Returns:** None
 
+</ResponseField>
+
 <a id="tabsdata.MSSQLDestination.write"></a>
-#### `write`
+<ResponseField name="write" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-mssql/src/main/python/tabsdata/connector/mssql/_connector.py#L505">
 
 ```python
 def write(
@@ -890,9 +1091,14 @@ def write(
 This method is used to write the files to the database. It is called
 from the stream method, and it is not intended to be called directly.
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-mssql/src/main/python/tabsdata/connector/mssql/_connector.py#L297" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.MariaDBDest"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>MariaDBDest</summary>
 
@@ -939,8 +1145,13 @@ The strategy to follow when the table already exists.
 The data processing loader to use for executing DB write operation.
 </ResponseField>
 
+<a id="tabsdata.MariaDBDest.transactional"></a>
+<ResponseField name="transactional" kind="property">
+Whether to use transactions for writing data to ensure consistency.
+</ResponseField>
+
 <a id="tabsdata.MariaDBDest.stream"></a>
-#### `stream`
+<ResponseField name="stream" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/sql/mariadb_output.py#L130">
 
 ```python
 def stream(
@@ -961,14 +1172,14 @@ Store the results into the MariaDB database.
   The results to store in the SQL destination.
 </ParamField>
 
-<a id="tabsdata.MariaDBDest.transactional"></a>
-<ResponseField name="transactional" kind="property">
-Whether to use transactions for writing data to ensure consistency.
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/sql/mariadb_output.py#L27" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.MariaDBDestination"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>MariaDBDestination</summary>
 
@@ -983,29 +1194,6 @@ Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
 MariaDB-based data outputs.
 
 **Categories:** destination
-
-<a id="tabsdata.MariaDBDestination.chunk"></a>
-#### `chunk`
-
-```python
-def chunk(
-    working_dir: str,
-    *results: LazyFrame | None,
-)
-```
-
-Store the results in the SQL destination.
-
-**Parameters:**
-
-<ParamField path="working_dir">
-  The working directory where the results will be stored.
-</ParamField>
-
-<ParamField path="results" type="list">
-  The results to store in the SQL
-destination.
-</ParamField>
 
 <a id="tabsdata.MariaDBDestination.credentials"></a>
 <ResponseField name="credentials" kind="property">
@@ -1037,8 +1225,33 @@ The URI of the database where the data is going to be stored.
  **Type:** str
 </ResponseField>
 
+<a id="tabsdata.MariaDBDestination.chunk"></a>
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/sql_outputs.py#L202">
+
+```python
+def chunk(
+    working_dir: str,
+    *results: LazyFrame | None,
+)
+```
+
+Store the results in the SQL destination.
+
+**Parameters:**
+
+<ParamField path="working_dir">
+  The working directory where the results will be stored.
+</ParamField>
+
+<ParamField path="results" type="list">
+  The results to store in the SQL
+destination.
+</ParamField>
+
+</ResponseField>
+
 <a id="tabsdata.MariaDBDestination.write"></a>
-#### `write`
+<ResponseField name="write" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/sql_outputs.py#L221">
 
 ```python
 def write(
@@ -1056,9 +1269,14 @@ should be of an appropriate size.
   The file or files to be stored in the final destination.
 </ParamField>
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/sql_outputs.py#L47" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.MongoDBDestination"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>MongoDBDestination</summary>
 
@@ -1085,8 +1303,33 @@ MongoDB-based data outputs.
 
 **Categories:** destination
 
+<a id="tabsdata.MongoDBDestination.collections_with_ids"></a>
+<ResponseField name="collections_with_ids" kind="property">
+
+</ResponseField>
+
+<a id="tabsdata.MongoDBDestination.connection_options"></a>
+<ResponseField name="connection_options" kind="property">
+
+</ResponseField>
+
+<a id="tabsdata.MongoDBDestination.credentials"></a>
+<ResponseField name="credentials" kind="property">
+
+</ResponseField>
+
+<a id="tabsdata.MongoDBDestination.if_collection_exists"></a>
+<ResponseField name="if_collection_exists" kind="property">
+
+</ResponseField>
+
+<a id="tabsdata.MongoDBDestination.uri"></a>
+<ResponseField name="uri" kind="property">
+
+</ResponseField>
+
 <a id="tabsdata.MongoDBDestination.chunk"></a>
-#### `chunk`
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-mongodb/src/main/python/tabsdata/connector/mongodb/_connector.py#L312">
 
 ```python
 def chunk(
@@ -1115,28 +1358,10 @@ the execution of the plugin, not the final destination of the data)
 
 **Returns:** A list of the intermediate files created
 
-<a id="tabsdata.MongoDBDestination.collections_with_ids"></a>
-<ResponseField name="collections_with_ids" kind="property">
-
-</ResponseField>
-
-<a id="tabsdata.MongoDBDestination.connection_options"></a>
-<ResponseField name="connection_options" kind="property">
-
-</ResponseField>
-
-<a id="tabsdata.MongoDBDestination.credentials"></a>
-<ResponseField name="credentials" kind="property">
-
-</ResponseField>
-
-<a id="tabsdata.MongoDBDestination.if_collection_exists"></a>
-<ResponseField name="if_collection_exists" kind="property">
-
 </ResponseField>
 
 <a id="tabsdata.MongoDBDestination.stream"></a>
-#### `stream`
+<ResponseField name="stream" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-mongodb/src/main/python/tabsdata/connector/mongodb/_connector.py#L271">
 
 ```python
 def stream(
@@ -1165,13 +1390,10 @@ the execution of the plugin, not the final destination of the data)
 
 **Returns:** None
 
-<a id="tabsdata.MongoDBDestination.uri"></a>
-<ResponseField name="uri" kind="property">
-
 </ResponseField>
 
 <a id="tabsdata.MongoDBDestination.write"></a>
-#### `write`
+<ResponseField name="write" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-mongodb/src/main/python/tabsdata/connector/mongodb/_connector.py#L214">
 
 ```python
 def write(
@@ -1182,9 +1404,14 @@ def write(
 This method is used to write the files to the database. It is called
 from the stream method, and it is not intended to be called directly.
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-mongodb/src/main/python/tabsdata/connector/mongodb/_connector.py#L28" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.MySQLDest"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>MySQLDest</summary>
 
@@ -1231,8 +1458,13 @@ The strategy to follow when the table already exists.
 The data processing loader to use for executing DB write operation.
 </ResponseField>
 
+<a id="tabsdata.MySQLDest.transactional"></a>
+<ResponseField name="transactional" kind="property">
+Whether to use transactions for writing data to ensure consistency.
+</ResponseField>
+
 <a id="tabsdata.MySQLDest.stream"></a>
-#### `stream`
+<ResponseField name="stream" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/sql/mysql_output.py#L130">
 
 ```python
 def stream(
@@ -1253,14 +1485,14 @@ Store the results into the MySQL database.
   The results to store in the SQL destination.
 </ParamField>
 
-<a id="tabsdata.MySQLDest.transactional"></a>
-<ResponseField name="transactional" kind="property">
-Whether to use transactions for writing data to ensure consistency.
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/sql/mysql_output.py#L27" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.MySQLDestination"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>MySQLDestination</summary>
 
@@ -1275,29 +1507,6 @@ Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
 MySQL-based data outputs.
 
 **Categories:** destination
-
-<a id="tabsdata.MySQLDestination.chunk"></a>
-#### `chunk`
-
-```python
-def chunk(
-    working_dir: str,
-    *results: LazyFrame | None,
-)
-```
-
-Store the results in the SQL destination.
-
-**Parameters:**
-
-<ParamField path="working_dir" type="str">
-  The working directory where the results will be stored.
-</ParamField>
-
-<ParamField path="results" type="list">
-  The results to store in the SQL
-destination.
-</ParamField>
 
 <a id="tabsdata.MySQLDestination.credentials"></a>
 <ResponseField name="credentials" kind="property">
@@ -1328,48 +1537,8 @@ The URI of the database where the data is going to be stored.
  **Type:** str
 </ResponseField>
 
-<a id="tabsdata.MySQLDestination.write"></a>
-#### `write`
-
-```python
-def write(
-    files: list[str | None],
-)
-```
-
-Given a file or a list of files, write to the desired destination. Note: this
-method *might* materialize the data in the files it receives, so chunks
-should be of an appropriate size.
-
-**Parameters:**
-
-<ParamField path="files (str)">
-  The file or files to be stored in the final destination.
-</ParamField>
-
-</details>
-
- <a id="tabsdata.OracleDestination"></a>
-<details open>
-<summary>OracleDestination</summary>
-
-```python
-class OracleDestination(
-    uri: str,
-    destination_table: List[str] | str,
-    credentials: UserPasswordCredentials = None,
-    if_table_exists: Literal['append', 'replace'] = 'append',
-)
-```
-
-Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
-
-Oracle-based data outputs.
-
-**Categories:** destination
-
-<a id="tabsdata.OracleDestination.chunk"></a>
-#### `chunk`
+<a id="tabsdata.MySQLDestination.chunk"></a>
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/sql_outputs.py#L377">
 
 ```python
 def chunk(
@@ -1390,6 +1559,53 @@ Store the results in the SQL destination.
   The results to store in the SQL
 destination.
 </ParamField>
+
+</ResponseField>
+
+<a id="tabsdata.MySQLDestination.write"></a>
+<ResponseField name="write" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/sql_outputs.py#L396">
+
+```python
+def write(
+    files: list[str | None],
+)
+```
+
+Given a file or a list of files, write to the desired destination. Note: this
+method *might* materialize the data in the files it receives, so chunks
+should be of an appropriate size.
+
+**Parameters:**
+
+<ParamField path="files (str)">
+  The file or files to be stored in the final destination.
+</ParamField>
+
+</ResponseField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/sql_outputs.py#L228" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.OracleDestination"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>OracleDestination</summary>
+
+```python
+class OracleDestination(
+    uri: str,
+    destination_table: List[str] | str,
+    credentials: UserPasswordCredentials = None,
+    if_table_exists: Literal['append', 'replace'] = 'append',
+)
+```
+
+Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
+
+Oracle-based data outputs.
+
+**Categories:** destination
 
 <a id="tabsdata.OracleDestination.credentials"></a>
 <ResponseField name="credentials" kind="property">
@@ -1421,8 +1637,33 @@ The URI of the database where the data is going to be stored.
  **Type:** str
 </ResponseField>
 
+<a id="tabsdata.OracleDestination.chunk"></a>
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/sql_outputs.py#L541">
+
+```python
+def chunk(
+    working_dir: str,
+    *results: LazyFrame | None,
+)
+```
+
+Store the results in the SQL destination.
+
+**Parameters:**
+
+<ParamField path="working_dir" type="str">
+  The working directory where the results will be stored.
+</ParamField>
+
+<ParamField path="results" type="list">
+  The results to store in the SQL
+destination.
+</ParamField>
+
+</ResponseField>
+
 <a id="tabsdata.OracleDestination.write"></a>
-#### `write`
+<ResponseField name="write" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/sql_outputs.py#L560">
 
 ```python
 def write(
@@ -1440,9 +1681,14 @@ should be of an appropriate size.
   The file or files to be stored in the final destination.
 </ParamField>
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/sql_outputs.py#L403" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.PostgresDest"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>PostgresDest</summary>
 
@@ -1489,8 +1735,13 @@ The strategy to follow when the table already exists.
 The data processing loader to use for executing DB write operation.
 </ResponseField>
 
+<a id="tabsdata.PostgresDest.transactional"></a>
+<ResponseField name="transactional" kind="property">
+Whether to use transactions for writing data to ensure consistency.
+</ResponseField>
+
 <a id="tabsdata.PostgresDest.stream"></a>
-#### `stream`
+<ResponseField name="stream" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/sql/postgres_output.py#L130">
 
 ```python
 def stream(
@@ -1511,14 +1762,14 @@ Store the results into the PostgreSQL database.
   The results to store in the SQL destination.
 </ParamField>
 
-<a id="tabsdata.PostgresDest.transactional"></a>
-<ResponseField name="transactional" kind="property">
-Whether to use transactions for writing data to ensure consistency.
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/sql/postgres_output.py#L27" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.PostgresDestination"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>PostgresDestination</summary>
 
@@ -1533,29 +1784,6 @@ Bases: [DestinationPlugin](/docs/api/module/tabsdata#tabsdata.DestinationPlugin)
 Postgres-based data outputs.
 
 **Categories:** destination
-
-<a id="tabsdata.PostgresDestination.chunk"></a>
-#### `chunk`
-
-```python
-def chunk(
-    working_dir: str,
-    *results: LazyFrame | None,
-)
-```
-
-Store the results in the SQL destination.
-
-**Parameters:**
-
-<ParamField path="working_dir" type="str">
-  The working directory where the results will be stored.
-</ParamField>
-
-<ParamField path="results" type="list">
-  The results to store in the SQL
-destination.
-</ParamField>
 
 <a id="tabsdata.PostgresDestination.credentials"></a>
 <ResponseField name="credentials" kind="property">
@@ -1587,8 +1815,33 @@ The URI of the database where the data is going to be stored.
  **Type:** str
 </ResponseField>
 
+<a id="tabsdata.PostgresDestination.chunk"></a>
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/sql_outputs.py#L720">
+
+```python
+def chunk(
+    working_dir: str,
+    *results: LazyFrame | None,
+)
+```
+
+Store the results in the SQL destination.
+
+**Parameters:**
+
+<ParamField path="working_dir" type="str">
+  The working directory where the results will be stored.
+</ParamField>
+
+<ParamField path="results" type="list">
+  The results to store in the SQL
+destination.
+</ParamField>
+
+</ResponseField>
+
 <a id="tabsdata.PostgresDestination.write"></a>
-#### `write`
+<ResponseField name="write" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/sql_outputs.py#L739">
 
 ```python
 def write(
@@ -1606,9 +1859,14 @@ should be of an appropriate size.
   The file or files to be stored in the final destination.
 </ParamField>
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/sql_outputs.py#L567" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.S3Destination"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>S3Destination</summary>
 
@@ -1628,8 +1886,53 @@ S3-file-based data outputs.
 
 **Categories:** destination
 
+<a id="tabsdata.S3Destination.allow_fragments"></a>
+<ResponseField name="allow_fragments" kind="property">
+Whether to allow fragments in the output.
+
+ **Type:** bool
+</ResponseField>
+
+<a id="tabsdata.S3Destination.catalog"></a>
+<ResponseField name="catalog" kind="property">
+The catalog to store the data in.
+
+ **Type:** Catalog
+</ResponseField>
+
+<a id="tabsdata.S3Destination.credentials"></a>
+<ResponseField name="credentials" kind="property">
+The credentials required to access the S3 bucket.
+
+ **Type:** S3Credentials
+</ResponseField>
+
+<a id="tabsdata.S3Destination.format"></a>
+<ResponseField name="format" kind="property">
+The format of the file. If not provided, it will be inferred from
+the file.
+
+ **Type:** FileFormat
+</ResponseField>
+
+<a id="tabsdata.S3Destination.region"></a>
+<ResponseField name="region" kind="property">
+The region where the S3 bucket is located.
+
+ **Type:** str
+</ResponseField>
+
+<a id="tabsdata.S3Destination.uri"></a>
+<ResponseField name="uri" kind="property">
+‘s3://path/to/files’.
+
+ **Type:** str | list[str]
+
+**Type:** The URI of the files with format
+</ResponseField>
+
 <a id="tabsdata.S3Destination.SupportedFormats"></a>
-### `SupportedFormats`
+<ResponseField name="SupportedFormats" kind="class" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/file_outputs.py#L1012">
 
 ```python
 class SupportedFormats(
@@ -1661,22 +1964,10 @@ Enum for the supported formats for the S3Destination.
 
 </ResponseField>
 
-<a id="tabsdata.S3Destination.allow_fragments"></a>
-<ResponseField name="allow_fragments" kind="property">
-Whether to allow fragments in the output.
-
- **Type:** bool
-</ResponseField>
-
-<a id="tabsdata.S3Destination.catalog"></a>
-<ResponseField name="catalog" kind="property">
-The catalog to store the data in.
-
- **Type:** Catalog
 </ResponseField>
 
 <a id="tabsdata.S3Destination.chunk"></a>
-#### `chunk`
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/file_outputs.py#L1261">
 
 ```python
 def chunk(
@@ -1705,30 +1996,10 @@ the execution of the plugin, not the final destination of the data)
 
 **Returns:** A list of the intermediate files created
 
-<a id="tabsdata.S3Destination.credentials"></a>
-<ResponseField name="credentials" kind="property">
-The credentials required to access the S3 bucket.
-
- **Type:** S3Credentials
-</ResponseField>
-
-<a id="tabsdata.S3Destination.format"></a>
-<ResponseField name="format" kind="property">
-The format of the file. If not provided, it will be inferred from
-the file.
-
- **Type:** FileFormat
-</ResponseField>
-
-<a id="tabsdata.S3Destination.region"></a>
-<ResponseField name="region" kind="property">
-The region where the S3 bucket is located.
-
- **Type:** str
 </ResponseField>
 
 <a id="tabsdata.S3Destination.stream"></a>
-#### `stream`
+<ResponseField name="stream" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/file_outputs.py#L1246">
 
 ```python
 def stream(
@@ -1757,18 +2028,14 @@ the execution of the plugin, not the final destination of the data)
 
 **Returns:** None
 
-<a id="tabsdata.S3Destination.uri"></a>
-<ResponseField name="uri" kind="property">
-‘s3://path/to/files’.
-
- **Type:** str | list[str]
-
-**Type:** The URI of the files with format
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/file_outputs.py#L1005" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.SnowflakeDestination"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>SnowflakeDestination</summary>
 
@@ -1788,8 +2055,23 @@ Snowflake based data outputs.
 
 **Categories:** destination
 
+<a id="tabsdata.SnowflakeDestination.destination_table"></a>
+<ResponseField name="destination_table" kind="property">
+Get the destination table(s) where the data will be stored.
+
+ **Returns:** The destination table(s).
+
+**Returns:** str | list[str]
+</ResponseField>
+
+<a id="tabsdata.SnowflakeDestination.if_table_exists"></a>
+<ResponseField name="if_table_exists" kind="property">
+Returns the value of the if_table_exists property.
+This property determines what to do if the table already exists.
+</ResponseField>
+
 <a id="tabsdata.SnowflakeDestination.chunk"></a>
-#### `chunk`
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-snowflake/src/main/python/tabsdata/connector/snowflake/_connector.py#L349">
 
 ```python
 def chunk(
@@ -1818,23 +2100,10 @@ the execution of the plugin, not the final destination of the data)
 
 **Returns:** A list of the intermediate files created
 
-<a id="tabsdata.SnowflakeDestination.destination_table"></a>
-<ResponseField name="destination_table" kind="property">
-Get the destination table(s) where the data will be stored.
-
- **Returns:** The destination table(s).
-
-**Returns:** str | list[str]
-</ResponseField>
-
-<a id="tabsdata.SnowflakeDestination.if_table_exists"></a>
-<ResponseField name="if_table_exists" kind="property">
-Returns the value of the if_table_exists property.
-This property determines what to do if the table already exists.
 </ResponseField>
 
 <a id="tabsdata.SnowflakeDestination.stream"></a>
-#### `stream`
+<ResponseField name="stream" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-snowflake/src/main/python/tabsdata/connector/snowflake/_connector.py#L330">
 
 ```python
 def stream(
@@ -1863,8 +2132,10 @@ the execution of the plugin, not the final destination of the data)
 
 **Returns:** None
 
+</ResponseField>
+
 <a id="tabsdata.SnowflakeDestination.write"></a>
-#### `write`
+<ResponseField name="write" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-snowflake/src/main/python/tabsdata/connector/snowflake/_connector.py#L186">
 
 ```python
 def write(
@@ -1875,9 +2146,14 @@ def write(
 This method is used to write the files to the database. It is called
 from the stream method, and it is not intended to be called directly.
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-snowflake/src/main/python/tabsdata/connector/snowflake/_connector.py#L50" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.StarRocksDest"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>StarRocksDest</summary>
 
@@ -1918,7 +2194,7 @@ The schema evolution strategy.
 </ResponseField>
 
 <a id="tabsdata.StarRocksDest.stream"></a>
-#### `stream`
+<ResponseField name="stream" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/sql/starrocks_output.py#L168">
 
 ```python
 def stream(
@@ -1941,9 +2217,14 @@ the cloud staging area.
 in the same order as destination_tables.
 </ParamField>
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/sql/starrocks_output.py#L41" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.TableOutput"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>TableOutput</summary>
 
@@ -1968,3 +2249,5 @@ they must be provided as a list.
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/outputs/table_outputs.py#L32" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>

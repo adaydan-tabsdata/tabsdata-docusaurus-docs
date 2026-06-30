@@ -4,9 +4,51 @@ title: "tabsdata.exceptions"
 
 import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
+export const toc = [
+  {value: 'CdcError', id: 'tabsdata.exceptions.CdcError', level: 2},
+  {value: 'ConnectionConfigurationError', id: 'tabsdata.exceptions.ConnectionConfigurationError', level: 2},
+  {value: 'ConstructorError', id: 'tabsdata.exceptions.ConstructorError', level: 2},
+  {value: 'CredentialsConfigurationError', id: 'tabsdata.exceptions.CredentialsConfigurationError', level: 2},
+  {value: 'DataQualityConfigurationError', id: 'tabsdata.exceptions.DataQualityConfigurationError', level: 2},
+  {value: 'DataQualityProcessingError', id: 'tabsdata.exceptions.DataQualityProcessingError', level: 2},
+  {value: 'Db2CdcError', id: 'tabsdata.exceptions.Db2CdcError', level: 2},
+  {value: 'DecoratorConfigurationError', id: 'tabsdata.exceptions.DecoratorConfigurationError', level: 2},
+  {value: 'DestinationConfigurationError', id: 'tabsdata.exceptions.DestinationConfigurationError', level: 2},
+  {value: 'ErrorCode', id: 'tabsdata.exceptions.ErrorCode', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>code()', id: 'tabsdata.exceptions.ErrorCode.code', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>message()', id: 'tabsdata.exceptions.ErrorCode.message', level: 3},
+  {value: 'FormatConfigurationError', id: 'tabsdata.exceptions.FormatConfigurationError', level: 2},
+  {value: 'FunctionConfigurationError', id: 'tabsdata.exceptions.FunctionConfigurationError', level: 2},
+  {value: 'MySQLCdcError', id: 'tabsdata.exceptions.MySQLCdcError', level: 2},
+  {value: 'ParameterError', id: 'tabsdata.exceptions.ParameterError', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-attribute">attribute</span>msg', id: 'tabsdata.exceptions.ParameterError.msg', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-attribute">attribute</span>name', id: 'tabsdata.exceptions.ParameterError.name', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-attribute">attribute</span>type', id: 'tabsdata.exceptions.ParameterError.type', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-attribute">attribute</span>value', id: 'tabsdata.exceptions.ParameterError.value', level: 3},
+  {value: 'ParameterValidationError', id: 'tabsdata.exceptions.ParameterValidationError', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>cls', id: 'tabsdata.exceptions.ParameterValidationError.cls', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>errors', id: 'tabsdata.exceptions.ParameterValidationError.errors', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>fn', id: 'tabsdata.exceptions.ParameterValidationError.fn', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>mod', id: 'tabsdata.exceptions.ParameterValidationError.mod', level: 3},
+  {value: 'ParameterValueError', id: 'tabsdata.exceptions.ParameterValueError', level: 2},
+  {value: 'PostgresCdcError', id: 'tabsdata.exceptions.PostgresCdcError', level: 2},
+  {value: 'RegistrationError', id: 'tabsdata.exceptions.RegistrationError', level: 2},
+  {value: 'SDKError', id: 'tabsdata.exceptions.SDKError', level: 2},
+  {value: 'SecretConfigurationError', id: 'tabsdata.exceptions.SecretConfigurationError', level: 2},
+  {value: 'SourceConfigurationError', id: 'tabsdata.exceptions.SourceConfigurationError', level: 2},
+  {value: 'StageTriggerConfigurationError', id: 'tabsdata.exceptions.StageTriggerConfigurationError', level: 2},
+  {value: 'StageTriggerExecutionError', id: 'tabsdata.exceptions.StageTriggerExecutionError', level: 2},
+  {value: 'TableFrameError', id: 'tabsdata.exceptions.TableFrameError', level: 2},
+  {value: 'TableURIConfigurationError', id: 'tabsdata.exceptions.TableURIConfigurationError', level: 2},
+  {value: 'TabsDataException', id: 'tabsdata.exceptions.TabsDataException', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>error_code', id: 'tabsdata.exceptions.TabsDataException.error_code', level: 3},
+  {value: 'TabsdataServerError', id: 'tabsdata.exceptions.TabsdataServerError', level: 2},
+];
+
 # tabsdata.exceptions
 
  <a id="tabsdata.exceptions.CdcError"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>CdcError</summary>
 
@@ -22,8 +64,11 @@ Bases: TabsDataException
 Exception raised for generic CDC errors.
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2724" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.ConnectionConfigurationError"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>ConnectionConfigurationError</summary>
 
@@ -39,8 +84,11 @@ Bases: TabsDataException
 Exception raised when the creation or modification of a Connection object fails.
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2585" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.ConstructorError"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>ConstructorError</summary>
 
@@ -57,8 +105,11 @@ Exception raised when public API classes don’t support using their
 constructor.
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2756" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.CredentialsConfigurationError"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>CredentialsConfigurationError</summary>
 
@@ -74,8 +125,11 @@ Bases: TabsDataException
 Exception raised when the creation or modification of a Credentials object fails.
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2593" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.DataQualityConfigurationError"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>DataQualityConfigurationError</summary>
 
@@ -92,8 +146,11 @@ Exception raised when the creation or modification of a DataQuality object or on
 its auxiliary objects fails.
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2601" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.DataQualityProcessingError"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>DataQualityProcessingError</summary>
 
@@ -110,8 +167,11 @@ Exception raised when processing the DataQuality specifications during a
 function registration or execution.
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2610" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.Db2CdcError"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>Db2CdcError</summary>
 
@@ -127,8 +187,11 @@ Bases: CdcError
 Exception raised for DB2 CDC errors.
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2732" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.DecoratorConfigurationError"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>DecoratorConfigurationError</summary>
 
@@ -144,8 +207,11 @@ Bases: TabsDataException
 Exception raised when the creation or modification of a decorator object fails.
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2619" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.DestinationConfigurationError"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>DestinationConfigurationError</summary>
 
@@ -161,8 +227,11 @@ Bases: TabsDataException
 Exception raised when the creation or modification of a destination object fails.
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2627" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.ErrorCode"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>ErrorCode</summary>
 
@@ -175,22 +244,29 @@ class ErrorCode(
 Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
 <a id="tabsdata.exceptions.ErrorCode.code"></a>
-#### `code`
+<ResponseField name="code" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2540">
 
 ```python
 def code()
 ```
 
+</ResponseField>
+
 <a id="tabsdata.exceptions.ErrorCode.message"></a>
-#### `message`
+<ResponseField name="message" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2549">
 
 ```python
 def message()
 ```
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L24" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.FormatConfigurationError"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>FormatConfigurationError</summary>
 
@@ -206,8 +282,11 @@ Bases: TabsDataException
 Exception raised when the creation or modification of a Format object fails.
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2635" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.FunctionConfigurationError"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>FunctionConfigurationError</summary>
 
@@ -223,8 +302,11 @@ Bases: TabsDataException
 Exception raised when a function is not properly configured to be registered.
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2643" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.MySQLCdcError"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>MySQLCdcError</summary>
 
@@ -240,8 +322,11 @@ Bases: CdcError
 Exception raised for MySQL CDC errors.
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2740" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.ParameterError"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>ParameterError</summary>
 
@@ -277,8 +362,11 @@ Alias for field number 2
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2787" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.ParameterValidationError"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>ParameterValidationError</summary>
 
@@ -315,8 +403,11 @@ Exception raised when public API parameter validation fails.
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2794" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.ParameterValueError"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>ParameterValueError</summary>
 
@@ -332,8 +423,11 @@ class ParameterValueError(
 Bases: TabsDataException
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2765" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.PostgresCdcError"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>PostgresCdcError</summary>
 
@@ -349,8 +443,11 @@ Bases: CdcError
 Exception raised for PostgreSQL CDC errors.
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2748" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.RegistrationError"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>RegistrationError</summary>
 
@@ -366,8 +463,11 @@ Bases: TabsDataException
 Exception raised when registration of a function in the server fails.
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2651" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.SDKError"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>SDKError</summary>
 
@@ -381,8 +481,11 @@ class SDKError(
 Bases: TabsDataException
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2659" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.SecretConfigurationError"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>SecretConfigurationError</summary>
 
@@ -398,8 +501,11 @@ Bases: TabsDataException
 Exception raised when the creation or modification of a Secret object fails.
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2666" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.SourceConfigurationError"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>SourceConfigurationError</summary>
 
@@ -415,8 +521,11 @@ Bases: TabsDataException
 Exception raised when the creation or modification of a source object fails.
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2674" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.StageTriggerConfigurationError"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>StageTriggerConfigurationError</summary>
 
@@ -433,8 +542,11 @@ Exception raised when the creation or modification of a StageTrigger object or o
 of its auxiliary objects fails.
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2707" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.StageTriggerExecutionError"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>StageTriggerExecutionError</summary>
 
@@ -450,8 +562,11 @@ Bases: TabsDataException
 Exception raised when a StageTrigger execution fails during runtime.
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2716" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.TableFrameError"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>TableFrameError</summary>
 
@@ -467,8 +582,11 @@ Bases: TabsDataException
 Exception raised when handling a TableFrame.
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2682" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.TableURIConfigurationError"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>TableURIConfigurationError</summary>
 
@@ -485,8 +603,11 @@ Exception raised when the creation or modification of a URI object or one of
 its auxiliary objects fails.
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2698" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.TabsDataException"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>TabsDataException</summary>
 
@@ -507,8 +628,11 @@ Base exception for all exceptions in the Tabs Data SDK.
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2558" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.exceptions.TabsdataServerError"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>TabsdataServerError</summary>
 
@@ -524,3 +648,5 @@ Bases: TabsDataException
 Exception raised when the server returns an error.
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/exceptions.py#L2690" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>

@@ -4,9 +4,64 @@ title: "Classifiers"
 
 import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
+export const toc = [
+  {value: 'DoesNotMatch', id: 'tabsdata.dataquality.DoesNotMatch', level: 2},
+  {value: 'ExponentialScale', id: 'tabsdata.dataquality.ExponentialScale', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>base', id: 'tabsdata.dataquality.ExponentialScale.base', level: 3},
+  {value: 'HasLength', id: 'tabsdata.dataquality.HasLength', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>max', id: 'tabsdata.dataquality.HasLength.max', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>min', id: 'tabsdata.dataquality.HasLength.min', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>supported_dtypes()', id: 'tabsdata.dataquality.HasLength.supported_dtypes', level: 3},
+  {value: 'IdentityScale', id: 'tabsdata.dataquality.IdentityScale', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>bins', id: 'tabsdata.dataquality.IdentityScale.bins', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>scale_range', id: 'tabsdata.dataquality.IdentityScale.scale_range', level: 3},
+  {value: 'IsBetween', id: 'tabsdata.dataquality.IsBetween', level: 2},
+  {value: 'IsFalse', id: 'tabsdata.dataquality.IsFalse', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>supported_dtypes()', id: 'tabsdata.dataquality.IsFalse.supported_dtypes', level: 3},
+  {value: 'IsIn', id: 'tabsdata.dataquality.IsIn', level: 2},
+  {value: 'IsNan', id: 'tabsdata.dataquality.IsNan', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>supported_dtypes()', id: 'tabsdata.dataquality.IsNan.supported_dtypes', level: 3},
+  {value: 'IsNegative', id: 'tabsdata.dataquality.IsNegative', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>supported_dtypes()', id: 'tabsdata.dataquality.IsNegative.supported_dtypes', level: 3},
+  {value: 'IsNegativeOrZero', id: 'tabsdata.dataquality.IsNegativeOrZero', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>supported_dtypes()', id: 'tabsdata.dataquality.IsNegativeOrZero.supported_dtypes', level: 3},
+  {value: 'IsNotBetween', id: 'tabsdata.dataquality.IsNotBetween', level: 2},
+  {value: 'IsNotIn', id: 'tabsdata.dataquality.IsNotIn', level: 2},
+  {value: 'IsNotNan', id: 'tabsdata.dataquality.IsNotNan', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>supported_dtypes()', id: 'tabsdata.dataquality.IsNotNan.supported_dtypes', level: 3},
+  {value: 'IsNotNull', id: 'tabsdata.dataquality.IsNotNull', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>supported_dtypes()', id: 'tabsdata.dataquality.IsNotNull.supported_dtypes', level: 3},
+  {value: 'IsNotNullNorNan', id: 'tabsdata.dataquality.IsNotNullNorNan', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>supported_dtypes()', id: 'tabsdata.dataquality.IsNotNullNorNan.supported_dtypes', level: 3},
+  {value: 'IsNotZero', id: 'tabsdata.dataquality.IsNotZero', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>supported_dtypes()', id: 'tabsdata.dataquality.IsNotZero.supported_dtypes', level: 3},
+  {value: 'IsNull', id: 'tabsdata.dataquality.IsNull', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>supported_dtypes()', id: 'tabsdata.dataquality.IsNull.supported_dtypes', level: 3},
+  {value: 'IsNullOrNan', id: 'tabsdata.dataquality.IsNullOrNan', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>supported_dtypes()', id: 'tabsdata.dataquality.IsNullOrNan.supported_dtypes', level: 3},
+  {value: 'IsPositive', id: 'tabsdata.dataquality.IsPositive', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>supported_dtypes()', id: 'tabsdata.dataquality.IsPositive.supported_dtypes', level: 3},
+  {value: 'IsPositiveOrZero', id: 'tabsdata.dataquality.IsPositiveOrZero', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>supported_dtypes()', id: 'tabsdata.dataquality.IsPositiveOrZero.supported_dtypes', level: 3},
+  {value: 'IsTrue', id: 'tabsdata.dataquality.IsTrue', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>supported_dtypes()', id: 'tabsdata.dataquality.IsTrue.supported_dtypes', level: 3},
+  {value: 'IsZero', id: 'tabsdata.dataquality.IsZero', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>supported_dtypes()', id: 'tabsdata.dataquality.IsZero.supported_dtypes', level: 3},
+  {value: 'LinearScale', id: 'tabsdata.dataquality.LinearScale', level: 2},
+  {value: 'LogarithmicScale', id: 'tabsdata.dataquality.LogarithmicScale', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>base', id: 'tabsdata.dataquality.LogarithmicScale.base', level: 3},
+  {value: 'Matches', id: 'tabsdata.dataquality.Matches', level: 2},
+  {value: 'MonomialScale', id: 'tabsdata.dataquality.MonomialScale', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>power', id: 'tabsdata.dataquality.MonomialScale.power', level: 3},
+  {value: 'ScaleCategorizer', id: 'tabsdata.dataquality.ScaleCategorizer', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>scale', id: 'tabsdata.dataquality.ScaleCategorizer.scale', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>supported_dtypes()', id: 'tabsdata.dataquality.ScaleCategorizer.supported_dtypes', level: 3},
+];
+
 # Classifiers
 
  <a id="tabsdata.dataquality.DoesNotMatch"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>DoesNotMatch</summary>
 
@@ -28,8 +83,11 @@ A boolean classifier that checks if a value does *not* match a regex pattern.
 **Categories:** dq-classifier
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1510" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.ExponentialScale"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>ExponentialScale</summary>
 
@@ -55,8 +113,11 @@ Returns the base of the exponential scale.
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L376" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.HasLength"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>HasLength</summary>
 
@@ -89,7 +150,7 @@ Returns the minimum allowed length.
 </ResponseField>
 
 <a id="tabsdata.dataquality.HasLength.supported_dtypes"></a>
-#### `supported_dtypes`
+<ResponseField name="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1525">
 
 ```python
 def supported_dtypes()
@@ -97,9 +158,14 @@ def supported_dtypes()
 
 Returns the set of data types supported by HasLength classifier.
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1518" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.IdentityScale"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>IdentityScale</summary>
 
@@ -128,8 +194,11 @@ Returns the (min, max) range of the scale.
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L167" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.IsBetween"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>IsBetween</summary>
 
@@ -154,8 +223,11 @@ A boolean classifier that checks if a value is *inside* a specified range.
 **Categories:** dq-classifier
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1349" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.IsFalse"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>IsFalse</summary>
 
@@ -176,7 +248,7 @@ A boolean classifier that checks if a value is False.
 **Categories:** dq-classifier
 
 <a id="tabsdata.dataquality.IsFalse.supported_dtypes"></a>
-#### `supported_dtypes`
+<ResponseField name="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L748">
 
 ```python
 def supported_dtypes()
@@ -184,9 +256,14 @@ def supported_dtypes()
 
 Returns the set of data types supported by IsFalse classifier.
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L741" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.IsIn"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>IsIn</summary>
 
@@ -208,8 +285,11 @@ A boolean classifier that checks if a value is in a specified set of values.
 **Categories:** dq-classifier
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1423" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.IsNan"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>IsNan</summary>
 
@@ -230,7 +310,7 @@ A boolean classifier that checks if a value is NaN (Not a Number).
 **Categories:** dq-classifier
 
 <a id="tabsdata.dataquality.IsNan.supported_dtypes"></a>
-#### `supported_dtypes`
+<ResponseField name="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L861">
 
 ```python
 def supported_dtypes()
@@ -238,9 +318,14 @@ def supported_dtypes()
 
 Returns the set of data types supported by IsNan classifier.
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L854" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.IsNegative"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>IsNegative</summary>
 
@@ -261,7 +346,7 @@ A boolean classifier that checks if a numeric value is negative.
 **Categories:** dq-classifier
 
 <a id="tabsdata.dataquality.IsNegative.supported_dtypes"></a>
-#### `supported_dtypes`
+<ResponseField name="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1182">
 
 ```python
 def supported_dtypes()
@@ -269,9 +354,14 @@ def supported_dtypes()
 
 Returns the set of data types supported by IsNegative classifier.
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1175" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.IsNegativeOrZero"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>IsNegativeOrZero</summary>
 
@@ -292,7 +382,7 @@ A boolean classifier that checks if a numeric value is negative or zero.
 **Categories:** dq-classifier
 
 <a id="tabsdata.dataquality.IsNegativeOrZero.supported_dtypes"></a>
-#### `supported_dtypes`
+<ResponseField name="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1222">
 
 ```python
 def supported_dtypes()
@@ -300,9 +390,14 @@ def supported_dtypes()
 
 Returns the set of data types supported by IsNegativeOrZero classifier.
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1215" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.IsNotBetween"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>IsNotBetween</summary>
 
@@ -327,8 +422,11 @@ A boolean classifier that checks if a value is *outside* a specified range.
 **Categories:** dq-classifier
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1357" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.IsNotIn"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>IsNotIn</summary>
 
@@ -350,8 +448,11 @@ A boolean classifier that checks if a value is *not* in a specified set of value
 **Categories:** dq-classifier
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1432" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.IsNotNan"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>IsNotNan</summary>
 
@@ -372,7 +473,7 @@ A boolean classifier that checks if a value is *not* NaN.
 **Categories:** dq-classifier
 
 <a id="tabsdata.dataquality.IsNotNan.supported_dtypes"></a>
-#### `supported_dtypes`
+<ResponseField name="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L901">
 
 ```python
 def supported_dtypes()
@@ -380,9 +481,14 @@ def supported_dtypes()
 
 Returns the set of data types supported by IsNotNan classifier.
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L894" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.IsNotNull"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>IsNotNull</summary>
 
@@ -402,7 +508,7 @@ A boolean classifier that checks if a value is *not* NULL.
 **Categories:** dq-classifier
 
 <a id="tabsdata.dataquality.IsNotNull.supported_dtypes"></a>
-#### `supported_dtypes`
+<ResponseField name="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L824">
 
 ```python
 def supported_dtypes()
@@ -410,9 +516,14 @@ def supported_dtypes()
 
 Returns the set of data types supported by IsNotNull classifier.
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L817" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.IsNotNullNorNan"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>IsNotNullNorNan</summary>
 
@@ -433,7 +544,7 @@ A boolean classifier that checks if a value is neither NULL nor NaN.
 **Categories:** dq-classifier
 
 <a id="tabsdata.dataquality.IsNotNullNorNan.supported_dtypes"></a>
-#### `supported_dtypes`
+<ResponseField name="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L981">
 
 ```python
 def supported_dtypes()
@@ -441,9 +552,14 @@ def supported_dtypes()
 
 Returns the set of data types supported by IsNotNullNorNan classifier.
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L974" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.IsNotZero"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>IsNotZero</summary>
 
@@ -464,7 +580,7 @@ A boolean classifier that checks if a numeric value is not zero.
 **Categories:** dq-classifier
 
 <a id="tabsdata.dataquality.IsNotZero.supported_dtypes"></a>
-#### `supported_dtypes`
+<ResponseField name="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1062">
 
 ```python
 def supported_dtypes()
@@ -472,9 +588,14 @@ def supported_dtypes()
 
 Returns the set of data types supported by IsNotZero classifier.
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1055" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.IsNull"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>IsNull</summary>
 
@@ -494,7 +615,7 @@ A boolean classifier that checks if a value is NULL.
 **Categories:** dq-classifier
 
 <a id="tabsdata.dataquality.IsNull.supported_dtypes"></a>
-#### `supported_dtypes`
+<ResponseField name="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L787">
 
 ```python
 def supported_dtypes()
@@ -502,9 +623,14 @@ def supported_dtypes()
 
 Returns the set of data types supported by IsNull classifier.
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L780" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.IsNullOrNan"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>IsNullOrNan</summary>
 
@@ -525,7 +651,7 @@ A boolean classifier that checks if a value is either NULL or NaN.
 **Categories:** dq-classifier
 
 <a id="tabsdata.dataquality.IsNullOrNan.supported_dtypes"></a>
-#### `supported_dtypes`
+<ResponseField name="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L941">
 
 ```python
 def supported_dtypes()
@@ -533,9 +659,14 @@ def supported_dtypes()
 
 Returns the set of data types supported by IsNullOrNan classifier.
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L934" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.IsPositive"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>IsPositive</summary>
 
@@ -556,7 +687,7 @@ A boolean classifier that checks if a numeric value is positive.
 **Categories:** dq-classifier
 
 <a id="tabsdata.dataquality.IsPositive.supported_dtypes"></a>
-#### `supported_dtypes`
+<ResponseField name="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1102">
 
 ```python
 def supported_dtypes()
@@ -564,9 +695,14 @@ def supported_dtypes()
 
 Returns the set of data types supported by IsPositive classifier.
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1095" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.IsPositiveOrZero"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>IsPositiveOrZero</summary>
 
@@ -587,7 +723,7 @@ A boolean classifier that checks if a numeric value is positive or zero.
 **Categories:** dq-classifier
 
 <a id="tabsdata.dataquality.IsPositiveOrZero.supported_dtypes"></a>
-#### `supported_dtypes`
+<ResponseField name="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1142">
 
 ```python
 def supported_dtypes()
@@ -595,9 +731,14 @@ def supported_dtypes()
 
 Returns the set of data types supported by IsPositiveOrZero classifier.
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1135" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.IsTrue"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>IsTrue</summary>
 
@@ -618,7 +759,7 @@ A boolean classifier that checks if a value is True.
 **Categories:** dq-classifier
 
 <a id="tabsdata.dataquality.IsTrue.supported_dtypes"></a>
-#### `supported_dtypes`
+<ResponseField name="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L708">
 
 ```python
 def supported_dtypes()
@@ -626,9 +767,14 @@ def supported_dtypes()
 
 Returns the set of data types supported by IsTrue classifier.
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L701" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.IsZero"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>IsZero</summary>
 
@@ -649,7 +795,7 @@ A boolean classifier that checks if a numeric value is zero.
 **Categories:** dq-classifier
 
 <a id="tabsdata.dataquality.IsZero.supported_dtypes"></a>
-#### `supported_dtypes`
+<ResponseField name="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1022">
 
 ```python
 def supported_dtypes()
@@ -657,9 +803,14 @@ def supported_dtypes()
 
 Returns the set of data types supported by IsZero classifier.
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1015" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.LinearScale"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>LinearScale</summary>
 
@@ -679,8 +830,11 @@ A linear scale.
 **Categories:** dq-classifier
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L255" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.LogarithmicScale"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>LogarithmicScale</summary>
 
@@ -706,8 +860,11 @@ Returns the base of the logarithmic scale.
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L329" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.Matches"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>Matches</summary>
 
@@ -729,8 +886,11 @@ A boolean classifier that checks if a value matches a regex pattern.
 **Categories:** dq-classifier
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L1501" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.MonomialScale"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>MonomialScale</summary>
 
@@ -756,8 +916,11 @@ Returns the power of the monomial scale.
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L282" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.ScaleCategorizer"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>ScaleCategorizer</summary>
 
@@ -785,7 +948,7 @@ Returns the scale used for categorization.
 </ResponseField>
 
 <a id="tabsdata.dataquality.ScaleCategorizer.supported_dtypes"></a>
-#### `supported_dtypes`
+<ResponseField name="supported_dtypes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L633">
 
 ```python
 def supported_dtypes()
@@ -793,4 +956,8 @@ def supported_dtypes()
 
 Returns the set of data types supported by categorizers.
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_classifier.py#L626" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>

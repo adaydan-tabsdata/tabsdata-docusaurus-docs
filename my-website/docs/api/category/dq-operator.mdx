@@ -4,9 +4,31 @@ title: "Operations"
 
 import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
+export const toc = [
+  {value: 'AllOk', id: 'tabsdata.dataquality.AllOk', level: 2},
+  {value: 'AnyFailed', id: 'tabsdata.dataquality.AnyFailed', level: 2},
+  {value: 'Enrich', id: 'tabsdata.dataquality.Enrich', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>to_table', id: 'tabsdata.dataquality.Enrich.to_table', level: 3},
+  {value: 'Fail', id: 'tabsdata.dataquality.Fail', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>threshold', id: 'tabsdata.dataquality.Fail.threshold', level: 3},
+  {value: 'Filter', id: 'tabsdata.dataquality.Filter', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>include_quality_columns', id: 'tabsdata.dataquality.Filter.include_quality_columns', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>to_table', id: 'tabsdata.dataquality.Filter.to_table', level: 3},
+  {value: 'InBins', id: 'tabsdata.dataquality.InBins', level: 2},
+  {value: 'NotInBins', id: 'tabsdata.dataquality.NotInBins', level: 2},
+  {value: 'PercentThreshold', id: 'tabsdata.dataquality.PercentThreshold', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>percent', id: 'tabsdata.dataquality.PercentThreshold.percent', level: 3},
+  {value: 'Select', id: 'tabsdata.dataquality.Select', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>include_quality_columns', id: 'tabsdata.dataquality.Select.include_quality_columns', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>to_table', id: 'tabsdata.dataquality.Select.to_table', level: 3},
+  {value: 'Summary', id: 'tabsdata.dataquality.Summary', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>table', id: 'tabsdata.dataquality.Summary.table', level: 3},
+];
+
 # Operations
 
  <a id="tabsdata.dataquality.AllOk"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>AllOk</summary>
 
@@ -27,8 +49,11 @@ pass (True).
 **Categories:** dq-operator
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L170" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.AnyFailed"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>AnyFailed</summary>
 
@@ -49,8 +74,11 @@ classifier fails (False).
 **Categories:** dq-operator
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L197" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.Enrich"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>Enrich</summary>
 
@@ -76,8 +104,11 @@ columns. If None, the original table is used.
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L385" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.Fail"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>Fail</summary>
 
@@ -101,8 +132,11 @@ Returns the threshold for this Fail operation.
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L462" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.Filter"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>Filter</summary>
 
@@ -136,8 +170,11 @@ discarded.
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L502" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.InBins"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>InBins</summary>
 
@@ -156,8 +193,11 @@ columns falls into one of the given bins.
 **Categories:** dq-operator
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L224" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.NotInBins"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>NotInBins</summary>
 
@@ -176,8 +216,11 @@ columns does not fall into any of the given bins.
 **Categories:** dq-operator
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L252" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.PercentThreshold"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>PercentThreshold</summary>
 
@@ -199,8 +242,11 @@ Returns the percentage for the threshold.
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L318" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.Select"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>Select</summary>
 
@@ -233,8 +279,11 @@ Returns the destination table for the selected rows.
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L572" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.dataquality.Summary"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>Summary</summary>
 
@@ -258,3 +307,5 @@ Returns the name of the data quality summary table.
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/dataquality/_operator.py#L640" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>

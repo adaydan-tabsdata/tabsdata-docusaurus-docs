@@ -2,9 +2,60 @@
 title: "tabsdata.tableframe.functions.datetime"
 ---
 
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+export const toc = [
+  {value: 'ExprDateTimeNameSpace', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>add_business_days()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.add_business_days', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>base_utc_offset()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.base_utc_offset', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>cast_time_unit()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.cast_time_unit', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>century()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.century', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>combine()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.combine', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>convert_time_zone()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.convert_time_zone', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>date()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.date', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>datetime()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.datetime', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>day()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.day', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>dst_offset()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.dst_offset', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>epoch()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.epoch', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>hour()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.hour', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>is_leap_year()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.is_leap_year', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>iso_year()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.iso_year', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>microsecond()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.microsecond', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>millennium()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.millennium', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>millisecond()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.millisecond', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>minute()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.minute', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>month()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.month', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>month_end()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.month_end', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>month_start()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.month_start', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>nanosecond()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.nanosecond', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>offset_by()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.offset_by', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>ordinal_day()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.ordinal_day', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>quarter()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.quarter', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>replace()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.replace', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>replace_time_zone()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.replace_time_zone', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>second()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.second', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>strftime()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.strftime', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>time()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.time', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>timestamp()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.timestamp', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>to_string()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.to_string', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>total_days()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_days', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>total_hours()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_hours', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>total_microseconds()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_microseconds', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>total_milliseconds()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_milliseconds', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>total_minutes()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_minutes', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>total_nanoseconds()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_nanoseconds', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>total_seconds()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_seconds', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>truncate()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.truncate', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>week()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.week', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>weekday()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.weekday', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>with_time_unit()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.with_time_unit', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>year()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.year', level: 3},
+];
+
 # tabsdata.tableframe.functions.datetime
 
  <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>ExprDateTimeNameSpace</summary>
 
@@ -17,7 +68,7 @@ class ExprDateTimeNameSpace(
 Bases: [object](https://docs.python.org/3/library/functions.html#object)
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.add_business_days"></a>
-#### `add_business_days`
+<ResponseField name="add_business_days" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L20">
 
 ```python
 def add_business_days(
@@ -29,18 +80,22 @@ def add_business_days(
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.base_utc_offset"></a>
-#### `base_utc_offset`
+<ResponseField name="base_utc_offset" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L414">
 
 ```python
 def base_utc_offset()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.cast_time_unit"></a>
-#### `cast_time_unit`
+<ResponseField name="cast_time_unit" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L294">
 
 ```python
 def cast_time_unit(
@@ -49,18 +104,22 @@ def cast_time_unit(
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.century"></a>
-#### `century`
+<ResponseField name="century" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L118">
 
 ```python
 def century()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.combine"></a>
-#### `combine`
+<ResponseField name="combine" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L79">
 
 ```python
 def combine(
@@ -70,9 +129,11 @@ def combine(
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.convert_time_zone"></a>
-#### `convert_time_zone`
+<ResponseField name="convert_time_zone" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L302">
 
 ```python
 def convert_time_zone(
@@ -81,45 +142,55 @@ def convert_time_zone(
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.date"></a>
-#### `date`
+<ResponseField name="date" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L206">
 
 ```python
 def date()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.datetime"></a>
-#### `datetime`
+<ResponseField name="datetime" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L214">
 
 ```python
 def datetime()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.day"></a>
-#### `day`
+<ResponseField name="day" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L182">
 
 ```python
 def day()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.dst_offset"></a>
-#### `dst_offset`
+<ResponseField name="dst_offset" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L422">
 
 ```python
 def dst_offset()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.epoch"></a>
-#### `epoch`
+<ResponseField name="epoch" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L270">
 
 ```python
 def epoch(
@@ -128,108 +199,132 @@ def epoch(
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.hour"></a>
-#### `hour`
+<ResponseField name="hour" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L222">
 
 ```python
 def hour()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.is_leap_year"></a>
-#### `is_leap_year`
+<ResponseField name="is_leap_year" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L134">
 
 ```python
 def is_leap_year()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.iso_year"></a>
-#### `iso_year`
+<ResponseField name="iso_year" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L142">
 
 ```python
 def iso_year()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.microsecond"></a>
-#### `microsecond`
+<ResponseField name="microsecond" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L254">
 
 ```python
 def microsecond()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.millennium"></a>
-#### `millennium`
+<ResponseField name="millennium" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L110">
 
 ```python
 def millennium()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.millisecond"></a>
-#### `millisecond`
+<ResponseField name="millisecond" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L246">
 
 ```python
 def millisecond()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.minute"></a>
-#### `minute`
+<ResponseField name="minute" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L230">
 
 ```python
 def minute()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.month"></a>
-#### `month`
+<ResponseField name="month" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L158">
 
 ```python
 def month()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.month_end"></a>
-#### `month_end`
+<ResponseField name="month_end" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L406">
 
 ```python
 def month_end()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.month_start"></a>
-#### `month_start`
+<ResponseField name="month_start" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L398">
 
 ```python
 def month_start()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.nanosecond"></a>
-#### `nanosecond`
+<ResponseField name="nanosecond" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L262">
 
 ```python
 def nanosecond()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.offset_by"></a>
-#### `offset_by`
+<ResponseField name="offset_by" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L387">
 
 ```python
 def offset_by(
@@ -238,27 +333,33 @@ def offset_by(
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.ordinal_day"></a>
-#### `ordinal_day`
+<ResponseField name="ordinal_day" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L190">
 
 ```python
 def ordinal_day()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.quarter"></a>
-#### `quarter`
+<ResponseField name="quarter" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L150">
 
 ```python
 def quarter()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.replace"></a>
-#### `replace`
+<ResponseField name="replace" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L53">
 
 ```python
 def replace(
@@ -273,9 +374,11 @@ def replace(
     ambiguous: td_typing.Ambiguous | td_expr.Expr = 'raise',
 )
 ```
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.replace_time_zone"></a>
-#### `replace_time_zone`
+<ResponseField name="replace_time_zone" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L310">
 
 ```python
 def replace_time_zone(
@@ -287,9 +390,11 @@ def replace_time_zone(
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.second"></a>
-#### `second`
+<ResponseField name="second" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L238">
 
 ```python
 def second(
@@ -299,9 +404,11 @@ def second(
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.strftime"></a>
-#### `strftime`
+<ResponseField name="strftime" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L102">
 
 ```python
 def strftime(
@@ -310,18 +417,22 @@ def strftime(
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.time"></a>
-#### `time`
+<ResponseField name="time" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L198">
 
 ```python
 def time()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.timestamp"></a>
-#### `timestamp`
+<ResponseField name="timestamp" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L278">
 
 ```python
 def timestamp(
@@ -330,9 +441,11 @@ def timestamp(
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.to_string"></a>
-#### `to_string`
+<ResponseField name="to_string" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L94">
 
 ```python
 def to_string(
@@ -341,72 +454,88 @@ def to_string(
 ```
 
 **Categories:** type_casting
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_days"></a>
-#### `total_days`
+<ResponseField name="total_days" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L331">
 
 ```python
 def total_days()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_hours"></a>
-#### `total_hours`
+<ResponseField name="total_hours" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L339">
 
 ```python
 def total_hours()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_microseconds"></a>
-#### `total_microseconds`
+<ResponseField name="total_microseconds" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L371">
 
 ```python
 def total_microseconds()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_milliseconds"></a>
-#### `total_milliseconds`
+<ResponseField name="total_milliseconds" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L363">
 
 ```python
 def total_milliseconds()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_minutes"></a>
-#### `total_minutes`
+<ResponseField name="total_minutes" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L347">
 
 ```python
 def total_minutes()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_nanoseconds"></a>
-#### `total_nanoseconds`
+<ResponseField name="total_nanoseconds" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L379">
 
 ```python
 def total_nanoseconds()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_seconds"></a>
-#### `total_seconds`
+<ResponseField name="total_seconds" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L355">
 
 ```python
 def total_seconds()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.truncate"></a>
-#### `truncate`
+<ResponseField name="truncate" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L42">
 
 ```python
 def truncate(
@@ -415,27 +544,33 @@ def truncate(
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.week"></a>
-#### `week`
+<ResponseField name="week" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L166">
 
 ```python
 def week()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.weekday"></a>
-#### `weekday`
+<ResponseField name="weekday" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L174">
 
 ```python
 def weekday()
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.with_time_unit"></a>
-#### `with_time_unit`
+<ResponseField name="with_time_unit" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L286">
 
 ```python
 def with_time_unit(
@@ -444,9 +579,11 @@ def with_time_unit(
 ```
 
 **Categories:** date
+
+</ResponseField>
 
 <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.year"></a>
-#### `year`
+<ResponseField name="year" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L126">
 
 ```python
 def year()
@@ -454,574 +591,8 @@ def year()
 
 **Categories:** date
 
-</details>
-
- <a id="id0"></a>
-<details open>
-<summary>add_business_days</summary>
-
-```python
-def add_business_days(
-    n: int | td_typing.IntoExpr,
-    week_mask: Iterable[bool] = (True, True, True, True, True, False, False),
-    holidays: Iterable[dt.date] = (),
-    roll: td_typing.Roll = 'raise',
-)
-```
-
-**Categories:** date
+</ResponseField>
 
 </details>
-
- <a id="id2"></a>
-<details open>
-<summary>base_utc_offset</summary>
-
-```python
-def base_utc_offset()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id3"></a>
-<details open>
-<summary>cast_time_unit</summary>
-
-```python
-def cast_time_unit(
-    time_unit: Literal['ns', 'us', 'ms'],
-)
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id4"></a>
-<details open>
-<summary>century</summary>
-
-```python
-def century()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id5"></a>
-<details open>
-<summary>combine</summary>
-
-```python
-def combine(
-    time: time | Expr,
-    time_unit: Literal['ns', 'us', 'ms'] = 'us',
-)
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id6"></a>
-<details open>
-<summary>convert_time_zone</summary>
-
-```python
-def convert_time_zone(
-    time_zone: str,
-)
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id7"></a>
-<details open>
-<summary>date</summary>
-
-```python
-def date()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id8"></a>
-<details open>
-<summary>datetime</summary>
-
-```python
-def datetime()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id9"></a>
-<details open>
-<summary>day</summary>
-
-```python
-def day()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id10"></a>
-<details open>
-<summary>dst_offset</summary>
-
-```python
-def dst_offset()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id11"></a>
-<details open>
-<summary>epoch</summary>
-
-```python
-def epoch(
-    time_unit: Literal['ns', 'us', 'ms', 's', 'd'] = 'us',
-)
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id12"></a>
-<details open>
-<summary>hour</summary>
-
-```python
-def hour()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id13"></a>
-<details open>
-<summary>is_leap_year</summary>
-
-```python
-def is_leap_year()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id14"></a>
-<details open>
-<summary>iso_year</summary>
-
-```python
-def iso_year()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id15"></a>
-<details open>
-<summary>microsecond</summary>
-
-```python
-def microsecond()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id16"></a>
-<details open>
-<summary>millennium</summary>
-
-```python
-def millennium()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id17"></a>
-<details open>
-<summary>millisecond</summary>
-
-```python
-def millisecond()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id18"></a>
-<details open>
-<summary>minute</summary>
-
-```python
-def minute()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id19"></a>
-<details open>
-<summary>month</summary>
-
-```python
-def month()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id20"></a>
-<details open>
-<summary>month_end</summary>
-
-```python
-def month_end()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id21"></a>
-<details open>
-<summary>month_start</summary>
-
-```python
-def month_start()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id22"></a>
-<details open>
-<summary>nanosecond</summary>
-
-```python
-def nanosecond()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id23"></a>
-<details open>
-<summary>offset_by</summary>
-
-```python
-def offset_by(
-    by: str | Expr,
-)
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id24"></a>
-<details open>
-<summary>ordinal_day</summary>
-
-```python
-def ordinal_day()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id25"></a>
-<details open>
-<summary>quarter</summary>
-
-```python
-def quarter()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id26"></a>
-<details open>
-<summary>replace</summary>
-
-```python
-def replace(
-    *,
-    year: int | td_typing.IntoExpr | None = None,
-    month: int | td_typing.IntoExpr | None = None,
-    day: int | td_typing.IntoExpr | None = None,
-    hour: int | td_typing.IntoExpr | None = None,
-    minute: int | td_typing.IntoExpr | None = None,
-    second: int | td_typing.IntoExpr | None = None,
-    microsecond: int | td_typing.IntoExpr | None = None,
-    ambiguous: td_typing.Ambiguous | td_expr.Expr = 'raise',
-)
-```
-
-</details>
-
- <a id="id27"></a>
-<details open>
-<summary>replace_time_zone</summary>
-
-```python
-def replace_time_zone(
-    time_zone: str | None,
-    *,
-    ambiguous: Literal['earliest', 'latest', 'raise', 'null'] | Expr = 'raise',
-    non_existent: Literal['raise', 'null'] = 'raise',
-)
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id28"></a>
-<details open>
-<summary>second</summary>
-
-```python
-def second(
-    *,
-    fractional: bool = False,
-)
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id29"></a>
-<details open>
-<summary>strftime</summary>
-
-```python
-def strftime(
-    fmt: str,
-)
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id30"></a>
-<details open>
-<summary>time</summary>
-
-```python
-def time()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id31"></a>
-<details open>
-<summary>timestamp</summary>
-
-```python
-def timestamp(
-    time_unit: Literal['ns', 'us', 'ms'] = 'us',
-)
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id32"></a>
-<details open>
-<summary>to_string</summary>
-
-```python
-def to_string(
-    fmt: str | None = None,
-)
-```
-
-**Categories:** type_casting
-
-</details>
-
- <a id="id33"></a>
-<details open>
-<summary>total_days</summary>
-
-```python
-def total_days()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id34"></a>
-<details open>
-<summary>total_hours</summary>
-
-```python
-def total_hours()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id35"></a>
-<details open>
-<summary>total_microseconds</summary>
-
-```python
-def total_microseconds()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id36"></a>
-<details open>
-<summary>total_milliseconds</summary>
-
-```python
-def total_milliseconds()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id37"></a>
-<details open>
-<summary>total_minutes</summary>
-
-```python
-def total_minutes()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id38"></a>
-<details open>
-<summary>total_nanoseconds</summary>
-
-```python
-def total_nanoseconds()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id39"></a>
-<details open>
-<summary>total_seconds</summary>
-
-```python
-def total_seconds()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id40"></a>
-<details open>
-<summary>truncate</summary>
-
-```python
-def truncate(
-    every: str | timedelta | Expr,
-)
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id41"></a>
-<details open>
-<summary>week</summary>
-
-```python
-def week()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id42"></a>
-<details open>
-<summary>weekday</summary>
-
-```python
-def weekday()
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id43"></a>
-<details open>
-<summary>with_time_unit</summary>
-
-```python
-def with_time_unit(
-    time_unit: Literal['ns', 'us', 'ms'],
-)
-```
-
-**Categories:** date
-
-</details>
-
- <a id="id44"></a>
-<details open>
-<summary>year</summary>
-
-```python
-def year()
-```
-
-**Categories:** date
-
-</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L16" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>

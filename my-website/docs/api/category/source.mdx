@@ -4,9 +4,154 @@ title: "Sources"
 
 import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
+export const toc = [
+  {value: 'AzureSource', id: 'tabsdata.AzureSource', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>credentials', id: 'tabsdata.AzureSource.credentials', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>file_info', id: 'tabsdata.AzureSource.file_info', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>format', id: 'tabsdata.AzureSource.format', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>initial_last_modified', id: 'tabsdata.AzureSource.initial_last_modified', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>initial_values', id: 'tabsdata.AzureSource.initial_values', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>uri', id: 'tabsdata.AzureSource.uri', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-class">class</span>SupportedFormats', id: 'tabsdata.AzureSource.SupportedFormats', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.AzureSource.chunk', level: 3},
+  {value: 'DatabricksSource', id: 'tabsdata.DatabricksSource', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>host_url', id: 'tabsdata.DatabricksSource.host_url', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>initial_values', id: 'tabsdata.DatabricksSource.initial_values', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>queries', id: 'tabsdata.DatabricksSource.queries', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>token', id: 'tabsdata.DatabricksSource.token', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.DatabricksSource.chunk', level: 3},
+  {value: 'Db2Src', id: 'tabsdata.Db2Src', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>chunk_size', id: 'tabsdata.Db2Src.chunk_size', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>conn', id: 'tabsdata.Db2Src.conn', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>initial_values', id: 'tabsdata.Db2Src.initial_values', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>loader', id: 'tabsdata.Db2Src.loader', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>queries', id: 'tabsdata.Db2Src.queries', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>schema_overrides', id: 'tabsdata.Db2Src.schema_overrides', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>transactional', id: 'tabsdata.Db2Src.transactional', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>stream()', id: 'tabsdata.Db2Src.stream', level: 3},
+  {value: 'GCSSource', id: 'tabsdata.GCSSource', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>credentials', id: 'tabsdata.GCSSource.credentials', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>file_info', id: 'tabsdata.GCSSource.file_info', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>format', id: 'tabsdata.GCSSource.format', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>initial_last_modified', id: 'tabsdata.GCSSource.initial_last_modified', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>initial_values', id: 'tabsdata.GCSSource.initial_values', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>uri', id: 'tabsdata.GCSSource.uri', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-class">class</span>SupportedFormats', id: 'tabsdata.GCSSource.SupportedFormats', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.GCSSource.chunk', level: 3},
+  {value: 'LocalFileSource', id: 'tabsdata.LocalFileSource', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>file_info', id: 'tabsdata.LocalFileSource.file_info', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>format', id: 'tabsdata.LocalFileSource.format', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>initial_last_modified', id: 'tabsdata.LocalFileSource.initial_last_modified', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>initial_values', id: 'tabsdata.LocalFileSource.initial_values', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>path', id: 'tabsdata.LocalFileSource.path', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-class">class</span>SupportedFormats', id: 'tabsdata.LocalFileSource.SupportedFormats', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.LocalFileSource.chunk', level: 3},
+  {value: 'MSSQLSource', id: 'tabsdata.MSSQLSource', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>connection_string', id: 'tabsdata.MSSQLSource.connection_string', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>credentials', id: 'tabsdata.MSSQLSource.credentials', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>initial_values', id: 'tabsdata.MSSQLSource.initial_values', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>query', id: 'tabsdata.MSSQLSource.query', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.MSSQLSource.chunk', level: 3},
+  {value: 'MSSQLSrc', id: 'tabsdata.MSSQLSrc', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>chunk_size', id: 'tabsdata.MSSQLSrc.chunk_size', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>conn', id: 'tabsdata.MSSQLSrc.conn', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>initial_values', id: 'tabsdata.MSSQLSrc.initial_values', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>loader', id: 'tabsdata.MSSQLSrc.loader', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>queries', id: 'tabsdata.MSSQLSrc.queries', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>schema_overrides', id: 'tabsdata.MSSQLSrc.schema_overrides', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>transactional', id: 'tabsdata.MSSQLSrc.transactional', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>stream()', id: 'tabsdata.MSSQLSrc.stream', level: 3},
+  {value: 'MariaDBSource', id: 'tabsdata.MariaDBSource', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>credentials', id: 'tabsdata.MariaDBSource.credentials', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>initial_values', id: 'tabsdata.MariaDBSource.initial_values', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>query', id: 'tabsdata.MariaDBSource.query', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>uri', id: 'tabsdata.MariaDBSource.uri', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.MariaDBSource.chunk', level: 3},
+  {value: 'MariaDBSrc', id: 'tabsdata.MariaDBSrc', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>chunk_size', id: 'tabsdata.MariaDBSrc.chunk_size', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>conn', id: 'tabsdata.MariaDBSrc.conn', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>initial_values', id: 'tabsdata.MariaDBSrc.initial_values', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>loader', id: 'tabsdata.MariaDBSrc.loader', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>queries', id: 'tabsdata.MariaDBSrc.queries', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>schema_overrides', id: 'tabsdata.MariaDBSrc.schema_overrides', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>transactional', id: 'tabsdata.MariaDBSrc.transactional', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>stream()', id: 'tabsdata.MariaDBSrc.stream', level: 3},
+  {value: 'MySQLSource', id: 'tabsdata.MySQLSource', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>credentials', id: 'tabsdata.MySQLSource.credentials', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>initial_values', id: 'tabsdata.MySQLSource.initial_values', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>query', id: 'tabsdata.MySQLSource.query', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>uri', id: 'tabsdata.MySQLSource.uri', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.MySQLSource.chunk', level: 3},
+  {value: 'MySQLSrc', id: 'tabsdata.MySQLSrc', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>chunk_size', id: 'tabsdata.MySQLSrc.chunk_size', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>conn', id: 'tabsdata.MySQLSrc.conn', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>initial_values', id: 'tabsdata.MySQLSrc.initial_values', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>loader', id: 'tabsdata.MySQLSrc.loader', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>queries', id: 'tabsdata.MySQLSrc.queries', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>schema_overrides', id: 'tabsdata.MySQLSrc.schema_overrides', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>transactional', id: 'tabsdata.MySQLSrc.transactional', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>stream()', id: 'tabsdata.MySQLSrc.stream', level: 3},
+  {value: 'OracleSource', id: 'tabsdata.OracleSource', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>credentials', id: 'tabsdata.OracleSource.credentials', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>initial_values', id: 'tabsdata.OracleSource.initial_values', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>query', id: 'tabsdata.OracleSource.query', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>uri', id: 'tabsdata.OracleSource.uri', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.OracleSource.chunk', level: 3},
+  {value: 'OracleSrc', id: 'tabsdata.OracleSrc', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>chunk_size', id: 'tabsdata.OracleSrc.chunk_size', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>conn', id: 'tabsdata.OracleSrc.conn', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>initial_values', id: 'tabsdata.OracleSrc.initial_values', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>loader', id: 'tabsdata.OracleSrc.loader', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>queries', id: 'tabsdata.OracleSrc.queries', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>schema_overrides', id: 'tabsdata.OracleSrc.schema_overrides', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>transactional', id: 'tabsdata.OracleSrc.transactional', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>stream()', id: 'tabsdata.OracleSrc.stream', level: 3},
+  {value: 'PostgresSource', id: 'tabsdata.PostgresSource', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>credentials', id: 'tabsdata.PostgresSource.credentials', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>initial_values', id: 'tabsdata.PostgresSource.initial_values', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>query', id: 'tabsdata.PostgresSource.query', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>uri', id: 'tabsdata.PostgresSource.uri', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.PostgresSource.chunk', level: 3},
+  {value: 'PostgresSrc', id: 'tabsdata.PostgresSrc', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>chunk_size', id: 'tabsdata.PostgresSrc.chunk_size', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>conn', id: 'tabsdata.PostgresSrc.conn', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>initial_values', id: 'tabsdata.PostgresSrc.initial_values', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>loader', id: 'tabsdata.PostgresSrc.loader', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>queries', id: 'tabsdata.PostgresSrc.queries', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>schema_overrides', id: 'tabsdata.PostgresSrc.schema_overrides', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>transactional', id: 'tabsdata.PostgresSrc.transactional', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>stream()', id: 'tabsdata.PostgresSrc.stream', level: 3},
+  {value: 'S3Source', id: 'tabsdata.S3Source', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>credentials', id: 'tabsdata.S3Source.credentials', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>file_info', id: 'tabsdata.S3Source.file_info', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>format', id: 'tabsdata.S3Source.format', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>initial_last_modified', id: 'tabsdata.S3Source.initial_last_modified', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>initial_values', id: 'tabsdata.S3Source.initial_values', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>region', id: 'tabsdata.S3Source.region', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>uri', id: 'tabsdata.S3Source.uri', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-class">class</span>SupportedFormats', id: 'tabsdata.S3Source.SupportedFormats', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.S3Source.chunk', level: 3},
+  {value: 'SalesforceReportSource', id: 'tabsdata.SalesforceReportSource', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>column_name_strategy', id: 'tabsdata.SalesforceReportSource.column_name_strategy', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>credentials', id: 'tabsdata.SalesforceReportSource.credentials', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>filter', id: 'tabsdata.SalesforceReportSource.filter', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>filter_logic', id: 'tabsdata.SalesforceReportSource.filter_logic', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>find_report_by', id: 'tabsdata.SalesforceReportSource.find_report_by', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>report', id: 'tabsdata.SalesforceReportSource.report', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.SalesforceReportSource.chunk', level: 3},
+  {value: 'SalesforceSource', id: 'tabsdata.SalesforceSource', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>credentials', id: 'tabsdata.SalesforceSource.credentials', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>query', id: 'tabsdata.SalesforceSource.query', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.SalesforceSource.chunk', level: 3},
+  {value: 'Stage', id: 'tabsdata.Stage', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>use_existing_data', id: 'tabsdata.Stage.use_existing_data', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>stream()', id: 'tabsdata.Stage.stream', level: 3},
+];
+
 # Sources
 
  <a id="tabsdata.AzureSource"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>AzureSource</summary>
 
@@ -25,74 +170,6 @@ Bases: [SourcePlugin](/docs/api/module/tabsdata#tabsdata.SourcePlugin)
 Azure-file-based data inputs.
 
 **Categories:** source
-
-<a id="tabsdata.AzureSource.SupportedFormats"></a>
-### `SupportedFormats`
-
-```python
-class SupportedFormats(
-    *values,
-)
-```
-
-Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
-
-Enum for the supported formats for the AzureSource.
-
-<a id="tabsdata.AzureSource.SupportedFormats.avro"></a>
-<ResponseField name="avro" kind="attribute">
-
-</ResponseField>
-
-<a id="tabsdata.AzureSource.SupportedFormats.csv"></a>
-<ResponseField name="csv" kind="attribute">
-
-</ResponseField>
-
-<a id="tabsdata.AzureSource.SupportedFormats.log"></a>
-<ResponseField name="log" kind="attribute">
-
-</ResponseField>
-
-<a id="tabsdata.AzureSource.SupportedFormats.ndjson"></a>
-<ResponseField name="ndjson" kind="attribute">
-
-</ResponseField>
-
-<a id="tabsdata.AzureSource.SupportedFormats.parquet"></a>
-<ResponseField name="parquet" kind="attribute">
-
-</ResponseField>
-
-<a id="tabsdata.AzureSource.chunk"></a>
-#### `chunk`
-
-```python
-def chunk(
-    working_dir: str,
-)
-```
-
-Trigger the import of the data. This must be implemented in any class that
-inherits from this class unless directly implementing streaming. The method will
-receive a folder where it must store the data as parquet files, and return a
-list of the paths of the files created. This files will then be loaded and
-mapped to the dataset function in positional order, so if you want file.parquet
-to be the first argument of the dataset function, you must return it first. If
-you want a parameter to receive multiple files, return a list of the paths. For
-example, you would give the following return to provide a first argument with a
-single file and a second argument with two files:return
-[“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
-
-**Parameters:**
-
-<ParamField path="working_dir (str)">
-  The folder where the files must be stored
-</ParamField>
-
-**Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
-
-**Returns:** Union[str, Tuple[str, …], List[str]]
 
 <a id="tabsdata.AzureSource.credentials"></a>
 <ResponseField name="credentials" kind="property">
@@ -144,32 +221,48 @@ as values, all the type string.
 **Type:** The URI of the files with format
 </ResponseField>
 
-</details>
-
- <a id="tabsdata.DatabricksSource"></a>
-<details open>
-<summary>DatabricksSource</summary>
+<a id="tabsdata.AzureSource.SupportedFormats"></a>
+<ResponseField name="SupportedFormats" kind="class" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/file_inputs.py#L95">
 
 ```python
-class DatabricksSource(
-    host_url: str,
-    token: str | Secret,
-    queries: list[str] | str,
-    initial_values: dict | None = None,
-    warehouse: str | None = None,
-    warehouse_id: str | None = None,
-    **kwargs,
+class SupportedFormats(
+    *values,
 )
 ```
 
-Bases: [SourcePlugin](/docs/api/module/tabsdata#tabsdata.SourcePlugin)
+Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
-Databricks based data inputs.
+Enum for the supported formats for the AzureSource.
 
-**Categories:** source
+<a id="tabsdata.AzureSource.SupportedFormats.avro"></a>
+<ResponseField name="avro" kind="attribute">
 
-<a id="tabsdata.DatabricksSource.chunk"></a>
-#### `chunk`
+</ResponseField>
+
+<a id="tabsdata.AzureSource.SupportedFormats.csv"></a>
+<ResponseField name="csv" kind="attribute">
+
+</ResponseField>
+
+<a id="tabsdata.AzureSource.SupportedFormats.log"></a>
+<ResponseField name="log" kind="attribute">
+
+</ResponseField>
+
+<a id="tabsdata.AzureSource.SupportedFormats.ndjson"></a>
+<ResponseField name="ndjson" kind="attribute">
+
+</ResponseField>
+
+<a id="tabsdata.AzureSource.SupportedFormats.parquet"></a>
+<ResponseField name="parquet" kind="attribute">
+
+</ResponseField>
+
+</ResponseField>
+
+<a id="tabsdata.AzureSource.chunk"></a>
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/file_inputs.py#L318">
 
 ```python
 def chunk(
@@ -198,6 +291,35 @@ single file and a second argument with two files:return
 
 **Returns:** Union[str, Tuple[str, …], List[str]]
 
+</ResponseField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/file_inputs.py#L88" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.DatabricksSource"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>DatabricksSource</summary>
+
+```python
+class DatabricksSource(
+    host_url: str,
+    token: str | Secret,
+    queries: list[str] | str,
+    initial_values: dict | None = None,
+    warehouse: str | None = None,
+    warehouse_id: str | None = None,
+    **kwargs,
+)
+```
+
+Bases: [SourcePlugin](/docs/api/module/tabsdata#tabsdata.SourcePlugin)
+
+Databricks based data inputs.
+
+**Categories:** source
+
 <a id="tabsdata.DatabricksSource.host_url"></a>
 <ResponseField name="host_url" kind="property">
 
@@ -218,9 +340,44 @@ The initial values for the parameters in the SQL queries.
 
 </ResponseField>
 
+<a id="tabsdata.DatabricksSource.chunk"></a>
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-databricks/src/main/python/tabsdata/connector/databricks/_connector.py#L254">
+
+```python
+def chunk(
+    working_dir: str,
+)
+```
+
+Trigger the import of the data. This must be implemented in any class that
+inherits from this class unless directly implementing streaming. The method will
+receive a folder where it must store the data as parquet files, and return a
+list of the paths of the files created. This files will then be loaded and
+mapped to the dataset function in positional order, so if you want file.parquet
+to be the first argument of the dataset function, you must return it first. If
+you want a parameter to receive multiple files, return a list of the paths. For
+example, you would give the following return to provide a first argument with a
+single file and a second argument with two files:return
+[“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
+
+**Parameters:**
+
+<ParamField path="working_dir (str)">
+  The folder where the files must be stored
+</ParamField>
+
+**Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
+
+**Returns:** Union[str, Tuple[str, …], List[str]]
+
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-databricks/src/main/python/tabsdata/connector/databricks/_connector.py#L81" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.Db2Src"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>Db2Src</summary>
 
@@ -266,8 +423,13 @@ The SQL queries to execute to read data.
 The schema overrides for the tables being read.
 </ResponseField>
 
+<a id="tabsdata.Db2Src.transactional"></a>
+<ResponseField name="transactional" kind="property">
+Whether to use transactions for reading to ensure consistency.
+</ResponseField>
+
 <a id="tabsdata.Db2Src.stream"></a>
-#### `stream`
+<ResponseField name="stream" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/sql/db2_input.py#L220">
 
 ```python
 def stream(
@@ -285,14 +447,14 @@ Execute the query and load the results as a list of TableFrames.
 
 **Returns:** A list of TableFrames containing the query results.
 
-<a id="tabsdata.Db2Src.transactional"></a>
-<ResponseField name="transactional" kind="property">
-Whether to use transactions for reading to ensure consistency.
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/sql/db2_input.py#L43" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.GCSSource"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>GCSSource</summary>
 
@@ -311,74 +473,6 @@ Bases: [SourcePlugin](/docs/api/module/tabsdata#tabsdata.SourcePlugin)
 GCS-file-based data inputs.
 
 **Categories:** source
-
-<a id="tabsdata.GCSSource.SupportedFormats"></a>
-### `SupportedFormats`
-
-```python
-class SupportedFormats(
-    *values,
-)
-```
-
-Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
-
-Enum for the supported formats for the GCSSource.
-
-<a id="tabsdata.GCSSource.SupportedFormats.avro"></a>
-<ResponseField name="avro" kind="attribute">
-
-</ResponseField>
-
-<a id="tabsdata.GCSSource.SupportedFormats.csv"></a>
-<ResponseField name="csv" kind="attribute">
-
-</ResponseField>
-
-<a id="tabsdata.GCSSource.SupportedFormats.log"></a>
-<ResponseField name="log" kind="attribute">
-
-</ResponseField>
-
-<a id="tabsdata.GCSSource.SupportedFormats.ndjson"></a>
-<ResponseField name="ndjson" kind="attribute">
-
-</ResponseField>
-
-<a id="tabsdata.GCSSource.SupportedFormats.parquet"></a>
-<ResponseField name="parquet" kind="attribute">
-
-</ResponseField>
-
-<a id="tabsdata.GCSSource.chunk"></a>
-#### `chunk`
-
-```python
-def chunk(
-    working_dir: str,
-)
-```
-
-Trigger the import of the data. This must be implemented in any class that
-inherits from this class unless directly implementing streaming. The method will
-receive a folder where it must store the data as parquet files, and return a
-list of the paths of the files created. This files will then be loaded and
-mapped to the dataset function in positional order, so if you want file.parquet
-to be the first argument of the dataset function, you must return it first. If
-you want a parameter to receive multiple files, return a list of the paths. For
-example, you would give the following return to provide a first argument with a
-single file and a second argument with two files:return
-[“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
-
-**Parameters:**
-
-<ParamField path="working_dir (str)">
-  The folder where the files must be stored
-</ParamField>
-
-**Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
-
-**Returns:** Union[str, Tuple[str, …], List[str]]
 
 <a id="tabsdata.GCSSource.credentials"></a>
 <ResponseField name="credentials" kind="property">
@@ -430,29 +524,8 @@ as values, all the type string.
 **Type:** The URI of the files with format
 </ResponseField>
 
-</details>
-
- <a id="tabsdata.LocalFileSource"></a>
-<details open>
-<summary>LocalFileSource</summary>
-
-```python
-class LocalFileSource(
-    path: str | list[str],
-    format: str | FileFormat = None,
-    initial_last_modified: str | datetime = None,
-    file_info: str | FileInfo | None = None,
-)
-```
-
-Bases: [SourcePlugin](/docs/api/module/tabsdata#tabsdata.SourcePlugin)
-
-Local-file-based data inputs.
-
-**Categories:** source
-
-<a id="tabsdata.LocalFileSource.SupportedFormats"></a>
-### `SupportedFormats`
+<a id="tabsdata.GCSSource.SupportedFormats"></a>
+<ResponseField name="SupportedFormats" kind="class" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/file_inputs.py#L344">
 
 ```python
 class SupportedFormats(
@@ -462,35 +535,37 @@ class SupportedFormats(
 
 Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
-Enum for the supported formats for the LocalFileSource.
+Enum for the supported formats for the GCSSource.
 
-<a id="tabsdata.LocalFileSource.SupportedFormats.avro"></a>
+<a id="tabsdata.GCSSource.SupportedFormats.avro"></a>
 <ResponseField name="avro" kind="attribute">
 
 </ResponseField>
 
-<a id="tabsdata.LocalFileSource.SupportedFormats.csv"></a>
+<a id="tabsdata.GCSSource.SupportedFormats.csv"></a>
 <ResponseField name="csv" kind="attribute">
 
 </ResponseField>
 
-<a id="tabsdata.LocalFileSource.SupportedFormats.log"></a>
+<a id="tabsdata.GCSSource.SupportedFormats.log"></a>
 <ResponseField name="log" kind="attribute">
 
 </ResponseField>
 
-<a id="tabsdata.LocalFileSource.SupportedFormats.ndjson"></a>
+<a id="tabsdata.GCSSource.SupportedFormats.ndjson"></a>
 <ResponseField name="ndjson" kind="attribute">
 
 </ResponseField>
 
-<a id="tabsdata.LocalFileSource.SupportedFormats.parquet"></a>
+<a id="tabsdata.GCSSource.SupportedFormats.parquet"></a>
 <ResponseField name="parquet" kind="attribute">
 
 </ResponseField>
 
-<a id="tabsdata.LocalFileSource.chunk"></a>
-#### `chunk`
+</ResponseField>
+
+<a id="tabsdata.GCSSource.chunk"></a>
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/file_inputs.py#L566">
 
 ```python
 def chunk(
@@ -518,6 +593,32 @@ single file and a second argument with two files:return
 **Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
 
 **Returns:** Union[str, Tuple[str, …], List[str]]
+
+</ResponseField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/file_inputs.py#L337" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.LocalFileSource"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>LocalFileSource</summary>
+
+```python
+class LocalFileSource(
+    path: str | list[str],
+    format: str | FileFormat = None,
+    initial_last_modified: str | datetime = None,
+    file_info: str | FileInfo | None = None,
+)
+```
+
+Bases: [SourcePlugin](/docs/api/module/tabsdata#tabsdata.SourcePlugin)
+
+Local-file-based data inputs.
+
+**Categories:** source
 
 <a id="tabsdata.LocalFileSource.file_info"></a>
 <ResponseField name="file_info" kind="property">
@@ -560,9 +661,84 @@ The path or paths to the files to load.
  **Type:** str | list[str]
 </ResponseField>
 
+<a id="tabsdata.LocalFileSource.SupportedFormats"></a>
+<ResponseField name="SupportedFormats" kind="class" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/file_inputs.py#L592">
+
+```python
+class SupportedFormats(
+    *values,
+)
+```
+
+Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
+
+Enum for the supported formats for the LocalFileSource.
+
+<a id="tabsdata.LocalFileSource.SupportedFormats.avro"></a>
+<ResponseField name="avro" kind="attribute">
+
+</ResponseField>
+
+<a id="tabsdata.LocalFileSource.SupportedFormats.csv"></a>
+<ResponseField name="csv" kind="attribute">
+
+</ResponseField>
+
+<a id="tabsdata.LocalFileSource.SupportedFormats.log"></a>
+<ResponseField name="log" kind="attribute">
+
+</ResponseField>
+
+<a id="tabsdata.LocalFileSource.SupportedFormats.ndjson"></a>
+<ResponseField name="ndjson" kind="attribute">
+
+</ResponseField>
+
+<a id="tabsdata.LocalFileSource.SupportedFormats.parquet"></a>
+<ResponseField name="parquet" kind="attribute">
+
+</ResponseField>
+
+</ResponseField>
+
+<a id="tabsdata.LocalFileSource.chunk"></a>
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/file_inputs.py#L799">
+
+```python
+def chunk(
+    working_dir: str,
+)
+```
+
+Trigger the import of the data. This must be implemented in any class that
+inherits from this class unless directly implementing streaming. The method will
+receive a folder where it must store the data as parquet files, and return a
+list of the paths of the files created. This files will then be loaded and
+mapped to the dataset function in positional order, so if you want file.parquet
+to be the first argument of the dataset function, you must return it first. If
+you want a parameter to receive multiple files, return a list of the paths. For
+example, you would give the following return to provide a first argument with a
+single file and a second argument with two files:return
+[“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
+
+**Parameters:**
+
+<ParamField path="working_dir (str)">
+  The folder where the files must be stored
+</ParamField>
+
+**Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
+
+**Returns:** Union[str, Tuple[str, …], List[str]]
+
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/file_inputs.py#L585" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.MSSQLSource"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>MSSQLSource</summary>
 
@@ -577,25 +753,6 @@ Bases: [SourcePlugin](/docs/api/module/tabsdata#tabsdata.SourcePlugin)
 Microsoft SQL Server based data inputs.
 
 **Categories:** source
-
-<a id="tabsdata.MSSQLSource.chunk"></a>
-#### `chunk`
-
-```python
-def chunk(
-    working_dir: str,
-)
-```
-
-Execute the query and yield chunks of data.
-
-**Parameters:**
-
-<ParamField path="working_dir (str)">
-  The working directory for temporary files.
-</ParamField>
-
-**Yields:** pd.DataFrame – A chunk of data from the query result.
 
 <a id="tabsdata.MSSQLSource.connection_string"></a>
 <ResponseField name="connection_string" kind="property">
@@ -630,9 +787,33 @@ Get the SQL query or queries to execute.
 **Returns:** str | list[str]
 </ResponseField>
 
+<a id="tabsdata.MSSQLSource.chunk"></a>
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-mssql/src/main/python/tabsdata/connector/mssql/_connector.py#L214">
+
+```python
+def chunk(
+    working_dir: str,
+)
+```
+
+Execute the query and yield chunks of data.
+
+**Parameters:**
+
+<ParamField path="working_dir (str)">
+  The working directory for temporary files.
+</ParamField>
+
+**Yields:** pd.DataFrame – A chunk of data from the query result.
+
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-mssql/src/main/python/tabsdata/connector/mssql/_connector.py#L37" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.MSSQLSrc"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>MSSQLSrc</summary>
 
@@ -684,8 +865,13 @@ The SQL queries to execute to read data.
 The schema overrides for the tables being read.
 </ResponseField>
 
+<a id="tabsdata.MSSQLSrc.transactional"></a>
+<ResponseField name="transactional" kind="property">
+Whether to use transactions for reading to ensure consistency.
+</ResponseField>
+
 <a id="tabsdata.MSSQLSrc.stream"></a>
-#### `stream`
+<ResponseField name="stream" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-mssql/src/main/python/tabsdata/connector/mssql/input/mssql_input.py#L207">
 
 ```python
 def stream(
@@ -703,14 +889,14 @@ Execute the query and load the results as a list of TableFrames.
 
 **Returns:** A list of TableFrames containing the query results.
 
-<a id="tabsdata.MSSQLSrc.transactional"></a>
-<ResponseField name="transactional" kind="property">
-Whether to use transactions for reading to ensure consistency.
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-mssql/src/main/python/tabsdata/connector/mssql/input/mssql_input.py#L38" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.MariaDBSource"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>MariaDBSource</summary>
 
@@ -725,36 +911,6 @@ Bases: [SourcePlugin](/docs/api/module/tabsdata#tabsdata.SourcePlugin)
 MariaDB-based data inputs.
 
 **Categories:** source
-
-<a id="tabsdata.MariaDBSource.chunk"></a>
-#### `chunk`
-
-```python
-def chunk(
-    working_dir: str,
-)
-```
-
-Trigger the import of the data. This must be implemented in any class that
-inherits from this class unless directly implementing streaming. The method will
-receive a folder where it must store the data as parquet files, and return a
-list of the paths of the files created. This files will then be loaded and
-mapped to the dataset function in positional order, so if you want file.parquet
-to be the first argument of the dataset function, you must return it first. If
-you want a parameter to receive multiple files, return a list of the paths. For
-example, you would give the following return to provide a first argument with a
-single file and a second argument with two files:return
-[“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
-
-**Parameters:**
-
-<ParamField path="working_dir (str)">
-  The folder where the files must be stored
-</ParamField>
-
-**Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
-
-**Returns:** Union[str, Tuple[str, …], List[str]]
 
 <a id="tabsdata.MariaDBSource.credentials"></a>
 <ResponseField name="credentials" kind="property">
@@ -785,9 +941,44 @@ The URI of the database where the data is located.
  **Type:** str
 </ResponseField>
 
+<a id="tabsdata.MariaDBSource.chunk"></a>
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/sql_inputs.py#L206">
+
+```python
+def chunk(
+    working_dir: str,
+)
+```
+
+Trigger the import of the data. This must be implemented in any class that
+inherits from this class unless directly implementing streaming. The method will
+receive a folder where it must store the data as parquet files, and return a
+list of the paths of the files created. This files will then be loaded and
+mapped to the dataset function in positional order, so if you want file.parquet
+to be the first argument of the dataset function, you must return it first. If
+you want a parameter to receive multiple files, return a list of the paths. For
+example, you would give the following return to provide a first argument with a
+single file and a second argument with two files:return
+[“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
+
+**Parameters:**
+
+<ParamField path="working_dir (str)">
+  The folder where the files must be stored
+</ParamField>
+
+**Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
+
+**Returns:** Union[str, Tuple[str, …], List[str]]
+
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/sql_inputs.py#L51" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.MariaDBSrc"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>MariaDBSrc</summary>
 
@@ -839,8 +1030,13 @@ The SQL queries to execute to read data.
 
 </ResponseField>
 
+<a id="tabsdata.MariaDBSrc.transactional"></a>
+<ResponseField name="transactional" kind="property">
+Whether to use transactions for reading to ensure consistency.
+</ResponseField>
+
 <a id="tabsdata.MariaDBSrc.stream"></a>
-#### `stream`
+<ResponseField name="stream" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/sql/mariadb_input.py#L190">
 
 ```python
 def stream(
@@ -858,14 +1054,14 @@ Execute the query and load the results as a list of TableFrames.
 
 **Returns:** A list of TableFrames containing the query results.
 
-<a id="tabsdata.MariaDBSrc.transactional"></a>
-<ResponseField name="transactional" kind="property">
-Whether to use transactions for reading to ensure consistency.
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/sql/mariadb_input.py#L41" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.MySQLSource"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>MySQLSource</summary>
 
@@ -880,36 +1076,6 @@ Bases: [SourcePlugin](/docs/api/module/tabsdata#tabsdata.SourcePlugin)
 MySQL-based data inputs.
 
 **Categories:** source
-
-<a id="tabsdata.MySQLSource.chunk"></a>
-#### `chunk`
-
-```python
-def chunk(
-    working_dir: str,
-)
-```
-
-Trigger the import of the data. This must be implemented in any class that
-inherits from this class unless directly implementing streaming. The method will
-receive a folder where it must store the data as parquet files, and return a
-list of the paths of the files created. This files will then be loaded and
-mapped to the dataset function in positional order, so if you want file.parquet
-to be the first argument of the dataset function, you must return it first. If
-you want a parameter to receive multiple files, return a list of the paths. For
-example, you would give the following return to provide a first argument with a
-single file and a second argument with two files:return
-[“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
-
-**Parameters:**
-
-<ParamField path="working_dir (str)">
-  The folder where the files must be stored
-</ParamField>
-
-**Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
-
-**Returns:** Union[str, Tuple[str, …], List[str]]
 
 <a id="tabsdata.MySQLSource.credentials"></a>
 <ResponseField name="credentials" kind="property">
@@ -940,9 +1106,44 @@ The URI of the database where the data is located.
  **Type:** str
 </ResponseField>
 
+<a id="tabsdata.MySQLSource.chunk"></a>
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/sql_inputs.py#L376">
+
+```python
+def chunk(
+    working_dir: str,
+)
+```
+
+Trigger the import of the data. This must be implemented in any class that
+inherits from this class unless directly implementing streaming. The method will
+receive a folder where it must store the data as parquet files, and return a
+list of the paths of the files created. This files will then be loaded and
+mapped to the dataset function in positional order, so if you want file.parquet
+to be the first argument of the dataset function, you must return it first. If
+you want a parameter to receive multiple files, return a list of the paths. For
+example, you would give the following return to provide a first argument with a
+single file and a second argument with two files:return
+[“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
+
+**Parameters:**
+
+<ParamField path="working_dir (str)">
+  The folder where the files must be stored
+</ParamField>
+
+**Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
+
+**Returns:** Union[str, Tuple[str, …], List[str]]
+
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/sql_inputs.py#L222" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.MySQLSrc"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>MySQLSrc</summary>
 
@@ -994,8 +1195,13 @@ The SQL queries to execute to read data.
 The schema overrides for the tables being read.
 </ResponseField>
 
+<a id="tabsdata.MySQLSrc.transactional"></a>
+<ResponseField name="transactional" kind="property">
+Whether to use transactions for reading to ensure consistency.
+</ResponseField>
+
 <a id="tabsdata.MySQLSrc.stream"></a>
-#### `stream`
+<ResponseField name="stream" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/sql/mysql_input.py#L205">
 
 ```python
 def stream(
@@ -1013,14 +1219,14 @@ Execute the query and load the results as a list of TableFrames.
 
 **Returns:** A list of TableFrames containing the query results.
 
-<a id="tabsdata.MySQLSrc.transactional"></a>
-<ResponseField name="transactional" kind="property">
-Whether to use transactions for reading to ensure consistency.
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/sql/mysql_input.py#L41" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.OracleSource"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>OracleSource</summary>
 
@@ -1035,36 +1241,6 @@ Bases: [SourcePlugin](/docs/api/module/tabsdata#tabsdata.SourcePlugin)
 Oracle-based data inputs.
 
 **Categories:** source
-
-<a id="tabsdata.OracleSource.chunk"></a>
-#### `chunk`
-
-```python
-def chunk(
-    working_dir: str,
-)
-```
-
-Trigger the import of the data. This must be implemented in any class that
-inherits from this class unless directly implementing streaming. The method will
-receive a folder where it must store the data as parquet files, and return a
-list of the paths of the files created. This files will then be loaded and
-mapped to the dataset function in positional order, so if you want file.parquet
-to be the first argument of the dataset function, you must return it first. If
-you want a parameter to receive multiple files, return a list of the paths. For
-example, you would give the following return to provide a first argument with a
-single file and a second argument with two files:return
-[“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
-
-**Parameters:**
-
-<ParamField path="working_dir (str)">
-  The folder where the files must be stored
-</ParamField>
-
-**Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
-
-**Returns:** Union[str, Tuple[str, …], List[str]]
 
 <a id="tabsdata.OracleSource.credentials"></a>
 <ResponseField name="credentials" kind="property">
@@ -1095,9 +1271,44 @@ The URI of the database where the data is located.
  **Type:** str
 </ResponseField>
 
+<a id="tabsdata.OracleSource.chunk"></a>
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/sql_inputs.py#L544">
+
+```python
+def chunk(
+    working_dir: str,
+)
+```
+
+Trigger the import of the data. This must be implemented in any class that
+inherits from this class unless directly implementing streaming. The method will
+receive a folder where it must store the data as parquet files, and return a
+list of the paths of the files created. This files will then be loaded and
+mapped to the dataset function in positional order, so if you want file.parquet
+to be the first argument of the dataset function, you must return it first. If
+you want a parameter to receive multiple files, return a list of the paths. For
+example, you would give the following return to provide a first argument with a
+single file and a second argument with two files:return
+[“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
+
+**Parameters:**
+
+<ParamField path="working_dir (str)">
+  The folder where the files must be stored
+</ParamField>
+
+**Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
+
+**Returns:** Union[str, Tuple[str, …], List[str]]
+
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/sql_inputs.py#L392" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.OracleSrc"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>OracleSrc</summary>
 
@@ -1149,8 +1360,13 @@ The SQL queries to execute to read data.
 The schema overrides for the tables being read.
 </ResponseField>
 
+<a id="tabsdata.OracleSrc.transactional"></a>
+<ResponseField name="transactional" kind="property">
+Whether to use transactions for reading to ensure consistency.
+</ResponseField>
+
 <a id="tabsdata.OracleSrc.stream"></a>
-#### `stream`
+<ResponseField name="stream" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/sql/oracle_input.py#L204">
 
 ```python
 def stream(
@@ -1168,14 +1384,14 @@ Execute the query and load the results as a list of TableFrames.
 
 **Returns:** A list of TableFrames containing the query results.
 
-<a id="tabsdata.OracleSrc.transactional"></a>
-<ResponseField name="transactional" kind="property">
-Whether to use transactions for reading to ensure consistency.
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/sql/oracle_input.py#L40" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.PostgresSource"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>PostgresSource</summary>
 
@@ -1190,36 +1406,6 @@ Bases: [SourcePlugin](/docs/api/module/tabsdata#tabsdata.SourcePlugin)
 Postgres-based data inputs.
 
 **Categories:** source
-
-<a id="tabsdata.PostgresSource.chunk"></a>
-#### `chunk`
-
-```python
-def chunk(
-    working_dir: str,
-)
-```
-
-Trigger the import of the data. This must be implemented in any class that
-inherits from this class unless directly implementing streaming. The method will
-receive a folder where it must store the data as parquet files, and return a
-list of the paths of the files created. This files will then be loaded and
-mapped to the dataset function in positional order, so if you want file.parquet
-to be the first argument of the dataset function, you must return it first. If
-you want a parameter to receive multiple files, return a list of the paths. For
-example, you would give the following return to provide a first argument with a
-single file and a second argument with two files:return
-[“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
-
-**Parameters:**
-
-<ParamField path="working_dir (str)">
-  The folder where the files must be stored
-</ParamField>
-
-**Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
-
-**Returns:** Union[str, Tuple[str, …], List[str]]
 
 <a id="tabsdata.PostgresSource.credentials"></a>
 <ResponseField name="credentials" kind="property">
@@ -1250,9 +1436,44 @@ The URI of the database where the data is located.
  **Type:** str
 </ResponseField>
 
+<a id="tabsdata.PostgresSource.chunk"></a>
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/sql_inputs.py#L715">
+
+```python
+def chunk(
+    working_dir: str,
+)
+```
+
+Trigger the import of the data. This must be implemented in any class that
+inherits from this class unless directly implementing streaming. The method will
+receive a folder where it must store the data as parquet files, and return a
+list of the paths of the files created. This files will then be loaded and
+mapped to the dataset function in positional order, so if you want file.parquet
+to be the first argument of the dataset function, you must return it first. If
+you want a parameter to receive multiple files, return a list of the paths. For
+example, you would give the following return to provide a first argument with a
+single file and a second argument with two files:return
+[“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
+
+**Parameters:**
+
+<ParamField path="working_dir (str)">
+  The folder where the files must be stored
+</ParamField>
+
+**Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
+
+**Returns:** Union[str, Tuple[str, …], List[str]]
+
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/sql_inputs.py#L560" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.PostgresSrc"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>PostgresSrc</summary>
 
@@ -1304,8 +1525,13 @@ The SQL queries to execute to read data.
 The schema overrides for the tables being read.
 </ResponseField>
 
+<a id="tabsdata.PostgresSrc.transactional"></a>
+<ResponseField name="transactional" kind="property">
+Whether to use transactions for reading to ensure consistency.
+</ResponseField>
+
 <a id="tabsdata.PostgresSrc.stream"></a>
-#### `stream`
+<ResponseField name="stream" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/sql/postgres_input.py#L205">
 
 ```python
 def stream(
@@ -1323,14 +1549,14 @@ Execute the query and load the results as a list of TableFrames.
 
 **Returns:** A list of TableFrames containing the query results.
 
-<a id="tabsdata.PostgresSrc.transactional"></a>
-<ResponseField name="transactional" kind="property">
-Whether to use transactions for reading to ensure consistency.
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/sql/postgres_input.py#L41" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.S3Source"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>S3Source</summary>
 
@@ -1350,74 +1576,6 @@ Bases: [SourcePlugin](/docs/api/module/tabsdata#tabsdata.SourcePlugin)
 S3-file-based data inputs.
 
 **Categories:** source
-
-<a id="tabsdata.S3Source.SupportedFormats"></a>
-### `SupportedFormats`
-
-```python
-class SupportedFormats(
-    *values,
-)
-```
-
-Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
-
-Enum for the supported formats for the S3Source.
-
-<a id="tabsdata.S3Source.SupportedFormats.avro"></a>
-<ResponseField name="avro" kind="attribute">
-
-</ResponseField>
-
-<a id="tabsdata.S3Source.SupportedFormats.csv"></a>
-<ResponseField name="csv" kind="attribute">
-
-</ResponseField>
-
-<a id="tabsdata.S3Source.SupportedFormats.log"></a>
-<ResponseField name="log" kind="attribute">
-
-</ResponseField>
-
-<a id="tabsdata.S3Source.SupportedFormats.ndjson"></a>
-<ResponseField name="ndjson" kind="attribute">
-
-</ResponseField>
-
-<a id="tabsdata.S3Source.SupportedFormats.parquet"></a>
-<ResponseField name="parquet" kind="attribute">
-
-</ResponseField>
-
-<a id="tabsdata.S3Source.chunk"></a>
-#### `chunk`
-
-```python
-def chunk(
-    working_dir: str,
-)
-```
-
-Trigger the import of the data. This must be implemented in any class that
-inherits from this class unless directly implementing streaming. The method will
-receive a folder where it must store the data as parquet files, and return a
-list of the paths of the files created. This files will then be loaded and
-mapped to the dataset function in positional order, so if you want file.parquet
-to be the first argument of the dataset function, you must return it first. If
-you want a parameter to receive multiple files, return a list of the paths. For
-example, you would give the following return to provide a first argument with a
-single file and a second argument with two files:return
-[“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
-
-**Parameters:**
-
-<ParamField path="working_dir (str)">
-  The folder where the files must be stored
-</ParamField>
-
-**Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
-
-**Returns:** Union[str, Tuple[str, …], List[str]]
 
 <a id="tabsdata.S3Source.credentials"></a>
 <ResponseField name="credentials" kind="property">
@@ -1476,35 +1634,48 @@ The region where the S3 bucket is located.
 **Type:** The URI of the files with format
 </ResponseField>
 
-</details>
-
- <a id="tabsdata.SalesforceReportSource"></a>
-<details open>
-<summary>SalesforceReportSource</summary>
+<a id="tabsdata.S3Source.SupportedFormats"></a>
+<ResponseField name="SupportedFormats" kind="class" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/file_inputs.py#L824">
 
 ```python
-class SalesforceReportSource(
-    credentials: SalesforceCredentials,
-    report: str | list[str],
-    column_name_strategy: Literal['columnName', 'label'],
-    find_report_by: Literal['id', 'name'] = None,
-    filter: tuple[str, str, str] | list[tuple[str, str, str]] = None,
-    filter_logic: str = None,
-    instance_url: str = None,
-    last_modified_column: str = None,
-    initial_last_modified: str = None,
-    **kwargs,
+class SupportedFormats(
+    *values,
 )
 ```
 
-Bases: [SourcePlugin](/docs/api/module/tabsdata#tabsdata.SourcePlugin)
+Bases: [Enum](https://docs.python.org/3/library/enum.html#enum.Enum)
 
-Salesforce Reports based data inputs.
+Enum for the supported formats for the S3Source.
 
-**Categories:** source
+<a id="tabsdata.S3Source.SupportedFormats.avro"></a>
+<ResponseField name="avro" kind="attribute">
 
-<a id="tabsdata.SalesforceReportSource.chunk"></a>
-#### `chunk`
+</ResponseField>
+
+<a id="tabsdata.S3Source.SupportedFormats.csv"></a>
+<ResponseField name="csv" kind="attribute">
+
+</ResponseField>
+
+<a id="tabsdata.S3Source.SupportedFormats.log"></a>
+<ResponseField name="log" kind="attribute">
+
+</ResponseField>
+
+<a id="tabsdata.S3Source.SupportedFormats.ndjson"></a>
+<ResponseField name="ndjson" kind="attribute">
+
+</ResponseField>
+
+<a id="tabsdata.S3Source.SupportedFormats.parquet"></a>
+<ResponseField name="parquet" kind="attribute">
+
+</ResponseField>
+
+</ResponseField>
+
+<a id="tabsdata.S3Source.chunk"></a>
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/file_inputs.py#L1085">
 
 ```python
 def chunk(
@@ -1532,6 +1703,38 @@ single file and a second argument with two files:return
 **Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
 
 **Returns:** Union[str, Tuple[str, …], List[str]]
+
+</ResponseField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/file_inputs.py#L817" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.SalesforceReportSource"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>SalesforceReportSource</summary>
+
+```python
+class SalesforceReportSource(
+    credentials: SalesforceCredentials,
+    report: str | list[str],
+    column_name_strategy: Literal['columnName', 'label'],
+    find_report_by: Literal['id', 'name'] = None,
+    filter: tuple[str, str, str] | list[tuple[str, str, str]] = None,
+    filter_logic: str = None,
+    instance_url: str = None,
+    last_modified_column: str = None,
+    initial_last_modified: str = None,
+    **kwargs,
+)
+```
+
+Bases: [SourcePlugin](/docs/api/module/tabsdata#tabsdata.SourcePlugin)
+
+Salesforce Reports based data inputs.
+
+**Categories:** source
 
 <a id="tabsdata.SalesforceReportSource.column_name_strategy"></a>
 <ResponseField name="column_name_strategy" kind="property">
@@ -1563,31 +1766,8 @@ single file and a second argument with two files:return
 
 </ResponseField>
 
-</details>
-
- <a id="tabsdata.SalesforceSource"></a>
-<details open>
-<summary>SalesforceSource</summary>
-
-```python
-class SalesforceSource(
-    credentials: SalesforceCredentials,
-    query: str | list[str],
-    instance_url: str = None,
-    include_deleted: bool = False,
-    initial_last_modified: str = None,
-    **kwargs,
-)
-```
-
-Bases: [SourcePlugin](/docs/api/module/tabsdata#tabsdata.SourcePlugin)
-
-Salesforce (SOQL query) based data inputs (not Salesforce Reports).
-
-**Categories:** source
-
-<a id="tabsdata.SalesforceSource.chunk"></a>
-#### `chunk`
+<a id="tabsdata.SalesforceReportSource.chunk"></a>
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-salesforce/src/main/python/tabsdata/connector/salesforce/_connector.py#L634">
 
 ```python
 def chunk(
@@ -1616,6 +1796,34 @@ single file and a second argument with two files:return
 
 **Returns:** Union[str, Tuple[str, …], List[str]]
 
+</ResponseField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-salesforce/src/main/python/tabsdata/connector/salesforce/_connector.py#L352" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.SalesforceSource"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>SalesforceSource</summary>
+
+```python
+class SalesforceSource(
+    credentials: SalesforceCredentials,
+    query: str | list[str],
+    instance_url: str = None,
+    include_deleted: bool = False,
+    initial_last_modified: str = None,
+    **kwargs,
+)
+```
+
+Bases: [SourcePlugin](/docs/api/module/tabsdata#tabsdata.SourcePlugin)
+
+Salesforce (SOQL query) based data inputs (not Salesforce Reports).
+
+**Categories:** source
+
 <a id="tabsdata.SalesforceSource.credentials"></a>
 <ResponseField name="credentials" kind="property">
 
@@ -1626,9 +1834,44 @@ single file and a second argument with two files:return
 
 </ResponseField>
 
+<a id="tabsdata.SalesforceSource.chunk"></a>
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-salesforce/src/main/python/tabsdata/connector/salesforce/_connector.py#L271">
+
+```python
+def chunk(
+    working_dir: str,
+)
+```
+
+Trigger the import of the data. This must be implemented in any class that
+inherits from this class unless directly implementing streaming. The method will
+receive a folder where it must store the data as parquet files, and return a
+list of the paths of the files created. This files will then be loaded and
+mapped to the dataset function in positional order, so if you want file.parquet
+to be the first argument of the dataset function, you must return it first. If
+you want a parameter to receive multiple files, return a list of the paths. For
+example, you would give the following return to provide a first argument with a
+single file and a second argument with two files:return
+[“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
+
+**Parameters:**
+
+<ParamField path="working_dir (str)">
+  The folder where the files must be stored
+</ParamField>
+
+**Returns:** The path of the file(s) created, inthe order they must be mapped to the dataset function
+
+**Returns:** Union[str, Tuple[str, …], List[str]]
+
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/connectors/python/tabsdata-salesforce/src/main/python/tabsdata/connector/salesforce/_connector.py#L159" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.Stage"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>Stage</summary>
 
@@ -1644,8 +1887,13 @@ Inputs that have been placed in a stage, usually from a StageTrigger.
 
 **Categories:** source
 
+<a id="tabsdata.Stage.use_existing_data"></a>
+<ResponseField name="use_existing_data" kind="property">
+
+</ResponseField>
+
 <a id="tabsdata.Stage.stream"></a>
-#### `stream`
+<ResponseField name="stream" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/stage_input.py#L106">
 
 ```python
 def stream(
@@ -1653,9 +1901,8 @@ def stream(
 )
 ```
 
-<a id="tabsdata.Stage.use_existing_data"></a>
-<ResponseField name="use_existing_data" kind="property">
-
 </ResponseField>
 
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/inputs/stage_input.py#L65" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>

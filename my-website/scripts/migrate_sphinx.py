@@ -268,6 +268,15 @@ def sig_to_type(dt):
     return ''
 
 
+def sig_to_source(dt):
+    """Extract the GitHub source URL from the viewcode link in a dt, if present."""
+    vc = dt.find('span', class_='viewcode-link')
+    if vc:
+        parent_a = vc.find_parent('a')
+        return parent_a.get('href', '') if parent_a else ''
+    return ''
+
+
 def field_list_to_mdx(dl):
     """Convert <dl class="field-list"> to ParamField components or plain text."""
     parts = []
@@ -360,10 +369,18 @@ def api_entry_to_mdx(dl, depth=0):
         return ''
 
     classes = dl.get('class', [])
+
+    # Skip top-level methods that have a class prefix (e.g. DestinationPlugin.chunk)
+    # They are duplicates of methods already rendered nested inside the class accordion
+    if depth == 0 and 'method' in classes:
+        if dt.find('span', class_='descclassname'):
+            return ''
+
     anchor_id = dt.get('id', '')
     anchor = f'<a id="{anchor_id}"></a>\n' if anchor_id else ''
     name_only = sig_to_text(dt).split('(')[0].strip()
     code_block = sig_to_code_block(dt, classes)
+    source_url = sig_to_source(dt)
 
     # Properties / attributes nested inside a class → <ResponseField>
     # Top-level module attributes (type aliases etc.) → accordion like any other entry
@@ -375,10 +392,11 @@ def api_entry_to_mdx(dl, depth=0):
         return f'{anchor}<ResponseField name="{name_only}"{type_attr} kind="{kind}">\n{content}\n</ResponseField>\n\n'
 
     # Build body for classes/functions/methods
-    # Keep prose, field-lists, and nested py entries in document order
+    # Group nested entries by kind: properties/attributes first, then methods/classes
     prose_parts = []
     field_parts = []
-    nested_parts = []
+    nested_prop_parts = []   # property / attribute
+    nested_method_parts = [] # method / function / class / everything else
     needs_param_import = False
 
     if dd:
@@ -391,13 +409,18 @@ def api_entry_to_mdx(dl, depth=0):
                     needs_param_import = True
                 field_parts.append(fp)
             elif child.name == 'dl' and 'py' in child.get('class', []):
-                nested_parts.append(api_entry_to_mdx(child, depth=depth + 1))
+                child_classes = child.get('class', [])
+                entry_mdx = api_entry_to_mdx(child, depth=depth + 1)
+                if 'property' in child_classes or 'attribute' in child_classes:
+                    nested_prop_parts.append(entry_mdx)
+                else:
+                    nested_method_parts.append(entry_mdx)
             else:
                 prose_parts.append(element_to_mdx(child))
 
     prose = ''.join(prose_parts).strip()
     fields = ''.join(field_parts)
-    nested = ''.join(nested_parts)
+    nested = ''.join(nested_prop_parts) + ''.join(nested_method_parts)
     inner = code_block
     if prose:
         inner += prose + '\n\n'
@@ -406,15 +429,18 @@ def api_entry_to_mdx(dl, depth=0):
     if nested:
         inner += nested
 
-    # Top-level entries → <details open>
+    source_attr = f' source="{source_url}"' if source_url else ''
+
+    # Top-level entries → <details open> wrapped so source link sits outside <summary>
     if depth == 0:
-        result = f'{anchor}<details open>\n<summary>{name_only}</summary>\n\n{inner}</details>\n\n'
-    # Nested classes → ### heading
+        ext_source = f'\n<a class="entry-source-link" href="{source_url}" target="_blank" rel="noopener noreferrer">View source ↗</a>' if source_url else ''
+        result = f'{anchor}<div class="api-entry-wrap">\n<details open>\n<summary>{name_only}</summary>\n\n{inner}</details>{ext_source}\n</div>\n\n'
+    # Nested classes → ResponseField card with class badge
     elif 'class' in classes:
-        result = f'{anchor}### `{name_only}`\n\n{inner}'
-    # Nested methods/functions → #### heading
+        result = f'{anchor}<ResponseField name="{name_only}" kind="class"{source_attr}>\n\n{inner}\n</ResponseField>\n\n'
+    # Nested methods/functions → ResponseField card with method badge
     else:
-        result = f'{anchor}#### `{name_only}`\n\n{inner}'
+        result = f'{anchor}<ResponseField name="{name_only}" kind="method"{source_attr}>\n\n{inner}\n</ResponseField>\n\n'
 
     if needs_param_import:
         result = "import { ParamField, ResponseField } from '@site/src/components/ApiField';\n\n" + result
@@ -543,6 +569,76 @@ def element_to_mdx(el, depth=0):
     return ''.join(element_to_mdx(c) for c in el.children)
 
 
+def _toc_kind(classes):
+    for k in ('property', 'attribute', 'method', 'function', 'class'):
+        if k in classes:
+            return k
+    return None
+
+
+def _toc_entry(dl, level):
+    """Build a single TOC dict for a dl.py element, or None to skip."""
+    classes = dl.get('class', [])
+    dt = dl.find('dt', recursive=False)
+    if not dt:
+        return None
+    anchor_id = dt.get('id', '')
+    if not anchor_id:
+        return None
+    name_only = sig_to_text(dt).split('(')[0].strip()
+    is_callable = 'method' in classes or 'function' in classes
+    label = name_only + '()' if is_callable else name_only
+    kind = _toc_kind(classes)
+    if kind and level > 2:
+        badge = f'<span class="toc-kind-badge toc-kind-{kind}">{kind}</span>'
+        value = f'{badge}{label}'
+    else:
+        value = label
+    return {'value': value, 'id': anchor_id, 'level': level}
+
+
+def collect_api_toc(article):
+    """Return TOC entries mirroring the page order: top-level classes at level 2,
+    nested entries at level 3 grouped as properties/attributes first, then the rest."""
+    toc_entries = []
+
+    for dl in article.find_all('dl', class_='py'):
+        # Only top-level entries (no ancestor dl.py)
+        if any(p.name == 'dl' and 'py' in (p.get('class') or []) for p in dl.parents):
+            continue
+        classes = dl.get('class', [])
+        dt = dl.find('dt', recursive=False)
+        if not dt:
+            continue
+        # Skip duplicate top-level methods with class prefix
+        if 'method' in classes and dt.find('span', class_='descclassname'):
+            continue
+
+        entry = _toc_entry(dl, level=2)
+        if not entry:
+            continue
+        toc_entries.append(entry)
+
+        # Collect nested entries grouped: props/attributes first, then the rest
+        dd = dl.find('dd', recursive=False)
+        if not dd:
+            continue
+        props, others = [], []
+        for child_dl in dd.find_all('dl', class_='py', recursive=False):
+            child_entry = _toc_entry(child_dl, level=3)
+            if not child_entry:
+                continue
+            child_classes = child_dl.get('class', [])
+            if 'property' in child_classes or 'attribute' in child_classes:
+                props.append(child_entry)
+            else:
+                others.append(child_entry)
+        toc_entries.extend(props)
+        toc_entries.extend(others)
+
+    return toc_entries
+
+
 def html_file_to_mdx(html_path, title=None):
     """Parse a Sphinx HTML file and return MDX string."""
     with open(html_path, encoding='utf-8') as f:
@@ -583,7 +679,19 @@ def html_file_to_mdx(html_path, title=None):
         imports.append(tabs_import)
 
     import_block = '\n\n'.join(imports) + '\n\n' if imports else ''
-    return fm + import_block + body.strip() + '\n'
+
+    # Build custom TOC export for API pages (makes properties/methods appear in "On this page")
+    toc_entries = collect_api_toc(article)
+    toc_export = ''
+    if toc_entries:
+        lines = ['export const toc = [']
+        for e in toc_entries:
+            val = e['value'].replace("'", "\\'")
+            lines.append(f"  {{value: '{val}', id: '{e['id']}', level: {e['level']}}},")
+        lines.append('];\n')
+        toc_export = '\n'.join(lines) + '\n'
+
+    return fm + import_block + toc_export + body.strip() + '\n'
 
 
 # ---------------------------------------------------------------------------

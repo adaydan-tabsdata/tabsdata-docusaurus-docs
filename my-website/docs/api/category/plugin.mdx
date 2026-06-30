@@ -4,9 +4,21 @@ title: "Plugins"
 
 import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
+export const toc = [
+  {value: 'DestinationPlugin', id: 'tabsdata.DestinationPlugin', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.DestinationPlugin.chunk', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>stream()', id: 'tabsdata.DestinationPlugin.stream', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>write()', id: 'tabsdata.DestinationPlugin.write', level: 3},
+  {value: 'SourcePlugin', id: 'tabsdata.SourcePlugin', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-property">property</span>initial_values', id: 'tabsdata.SourcePlugin.initial_values', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>chunk()', id: 'tabsdata.SourcePlugin.chunk', level: 3},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>stream()', id: 'tabsdata.SourcePlugin.stream', level: 3},
+];
+
 # Plugins
 
  <a id="tabsdata.DestinationPlugin"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>DestinationPlugin</summary>
 
@@ -25,7 +37,7 @@ and must store it in the desired location.
 **Categories:** plugin
 
 <a id="tabsdata.DestinationPlugin.chunk"></a>
-#### `chunk`
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/plugin.py#L404">
 
 ```python
 def chunk(
@@ -54,8 +66,10 @@ the execution of the plugin, not the final destination of the data)
 
 **Returns:** A list of the intermediate files created
 
+</ResponseField>
+
 <a id="tabsdata.DestinationPlugin.stream"></a>
-#### `stream`
+<ResponseField name="stream" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/plugin.py#L384">
 
 ```python
 def stream(
@@ -84,8 +98,10 @@ the execution of the plugin, not the final destination of the data)
 
 **Returns:** None
 
+</ResponseField>
+
 <a id="tabsdata.DestinationPlugin.write"></a>
-#### `write`
+<ResponseField name="write" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/plugin.py#L429">
 
 ```python
 def write(
@@ -103,9 +119,14 @@ should be of an appropriate size.
   The file or files to be stored in the final destination.
 </ParamField>
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/plugin.py#L298" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
 
  <a id="tabsdata.SourcePlugin"></a>
+<div class="api-entry-wrap">
 <details open>
 <summary>SourcePlugin</summary>
 
@@ -129,8 +150,20 @@ return [“file1.parquet”, [“file2.parquet”, “file3.parquet”]]
 
 **Categories:** plugin
 
+<a id="tabsdata.SourcePlugin.initial_values"></a>
+<ResponseField name="initial_values" kind="property">
+Return a dictionary with the initial values to be stored after execution of
+the plugin. They will be accessible in the next execution of the plugin.
+The dictionary must have the parameter names as keys and the initial values
+as values, all the type string.
+
+ **Returns:** A dictionary with the initial values of the parameters of the plugin.
+
+**Returns:** dict
+</ResponseField>
+
 <a id="tabsdata.SourcePlugin.chunk"></a>
-#### `chunk`
+<ResponseField name="chunk" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/plugin.py#L234">
 
 ```python
 def chunk(
@@ -159,20 +192,10 @@ single file and a second argument with two files:return
 
 **Returns:** Union[str, Tuple[str, …], List[str]]
 
-<a id="tabsdata.SourcePlugin.initial_values"></a>
-<ResponseField name="initial_values" kind="property">
-Return a dictionary with the initial values to be stored after execution of
-the plugin. They will be accessible in the next execution of the plugin.
-The dictionary must have the parameter names as keys and the initial values
-as values, all the type string.
-
- **Returns:** A dictionary with the initial values of the parameters of the plugin.
-
-**Returns:** dict
 </ResponseField>
 
 <a id="tabsdata.SourcePlugin.stream"></a>
-#### `stream`
+<ResponseField name="stream" kind="method" source="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/plugin.py#L176">
 
 ```python
 def stream(
@@ -180,4 +203,8 @@ def stream(
 )
 ```
 
+</ResponseField>
+
 </details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/_io/plugin.py#L39" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
