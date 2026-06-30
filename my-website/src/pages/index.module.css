@@ -1,0 +1,131 @@
+.main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+/* Hero */
+.hero {
+  padding: 2rem 0 2.5rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  margin-bottom: 2.5rem;
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--ifm-color-primary);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.heroTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--ifm-heading-color);
+}
+
+.heroTagline {
+  font-size: 1rem;
+  color: var(--ifm-color-emphasis-700);
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.heroBody {
+  font-size: 0.95rem;
+  color: var(--ifm-color-emphasis-600);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* Sections */
+.section {
+  margin-bottom: 2.5rem;
+}
+
+.sectionTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--ifm-heading-color);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Start card — full width */
+.startCard .card {
+  grid-column: 1 / -1;
+}
+
+/* Card */
+.card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  text-decoration: none !important;
+  color: inherit !important;
+  position: relative;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  background: var(--ifm-background-surface-color);
+}
+
+.card:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+  text-decoration: none !important;
+}
+
+.cardIcon {
+  font-size: 1.1rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 6px;
+  background: var(--ifm-color-emphasis-100);
+  font-style: normal;
+}
+
+.cardBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.cardTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ifm-heading-color);
+  margin-bottom: 0.2rem;
+}
+
+.cardDesc {
+  font-size: 0.82rem;
+  color: var(--ifm-color-emphasis-600);
+  line-height: 1.4;
+}
+
+.cardArrow {
+  font-size: 0.75rem;
+  color: var(--ifm-color-emphasis-400);
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
