@@ -414,6 +414,7 @@
   display: flex;
   padding: 0 16px;
   border-bottom: 1px solid var(--pd-tab-border);
+  flex-shrink: 0;
 }
 
 .detailTab {
@@ -431,11 +432,50 @@
 .detailTab:hover { color: var(--pd-text-muted); }
 .detailTabActive { color: var(--pd-tab-active); border-bottom-color: #1a6eff; }
 
+/* detailBodyRow: flex row containing main content + optional version sidebar */
+.detailBodyRow {
+  display: flex;
+  min-height: 0;
+}
+
+.detailMain {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+
 .detailBody {
-  padding: 13px 16px 16px;
+  padding: 18px 20px 24px;
   min-height: 100px;
-  max-height: 220px;
-  overflow-y: auto;
+  overflow-y: visible;
+}
+
+.sectionHeading {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--pd-text-primary);
+  margin: 0 0 6px;
+  line-height: 1.2;
+}
+
+.sectionDesc {
+  font-size: 12px;
+  color: var(--pd-text-muted);
+  margin: 0 0 14px;
+  line-height: 1.55;
+}
+
+/* Shared bordered box — used for schema and data tables */
+.tableBox {
+  display: inline-block;
+  background: var(--pd-code-bg);
+  border: 1px solid var(--pd-code-border);
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 4px 0 8px;
+  padding: 10px 14px;
 }
 
 /* Code block */
@@ -469,7 +509,7 @@
 
 /* Schema */
 .schemaTable {
-  width: 100%;
+  width: auto;
   border-collapse: collapse;
   font-size: 12px;
 }
@@ -480,20 +520,22 @@
   letter-spacing: 0.09em;
   text-transform: uppercase;
   color: var(--pd-text-dim);
-  padding: 0 10px 6px 0;
+  padding: 8px 12px 8px 12px;
   border-bottom: 1px solid var(--pd-border);
 }
 .schemaTable td {
-  padding: 6px 10px 6px 0;
+  padding: 7px 12px;
   border-bottom: 1px solid var(--pd-schema-border);
-  color: var(--pd-text-muted);
+  color: var(--pd-text-primary);
   vertical-align: top;
 }
-.schemaTable tr:last-child td { border-bottom: none; }
+.schemaTable tr:last-child td { border-bottom: 1px solid var(--pd-border); }
 .schemaTable code {
   font-family: ui-monospace, monospace;
   font-size: 11px;
   color: var(--pd-text-primary);
+  background: none;
+  border: none;
 }
 
 .typeChip {
@@ -515,10 +557,10 @@
 .infoVal { color: var(--pd-text-muted); }
 
 /* Sample data */
-.sampleWrap { overflow-x: auto; }
+.sampleWrap { }
 
 .sampleTable {
-  width: 100%;
+  width: auto;
   border-collapse: collapse;
   font-size: 12px;
   font-variant-numeric: tabular-nums;
@@ -530,19 +572,19 @@
   letter-spacing: 0.09em;
   text-transform: uppercase;
   color: var(--pd-text-dim);
-  padding: 0 16px 6px 0;
+  padding: 8px 16px 8px 12px;
   border-bottom: 1px solid var(--pd-border);
   white-space: nowrap;
 }
 .sampleTable td {
-  padding: 6px 16px 6px 0;
+  padding: 7px 16px 7px 12px;
   border-bottom: 1px solid var(--pd-schema-border);
-  color: var(--pd-text-muted);
+  color: var(--pd-text-primary);
   white-space: nowrap;
   font-family: ui-monospace, monospace;
   font-size: 11px;
 }
-.sampleTable tr:last-child td { border-bottom: none; }
+.sampleTable tr:last-child td { border-bottom: 1px solid var(--pd-border); }
 
 .sampleFooter {
   margin-top: 8px;
@@ -551,40 +593,56 @@
   letter-spacing: 0.03em;
 }
 
-.versionBar {
+/* Version sidebar */
+.versionSidebar {
+  width: 52px;
+  flex-shrink: 0;
+  border-left: 1px solid var(--pd-tab-border);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 4px;
-  margin-bottom: 10px;
+  padding: 12px 0 14px;
+  gap: 6px;
+  background: var(--pd-detail-bg);
 }
 
-.versionBtn {
-  font-size: 11px;
-  font-weight: 600;
-  padding: 2px 10px;
-  border-radius: 20px;
+.versionSidebarBtn {
+  width: 34px;
+  height: 26px;
+  border-radius: 6px;
   border: 1px solid var(--pd-tab-border);
   background: transparent;
   color: var(--pd-tab-inactive);
+  font-size: 11px;
+  font-weight: 600;
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
   font-family: inherit;
 }
 
-.versionBtn:hover {
+.versionSidebarBtn:hover {
   background: var(--pd-code-bg);
   color: var(--pd-text-primary);
 }
 
-.versionBtnActive {
-  background: var(--pd-publisher-bg, #1e40af);
-  border-color: var(--pd-publisher-bg, #1e40af);
+.versionSidebarBtnActive {
+  background: #1e40af;
+  border-color: #1e40af;
   color: #fff;
 }
 
-.versionLabel {
-  font-size: 10px;
+:global([data-theme='dark']) .versionSidebarBtnActive {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+.versionSidebarLabel {
+  margin-top: auto;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   color: var(--pd-text-dim);
-  margin-left: 4px;
-  letter-spacing: 0.04em;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
 }

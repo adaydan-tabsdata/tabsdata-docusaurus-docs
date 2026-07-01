@@ -36,9 +36,11 @@ function IconTable() {
 type NodeKind = 'publisher' | 'transformer' | 'table';
 type TabKind = 'code' | 'schema' | 'info' | 'data';
 
-interface DataVersion {
+interface NodeVersion {
   version: string;
-  rows: Array<Record<string, string>>;
+  code?: string;
+  schema?: Array<{ col: string; type: string; desc: string }>;
+  rows?: Array<Record<string, string>>;
 }
 
 interface NodeDef {
@@ -49,10 +51,8 @@ interface NodeDef {
   px: number;
   py: number;
   tabs: TabKind[];
-  code?: string;
-  schema?: Array<{ col: string; type: string; desc: string }>;
   info?: Record<string, string>;
-  dataVersions?: DataVersion[];
+  versions?: NodeVersion[];
 }
 
 const NODES: NodeDef[] = [
@@ -60,146 +60,287 @@ const NODES: NodeDef[] = [
     id: 'pub', kind: 'publisher', label: 'pub', subLabel: 'Publisher',
     px: 130, py: 160,
     tabs: ['code', 'info'],
-    code:
-`@td.publisher(tables=["//tabsdata/tutorial/persons"])
-def pub(
-    source: td.LocalFileSource = td.LocalFileSource(
-        path="data/*.csv"
-    ),
-) -> td.TableFrame:
-    tf = source.read()
-    tf = tf.rename({
+    info: { Path: 'tutorial/pub', Kind: 'Publisher', Status: 'Committed', 'Output table': 'tutorial/persons' },
+    versions: [
+      { version: 'v1', code:
+`@td.publisher(
+    source=td.LocalFileSource("data/*.csv"),
+    tables=["persons"],
+)
+def pub(tf: td.TableFrame) -> td.TableFrame:
+    return tf.rename({
         "First Name": "first_name",
         "Last Name":  "last_name",
         "Language":   "language",
-    })
-    return tf`,
-    info: { Path: '//tabsdata/tutorial/pub', Kind: 'Publisher', Status: 'Committed', 'Output table': '//tabsdata/tutorial/persons' },
+    })` },
+      { version: 'v2', code:
+`@td.publisher(
+    source=td.LocalFileSource("data/*.csv"),
+    tables=["persons"],
+)
+def pub(tf: td.TableFrame) -> td.TableFrame:
+    return tf.rename({
+        "First Name": "first_name",
+        "Last Name":  "last_name",
+        "Language":   "language",
+        "Email":      "email",      # added in v2
+    })` },
+      { version: 'v3', code:
+`@td.publisher(
+    source=td.LocalFileSource("data/*.csv"),
+    tables=["persons"],
+)
+def pub(tf: td.TableFrame) -> td.TableFrame:
+    return tf.rename({
+        "First Name":   "first_name",
+        "Last Name":    "last_name",
+        "Language":     "language",
+        "Email":        "email",
+        "Country Code": "country",  # added in v3
+    })` },
+    ],
   },
   {
     id: 'persons', kind: 'table', label: 'persons', subLabel: '//tutorial',
     px: 315, py: 160,
     tabs: ['schema', 'data'],
-    schema: [
-      { col: 'first_name', type: 'Utf8', desc: 'Given name' },
-      { col: 'last_name',  type: 'Utf8', desc: 'Family name' },
-      { col: 'language',   type: 'Utf8', desc: 'Preferred language' },
-    ],
-    dataVersions: [
-      { version: 'v1', rows: [
-        { first_name: 'Alice',  last_name: 'Dupont',  language: 'French'  },
-        { first_name: 'Carlos', last_name: 'García',  language: 'Spanish' },
-        { first_name: 'Hans',   last_name: 'Müller',  language: 'German'  },
-      ]},
-      { version: 'v2', rows: [
-        { first_name: 'Alice',   last_name: 'Dupont',    language: 'French'  },
-        { first_name: 'Carlos',  last_name: 'García',    language: 'Spanish' },
-        { first_name: 'Hans',    last_name: 'Müller',    language: 'German'  },
-        { first_name: 'Sophie',  last_name: 'Martin',    language: 'French'  },
-        { first_name: 'Miguel',  last_name: 'Hernández', language: 'Spanish' },
-      ]},
-      { version: 'v3', rows: [
-        { first_name: 'Alice',   last_name: 'Dupont',    language: 'French'  },
-        { first_name: 'Carlos',  last_name: 'García',    language: 'Spanish' },
-        { first_name: 'Hans',    last_name: 'Müller',    language: 'German'  },
-        { first_name: 'Sophie',  last_name: 'Martin',    language: 'French'  },
-        { first_name: 'Miguel',  last_name: 'Hernández', language: 'Spanish' },
-        { first_name: 'Emma',    last_name: 'Weber',     language: 'German'  },
-        { first_name: 'Juan',    last_name: 'López',     language: 'Spanish' },
-      ]},
+    versions: [
+      {
+        version: 'v1',
+        schema: [
+          { col: 'first_name', type: 'Utf8', desc: 'Given name' },
+          { col: 'last_name',  type: 'Utf8', desc: 'Family name' },
+          { col: 'language',   type: 'Utf8', desc: 'Preferred language' },
+        ],
+        rows: [
+          { FIRST_NAME: 'Alice',  LAST_NAME: 'Dupont',  LANGUAGE: 'French'  },
+          { FIRST_NAME: 'Carlos', LAST_NAME: 'García',  LANGUAGE: 'Spanish' },
+          { FIRST_NAME: 'Hans',   LAST_NAME: 'Müller',  LANGUAGE: 'German'  },
+        ],
+      },
+      {
+        version: 'v2',
+        schema: [
+          { col: 'first_name', type: 'Utf8', desc: 'Given name' },
+          { col: 'last_name',  type: 'Utf8', desc: 'Family name' },
+          { col: 'language',   type: 'Utf8', desc: 'Preferred language' },
+          { col: 'email',      type: 'Utf8', desc: 'Contact email — added in v2' },
+        ],
+        rows: [
+          { FIRST_NAME: 'Alice',   LAST_NAME: 'Dupont',    LANGUAGE: 'French',   EMAIL: 'alice@example.com'   },
+          { FIRST_NAME: 'Carlos',  LAST_NAME: 'García',    LANGUAGE: 'Spanish',  EMAIL: 'carlos@example.com'  },
+          { FIRST_NAME: 'Hans',    LAST_NAME: 'Müller',    LANGUAGE: 'German',   EMAIL: 'hans@example.com'    },
+          { FIRST_NAME: 'Sophie',  LAST_NAME: 'Martin',    LANGUAGE: 'French',   EMAIL: 'sophie@example.com'  },
+          { FIRST_NAME: 'Miguel',  LAST_NAME: 'Hernández', LANGUAGE: 'Spanish',  EMAIL: 'miguel@example.com'  },
+        ],
+      },
+      {
+        version: 'v3',
+        schema: [
+          { col: 'first_name', type: 'Utf8', desc: 'Given name' },
+          { col: 'last_name',  type: 'Utf8', desc: 'Family name' },
+          { col: 'language',   type: 'Utf8', desc: 'Preferred language' },
+          { col: 'email',      type: 'Utf8', desc: 'Contact email' },
+          { col: 'country',    type: 'Utf8', desc: 'ISO country code — added in v3' },
+        ],
+        rows: [
+          { FIRST_NAME: 'Alice',   LAST_NAME: 'Dupont',    LANGUAGE: 'French',   EMAIL: 'alice@example.com',   COUNTRY: 'FR' },
+          { FIRST_NAME: 'Carlos',  LAST_NAME: 'García',    LANGUAGE: 'Spanish',  EMAIL: 'carlos@example.com',  COUNTRY: 'ES' },
+          { FIRST_NAME: 'Hans',    LAST_NAME: 'Müller',    LANGUAGE: 'German',   EMAIL: 'hans@example.com',    COUNTRY: 'DE' },
+          { FIRST_NAME: 'Sophie',  LAST_NAME: 'Martin',    LANGUAGE: 'French',   EMAIL: 'sophie@example.com',  COUNTRY: 'FR' },
+          { FIRST_NAME: 'Miguel',  LAST_NAME: 'Hernández', LANGUAGE: 'Spanish',  EMAIL: 'miguel@example.com',  COUNTRY: 'ES' },
+          { FIRST_NAME: 'Emma',    LAST_NAME: 'Weber',     LANGUAGE: 'German',   EMAIL: 'emma@example.com',    COUNTRY: 'DE' },
+          { FIRST_NAME: 'Juan',    LAST_NAME: 'López',     LANGUAGE: 'Spanish',  EMAIL: 'juan@example.com',    COUNTRY: 'ES' },
+        ],
+      },
     ],
   },
   {
     id: 'tfr', kind: 'transformer', label: 'tfr', subLabel: 'Transformer',
     px: 500, py: 160,
     tabs: ['code', 'info'],
-    code:
+    info: { Path: 'tutorial/tfr', Kind: 'Transformer', Status: 'Committed', Outputs: 'spanish, french, german' },
+    versions: [
+      { version: 'v1', code:
 `@td.transformer(
-    tables=[
-        "//tabsdata/tutorial/spanish",
-        "//tabsdata/tutorial/french",
-        "//tabsdata/tutorial/german",
-    ]
+    input_tables=["persons"],
+    output_tables=["spanish", "french", "german"],
 )
 def tfr(
-    persons: td.TableFrame = td.TableInput(
-        "//tabsdata/tutorial/persons"
-    ),
+    persons: td.TableFrame,
 ) -> tuple[td.TableFrame, td.TableFrame, td.TableFrame]:
-    spanish = persons.filter(pl.col("language") == "Spanish")
-    french  = persons.filter(pl.col("language") == "French")
-    german  = persons.filter(pl.col("language") == "German")
-    return spanish, french, german`,
-    info: { Path: '//tabsdata/tutorial/tfr', Kind: 'Transformer', Status: 'Committed', Outputs: 'spanish, french, german' },
+    spanish = persons.filter(td.col("language") == "Spanish")
+    french  = persons.filter(td.col("language") == "French")
+    german  = persons.filter(td.col("language") == "German")
+    return spanish, french, german` },
+      { version: 'v2', code:
+`@td.transformer(
+    input_tables=["persons"],
+    output_tables=["spanish", "french", "german"],
+)
+def tfr(
+    persons: td.TableFrame,
+) -> tuple[td.TableFrame, td.TableFrame, td.TableFrame]:
+    # Normalize email to lowercase
+    persons = persons.with_columns(
+        td.col("email").str.to_lowercase()
+    )
+    spanish = persons.filter(td.col("language") == "Spanish")
+    french  = persons.filter(td.col("language") == "French")
+    german  = persons.filter(td.col("language") == "German")
+    return spanish, french, german` },
+      { version: 'v3', code:
+`@td.transformer(
+    input_tables=["persons"],
+    output_tables=["spanish", "french", "german"],
+)
+def tfr(
+    persons: td.TableFrame,
+) -> tuple[td.TableFrame, td.TableFrame, td.TableFrame]:
+    # Normalize email; drop rows missing country
+    persons = persons.with_columns(
+        td.col("email").str.to_lowercase()
+    ).filter(td.col("country").is_not_null())
+    spanish = persons.filter(td.col("language") == "Spanish")
+    french  = persons.filter(td.col("language") == "French")
+    german  = persons.filter(td.col("language") == "German")
+    return spanish, french, german` },
+    ],
   },
   {
     id: 'spanish', kind: 'table', label: 'spanish', subLabel: '//tutorial',
     px: 700, py: 74,
     tabs: ['schema', 'data'],
-    schema: [
-      { col: 'first_name', type: 'Utf8', desc: 'Given name' },
-      { col: 'last_name',  type: 'Utf8', desc: 'Family name' },
-      { col: 'language',   type: 'Utf8', desc: 'Always "Spanish"' },
-    ],
-    dataVersions: [
-      { version: 'v1', rows: [
-        { first_name: 'Carlos', last_name: 'García',    language: 'Spanish' },
-      ]},
-      { version: 'v2', rows: [
-        { first_name: 'Carlos', last_name: 'García',    language: 'Spanish' },
-        { first_name: 'Miguel', last_name: 'Hernández', language: 'Spanish' },
-      ]},
-      { version: 'v3', rows: [
-        { first_name: 'Carlos', last_name: 'García',    language: 'Spanish' },
-        { first_name: 'Miguel', last_name: 'Hernández', language: 'Spanish' },
-        { first_name: 'Juan',   last_name: 'López',     language: 'Spanish' },
-      ]},
+    versions: [
+      {
+        version: 'v1',
+        schema: [
+          { col: 'first_name', type: 'Utf8', desc: 'Given name' },
+          { col: 'last_name',  type: 'Utf8', desc: 'Family name' },
+          { col: 'language',   type: 'Utf8', desc: 'Always "Spanish"' },
+        ],
+        rows: [
+          { FIRST_NAME: 'Carlos', LAST_NAME: 'García',    LANGUAGE: 'Spanish' },
+        ],
+      },
+      {
+        version: 'v2',
+        schema: [
+          { col: 'first_name', type: 'Utf8', desc: 'Given name' },
+          { col: 'last_name',  type: 'Utf8', desc: 'Family name' },
+          { col: 'language',   type: 'Utf8', desc: 'Always "Spanish"' },
+          { col: 'email',      type: 'Utf8', desc: 'Contact email — added in v2' },
+        ],
+        rows: [
+          { FIRST_NAME: 'Carlos', LAST_NAME: 'García',    LANGUAGE: 'Spanish', EMAIL: 'carlos@example.com' },
+          { FIRST_NAME: 'Miguel', LAST_NAME: 'Hernández', LANGUAGE: 'Spanish', EMAIL: 'miguel@example.com' },
+        ],
+      },
+      {
+        version: 'v3',
+        schema: [
+          { col: 'first_name', type: 'Utf8', desc: 'Given name' },
+          { col: 'last_name',  type: 'Utf8', desc: 'Family name' },
+          { col: 'language',   type: 'Utf8', desc: 'Always "Spanish"' },
+          { col: 'email',      type: 'Utf8', desc: 'Contact email' },
+          { col: 'country',    type: 'Utf8', desc: 'ISO country code — added in v3' },
+        ],
+        rows: [
+          { FIRST_NAME: 'Carlos', LAST_NAME: 'García',    LANGUAGE: 'Spanish', EMAIL: 'carlos@example.com', COUNTRY: 'ES' },
+          { FIRST_NAME: 'Miguel', LAST_NAME: 'Hernández', LANGUAGE: 'Spanish', EMAIL: 'miguel@example.com', COUNTRY: 'ES' },
+          { FIRST_NAME: 'Juan',   LAST_NAME: 'López',     LANGUAGE: 'Spanish', EMAIL: 'juan@example.com',   COUNTRY: 'ES' },
+        ],
+      },
     ],
   },
   {
     id: 'french', kind: 'table', label: 'french', subLabel: '//tutorial',
     px: 700, py: 160,
     tabs: ['schema', 'data'],
-    schema: [
-      { col: 'first_name', type: 'Utf8', desc: 'Given name' },
-      { col: 'last_name',  type: 'Utf8', desc: 'Family name' },
-      { col: 'language',   type: 'Utf8', desc: 'Always "French"' },
-    ],
-    dataVersions: [
-      { version: 'v1', rows: [
-        { first_name: 'Alice',  last_name: 'Dupont',  language: 'French' },
-      ]},
-      { version: 'v2', rows: [
-        { first_name: 'Alice',  last_name: 'Dupont',  language: 'French' },
-        { first_name: 'Sophie', last_name: 'Martin',  language: 'French' },
-      ]},
-      { version: 'v3', rows: [
-        { first_name: 'Alice',  last_name: 'Dupont',  language: 'French' },
-        { first_name: 'Sophie', last_name: 'Martin',  language: 'French' },
-        { first_name: 'Emma',   last_name: 'Weber',   language: 'French' },
-      ]},
+    versions: [
+      {
+        version: 'v1',
+        schema: [
+          { col: 'first_name', type: 'Utf8', desc: 'Given name' },
+          { col: 'last_name',  type: 'Utf8', desc: 'Family name' },
+          { col: 'language',   type: 'Utf8', desc: 'Always "French"' },
+        ],
+        rows: [
+          { FIRST_NAME: 'Alice', LAST_NAME: 'Dupont', LANGUAGE: 'French' },
+        ],
+      },
+      {
+        version: 'v2',
+        schema: [
+          { col: 'first_name', type: 'Utf8', desc: 'Given name' },
+          { col: 'last_name',  type: 'Utf8', desc: 'Family name' },
+          { col: 'language',   type: 'Utf8', desc: 'Always "French"' },
+          { col: 'email',      type: 'Utf8', desc: 'Contact email — added in v2' },
+        ],
+        rows: [
+          { FIRST_NAME: 'Alice',  LAST_NAME: 'Dupont', LANGUAGE: 'French', EMAIL: 'alice@example.com'  },
+          { FIRST_NAME: 'Sophie', LAST_NAME: 'Martin', LANGUAGE: 'French', EMAIL: 'sophie@example.com' },
+        ],
+      },
+      {
+        version: 'v3',
+        schema: [
+          { col: 'first_name', type: 'Utf8', desc: 'Given name' },
+          { col: 'last_name',  type: 'Utf8', desc: 'Family name' },
+          { col: 'language',   type: 'Utf8', desc: 'Always "French"' },
+          { col: 'email',      type: 'Utf8', desc: 'Contact email' },
+          { col: 'country',    type: 'Utf8', desc: 'ISO country code — added in v3' },
+        ],
+        rows: [
+          { FIRST_NAME: 'Alice',  LAST_NAME: 'Dupont', LANGUAGE: 'French', EMAIL: 'alice@example.com',  COUNTRY: 'FR' },
+          { FIRST_NAME: 'Sophie', LAST_NAME: 'Martin', LANGUAGE: 'French', EMAIL: 'sophie@example.com', COUNTRY: 'FR' },
+          { FIRST_NAME: 'Emma',   LAST_NAME: 'Weber',  LANGUAGE: 'French', EMAIL: 'emma@example.com',   COUNTRY: 'FR' },
+        ],
+      },
     ],
   },
   {
     id: 'german', kind: 'table', label: 'german', subLabel: '//tutorial',
     px: 700, py: 246,
     tabs: ['schema', 'data'],
-    schema: [
-      { col: 'first_name', type: 'Utf8', desc: 'Given name' },
-      { col: 'last_name',  type: 'Utf8', desc: 'Family name' },
-      { col: 'language',   type: 'Utf8', desc: 'Always "German"' },
-    ],
-    dataVersions: [
-      { version: 'v1', rows: [
-        { first_name: 'Hans', last_name: 'Müller',  language: 'German' },
-      ]},
-      { version: 'v2', rows: [
-        { first_name: 'Hans', last_name: 'Müller',  language: 'German' },
-      ]},
-      { version: 'v3', rows: [
-        { first_name: 'Hans', last_name: 'Müller',  language: 'German' },
-        { first_name: 'Emma', last_name: 'Weber',   language: 'German' },
-      ]},
+    versions: [
+      {
+        version: 'v1',
+        schema: [
+          { col: 'first_name', type: 'Utf8', desc: 'Given name' },
+          { col: 'last_name',  type: 'Utf8', desc: 'Family name' },
+          { col: 'language',   type: 'Utf8', desc: 'Always "German"' },
+        ],
+        rows: [
+          { FIRST_NAME: 'Hans', LAST_NAME: 'Müller', LANGUAGE: 'German' },
+        ],
+      },
+      {
+        version: 'v2',
+        schema: [
+          { col: 'first_name', type: 'Utf8', desc: 'Given name' },
+          { col: 'last_name',  type: 'Utf8', desc: 'Family name' },
+          { col: 'language',   type: 'Utf8', desc: 'Always "German"' },
+          { col: 'email',      type: 'Utf8', desc: 'Contact email — added in v2' },
+        ],
+        rows: [
+          { FIRST_NAME: 'Hans', LAST_NAME: 'Müller', LANGUAGE: 'German', EMAIL: 'hans@example.com' },
+        ],
+      },
+      {
+        version: 'v3',
+        schema: [
+          { col: 'first_name', type: 'Utf8', desc: 'Given name' },
+          { col: 'last_name',  type: 'Utf8', desc: 'Family name' },
+          { col: 'language',   type: 'Utf8', desc: 'Always "German"' },
+          { col: 'email',      type: 'Utf8', desc: 'Contact email' },
+          { col: 'country',    type: 'Utf8', desc: 'ISO country code — added in v3' },
+        ],
+        rows: [
+          { FIRST_NAME: 'Hans', LAST_NAME: 'Müller', LANGUAGE: 'German', EMAIL: 'hans@example.com', COUNTRY: 'DE' },
+          { FIRST_NAME: 'Emma', LAST_NAME: 'Weber',  LANGUAGE: 'German', EMAIL: 'emma@example.com', COUNTRY: 'DE' },
+        ],
+      },
     ],
   },
 ];
@@ -254,11 +395,19 @@ export default function PipelineDiagram() {
     } else {
       setActiveId(node.id);
       setActiveTab(node.tabs[0]);
-      setActiveVersion('v3');
+      // Preserve current version if the new node supports it; otherwise use latest
+      if (node.versions && !node.versions.find(v => v.version === activeVersion)) {
+        setActiveVersion(node.versions[node.versions.length - 1].version);
+      }
     }
   }
 
   const nodeMap = Object.fromEntries(NODES.map(n => [n.id, n]));
+
+  // Current version snapshot for table nodes
+  const currentVersion = activeNode?.versions
+    ? (activeNode.versions.find(v => v.version === activeVersion) ?? activeNode.versions[activeNode.versions.length - 1])
+    : null;
 
   return (
     <div className={styles.wrapper}>
@@ -270,10 +419,9 @@ export default function PipelineDiagram() {
         <span className={styles.toolbarLabel}>Tabsdata · Tutorial Pipeline · Execution View</span>
       </div>
 
-      {/* Canvas — scrollable wrapper enables horizontal scroll on mobile */}
+      {/* Canvas */}
       <div className={styles.canvasScroll}>
       <div className={styles.canvas} style={{ height: 320 }}>
-        {/* SVG edge layer — viewBox matches node px coordinates */}
         <svg
           className={styles.svgLayer}
           viewBox="0 0 860 320"
@@ -292,8 +440,6 @@ export default function PipelineDiagram() {
             const to   = nodeMap[e.to];
             const mx   = (from.px + to.px) / 2;
             const isActive = e.from === activeId || e.to === activeId;
-            // Shapes sit above the node div center (labels/badge are below the shape).
-            // Offset edges up so they connect to the visual shape center, not the div center.
             const SY = -30;
             const fy = from.py + SY;
             const ty = to.py + SY;
@@ -314,7 +460,6 @@ export default function PipelineDiagram() {
           })}
         </svg>
 
-        {/* Nodes */}
         <div className={styles.nodes}>
           {NODES.map(node => {
             const isActive = activeId === node.id;
@@ -380,7 +525,7 @@ export default function PipelineDiagram() {
 
         {!activeId && <div className={styles.hint}>Click any node to inspect code or schema</div>}
       </div>
-      </div>{/* end canvasScroll */}
+      </div>
 
       {/* Detail panel */}
       {activeNode && (
@@ -401,93 +546,110 @@ export default function PipelineDiagram() {
             >×</button>
           </div>
 
-          <div className={styles.detailTabs}>
-            {activeNode.tabs.map(tab => (
-              <button
-                key={tab}
-                className={`${styles.detailTab} ${activeTab === tab ? styles.detailTabActive : ''}`}
-                onClick={() => setActiveTab(tab)}
-              >
-                {tab.charAt(0).toUpperCase() + tab.slice(1)}
-              </button>
-            ))}
-          </div>
-
-          <div className={styles.detailBody}>
-            {activeTab === 'code' && activeNode.code && (
-              <div className={styles.codeBlock}>
-                <pre><HighlightedCode code={activeNode.code} /></pre>
-              </div>
-            )}
-
-            {activeTab === 'schema' && activeNode.schema && (
-              <table className={styles.schemaTable}>
-                <thead>
-                  <tr>
-                    <th>Column</th>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {activeNode.schema.map(row => (
-                    <tr key={row.col}>
-                      <td><code>{row.col}</code></td>
-                      <td><span className={styles.typeChip}>{row.type}</span></td>
-                      <td>{row.desc}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
-
-            {activeTab === 'info' && activeNode.info && (
-              <div className={styles.infoGrid}>
-                {Object.entries(activeNode.info).map(([k, v]) => (
-                  <div key={k} className={styles.infoRow}>
-                    <span className={styles.infoKey}>{k}</span>
-                    <span className={styles.infoVal}>{v}</span>
-                  </div>
+          <div className={styles.detailBodyRow}>
+            {/* Main: tabs + content */}
+            <div className={styles.detailMain}>
+              <div className={styles.detailTabs}>
+                {activeNode.tabs.map(tab => (
+                  <button
+                    key={tab}
+                    className={`${styles.detailTab} ${activeTab === tab ? styles.detailTabActive : ''}`}
+                    onClick={() => setActiveTab(tab)}
+                  >
+                    {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                  </button>
                 ))}
               </div>
-            )}
 
-            {activeTab === 'data' && activeNode.dataVersions && (() => {
-              const versionData = activeNode.dataVersions.find(v => v.version === activeVersion)
-                ?? activeNode.dataVersions[activeNode.dataVersions.length - 1];
-              const cols = Object.keys(versionData.rows[0] ?? {});
-              return (
-                <div className={styles.sampleWrap}>
-                  <div className={styles.versionBar}>
-                    {activeNode.dataVersions.map(v => (
-                      <button
-                        key={v.version}
-                        className={`${styles.versionBtn} ${v.version === versionData.version ? styles.versionBtnActive : ''}`}
-                        onClick={() => setActiveVersion(v.version)}
-                      >
-                        {v.version}
-                      </button>
+              <div className={styles.detailBody}>
+                {activeTab === 'code' && currentVersion?.code && (
+                  <div className={styles.codeBlock}>
+                    <pre><HighlightedCode code={currentVersion.code} /></pre>
+                  </div>
+                )}
+
+                {activeTab === 'schema' && currentVersion?.schema && (
+                  <>
+                    <h1 className={styles.sectionHeading}>Schema</h1>
+                    <p className={styles.sectionDesc}>Table schema defines the structure of a table by listing its columns and their data types.</p>
+                    <div className={styles.tableBox}>
+                      <table className={styles.schemaTable}>
+                        <thead>
+                          <tr>
+                            <th>Column</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {currentVersion.schema.map(row => (
+                            <tr key={row.col}>
+                              <td><code>{row.col}</code></td>
+                              <td><span className={styles.typeChip}>{row.type}</span></td>
+                              <td>{row.desc}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </>
+                )}
+
+                {activeTab === 'info' && activeNode.info && (
+                  <div className={styles.infoGrid}>
+                    {Object.entries(activeNode.info).map(([k, v]) => (
+                      <div key={k} className={styles.infoRow}>
+                        <span className={styles.infoKey}>{k}</span>
+                        <span className={styles.infoVal}>{v}</span>
+                      </div>
                     ))}
-                    <span className={styles.versionLabel}>data version</span>
                   </div>
-                  <table className={styles.sampleTable}>
-                    <thead>
-                      <tr>{cols.map(c => <th key={c}>{c}</th>)}</tr>
-                    </thead>
-                    <tbody>
-                      {versionData.rows.map((row, i) => (
-                        <tr key={i}>
-                          {cols.map(c => <td key={c}>{row[c]}</td>)}
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                  <div className={styles.sampleFooter}>
-                    {versionData.rows.length} rows · {versionData.version}
-                  </div>
-                </div>
-              );
-            })()}
+                )}
+
+                {activeTab === 'data' && currentVersion?.rows && (() => {
+                  const cols = Object.keys(currentVersion.rows[0] ?? {});
+                  return (
+                    <div className={styles.sampleWrap}>
+                      <h1 className={styles.sectionHeading}>Sample</h1>
+                      <p className={styles.sectionDesc}>Table sample data CSV provides example rows for a dataset, illustrating values for each column. It helps validate parsing, demonstrate queries, and document formats.</p>
+                      <div className={styles.tableBox}>
+                        <table className={styles.sampleTable}>
+                          <thead>
+                            <tr>{cols.map(c => <th key={c}>{c}</th>)}</tr>
+                          </thead>
+                          <tbody>
+                            {currentVersion.rows.map((row, i) => (
+                              <tr key={i}>
+                                {cols.map(c => <td key={c}>{row[c]}</td>)}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                      <div className={styles.sampleFooter}>
+                        {currentVersion.rows.length} rows · {currentVersion.version}
+                      </div>
+                    </div>
+                  );
+                })()}
+              </div>
+            </div>
+
+            {/* Version sidebar — only for table nodes */}
+            {activeNode.versions && (
+              <div className={styles.versionSidebar}>
+                {[...activeNode.versions].reverse().map(v => (
+                  <button
+                    key={v.version}
+                    className={`${styles.versionSidebarBtn} ${v.version === activeVersion ? styles.versionSidebarBtnActive : ''}`}
+                    onClick={() => setActiveVersion(v.version)}
+                  >
+                    {v.version}
+                  </button>
+                ))}
+                <span className={styles.versionSidebarLabel}>version</span>
+              </div>
+            )}
           </div>
         </div>
       )}
