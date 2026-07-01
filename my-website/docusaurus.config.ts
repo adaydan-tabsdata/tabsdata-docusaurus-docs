@@ -21,6 +21,7 @@ const config: Config = {
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
+  onBrokenAnchors: 'ignore',
 
   i18n: {
     defaultLocale: 'en',
@@ -119,7 +120,7 @@ const config: Config = {
           title: 'Docs',
           items: [
             {label: 'Guide', to: '/docs/guide/intro/overview'},
-            {label: 'Tutorials', to: '/docs/tutorials/index'},
+            {label: 'Tutorials', to: '/docs/tutorials'},
             {label: 'API Reference', to: '/docs/api/alphabetical-index'},
           ],
         },
