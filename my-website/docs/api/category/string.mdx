@@ -2,4 +2,1510 @@
 title: "String"
 ---
 
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+export const toc = [
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>grok()', id: 'tabsdata.TableFrame.grok', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>contains()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.contains', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>contains_any()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.contains_any', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>count_matches()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.count_matches', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>ends_with()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.ends_with', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>extract()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.extract', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>find()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.find', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>grok()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.grok', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>head()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.head', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>len_bytes()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.len_bytes', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>len_chars()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.len_chars', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>pad_end()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.pad_end', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>pad_start()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.pad_start', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>replace()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.replace', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>replace_all()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.replace_all', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>replace_many()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.replace_many', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>reverse()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.reverse', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>slice()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.slice', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>starts_with()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.starts_with', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>strip_chars()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.strip_chars', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>strip_chars_end()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.strip_chars_end', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>strip_chars_start()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.strip_chars_start', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>strip_prefix()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.strip_prefix', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>strip_suffix()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.strip_suffix', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>tail()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.tail', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>to_lowercase()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.to_lowercase', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>to_titlecase()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.to_titlecase', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>to_uppercase()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.to_uppercase', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>zfill()', id: 'tabsdata.tableframe.expr.string.ExprStringNameSpace.zfill', level: 2},
+];
+
 # String
+
+ <a id="tabsdata.TableFrame.grok"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>grok</summary>
+
+```python
+def grok(
+    expr: td_typing.IntoExpr,
+    pattern: str,
+    schema: dict[str, td_col.Column],
+)
+```
+
+Parse log text into structured fields using a Grok pattern.
+
+Applies a Grok pattern to the given column or expression and directly appends
+**one new column per named capture** in the pattern to the output TableFrame.
+Rows that do not match the pattern will contain null values for the
+extracted columns.
+
+Example
+
+```text
+>>> import tabsdata as td
+>>> tf = td.TableFrame({"logs": [
+...     "alice-login-2023",
+...     "bob-logout-2024",
+... ]})
+>>>
+>>> # Capture 3 fields: user, action, year
+>>> log_pattern = r"%{WORD:user}-%{WORD:action}-%{INT:year}"
+>>> log_schema = {
+>>>     "word": td_col.Column("user", td.String),
+>>>     "action": td_col.Column("action", td.String),
+>>>     "year": td_col.Column("year", td.Int8),
+>>> }
+>>> out = tf.grok("logs", log_pattern, log_schema)
+>>> out.collect()
+┌──────────────────┬───────┬────────┬──────┐
+│ logs             ┆ user  ┆ action ┆ year │
+│ ---              ┆ ---   ┆ ---    ┆ ---  │
+│ str              ┆ str   ┆ str    ┆ i64  │
+╞══════════════════╪═══════╪════════╪══════╡
+│ alice-login-2023 ┆ alice ┆ login  ┆ 2023 │
+│ bob-logout-2024  ┆ bob   ┆ logout ┆ 2024 │
+└──────────────────┴───────┴────────┴──────┘
+```
+
+Notes
+
+- The function automatically expands the Grok captures into separate
+columns.
+- Non-matching rows will show null for the extracted columns.
+- If a pattern defines duplicate capture names, numeric suffixes like
+field, field[1] will be used to disambiguate them.
+
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="expr" type="IntoExpr">
+  Column name or expression that resolves to a single
+string column containing log lines.
+</ParamField>
+
+<ParamField path="pattern" type="str">
+  Grok pattern with named captures (e.g., %&#123;WORD:user&#125;).
+</ParamField>
+
+<ParamField path="schema" type="dict">
+  A mapping where each capture name
+is associated with its corresponding column definition, specifying
+both the column name and its data type.
+</ParamField>
+
+**Returns:** A new TableFrame with one column per Grok capture added.
+
+**Returns:** TableFrame
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L2810" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.contains"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>contains</summary>
+
+```python
+def contains(
+    pattern: str | Expr,
+    *,
+    literal: bool = False,
+    strict: bool = True,
+)
+```
+
+Evaluate if the string contains a pattern.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.contains("ab").alias("contains"))
+>>>
+┌──────┬──────────┐
+│ a    ┆ contains │
+│ ---  ┆ ---      │
+│ str  ┆ bool     │
+╞══════╪══════════╡
+│ a    ┆ false    │
+│ ab   ┆ true     │
+│ b    ┆ false    │
+│ xaby ┆ true     │
+│ null ┆ null     │
+└──────┴──────────┘
+```
+
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="pattern">
+  The pattern to search for.
+</ParamField>
+
+<ParamField path="literal">
+  Take the pattern as a literal string (not a regex).
+</ParamField>
+
+<ParamField path="strict">
+  if the given pattern is not valid regex, raise an error.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L575" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.contains_any"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>contains_any</summary>
+
+```python
+def contains_any(
+    patterns: td_typing.IntoExpr,
+    *,
+    ascii_case_insensitive: bool = False,
+)
+```
+
+Evaluate if the string contains any of the given patterns.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a")
+      .str.contains_any(["a", "b"]).alias("contains_any"))
+>>>
+┌──────┬──────────────┐
+│ a    ┆ contains_any │
+│ ---  ┆ ---          │
+│ str  ┆ bool         │
+╞══════╪══════════════╡
+│ abc  ┆ true         │
+│ axy  ┆ true         │
+│ xyb  ┆ true         │
+│ xyz  ┆ false        │
+│ null ┆ null         │
+└──────┴──────────────┘
+```
+
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="patterns">
+  The patterns to search for.
+</ParamField>
+
+<ParamField path="ascii_case_insensitive">
+  If true, the search is case-insensitive.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L1090" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.count_matches"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>count_matches</summary>
+
+```python
+def count_matches(
+    pattern: str | Expr,
+    *,
+    literal: bool = False,
+)
+```
+
+Counts the ocurrrences of the given pattern in the string.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a")
+      .str.count_matches("b.").alias("count_matches"))
+>>>
+┌───────────┬───────────────┐
+│ a         ┆ count_matches │
+│ ---       ┆ ---           │
+│ str       ┆ u32           │
+╞═══════════╪═══════════════╡
+│ a bAb c d ┆ 2             │
+│ bCbb c d  ┆ 2             │
+│ bb        ┆ 1             │
+│ b         ┆ 0             │
+│ a         ┆ 0             │
+│ null      ┆ null          │
+└───────────┴───────────────┘
+```
+
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="pattern">
+  The pattern to extract.
+</ParamField>
+
+<ParamField path="literal">
+  Take the pattern as a literal string (not a regex).
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L776" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.ends_with"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>ends_with</summary>
+
+```python
+def ends_with(
+    suffix: str | Expr,
+)
+```
+
+Evaluate if the string ends with.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.ends_with("b").alias("ends_with"))
+>>>
+┌──────┬───────────┐
+│ a    ┆ ends_with │
+│ ---  ┆ ---       │
+│ str  ┆ bool      │
+╞══════╪═══════════╡
+│ a    ┆ false     │
+│ ab   ┆ true      │
+│ b    ┆ true      │
+│ xaby ┆ false     │
+│ null ┆ null      │
+└──────┴───────────┘
+```
+
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="suffix">
+  The suffix to search for.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L667" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.extract"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>extract</summary>
+
+```python
+def extract(
+    pattern: td_typing.IntoExprColumn,
+    group_index: int = 1,
+)
+```
+
+Extract a pattern from the string.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.extract("(b.b)", 1).alias("extract"))
+>>>
+┌───────────┬─────────┐
+│ a         ┆ extract │
+│ ---       ┆ ---     │
+│ str       ┆ str     │
+╞═══════════╪═════════╡
+│ a bAb c d ┆ bAb     │
+│ bCbb c d  ┆ bCb     │
+│ bb        ┆ null    │
+│ null      ┆ null    │
+└───────────┴─────────┘
+```
+
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="pattern">
+  The pattern to extract.
+</ParamField>
+
+<ParamField path="group_index">
+  The group index to extract.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L736" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.find"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>find</summary>
+
+```python
+def find(
+    pattern: str | Expr,
+    *,
+    literal: bool = False,
+    strict: bool = True,
+)
+```
+
+Find the position of the first occurrence of the given pattern.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.find("b").alias("find"))
+>>>
+┌──────┬──────┐
+│ a    ┆ find │
+│ ---  ┆ ---  │
+│ str  ┆ u32  │
+╞══════╪══════╡
+│ a    ┆ null │
+│ ab   ┆ 1    │
+│ b    ┆ 0    │
+│ xaby ┆ 2    │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="pattern">
+  The pattern to search for.
+</ParamField>
+
+<ParamField path="literal">
+  Take the pattern as a literal string (not a regex).
+</ParamField>
+
+<ParamField path="strict">
+  if the given pattern is not valid regex, raise an error.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L621" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.grok"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>grok</summary>
+
+```python
+def grok(
+    pattern: str,
+    schema: dict[str, Column],
+)
+```
+
+Parse log text into structured fields using a Grok pattern.
+
+Applies the given Grok pattern to the values in the current string expression.
+Each **named capture group** in the pattern becomes a new output column.
+Rows that do not match the pattern will return null for the extracted fields.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>> tf = td.TableFrame({"logs": [
+...     "alice-login-2023",
+...     "bob-logout-2024",
+... ]})
+>>>
+>>> log_pattern = r"%{WORD:user}-%{WORD:action}-%{INT:year}"
+>>> log_schema = {
+>>>     "word": td_col.Column("user", td.String),
+>>>     "action": td_col.Column("action", td.String),
+>>>     "year": td_col.Column("year", td.Int8),
+>>> }
+>>> out = tf.grok("logs", log_pattern, log_schema)
+>>> tf.select(
+...     td.col("logs"),
+...     td.col("logs").str.grok(log_pattern, log_schema)
+... )
+>>>
+┌──────────────────┬───────┬────────┬──────┐
+│ logs             ┆ user  ┆ action ┆ year │
+│ ---              ┆ ---   ┆ ---    ┆ ---  │
+│ str              ┆ str   ┆ str    ┆ i64  │
+╞══════════════════╪═══════╪════════╪══════╡
+│ alice-login-2023 ┆ alice ┆ login  ┆ 2023 │
+│ bob-logout-2024  ┆ bob   ┆ logout ┆ 2024 │
+└──────────────────┴───────┴────────┴──────┘
+```
+
+Notes
+
+- The function automatically expands the Grok captures into separate
+columns.
+- Non-matching rows will show null for the extracted columns.
+- If a pattern defines duplicate capture names, numeric suffixes like
+field, field[1] will be used to disambiguate them.
+
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="pattern" type="str">
+  Grok pattern with named captures (e.g., %&#123;WORD:user&#125;).
+</ParamField>
+
+<ParamField path="schema" type="dict">
+  A mapping where each capture name
+is associated with its corresponding column definition, specifying
+both the column name and its data type.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L1179" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.head"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>head</summary>
+
+```python
+def head(
+    n: int | td_typing.IntoExprColumn,
+)
+```
+
+Extract the start of the string up to the given length.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.head(2).alias("head"))
+>>>
+┌──────┬──────┐
+│ a    ┆ head │
+│ ---  ┆ ---  │
+│ str  ┆ str  │
+╞══════╪══════╡
+│ abc  ┆ ab   │
+│ a    ┆ a    │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="n">
+  The length of the head.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L984" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.len_bytes"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>len_bytes</summary>
+
+```python
+def len_bytes()
+```
+
+Return number of bytes (not chars) of a string.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.len_bytes().alias("len_bytes"))
+>>>
+┌──────┬────────────┐
+│ a    ┆ to_decimal │
+│ ---  ┆ ---        │
+│ str  ┆ u32        │
+╞══════╪════════════╡
+│ ab   ┆ 2          │
+│ 再   ┆ 3          │
+│ null ┆ null       │
+└──────┴────────────┘
+```
+
+**Categories:** string
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L169" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.len_chars"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>len_chars</summary>
+
+```python
+def len_chars()
+```
+
+Return number of chars (not bytes) of a string.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.len_chars().alias("len_chars"))
+>>>
+┌──────┬────────────┐
+│ a    ┆ to_decimal │
+│ ---  ┆ ---        │
+│ str  ┆ u32        │
+╞══════╪════════════╡
+│ ab   ┆ 2          │
+│ 再   ┆ 3          │
+│ null ┆ null       │
+└──────┴────────────┘
+```
+
+**Categories:** string
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L196" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.pad_end"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>pad_end</summary>
+
+```python
+def pad_end(
+    length: int,
+    fill_char: str = ' ',
+)
+```
+
+Pad string values at the end to the given length using the given
+fill character.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.pad_end(6, "-").alias("pad_end"))
+>>>
+┌────────┬─────────┐
+│ a      ┆ pad_end │
+│ ---    ┆ ---     │
+│ str    ┆ str     │
+╞════════╪═════════╡
+│ abc    ┆ abc---  │
+│    def ┆    def  │
+│ null   ┆ null    │
+└────────┴─────────┘
+```
+
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="length">
+  The length to end pad the string to.
+</ParamField>
+
+<ParamField path="fill_char">
+  The character to use for padding.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L512" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.pad_start"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>pad_start</summary>
+
+```python
+def pad_start(
+    length: int,
+    fill_char: str = ' ',
+)
+```
+
+Pad string values at the front to the given length using the given
+fill character.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.pad_start(6, "-").alias("pad_start"))
+>>>
+┌────────┬───────────┐
+│ a      ┆ pad_start │
+│ ---    ┆ ---       │
+│ str    ┆ str       │
+╞════════╪═══════════╡
+│ abc    ┆ ---abc    │
+│    def ┆    def    │
+│ null   ┆ null      │
+└────────┴───────────┘
+```
+
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="length">
+  The length to front pad the string to.
+</ParamField>
+
+<ParamField path="fill_char">
+  The character to use for padding.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L480" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.replace"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>replace</summary>
+
+```python
+def replace(
+    pattern: str | Expr,
+    value: str | Expr,
+    *,
+    literal: bool = False,
+    n: int = 1,
+)
+```
+
+Replace the first occurence of a pattern with the given string.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.replace("b", "X").alias("replace"))
+>>>
+┌───────────┬───────────┐
+│ a         ┆ replace   │
+│ ---       ┆ ---       │
+│ str       ┆ str       │
+╞═══════════╪═══════════╡
+│ a bAb c d ┆ a XAb c d │
+│ bCbb c d  ┆ XCbb c d  │
+│ bb        ┆ Xb        │
+│ b         ┆ X         │
+│ a         ┆ a         │
+│ null      ┆ null      │
+└───────────┴───────────┘
+```
+
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="pattern">
+  The pattern to replace.
+</ParamField>
+
+<ParamField path="value">
+  The value to replace the pattern with.
+</ParamField>
+
+<ParamField path="literal">
+  Take the pattern as a literal string (not a regex).
+</ParamField>
+
+<ParamField path="n">
+  Number of matches to replace.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L818" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.replace_all"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>replace_all</summary>
+
+```python
+def replace_all(
+    pattern: str | Expr,
+    value: str | Expr,
+    *,
+    literal: bool = False,
+)
+```
+
+Replace the all occurences of a pattern with the given string.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.replace("b", "X").alias("replace"))
+>>>
+┌───────────┬─────────────┐
+│ a         ┆ replace_all │
+│ ---       ┆ ---         │
+│ str       ┆ str         │
+╞═══════════╪═════════════╡
+│ a bAb c d ┆ a XAX c d   │
+│ bCbb c d  ┆ XCXX c d    │
+│ bb        ┆ XX          │
+│ b         ┆ X           │
+│ a         ┆ a           │
+│ null      ┆ null        │
+└───────────┴─────────────┘
+```
+
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="pattern">
+  The pattern to replace.
+</ParamField>
+
+<ParamField path="value">
+  The value to replace the pattern with.
+</ParamField>
+
+<ParamField path="literal">
+  Take the pattern as a literal string (not a regex).
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L868" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.replace_many"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>replace_many</summary>
+
+```python
+def replace_many(
+    patterns: td_typing.IntoExpr | Mapping[str, str], replace_with: td_typing.IntoExpr | NoDefault = <no_default>, *, ascii_case_insensitive: bool = False,
+)
+```
+
+Replace the all occurences of any the given patterns with the given string.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a")
+      .str.replace_many(["a", "b"], "X").alias("replace_many"))
+>>>
+┌──────┬──────────────┐
+│ a    ┆ replace_many │
+│ ---  ┆ ---          │
+│ str  ┆ str          │
+╞══════╪══════════════╡
+│ abc  ┆ XXc          │
+│ axy  ┆ Xxy          │
+│ xyb  ┆ xyX          │
+│ xyz  ┆ xyz          │
+│ null ┆ null         │
+└──────┴──────────────┘
+```
+
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="patterns">
+  The patterns to replace.
+</ParamField>
+
+<ParamField path="replace_with">
+  The value to replace the pattern with.
+</ParamField>
+
+<ParamField path="ascii_case_insensitive">
+  If true, the search is case-insensitive.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L1131" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.reverse"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>reverse</summary>
+
+```python
+def reverse()
+```
+
+Reverse the string.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.reverse().alias("reverse"))
+>>>
+┌──────┬─────────┐
+│ a    ┆ reverse │
+│ ---  ┆ ---     │
+│ str  ┆ str     │
+╞══════╪═════════╡
+│ abc  ┆ cba     │
+│ a    ┆ a       │
+│ null ┆ null    │
+└──────┴─────────┘
+```
+
+**Categories:** string
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L916" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.slice"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>slice</summary>
+
+```python
+def slice(
+    offset: int | td_typing.IntoExprColumn,
+    length: int | td_typing.IntoExprColumn | None = None,
+)
+```
+
+Extract the substring at the given offset for the given length.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.slice(1,1).alias("slice"))
+>>>
+┌──────┬───────┐
+│ a    ┆ slice │
+│ ---  ┆ ---   │
+│ str  ┆ str   │
+╞══════╪═══════╡
+│ abc  ┆ b     │
+│ a    ┆       │
+│ null ┆ null  │
+└──────┴───────┘
+```
+
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="offset">
+  The offset to start the slice.
+</ParamField>
+
+<ParamField path="length">
+  The length of the slice. If None, slice until the end of the string.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L943" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.starts_with"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>starts_with</summary>
+
+```python
+def starts_with(
+    prefix: str | Expr,
+)
+```
+
+Evaluate if the string start with.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a")
+      .str.starts_with("a").alias("starts_with"))
+>>>
+┌──────┬────────────┐
+│ a    ┆ start_with │
+│ ---  ┆ ---        │
+│ str  ┆ bool       │
+╞══════╪════════════╡
+│ a    ┆ true       │
+│ ab   ┆ true       │
+│ b    ┆ false      │
+│ xaby ┆ false      │
+│ null ┆ null       │
+└──────┴────────────┘
+```
+
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="prefix">
+  The suffix to search for.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L701" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.strip_chars"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>strip_chars</summary>
+
+```python
+def strip_chars(
+    characters: td_typing.IntoExpr = None,
+)
+```
+
+Trim string values.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a")
+      .str.strip_chars("a ").alias("strip_chars"))
+>>>
+┌─────────────────────────────────┬─────────────┐
+│ a                               ┆ strip_chars │
+│ ---                             ┆ ---         │
+│ str                             ┆ str         │
+╞═════════════════════════════════╪═════════════╡
+│ acba cda                      … ┆ cba cd      │
+│    xy z                         ┆ xy z        │
+│ null                            ┆ null        │
+└─────────────────────────────────┴─────────────┘
+```
+
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="characters">
+  Characters to trim from start and end of the string.
+</ParamField>
+
+<ParamField path="All characteres in the given string are removed,">
+  
+</ParamField>
+
+<ParamField path="regardless the order. Default is whitespace.">
+  
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L304" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.strip_chars_end"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>strip_chars_end</summary>
+
+```python
+def strip_chars_end(
+    characters: td_typing.IntoExpr = None,
+)
+```
+
+Trim string values from the end of the string.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a")
+      .str.strip_chars_end("dc ").alias("strip_chars_end"))
+>>>
+┌───────────────────────────────┬─────────────────┐
+│ a                             ┆ strip_chars_end │
+│ ---                           ┆ ---             │
+│ str                           ┆ str             │
+╞═══════════════════════════════╪═════════════════╡
+│ cba cd                        ┆ cba             │
+│    xy z                       ┆    xy z         │
+│ null                          ┆ null            │
+└───────────────────────────────┴─────────────────┘
+```
+
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="characters">
+  Characters to trim from start of the string.
+</ParamField>
+
+<ParamField path="All ending characteres in the given string are removed,">
+  
+</ParamField>
+
+<ParamField path="regardless the order. Default is whitespace.">
+  
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L380" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.strip_chars_start"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>strip_chars_start</summary>
+
+```python
+def strip_chars_start(
+    characters: td_typing.IntoExpr = None,
+)
+```
+
+Trim string values from the start of the string.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a")
+      .str.strip_chars_start("abc").alias("strip_chars_start"))
+>>>
+┌───────────────────────────────┬────────────────────────────┐
+│ a                             ┆ strip_chars_start          │
+│ ---                           ┆ ---                        │
+│ str                           ┆ str                        │
+╞═══════════════════════════════╪════════════════════════════╡
+│ cba cd                        ┆  cd                        │
+│    xy z                       ┆    xy z                    │
+│ null                          ┆ null                       │
+└───────────────────────────────┴────────────────────────────┘
+```
+
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="characters">
+  Characters to trim from start of the string.
+</ParamField>
+
+<ParamField path="All starting characteres in the given string are removed,">
+  
+</ParamField>
+
+<ParamField path="regardless the order. Default is whitespace.">
+  
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L342" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.strip_prefix"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>strip_prefix</summary>
+
+```python
+def strip_prefix(
+    prefix: td_typing.IntoExpr,
+)
+```
+
+Trim string values removing the given prefix
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a")
+      .str.strip_prefix("cb").alias("strip_prefix"))
+>>>
+┌───────────────────────────────┬─────────────────┐
+│ a                             ┆ strip_prefix    │
+│ ---                           ┆ ---             │
+│ str                           ┆ str             │
+╞═══════════════════════════════╪═════════════════╡
+│ cba cd                        ┆ a cd            │
+│ bx                            ┆ bx              │
+│ null                          ┆ null            │
+└───────────────────────────────┴─────────────────┘
+```
+
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="prefix">
+  Prefix to remove from the string.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L418" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.strip_suffix"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>strip_suffix</summary>
+
+```python
+def strip_suffix(
+    suffix: td_typing.IntoExpr,
+)
+```
+
+Trim string values removing the given suffix
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a")
+      .str.strip_suffix("cd").alias("strip_suffix"))
+>>>
+┌───────────────────────────────┬─────────────────┐
+│ a                             ┆ strip_suffix    │
+│ ---                           ┆ ---             │
+│ str                           ┆ str             │
+╞═══════════════════════════════╪═════════════════╡
+│ cba cd                        ┆ cba             │
+│ bx                            ┆ bx              │
+│ null                          ┆ null            │
+└───────────────────────────────┴─────────────────┘
+```
+
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="suffix">
+  Suffix to remove from the string.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L449" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.tail"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>tail</summary>
+
+```python
+def tail(
+    n: int | td_typing.IntoExprColumn,
+)
+```
+
+Extract the end of the string up to the given length.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.tail(2).alias("tail"))
+>>>
+┌──────┬──────┐
+│ a    ┆ tail │
+│ ---  ┆ ---  │
+│ str  ┆ str  │
+╞══════╪══════╡
+│ abc  ┆ bc   │
+│ a    ┆ a    │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="n">
+  The length of the tail.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L1017" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_lowercase"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>to_lowercase</summary>
+
+```python
+def to_lowercase()
+```
+
+Return the lowercase of a string.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.to_lowercase().alias("to_lowercase"))
+>>>
+┌──────┬───────────────┐
+│ a    ┆ to_lowerrcase │
+│ ---  ┆ ---           │
+│ str  ┆ u32           │
+╞══════╪═══════════════╡
+│ aB   ┆ ab            │
+│ null ┆ null          │
+└──────┴───────────────┘
+```
+
+**Categories:** string
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L249" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_titlecase"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>to_titlecase</summary>
+
+```python
+def to_titlecase()
+```
+
+Uppercase the first character and lowercase all the others ones of a string.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.to_titlecase().alias("titlecase"))
+>>>
+┌──────┬───────────┐
+│ a    ┆ titlecase │
+│ ---  ┆ ---       │
+│ str  ┆ str       │
+╞══════╪═══════════╡
+│ ab   ┆ Ab        │
+│ Ab   ┆ Ab        │
+│ AB   ┆ Ab        │
+│ aB   ┆ Ab        │
+│ null ┆ null      │
+└──────┴───────────┘
+```
+
+**Categories:** string
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L275" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.to_uppercase"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>to_uppercase</summary>
+
+```python
+def to_uppercase()
+```
+
+Return the uppercase of a string.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.to_uppercase().alias("to_uppercase"))
+>>>
+┌──────┬──────────────┐
+│ a    ┆ to_uppercase │
+│ ---  ┆ ---          │
+│ str  ┆ u32          │
+╞══════╪══════════════╡
+│ aB   ┆ AB           │
+│ null ┆ null         │
+└──────┴──────────────┘
+```
+
+**Categories:** string
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L223" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.string.ExprStringNameSpace.zfill"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>zfill</summary>
+
+```python
+def zfill(
+    length: int | td_typing.IntoExprColumn,
+)
+```
+
+Pad numeric string values at the start to the given length using zeros.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("a"), td.col("a").str.zfill(2).alias("zfill"))
+>>>
+┌──────┬───────┐
+│ a    ┆ zfill │
+│ ---  ┆ ---   │
+│ str  ┆ str   │
+╞══════╪═══════╡
+│ 0    ┆ 00    │
+│ 1    ┆ 01    │
+│ 1000 ┆ 1000  │
+│ null ┆ null  │
+└──────┴───────┘
+```
+
+**Categories:** string
+
+**Parameters:**
+
+<ParamField path="length">
+  The length to end pad the string to.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/string.py#L544" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>

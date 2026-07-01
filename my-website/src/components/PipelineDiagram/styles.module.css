@@ -550,3 +550,41 @@
   color: var(--pd-text-dim);
   letter-spacing: 0.03em;
 }
+
+.versionBar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.versionBtn {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--pd-tab-border);
+  background: transparent;
+  color: var(--pd-tab-inactive);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  font-family: inherit;
+}
+
+.versionBtn:hover {
+  background: var(--pd-code-bg);
+  color: var(--pd-text-primary);
+}
+
+.versionBtnActive {
+  background: var(--pd-publisher-bg, #1e40af);
+  border-color: var(--pd-publisher-bg, #1e40af);
+  color: #fff;
+}
+
+.versionLabel {
+  font-size: 10px;
+  color: var(--pd-text-dim);
+  margin-left: 4px;
+  letter-spacing: 0.04em;
+}

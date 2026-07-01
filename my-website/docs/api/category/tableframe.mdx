@@ -2,4 +2,585 @@
 title: "Tableframe"
 ---
 
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+export const toc = [
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>assert_has_cols()', id: 'tabsdata.TableFrame.assert_has_cols', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>clear()', id: 'tabsdata.TableFrame.clear', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>empty()', id: 'tabsdata.TableFrame.empty', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>from_dict()', id: 'tabsdata.TableFrame.from_dict', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>from_pandas()', id: 'tabsdata.TableFrame.from_pandas', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>from_polars()', id: 'tabsdata.TableFrame.from_polars', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>has_cols()', id: 'tabsdata.TableFrame.has_cols', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>has_same_schema()', id: 'tabsdata.TableFrame.has_same_schema', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>is_empty()', id: 'tabsdata.TableFrame.is_empty', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>sort()', id: 'tabsdata.TableFrame.sort', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>to_dict()', id: 'tabsdata.TableFrame.to_dict', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>to_pandas()', id: 'tabsdata.TableFrame.to_pandas', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>to_polars_df()', id: 'tabsdata.TableFrame.to_polars_df', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>to_polars_lf()', id: 'tabsdata.TableFrame.to_polars_lf', level: 2},
+];
+
 # Tableframe
+
+ <a id="tabsdata.TableFrame.assert_has_cols"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>assert_has_cols</summary>
+
+```python
+def assert_has_cols(
+    cols: str | list[str],
+    exact: bool | None = False,
+)
+```
+
+Ensures that the (non-system) columns in the TableFrame match the expected
+columns.
+
+Raises an exception if the expectation is not met.
+
+If exact is True, the check verifies that the TableFrame contains exactly the
+expected columns, with no extra or missing ones.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>> tf.assert_has_cols("a")
+>>> tf.assert_has_cols(["a", "b"], exact=True)
+```
+
+**Categories:** tableframe
+
+**Parameters:**
+
+<ParamField path="cols">
+  The expected column name(s). Can be a string or a list of strings.
+</ParamField>
+
+<ParamField path="exact">
+  If True, checks that the TableFrame contains exactly the specified
+columns.
+</ParamField>
+
+**Raises:** ValueError – If expected columns are missing or unexpected columns are
+    present in the TableFrame.
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L836" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.TableFrame.clear"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>clear</summary>
+
+```python
+def clear(
+    n: int = 0,
+)
+```
+
+Clears all rows of the TableFrame preserving the schema.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ X    ┆ 10   │
+│ C    ┆ 3    │
+│ D    ┆ 5    │
+│ M    ┆ 9    │
+│ A    ┆ 100  │
+│ M    ┆ 50   │
+│ null ┆ 20   │
+│ F    ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.cast({"b":td.Float32}).collect()
+>>>
+┌──────┬───────┐
+│ a    ┆ b     │
+│ ---  ┆ ---   │
+│ str  ┆ f32   │
+╞══════╪═══════╡
+└──────┴───────┘
+```
+
+**Categories:** tableframe
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L1032" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.TableFrame.empty"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>empty</summary>
+
+```python
+def empty(
+    schema: SimpleSchema = None,
+)
+```
+
+Creates an empty (no column - no row) TableFrame.
+
+**Categories:** tableframe
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L153" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.TableFrame.from_dict"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>from_dict</summary>
+
+```python
+def from_dict(
+    data: Mapping[str, Sequence[object] | Mapping[str, Sequence[object]]] | None = None,
+)
+```
+
+Creates tableframe from a dictionary, or None.
+None produces as an empty (no column - no row) tableframe.
+
+**Categories:** tableframe
+
+**Parameters:**
+
+<ParamField path="data">
+  Input data.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L236" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.TableFrame.from_pandas"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>from_pandas</summary>
+
+```python
+def from_pandas(
+    data: pd.DataFrame | None = None,
+)
+```
+
+Creates tableframe from a pandas dataframe, or None.
+None produces as an empty (no column - no row) tableframe.
+
+**Categories:** tableframe
+
+**Parameters:**
+
+<ParamField path="data">
+  Input data.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L202" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.TableFrame.from_polars"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>from_polars</summary>
+
+```python
+def from_polars(
+    data: LazyFrame | DataFrame | None = None,
+)
+```
+
+Creates tableframe from a polars dataframe or lazyframe, or None.
+None produces as an empty (no column - no row) tableframe.
+
+**Categories:** tableframe
+
+**Parameters:**
+
+<ParamField path="data">
+  Input data.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L170" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.TableFrame.has_cols"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>has_cols</summary>
+
+```python
+def has_cols(
+    cols: str | list[str],
+    exact: bool | None = False,
+)
+```
+
+Verifies the presence of (non-system) columns in the TableFrame.
+
+If exact is True, the check ensures that the TableFrame contains exactly the
+specified columns (excluding system columns), with no extras or omissions.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+└──────┴──────┘
+>>>
+>>> tf.has_cols("a")
+>>>
+(True, {}, {"b"})
+>>>
+>>> tf.has_cols(["a", "c", "d"])
+>>>
+(False, {"c", "d"}, {"b"})
+>>>
+>>> tf.has_cols("a", exact=True)
+>>>
+(False, {}, {"b"})
+>>>
+>>> tf.has_cols(["a", "b"], exact=True)
+>>>
+(True, {}, {})
+```
+
+**Categories:** tableframe
+
+**Parameters:**
+
+<ParamField path="cols">
+  The column name(s) to verify. Can be a string or a list of strings.
+</ParamField>
+
+<ParamField path="exact">
+  If True, checks that the TableFrame contains exactly the specified
+columns.
+</ParamField>
+
+**Returns:** A boolean indicating whether the check was successful.
+A set of columns in cols missing in the TableFrame.
+A set of columns in the TableFrame missing in cols.
+
+**Returns:** tuple[bool, set[str], set[str]]
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L755" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.TableFrame.has_same_schema"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>has_same_schema</summary>
+
+```python
+def has_same_schema(
+    tf: TableFrame,
+)
+```
+
+Verifies if the schema of the current TableFrame is same than the provided
+TableFrame.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf1: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+└──────┴──────┘
+>>>
+>>> tf2: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ c    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+└──────┴──────┘
+>>> tf1.has_same_schema(tf2)
+>>>
+False
+>>>
+>>> tf1: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+└──────┴──────┘
+>>>
+>>> tf2: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ str  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+└──────┴──────┘
+>>> tf1.has_same_schema(tf2)
+>>>
+False
+```
+
+**Categories:** tableframe
+
+**Categories:** description
+
+**Categories:** description
+
+**Parameters:**
+
+<ParamField path="tf">
+  The TableFrame to compare with.
+</ParamField>
+
+**Returns:** Whether the condition is met or not.
+
+**Returns:** bool
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L644" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.TableFrame.is_empty"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>is_empty</summary>
+
+```python
+def is_empty()
+```
+
+Checks if a TableFrame has no rows.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+└──────┴──────┘
+>>>
+>>> tf.is_empty()
+>>>
+False
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+└──────┴──────┘
+>>>
+>>> tf.is_empty()
+>>>
+True
+```
+
+**Categories:** tableframe
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L715" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.TableFrame.sort"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>sort</summary>
+
+```python
+def sort(
+    by: td_typing.IntoExpr | Iterable[td_typing.IntoExpr],
+    *more_by: td_typing.IntoExpr,
+    descending: bool | Sequence[bool] = False,
+    nulls_last: bool | Sequence[bool] = False,
+    maintain_order: bool = False,
+)
+```
+
+Sort the TableFrame by the given column(s) or expression(s).
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ X    ┆ 10   │
+│ C    ┆ 3    │
+│ D    ┆ 5    │
+│ M    ┆ 9    │
+│ A    ┆ 100  │
+│ M    ┆ 50   │
+│ null ┆ 20   │
+│ F    ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.sort(td.col("a"), descending = True)
+>>>
+┌──────┬───────┐
+│ a    ┆ b     │
+│ ---  ┆ ---   │
+│ str  ┆ f32   │
+╞══════╪═══════╡
+│ A    ┆ 1.0   │
+│ X    ┆ 10.0  │
+│ C    ┆ 3.0   │
+│ D    ┆ 5.0   │
+│ M    ┆ 9.0   │
+│ A    ┆ 100.0 │
+│ M    ┆ 50.0  │
+│ null ┆ 20.0  │
+│ F    ┆ null  │
+└──────┴───────┘
+```
+
+**Categories:** tableframe
+
+**Parameters:**
+
+<ParamField path="by">
+  Column(s) or expression(s) to sort by.
+</ParamField>
+
+<ParamField path="more_by">
+  Additional colums to sort by.
+</ParamField>
+
+<ParamField path="descending">
+  Specifies if the sorting should be descending or not.
+</ParamField>
+
+<ParamField path="nulls_last">
+  Specifies if null values should be placed last.
+</ParamField>
+
+<ParamField path="maintain_order">
+  Preserve the order of equal rows.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L880" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.TableFrame.to_dict"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>to_dict</summary>
+
+```python
+def to_dict()
+```
+
+Creates a dictionary from this tableframe.
+
+**Categories:** tableframe
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L301" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.TableFrame.to_pandas"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>to_pandas</summary>
+
+```python
+def to_pandas()
+```
+
+Creates a pandas dataframe from this tableframe.
+
+**Categories:** tableframe
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L286" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.TableFrame.to_polars_df"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>to_polars_df</summary>
+
+```python
+def to_polars_df()
+```
+
+Creates a polars dataframe from this tableframe.
+
+**Categories:** tableframe
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L276" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.TableFrame.to_polars_lf"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>to_polars_lf</summary>
+
+```python
+def to_polars_lf()
+```
+
+Creates a polars lazyframe from this tableframe.
+
+**Categories:** tableframe
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L266" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>

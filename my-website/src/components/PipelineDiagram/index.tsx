@@ -36,6 +36,11 @@ function IconTable() {
 type NodeKind = 'publisher' | 'transformer' | 'table';
 type TabKind = 'code' | 'schema' | 'info' | 'data';
 
+interface DataVersion {
+  version: string;
+  rows: Array<Record<string, string>>;
+}
+
 interface NodeDef {
   id: string;
   kind: NodeKind;
@@ -47,7 +52,7 @@ interface NodeDef {
   code?: string;
   schema?: Array<{ col: string; type: string; desc: string }>;
   info?: Record<string, string>;
-  sampleData?: Array<Record<string, string>>;
+  dataVersions?: DataVersion[];
 }
 
 const NODES: NodeDef[] = [
@@ -80,12 +85,28 @@ def pub(
       { col: 'last_name',  type: 'Utf8', desc: 'Family name' },
       { col: 'language',   type: 'Utf8', desc: 'Preferred language' },
     ],
-    sampleData: [
-      { first_name: 'Alice',   last_name: 'Dupont',    language: 'French'  },
-      { first_name: 'Carlos',  last_name: 'García',    language: 'Spanish' },
-      { first_name: 'Hans',    last_name: 'Müller',    language: 'German'  },
-      { first_name: 'Sophie',  last_name: 'Martin',    language: 'French'  },
-      { first_name: 'Miguel',  last_name: 'Hernández', language: 'Spanish' },
+    dataVersions: [
+      { version: 'v1', rows: [
+        { first_name: 'Alice',  last_name: 'Dupont',  language: 'French'  },
+        { first_name: 'Carlos', last_name: 'García',  language: 'Spanish' },
+        { first_name: 'Hans',   last_name: 'Müller',  language: 'German'  },
+      ]},
+      { version: 'v2', rows: [
+        { first_name: 'Alice',   last_name: 'Dupont',    language: 'French'  },
+        { first_name: 'Carlos',  last_name: 'García',    language: 'Spanish' },
+        { first_name: 'Hans',    last_name: 'Müller',    language: 'German'  },
+        { first_name: 'Sophie',  last_name: 'Martin',    language: 'French'  },
+        { first_name: 'Miguel',  last_name: 'Hernández', language: 'Spanish' },
+      ]},
+      { version: 'v3', rows: [
+        { first_name: 'Alice',   last_name: 'Dupont',    language: 'French'  },
+        { first_name: 'Carlos',  last_name: 'García',    language: 'Spanish' },
+        { first_name: 'Hans',    last_name: 'Müller',    language: 'German'  },
+        { first_name: 'Sophie',  last_name: 'Martin',    language: 'French'  },
+        { first_name: 'Miguel',  last_name: 'Hernández', language: 'Spanish' },
+        { first_name: 'Emma',    last_name: 'Weber',     language: 'German'  },
+        { first_name: 'Juan',    last_name: 'López',     language: 'Spanish' },
+      ]},
     ],
   },
   {
@@ -120,10 +141,19 @@ def tfr(
       { col: 'last_name',  type: 'Utf8', desc: 'Family name' },
       { col: 'language',   type: 'Utf8', desc: 'Always "Spanish"' },
     ],
-    sampleData: [
-      { first_name: 'Carlos',   last_name: 'García',    language: 'Spanish' },
-      { first_name: 'Miguel',   last_name: 'Hernández', language: 'Spanish' },
-      { first_name: 'Lucía',    last_name: 'Martínez',  language: 'Spanish' },
+    dataVersions: [
+      { version: 'v1', rows: [
+        { first_name: 'Carlos', last_name: 'García',    language: 'Spanish' },
+      ]},
+      { version: 'v2', rows: [
+        { first_name: 'Carlos', last_name: 'García',    language: 'Spanish' },
+        { first_name: 'Miguel', last_name: 'Hernández', language: 'Spanish' },
+      ]},
+      { version: 'v3', rows: [
+        { first_name: 'Carlos', last_name: 'García',    language: 'Spanish' },
+        { first_name: 'Miguel', last_name: 'Hernández', language: 'Spanish' },
+        { first_name: 'Juan',   last_name: 'López',     language: 'Spanish' },
+      ]},
     ],
   },
   {
@@ -135,10 +165,19 @@ def tfr(
       { col: 'last_name',  type: 'Utf8', desc: 'Family name' },
       { col: 'language',   type: 'Utf8', desc: 'Always "French"' },
     ],
-    sampleData: [
-      { first_name: 'Alice',   last_name: 'Dupont',  language: 'French' },
-      { first_name: 'Sophie',  last_name: 'Martin',  language: 'French' },
-      { first_name: 'Julien',  last_name: 'Bernard', language: 'French' },
+    dataVersions: [
+      { version: 'v1', rows: [
+        { first_name: 'Alice',  last_name: 'Dupont',  language: 'French' },
+      ]},
+      { version: 'v2', rows: [
+        { first_name: 'Alice',  last_name: 'Dupont',  language: 'French' },
+        { first_name: 'Sophie', last_name: 'Martin',  language: 'French' },
+      ]},
+      { version: 'v3', rows: [
+        { first_name: 'Alice',  last_name: 'Dupont',  language: 'French' },
+        { first_name: 'Sophie', last_name: 'Martin',  language: 'French' },
+        { first_name: 'Emma',   last_name: 'Weber',   language: 'French' },
+      ]},
     ],
   },
   {
@@ -150,10 +189,17 @@ def tfr(
       { col: 'last_name',  type: 'Utf8', desc: 'Family name' },
       { col: 'language',   type: 'Utf8', desc: 'Always "German"' },
     ],
-    sampleData: [
-      { first_name: 'Hans',    last_name: 'Müller',   language: 'German' },
-      { first_name: 'Klaus',   last_name: 'Schmidt',  language: 'German' },
-      { first_name: 'Ingrid',  last_name: 'Fischer',  language: 'German' },
+    dataVersions: [
+      { version: 'v1', rows: [
+        { first_name: 'Hans', last_name: 'Müller',  language: 'German' },
+      ]},
+      { version: 'v2', rows: [
+        { first_name: 'Hans', last_name: 'Müller',  language: 'German' },
+      ]},
+      { version: 'v3', rows: [
+        { first_name: 'Hans', last_name: 'Müller',  language: 'German' },
+        { first_name: 'Emma', last_name: 'Weber',   language: 'German' },
+      ]},
     ],
   },
 ];
@@ -198,6 +244,7 @@ function HighlightedCode({ code }: { code: string }) {
 export default function PipelineDiagram() {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<TabKind>('code');
+  const [activeVersion, setActiveVersion] = useState<string>('v3');
 
   const activeNode = NODES.find(n => n.id === activeId) ?? null;
 
@@ -207,6 +254,7 @@ export default function PipelineDiagram() {
     } else {
       setActiveId(node.id);
       setActiveTab(node.tabs[0]);
+      setActiveVersion('v3');
     }
   }
 
@@ -404,18 +452,30 @@ export default function PipelineDiagram() {
               </div>
             )}
 
-            {activeTab === 'data' && activeNode.sampleData && (() => {
-              const cols = Object.keys(activeNode.sampleData[0]);
+            {activeTab === 'data' && activeNode.dataVersions && (() => {
+              const versionData = activeNode.dataVersions.find(v => v.version === activeVersion)
+                ?? activeNode.dataVersions[activeNode.dataVersions.length - 1];
+              const cols = Object.keys(versionData.rows[0] ?? {});
               return (
                 <div className={styles.sampleWrap}>
+                  <div className={styles.versionBar}>
+                    {activeNode.dataVersions.map(v => (
+                      <button
+                        key={v.version}
+                        className={`${styles.versionBtn} ${v.version === versionData.version ? styles.versionBtnActive : ''}`}
+                        onClick={() => setActiveVersion(v.version)}
+                      >
+                        {v.version}
+                      </button>
+                    ))}
+                    <span className={styles.versionLabel}>data version</span>
+                  </div>
                   <table className={styles.sampleTable}>
                     <thead>
-                      <tr>
-                        {cols.map(c => <th key={c}>{c}</th>)}
-                      </tr>
+                      <tr>{cols.map(c => <th key={c}>{c}</th>)}</tr>
                     </thead>
                     <tbody>
-                      {activeNode.sampleData.map((row, i) => (
+                      {versionData.rows.map((row, i) => (
                         <tr key={i}>
                           {cols.map(c => <td key={c}>{row[c]}</td>)}
                         </tr>
@@ -423,7 +483,7 @@ export default function PipelineDiagram() {
                     </tbody>
                   </table>
                   <div className={styles.sampleFooter}>
-                    Showing {activeNode.sampleData.length} sample rows
+                    {versionData.rows.length} rows · {versionData.version}
                   </div>
                 </div>
               );
