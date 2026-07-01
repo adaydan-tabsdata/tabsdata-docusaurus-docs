@@ -5,41 +5,595 @@ title: "Projection"
 import { ParamField, ResponseField } from '@site/src/components/ApiField';
 
 export const toc = [
-  {value: 'all()', id: 'tabsdata.tableframe.selectors.all', level: 2},
-  {value: 'alpha()', id: 'tabsdata.tableframe.selectors.alpha', level: 2},
-  {value: 'alphanumeric()', id: 'tabsdata.tableframe.selectors.alphanumeric', level: 2},
-  {value: 'binary()', id: 'tabsdata.tableframe.selectors.binary', level: 2},
-  {value: 'boolean()', id: 'tabsdata.tableframe.selectors.boolean', level: 2},
-  {value: 'by_dtype()', id: 'tabsdata.tableframe.selectors.by_dtype', level: 2},
-  {value: 'by_index()', id: 'tabsdata.tableframe.selectors.by_index', level: 2},
-  {value: 'by_name()', id: 'tabsdata.tableframe.selectors.by_name', level: 2},
-  {value: 'categorical()', id: 'tabsdata.tableframe.selectors.categorical', level: 2},
-  {value: 'contains()', id: 'tabsdata.tableframe.selectors.contains', level: 2},
-  {value: 'date()', id: 'tabsdata.tableframe.selectors.date', level: 2},
-  {value: 'datetime()', id: 'tabsdata.tableframe.selectors.datetime', level: 2},
-  {value: 'decimal()', id: 'tabsdata.tableframe.selectors.decimal', level: 2},
-  {value: 'digit()', id: 'tabsdata.tableframe.selectors.digit', level: 2},
-  {value: 'duration()', id: 'tabsdata.tableframe.selectors.duration', level: 2},
-  {value: 'ends_with()', id: 'tabsdata.tableframe.selectors.ends_with', level: 2},
-  {value: 'exclude()', id: 'tabsdata.tableframe.selectors.exclude', level: 2},
-  {value: 'first()', id: 'tabsdata.tableframe.selectors.first', level: 2},
-  {value: 'float()', id: 'tabsdata.tableframe.selectors.float', level: 2},
-  {value: 'integer()', id: 'tabsdata.tableframe.selectors.integer', level: 2},
-  {value: 'last()', id: 'tabsdata.tableframe.selectors.last', level: 2},
-  {value: 'matches()', id: 'tabsdata.tableframe.selectors.matches', level: 2},
-  {value: 'numeric()', id: 'tabsdata.tableframe.selectors.numeric', level: 2},
-  {value: 'object()', id: 'tabsdata.tableframe.selectors.object', level: 2},
-  {value: 'signed_integer()', id: 'tabsdata.tableframe.selectors.signed_integer', level: 2},
-  {value: 'starts_with()', id: 'tabsdata.tableframe.selectors.starts_with', level: 2},
-  {value: 'string()', id: 'tabsdata.tableframe.selectors.string', level: 2},
-  {value: 'temporal()', id: 'tabsdata.tableframe.selectors.temporal', level: 2},
-  {value: 'time()', id: 'tabsdata.tableframe.selectors.time', level: 2},
-  {value: 'unsigned_integer()', id: 'tabsdata.tableframe.selectors.unsigned_integer', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>drop()', id: 'tabsdata.TableFrame.drop', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>item()', id: 'tabsdata.TableFrame.item', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>rename()', id: 'tabsdata.TableFrame.rename', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>select()', id: 'tabsdata.TableFrame.select', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>udf()', id: 'tabsdata.TableFrame.udf', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>unnest()', id: 'tabsdata.TableFrame.unnest', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>with_columns()', id: 'tabsdata.TableFrame.with_columns', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>all()', id: 'tabsdata.tableframe.selectors.all', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>alpha()', id: 'tabsdata.tableframe.selectors.alpha', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>alphanumeric()', id: 'tabsdata.tableframe.selectors.alphanumeric', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>binary()', id: 'tabsdata.tableframe.selectors.binary', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>boolean()', id: 'tabsdata.tableframe.selectors.boolean', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>by_dtype()', id: 'tabsdata.tableframe.selectors.by_dtype', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>by_index()', id: 'tabsdata.tableframe.selectors.by_index', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>by_name()', id: 'tabsdata.tableframe.selectors.by_name', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>categorical()', id: 'tabsdata.tableframe.selectors.categorical', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>contains()', id: 'tabsdata.tableframe.selectors.contains', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>date()', id: 'tabsdata.tableframe.selectors.date', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>datetime()', id: 'tabsdata.tableframe.selectors.datetime', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>decimal()', id: 'tabsdata.tableframe.selectors.decimal', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>digit()', id: 'tabsdata.tableframe.selectors.digit', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>duration()', id: 'tabsdata.tableframe.selectors.duration', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>ends_with()', id: 'tabsdata.tableframe.selectors.ends_with', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>exclude()', id: 'tabsdata.tableframe.selectors.exclude', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>first()', id: 'tabsdata.tableframe.selectors.first', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>float()', id: 'tabsdata.tableframe.selectors.float', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>integer()', id: 'tabsdata.tableframe.selectors.integer', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>last()', id: 'tabsdata.tableframe.selectors.last', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>matches()', id: 'tabsdata.tableframe.selectors.matches', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>numeric()', id: 'tabsdata.tableframe.selectors.numeric', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>object()', id: 'tabsdata.tableframe.selectors.object', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>signed_integer()', id: 'tabsdata.tableframe.selectors.signed_integer', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>starts_with()', id: 'tabsdata.tableframe.selectors.starts_with', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>string()', id: 'tabsdata.tableframe.selectors.string', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>temporal()', id: 'tabsdata.tableframe.selectors.temporal', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>time()', id: 'tabsdata.tableframe.selectors.time', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-function">function</span>unsigned_integer()', id: 'tabsdata.tableframe.selectors.unsigned_integer', level: 2},
 ];
 
 # Projection
 
-        <a id="tabsdata.tableframe.selectors.all"></a>
+ <a id="tabsdata.TableFrame.drop"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>drop</summary>
+
+```python
+def drop(
+    *columns: td_typing.ColumnNameOrSelector | Iterable[td_typing.ColumnNameOrSelector],
+    strict: bool = True,
+)
+```
+
+Discard columns from the TableFrame.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ x    ┆ y    │
+│ ---  ┆ ---  │
+│ f64  ┆ f64  │
+╞══════╪══════╡
+│ 1.0  ┆ 2.0  │
+│ 2.0  ┆ 2.0  │
+│ 10.0 ┆ 10.0 │
+│ 4.0  ┆ 10.0 │
+│ 5.0  ┆ null │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.drop("y")
+>>>
+┌──────┐
+│ x    │
+│ ---  │
+│ f64  │
+╞══════╡
+│ 1.0  │
+│ 2.0  │
+│ NaN  │
+│ 4.0  │
+│ 5.0  │
+│ null │
+└──────┘
+```
+
+**Categories:** projection
+
+**Parameters:**
+
+<ParamField path="columns">
+  Columns to drop.
+</ParamField>
+
+<ParamField path="strict">
+  If True, raises an error if a column does not exist.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L1596" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.TableFrame.item"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>item</summary>
+
+```python
+def item()
+```
+
+Returns a scalar value if the TableFrame contains exactly one user column and
+one row.
+
+Raises an exception if there is more than one user column or more than one row.
+
+Returns None if the TableFrame is empty.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌─────┐
+│ a   │
+│ --- │
+│ str │
+╞═════╡
+│ A   │
+└─────┘
+>>>
+>>> tf.python_version()
+>>>
+A
+```
+
+**Categories:** projection
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L2670" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.TableFrame.rename"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>rename</summary>
+
+```python
+def rename(
+    mapping: dict[str, str],
+)
+```
+
+Rename columns from the TableFrame.
+
+Examples:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ i    ┆ f    │
+│ ---  ┆ ---  │
+│ i32  ┆ f64  │
+╞══════╪══════╡
+│ 1    ┆ 3.1  │
+│ 2    ┆ 4.1  │
+│ 3    ┆ 5.9  │
+│ 4    ┆ 2.6  │
+│ 5    ┆ 53.5 │
+│ 6    ┆ 8.97 │
+└──────┴──────┘
+>>>
+>>> tf.{"i": "index", "f": "amount"})
+>>>
+┌───────┬────────┐
+│ index ┆ amount │
+│ ----- ┆ ------ │
+│ i32   ┆ f64    │
+╞═══════╪════════╡
+│ 1     ┆ 3.1    │
+│ 2     ┆ 4.1    │
+│ 3     ┆ 5.9    │
+│ 4     ┆ 2.6    │
+│ 5     ┆ 53.5   │
+│ 6     ┆ 8.97   │
+└───────┴────────┘
+```
+
+**Categories:** projection
+
+**Parameters:**
+
+<ParamField path="mapping">
+  A dictionary mapping column names to their new names.
+</ParamField>
+
+<ParamField path="The operation will fail if any specified column name does not exist.">
+  
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L1521" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.TableFrame.select"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>select</summary>
+
+```python
+def select(
+    *exprs: td_typing.IntoExpr | Iterable[td_typing.IntoExpr],
+    **named_exprs: td_typing.IntoExpr,
+)
+```
+
+Select column(s) from the TableFrame.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌─────┬─────┐
+│ a   ┆ b   │
+│ --- ┆ --- │
+│ str ┆ i64 │
+╞═════╪═════╡
+│ A   ┆ 1   │
+│ X   ┆ 10  │
+│ C   ┆ 3   │
+│ D   ┆ 5   │
+│ M   ┆ 9   │
+│ A   ┆ 100 │
+│ M   ┆ 50  │
+└─────┴─────┘
+>>>
+>>> tf.select(td.col("a"), td.col("b").mul(2).alias("bx2"),)
+>>>
+┌─────┬─────┐
+│ a   ┆ bx2 │
+│ --- ┆ --- │
+│ str ┆ i64 │
+╞═════╪═════╡
+│ A   ┆ 2   │
+│ X   ┆ 20  │
+│ C   ┆ 6   │
+│ D   ┆ 10  │
+│ M   ┆ 18  │
+│ A   ┆ 200 │
+│ M   ┆ 100 │
+└─────┴─────┘
+```
+
+**Categories:** projection
+
+**Parameters:**
+
+<ParamField path="exprs">
+  Columns or expressions to select.
+</ParamField>
+
+<ParamField path="named_exprs">
+  Named expressions to select.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L2146" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.TableFrame.udf"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>udf</summary>
+
+```python
+def udf(
+    on: td_typing.IntoExpr | list[td_typing.IntoExpr],
+    function: td_udf.UDF,
+)
+```
+
+Apply a user-defined function (UDF) to the columns resolved by expr.
+
+The selected columns are supplied to function, which can implement either
+on_batch or on_element. An on_batch implementation receives a list of
+Polars series representing the selected columns and must return a list of
+Polars series with matching length. An on_element implementation receives
+a list of Python scalars for each row and returns a list of scalars; the
+framework wraps this in an efficient batch executor, so data still flows in
+batches even when authoring row-wise logic. In both cases the returned series
+become new columns appended to the original TableFrame.
+
+By default, both methods receive their inputs as a list. Override the
+signature property in your UDF class to return “unpacked” to have each column
+passed as a separate argument instead.
+
+ Creating UDFs:1. Subclass [tabsdata.tableframe.udf.function.UDF](/docs/api/module/tabsdata.tableframe.udf.function#tabsdata.tableframe.udf.function.UDF).
+2. Implement `__init__` to call `super().__init__(output_columns)` where
+`output_columns` is a tuple or list of tuples `(name, data type)`
+specifying the UDF default output schema (column names and data types).
+Each tuple must contain a column name (string) and a data type
+(DataType).
+3. Override exactly one of on_batch or on_element, to implement the UDF
+function logic.
+4. Return a list of TabsData Series (for on_batch) or TabsData supported
+scalars (for on_element) with the same length as specified in the
+output schema.
+5. If overriding the on_batch method, the return type must be a list of
+TabsData Series. If overriding the on_element method, the return type
+must be a list of supported TabsData scalar values. For both cases, the
+number of elements in the returned lists must match the number of
+elements in the output_columns list provided to the UDF constructor.
+
+  Using UDFs:
+
+ 1. Instantiate a function created as above.
+2. Pass it to TableFrame method udf().
+3. Optionally use `UDF.output_columns()` to override output column names
+or data types after instantiation.
+
+ Examples
+
+```text
+>>> import tabsdata as td
+>>> import tabsdata.tableframe as tdf
+>>>
+>>> class SumUDF(tdf.UDF):
+...     def __init__(self):
+...         super().__init__(("total", tdf.Int64))
+...
+...     def on_batch(self, series):
+...         return [series[0] + series[1]]
+>>>
+>>> tf = td.TableFrame({"a": [1, 2, 3], "b": [10, 20, 30]})
+>>> print(tf)
+┌─────┬─────┐
+│ a   ┆ b   │
+│ --- ┆ --- │
+│ i64 ┆ i64 │
+╞═════╪═════╡
+│ 1   ┆ 10  │
+│ 2   ┆ 20  │
+│ 3   ┆ 30  │
+└─────┴─────┘
+>>> tf.udf(td.col("a", "b"), SumUDF())
+>>> print(tf)
+┌─────┬─────┬───────┐
+│ a   ┆ b   ┆ total │
+│ --- ┆ --- ┆ ---   │
+│ i64 ┆ i64 ┆ i64   │
+╞═════╪═════╪═══════╡
+│ 1   ┆ 10  ┆ 11    │
+│ 2   ┆ 20  ┆ 22    │
+│ 3   ┆ 30  ┆ 33    │
+└─────┴─────┴───────┘
+```
+
+```text
+>>> class RatioUDF(tdf.UDF):
+...     def __init__(self):
+...         super().__init__(("ratio", tdf.Float64))
+...
+...     def on_element(self, values):
+...         return [values[0] / values[1]]
+>>>
+>>> tf = td.TableFrame({"numerator": [10, 20, 30],
+>>>                     "denominator": [2, 5, 10],})
+>>> print(tf)
+┌───────────┬──────────────┐
+│ numerator ┆ denominator  │
+│ ---       ┆ ---          │
+│ i64       ┆ i64          │
+╞═══════════╪══════════════╡
+│ 10        ┆ 2            │
+│ 20        ┆ 5            │
+│ 30        ┆ 10           │
+└───────────┴──────────────┘
+>>> tf.udf(td.col("numerator", "denominator"), RatioUDF()).collect()
+>>> print(tf)
+┌───────────┬──────────────┬──────┐
+│ numerator ┆ denominator  ┆ ratio│
+│ ---       ┆ ---          ┆ ---  │
+│ i64       ┆ i64          ┆ f64  │
+╞═══════════╪══════════════╪══════╡
+│ 10        ┆ 2            ┆ 5.0  │
+│ 20        ┆ 5            ┆ 4.0  │
+│ 30        ┆ 10           ┆ 3.0  │
+└───────────┴──────────────┴──────┘
+```
+
+Using signature property to receive individual arguments:
+
+```text
+>>> class RatioUnpackedUDF(tdf.UDF):
+...     def __init__(self):
+...         super().__init__(("ratio", tdf.Float64))
+...
+...     @property
+...     def signature(self):
+...         return "unpacked"
+...
+...     def on_element(self, numerator, denominator):
+...         return [numerator / denominator]
+>>>
+>>> tf = td.TableFrame({"numerator": [10, 20, 30],
+>>>                     "denominator": [2, 5, 10],})
+>>> tf.udf(td.col("numerator", "denominator"), RatioUnpackedUDF()).collect()
+>>> print(tf)
+┌───────────┬──────────────┬──────┐
+│ numerator ┆ denominator  ┆ ratio│
+│ ---       ┆ ---          ┆ ---  │
+│ i64       ┆ i64          ┆ f64  │
+╞═══════════╪══════════════╪══════╡
+│ 10        ┆ 2            ┆ 5.0  │
+│ 20        ┆ 5            ┆ 4.0  │
+│ 30        ┆ 10           ┆ 3.0  │
+└───────────┴──────────────┴──────┘
+```
+
+**Categories:** projection
+
+**Parameters:**
+
+<ParamField path="on">
+  Expression selecting the input column(s) of the UDF.
+</ParamField>
+
+<ParamField path="function">
+  Instance of tabsdata.tableframe.udf.function.UDF
+defining on_batch or on_element to produce the output series.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L1312" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.TableFrame.unnest"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>unnest</summary>
+
+```python
+def unnest(
+    columns: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector],
+    *more_columns: td_typing.ColumnNameOrSelector,
+)
+```
+
+Expand one or more struct columns so that each field within the struct becomes
+a separate column in the TableFrame.
+
+The resulting TableFrame will place these new columns in the same position
+as the original struct column, effectively replacing it. This makes it easier
+to work directly with the inner fields as standard columns.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf = td.TableFrame({
+...     "id": [1, 2],
+...     "info": [
+...         {"name": "Alice", "age": 30},
+...         {"name": "Bob", "age": None},
+...     ],
+...     "status": ["active", "inactive"],
+... })
+>>>
+>>> tf
+>>>
+┌─────┬───────────────┬───────────┐
+│ id  ┆ info          ┆ status    │
+│ --- ┆ ---           ┆ ---       │
+│ i64 ┆ struct[2]     ┆ str       │
+╞═════╪═══════════════╪═══════════╡
+│ 1   ┆ {"Alice",30}  ┆ active    │
+│ 2   ┆ {"Bob",null}  ┆ inactive  │
+└─────┴───────────────┴───────────┘
+>>>
+>>> tf.unnest("info")
+>>>
+┌─────┬───────┬──────┬───────────┐
+│ id  ┆ name  ┆ age  ┆ status    │
+│ --- ┆ ---   ┆ ---  ┆ ---       │
+│ i64 ┆ str   ┆ i64  ┆ str       │
+╞═════╪═══════╪══════╪═══════════╡
+│ 1   ┆ Alice ┆ 30   ┆ active    │
+│ 2   ┆ Bob   ┆ null ┆ inactive  │
+└─────┴───────┴──────┴───────────┘
+```
+
+**Categories:** projection
+
+**Parameters:**
+
+<ParamField path="columns">
+  Name of the struct column(s) to expand.
+</ParamField>
+
+<ParamField path="more_columns">
+  Additional struct columns to expand, provided as positional
+arguments.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L1659" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.TableFrame.with_columns"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>with_columns</summary>
+
+```python
+def with_columns(
+    *exprs: td_typing.IntoExpr | Iterable[td_typing.IntoExpr],
+    **named_exprs: td_typing.IntoExpr,
+)
+```
+
+Add columns to the TableFrame.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ x    ┆ y    │
+│ ---  ┆ ---  │
+│ f64  ┆ f64  │
+╞══════╪══════╡
+│ 1.0  ┆ 2.0  │
+│ 2.0  ┆ 2.0  │
+│ 10.0 ┆ 10.0 │
+│ 4.0  ┆ 10.0 │
+│ 5.0  ┆ null │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.with_columns(td.col("x").mul(td.col("y")).alias("z"))
+>>>
+┌──────┬──────┬──────┐
+│ x    ┆ y    ┆ z    │
+│ ---  ┆ ---  ┆ ---  │
+│ f64  ┆ f64  ┆ f64  │
+╞══════╪══════╪══════╡
+│ 1.0  ┆ 2.0  ┆ 2.0  │
+│ 2.0  ┆ 2.0  ┆ 4.0  │
+│ NaN  ┆ NaN  ┆ NaN  │
+│ 4.0  ┆ NaN  ┆ NaN  │
+│ 5.0  ┆ null ┆ null │
+│ null ┆ null ┆ null │
+└──────┴──────┴──────┘
+```
+
+**Categories:** projection
+
+**Parameters:**
+
+<ParamField path="exprs">
+  Columns or expressions to add.
+</ParamField>
+
+<ParamField path="named_exprs">
+  Named expressions to add.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L1250" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.selectors.all"></a>
 <div class="api-entry-wrap">
 <details open>
 <summary>all</summary>

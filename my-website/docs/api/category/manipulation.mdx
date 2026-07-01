@@ -2,4 +2,520 @@
 title: "Manipulation"
 ---
 
+import { ParamField, ResponseField } from '@site/src/components/ApiField';
+
+export const toc = [
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>cast()', id: 'tabsdata.TableFrame.cast', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>drop_nans()', id: 'tabsdata.TableFrame.drop_nans', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>drop_nulls()', id: 'tabsdata.TableFrame.drop_nulls', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>fill_nan()', id: 'tabsdata.TableFrame.fill_nan', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>fill_null()', id: 'tabsdata.TableFrame.fill_null', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>alias()', id: 'tabsdata.tableframe.expr.expr.Expr.alias', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>fill_nan()', id: 'tabsdata.tableframe.expr.expr.Expr.fill_nan', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>fill_null()', id: 'tabsdata.tableframe.expr.expr.Expr.fill_null', level: 2},
+];
+
 # Manipulation
+
+ <a id="tabsdata.TableFrame.cast"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>cast</summary>
+
+```python
+def cast(
+    dtypes: Mapping[td_typing.ColumnNameOrSelector | td_typing.DataType, td_typing.DataType] | td_typing.DataType,
+    *,
+    strict: bool = True,
+)
+```
+
+Cast columns to a new data type.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ a    ┆ b    │
+│ ---  ┆ ---  │
+│ str  ┆ i64  │
+╞══════╪══════╡
+│ A    ┆ 1    │
+│ X    ┆ 10   │
+│ C    ┆ 3    │
+│ D    ┆ 5    │
+│ M    ┆ 9    │
+│ A    ┆ 100  │
+│ M    ┆ 50   │
+│ null ┆ 20   │
+│ F    ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.cast({"b":td.Float32}).collect()
+>>>
+┌──────┬───────┐
+│ a    ┆ b     │
+│ ---  ┆ ---   │
+│ str  ┆ f32   │
+╞══════╪═══════╡
+│ A    ┆ 1.0   │
+│ X    ┆ 10.0  │
+│ C    ┆ 3.0   │
+│ D    ┆ 5.0   │
+│ M    ┆ 9.0   │
+│ A    ┆ 100.0 │
+│ M    ┆ 50.0  │
+│ null ┆ 20.0  │
+│ F    ┆ null  │
+└──────┴───────┘
+```
+
+**Categories:** manipulation
+
+**Parameters:**
+
+<ParamField path="dtypes">
+  Mapping of the column name(s) to the new data type(s).
+</ParamField>
+
+<ParamField path="strict">
+  If True, raises an error if the cast cannot be performed.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L958" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.TableFrame.drop_nans"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>drop_nans</summary>
+
+```python
+def drop_nans(
+    subset: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector] | None = None,
+)
+```
+
+Drop rows with NaN values.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┬──────┐
+│ ss   ┆ u    ┆ ff   │
+│ ---  ┆ ---  ┆ ---  │
+│ str  ┆ i64  ┆ f64  │
+╞══════╪══════╪══════╡
+│ A    ┆ 1    ┆ 1.1  │
+│ B    ┆ 0    ┆ 0.0  │
+│ A    ┆ 2    ┆ 2.2  │
+│ B    ┆ 3    ┆ 3.3  │
+│ B    ┆ 4    ┆ 4.4  │
+│ C    ┆ 5    ┆ -1.1 │
+│ C    ┆ 6    ┆ -2.2 │
+│ C    ┆ 7    ┆ -3.3 │
+│ D    ┆ 8    ┆ inf  │
+│ F    ┆ 9    ┆ NaN  │
+│ null ┆ null ┆ null │
+└──────┴──────┴──────┘
+>>>
+>>> tf.unique("a", keep="last")
+┌─────┬─────┬──────┐
+│ ss  ┆ u   ┆ ff   │
+│ --- ┆ --- ┆ ---  │
+│ str ┆ i64 ┆ f64  │
+╞═════╪═════╪══════╡
+│ A   ┆ 1   ┆ 1.1  │
+│ B   ┆ 0   ┆ 0.0  │
+│ A   ┆ 2   ┆ 2.2  │
+│ B   ┆ 3   ┆ 3.3  │
+│ B   ┆ 4   ┆ 4.4  │
+│ C   ┆ 5   ┆ -1.1 │
+│ C   ┆ 6   ┆ -2.2 │
+│ C   ┆ 7   ┆ -3.3 │
+│ D   ┆ 8   ┆ inf  │
+└─────┴─────┴──────┘
+>>>
+```
+
+**Categories:** manipulation
+
+**Parameters:**
+
+<ParamField path="subset">
+  Columns to look for Nan values. If None, all columns are
+</ParamField>
+
+<ParamField path="considered.">
+  
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L1929" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.TableFrame.drop_nulls"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>drop_nulls</summary>
+
+```python
+def drop_nulls(
+    subset: td_typing.ColumnNameOrSelector | Collection[td_typing.ColumnNameOrSelector] | None = None,
+)
+```
+
+Drop rows with null values.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┬──────┐
+│ ss   ┆ u    ┆ ff   │
+│ ---  ┆ ---  ┆ ---  │
+│ str  ┆ i64  ┆ f64  │
+╞══════╪══════╪══════╡
+│ A    ┆ 1    ┆ 1.1  │
+│ B    ┆ 0    ┆ 0.0  │
+│ A    ┆ 2    ┆ 2.2  │
+│ B    ┆ 3    ┆ 3.3  │
+│ B    ┆ 4    ┆ 4.4  │
+│ C    ┆ 5    ┆ -1.1 │
+│ C    ┆ 6    ┆ -2.2 │
+│ C    ┆ 7    ┆ -3.3 │
+│ D    ┆ 8    ┆ inf  │
+│ F    ┆ 9    ┆ NaN  │
+│ G    ┆ null ┆ 2.3  │
+└──────┴──────┴──────┘
+>>>
+>>> tf.drop_nulls("a")
+>>>
+┌─────┬─────┬──────┐
+│ ss  ┆ u   ┆ ff   │
+│ --- ┆ --- ┆ ---  │
+│ str ┆ i64 ┆ f64  │
+╞═════╪═════╪══════╡
+│ A   ┆ 1   ┆ 1.1  │
+│ B   ┆ 0   ┆ 0.0  │
+│ A   ┆ 2   ┆ 2.2  │
+│ B   ┆ 3   ┆ 3.3  │
+│ B   ┆ 4   ┆ 4.4  │
+│ C   ┆ 5   ┆ -1.1 │
+│ C   ┆ 6   ┆ -2.2 │
+│ C   ┆ 7   ┆ -3.3 │
+│ D   ┆ 8   ┆ inf  │
+│ F   ┆ 9   ┆ NaN  │
+└─────┴─────┴──────┘
+```
+
+**Categories:** manipulation
+
+**Parameters:**
+
+<ParamField path="subset">
+  Columns to evaluate for null values. If None, all columns are
+</ParamField>
+
+<ParamField path="considered.">
+  
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L2002" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.TableFrame.fill_nan"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>fill_nan</summary>
+
+```python
+def fill_nan(
+    value: int | float | Expr | None,
+)
+```
+
+Replace all NaN values in the TableFrame with the given value.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ x    ┆ y    │
+│ ---  ┆ ---  │
+│ f64  ┆ f64  │
+╞══════╪══════╡
+│ 1.0  ┆ 2.0  │
+│ 2.0  ┆ 2.0  │
+│ NaN  ┆ NaN  │
+│ 4.0  ┆ NaN  │
+│ 5.0  ┆ null │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.fill_nan(10)
+>>>
+┌──────┬──────┐
+│ x    ┆ y    │
+│ ---  ┆ ---  │
+│ f64  ┆ f64  │
+╞══════╪══════╡
+│ 1.0  ┆ 2.0  │
+│ 2.0  ┆ 2.0  │
+│ 10.0 ┆ 10.0 │
+│ 4.0  ┆ 10.0 │
+│ 5.0  ┆ null │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+**Categories:** manipulation
+
+**Parameters:**
+
+<ParamField path="value">
+  The value to replace NaN with.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L1793" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.TableFrame.fill_null"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>fill_null</summary>
+
+```python
+def fill_null(
+    value: Any | Expr | None = None,
+)
+```
+
+Replace all null values in the TableFrame with the given value.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+┌──────┬──────┐
+│ x    ┆ y    │
+│ ---  ┆ ---  │
+│ f64  ┆ f64  │
+╞══════╪══════╡
+│ 1.0  ┆ 2.0  │
+│ 2.0  ┆ 2.0  │
+│ NaN  ┆ NaN  │
+│ 4.0  ┆ NaN  │
+│ 5.0  ┆ null │
+│ null ┆ null │
+└──────┴──────┘
+>>>
+>>> tf.fill_null(20)
+>>>
+┌──────┬──────┐
+│ x    ┆ y    │
+│ ---  ┆ ---  │
+│ f64  ┆ f64  │
+╞══════╪══════╡
+│ 1.0  ┆ 2.0  │
+│ 2.0  ┆ 2.0  │
+│ NaN  ┆ NaN  │
+│ 4.0  ┆ NaN  │
+│ 5.0  ┆ 20.0 │
+│ 20.0 ┆ 20.0 │
+└──────┴──────┘
+```
+
+**Categories:** manipulation
+
+**Parameters:**
+
+<ParamField path="value">
+  The value to replace null with.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/lazyframe/frame.py#L1730" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.expr.Expr.alias"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>alias</summary>
+
+```python
+def alias(
+    name: str,
+)
+```
+
+Set the name for a column or expression.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf.select(td.col("age"), td.col("age").alias("Age"))
+>>>
+┌──────┬──────┐
+│ age  ┆ Age  │
+│ ---  ┆ ---  │
+│ i64  ┆ i64  │
+╞══════╪══════╡
+│ 1    ┆ 1    │
+│ 15   ┆ 15   │
+│ 18   ┆ 18   │
+│ 60   ┆ 60   │
+│ 60   ┆ 60   │
+│ 75   ┆ 75   │
+│ null ┆ null │
+└──────┴──────┘
+```
+
+**Categories:** manipulation
+
+**Parameters:**
+
+<ParamField path="name">
+  Column or expression new name. The name must be a word
+</ParamField>
+
+<ParamField path="([A-Za-z_][A-Za-z0-9_]*) of up to 100 characters.">
+  
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L234" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.expr.Expr.fill_nan"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>fill_nan</summary>
+
+```python
+def fill_nan(
+    value: int | float | Expr | None,
+)
+```
+
+Replace NaN values with the given value.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val").fill_nan(5.5)
+>>>        .alias("fill_nan"))
+>>>
+┌──────┬──────────┐
+│ val  ┆ fill_nan │
+│ ---  ┆ ---      │
+│ f64  ┆ f64      │
+╞══════╪══════════╡
+│ 1.1  ┆ 1.1      │
+│ 2.0  ┆ 2.0      │
+│ inf  ┆ inf      │
+│ null ┆ null     │
+│ NaN  ┆ 5.5      │
+└──────┴──────────┘
+```
+
+**Categories:** manipulation
+
+**Parameters:**
+
+<ParamField path="value">
+  The value to replace NaN values with.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L876" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.expr.expr.Expr.fill_null"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>fill_null</summary>
+
+```python
+def fill_null(
+    value: Any | Expr | None = None,
+    strategy: Literal['forward', 'backward', 'min', 'max', 'mean', 'zero', 'one'] | None = None,
+    limit: int | None = None,
+)
+```
+
+Replace null values with the given value.
+
+Example:
+
+```text
+>>> import tabsdata as td
+>>>
+>>> tf: td.TableFrame ...
+>>>
+>>> tf = tf.select(td.col("val"), td.col("val")
+>>>        .fill_null(5.5).alias("fill_null"))
+>>>
+┌──────┬───────────┐
+│ val  ┆ fill_null │
+│ ---  ┆ ---       │
+│ f64  ┆ f64       │
+╞══════╪═══════════╡
+│ -1.0 ┆ -1.0      │
+│ 0.0  ┆ 0.0       │
+│ 1.1  ┆ 1.1       │
+│ 2.0  ┆ 2.0       │
+│ inf  ┆ inf       │
+│ null ┆ 5.5       │
+│ NaN  ┆ NaN       │
+└──────┴───────────┘
+```
+
+**Categories:** manipulation
+
+**Parameters:**
+
+<ParamField path="value">
+  The value to replace null values with.
+</ParamField>
+
+<ParamField path="strategy">
+  The strategy to use for filling null values.
+</ParamField>
+
+<ParamField path="limit">
+  The maximum number of null values to replace.
+</ParamField>
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/expr/expr.py#L910" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>

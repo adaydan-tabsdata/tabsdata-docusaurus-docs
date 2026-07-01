@@ -2,4 +2,711 @@
 title: "Date"
 ---
 
+export const toc = [
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>add_business_days()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.add_business_days', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>base_utc_offset()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.base_utc_offset', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>cast_time_unit()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.cast_time_unit', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>century()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.century', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>combine()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.combine', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>convert_time_zone()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.convert_time_zone', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>date()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.date', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>datetime()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.datetime', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>day()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.day', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>dst_offset()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.dst_offset', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>epoch()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.epoch', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>hour()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.hour', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>is_leap_year()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.is_leap_year', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>iso_year()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.iso_year', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>microsecond()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.microsecond', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>millennium()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.millennium', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>millisecond()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.millisecond', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>minute()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.minute', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>month()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.month', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>month_end()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.month_end', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>month_start()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.month_start', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>nanosecond()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.nanosecond', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>offset_by()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.offset_by', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>ordinal_day()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.ordinal_day', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>quarter()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.quarter', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>replace_time_zone()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.replace_time_zone', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>second()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.second', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>strftime()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.strftime', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>time()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.time', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>timestamp()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.timestamp', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>total_days()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_days', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>total_hours()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_hours', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>total_microseconds()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_microseconds', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>total_milliseconds()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_milliseconds', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>total_minutes()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_minutes', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>total_nanoseconds()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_nanoseconds', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>total_seconds()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_seconds', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>truncate()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.truncate', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>week()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.week', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>weekday()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.weekday', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>with_time_unit()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.with_time_unit', level: 2},
+  {value: '<span class="toc-kind-badge toc-kind-method">method</span>year()', id: 'tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.year', level: 2},
+];
+
 # Date
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.add_business_days"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>add_business_days</summary>
+
+```python
+def add_business_days(
+    n: int | td_typing.IntoExpr,
+    week_mask: Iterable[bool] = (True, True, True, True, True, False, False),
+    holidays: Iterable[dt.date] = (),
+    roll: td_typing.Roll = 'raise',
+)
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L20" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.base_utc_offset"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>base_utc_offset</summary>
+
+```python
+def base_utc_offset()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L414" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.cast_time_unit"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>cast_time_unit</summary>
+
+```python
+def cast_time_unit(
+    time_unit: Literal['ns', 'us', 'ms'],
+)
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L294" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.century"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>century</summary>
+
+```python
+def century()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L118" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.combine"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>combine</summary>
+
+```python
+def combine(
+    time: time | Expr,
+    time_unit: Literal['ns', 'us', 'ms'] = 'us',
+)
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L79" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.convert_time_zone"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>convert_time_zone</summary>
+
+```python
+def convert_time_zone(
+    time_zone: str,
+)
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L302" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.date"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>date</summary>
+
+```python
+def date()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L206" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.datetime"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>datetime</summary>
+
+```python
+def datetime()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L214" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.day"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>day</summary>
+
+```python
+def day()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L182" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.dst_offset"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>dst_offset</summary>
+
+```python
+def dst_offset()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L422" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.epoch"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>epoch</summary>
+
+```python
+def epoch(
+    time_unit: Literal['ns', 'us', 'ms', 's', 'd'] = 'us',
+)
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L270" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.hour"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>hour</summary>
+
+```python
+def hour()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L222" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.is_leap_year"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>is_leap_year</summary>
+
+```python
+def is_leap_year()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L134" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.iso_year"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>iso_year</summary>
+
+```python
+def iso_year()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L142" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.microsecond"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>microsecond</summary>
+
+```python
+def microsecond()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L254" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.millennium"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>millennium</summary>
+
+```python
+def millennium()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L110" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.millisecond"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>millisecond</summary>
+
+```python
+def millisecond()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L246" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.minute"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>minute</summary>
+
+```python
+def minute()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L230" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.month"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>month</summary>
+
+```python
+def month()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L158" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.month_end"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>month_end</summary>
+
+```python
+def month_end()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L406" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.month_start"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>month_start</summary>
+
+```python
+def month_start()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L398" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.nanosecond"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>nanosecond</summary>
+
+```python
+def nanosecond()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L262" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.offset_by"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>offset_by</summary>
+
+```python
+def offset_by(
+    by: str | Expr,
+)
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L387" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.ordinal_day"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>ordinal_day</summary>
+
+```python
+def ordinal_day()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L190" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.quarter"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>quarter</summary>
+
+```python
+def quarter()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L150" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.replace_time_zone"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>replace_time_zone</summary>
+
+```python
+def replace_time_zone(
+    time_zone: str | None,
+    *,
+    ambiguous: Literal['earliest', 'latest', 'raise', 'null'] | Expr = 'raise',
+    non_existent: Literal['raise', 'null'] = 'raise',
+)
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L310" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.second"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>second</summary>
+
+```python
+def second(
+    *,
+    fractional: bool = False,
+)
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L238" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.strftime"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>strftime</summary>
+
+```python
+def strftime(
+    fmt: str,
+)
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L102" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.time"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>time</summary>
+
+```python
+def time()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L198" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.timestamp"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>timestamp</summary>
+
+```python
+def timestamp(
+    time_unit: Literal['ns', 'us', 'ms'] = 'us',
+)
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L278" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_days"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>total_days</summary>
+
+```python
+def total_days()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L331" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_hours"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>total_hours</summary>
+
+```python
+def total_hours()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L339" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_microseconds"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>total_microseconds</summary>
+
+```python
+def total_microseconds()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L371" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_milliseconds"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>total_milliseconds</summary>
+
+```python
+def total_milliseconds()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L363" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_minutes"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>total_minutes</summary>
+
+```python
+def total_minutes()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L347" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_nanoseconds"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>total_nanoseconds</summary>
+
+```python
+def total_nanoseconds()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L379" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.total_seconds"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>total_seconds</summary>
+
+```python
+def total_seconds()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L355" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.truncate"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>truncate</summary>
+
+```python
+def truncate(
+    every: str | timedelta | Expr,
+)
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L42" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.week"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>week</summary>
+
+```python
+def week()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L166" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.weekday"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>weekday</summary>
+
+```python
+def weekday()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L174" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.with_time_unit"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>with_time_unit</summary>
+
+```python
+def with_time_unit(
+    time_unit: Literal['ns', 'us', 'ms'],
+)
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L286" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>
+
+ <a id="tabsdata.tableframe.functions.datetime.ExprDateTimeNameSpace.year"></a>
+<div class="api-entry-wrap">
+<details open>
+<summary>year</summary>
+
+```python
+def year()
+```
+
+**Categories:** date
+
+</details>
+<a class="entry-source-link" href="https://github.com/tabsdata/tabsdata/blob/b1.9/client/platform/src/main/python/tabsdata/tableframe/functions/datetime.py#L126" target="_blank" rel="noopener noreferrer">View source ↗</a>
+</div>

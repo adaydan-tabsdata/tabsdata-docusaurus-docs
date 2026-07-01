@@ -370,10 +370,19 @@ def api_entry_to_mdx(dl, depth=0):
     classes = dl.get('class', [])
 
     # Skip top-level methods that have a class prefix (e.g. DestinationPlugin.chunk)
-    # They are duplicates of methods already rendered nested inside the class accordion
+    # only when a sibling dl.py.class exists (bymod-style pages) — those methods are
+    # duplicates already rendered nested inside the class accordion.
+    # bycat-style pages list methods directly with no class DL, so do NOT skip them.
     if depth == 0 and 'method' in classes:
         if dt.find('span', class_='descclassname'):
-            return ''
+            parent = dl.parent
+            has_sibling_class = any(
+                'class' in (s.get('class') or [])
+                for s in parent.find_all('dl', recursive=False)
+                if s is not dl
+            )
+            if has_sibling_class:
+                return ''
 
     anchor_id = dt.get('id', '')
     anchor = f'<a id="{anchor_id}"></a>\n' if anchor_id else ''
@@ -588,7 +597,7 @@ def _toc_entry(dl, level):
     is_callable = 'method' in classes or 'function' in classes
     label = name_only + '()' if is_callable else name_only
     kind = _toc_kind(classes)
-    if kind and level > 2:
+    if kind:
         badge = f'<span class="toc-kind-badge toc-kind-{kind}">{kind}</span>'
         value = f'{badge}{label}'
     else:
@@ -609,9 +618,17 @@ def collect_api_toc(article):
         dt = dl.find('dt', recursive=False)
         if not dt:
             continue
-        # Skip duplicate top-level methods with class prefix
+        # Skip duplicate top-level methods with class prefix only when a sibling
+        # dl.py.class exists (bymod-style) — bycat pages have no class DL
         if 'method' in classes and dt.find('span', class_='descclassname'):
-            continue
+            parent = dl.parent
+            has_sibling_class = any(
+                'class' in (s.get('class') or [])
+                for s in parent.find_all('dl', recursive=False)
+                if s is not dl
+            )
+            if has_sibling_class:
+                continue
 
         entry = _toc_entry(dl, level=2)
         if not entry:
